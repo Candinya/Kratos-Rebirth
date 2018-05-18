@@ -1,0 +1,6 @@
+<% if (site.posts.length){ %>
+  <aside id="archives-2" class="widget widget_archive clearfix">
+    <h4 class="widget-title"><%= __('archive_a') %></h4>
+      <%- list_archives({show_count: theme.show_count, type: theme.archive_type}) %>
+  </aside>
+<% } %>

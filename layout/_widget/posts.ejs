@@ -1,0 +1,12 @@
+<% if (site.posts.length){ %>
+  <aside class="widget widget_kratos_poststab">
+  <h4 class="widget-title"><%= __('recent_posts') %></h4>
+  <div class="tab-content">
+      <ul class="list-group">
+        <% site.posts.sort('date', -1).limit(5).each(function(post){ %>
+          <a class="list-group-item" href="<%- url_for(post.path) %>"><i class="fa  fa-book"></i> <%= post.title || '(no title)' %></a>
+        <% }) %>
+      </ul>
+  </div>
+  </aside>
+<% } %>

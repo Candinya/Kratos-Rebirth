@@ -1,0 +1,62 @@
+<section id="main" class="col-md-8">
+    <article>
+        <div class="kratos-hentry kratos-post-inner clearfix">
+            <header class="kratos-entry-header">
+                <h1 class="kratos-entry-title text-center"><%- page.title %></h1>
+                <div class="kratos-post-meta text-center">
+                    <span>
+                    <i class="fa fa-calendar"></i> <%= date(page.date, null) %>
+                    <i class="fa fa-folder"></i> 分类于 <%- list_categories(page.categories, {show_count: false, class: 'label', style: 'none'}) %>
+                    </span>
+                </div>
+            </header>
+            <div class="kratos-post-content">
+                <%- page.content %>
+            </div>
+            <% if (theme.posts.show_cc) { %>
+            <div class="kratos-copyright text-center clearfix">
+                <h5>本作品采用 <a rel="license nofollow" target="_blank" href="http://creativecommons.org/licenses/by-sa/4.0/">知识共享署名-相同方式共享 4.0 国际许可协议</a> 进行许可</h5>
+            </div>
+            <% } %>
+            <footer class="kratos-entry-footer clearfix">
+                <% if (theme.posts.donate || theme.posts.share) { %>
+                    <div class="post-like-donate text-center clearfix" id="post-like-donate">
+                    <% if (theme.posts.donate) { %>
+                        <a class="Donate"><i class="fa fa-bitcoin"></i> 打赏</a>
+                    <% } %>
+                    <% if (theme.posts.share) { %>
+                        <a class="Share" ><i class="fa fa-share-alt"></i> 分享</a>
+                        <%- partial('_partial/share', {page: page}) %>
+                    <% } %>
+                    </div>
+                <% } %>
+                <div class="footer-tag clearfix">
+                    <div class="pull-left">
+                    <i class="fa fa-tags"></i>
+                        <%- list_tags(page.tags, {
+                            show_count: false,
+                            style: 'none'
+                        }) %>
+                    </div>
+                    <div class="pull-date">
+                    <span>最后编辑：<%= date(page.date, null) %></span>
+                    </div>
+                </div>
+            </footer>
+        </div>
+        <% if (page.prev || page.next){ %>
+            <nav class="navigation post-navigation clearfix" role="navigation">
+                <% if (page.next){ %>
+                <div class="nav-previous clearfix">
+                    <a title=" <% if (page.next.title){ %><%= page.next.title %><% } else { %>(no title)<% } %>" href="<%- "/"+page.next.path %>">&lt; <%= __('newer') %></a>
+                </div>
+                <% } %>
+                <% if (page.prev){ %>
+                <div class="nav-next clearfix">
+                    <a title=" <% if (page.prev.title){ %><%= page.prev.title %><% } else { %>(no title)<% } %>" href="<%- "/"+page.prev.path %>"><%= __('older') %> &gt;</a>
+                </div>
+                <% } %>
+            </nav>
+        <% } %>
+    </article>
+</section>
