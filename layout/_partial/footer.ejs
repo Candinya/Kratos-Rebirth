@@ -15,8 +15,8 @@
         <div class="cd-tool text-center">
             <div class="gotop-box2 gotop-box"><div class="gotop-btn"><span class="fa fa-chevron-up"></span></div></div>
             <% if(theme.show_qqg) { %>
-              <div id="qqg-img" class="qqg-img">
-                <span class="fa fa-qq"></span>
+              <div class="qqg-img">
+                <div id="qqg-img"><span class="fa fa-qq"></span></div>
                 <div id="qqg-pic">
                   <img src="/images/qqg.jpg">
                 </div>
@@ -24,8 +24,9 @@
             <% } %>
             <div class="search-box">
                 <span class="fa fa-search"></span>
-                <form class="search-form" role="search" method="get" id="searchform" action="/">
-                    <input type="text" name="s" id="search" placeholder="Search..." style="display:none"/>
+                <form action="//google.com/search" role="search" method="get" accept-charset="UTF-8" id="searchform" target="_blank">
+                    <input type="search" id="search" name="q" placeholder="Search"  style="display:none">
+                    <input type="hidden" name="sitesearch" value="<%= config.url %>">
                 </form>
             </div>
         </div>
@@ -43,7 +44,7 @@
                     </p>
                     <p> &copy; <%= date(new Date(), 'YYYY') %> <%= config.author || config.title %> 版权所有. | 本站已运行<span id=span_dt_dt>Loading...</span><br />
                       Theme: <a href="https://github.com/bimovo/kratos-rebirth" target="_blank" rel="nofollow">Kratos:Rebirth</a> | 
-                      Made with <i class="fa fa-heart throb" style="color:#d43f57"></i> by <a href="https://cxpy.me" target="_blank" rel="nofollow">蓝冰记忆</a>.<br />
+                      Made with <i class="fa fa-heart throb" style="color:#d43f57"></i> by <a href="https://puq.moe" target="_blank" rel="nofollow">蓝冰记忆</a>.<br />
                       <a href="https://www.fczbl.vip/787.html" target="_blank" rel="nofollow">Wordpress version</a> by <a href="https://52loli.live" target="_blank" rel="nofollow">小白</a> | 
                       <a href="https://www.vtrois.com/theme-kratos.html" target="_blank" rel="nofollow">Kratos</a> by <a href="https://www.vtrois.com/" target="_blank" rel="nofollow">Vtrois</a>
                       

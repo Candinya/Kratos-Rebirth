@@ -1,21 +1,6 @@
 ﻿@charset "UTF-8";
 @-ms-viewport{width:device-width}
 
- @font-face {
-    font-family: 'Source Code Pro';
-    font-style: normal;
-    font-weight: 400;
-    src: local('Source Code Pro'), local('SourceCodePro-Regular'), url(http://fonts.gstatic.com/s/sourcecodepro/v7/HI_SiYsKILxRpg3hIP6sJ7fM7PqlM-vWjMY.woff2) format('woff2');
-    unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
-  }
-  @font-face {
-    font-family: 'Source Code Pro';
-    font-style: normal;
-    font-weight: 400;
-    src: local('Source Code Pro'), local('SourceCodePro-Regular'), url(http://fonts.gstatic.com/s/sourcecodepro/v7/HI_SiYsKILxRpg3hIP6sJ7fM7PqlPevW.woff2) format('woff2');
-    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
-  }
-
 @-webkit-keyframes progress-bar-stripes{from{background-position:40px 0}to{background-position:0 0}}
 @keyframes progress-bar-stripes{from{background-position:40px 0}to{background-position:0 0}}
 @-webkit-keyframes layer-bounceIn{0%{opacity:0;-webkit-transform:scale(.5);transform:scale(.5)}100%{opacity:1;-webkit-transform:scale(1);transform:scale(1)}}
@@ -289,10 +274,11 @@ td,th{padding:0}
 #kratos-header-section .sub-menu li a{text-align:center}
 #kratos-header-section .sub-menu>li>.sub-menu{left:100%;top:0}
 #kratos-header-section .nav-header{position:relative;float:left;width:100%}
-#kratos-primary-menu>li>a:hover{color:#fff!important}
+/* #kratos-primary-menu>li>a:hover{color:#fff!important} */
 #kratos-primary-menu>li>ul li{position:relative}
 #kratos-menu-wrap{float:left}
 #kratos-menu-wrap .sf-menu a{color:#fff;padding:7px 14px;font-weight:400;font-size:15px;border:none;display:block;position:relative}
+#kratos-menu-wrap .sf-menu a:hover{color:#333!important;background:#eee}
 .kratos-cover,.kratos-start{position:relative;height:800px}
 .kratos-cover.kratos-hero-2,.kratos-start.kratos-hero-2{height:320px}
 .kratos-overlay{position:absolute!important;width:100%;top:0;left:0;bottom:0;right:0;z-index:1;background:rgba(66,64,64,.2)}
@@ -564,7 +550,7 @@ a.comment-reply-link:hover{color:#000;box-shadow:0 0 1px #505050}
 #archives .arc-tag a{-webkit-box-shadow:0 1px 4px rgba(0,0,0,.1);box-shadow:0 1px 4px rgba(0,0,0,.1);border:1px solid #fff;border-radius:15px;color:rgba(51,51,51,0.78);margin:4px 8px 0 0;font-weight:500;display:inline-block;padding:0 12px;background:rgba(255,255,255,.5);}
 #archives .arc-tag a::before{content:"# ";color:#e8a6a6}
 #archives h4{margin:5px 0}
-#archives #mon{margin:0 20px}
+#archives .mon{margin:0 20px}
 #archives .al_mon{color:#444}
 #archives .arc-t{width:30%;float:left;position:relative;background:rgba(255, 253, 243, 0.8);margin:5px 15px 10px 3px;border-radius:5px;-webkit-box-shadow:0 2px 4px rgba(192,192,192,0.4);box-shadow:0 2px 4px rgba(192,192,192,0.4)}
 #archives .arc-tile{line-height:25px;overflow:hidden;white-space:nowrap;text-overflow:ellipsis;position:relative;padding:10px 14px;-webkit-box-shadow:0 1px 4px rgba(0,0,0,.04);box-shadow:0 1px 4px rgba(0,0,0,.04);}
@@ -695,3 +681,8 @@ body{background:#fff!important}
 .comments-area .comment-awaiting-moderation,.comments-area .comment-meta,.comments-area .fn{margin-left:0}
 }
 
+
+/* Hilight Bash */
+td.code {
+  text-align: left;
+}

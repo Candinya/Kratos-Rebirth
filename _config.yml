@@ -1,33 +1,24 @@
 # 调试模式开关，在生成静态文件前记得关闭哦~
 debug_mode: true
 
-# 站点信息
-title: 
-subtitle: 
-author: 
-
-# 全站相关，请不要忘了<script>
-site_player: #这里放全站播放器代码（如果有的话
-site_analytics: #这里放统计代码（如果有的话
+# 全站相关
+player: true #请前往layout/_tools/player.ejs修改播放器参数。注意，默认情况下播放器会处在body内的最顶端
+site_analytics: #这里放带<script></script>的统计代码（如果有的话）
 
 # 下雪，具体参数请修改snow.kr.js
 snow: true
 
-# 顶部菜单栏
+# 顶部菜单栏，Menu为跳转用的URI，Label为显示用的标签
 menu:
   index: /
-  archives: /archives
-  friends: /friends
-  about: /about
+  archives: /archives/
 label:
   index: <i class="fa fa-home"></i>&nbsp;首页
   archives: <i class="fa fa-file"></i>&nbsp;档案馆
-  friends: <i class="fa fa-mars-double"></i>&nbsp;后宫团
-  about: <i class="fa fa-rocket"></i>&nbsp;关于咱
 
 # 底部
-show_qqg: true
-contact:
+show_qqg: true #展示QQ群图片，如果保持true请替换成自己的群图片
+contact: #下面几栏可以用来填写愿意公开的联系方式，不想写就留空吧
   weibo: 
   tweibo: 
   mail: 
@@ -38,14 +29,14 @@ contact:
   
 # 文章
 posts:
-  show_cc: true
-  donate: true
-  share: true
+  show_cc: true #展示防君子不防小人的知识共享协议
+  donate: true #展示捐助栏
+  share: true #展示分享栏
 
 # 内容，不知道fancybox是个啥就删掉了
 excerpt_link: 阅读全文
 
-# 侧边栏小组件，bio是about里显示的文字
+# 侧边栏小组件
 sidebar: right
 widgets:
 - about
@@ -54,12 +45,7 @@ widgets:
 - posts
 - archive
 
-bio: 欸？我是谁？我在哪儿？
-
-# API，还没完全搭建完成
+# API，你可以先调用本站的内容，但是随时有可能删库走人，请做好心理准备
 api:
   pre: https://api.lcy.moe?api=
-  qr: qr&cont=
-  qq: qq&usr=
-
-
+  qr: qr&cont=%20

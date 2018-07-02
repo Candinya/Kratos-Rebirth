@@ -82,10 +82,13 @@ var xb = new Object();
     }
     var qqpic = function(){
         $("#qqg-img").mouseout(function(){
-            $("#qqg-pic")[0].style.display = 'none';
+            //$("#qqg-pic")[0].style.display = 'none';
+            $("#qqg-pic").fadeOut();
+
         })
         $("#qqg-img").mouseover(function(){
-            $("#qqg-pic")[0].style.display = 'block';
+            //$("#qqg-pic")[0].style.display = 'block';
+            $("#qqg-pic").fadeIn();
         })
     }
     var showPhotos = function(){
@@ -187,11 +190,11 @@ var xb = new Object();
     //         });
     //     }
     // }
-    $(document).on('pjax:complete', function() {
+    $.fn.pjax_reload = function() {
         showPhotos();
         setrandpic();
         //OwOcfg();
-    });
+    };
     $(function(){
         shareMenu();
         //showlove();
@@ -230,9 +233,10 @@ window.onload = function(){
     console.log('%c页面加载完毕消耗了'+Math.round(performance.now()*100)/100+'ms','background:#fff;color:#333;text-shadow:0 0 2px #eee,0 0 3px #eee,0 0 3px #eee,0 0 2px #eee,0 0 3px #eee;');
 };
 
-var OriginTitile = document.title, titleTime;
+var OriginTitile, titleTime;
 document.addEventListener('visibilitychange', function() {
     if (document.hidden) {
+        OriginTitile = document.title;
         document.title = '(つェ⊂)哦哟，崩溃啦~ ' + OriginTitile;
         $('[rel="icon"]').attr("href", "/images/failure.ico");
         clearTimeout(titleTime);
@@ -247,4 +251,78 @@ document.addEventListener('visibilitychange', function() {
 
 
 // PJAX相关
+var ajx_main = '#main',
+ajx_a = 'a[target!=_blank]';
 
+function reload_func(){$(this).pjax_reload();}
+$(function() { a(); });
+var home_url = document.location.href.match(/http:\/\/([^\/]+)\//i); 
+function replaceUrl(url, domain) {return url.replace(/http:\/\/([^\/]+)\//i, domain);}
+function getFormJson(frm) {
+    var o = {};
+    var a = $(frm).serializeArray();
+    $.each(a,
+        function() {
+        if (o[this.name] !== undefined) {
+            if (!o[this.name].push) {
+                o[this.name] = [o[this.name]];
+            }
+            o[this.name].push(this.value || '');
+        } else {
+            o[this.name] = this.value || '';
+        }
+        });
+    return o;
+}
+function l(){
+    history.replaceState(
+    {    url: window.document.location.href,
+        title: window.document.title,
+        html: $(document).find(ajx_main).html(),
+    }, window.document.title, document.location.href);
+}
+function a(){
+    window.addEventListener( 'popstate', function( e ){
+        if( e.state ){
+            document.title = e.state.title;
+            $(ajx_main).html( e.state.html );            
+            window.load =  reload_func();
+        }
+    });    
+}
+function ajax(reqUrl, method, data) {
+    $.ajax({
+        url: reqUrl, 
+        type: method,
+        data: data,
+        beforeSend: function () {
+            l();
+            $("body,html").animate({scrollTop:$(ajx_main).offset().top},600);
+        },
+        success: function(data) {
+            $(ajx_main).html($(data).find(ajx_main).html());
+            document.title = $(data).filter("title").text();
+            var state = {
+                url: reqUrl,
+                title: $(data).filter("title").text(),
+                html: $(data).find(ajx_main).html(),
+            };
+            window.history.pushState(state, $(data).filter("title").text(), reqUrl);
+        },
+        complete: function() {
+            window.load =  reload_func();
+        },
+        timeout: 8000,
+        error: function(request) {
+            location.href = reqUrl;
+        },
+    });
+}
+$(document).on("click",ajx_a,
+function() {
+  var req_url = $(this).attr("href");
+    if (req_url.indexOf( "javascript:") !== -1)
+        return true;
+     else ajax(req_url);
+    return false;
+});

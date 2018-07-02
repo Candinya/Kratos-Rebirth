@@ -19,13 +19,9 @@
                                     <h2 class="kratos-entry-title-new"><a href="/<%= post.path %>"><%- post.title %></a><% if (post.top == '置顶') { %> <%= '置顶' %> <% } %></h2>
                                 </header>
                                 <div class="kratos-entry-content-new">
-                                    <!-- <p>
-                                        <% if (post.excerpt){ %>
-                                            <%= post.excerpt %>
-                                        <% } else { %>
-                                            <%= post.content %>
-                                        <% } %>
-                                    </p> -->
+                                    <p>
+                                        <%- post.excerpt %>
+                                    </p>
                                 </div>
                             </div>
                             <div class="kratos-post-meta-new">

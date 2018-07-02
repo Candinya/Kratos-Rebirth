@@ -7,6 +7,7 @@ prev: 上一页
 next: 下一页
 comment: 留言
 archive_a: 文章归档
+archive_b: 档案馆：%s
 page: 第 %d 页
 recent_posts: 最新文章
 newer: 上一篇

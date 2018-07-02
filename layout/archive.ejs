@@ -15,7 +15,7 @@
                   <% } %>
                   <% var last_year, last_month; %>
                   <% site.posts.each(function(post, i){ %>
-                    <% var year = post.date.year(), month = post.date.month(); %>
+                    <% var year = post.date.year(), month = post.date.month() + 1; %>
                     <% if (last_year != year){ %>
                       <% last_year = year; %>
                         <h4 class="al_year"><%= year %> 年</h4>
@@ -24,12 +24,13 @@
                       <% if (last_month != null) { %>
                         </div>
                       </section>
+                      <% } else { %>
+                        <div class="al_mon_list">
                       <% } %>
                       <% last_month = month; %>
-                      <div class="al_mon_list">
-                          <section id="mon" style="overflow:hidden">
-                              <div class="al_mon">◉ <%= month %> 月</div>
-                              <div class="mon_arc" style="display: none;">
+                        <section class="mon" style="overflow:hidden">
+                            <div class="al_mon">◉ <%= month %> 月</div>
+                            <div class="mon_arc" style="display: none;">
                     <% } %>
                     <div class="arc-t">
                         <div class="arc-tile">
@@ -47,7 +48,7 @@
               </div>
             </div>
             <script type="text/javascript">
-              $('#archives section#mon').each(function(){
+              $('#archives section.mon').each(function(){
                   var num=$(this).find('.arc-t').size();
                   var text=$(this).find('.al_mon').text();
                   $(this).find('.al_mon').html(text+'（'+num+' 篇文章）');
