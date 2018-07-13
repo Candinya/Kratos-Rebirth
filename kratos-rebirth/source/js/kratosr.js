@@ -69,6 +69,7 @@ var xb = new Object();
             $('html, body').animate({
                 scrollTop:$('html').offset().top
             },500);
+            $("#kratos-menu-wrap").slideDown();
             return false;
         });
         $(window).scroll(function(){
@@ -160,7 +161,7 @@ var xb = new Object();
                 title:xb.donate,
                 resize:false,
                 scrollbar:false,
-                content:'<div class="donate-box"><div class="meta-pay text-center"><strong>'+xb.scan+'</strong></div><div class="qr-pay text-center"><img class="pay-img" id="alipay_qr" src="'+xb.alipay+'"><img class="pay-img d-none" id="wechat_qr" src="'+xb.wechat+'"></div><div class="choose-pay text-center mt-2"><input id="alipay" type="radio" name="pay-method" checked><label for="alipay" class="pay-button"><img src="'+'/images/alipay.png"></label><input id="wechatpay" type="radio" name="pay-method"><label for="wechatpay" class="pay-button"><img src="'+'/images/wechat.png"></label></div></div>'
+                content:'<div class="donate-box"><div class="meta-pay text-center"><strong>'+xb.scan+'</strong></div><div class="qr-pay text-center"><img class="pay-img" id="alipay_qr" src="'+xb.alipay+'"><img class="pay-img d-none" id="wechat_qr" src="'+xb.wechat+'"></div><div class="choose-pay text-center mt-2"><input id="alipay" type="radio" name="pay-method" checked><label for="alipay" class="pay-button"><img src="https://cdn.jsdelivr.net/gh/bimovo/Kratos-Rebirth@0.9-beta.3/source/images/alipay.png"></label><input id="wechatpay" type="radio" name="pay-method"><label for="wechatpay" class="pay-button"><img src="https://cdn.jsdelivr.net/gh/bimovo/Kratos-Rebirth@0.9-beta.3/source/images/wechat.png"></label></div></div>'
             });
             $(".choose-pay input[type='radio']").click(function(){
                 var id= $(this).attr("id");
@@ -174,7 +175,8 @@ var xb = new Object();
         //图片
         var imageboxs = document.getElementsByClassName("kratos-entry-thumb-new-img");
         for(var i = 0, len = imageboxs.length; i < len; i++) {
-            $(imageboxs[i]).attr("src", "/images/thumb/thumb_"+Math.floor(Math.random()*20+1)+".jpg");
+            if (!($(imageboxs[i]).attr("src")))
+                $(imageboxs[i]).attr("src", "https://cdn.jsdelivr.net/gh/bimovo/Kratos-Rebirth@0.9-beta.3/source/images/thumb/thumb_"+Math.floor(Math.random()*20+1)+".jpg");
         }
     }
     // var OwOcfg = function(){
@@ -233,16 +235,15 @@ window.onload = function(){
     console.log('%c页面加载完毕消耗了'+Math.round(performance.now()*100)/100+'ms','background:#fff;color:#333;text-shadow:0 0 2px #eee,0 0 3px #eee,0 0 3px #eee,0 0 2px #eee,0 0 3px #eee;');
 };
 
-var OriginTitile, titleTime;
+var OriginTitile = document.title, titleTime;
 document.addEventListener('visibilitychange', function() {
     if (document.hidden) {
-        OriginTitile = document.title;
         document.title = '(つェ⊂)哦哟，崩溃啦~ ' + OriginTitile;
         $('[rel="icon"]').attr("href", "/images/failure.ico");
         clearTimeout(titleTime);
     } else {
         document.title = '(*´∇｀*)欸，又好啦~ ' + OriginTitile;
-        $('[rel="icon"]').attr("href", "/images/favicon.ico");
+        $('[rel="icon"]').attr("href", "/images/favicon.png");
         titleTime = setTimeout(function() {
             document.title = OriginTitile;
         }, 2000);
@@ -252,9 +253,13 @@ document.addEventListener('visibilitychange', function() {
 
 // PJAX相关
 var ajx_main = '#main',
-ajx_a = 'a[target!=_blank]';
+ajx_a = 'a[target!=_blank]', 
+theTop = notMobile ? $("#kratos-blog-post").offset().top : 0;
 
-function reload_func(){$(this).pjax_reload();}
+function reload_func(){
+    $(this).pjax_reload();
+    OriginTitile = document.title;
+}
 $(function() { a(); });
 var home_url = document.location.href.match(/http:\/\/([^\/]+)\//i); 
 function replaceUrl(url, domain) {return url.replace(/http:\/\/([^\/]+)\//i, domain);}
@@ -297,7 +302,7 @@ function ajax(reqUrl, method, data) {
         data: data,
         beforeSend: function () {
             l();
-            $("body,html").animate({scrollTop:$(ajx_main).offset().top},600);
+            $("body,html").animate({scrollTop:theTop},600);
         },
         success: function(data) {
             $(ajx_main).html($(data).find(ajx_main).html());
@@ -311,6 +316,7 @@ function ajax(reqUrl, method, data) {
         },
         complete: function() {
             window.load =  reload_func();
+            $("#kratos-menu-wrap").slideUp();
         },
         timeout: 8000,
         error: function(request) {
@@ -321,8 +327,17 @@ function ajax(reqUrl, method, data) {
 $(document).on("click",ajx_a,
 function() {
   var req_url = $(this).attr("href");
-    if (req_url.indexOf( "javascript:") !== -1)
-        return true;
-     else ajax(req_url);
-    return false;
+  if (req_url === undefined) return true;
+  else if (req_url.indexOf( "javascript:") !== -1) return true;
+  else ajax(req_url);
+  return false;
+});
+
+// Auto-hide Top Bar
+document.getElementById("kratos-wrapper").addEventListener("wheel", function(event){
+    if (event.deltaY > 0) {
+        if ($(window).scrollTop() > 100) { 
+            $("#kratos-menu-wrap").slideUp();
+        }
+    } else { $("#kratos-menu-wrap").slideDown(); }
 });

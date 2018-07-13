@@ -1,0 +1,100 @@
+
+        <section class="col-md-8">
+            <% page.posts.each(function(post) { %>
+                <% if (post.top) { %>
+                    <article class="kratos-hentry clearfix">
+                        <div class="kratos-entry-border-new clearfix">
+                            <img class="stickyimg" src="/images/sticky.png">
+                            <div class="kratos-entry-thumb-new">
+                                <a href="/<%- post.path %>">
+                                    <% if (post.pic) { %>
+                                        <img class="kratos-entry-thumb-new-img" src="/<%- post.path %>index.jpg">
+                                    <% } else { %>
+                                        <img class="kratos-entry-thumb-new-img" src="">
+                                    <% } %>
+                                </a>
+                            </div>
+                            <div class="kratos-post-inner-new">
+                                <header class="kratos-entry-header-new">
+                                        <%- list_categories(post.categories, {
+                                            show_count: false,
+                                            class: 'label',
+                                            style: 'none'
+                                        }) %>
+                                    <h2 class="kratos-entry-title-new"><a href="/<%= post.path %>"><%- post.title %></a>&nbsp;&nbsp;<strong>——置顶</strong></h2>
+                                </header>
+                                <div class="kratos-entry-content-new">
+                                    <p>
+                                        <%- post.excerpt %>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="kratos-post-meta-new">
+                                <span class="pull-left">
+                                    <a style="margin-right: 15px;"><i class="fa fa-calendar"></i> <%= date(post.date, null) %></a>
+                                    <a><i class="fa fa-tags"></i></a>
+                                    <%- list_tags(post.tags, {
+                                    show_count: false,
+                                    style: 'none'
+                                    }) %>
+                                </span>
+                                <span class="pull-right">
+                                    <a class="read-more" href="/<%- post.path %>" title="阅读全文"><%= __('read_more') %> <i class="fa fa-chevron-circle-right"></i></a>
+                                </span>
+                            </div>
+                        </div>
+                    </article>
+                <% } %>
+            <% }) %>
+            <% page.posts.each(function(post) { %>
+                <% if (!post.top) { %>
+                    <article class="kratos-hentry clearfix">
+                        <div class="kratos-entry-border-new clearfix">
+                            <div class="kratos-entry-thumb-new">
+                                <a href="/<%- post.path %>">
+                                    <% if (post.pic) { %>
+                                        <img class="kratos-entry-thumb-new-img" src="/<%- post.path %>index.jpg">
+                                    <% } else { %>
+                                        <img class="kratos-entry-thumb-new-img" src="">
+                                    <% } %>
+                                </a>
+                            </div>
+                            <div class="kratos-post-inner-new">
+                                <header class="kratos-entry-header-new">
+                                        <%- list_categories(post.categories, {
+                                            show_count: false,
+                                            class: 'label',
+                                            style: 'none'
+                                        }) %>
+                                        <h2 class="kratos-entry-title-new"><a href="/<%= post.path %>"><%- post.title %></a></h2>
+                                </header>
+                                <div class="kratos-entry-content-new">
+                                    <p>
+                                        <%- post.excerpt %>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="kratos-post-meta-new">
+                                <span class="pull-left">
+                                    <a style="margin-right: 15px;"><i class="fa fa-calendar"></i> <%= date(post.date, null) %></a>
+                                    <a><i class="fa fa-tags"></i></a>
+                                    <%- list_tags(post.tags, {
+                                    show_count: false,
+                                    style: 'none'
+                                    }) %>
+                                </span>
+                                <span class="pull-right">
+                                    <a class="read-more" href="/<%- post.path %>" title="阅读全文"><%= __('read_more') %> <i class="fa fa-chevron-circle-right"></i></a>
+                                </span>
+                            </div>
+                        </div>
+                    </article>
+                <% } %> 
+            <% }) %>
+            
+            <% if (page.total > 1) { %>
+                <div class='text-center' id='page-footer'><ul class='pagination'>
+                <%- paginator() %>
+                </ul></div>
+            <% } %>
+        </section>

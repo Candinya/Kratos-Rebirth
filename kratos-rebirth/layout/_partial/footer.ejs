@@ -13,14 +13,16 @@
 <footer>
     <div id="footer">
         <div class="cd-tool text-center">
-            <div class="gotop-box2 gotop-box"><div class="gotop-btn"><span class="fa fa-chevron-up"></span></div></div>
             <% if(theme.show_qqg) { %>
+              <div class="gotop-box2 gotop-box"><div class="gotop-btn"><span class="fa fa-chevron-up"></span></div></div>
               <div class="qqg-img">
                 <div id="qqg-img"><span class="fa fa-qq"></span></div>
                 <div id="qqg-pic">
                   <img src="/images/qqg.jpg">
                 </div>
               </div>
+            <% } else { %>
+                <div class="gotop-box"><div class="gotop-btn"><span class="fa fa-chevron-up"></span></div></div>
             <% } %>
             <div class="search-box">
                 <span class="fa fa-search"></span>
@@ -45,9 +47,9 @@
                     <p> &copy; <%= date(new Date(), 'YYYY') %> <%= config.author || config.title %> 版权所有. | 本站已运行<span id=span_dt_dt>Loading...</span><br />
                       Theme: <a href="https://github.com/bimovo/kratos-rebirth" target="_blank" rel="nofollow">Kratos:Rebirth</a> | 
                       Made with <i class="fa fa-heart throb" style="color:#d43f57"></i> by <a href="https://puq.moe" target="_blank" rel="nofollow">蓝冰记忆</a>.<br />
-                      <a href="https://www.fczbl.vip/787.html" target="_blank" rel="nofollow">Wordpress version</a> by <a href="https://52loli.live" target="_blank" rel="nofollow">小白</a> | 
-                      <a href="https://www.vtrois.com/theme-kratos.html" target="_blank" rel="nofollow">Kratos</a> by <a href="https://www.vtrois.com/" target="_blank" rel="nofollow">Vtrois</a>
-                      
+                      <a href="https://www.fczbl.vip/787.html" target="_blank" rel="nofollow">Kratos-PJAX</a> by <a href="https://fczbl.vip" target="_blank" rel="nofollow">小白</a> | 
+                      <a href="https://www.vtrois.com/theme-kratos.html" target="_blank" rel="nofollow">Kratos</a> by <a href="https://www.vtrois.com/" target="_blank" rel="nofollow">Vtrois</a><br />
+                      Hosted by <a href="https://github.com" target="_blank" rel="nofollow">Github</a> | Powered by <a href="https://hexo.io" target="_blank" rel="nofollow">Hexo</a>
                     </p>
                 </div>
             </div>
@@ -56,11 +58,18 @@
 </footer>
 </div>
 </div>
+<script>var notMobile = (!(navigator.userAgent.match(/(phone|pad|pod|iPhone|iPod|ios|iPad|Android|Mobile|BlackBerry|IEMobile|MQQBrowser|JUC|Fennec|wOSBrowser|BrowserNG|WebOS|Symbian|Windows Phone)/i)));</script>
 <% if(theme.snow){ %>
     <div id="xb_snow">
     <canvas id="Snow"></canvas>
-    <script type="text/javascript" src="/js/snow.kr.js"></script>
+    <script defer type="text/javascript" src="/js/snow.kr.js"></script>
     </div>
 <% } %>
+<script defer src="//libs.baidu.com/jquery/2.1.4/jquery.min.js"></script>
+<script defer src="//apps.bdimg.com/libs/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+<script defer src="/js/layer.min.js"></script>
+<script defer src="/js/kratosr.js"></script>
+<%- theme.site_analytics %>
+<%- partial('../_tools/player') %>
 </body>
 </html>

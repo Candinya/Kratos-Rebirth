@@ -1,0 +1,47 @@
+# For detailed info, please visit https://bim.gitbook.io/kr/configure/ .
+
+site_analytics: <script> console.log("Your Script!"): </script>
+
+snow: true
+
+# Top Menu
+menu:
+  index: /
+  archives: /archives/
+  friends: /friends/
+  about: /about/
+label:
+  index: <i class="fa fa-home"></i>&nbsp;Home
+  archives: <i class="fa fa-file"></i>&nbsp;Archives
+  friends: <i class="fa fa-mars-double"></i>&nbsp;Friends
+  about: <i class="fa fa-rocket"></i>&nbsp;About
+
+# Footer
+show_qqg: true
+contact:
+  weibo: 
+  tweibo: 
+  mail: 
+  twitter: 
+  facebook: 
+  linkedin: 
+  github: 
+  
+posts:
+  show_cc: true
+  donate: true
+  share: true
+
+# Widgets
+sidebar: right
+widgets:
+- about
+- category
+- tagcloud
+- posts
+avatarUri: 
+
+# API-Not finished yet.
+api:
+  pre: https://api.lcy.moe?api=
+  qr: qr&cont=%20

@@ -12,56 +12,10 @@
   <meta name="format-detection" content="telphone=no, email=no">
   <meta name="description" itemprop="description" content="<%= config.description %>">
   <meta name="keywords" content="<%= config.keywords %>">
-  <link rel="icon" href="/images/favicon.ico">
+  <link rel="icon" href="/images/favicon.png">
   <link rel="stylesheet" id="kratos-css" href="/css/kratosr.css" type="text/css" media="all">
-  <style>
-    #offcanvas-menu {
-    background: rgba(42, 42, 42, .9)
-    }
-
-    @media(min-width:768px) {
-        .pagination>li>a {
-            background-color: rgba(255, 255, 255, .8)
-        }
-        .kratos-hentry,
-        .navigation div,
-        .comments-area .comment-list li,
-        #kratos-widget-area .widget,
-        .comment-respond {
-            background-color: rgba(255, 255, 255, .8) !important
-        }
-        .comment-list .children li {
-            background-color: rgba(255, 253, 232, .7) !important
-        }
-        body.custom-background {
-            background-image: url(/images/index_image.png);
-            background-size: cover;
-            background-attachment: fixed
-        }
-    }
-
-    @media(max-width:768px) {
-        #kratos-header-section {
-            background: rgba(22, 23, 26, .9)
-        }
-    }
-
-    @media(min-width:768px) {
-        .color-logo {
-            display: none
-        }
-        .affix {
-            top: 54px
-        }
-    }
-  </style>
-  <link rel="stylesheet" id="fontawe-css" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" type="text/css" media="all">
-  <script type="text/javascript" src="https://libs.baidu.com/jquery/2.1.4/jquery.min.js?ver=2.1.4"></script>
-  <script type="text/javascript" src="https://apps.bdimg.com/libs/bootstrap/3.3.4/js/bootstrap.min.js?ver=3.3.X"></script>
-  <script type="text/javascript" src="/js/layer.min.js"></script>
-  <% if (!theme.debug_mode) { %><%- theme.site_analytics %><% } %>
+  <link rel="stylesheet" id="fontawe-css" href="//lib.baomitu.com/font-awesome/4.7.0/css/font-awesome.min.css" type="text/css" media="all">
 </head>
-<% if (!theme.debug_mode) { %><% if (theme.player) { %><%- partial('../_tools/player') %><% } %><% } %>
 <body class="custom-background">
     <div id="kratos-wrapper">
         <div id="kratos-page">
@@ -77,7 +31,7 @@
                 <header id="kratos-header-section">
                     <div class="container">
                         <div class="nav-header">
-                            <div class="color-logo"><a><%= config.title %></a></div>
+                            <div class="color-logo"><a href="/"><%= config.title %></a></div>
                             <nav id="kratos-menu-wrap">
                               <ul id="kratos-primary-menu" class="sf-menu">
                               <% for (var i in theme.menu){ %>

@@ -17,9 +17,9 @@
 :after,:before{-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box}
 ::-webkit-selection{color:#fcfcfc;background:#262a30}::-moz-selection{color:#fcfcfc;background:#262a30}::selection{color:#fcfcfc;background:#262a30}
 body::-webkit-scrollbar{width:8px;height:80px}body::-webkit-scrollbar-thumb{background:#bbb;border-radius:10px;-webkit-box-shadow:inset 0 0 5px rgba(0,0,0,.2)}::-webkit-scrollbar-thumb:hover{background:#aaa}body::-webkit-scrollbar-track{-webkit-box-shadow:inset 0 0 5px rgba(0,0,0,.2);border-radius:10px;background:#ededed}
-body{font-family:-apple-system,BlinkMacSystemFont,opensans,Optima,"Microsoft Yahei",sans-serif;line-height:1.8;font-size:18px;background:#f5f5f5;color:#848484;font-weight:300;cursor:url(../images/cursor.cur),default;overflow-x:hidden;margin:0}
+body{font-family:-apple-system,BlinkMacSystemFont,opensans,Optima,"Microsoft Yahei",sans-serif;line-height:1.8;font-size:18px;background:#f5f5f5;color:#848484;font-weight:300;cursor:auto;overflow-x:hidden;margin:0}
 a{color:#51aded;text-decoration:none;-webkit-transition:.5s;transition:.5s}
-a:hover{outline:0;background-color:transparent;text-decoration:none;cursor:url(../images/pointer.cur),auto;color:#51aded!important}
+a:hover{outline:0;background-color:transparent;text-decoration:none;cursor:pointer;color:#51aded!important}
 a:focus{outline:0;text-decoration:none}
 abbr[data-original-title],abbr[title]{cursor:help;border-bottom:1px dotted #777}
 address{margin-bottom:20px;font-style:normal;line-height:1.42857143}
@@ -32,8 +32,8 @@ button,input,select,textarea{font-family:inherit;font-size:inherit;line-height:i
 button,input,optgroup,select,textarea{margin:0;font:inherit;color:inherit}
 button{overflow:visible}
 button,select{text-transform:none}
-button,html input[type=button],input[type=reset],input[type=submit]{-webkit-appearance:button;cursor:url(../images/pointer.cur),auto}
-button[disabled],html input[disabled]{cursor:url(../images/move.cur),auto}
+button,html input[type=button],input[type=reset],input[type=submit]{-webkit-appearance:button;cursor:pointer}
+button[disabled],html input[disabled]{cursor:crosshair}
 button::-moz-focus-inner,input::-moz-focus-inner{padding:0;border:0}
 blockquote{font-size:17.5px;margin:12px 0;border-left:5px solid #080808;padding:4px 0 5px 10px;background:#f1f1f1}
 blockquote p:only-child{font-size:16px;color:#080808}
@@ -103,7 +103,7 @@ textarea{overflow:auto}
 table{border-spacing:0;border-collapse:collapse}
 td,th{padding:0}
 .btn{display:inline-block;padding:6px 12px;margin-bottom:0;font-size:14px;font-weight:400;line-height:1.42857143;text-align:center;white-space:nowrap;vertical-align:middle;-ms-touch-action:manipulation;touch-action:manipulation;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;text-transform:uppercase;letter-spacing:2px;-webkit-transition:.3s;transition:.3s}
-.btn:active,.btn:focus,.btn:hover{background:#393e46!important;color:#fff;outline:0!important;cursor:url(../images/pointer.cur),auto}
+.btn:active,.btn:focus,.btn:hover{background:#393e46!important;color:#fff;outline:0!important;cursor:pointer}
 .btn-primary{border-color:#51aded;background-color:#51aded;color:#fff}
 .btn-primary:hover{border-color:#15b9fa;background-color:#15b9fa;color:#fff}
 .btn-primary:active,.btn-primary:active:focus,.btn-primary:active:hover,.btn-primary:focus{border-color:#0895cb;background-color:#0895cb;color:#fff}
@@ -129,7 +129,7 @@ td,th{padding:0}
 .carousel-control .glyphicon-chevron-left{left:50%;margin-left:-10px}
 .carousel-control .glyphicon-chevron-right{right:50%;margin-right:-10px}
 .carousel-indicators{bottom:5px;z-index:2;margin-bottom:8px;position:absolute;left:50%;margin-left:-30%;padding-left:0;width:60%;list-style:none;text-align:center}
-.carousel-indicators li{display:inline-block;margin:1px 5px;width:10px;height:10px;border:1px solid #fff;border-radius:10px;cursor:url(../images/pointer.cur),auto}
+.carousel-indicators li{display:inline-block;margin:1px 5px;width:10px;height:10px;border:1px solid #fff;border-radius:10px;cursor:pointer}
 .carousel-indicators .active{background-color:#fff}
 .clearfix:after,.clearfix:before,.container:after,.container:before,.nav:after,.nav:before,.row:after,.row:before{display:table;content:" "}
 .clearfix:after,.container:after,.nav:after,.row:after{clear:both}
@@ -143,7 +143,7 @@ td,th{padding:0}
 .layui-layer{top:150px;left:0;margin:0;padding:0;background-color:#fff;-webkit-background-clip:content;border-radius:2px;box-shadow:1px 1px 50px rgba(0,0,0,.3);-webkit-overflow-scrolling:touch}
 .layui-layer-close{position:absolute}
 .layui-layer-content{position:relative}
-.layui-layer-ico{background:url(../images/icon.png) no-repeat}
+.layui-layer-ico{background:url(https://cdn.jsdelivr.net/gh/bimovo/Kratos-Rebirth@0.9-beta.3/source/images/icon.png) no-repeat}
 .layui-layer-resize{position:absolute;width:15px;height:15px;right:0;bottom:0;cursor:se-resize}
 .layer-anim{-webkit-animation-fill-mode:both;animation-fill-mode:both;-webkit-animation-duration:.3s;animation-duration:.3s}
 .layer-anim-00{-webkit-animation-name:layer-bounceIn;animation-name:layer-bounceIn}
@@ -151,10 +151,10 @@ td,th{padding:0}
 .layui-layer-title{padding:0 80px 0 20px;height:42px;line-height:42px;border-bottom:1px solid #eee;font-size:14px;color:#333;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;background-color:#F8F8F8;border-radius:2px 2px 0 0}
 .layui-layer-setwin{position:absolute;right:15px;top:15px;font-size:0;line-height:initial}
 .layui-layer-setwin a{position:relative;width:16px;height:16px;margin-left:10px;font-size:12px;display:inline-block;vertical-align:top}
-.layui-layer-setwin .layui-layer-close1{background-position:1px -40px;cursor:url(../images/pointer.cur),auto}
+.layui-layer-setwin .layui-layer-close1{background-position:1px -40px;cursor:pointer}
 .layui-layer-setwin .layui-layer-close1:hover{opacity:.7}
 .layui-layer-page .layui-layer-content{position:relative;overflow:auto}
-.layui-layer-iconext{background:url(../images/icon-ext.png) no-repeat}
+.layui-layer-iconext{background:url(https://cdn.jsdelivr.net/gh/bimovo/Kratos-Rebirth@0.9-beta.3/source/images/icon-ext.png) no-repeat}
 .layui-layer-photos{-webkit-animation-duration:.8s;animation-duration:.8s}
 .layui-layer-photos .layui-layer-content{overflow:hidden;text-align:center}
 .layui-layer-photos .layui-layer-phimg img{position:relative;width:100%;display:inline-block;vertical-align:top}
@@ -217,17 +217,17 @@ td,th{padding:0}
 .progress-bar-striped,.progress-striped .progress-bar{background-image:-webkit-linear-gradient(45deg,rgba(255,255,255,.15) 25%,transparent 25%,transparent 50%,rgba(255,255,255,.15) 50%,rgba(255,255,255,.15) 75%,transparent 75%,transparent);background-image:linear-gradient(45deg,rgba(255,255,255,.15) 25%,transparent 25%,transparent 50%,rgba(255,255,255,.15) 50%,rgba(255,255,255,.15) 75%,transparent 75%,transparent);-webkit-background-size:40px 40px;background-size:40px 40px}
 .progress.active .progress-bar{-webkit-animation: progress-bar-stripes 2s linear infinite;animation: progress-bar-stripes 2s linear infinite}
 .downbtn{padding:10px 26px;border:1px solid #3e92cc;background:#3e92cc;color:#fff;line-height:3}
-.downbtn:hover{background:#3a89c1;color:#fff!important;cursor:url(../images/pointer.cur),auto}
+.downbtn:hover{background:#3a89c1;color:#fff!important;cursor:pointer}
 .downbtn:focus{text-decoration:none;color:#fff!important}
 .downbtn:not(:first-child){margin-left:10px}
 .downcloud{border:1px solid #16bac5}
 .downcloud,.downcloud:focus{background:#16bac5}
-.downcloud:hover{background:#1399a2;cursor:url(../images/pointer.cur),auto}
+.downcloud:hover{background:#1399a2;cursor:pointer}
 .video-container:not(:first-child){margin-top:15px}
 .video-container{position:relative;overflow:hidden;padding-top:30px;padding-bottom:56.25%;height:0}
 .video-container embed,.video-container iframe{position:absolute;top:0;left:0;width:100%;height:100%}
 .xControl{position:relative;margin-bottom:15px;background:#f6f6f6}
-.xHeading{position:relative;cursor:url(../images/pointer.cur),auto;padding:10px 30px 10px 10px}
+.xHeading{position:relative;cursor:pointer;padding:10px 30px 10px 10px}
 .xHeading h5{margin:0;font-size:16px}
 .xHeading .xIcon{position:absolute;top:1px;right:13px;font-size:20px}
 .xControl.active .xIcon{-webkit-transition:.3s;transition:.3s;-webkit-transform:rotate(-45deg);transform:rotate(-45deg)}
@@ -237,9 +237,6 @@ td,th{padding:0}
 .hide_notice a{color:#bbcdff}
 .unhide{padding:8px;margin-bottom:15px}
 .unhide .info{font-size:12px;color:#54ff4e}
-.spig{display:block;width:130px;height:170px;position:absolute;bottom:300px;left:160px;z-index:9999}
-.spig #message{color:#191919;border:1px solid #c4c4c4;background:#ddd;-webkit-border-radius:5px;border-radius:5px;min-height:1em;padding:5px;top:-45px;position:absolute;text-align:center;width:auto!important;z-index:10000;-webkit-box-shadow:0 0 15px #eee;border-color:#eee;box-shadow:0 0 15px #eee;outline:0}
-.spig .mumu{width:130px;height:170px;cursor:url(../images/move.cur),auto;background:url(../images/spig.png) no-repeat}
 #Snow{position:fixed;top:0;left:0;width:100%;height:100%;z-index:99999;background:rgba(225,225,225,.1);pointer-events:none}
 #kratos-wrapper{overflow-x:hidden;position:relative}
 #offcanvas-menu{position:fixed;bottom:0;top:60px;z-index:1000;width:240px;padding:20px;overflow-y:auto;transition:right .3s;-webkit-transition:right .3s}
@@ -321,7 +318,7 @@ td,th{padding:0}
 .kratos-post-inner{padding:25px 10px 18px 10px}
 .kratos-post-inner div:last-child.kratos-copyright{margin-bottom:20px}
 .kratos-post-inner-new{margin-left:255px;height:160px;padding:21px 20px 0 3px}
-.kratos-post-inner-new header .label-link{position:relative;display:inline-block;padding:4px 6px 3px;font-size:12px;font-weight:700;line-height:14px;color:#fff;vertical-align:baseline;white-space:nowrap;background-color:#51aded;margin-right:5px;position:relative;top:-2px;border-radius:0;cursor:url(../images/pointer.cur),auto}
+.kratos-post-inner-new header .label-link{position:relative;display:inline-block;padding:4px 6px 3px;font-size:12px;font-weight:700;line-height:14px;color:#fff;vertical-align:baseline;white-space:nowrap;background-color:#51aded;margin-right:5px;position:relative;top:-2px;border-radius:0;cursor:pointer}
 /* .kratos-post-inner-new header .label .label-arrow{position:absolute;width:0;height:0;vertical-align:top;content:"";top:8px;right:-3px;border-left:4px solid #51aded;border-top:4px solid transparent;border-bottom:4px solid transparent} */
 .kratos-post-inner-new header .label-link:hover{color:#fff!important}
 .kratos-post-content{word-break:break-all;word-wrap:break-word;margin:10px}
@@ -366,7 +363,7 @@ td,th{padding:0}
 .donate-box .choose-pay{margin-top:6px}
 .donate-box .choose-pay input{display:none}
 .donate-box .choose-pay input:checked+label{border-color:#0092ee;color:#0092ee}
-.donate-box .pay-button{margin:10px 5px;width:132px;height:45px;border:1px solid #e6e6e6;text-align:center;line-height:38px;cursor:url(../images/pointer.cur),default}
+.donate-box .pay-button{margin:10px 5px;width:132px;height:45px;border:1px solid #e6e6e6;text-align:center;line-height:38px;cursor:pointer}
 .donate-box .pay-button img{height:26px}
 .d-none{display:none}
 .kratos-entry-footer .footer-tag a{background-color:#aaa;border-radius:0;color:#fff;display:inline-block;font-size:12px;line-height:13px;margin:0 0 2px 5px;padding:3px 7px;position:relative}
@@ -374,7 +371,7 @@ td,th{padding:0}
 .kratos-entry-footer .footer-tag .pull-date{float:right;margin-top:5px;font-size:14px}
 .share-wrap{display:block;margin:10px 0 -20px}
 .share-plain,.share-wrap{position:relative;text-align:center}
-.share-plain{display:inline-block!important;box-sizing:border-box;margin:4px 3px!important;padding:0;width:2pc!important;height:2pc!important;border:1px solid #bdc4d6;border-radius:30px!important;color:#bdc4d6;white-space:nowrap;line-height:30px!important;cursor:url(../images/pointer.cur),auto;-webkit-transition:all .2s ease;transition:all .2s ease;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}
+.share-plain{display:inline-block!important;box-sizing:border-box;margin:4px 3px!important;padding:0;width:2pc!important;height:2pc!important;border:1px solid #bdc4d6;border-radius:30px!important;color:#bdc4d6;white-space:nowrap;line-height:30px!important;cursor:pointer;-webkit-transition:all .2s ease;transition:all .2s ease;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}
 .share-plain .icon-wrap{float:left;width:2pc;height:2pc;vertical-align:middle;text-align:center;line-height:30px}
 .share-plain.weibo{border-color:#e6162d!important;color:#e6162d!important}
 .share-plain.twitter,.share-plain.weibo{border-width:1px!important;background-color:transparent}
@@ -385,7 +382,7 @@ td,th{padding:0}
 .share-plain.weixin{border-color:#38ad5a!important;border-width:1px!important;background-color:transparent;color:#38ad5a!important}
 .share-plain.pop:hover .share-int{display:block;opacity:1}
 .share-plain .share-int{position:absolute;bottom:50px;left:50%;z-index:8;display:none;margin-left:-110px;padding:10px;width:220px;border:1px solid #d8d8d8;border-radius:2px;background-color:#fff;box-shadow:0 2px 5px rgba(0,0,0,.1);color:#555;text-align:center;opacity:.2;-webkit-transition:all .1s ease;transition:all .1s ease}
-.share-plain .share-int:after{position:absolute;bottom:-20px;left:50%;display:block;margin-left:-25px;width:50px;height:20px;background:url(../images/arrow.png) 0 0 no-repeat;background-size:50px 20px;content:''}
+.share-plain .share-int:after{position:absolute;bottom:-20px;left:50%;display:block;margin-left:-25px;width:50px;height:20px;background:url(https://cdn.jsdelivr.net/gh/bimovo/Kratos-Rebirth@0.9-beta.3/source/images/arrow.png) 0 0 no-repeat;background-size:50px 20px;content:''}
 .share-plain .share-int canvas,.share-plain .share-int img{margin:15px 0 -6px;height:auto;max-width:100%}
 .share-plain .share-int p{margin:15px 0 0;color:#676767;white-space:normal;word-wrap:break-word;font-size:14px;line-height:1.5}
 .kratos-copyright{background-color:rgba(220,220,220,.7);margin:25px 0 0}
@@ -397,7 +394,7 @@ td,th{padding:0}
 .comments-area .comment-list li{padding:17px 17px 14px;background-color:#fff;-webkit-box-shadow:0 1px 2px rgba(0,0,0,.1);box-shadow:0 1px 2px rgba(0,0,0,.1)}
 .comments-area .comment-list li:not(:first-child){margin-top:15px}
 .comments-area .comment-list .children li{margin-top:12px;background-color:#fffdf1;-webkit-box-shadow:0 2px 10px #e0e0e0;box-shadow:0 2px 10px #e0e0e0}
-.comments-area .avatar{position:absolute;margin-top:1px;width:40px;height:40px;border-radius:50%;background:url(../images/avatar.png) no-repeat center #f0f0f0;-webkit-box-shadow:0 .125rem 1.0625rem 0 rgba(0,0,0,.22);box-shadow:0 .125rem 1.0625rem 0 rgba(0,0,0,.22)}
+.comments-area .avatar{position:absolute;margin-top:1px;width:40px;height:40px;border-radius:50%;background:url(https://cdn.jsdelivr.net/gh/bimovo/Kratos-Rebirth@0.9-beta.3/source/images/avatar.png) no-repeat center #f0f0f0;-webkit-box-shadow:0 .125rem 1.0625rem 0 rgba(0,0,0,.22);box-shadow:0 .125rem 1.0625rem 0 rgba(0,0,0,.22)}
 .comments-area .comment-awaiting-moderation,.comments-area .comment-meta,.comments-area .fn{margin-left:63px}
 .comments-area .fn a{color:#343a40}
 .comments-area .fn a:hover{color:#1d2124}
@@ -424,7 +421,7 @@ a.comment-reply-link:hover{color:#000;box-shadow:0 0 1px #505050}
 #respond .comment-notes,#respond .logged-in-as{margin:0 0 10px;color:#888}
 #respond .input-group-addon{padding:6px 8px}
 #respond .input-group-addon i{width:20px}
-#respond .comment .form-control{background:url(../images/comment.png) right bottom no-repeat}
+#respond .comment .form-control{background:url(https://cdn.jsdelivr.net/gh/bimovo/Kratos-Rebirth@0.9-beta.3/source/images/comment.png) right bottom no-repeat}
 #respond .form-control{box-shadow:none;background:0 0;border:1px solid #ccc;height:auto;font-size:14px;font-weight:300;border-radius:0}
 #respond .has-feedback{position:relative}
 #respond .has-feedback .form-control:not(:first-child){padding-right:30px}
@@ -503,7 +500,7 @@ a.comment-reply-link:hover{color:#000;box-shadow:0 0 1px #505050}
 .widget_archive ul,.widget_categories ul{list-style:none;padding:0;margin:0}
 .widget_archive li::before{content:'\f133';margin-right:8px}
 .widget_categories li::before{content:'\f114';margin-right:8px}
-.cd-tool>div:hover{cursor:url(../images/pointer.cur),auto}
+.cd-tool>div:hover{cursor:pointer}
 .cd-tool>div{position:fixed;right:20px;z-index:999}
 .cd-tool span{display:table-cell;vertical-align:middle;color:#fff;width:40px;height:40px;font-size:18px}
 .edit-box{bottom:130px;background:#848484;opacity:.7}
@@ -524,27 +521,20 @@ a.comment-reply-link:hover{color:#000;box-shadow:0 0 1px #505050}
 #footer{background:#23282d;padding:40px 0 30px}
 #footer p{color:rgba(255,255,255,.3);letter-spacing:1px;font-size:14px;text-transform:uppercase}
 #footer p a{color:rgba(255,255,255,.5)}
-#footer .govimg{display:inline-block;margin-top:-4px;margin-right:6px;width:14px;height:1pc;background:url(../images/icon-police.png) 0 0 no-repeat;vertical-align:middle}
 @media(min-width:992px){#footer .col-md-offset-3{margin-left:10%}#footer .col-md-6{width:80%}}
 .kratos-social-icons>a{padding:4px 14px;color:#51aded}
 .kratos-social-icons>a i{font-size:30px}
 .kratos-social-icons>a:active,.kratos-social-icons>a:focus,.kratos-social-icons>a:hover{text-decoration:none;color:#5a5a5a}
-.page404{padding:0 5%}
-.page404 .errtxt h5{color:#555}
-.page404 .back-p{margin-right:15px;padding:10px 20px;border:1px solid #51aded;background:#51aded;color:#fff;line-height:3}
-.page404 .back-p:hover{background:#489cd7;color:#fff!important}
-.page404 .back-index{margin-left:15px;padding:10px 20px;border:1px solid #f0f0f0;background-color:#fafafa;color:#767676;line-height:3}
-.page404 .back-index:hover{border-color:#0092ee;color:#0092ee}
 .linkpage ul{color:rgba(255,255,255,.15)}
 .linkpage ul:after{content:" ";clear:both;display:block}
 .linkpage li{float:left;width:48%;position:relative;transition:all .3s ease-out;border-radius:5px;line-height:1.3;height:90px;display:block}
 .linkpage h3{margin:15px -25px;padding:0 25px;border-left:5px solid #51aded;background-color:#f7f7f7;font-size:25px;line-height:40px}
-.linkpage li:hover{background:rgba(230,244,250,.5);cursor:url(../images/pointer.cur),auto}
+.linkpage li:hover{background:rgba(230,244,250,.5);cursor:pointer}
 .linkpage li a{padding:0 10px 0 90px}
-.linkpage li a img{width:60px;height:60px;border-radius:50%;position:absolute;top:15px;left:15px;cursor:url(../images/pointer.cur),auto}
+.linkpage li a img{width:60px;height:60px;border-radius:50%;position:absolute;top:15px;left:15px;cursor:pointer}
 .linkpage li a h4{color:#333;font-size:18px;margin:0 0 7px 0;padding-left:90px}
 .linkpage li a h4:hover{color:#51aded}
-.linkpage li a h4,.linkpage li a p{cursor:url(../images/pointer.cur),auto;white-space:nowrap;text-overflow:ellipsis;overflow:hidden;line-height:1.4}
+.linkpage li a h4,.linkpage li a p{cursor:pointer;white-space:nowrap;text-overflow:ellipsis;overflow:hidden;line-height:1.4}
 .linkpage li a p{font-size:12px;color:#999;padding-left:90px}
 #archives .arc-tag{margin-bottom:15px}
 #archives .arc-tag a{-webkit-box-shadow:0 1px 4px rgba(0,0,0,.1);box-shadow:0 1px 4px rgba(0,0,0,.1);border:1px solid #fff;border-radius:15px;color:rgba(51,51,51,0.78);margin:4px 8px 0 0;font-weight:500;display:inline-block;padding:0 12px;background:rgba(255,255,255,.5);}
@@ -556,7 +546,7 @@ a.comment-reply-link:hover{color:#000;box-shadow:0 0 1px #505050}
 #archives .arc-tile{line-height:25px;overflow:hidden;white-space:nowrap;text-overflow:ellipsis;position:relative;padding:10px 14px;-webkit-box-shadow:0 1px 4px rgba(0,0,0,.04);box-shadow:0 1px 4px rgba(0,0,0,.04);}
 #archives .arc-tile a{color:#777}
 #archives .arc-tile span{font-size:14px;float:right;color:#000}
-#archives .al_year:hover,#archives .al_mon:hover{cursor:url(../images/pointer.cur),auto}
+#archives .al_year:hover,#archives .al_mon:hover{cursor:pointer}
 @media(max-width:1200px){
 .kratos-entry-content-new{height:80px;overflow:hidden;text-overflow:ellipsis}
 }
@@ -686,3 +676,44 @@ body{background:#fff!important}
 td.code {
   text-align: left;
 }
+
+/* Header */
+#offcanvas-menu {
+  background: rgba(42, 42, 42, .9)
+  }
+
+  @media(min-width:768px) {
+      .pagination>li>a {
+          background-color: rgba(255, 255, 255, .8)
+      }
+      .kratos-hentry,
+      .navigation div,
+      .comments-area .comment-list li,
+      #kratos-widget-area .widget,
+      .comment-respond {
+          background-color: rgba(255, 255, 255, .8) !important
+      }
+      .comment-list .children li {
+          background-color: rgba(255, 253, 232, .7) !important
+      }
+      body.custom-background {
+          background-image: url(https://cdn.jsdelivr.net/gh/bimovo/Kratos-Rebirth@0.9-beta.3/source/images/index_image.png);
+          background-size: cover;
+          background-attachment: fixed
+      }
+  }
+
+  @media(max-width:768px) {
+      #kratos-header-section {
+          background: rgba(22, 23, 26, .9)
+      }
+  }
+
+  @media(min-width:768px) {
+      .color-logo {
+          display: none
+      }
+      .affix {
+          top: 54px
+      }
+  }
