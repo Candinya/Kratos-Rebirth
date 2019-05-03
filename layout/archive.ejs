@@ -1,0 +1,79 @@
+<section class="col-md-8">
+    <% if (site.posts) { %>
+        <article>
+            <div class="kratos-hentry kratos-post-inner clearfix">
+                <div class="kratos-post-content">
+                  <h2 class="title-h2" style="text-align:center;font-size:18pt"><%= __('archive_a') %></h2>
+                  <div id="archives">
+                  <p style="text-align:center"><span style="color:#999">点击月份可展开文章~<a href="javascript:;" id="al_collapse" style="color:#999;display:none">[折叠全部]</a><a href="javascript:;" id="al_expand" style="color:#999">[展开全部]</a></span></p>
+                  <hr />
+                  <% if (site.tags.length){ %>
+                    <h3><%= __('tags') %></h3>
+                    <div class="arc-tag">
+                        <%- list_tags({show_count: theme.show_count, style: 'none'}) %>
+                    </div>
+                  <% } %>
+                  <% var last_year = 0, last_month; %>
+                  <% site.posts.each(function(post, i){ %>
+                    <% var year = post.date.year(), month = post.date.month() + 1; %>
+                    <% if (last_year != year){ %>
+                        <% last_year = year; %>
+                        <% if (last_month != null) { %>
+                            </div>
+                            </section>
+                        <% }%>
+                        <h3 class="al_year"><%= year %> 年</h3>
+                        <% last_month = month; %>
+                        <section class="mon" style="overflow:hidden">
+                            <div class="al_mon">◉ <%= month %> 月</div>
+                            <div class="mon_arc" style="display: none;">
+                      <% } %>
+                    <% if (last_month != month) { %>
+                      <% if (last_month != null) { %>
+                        </div>
+                      </section>
+                      <% } else { %>
+                        <div class="al_mon_list">
+                      <% } %>
+                      <% last_month = month; %>
+                        <section class="mon" style="overflow:hidden">
+                            <div class="al_mon">◉ <%= month %> 月</div>
+                            <div class="mon_arc" style="display: none;">
+                    <% } %>
+                    <div class="arc-t">
+                        <div class="arc-tile">
+                            <a href="/<%- post.path %>"><%- post.title %></a>
+                            <br />
+                            <span><%= date(post.date, null) %></span>
+                        </div>
+                    </div>
+                  <% }) %>
+                  <% if (site.posts.length){ %>
+                        </div>
+                      </section>
+                  <% } %>
+                  </div>
+              </div>
+            </div>
+            <script type="text/javascript">
+                $('#archives section.mon').each(function(){
+                    var num=$(this).find('.arc-t').length;
+                    var text=$(this).find('.al_mon').text();
+                    $(this).find('.al_mon').html(text+'（'+num+' 篇文章）');
+                });
+                $('#archives h4.al_year').click(function(){
+                    $(this).next().slideToggle(400);return false;
+                });
+                $('#archives div.al_mon').click(function(){
+                    $(this).next().slideToggle(400);return false;
+                });
+                $('#al_collapse').click(function(){
+                    $('.mon_arc').hide(400);$('#al_collapse').hide();$('#al_expand').show();
+                });
+                $('#al_expand').click(function(){
+                    $('.mon_arc').show(400);$('#al_expand').hide();$('#al_collapse').show();
+                });
+          </script>
+        </article>
+        <% } %>
+    </section>

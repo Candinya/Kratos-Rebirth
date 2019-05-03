@@ -1,0 +1,76 @@
+        <% if (theme.sidebar === 'right') { %>
+            <aside id="kratos-widget-area" class="col-md-4 hidden-xs hidden-sm scrollspy">
+                <div id="sidebar">
+                    <% theme.widgets.forEach(function(widget){ %>
+                        <%- partial('_widget/' + widget) %>
+                    <% }) %>
+                </div>
+            </aside>
+        <% } %>
+        </div>
+    </div>
+</div>
+<footer>
+    <div id="footer">
+        <div class="cd-tool text-center">
+            <!-- <div class="search-box">
+                <span class="fa fa-search"></span>
+                <form action="//google.com/search" role="search" method="get" accept-charset="UTF-8" id="searchform" target="_blank">
+                    <input type="search" id="search" name="q" placeholder="Search"  style="display:none">
+                    <input type="hidden" name="sitesearch" value="<%= config.url %>">
+                </form>
+            </div> -->
+            <% if (theme.show_qqg) { %>
+                <div class="qqg-box">
+                    <a href="https://jq.qq.com/?123456789" target="_blank" rel="nofollow">
+                        <div id="qqg-box">
+                            <span class="fa fa-qq"></span>
+                        </div>
+                    </a>
+                </div>
+            <% } %>
+            <div class="gotop-box">
+                <div class="gotop-btn">
+                    <span class="fa fa-chevron-up"></span>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 col-md-offset-3 footer-list text-center">
+                    <p class="kratos-social-icons">
+                        <% if (theme.contact.weibo) {%><a target="_blank" rel="nofollow" href="<%= theme.contact.weibo %>"><i class="fa fa-weibo"></i></a><% } %>
+                        <% if (theme.contact.tweibo) {%><a target="_blank" rel="nofollow" href="<%= theme.contact.tweibo %>"><i class="fa fa-tencent-weibo"></i></a><% } %>
+                        <% if (theme.contact.mail) {%><a href="<%= theme.contact.mail %>"><i class="fa fa-envelope"></i></a><% } %>
+                        <% if (theme.contact.twitter) {%><a target="_blank" rel="nofollow" href="<%= theme.contact.twitter %>"><i class="fa fa-twitter"></i></a><% } %>
+                        <% if (theme.contact.facebook) {%><a target="_blank" rel="nofollow" href="<%= theme.contact.facebook %>"><i class="fa fa-facebook-official"></i></a><% } %>
+                        <% if (theme.contact.linkedin) {%><a target="_blank" rel="nofollow" href="<%= theme.contact.linkedin %>"><i class="fa fa-linkedin-square"></i></a><% } %>
+                        <% if (theme.contact.github) {%><a target="_blank" rel="nofollow" href="<%= theme.contact.github %>"><i class="fa fa-github"></i></a><% } %>
+                    </p>
+                    <p> &copy; <%= date(new Date(), 'YYYY') %> <%= config.author || config.title %> 版权所有. | 本站已运行<span id=span_dt_dt>Loading...</span><br />
+                        Made with <i class="fa fa-heart throb" style="color:#d43f57"></i> by <a href="https://puq.moe" target="_blank" rel="nofollow">蓝冰记忆</a>.<br />
+                        Hosted by <%- theme.hoster %> | Powered by <a href="https://hexo.io" target="_blank" rel="nofollow">Hexo</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+</div>
+</div>
+<script>var notMobile = (!(navigator.userAgent.match(/(phone|pad|pod|iPhone|iPod|ios|iPad|Android|Mobile|BlackBerry|IEMobile|MQQBrowser|JUC|Fennec|wOSBrowser|BrowserNG|WebOS|Symbian|Windows Phone)/i)));</script>
+<% if(theme.snow){ %>
+    <div>
+    <canvas id="Snow"></canvas>
+    <script defer type="text/javascript" src="/js/snow.js"></script>
+    </div>
+<% } %>
+<script defer src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.4/dist/js/bootstrap.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.js"></script>
+<script defer src="/js/layer.min.js"></script>
+<script defer src="/js/kratosr.js"></script>
+<script defer src="/js/pjax.js"></script>
+<script defer src="/js/candy.js"></script>
+<%- theme.site_analytics %>
+<%- partial('../_tools/player') %>
+</body>
+</html>

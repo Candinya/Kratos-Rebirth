@@ -1,0 +1,44 @@
+site_analytics: 
+hoster: <a href="https://github.io" target="_blank">Github Pages</a>
+
+snow: false
+
+# Top Menu
+menu:
+  index: /
+  archives: /archives/
+  friends: /friends/
+  about: /about/
+label:
+  index: <i class="fa fa-home"></i>&nbsp;首页
+  archives: <i class="fa fa-file"></i>&nbsp;档案馆
+  friends: <i class="fa fa-mars-double"></i>&nbsp;后宫团
+  about: <i class="fa fa-rocket"></i>&nbsp;关于咱
+
+# Footer
+show_qqg: false
+contact:
+  weibo: 
+  tweibo: 
+  mail: 
+  twitter: 
+  facebook: 
+  linkedin: 
+  github: https://github.com/Candinya
+  
+posts:
+  show_cc: true
+  donate: true
+  share: true
+
+# Widgets
+sidebar: right
+widgets:
+- about
+- category
+- tagcloud
+- posts
+avatarUri: https://cn.gravatar.com/avatar/43a4d197183763781d4416acb26b4190
+
+#highlight themes: normal/night/noght eighties/night blue/night/bright
+highlight_theme: night eighties

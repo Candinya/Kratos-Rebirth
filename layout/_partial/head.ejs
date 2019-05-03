@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <% var title = page.title; %>
+  <title><% if (title) { %><%= title %> | <% } %><%= config.title %></title>
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="robots" content="index,follow">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="format-detection" content="telphone=no, email=no">
+  <meta name="description" itemprop="description" content="<%= config.description %>">
+  <meta name="keywords" content="<%= config.keywords %>">
+  <link rel="icon" href="/images/favicon.jpg">
+  <link rel="stylesheet" id="kratos-css" href="/css/kratosr.css" type="text/css" media="all">
+  <link rel="stylesheet" id="fontawe-css" href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" type="text/css" media="all">
+  <link rel="stylesheet" id="nprogress-css" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.css" type="text/css" media="all">
+  <%- css('css/ext') %>
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+</head>
+<body class="custom-background">
+    <div id="kratos-wrapper">
+        <div id="kratos-page">
+            <nav id="offcanvas-menu" style="height: 838px; right: -240px;">
+              <ul class="ul-me">
+                <% for (var i in theme.menu){ %>
+                  <li><a href="<%- url_for(theme.menu[i]) %>"><%- theme.label[i] %></a></li>
+                <% } %>
+              </ul>
+            </nav>
+            <div id="kratos-header">
+                <div class="nav-toggle"><a class="kratos-nav-toggle js-kratos-nav-toggle"><i></i></a></div>
+                <header id="kratos-header-section">
+                    <div class="container">
+                        <div class="nav-header">
+                            <div class="color-logo"><a href="/"><%= config.title %></a></div>
+                            <nav id="kratos-menu-wrap">
+                              <ul id="kratos-primary-menu" class="sf-menu">
+                              <% for (var i in theme.menu){ %>
+                                <li><a href="<%- url_for(theme.menu[i]) %>"><%- theme.label[i] %></a></li>
+                              <% } %>
+                              </ul>
+                            </nav>
+                        </div>
+                    </div>
+                </header>
+            </div>
