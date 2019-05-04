@@ -128,7 +128,7 @@ var candinya = new Object();
                 title:candinya.donate,
                 resize:false,
                 scrollbar:false,
-                content:'<div class="donate-box"><div class="meta-pay text-center"><strong>'+candinya.scan+'</strong></div><div class="qr-pay text-center"><img class="pay-img" id="alipay_qr" src="'+candinya.alipay+'"><img class="pay-img d-none" id="wechat_qr" src="'+candinya.wechat+'"></div><div class="choose-pay text-center mt-2"><input id="alipay" type="radio" name="pay-method" checked><label for="alipay" class="pay-button"><img src="https://cdn.jsdelivr.net/gh/Blicy/Kratos-Rebirth@0.9-beta.3/source/images/alipay.png"></label><input id="wechatpay" type="radio" name="pay-method"><label for="wechatpay" class="pay-button"><img src="https://cdn.jsdelivr.net/gh/Blicy/Kratos-Rebirth@0.9-beta.3/source/images/wechat.png"></label></div></div>'
+                content:'<div class="donate-box"><div class="meta-pay text-center"><strong>'+candinya.scan+'</strong></div><div class="qr-pay text-center"><img class="pay-img" id="alipay_qr" src="'+candinya.alipay+'"><img class="pay-img d-none" id="wechat_qr" src="'+candinya.wechat+'"></div><div class="choose-pay text-center mt-2"><input id="alipay" type="radio" name="pay-method" checked><label for="alipay" class="pay-button"><img src="/images/alipay.png"></label><input id="wechatpay" type="radio" name="pay-method"><label for="wechatpay" class="pay-button"><img src="/images/wechat.png"></label></div></div>'
             });
             $(".choose-pay input[type='radio']").click(function(){
                 var id= $(this).attr("id");
@@ -143,7 +143,9 @@ var candinya = new Object();
         var imageboxs = document.getElementsByClassName("kratos-entry-thumb-new-img");
         for(var i = 0, len = imageboxs.length; i < len; i++) {
             if (!($(imageboxs[i]).attr("src")))
-                $(imageboxs[i]).attr("src", "https://cdn.jsdelivr.net/gh/Blicy/Kratos-Rebirth@0.9-beta.3/source/images/thumb/thumb_"+Math.floor(Math.random()*20+1)+".jpg");
+                // $(imageboxs[i]).attr("src", "https://cdn.jsdelivr.net/gh/Candinya/Kratos-Rebirth@0.9-beta.3/source/images/thumb/thumb_"+Math.floor(Math.random()*20+1)+".jpg");
+                $(imageboxs[i]).attr("src", "/images/thumb/thumb_"+Math.floor(Math.random()*20+1)+".jpg");
+
         }
     }
     $.fn.pjax_reload = function() {
@@ -187,9 +189,9 @@ window.onload = function(){
     // var now = new Date().getTime();
     // var page_load_time = now-performance.timing.navigationStart;
     console.log('%c页面加载完毕消耗了'+Math.round(performance.now()*100)/100+'ms','background:#fff;color:#333;text-shadow:0 0 2px #eee,0 0 3px #eee,0 0 3px #eee,0 0 2px #eee,0 0 3px #eee;');
-    if (!(notMobile)) {
-        $('.qqg-box').attr("style", "display:none");
-    }
+    // if (!(notMobile)) {
+    //     $('.qqg-box').attr("style", "display:none");
+    // }
 };
 
 var OriginTitile = document.title, titleTime;

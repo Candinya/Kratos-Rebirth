@@ -61,5 +61,8 @@
                 <% } %>
             </nav>
         <% } %>
+        <% if (theme.posts.comments) { %>
+            <%- partial('_third-party/comments') %>
+        <% } %>
     </article>
 </section>

@@ -30,6 +30,10 @@ posts:
   show_cc: true
   donate: true
   share: true
+  comments: true
+
+disqus:
+  shortname: candiblog
 
 # Widgets
 sidebar: right

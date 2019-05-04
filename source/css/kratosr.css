@@ -143,7 +143,7 @@ td,th{padding:0}
 .layui-layer{top:150px;left:0;margin:0;padding:0;background-color:#fff;-webkit-background-clip:content;border-radius:2px;box-shadow:1px 1px 50px rgba(0,0,0,.3);-webkit-overflow-scrolling:touch}
 .layui-layer-close{position:absolute}
 .layui-layer-content{position:relative}
-.layui-layer-ico{background:url(https://cdn.jsdelivr.net/gh/Blicy/Kratos-Rebirth@0.9-beta.3/source/images/icon.png) no-repeat}
+.layui-layer-ico{background:url(/images/icon.png) no-repeat}
 .layui-layer-resize{position:absolute;width:15px;height:15px;right:0;bottom:0;cursor:se-resize}
 .layer-anim{-webkit-animation-fill-mode:both;animation-fill-mode:both;-webkit-animation-duration:.3s;animation-duration:.3s}
 .layer-anim-00{-webkit-animation-name:layer-bounceIn;animation-name:layer-bounceIn}
@@ -154,7 +154,7 @@ td,th{padding:0}
 .layui-layer-setwin .layui-layer-close1{background-position:1px -40px;cursor:pointer}
 .layui-layer-setwin .layui-layer-close1:hover{opacity:.7}
 .layui-layer-page .layui-layer-content{position:relative;overflow:auto}
-.layui-layer-iconext{background:url(https://cdn.jsdelivr.net/gh/Blicy/Kratos-Rebirth@0.9-beta.3/source/images/icon-ext.png) no-repeat}
+.layui-layer-iconext{background:url(/images/icon-ext.png) no-repeat}
 .layui-layer-photos{-webkit-animation-duration:.8s;animation-duration:.8s}
 .layui-layer-photos .layui-layer-content{overflow:hidden;text-align:center}
 .layui-layer-photos .layui-layer-phimg img{position:relative;width:100%;display:inline-block;vertical-align:top}
@@ -382,7 +382,7 @@ td,th{padding:0}
 .share-plain.weixin{border-color:#38ad5a!important;border-width:1px!important;background-color:transparent;color:#38ad5a!important}
 .share-plain.pop:hover .share-int{display:block;opacity:1}
 .share-plain .share-int{position:absolute;bottom:50px;left:50%;z-index:8;display:none;margin-left:-110px;padding:10px;width:220px;border:1px solid #d8d8d8;border-radius:2px;background-color:#fff;box-shadow:0 2px 5px rgba(0,0,0,.1);color:#555;text-align:center;opacity:.2;-webkit-transition:all .1s ease;transition:all .1s ease}
-.share-plain .share-int:after{position:absolute;bottom:-20px;left:50%;display:block;margin-left:-25px;width:50px;height:20px;background:url(https://cdn.jsdelivr.net/gh/Blicy/Kratos-Rebirth@0.9-beta.3/source/images/arrow.png) 0 0 no-repeat;background-size:50px 20px;content:''}
+.share-plain .share-int:after{position:absolute;bottom:-20px;left:50%;display:block;margin-left:-25px;width:50px;height:20px;background:url(/images/arrow.png) 0 0 no-repeat;background-size:50px 20px;content:''}
 .share-plain .share-int canvas,.share-plain .share-int img{margin:15px 0 -6px;height:auto;max-width:100%}
 .share-plain .share-int p{margin:15px 0 0;color:#676767;white-space:normal;word-wrap:break-word;font-size:14px;line-height:1.5}
 .kratos-copyright{background-color:rgba(220,220,220,.7);margin:25px 0 0}
@@ -634,7 +634,7 @@ td.code {
           background-color: rgba(255, 255, 255, .8) !important
       }
       body.custom-background {
-          background-image: url(https://cdn.jsdelivr.net/gh/Blicy/Kratos-Rebirth@0.9-beta.3/source/images/index_image.png);
+          background-image: url(/images/index_image.png);
           background-size: cover;
           background-attachment: fixed
       }
