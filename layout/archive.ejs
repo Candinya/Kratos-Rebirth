@@ -21,7 +21,7 @@
             
 
                             <% var year; %>
-                            <% site.posts.each(function(post, i) { %>
+                            <% site.posts.sort('date', -1).each(function(post){ %>
             
                               
                               <% var post_year = date(post.date, 'YYYY'); %>
