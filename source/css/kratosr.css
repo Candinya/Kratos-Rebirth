@@ -482,14 +482,6 @@ td,th{padding:0}
 #archives .arc-tag{margin-bottom:15px}
 #archives .arc-tag a{-webkit-box-shadow:0 1px 4px rgba(0,0,0,.1);box-shadow:0 1px 4px rgba(0,0,0,.1);border:1px solid #fff;border-radius:15px;color:rgba(51,51,51,0.78);margin:4px 8px 0 0;font-weight:500;display:inline-block;padding:0 12px;background:rgba(255,255,255,.5);}
 #archives .arc-tag a::before{content:"# ";color:#e8a6a6}
-#archives h4{margin:5px 0}
-#archives .mon{margin:0 20px}
-#archives .al_mon{color:#444}
-#archives .arc-t{width:30%;float:left;position:relative;background:rgba(255, 253, 243, 0.8);margin:5px 15px 10px 3px;border-radius:5px;-webkit-box-shadow:0 2px 4px rgba(192,192,192,0.4);box-shadow:0 2px 4px rgba(192,192,192,0.4)}
-#archives .arc-tile{line-height:25px;overflow:hidden;white-space:nowrap;text-overflow:ellipsis;position:relative;padding:10px 14px;-webkit-box-shadow:0 1px 4px rgba(0,0,0,.04);box-shadow:0 1px 4px rgba(0,0,0,.04);}
-#archives .arc-tile a{color:#777}
-#archives .arc-tile span{font-size:14px;float:right;color:#000}
-#archives .al_year:hover,#archives .al_mon:hover{cursor:pointer}
 @media(max-width:1200px){
 .kratos-entry-content-new{height:80px;overflow:hidden;text-overflow:ellipsis}
 }

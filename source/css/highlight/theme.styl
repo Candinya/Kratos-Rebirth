@@ -90,3 +90,10 @@ if $highlight_theme == "night bright"
     color: lighten($highlight-background, 40%),
     bg-color: lighten($highlight-background, 16%)
   }
+
+if $highlight_theme == "normal"
+  $highlight-deletion     = #fdd
+  $highlight-addition     = #dfd
+else
+  $highlight-deletion     = #008000
+  $highlight-addition     = #800000
