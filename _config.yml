@@ -28,7 +28,7 @@ contact:
   
 posts:
   show_cc: true
-  donate: true
+  donate: false
   share: true
   comments: true
 
@@ -44,5 +44,5 @@ widgets:
 - posts
 avatarUri: https://cn.gravatar.com/avatar/a7f9e15fef26e0a540edc977e21cb3eb
 
-#highlight themes: normal/night/noght eighties/night blue/night/bright
+#highlight themes: normal/night/night eighties/night blue/night bright
 highlight_theme: night eighties
