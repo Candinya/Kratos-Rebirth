@@ -33,7 +33,7 @@ posts:
   comments: true
 
 disqus:
-  shortname: candiblog
+  shortname: 
 
 # Widgets
 sidebar: right
