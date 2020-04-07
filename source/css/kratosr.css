@@ -284,14 +284,9 @@ td,th{padding:0}
 #kratos-blog-post .alignleft{float:left}
 #kratos-blog-post .alignright{float:right}
 #kratos-blog-post .alignnone{display:inline;vertical-align:text-bottom}
-.pagination{display:inline-block;padding-left:0;border-radius:4px;margin:23px 0 7px}
-.pagination>li{display:inline}
-.pagination li:not(:first-child){margin-left:3px}
-.pagination li a{width:35px;margin-left:6px;box-shadow:0 1px 2px rgba(0,0,0,.1);border:0}
-.pagination>li>a{position:relative;float:left;padding:6px 12px;line-height:1.42857143;text-decoration:none;background-color:#fff;color:#626262}
-.pagination>li>a:focus,.pagination>li>a:hover{border-color:#51aded;background-color:#51aded;color:#fff!important}
-.pagination>li:first-child>a{margin-left:0}
-.pagination>.active>a,.pagination>.active>a:focus,.pagination>.active>a:hover{border-color:#51aded;background-color:#51aded;color:#fff!important}
+.pagination{/*display:inline-block;*/padding-left:0;border-radius:4px;margin:23px 0 7px;}
+.pagination a, .pagination span{margin: 0 3px;position:relative;padding:6px 12px;line-height:1.42857143;text-decoration:none;background-color:#fff;color:#626262}
+.pagination>span.page-number, .pagination>a:hover{border-color:#51aded;background-color:#51aded;color:#fff!important}
 .post-navigation{margin-top:15px}
 .post-navigation .nav-next a,.post-navigation .nav-previous a{color:#5a5a5a}
 .post-navigation .nav-previous{float:left;text-align:left;max-width:50%;background-color:#fff;box-shadow:0 1px 5px rgba(0,0,0,.1);padding:7px 18px}

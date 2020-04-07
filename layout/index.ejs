@@ -93,8 +93,8 @@
             <% }) %>
             
             <% if (page.total > 1) { %>
-                <div class='text-center' id='page-footer'><ul class='pagination'>
-                <%- paginator() %>
-                </ul></div>
+                <div class='text-center pagination' id='page-footer'>
+                <%- paginator({prev_text: '<i class="fa fa-angle-left"></i>', next_text: '<i class="fa fa-angle-right"></i>', escape: false}) %>
+                </div>
             <% } %>
         </section>
