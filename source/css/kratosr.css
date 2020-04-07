@@ -18,7 +18,7 @@
 ::-webkit-selection{color:#fcfcfc;background:#262a30}::-moz-selection{color:#fcfcfc;background:#262a30}::selection{color:#fcfcfc;background:#262a30}
 body::-webkit-scrollbar{width:8px;height:80px}body::-webkit-scrollbar-thumb{background:#bbb;border-radius:10px;-webkit-box-shadow:inset 0 0 5px rgba(0,0,0,.2)}::-webkit-scrollbar-thumb:hover{background:#aaa}body::-webkit-scrollbar-track{-webkit-box-shadow:inset 0 0 5px rgba(0,0,0,.2);border-radius:10px;background:#ededed}
 body{font-family:-apple-system,BlinkMacSystemFont,opensans,Optima,"Microsoft Yahei",sans-serif;line-height:1.8;font-size:18px;background:#f5f5f5;color:#848484;font-weight:300;cursor:auto;overflow-x:hidden;margin:0}
-a{color:#51aded;text-decoration:none;-webkit-transition:.5s;transition:.5s}
+a{color:#3e8dc5;text-decoration:none;-webkit-transition:.5s;transition:.5s;font-weight:400;}
 a:hover{outline:0;background-color:transparent;cursor:pointer;color:#51aded!important}
 a:focus{outline:0;text-decoration:none}
 abbr[data-original-title],abbr[title]{cursor:help;border-bottom:1px dotted #777}
@@ -58,11 +58,11 @@ h1 small,h2 small,h3 small{font-size:65%}
 h4,h5,h6{margin-top:10px;margin-bottom:10px}
 h4 small,h5 small,h6 small{font-size:75%}
 h1{font-size:1.6em}
-h2{font-size:1.5em}
-h3{font-size:1.4em}
-h4{font-size:1.3em}
-h5{font-size:1.2em}
-h6{font-size:1.1em}
+h2{font-size:1.3em}
+h3{font-size:1.1em}
+h4{font-size:1.0em}
+h5{font-size:1.0em}
+h6{font-size:1.0em}
 h2.title-h2{margin:15px -20px;padding:0 20px;border-left:5px solid #51aded;background-color:#f7f7f7;font-size:20px;line-height:40px}
 hr{margin-top:20px;margin-bottom:20px;border:0;border-top:1px solid #eee}
 img{vertical-align:middle}

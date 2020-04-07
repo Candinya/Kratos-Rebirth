@@ -1,19 +1,27 @@
-var candinya = new Object();
-    candinya.thome = "/";
-    candinya.ctime = "03/24/2018 15:31:36";
-    candinya.donate = "支持咱~";
-    candinya.scan = "扫一扫，好不好？";
-    candinya.alipay = "/images/alipayqr.jpg";
-    candinya.wechat = "/images/wechatpayqr.png";
-    candinya.site_sh = 55;
+var kr = new Object();
+//-------------------参数设置区 开始-------------------
+    kr.thome = "/";
+    kr.ctime = "03/24/2018 15:31:36";
+    kr.donate = "支持我~";
+    kr.scan = "扫一扫，好不好？";
+    kr.alipay = "/images/alipayqr.jpg";
+    kr.wechat = "/images/wechatpayqr.png";
+    kr.site_sh = 55;
+    kr.copy_notify = false;
+    kr.copy_notify_text = "欢迎转载，请记得标明出处哦~";
+    kr.site_logo = "images/favicon.png";
+    kr.enable_site_leave_event = false;
+    kr.site_logo_leave = "images/failure.ico";
+    kr.site_title_leave = "{{{(>_<)}}}哦哟，崩溃啦~ ";
+    kr.site_title_return = "(*´∇｀*)欸，又好啦~ ";
+//-------------------参数设置区 结束-------------------
 
 (function(){
-    'use strict';
     var shareMenu = function(){
         $(document).on("click",".Share",function(){$(".share-wrap").fadeToggle("slow");});
     }
     var sidebaraffix = function(){
-        if($("#sidebar").height()&&candinya.site_sh){
+        if($("#sidebar").height()&&kr.site_sh){
             if($("#main").height()>$("#sidebar").height()){
                 var footerHeight = 0;
                 if($('#page-footer').length>0){
@@ -21,7 +29,7 @@ var candinya = new Object();
                 }
                 $('#sidebar').affix({
                     offset:{
-                        top:$('#sidebar').offset().top-candinya.site_sh,
+                        top:$('#sidebar').offset().top-kr.site_sh,
                         bottom:$('#footer').outerHeight(true)+footerHeight+6
                     }
                 });
@@ -125,10 +133,10 @@ var candinya = new Object();
             layer.open({
                 type:1,
                 area:['300px', '370px'],
-                title:candinya.donate,
+                title:kr.donate,
                 resize:false,
                 scrollbar:false,
-                content:'<div class="donate-box"><div class="meta-pay text-center"><strong>'+candinya.scan+'</strong></div><div class="qr-pay text-center"><img class="pay-img" id="alipay_qr" src="'+candinya.alipay+'"><img class="pay-img d-none" id="wechat_qr" src="'+candinya.wechat+'"></div><div class="choose-pay text-center mt-2"><input id="alipay" type="radio" name="pay-method" checked><label for="alipay" class="pay-button"><img src="/images/alipay.png"></label><input id="wechatpay" type="radio" name="pay-method"><label for="wechatpay" class="pay-button"><img src="/images/wechat.png"></label></div></div>'
+                content:'<div class="donate-box"><div class="meta-pay text-center"><strong>'+kr.scan+'</strong></div><div class="qr-pay text-center"><img class="pay-img" id="alipay_qr" src="'+kr.alipay+'"><img class="pay-img d-none" id="wechat_qr" src="'+kr.wechat+'"></div><div class="choose-pay text-center mt-2"><input id="alipay" type="radio" name="pay-method" checked><label for="alipay" class="pay-button"><img src="' + kr.thome + 'images/alipay.png"></label><input id="wechatpay" type="radio" name="pay-method"><label for="wechatpay" class="pay-button"><img src="' + kr.thome + 'images/wechat.png"></label></div></div>'
             });
             $(".choose-pay input[type='radio']").click(function(){
                 var id= $(this).attr("id");
@@ -144,7 +152,7 @@ var candinya = new Object();
         for(var i = 0, len = imageboxs.length; i < len; i++) {
             if (!($(imageboxs[i]).attr("src")))
                 // $(imageboxs[i]).attr("src", "https://cdn.jsdelivr.net/gh/Candinya/Kratos-Rebirth@0.9-beta.3/source/images/thumb/thumb_"+Math.floor(Math.random()*20+1)+".jpg");
-                $(imageboxs[i]).attr("src", "/images/thumb/thumb_"+Math.floor(Math.random()*20+1)+".jpg");
+                $(imageboxs[i]).attr("src", kr.thome + "images/thumb/thumb_"+Math.floor(Math.random()*20+1)+".jpg");
 
         }
     }
@@ -170,9 +178,10 @@ var candinya = new Object();
         
     });
 }());
+
 var now = new Date();
 function createtime(){
-    var grt = new Date(candinya.ctime);
+    var grt = new Date(kr.ctime);
     now.setTime(now.getTime()+1000);
     days = (now-grt)/1000/60/60/24;dnum = Math.floor(days);
     hours = (now-grt)/1000/60/60-(24*dnum);hnum = Math.floor(hours);
@@ -184,7 +193,11 @@ function createtime(){
     document.getElementById("span_dt_dt").innerHTML = dnum+"天"+hnum+"小时"+mnum+"分"+snum+"秒";
 }
 setInterval("createtime()",1000);
-document.body.oncopy=function(){alert('欢迎转载，请记得标明出处哦~');}
+
+if (kr.copy_notify) {
+    document.body.oncopy = function(){alert(kr.copy_notify_text);}
+}
+
 window.onload = function(){
     // var now = new Date().getTime();
     // var page_load_time = now-performance.timing.navigationStart;
@@ -194,17 +207,19 @@ window.onload = function(){
     // }
 };
 
-var OriginTitile = document.title, titleTime;
-document.addEventListener('visibilitychange', function() {
-    if (document.hidden) {
-        document.title = '{{{(>_<)}}}哦哟，崩溃啦~ ' + OriginTitile;
-        $('[rel="icon"]').attr("href", "/images/failure.ico");
-        clearTimeout(titleTime);
-    } else {
-        document.title = '(*´∇｀*)欸，又好啦~ ' + OriginTitile;
-        $('[rel="icon"]').attr("href", "/images/favicon.jpg");
-        titleTime = setTimeout(function() {
-            document.title = OriginTitile;
-        }, 2000);
-    }
-});
+if (kr.enable_site_leave_event) {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = kr.site_title_leave + OriginTitile;
+            $('[rel="icon"]').attr("href", kr.thome + kr.site_logo_leave);
+            clearTimeout(titleTime);
+        } else {
+            document.title = kr.site_title_return + OriginTitile;
+            $('[rel="icon"]').attr("href", kr.thome + kr.site_logo);
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            }, 2000);
+        }
+    });
+}

@@ -1,7 +1,8 @@
+# Global
 site_analytics: 
 hoster: <a href="https://github.io" target="_blank">Github Pages</a>
 
-snow: false
+snow: true
 
 # Top Menu
 menu:
@@ -16,7 +17,7 @@ label:
   about: <i class="fa fa-rocket"></i>&nbsp;关于咱
 
 # Footer
-show_qqg: false
+qqg_link: 
 contact:
   weibo: 
   tweibo: 
@@ -26,14 +27,16 @@ contact:
   linkedin: 
   github: https://github.com/Candinya
   
+# Post Page
 posts:
   show_cc: true
   donate: false
   share: true
   comments: true
 
+# Disqus
 disqus:
-  shortname: 
+  shortname: candiblog
 
 # Widgets
 sidebar: right
@@ -44,5 +47,5 @@ widgets:
 - posts
 avatarUri: https://cn.gravatar.com/avatar/a7f9e15fef26e0a540edc977e21cb3eb
 
-#highlight themes: normal/night/night eighties/night blue/night bright
+# Code Highlight Themes: normal | night | night eighties | night blue | night bright
 highlight_theme: night eighties
