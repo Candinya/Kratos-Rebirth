@@ -67,12 +67,12 @@ var kr = new Object();
             }
         });
     }
-    var showPhotos = function(){
-        layer.photos({
-          photos:'.kratos-post-content',
-          anim: 0
-        });
-    }
+    // var showPhotos = function(){
+    //     layer.photos({
+    //       photos:'.kratos-post-content',
+    //       anim: 0
+    //     });
+    // }
     var offcanvas = function(){
         var $clone = $('#kratos-menu-wrap').clone();
         $clone.attr({
@@ -157,7 +157,7 @@ var kr = new Object();
         }
     }
     $.fn.pjax_reload = function() {
-        showPhotos();
+        // showPhotos();
         setrandpic();
         sidebaraffix();
         //OwOcfg();
@@ -167,7 +167,7 @@ var kr = new Object();
         //showlove();
         gotop();
         toSearch();
-        showPhotos();
+        // showPhotos();
         offcanvas();
         mobiClick();
         xControl();
