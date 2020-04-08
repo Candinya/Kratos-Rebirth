@@ -10,11 +10,20 @@ menu:
   archives: /archives/
   friends: /friends/
   about: /about/
+  tools:
+    submenu: true
+    candifonts: https://fonts.candys.dev
+    candidenty: https://id.candys.dev
+
 label:
   index: <i class="fa fa-home"></i>&nbsp;首页
   archives: <i class="fa fa-file"></i>&nbsp;档案馆
   friends: <i class="fa fa-mars-double"></i>&nbsp;后宫团
-  about: <i class="fa fa-rocket"></i>&nbsp;关于咱
+  about: <i class="fa fa-rocket"></i>&nbsp;关于我
+  tools:
+    submenu: <i class="fa fa-flask"></i>&nbsp;实验室
+    candifonts: 缤纷字生成
+    candidenty: 身份证工具
 
 # Footer
 qqg_link: 

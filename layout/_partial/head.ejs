@@ -38,7 +38,20 @@
                             <nav id="kratos-menu-wrap">
                               <ul id="kratos-primary-menu" class="sf-menu">
                               <% for (var i in theme.menu){ %>
-                                <li><a href="<%- url_for(theme.menu[i]) %>"><%- theme.label[i] %></a></li>
+                                <% if (typeof (theme.menu[i]['submenu']) !== 'undefined') { %>
+                                  <li>
+                                    <a><%- theme.label[i]['submenu'] %></a>
+                                    <ul class="sub-menu">
+                                      <% for (var j in theme.menu[i]){ %>
+                                        <% if (j !== 'submenu') { %>
+                                          <li><a href="<%- url_for(theme.menu[i][j]) %>"><%- theme.label[i][j] %></a></li>
+                                        <% } %>
+                                      <% } %>
+                                    </ul>
+                                  </li>
+                                <% } else { %>
+                                  <li><a href="<%- url_for(theme.menu[i]) %>"><%- theme.label[i] %></a></li>
+                                <% } %>
                               <% } %>
                               </ul>
                             </nav>
