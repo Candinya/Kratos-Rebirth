@@ -8,7 +8,7 @@
             <footer class="kratos-entry-footer clearfix">
                 <div class="footer-tag clearfix">
                     <div class="pull-date">
-                    <span>最后编辑：<%= date(page.date) %></span>
+                    <span>最后编辑：<%= date(page.edit?page.edit:page.date, null) %></span>
                     </div>
                 </div>
             </footer>

@@ -6,7 +6,6 @@ var kr = new Object();
     kr.scan = "扫一扫，好不好？";
     kr.alipay = "/images/alipayqr.jpg";
     kr.wechat = "/images/wechatpayqr.png";
-    kr.site_sh = 55;
     kr.copy_notify = false;
     kr.copy_notify_text = "欢迎转载，请记得标明出处哦~";
     kr.site_logo = "images/favicon.png";
@@ -20,34 +19,54 @@ var kr = new Object();
     var shareMenu = function(){
         $(document).on("click",".Share",function(){$(".share-wrap").fadeToggle("slow");});
     }
-    var sidebaraffix = function(){
-        if($("#sidebar").height()&&kr.site_sh){
-            if($("#main").height()>$("#sidebar").height()){
-                var footerHeight = 0;
-                if($('#page-footer').length>0){
-                    footerHeight = $('#page-footer').outerHeight(true);
-                }
-                $('#sidebar').affix({
-                    offset:{
-                        top:$('#sidebar').offset().top-kr.site_sh,
-                        bottom:$('#footer').outerHeight(true)+footerHeight+6
+
+    var mainOffset, footerOffset, mainHeight, sidebarHeight;
+    var sidebarAffixInit = function(){
+        $('#sidebar').removeClass('affix');
+        $('#sidebar').removeClass('affix-top');
+        $('#sidebar').removeClass('affix-bottom');
+        $('#sidebar').css('top', '');
+        mainOffset = $('#main').offset().top;
+        footerOffset = $('#footer').offset().top;
+        mainHeight = $('#main').children('section').outerHeight(true);
+        sidebarHeight = $('#sidebar').outerHeight(true);
+    };
+    var sidebarAffix = function(){
+        sidebarAffixInit();
+        if ($("#sidebar").height()){
+            $(window).scroll(function(){
+                if (mainHeight > sidebarHeight) {
+                    if ($(window).scrollTop() < mainOffset - 54){
+                        $('#sidebar').addClass('affix-top');
+                        $('#sidebar').removeClass('affix');
+                        $('#sidebar').css('top', '');
+                    } else if ($(window).scrollTop() > footerOffset - sidebarHeight - 74){
+                        $('#sidebar').addClass('affix-bottom');
+                        $('#sidebar').removeClass('affix');
+                        $('#sidebar').css('top', footerOffset - sidebarHeight - 360 + 'px');
+                    } else {
+                        $('#sidebar').addClass('affix');
+                        $('#sidebar').removeClass('affix-top');
+                        $('#sidebar').removeClass('affix-bottom');
+                        $('#sidebar').css('top', '');
                     }
-                });
-            }
-        }
-    }
-    var toSearch = function(){
-        $('.search-box').on("click",function(e){
-            $("#searchform").animate({width:"200px"},200),
-            $("#searchform input").css('display','block');
-            $(document).one("click", function(){
-                $("#searchform").animate({width:"0"},100),
-                $("#searchform input").hide();
+                }
             });
-            e.stopPropagation();
-        });
-        $('#searchform').on("click",function(e){e.stopPropagation();})
-    }
+        }
+    };
+    
+    // var toSearch = function(){
+    //     $('.search-box').on("click",function(e){
+    //         $("#searchform").animate({width:"200px"},200),
+    //         $("#searchform input").css('display','block');
+    //         $(document).one("click", function(){
+    //             $("#searchform").animate({width:"0"},100),
+    //             $("#searchform input").hide();
+    //         });
+    //         e.stopPropagation();
+    //     });
+    //     $('#searchform').on("click",function(e){e.stopPropagation();})
+    // }
     var gotop = function(){
         $('.gotop-box').on('click',function(event){
             event.preventDefault();
@@ -159,21 +178,18 @@ var kr = new Object();
     $.fn.pjax_reload = function() {
         // showPhotos();
         setrandpic();
-        sidebaraffix();
-        //OwOcfg();
+        sidebarAffixInit();
     };
     $(function(){
         shareMenu();
-        //showlove();
         gotop();
-        toSearch();
+        // toSearch();
         // showPhotos();
         offcanvas();
         mobiClick();
         xControl();
         donateConfig();
-        //OwOcfg();
-        sidebaraffix();
+        sidebarAffix();
         setrandpic();
         
     });

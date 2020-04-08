@@ -42,7 +42,7 @@
                         }) %>
                     </div>
                     <div class="pull-date">
-                    <span>最后编辑：<%= date(page.date, null) %></span>
+                    <span>最后编辑：<%= date(page.edit?page.edit:page.date, null) %></span>
                     </div>
                 </div>
             </footer>
