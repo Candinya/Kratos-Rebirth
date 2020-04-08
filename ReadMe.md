@@ -6,7 +6,7 @@
 
 有为这个主题专门开发两个页面，详见[Kratos-Rebirth-Specified-Pages](https://github.com/Candinya/Kratos-Rebirth-Specified-Pages)
 
-核心结构&样式来源：[@xb2016](https://fczbl.vip) 狗狗大佬的[Kratos-pjax](https://github.com/xb2016/kratos-pjax)
+核心结构&样式来源：[@MoeDog](https://github.com/xb2016) 狗狗大佬的[Kratos-pjax](https://github.com/xb2016/kratos-pjax)
 
 非常感谢：
 - [hexo-theme-landscape](https://github.com/hexojs/hexo-theme-landscape)
