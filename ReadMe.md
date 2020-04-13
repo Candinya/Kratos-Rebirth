@@ -1,3 +1,5 @@
+![Kratos-Rebirth](https://repository-images.githubusercontent.com/132322562/46429300-7da7-11ea-8c82-d03503cb17b8)
+
 # 关于这个主题
 
 一只移植的主题，主要是个人使用，相关介绍可以参见主题说明页面~
