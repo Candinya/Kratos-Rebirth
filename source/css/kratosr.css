@@ -595,3 +595,7 @@ td.code {
 .color-logo {display: none}
 .affix {top: 54px}
 }
+
+.twitter-tweet {
+  margin: auto;
+}
