@@ -12,11 +12,11 @@
         };
     } else {
         DISQUS.reset({
-        reload: true,
-        config: function () {  
-            this.page.url = '<%- page.permalink %>';  // Replace PAGE_URL with your page's canonical URL variable
-            this.page.identifier = '<%- page.path %>'; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
-        }
+            reload: true,
+            config: function () {  
+                this.page.url = '<%- page.permalink %>';  // Replace PAGE_URL with your page's canonical URL variable
+                this.page.identifier = '<%- page.path %>'; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+            }
     });
     }
     

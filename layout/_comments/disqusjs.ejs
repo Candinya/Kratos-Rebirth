@@ -1,0 +1,17 @@
+<div id="disqus_thread" style="margin-top:16px;background-color:rgba(255,255,255,.8);padding: 0 10px;"></div>
+<script>
+    $(function(){
+        window.DISQUS = null;
+        new DisqusJS({
+            shortname: '<%- theme.disqusjs.shortname %>',
+            siteName: '<%- theme.disqusjs.sitename %>',
+            identifier: '<%- page.path %>',
+            url: '<%- page.permalink %>',
+            api: '<%- theme.disqusjs.api %>',
+            apikey: '<%- theme.disqusjs.apikey %>',
+            admin: '<%- theme.disqusjs.admin %>',
+            adminLabel: '<%- theme.disqusjs.adminlabel %>'
+        });
+    });
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://github.com/SukkaW/DisqusJS">comments powered by DisqusJS.</a></noscript>

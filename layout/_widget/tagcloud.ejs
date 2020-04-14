@@ -2,7 +2,11 @@
   <aside id="kratos_tags-2" class="widget widget_kratos_tags clearfix">
     <h4 class="widget-title"><%= __('tagcloud') %></h4>
       <div class="tag_clouds">
-        <%- tagcloud() %>
+        <%- tagcloud({
+          min_font: .6, 
+          max_font: .8,
+          unit: 'em'
+      }) %>
       </div>
   </aside>
 <% } %>

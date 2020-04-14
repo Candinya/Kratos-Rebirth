@@ -31,21 +31,30 @@ contact:
   weibo: 
   tweibo: 
   mail: 
-  twitter: https://twitter.com/Candiinya
+  twitter: 
   facebook: 
   linkedin: 
-  github: https://github.com/Candinya
+  github: 
   
 # Post Page
 posts:
   show_cc: true
   donate: false
   share: true
-  comments: true
+  comments: disqusjs
 
 # Disqus
 disqus:
-  shortname: candiblog
+  shortname: 
+
+# DisqusJS
+disqusjs:
+  shortname: 
+  sitename: 
+  api: 
+  apikey: 
+  admin: 
+  adminlabel: 
 
 # Widgets
 sidebar: right
@@ -54,7 +63,7 @@ widgets:
 - category
 - tagcloud
 - posts
-avatarUri: https://cn.gravatar.com/avatar/a7f9e15fef26e0a540edc977e21cb3eb
+avatarUri: /images/avatar.png
 
 # Code Highlight Themes: normal | night | night eighties | night blue | night bright
 highlight_theme: night eighties

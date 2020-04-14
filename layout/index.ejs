@@ -25,7 +25,11 @@
                                 </header>
                                 <div class="kratos-entry-content-new">
                                     <p>
-                                        <%- post.excerpt %>
+                                        <% if (trim(post.excerpt)) { %>
+                                            <%- trim(post.excerpt) %>
+                                        <% } else { %>
+                                            <%- truncate(post.content, 45) %>
+                                        <% } %>
                                     </p>
                                 </div>
                             </div>

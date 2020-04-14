@@ -16,33 +16,32 @@ var kr = new Object();
 //-------------------参数设置区 结束-------------------
 
 (function(){
-    var shareMenu = function(){
-        $(document).on("click",".Share",function(){$(".share-wrap").fadeToggle("slow");});
+    var shareMenu = ()=>{
+        $(document).on("click",".Share",()=>{$(".share-wrap").fadeToggle("slow");});
     }
 
-    var mainOffset, mainHeight, sidebarHeight;
-    var sidebarAffixInit = function(){
+    var mainOffset, mainHeight;
+    var sidebarAffixInit = ()=>{
         $('#sidebar').removeClass('affix');
         $('#sidebar').removeClass('affix-top');
         $('#sidebar').removeClass('affix-bottom');
         $('#sidebar').css('top', '');
         mainOffset = $('#main').offset().top;
         mainHeight = $('#main').children('section').outerHeight(true);
-        sidebarHeight = $('#sidebar').outerHeight(true);
     };
-    var sidebarAffix = function(){
+    var sidebarAffix = ()=>{
         sidebarAffixInit();
         if ($("#sidebar").height()){
-            $(window).scroll(function(){
-                if (mainHeight > sidebarHeight) {
+            $(window).scroll(()=>{
+                if (mainHeight > $('#sidebar').outerHeight(true)) {
                     if ($(window).scrollTop() < mainOffset - 54){
                         $('#sidebar').addClass('affix-top');
                         $('#sidebar').removeClass('affix');
                         $('#sidebar').css('top', '');
-                    } else if ($(window).scrollTop() > $('#footer').offset().top - sidebarHeight - 74){
+                    } else if ($(window).scrollTop() > $('#footer').offset().top - $('#sidebar').outerHeight(true) - 56){
                         $('#sidebar').addClass('affix-bottom');
                         $('#sidebar').removeClass('affix');
-                        $('#sidebar').css('top', $('#footer').offset().top - sidebarHeight - 360 + 'px');
+                        $('#sidebar').css('top', $('#footer').offset().top - $('#sidebar').outerHeight(true) - 345 + 'px');
                     } else {
                         $('#sidebar').addClass('affix');
                         $('#sidebar').removeClass('affix-top');
@@ -66,7 +65,7 @@ var kr = new Object();
     //     });
     //     $('#searchform').on("click",function(e){e.stopPropagation();})
     // }
-    var gotop = function(){
+    var gotop = ()=>{
         $('.gotop-box').on('click',function(event){
             event.preventDefault();
             $('html, body').animate({
@@ -75,7 +74,7 @@ var kr = new Object();
             //if (notMobile) $("#kratos-menu-wrap").slideDown();
             return false;
         });
-        $(window).scroll(function(){
+        $(window).scroll(()=>{
             if ($(window).scrollTop()>200){
                 $('.cd-tool').addClass('scrollDown');
                 //$("#kratos-menu-wrap").slideUp();
@@ -91,7 +90,7 @@ var kr = new Object();
     //       anim: 0
     //     });
     // }
-    var offcanvas = function(){
+    var offcanvas = ()=>{
         var $clone = $('#kratos-menu-wrap').clone();
         $clone.attr({
             'id':'offcanvas-menu'
@@ -101,7 +100,7 @@ var kr = new Object();
             'id':''
         });
         $('#kratos-page').prepend($clone);
-        $('.js-kratos-nav-toggle').on('click',function(){
+        $('.js-kratos-nav-toggle').on('click',()=>{
             if($('.nav-toggle').hasClass('toon')){
                 $('.nav-toggle').removeClass('toon');
                 $('#offcanvas-menu').css('right','-240px');
@@ -112,7 +111,7 @@ var kr = new Object();
         });
         $('#offcanvas-menu').css('height',$(window).height());
         $('#offcanvas-menu').css('right','-240px');
-        $(window).resize(function(){
+        $(window).resize(()=>{
             var w = $(window);
             $('#offcanvas-menu').css('height',w.height());
             if(w.width()>769){
@@ -123,8 +122,8 @@ var kr = new Object();
             }
         });
     }
-    var mobiClick = function(){
-        $(document).click(function(e){
+    var mobiClick = ()=>{
+        $(document).click((e)=>{
             var container = $("#offcanvas-menu,.js-kratos-nav-toggle");
             if(!container.is(e.target)&&container.has(e.target).length===0){
                 if($('.nav-toggle').hasClass('toon')){
@@ -134,8 +133,8 @@ var kr = new Object();
             }
         });
     }
-    var xControl = function(){
-        $(document).on("click",".xHeading",function(){
+    var xControl = ()=>{
+        $(document).on("click",".xHeading",()=>{
             var $this = $(this);
             $this.closest('.xControl').filter('.xContent').slideToggle(300);
             if ($this.closest('.xControl').hasClass('active')){
@@ -146,8 +145,8 @@ var kr = new Object();
             event.preventDefault();
         });
     }
-    var donateConfig = function(){
-        $(document).on("click",".Donate",function(){
+    var donateConfig = ()=>{
+        $(document).on("click",".Donate",()=>{
             layer.open({
                 type:1,
                 area:['300px', '370px'],
@@ -156,7 +155,7 @@ var kr = new Object();
                 scrollbar:false,
                 content:'<div class="donate-box"><div class="meta-pay text-center"><strong>'+kr.scan+'</strong></div><div class="qr-pay text-center"><img class="pay-img" id="alipay_qr" src="'+kr.alipay+'"><img class="pay-img d-none" id="wechat_qr" src="'+kr.wechat+'"></div><div class="choose-pay text-center mt-2"><input id="alipay" type="radio" name="pay-method" checked><label for="alipay" class="pay-button"><img src="' + kr.thome + 'images/alipay.png"></label><input id="wechatpay" type="radio" name="pay-method"><label for="wechatpay" class="pay-button"><img src="' + kr.thome + 'images/wechat.png"></label></div></div>'
             });
-            $(".choose-pay input[type='radio']").click(function(){
+            $(".choose-pay input[type='radio']").click(()=>{
                 var id= $(this).attr("id");
                 if(id=='alipay'){$(".qr-pay #alipay_qr").removeClass('d-none');$(".qr-pay #wechat_qr").addClass('d-none')};
                 if(id=='wechatpay'){$(".qr-pay #alipay_qr").addClass('d-none');$(".qr-pay #wechat_qr").removeClass('d-none')};
@@ -164,7 +163,7 @@ var kr = new Object();
         });
     }
 
-    var setrandpic = function() {
+    var setrandpic = ()=>{
         //图片
         var imageboxs = document.getElementsByClassName("kratos-entry-thumb-new-img");
         for(var i = 0, len = imageboxs.length; i < len; i++) {
@@ -175,12 +174,12 @@ var kr = new Object();
         }
     }
 
-    $.fn.pjax_reload = function() {
+    $.fn.pjax_reload = ()=>{
         // showPhotos();
         setrandpic();
         sidebarAffixInit();
     };
-    $(function(){
+    $(()=>{
         shareMenu();
         gotop();
         // toSearch();
@@ -211,12 +210,10 @@ function createtime(){
 setInterval("createtime()",1000);
 
 if (kr.copy_notify) {
-    document.body.oncopy = function(){alert(kr.copy_notify_text);}
+    document.body.oncopy = ()=>{alert(kr.copy_notify_text);}
 }
 
-window.onload = function(){
-    // var now = new Date().getTime();
-    // var page_load_time = now-performance.timing.navigationStart;
+window.onload = ()=>{
     console.log('%c页面加载完毕消耗了'+Math.round(performance.now()*100)/100+'ms','background:#fff;color:#333;text-shadow:0 0 2px #eee,0 0 3px #eee,0 0 3px #eee,0 0 2px #eee,0 0 3px #eee;');
     // if (!(notMobile)) {
     //     $('.qqg-box').attr("style", "display:none");
@@ -225,7 +222,7 @@ window.onload = function(){
 
 if (kr.enable_site_leave_event) {
     var OriginTitile = document.title, titleTime;
-    document.addEventListener('visibilitychange', function() {
+    document.addEventListener('visibilitychange', ()=>{
         if (document.hidden) {
             document.title = kr.site_title_leave + OriginTitile;
             $('[rel="icon"]').attr("href", kr.thome + kr.site_logo_leave);
@@ -233,7 +230,7 @@ if (kr.enable_site_leave_event) {
         } else {
             document.title = kr.site_title_return + OriginTitile;
             $('[rel="icon"]').attr("href", kr.thome + kr.site_logo);
-            titleTime = setTimeout(function() {
+            titleTime = setTimeout(()=>{
                 document.title = OriginTitile;
             }, 2000);
         }

@@ -62,7 +62,7 @@
             </nav>
         <% } %>
         <% if (theme.posts.comments) { %>
-            <%- partial('_third-party/comments') %>
+            <%- partial('_comments/' + theme.posts.comments) %>
         <% } %>
     </article>
 </section>
