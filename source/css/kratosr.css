@@ -303,12 +303,13 @@ td,th{padding:0}
 .kratos-post-inner div:last-child.kratos-copyright{margin-bottom:20px}
 .kratos-post-inner-new{margin-left:255px;height:160px;padding:21px 20px 0 3px}
 .kratos-post-inner-new header .label-link{position:relative;display:inline-block;padding:4px 6px 3px;font-size:12px;font-weight:700;line-height:14px;color:#fff;vertical-align:baseline;white-space:nowrap;background-color:#51aded;margin-right:5px;position:relative;top:-2px;border-radius:0;cursor:pointer}
-/* .kratos-post-inner-new header .label .label-arrow{position:absolute;width:0;height:0;vertical-align:top;content:"";top:8px;right:-3px;border-left:4px solid #51aded;border-top:4px solid transparent;border-bottom:4px solid transparent} */
+.kratos-post-inner-new header .label-link:after{position:absolute;width:0;height:0;vertical-align:top;content:"";top:8px;right:-3px;border-left:4px solid #51aded;border-top:4px solid transparent;border-bottom:4px solid transparent;}
 .kratos-post-inner-new header .label-link:hover{color:#fff!important}
 .kratos-post-content{word-break:break-all;word-wrap:break-word;margin:10px}
 .kratos-post-content p{margin-bottom:1em;font-size:16px;color:#333}
 .kratos-post-content img{height:auto;max-width:100%;display:block;margin:0 auto;border-radius:2px}
 .kratos-post-content embed{max-width:100%}
+.kratos-post-content div{margin:auto;}
 .kratos-entry-header{margin-bottom:15px}
 .kratos-entry-title{margin:0 0 15px;font-size:45px}
 .kratos-entry-title-new{display:inline;margin:0;font-size:21px}
@@ -594,5 +595,3 @@ td.code {
 .color-logo {display: none}
 .affix {top: 54px}
 }
-
-.twitter-tweet{margin:auto;}
