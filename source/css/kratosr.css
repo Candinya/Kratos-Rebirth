@@ -303,7 +303,7 @@ td,th{padding:0}
 .kratos-post-inner div:last-child.kratos-copyright{margin-bottom:20px}
 .kratos-post-inner-new{margin-left:255px;height:160px;padding:21px 20px 0 3px}
 .kratos-post-inner-new header .label-link{position:relative;display:inline-block;padding:4px 6px 3px;font-size:12px;font-weight:700;line-height:14px;color:#fff;vertical-align:baseline;white-space:nowrap;background-color:#51aded;margin-right:5px;position:relative;top:-2px;border-radius:0;cursor:pointer}
-.kratos-post-inner-new header .label-link:after{position:absolute;width:0;height:0;vertical-align:top;content:"";top:8px;right:-3px;border-left:4px solid #51aded;border-top:4px solid transparent;border-bottom:4px solid transparent;}
+.kratos-post-inner-new header .label-link:after{position:absolute;width:0;height:0;vertical-align:top;content:"";top:6px;right:-4px;border-left:4px solid #51aded;border-top:4px solid transparent;border-bottom:4px solid transparent;}
 .kratos-post-inner-new header .label-link:hover{color:#fff!important}
 .kratos-post-content{word-break:break-all;word-wrap:break-word;margin:10px}
 .kratos-post-content p{margin-bottom:1em;font-size:16px;color:#333}
@@ -342,6 +342,7 @@ td,th{padding:0}
 .kratos-entry-footer .post-like-donate .Share:focus{color:#78ce79!important}
 .kratos-entry-footer .post-like-donate .Share:hover{background-color:#78ce79;color:#fff!important}
 .kratos-entry-footer .post-like-donate .weixin:focus{color:#38ad5a!important}
+.kratos-entry-footer .post-like-donate .qzone:focus{color:#f1a802!important}
 .kratos-entry-footer .post-like-donate .facebook:focus{color:#3e569b!important}
 .kratos-entry-footer .post-like-donate .googleplus:focus{color:#f63e28!important}
 .kratos-entry-footer .post-like-donate .twitter:focus{color:#55acee!important}
@@ -358,15 +359,14 @@ td,th{padding:0}
 .kratos-entry-footer .footer-tag .pull-date{float:right;margin-top:5px;font-size:14px}
 .share-wrap{display:block;margin:10px 0 -20px}
 .share-plain,.share-wrap{position:relative;text-align:center}
-.share-plain{display:inline-block!important;box-sizing:border-box;margin:4px 3px!important;padding:0;width:2pc!important;height:2pc!important;border:1px solid #bdc4d6;border-radius:30px!important;color:#bdc4d6;white-space:nowrap;line-height:30px!important;cursor:pointer;-webkit-transition:all .2s ease;transition:all .2s ease;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}
+.share-plain{display:inline-block!important;box-sizing:border-box;margin:4px 3px!important;padding:0;width:2pc!important;height:2pc!important;border:1px solid #bdc4d6;border-radius:30px!important;color:#bdc4d6;white-space:nowrap;line-height:30px!important;cursor:pointer;-webkit-transition:all .2s ease;transition:all .2s ease;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;border-width:1px;background-color:transparent;}
 .share-plain .icon-wrap{vertical-align:middle;text-align:center;line-height:30px}
 .share-plain.weibo{border-color:#e6162d!important;color:#e6162d!important}
-.share-plain.twitter,.share-plain.weibo{border-width:1px!important;background-color:transparent}
 .share-plain.twitter{border-color:#55acee!important;color:#55acee!important}
 .share-plain.facebook{border-color:#3e569b!important;color:#3e569b!important}
-.share-plain.facebook,.share-plain.googleplus{border-width:1px!important;background-color:transparent}
 .share-plain.googleplus{border-color:#f63e28!important;color:#f63e28!important}
-.share-plain.weixin{border-color:#38ad5a!important;border-width:1px!important;background-color:transparent;color:#38ad5a!important}
+.share-plain.weixin{border-color:#38ad5a!important;color:#38ad5a!important}
+.share-plain.qzone{border-color:#fece00!important;color:#fece00!important}
 .share-plain.pop:hover .share-int{display:block;opacity:1}
 .share-plain .share-int{position:absolute;bottom:50px;left:50%;z-index:8;display:none;margin-left:-110px;padding:10px;width:220px;border:1px solid #d8d8d8;border-radius:2px;background-color:#fff;box-shadow:0 2px 5px rgba(0,0,0,.1);color:#555;text-align:center;opacity:.2;-webkit-transition:all .1s ease;transition:all .1s ease}
 .share-plain .share-int:after{position:absolute;bottom:-20px;left:50%;display:block;margin-left:-25px;width:50px;height:20px;background:url(/images/arrow.png) 0 0 no-repeat;background-size:50px 20px;content:''}
