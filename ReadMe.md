@@ -22,6 +22,11 @@
 
 ## 关于使用的环境
 
+为了获得更佳的使用体验，建议安装的插件有：
+
+- hexo-generator-index-pin-top
+- hexo-generator-feed
+
 请注意，不同版本的 Hexo 及相关附属对于此模板的兼容性可能会存在一定的冲突，此处附上开发环境的`package.json`：
 
 ``` json
@@ -42,7 +47,9 @@
     "hexo": "^4.2.0",
     "hexo-generator-archive": "^1.0.0",
     "hexo-generator-category": "^1.0.0",
+    "hexo-generator-feed": "^2.2.0",
     "hexo-generator-index": "^1.0.0",
+    "hexo-generator-index-pin-top": "^0.2.2",
     "hexo-generator-tag": "^1.0.0",
     "hexo-renderer-ejs": "^1.0.0",
     "hexo-renderer-marked": "^2.0.0",
