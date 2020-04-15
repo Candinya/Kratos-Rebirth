@@ -35,6 +35,7 @@ contact:
   facebook: 
   linkedin: 
   github: 
+  rss: /atom.xml
   
 # Post Page
 posts:
