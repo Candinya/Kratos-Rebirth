@@ -16,6 +16,7 @@
 - [hexo-theme-sagiri](https://github.com/DIYgod/diygod.me/tree/master/themes/sagiri)
 - [hexo-theme-landscape](https://github.com/hexojs/hexo-theme-landscape)
 - [DisqusJS](https://github.com/SukkaW/DisqusJS)
+- [APlayer](https://github.com/MoePlayer/APlayer)
 - [NProgress](https://github.com/rstacruz/nprogress)
 - [CloudFlare](https://www.cloudflare.com/)
 - [jsDelivr](https://www.jsdelivr.com/)
