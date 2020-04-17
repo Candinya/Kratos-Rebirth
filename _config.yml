@@ -3,6 +3,7 @@ site_analytics:
 hoster: <a href="https://github.io" target="_blank">Github Pages</a>
 site_logo: /images/favicon.png
 snow: false
+aplayer: true
 
 # Top Menu
 menu:
@@ -14,6 +15,10 @@ menu:
     submenu: true
     candifonts: https://fonts.candys.dev
     candidenty: https://id.candys.dev
+  sites:
+    submenu: true
+    oldapi: https://old-api.lcy.moe
+    newapi: https://api.lcy.moe
 
 label:
   index: <i class="fa fa-home"></i>&nbsp;首页
@@ -24,6 +29,10 @@ label:
     submenu: <i class="fa fa-flask"></i>&nbsp;实验室
     candifonts: 缤纷字生成
     candidenty: 身份证工具
+  sites:
+    submenu: <i class="fa fa-link"></i>&nbsp;小小站
+    oldapi: 过气的老API
+    newapi: 新API(建设中)
 
 # Footer
 qqg_link: 
@@ -35,7 +44,8 @@ contact:
   facebook: 
   linkedin: 
   github: 
-  rss: /atom.xml
+  rss: atom.xml
+playlist: 
   
 # Post Page
 posts:
