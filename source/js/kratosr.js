@@ -20,21 +20,20 @@ var kr = new Object();
         $(document).on("click",".Share",()=>{$(".share-wrap").fadeToggle("slow");});
     }
 
-    var mainOffset, mainHeight;
+    var mainOffset;
     var sidebarAffixInit = ()=>{
         $('#sidebar').removeClass('affix');
         $('#sidebar').removeClass('affix-top');
         $('#sidebar').removeClass('affix-bottom');
         $('#sidebar').css('top', '');
         mainOffset = $('#main').offset().top;
-        mainHeight = $('#main').children('section').outerHeight(true);
     };
     var sidebarAffix = ()=>{
         sidebarAffixInit();
         if ($("#sidebar").height()){
             $(window).scroll(()=>{
-                if (mainHeight > $('#sidebar').outerHeight(true)) {
-                    if ($(window).scrollTop() < mainOffset - 54){
+                if ($('#main').children('section').outerHeight(true) > $('#sidebar').outerHeight(true)) {
+                    if ($(window).scrollTop() < mainOffset - 56){
                         $('#sidebar').addClass('affix-top');
                         $('#sidebar').removeClass('affix');
                         $('#sidebar').css('top', '');
