@@ -41,7 +41,7 @@
             var googleplusShareURL="https://plus.google.com/share?";
             var host_url="<%- page.permalink %>";
             var title="【<%- page.title %>】";
-            var excerpt="<% if (page.excerpt){ %><%= strip_html(page.excerpt) %><% } else { %><%- strip_html(truncate(post.content, 45)) %><% } %>";
+            var excerpt="<% if (page.excerpt){ %><%= strip_html(page.excerpt) %><% } else { %><%- strip_html(truncate(page.content, 45)) %><% } %>";
             var _URL;
             if(obj=="qq"){
                 _URL=qqShareURL+"url="+host_url+"&title="+title+"&desc=&summary="+excerpt+"&site=cxpy";

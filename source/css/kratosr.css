@@ -389,7 +389,7 @@ thead{background-color: lightblue;}
 .widget a:hover{color:#618eba}.widget li{padding-top:2px;padding-bottom:2px}
 .widget .children{padding-left:30px}
 .widget_kratos_about{padding:0!important}
-.widget_kratos_about p{margin-bottom:1em;font-size:16px;margin:0}
+.widget_kratos_about p{margin-bottom:1em;font-size:16px;margin:20px}
 .widget_kratos_about .photo-wrapper{width:100%}
 .widget_kratos_about .photo-wrapper img{margin:-50px 0 0;width:90px;height:90px;border:rgba(255,255,255,.4) 4px solid;border-radius:50%}
 .widget_kratos_about .photo-background{height:120px}
