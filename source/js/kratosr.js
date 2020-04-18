@@ -173,11 +173,35 @@ var kr = new Object();
         }
     }
 
+    var fancyboxInit = ()=>{
+        $('.kratos-hentry').each(function(i){
+            $(this).find('img').each(function(){
+              if ($(this).parent().hasClass('fancybox') || $(this).parent().is('a')) return;
+              var alt = this.alt;
+              if (alt) $(this).after('<span class="caption">' + alt + '</span>');
+              $(this).wrap('<a rel="gallery" href="' + this.src + '" data-fancybox=\"gallery\" data-caption="' + alt + '"></a>')
+            });
+        
+            $(this).find('.fancybox').each(function(){
+              $(this).attr('rel', 'article' + i);
+            });
+          });
+        
+          if ($.fancybox){
+            $('.fancybox').fancybox();
+          }
+
+    }
+
     $.fn.pjax_reload = ()=>{
         // showPhotos();
         setrandpic();
         sidebarAffixInit();
+        fancyboxInit();
     };
+
+    
+
     $(()=>{
         shareMenu();
         gotop();
@@ -189,7 +213,7 @@ var kr = new Object();
         donateConfig();
         sidebarAffix();
         setrandpic();
-        
+        fancyboxInit();
     });
 }());
 

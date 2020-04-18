@@ -82,3 +82,6 @@ avatarUri: /images/avatar.png
 
 # Code Highlight Themes: normal | night | night eighties | night blue | night bright
 highlight_theme: night eighties
+
+# Fancybox
+fancybox: true

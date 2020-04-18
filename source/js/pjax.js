@@ -54,8 +54,9 @@ $(function() {
             }
         });
     }
-    $(document).on("click", 'a[target!=_blank]',
-    function() {
+    $(document).on("click", 'a[target!=_blank][rel!=gallery]', function() {
+      //var fancybox = $(this).data('fancybox');
+      //if(fancybox && fancybox === 'gallery') return false;
       var req_url = $(this).attr("href");
       if (req_url === undefined) return true;
       else if (req_url.indexOf( "javascript:") !== -1) return true;
