@@ -2,12 +2,13 @@
 <script>
 $.ajax({
     type:"get",
-    url:"<%- theme.playlist %>",
+    url:"<%- theme.aplayer.playlist %>",
     dataType:"json",
     success: function(data){
         new APlayer({
             container: document.getElementById('aplayer'),
             fixed: true,
+            order: '<%- theme.aplayer.order %>',
             lrcType: 3,
             audio: data
         });

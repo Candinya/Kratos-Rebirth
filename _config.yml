@@ -3,7 +3,6 @@ site_analytics:
 hoster: <a href="https://github.io" target="_blank">Github Pages</a>
 site_logo: /images/favicon.png
 snow: false
-aplayer: true
 
 # Top Menu
 menu:
@@ -45,7 +44,6 @@ contact:
   linkedin: 
   github: 
   rss: atom.xml
-playlist: 
   
 # Post Page
 posts:
@@ -66,6 +64,12 @@ disqusjs:
   apikey: 
   admin: 
   adminlabel: 
+
+# APlayer
+aplayer:
+  enabled: true
+  playlist: 
+  order: random
 
 # Widgets
 sidebar: right
