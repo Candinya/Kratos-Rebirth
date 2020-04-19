@@ -5,18 +5,18 @@ $(function() {
         $(this).pjax_reload();
         OriginTitile = document.title;
     }
-    window.addEventListener('popstate', function(e) {
-        if( e.state ){
-            document.title = e.state.title;
-            $("body,html").animate({scrollTop:theTop}, 600);
-            if (e.state.html === undefined) {
-                ajax(e.state.url, false);
-            } else {
-                $(ajx_main).html( e.state.html );
-            }
-            window.load = reload_func();
-        }
-    });
+    // window.addEventListener('popstate', function(e) {
+    //     if( e.state ){
+    //         document.title = e.state.title;
+    //         $("body,html").animate({scrollTop:theTop}, 600);
+    //         if (e.state.html === undefined) {
+    //             ajax(e.state.url, false);
+    //         } else {
+    //             $(ajx_main).html( e.state.html );
+    //         }
+    //         window.load = reload_func();
+    //     }
+    // });
     function ajax(reqUrl, needPushState) {
         $.ajax({
             url: reqUrl,
