@@ -47,6 +47,8 @@ var kr = new Object();
                         $('#sidebar').removeClass('affix-bottom');
                         $('#sidebar').css('top', '');
                     }
+                } else {
+                    sidebarAffixInit();
                 }
             });
         }
