@@ -58,6 +58,9 @@
 </footer>
 </div>
 </div>
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.4/dist/js/bootstrap.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.js"></script>
 <script>var notMobile = (!(navigator.userAgent.match(/(phone|pad|pod|iPhone|iPod|ios|iPad|Android|Mobile|BlackBerry|IEMobile|MQQBrowser|JUC|Fennec|wOSBrowser|BrowserNG|WebOS|Symbian|Windows Phone)/i)));</script>
 <% if(theme.snow){ %>
     <div>
@@ -65,19 +68,20 @@
     <script defer type="text/javascript" src="/js/snow.js"></script>
     </div>
 <% } %>
-<script defer src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.4/dist/js/bootstrap.min.js"></script>
-<script defer src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.js"></script>
-<script defer src="/js/layer.min.js"></script>
-<script defer src="/js/kratosr.js"></script>
-<script defer src="/js/pjax.js"></script>
 <script defer src="/js/candy.js"></script>
-<%- theme.site_analytics %>
+<% if (theme.posts.comments == 'disqusjs') { %>
+    <script defer src="https://cdn.jsdelivr.net/npm/disqusjs@1.2.6/dist/disqus.js"></script>
+<% } %>
 <% if (theme.aplayer.enabled) { %>
-    <script src="https://cdn.jsdelivr.net/npm/aplayer@1.10.1/dist/APlayer.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/aplayer@1.10.1/dist/APlayer.min.js"></script>
     <%- partial('../_tools/player') %>
 <% }%>
 <% if (theme.fancybox){ %>
-    <script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
 <% } %>
+<script defer src="/js/kratosr.js"></script>
+<script defer src="/js/pjax.js"></script>
+<%- theme.site_analytics %>
+
 </body>
 </html>
