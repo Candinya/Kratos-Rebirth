@@ -7,49 +7,29 @@ $code-block {
   overflow: auto;
   margin: 20px 0;
   padding: 0;
-  font-size $code-font-size;
+  font-size: $code-font-size;
+  font-weight: unset;
   color: $highlight-foreground;
   background: $highlight-background;
-  line-height: $line-height-code-block;
 }
 
-pre, code { font-family: $code-font-family; }
-
-code {
-  padding: 2px 4px;
-  word-wrap: break-word;
-  color: $code-foreground;
-  background: $code-background;
-  border-radius: $code-border-radius;
-  font-size $code-font-size;
-}
-
-pre {
-  @extend $code-block;
-  padding: 10px;
-
-  code {
-    padding: 0;
-    color: $highlight-foreground;
-    background: none;
-    text-shadow: none;
-  }
-}
 
 .highlight {
   @extend $code-block;
-  border-radius: 1px
-
   pre {
     border: none;
     margin: 0;
     padding: 10px 0;
+    color: $highlight-foreground;
+    background: none;
   }
 
   table {
     margin: 0;
     width: auto;
     border: none;
+    border-spacing: unset;
+    border-collapse: unset;
   }
 
   td {
@@ -57,22 +37,8 @@ pre {
     padding: 0;
   }
 
-  figcaption {
-    clearfix();
-    font-size: 1em;
-    color: $highlight-foreground;
-    line-height: 1em;
-    margin-bottom: 1em;
-
-    a {
-      float: right;
-      color: $highlight-foreground;
-
-      &:hover { border-bottom-color: $highlight-foreground; }
-    }
-  }
-
   .gutter pre {
+    overflow: hidden
     padding-left: 10px
     padding-right: 10px
     color: $highlight-gutter.color
@@ -81,26 +47,18 @@ pre {
   }
 
   .code pre {
-    width: 100%
+    overflow: hidden
     padding-left: 10px
     padding-right: 10px
+    text-align: left
     background-color: $highlight-background
   }
 
-  .line { height: 20px; }
 }
 
-
-.gutter {
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-}
 
 .gist table {
   width: auto;
-
   td { border: none; }
 }
 
@@ -110,9 +68,7 @@ pre .addition { background: $highlight-addition; }
 pre .meta     { color: $highlight-purple; }
 
 pre {
-
   .comment { color: $highlight-comment; }
-
   .variable
   .attribute
   .tag
