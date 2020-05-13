@@ -171,7 +171,7 @@ var kr = new Object();
             $.fancybox.defaults.hash = false;
             $('.kratos-hentry').each(function(i){
                 $(this).find('img').each(function(){
-                  if ($(this).parent().hasClass('fancybox') || $(this).parent().is('a')) return;
+                  if ($(this).parent().hasClass('fancybox') || $(this).parent().hasClass('qrcode') || $(this).parent().is('a')) return;
                   var alt = this.alt;
                   if (alt) $(this).after('<span class="caption">' + alt + '</span>');
                   $(this).wrap('<a rel="gallery" href="' + this.src + '" data-fancybox=\"gallery\" data-caption="' + alt + '"></a>')

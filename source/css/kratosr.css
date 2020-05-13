@@ -327,17 +327,19 @@ thead{background-color: lightblue;}
 .share-plain,.share-wrap{position:relative;text-align:center}
 .share-plain{display:inline-block!important;box-sizing:border-box;margin:4px 3px!important;padding:0;width:2pc!important;height:2pc!important;border:1px solid #bdc4d6;border-radius:30px!important;color:#bdc4d6;white-space:nowrap;line-height:30px!important;cursor:pointer;-webkit-transition:all .2s ease;transition:all .2s ease;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;border-width:1px;background-color:transparent;}
 .share-plain .icon-wrap{vertical-align:middle;text-align:center;line-height:30px}
+.share-plain.qq{border-color:deepskyblue!important;color:deepskyblue!important}
+.share-plain.qzone{border-color:#fece00!important;color:#fece00!important}
 .share-plain.weibo{border-color:#e6162d!important;color:#e6162d!important}
 .share-plain.twitter{border-color:#55acee!important;color:#55acee!important}
 .share-plain.facebook{border-color:#3e569b!important;color:#3e569b!important}
 .share-plain.googleplus{border-color:#f63e28!important;color:#f63e28!important}
 .share-plain.weixin{border-color:#38ad5a!important;color:#38ad5a!important}
-.share-plain.qzone{border-color:#fece00!important;color:#fece00!important}
 .share-plain.pop:hover .share-int{display:block;opacity:1}
 .share-plain .share-int{position:absolute;bottom:50px;left:50%;z-index:8;display:none;margin-left:-110px;padding:10px;width:220px;border:1px solid #d8d8d8;border-radius:2px;background-color:#fff;box-shadow:0 2px 5px rgba(0,0,0,.1);color:#555;text-align:center;opacity:.2;-webkit-transition:all .1s ease;transition:all .1s ease}
 .share-plain .share-int:after{position:absolute;bottom:-20px;left:50%;display:block;margin-left:-25px;width:50px;height:20px;background:url(/images/arrow.png) 0 0 no-repeat;background-size:50px 20px;content:''}
 .share-plain .share-int canvas,.share-plain .share-int img{margin:15px 0 -6px;height:auto;max-width:100%}
 .share-plain .share-int p{margin:15px 0 0;color:#676767;white-space:normal;word-wrap:break-word;font-size:14px;line-height:1.5}
+.share-plain .share-int img{display:inline-block!important;}
 .kratos-copyright{background-color:rgba(220,220,220,.7);margin:25px 0 0}
 .kratos-copyright h5{margin:15px;color:#666;font-size:13px;font-weight:300}
 .kratos-copyright a{color:#777}
