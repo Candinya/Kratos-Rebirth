@@ -160,7 +160,6 @@ var kr = new Object();
         var imageboxs = document.getElementsByClassName("kratos-entry-thumb-new-img");
         for(var i = 0, len = imageboxs.length; i < len; i++) {
             if (!($(imageboxs[i]).attr("src")))
-                // $(imageboxs[i]).attr("src", "https://cdn.jsdelivr.net/gh/Candinya/Kratos-Rebirth@0.9-beta.3/source/images/thumb/thumb_"+Math.floor(Math.random()*20+1)+".jpg");
                 $(imageboxs[i]).attr("src", kr.thome + "images/thumb/thumb_"+Math.floor(Math.random()*20+1)+".jpg");
 
         }
@@ -203,8 +202,7 @@ var kr = new Object();
         xControl();
         donateConfig();
         sidebarAffix();
-        setrandpic();
-        fancyboxInit();
+        $(this).pjax_reload();
     });
 }());
 
