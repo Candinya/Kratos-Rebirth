@@ -272,7 +272,7 @@ thead{background-color: lightblue;}
 .kratos-post-inner-new header .label-link:after{position:absolute;width:0;height:0;vertical-align:top;content:"";top:6px;right:-4px;border-left:4px solid #51aded;border-top:4px solid transparent;border-bottom:4px solid transparent;}
 .kratos-post-inner-new header .label-link:hover{color:#fff!important}
 .kratos-post-content{word-break:break-all;word-wrap:break-word;margin:10px}
-.kratos-post-content p{margin-bottom:1em;font-size:16px;color:#333}
+.kratos-post-content p{margin-bottom:1em;font-size:16px;color:#333;text-indent:2em}
 .kratos-post-content img{height:auto;max-width:100%;display:block;margin:0 auto;border-radius:2px}
 .kratos-post-content embed{max-width:100%}
 .kratos-post-content div{margin:auto;}
