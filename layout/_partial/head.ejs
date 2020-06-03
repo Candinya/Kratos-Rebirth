@@ -10,8 +10,23 @@
   <meta name="robots" content="index,follow">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="format-detection" content="telphone=no, email=no">
-  <meta name="description" itemprop="description" content="<%= config.description %>">
-  <meta name="keywords" content="<%= config.keywords %>">
+  <!-- 对OG做了适配，但是暂时没有必要加入到pjax里面，因为这些用户看不到，爬虫爬的时候也不会使用pjax来跳转。 -->
+  <% if (is_post()) { %>
+    <% if (page.excerpt) { %>
+      <meta name="description" itemprop="description" content="<%- strip_html(strip_html(page.excerpt)) %>">
+      <meta name="keywords" content="<%- strip_html(list_tags(page.tags, { show_count: false, style: 'none' })) %>">
+    <% } else { %>
+      <meta name="description" itemprop="description" content="<%- config.description %>">
+    <% } %>
+    <meta property="og:title" content="<%- page.title %>"/>
+    <% if (page.pic) { %>
+      <meta property="og:image" content="<%- full_url_for(page.path + page.pic) %>"/>
+    <% } %>
+    <meta property="og:url" content="<%- page.permalink %>"/>
+  <% } else { %>
+    <meta name="description" itemprop="description" content="<%- config.description %>">
+    <meta name="keywords" content="<%- config.keywords %>">
+  <% } %>
   <link rel="icon" href="<%- theme.site_logo %>">
   <link rel="stylesheet" id="kratos-css" href="/css/kratosr.css" type="text/css" media="all">
   <link rel="stylesheet" id="fontawe-css" href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" type="text/css" media="all">

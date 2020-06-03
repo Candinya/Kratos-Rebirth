@@ -7,8 +7,8 @@
                             <img class="stickyimg" src="/images/sticky.png">
                             <div class="kratos-entry-thumb-new">
                                 <a href="/<%- post.path %>">
-                                    <% if (post.pic != undefined) { %>
-                                        <img class="kratos-entry-thumb-new-img" src="/<%- post.path %><%- post.pic %>">
+                                    <% if (post.pic) { %>
+                                        <img class="kratos-entry-thumb-new-img" src="/<%- post.path + post.pic %>">
                                     <% } else { %>
                                         <img class="kratos-entry-thumb-new-img" src="">
                                     <% } %>
@@ -56,8 +56,8 @@
                         <div class="kratos-entry-border-new clearfix">
                             <div class="kratos-entry-thumb-new">
                                 <a href="/<%- post.path %>">
-                                    <% if (post.pic != undefined) { %>
-                                        <img class="kratos-entry-thumb-new-img" src="/<%- post.path %><%- post.pic %>">
+                                    <% if (post.pic) { %>
+                                        <img class="kratos-entry-thumb-new-img" src="/<%- post.path + post.pic %>">
                                     <% } else { %>
                                         <img class="kratos-entry-thumb-new-img" src="">
                                     <% } %>
