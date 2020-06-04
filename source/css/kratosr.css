@@ -44,7 +44,7 @@ blockquote.pull-right{padding-right:15px;padding-left:0;text-align:right;border-
 caption{padding-top:8px;padding-bottom:8px;color:#777;text-align:left}
 cite{font-style:normal}
 code,pre,samp{font-family:Menlo,Monaco,Consolas,"Courier New",monospace}
-code{padding:2px 4px;font-size:90%;color:white;background-color:#666;border-radius:.2em;margin:0 5px}
+/* code{padding:2px 4px;font-size:90%;color:white;background-color:#666;border-radius:.2em;margin:0 5px} */
 dfn{font-style:italic}
 dl{margin-top:0;margin-bottom:20px}
 dd,dt{line-height:1.42857143}
@@ -66,7 +66,7 @@ h6{font-size:1.0em}
 h2.title-h2{margin:15px -20px;padding:0 20px;border-left:5px solid #51aded;background-color:#f7f7f7;font-size:20px;line-height:40px}
 hr{margin-top:20px;margin-bottom:20px;border:0;border-top:1px solid #eee}
 img{vertical-align:middle}
-/* code{font-size:90%;color:#fff;border-radius:3px;padding:1px 6px;background-color:#6c6c6c} */
+code{font-size:90%;color:#fff;border-radius:3px;padding:1px 6px;background-color:#6c6c6c}
 legend{display:block;width:100%;padding:0;margin-bottom:20px;font-size:21px;line-height:inherit;color:#333;border:0;border-bottom:1px solid #e5e5e5}
 label{display:inline-block;max-width:100%;margin-bottom:5px;font-weight:700}
 legend{padding:0;border:0}
@@ -263,6 +263,9 @@ td,th {padding:.2em 1em;border: 1px solid lightblue;}
 .kratos-post-header-title{color:#1c1c1c;-webkit-transition:.3s;transition:.3s;text-decoration:none;font-size:18px;line-height:1.5;margin:20px}
 .kratos-post-inner{padding:25px 10px 18px 10px}
 .kratos-post-inner div:last-child.kratos-copyright{margin-bottom:20px}
+.kratos-post-inner .kratos-copyright{background-color:rgba(220,220,220,.7);margin:25px 0 0;border-radius:5px}
+.kratos-post-inner .kratos-copyright h5{margin:15px;color:#666;font-size:13px;font-weight:300}
+.kratos-post-inner .kratos-copyright a{color:#777}
 .kratos-post-inner-new{margin-left:255px;height:160px;padding:21px 20px 0 3px}
 .kratos-post-inner-new header .label-link{position:relative;display:inline-block;padding:4px 6px 3px;font-size:12px;font-weight:700;line-height:14px;color:#fff;vertical-align:baseline;white-space:nowrap;background-color:#51aded;margin-right:5px;position:relative;top:-2px;border-radius:0;cursor:pointer}
 .kratos-post-inner-new header .label-link:after{position:absolute;width:0;height:0;vertical-align:top;content:"";top:6px;right:-4px;border-left:4px solid #51aded;border-top:4px solid transparent;border-bottom:4px solid transparent;}
