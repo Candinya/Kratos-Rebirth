@@ -38,19 +38,30 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-6 col-md-offset-3 footer-list text-center">
-                    <p class="kratos-social-icons">
-                        <% if (theme.contact.weibo) {%><a target="_blank" rel="nofollow" href="<%= theme.contact.weibo %>"><i class="fa fa-weibo"></i></a><% } %>
-                        <% if (theme.contact.tweibo) {%><a target="_blank" rel="nofollow" href="<%= theme.contact.tweibo %>"><i class="fa fa-tencent-weibo"></i></a><% } %>
-                        <% if (theme.contact.mail) {%><a href="<%= theme.contact.mail %>"><i class="fa fa-envelope"></i></a><% } %>
-                        <% if (theme.contact.twitter) {%><a target="_blank" rel="nofollow" href="<%= theme.contact.twitter %>"><i class="fa fa-twitter"></i></a><% } %>
-                        <% if (theme.contact.facebook) {%><a target="_blank" rel="nofollow" href="<%= theme.contact.facebook %>"><i class="fa fa-facebook-official"></i></a><% } %>
-                        <% if (theme.contact.linkedin) {%><a target="_blank" rel="nofollow" href="<%= theme.contact.linkedin %>"><i class="fa fa-linkedin-square"></i></a><% } %>
-                        <% if (theme.contact.github) {%><a target="_blank" rel="nofollow" href="<%= theme.contact.github %>"><i class="fa fa-github"></i></a><% } %>
-                        <% if (theme.contact.rss) {%><a target="_blank" rel="nofollow" href="<%= theme.contact.rss %>"><i class="fa fa-rss"></i></a><% } %>
-                    </p>
-                    <p> &copy; <%= date(new Date(), 'YYYY') %> <%= config.author || config.title %> 版权所有. | 本站已运行<span id=span_dt_dt>Loading...</span><br />
-                        Theme <a href="https://github.com/Candinya/Kratos-Rebirth" target="_blank">Kratos:Rebirth</a> Made with <i class="fa fa-heart throb" style="color:#d43f57"></i> by <a href="https://candinya.com" target="_blank" rel="nofollow">Candinya</a>.<br />
-                        Hosted by <%- theme.hoster %> | Powered by <a href="https://hexo.io" target="_blank" rel="nofollow">Hexo</a></p>
+                    <ul class="kratos-social-icons">
+                        <% if (theme.contact.weibo) {%><li><a target="_blank" rel="nofollow" href="<%= theme.contact.weibo %>"><i class="fa fa-weibo"></i></a></li><% } %>
+                        <% if (theme.contact.tweibo) {%><li><a target="_blank" rel="nofollow" href="<%= theme.contact.tweibo %>"><i class="fa fa-tencent-weibo"></i></a></li><% } %>
+                        <% if (theme.contact.mail) {%><li><a href="<%= theme.contact.mail %>"><i class="fa fa-envelope"></i></a></li><% } %>
+                        <% if (theme.contact.twitter) {%><li><a target="_blank" rel="nofollow" href="<%= theme.contact.twitter %>"><i class="fa fa-twitter"></i></a></li><% } %>
+                        <% if (theme.contact.facebook) {%><li><a target="_blank" rel="nofollow" href="<%= theme.contact.facebook %>"><i class="fa fa-facebook-official"></i></a></li><% } %>
+                        <% if (theme.contact.linkedin) {%><li><a target="_blank" rel="nofollow" href="<%= theme.contact.linkedin %>"><i class="fa fa-linkedin-square"></i></a></li><% } %>
+                        <% if (theme.contact.github) {%><li><a target="_blank" rel="nofollow" href="<%= theme.contact.github %>"><i class="fa fa-github"></i></a></li><% } %>
+                        <% if (theme.contact.rss) {%><li><a target="_blank" rel="nofollow" href="<%= theme.contact.rss %>"><i class="fa fa-rss"></i></a></li><% } %>
+                    </ul>
+                    <ul class="kratos-copyright">
+                        <div>
+                            <li>&copy; <%= date(new Date(), 'YYYY') %> <%= config.author || config.title %> 版权所有.</li>
+                            <li>本站已运行<span id=span_dt_dt>Loading...</span></li>
+                        </div>
+                        <div>
+                            <li>Theme <a href="https://github.com/Candinya/Kratos-Rebirth" target="_blank">Kratos:Rebirth</a></li>
+                            <li>Made with <i class="fa fa-heart throb" style="color:#d43f57"></i> by <a href="https://candinya.com" target="_blank" rel="nofollow">Candinya</a>.</li>
+                        </div>
+                        <div>
+                            <li>Hosted by <%- theme.hoster %></li>
+                            <li>Powered by <a href="https://hexo.io" target="_blank" rel="nofollow">Hexo</a></li>
+                        </div>
+                    </ul>
                 </div>
             </div>
         </div>

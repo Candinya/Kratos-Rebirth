@@ -336,9 +336,6 @@ td,th {padding:.2em 1em;border: 1px solid lightblue;}
 .share-plain .share-int canvas,.share-plain .share-int img{margin:15px 0 -6px;height:auto;max-width:100%}
 .share-plain .share-int p{margin:15px 0 0;color:#676767;white-space:normal;word-wrap:break-word;font-size:14px;line-height:1.5}
 .share-plain .share-int img{display:inline-block!important;}
-.kratos-copyright{background-color:rgba(220,220,220,.7);margin:25px 0 0}
-.kratos-copyright h5{margin:15px;color:#666;font-size:13px;font-weight:300}
-.kratos-copyright a{color:#777}
 .affix-top{position:relative}
 .affix{position:fixed;top:92px}
 .affix,.affix-bottom{width:293.31px}
@@ -390,12 +387,15 @@ td,th {padding:.2em 1em;border: 1px solid lightblue;}
 .cd-tool.scrollDown .gotop-box{bottom: 30px}
 
 #footer{background:#23282d;padding-top:40px}
-#footer p{color:rgba(255,255,255,.3);letter-spacing:1px;font-size:14px;text-transform:uppercase}
-#footer p a{color:rgba(255,255,255,.5)}
 @media(min-width:992px){#footer .col-md-offset-3{margin-left:10%}#footer .col-md-6{width:80%}}
-.kratos-social-icons>a{padding:4px 14px;color:#51aded}
-.kratos-social-icons>a i{font-size:30px}
-.kratos-social-icons>a:active,.kratos-social-icons>a:focus,.kratos-social-icons>a:hover{text-decoration:none;color:#5a5a5a}
+#footer li{letter-spacing:1px;font-size:14px;text-transform:uppercase;display: inline-block}
+#footer li a{color:rgba(255,255,255,.5)}
+#footer .kratos-social-icons li a{padding:4px 14px;text-decoration:none}
+#footer .kratos-social-icons li a i{font-size:36px}
+#footer .kratos-copyright{list-style: none}
+#footer .kratos-copyright li{color:rgba(255,255,255,.3);line-height:1;margin-left:1em;font-size:14px}
+@media screen and (max-width: 550px){#footer .kratos-copyright li{display:block;margin-top:1em}}
+#footer .kratos-copyright:first-child{margin-top:25px}
 .linkpage ul{color:rgba(255,255,255,.15)}
 .linkpage ul:after{content:" ";clear:both;display:block}
 .linkpage li{float:left;width:48%;position:relative;transition:all .3s ease-out;border-radius:5px;line-height:1.3;height:90px;display:block}
