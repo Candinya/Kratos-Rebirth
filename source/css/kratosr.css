@@ -44,7 +44,7 @@ blockquote.pull-right{padding-right:15px;padding-left:0;text-align:right;border-
 caption{padding-top:8px;padding-bottom:8px;color:#777;text-align:left}
 cite{font-style:normal}
 code,pre,samp{font-family:Menlo,Monaco,Consolas,"Courier New",monospace}
-/* code{padding:2px 4px;font-size:90%;color:#333;background-color:#f8f8f8;border-radius:0;border:1px solid #e1e1e1;margin:0 5px} */
+code{padding:2px 4px;font-size:90%;color:white;background-color:#666;border-radius:.2em;margin:0 5px}
 dfn{font-style:italic}
 dl{margin-top:0;margin-bottom:20px}
 dd,dt{line-height:1.42857143}
