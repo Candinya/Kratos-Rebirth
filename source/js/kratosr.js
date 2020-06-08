@@ -16,19 +16,19 @@ var kr = new Object();
 //-------------------参数设置区 结束-------------------
 
 (function(){
-    var shareMenu = ()=>{
+    let shareMenu = ()=>{
         $(document).on("click",".Share",()=>{$(".share-wrap").fadeToggle("slow");});
-    }
+    };
 
     var mainOffset;
-    var sidebarAffixInit = ()=>{
+    let sidebarAffixInit = ()=>{
         $('#sidebar').removeClass('affix');
         $('#sidebar').removeClass('affix-top');
         $('#sidebar').removeClass('affix-bottom');
         $('#sidebar').css('top', '');
         mainOffset = $('#main').offset().top;
     };
-    var sidebarAffix = ()=>{
+    let sidebarAffix = ()=>{
         sidebarAffixInit();
         if ($("#sidebar").height()){
             $(window).scroll(()=>{
@@ -66,7 +66,7 @@ var kr = new Object();
     //     });
     //     $('#searchform').on("click",function(e){e.stopPropagation();})
     // }
-    var gotop = ()=>{
+    let gotop = ()=>{
         $('.gotop-box').on('click',function(event){
             event.preventDefault();
             $('html, body').animate({
@@ -81,8 +81,8 @@ var kr = new Object();
                 $('.cd-tool').removeClass('scrollDown');
             }
         });
-    }
-    var offcanvas = ()=>{
+    };
+    let offcanvas = ()=>{
         var $clone = $('#kratos-menu-wrap').clone();
         $clone.attr({
             'id':'offcanvas-menu'
@@ -113,8 +113,8 @@ var kr = new Object();
                 }
             }
         });
-    }
-    var mobiClick = ()=>{
+    };
+    let mobiClick = ()=>{
         $(document).click((e)=>{
             var container = $("#offcanvas-menu,.js-kratos-nav-toggle");
             if(!container.is(e.target)&&container.has(e.target).length===0){
@@ -124,8 +124,8 @@ var kr = new Object();
                 }
             }
         });
-    }
-    var xControl = ()=>{
+    };
+    let xControl = ()=>{
         $(document).on("click",".xHeading",()=>{
             var $this = $(this);
             $this.closest('.xControl').filter('.xContent').slideToggle(300);
@@ -136,8 +136,8 @@ var kr = new Object();
             }
             event.preventDefault();
         });
-    }
-    var donateConfig = ()=>{
+    };
+    let donateConfig = ()=>{
         $(document).on("click",".Donate",()=>{
             layer.open({
                 type:1,
@@ -153,9 +153,9 @@ var kr = new Object();
                 if(id=='wechatpay'){$(".qr-pay #alipay_qr").addClass('d-none');$(".qr-pay #wechat_qr").removeClass('d-none')};
             });
         });
-    }
+    };
 
-    var setrandpic = ()=>{
+    let setrandpic = ()=>{
         //图片
         var imageboxs = document.getElementsByClassName("kratos-entry-thumb-new-img");
         for(var i = 0, len = imageboxs.length; i < len; i++) {
@@ -163,9 +163,9 @@ var kr = new Object();
                 $(imageboxs[i]).attr("src", kr.thome + "images/thumb/thumb_"+Math.floor(Math.random()*20+1)+".jpg");
 
         }
-    }
+    };
 
-    var fancyboxInit = ()=>{
+    let fancyboxInit = ()=>{
           if (typeof $.fancybox !== 'undefined'){
             $.fancybox.defaults.hash = false;
             $('.kratos-hentry').each(function(i){
@@ -182,8 +182,16 @@ var kr = new Object();
               });
             $('.fancybox').fancybox();
           }
+    };
 
-    }
+    let tocNavInit = ()=> {
+        $(document).on("click", 'a[class=toc-link]', function(){
+            $('html, body').animate({
+                scrollTop:$($(this).attr("href")).offset().top - 60
+            },500);
+            return false;
+        });
+    };
 
     $.fn.pjax_reload = ()=>{
         setrandpic();
@@ -202,6 +210,7 @@ var kr = new Object();
         xControl();
         donateConfig();
         sidebarAffix();
+        tocNavInit();
         $(this).pjax_reload();
     });
 }());

@@ -1,13 +1,18 @@
-<aside id="kratos_about-2" class="widget widget_kratos_about clearfix">
+<aside id="kratos-about" class="widget widget_kratos_about clearfix">
+    <% let aboutShowToc = is_post() && theme.widgets.includes('toc') && strip_html(toc(page.content)); %>
     <div class="photo-background">
         <div class="photo-background" style="background:url(/images/about.jpg) no-repeat center center;-webkit-background-size:cover;background-size:cover"></div>
     </div>
     <div class="photo-wrapper clearfix">
         <div class="photo-wrapper-tip text-center">
-            <a href="/about/" rel="nofollow"><img class="about-photo" src="<%= theme.avatarUri %>" alt=""/></a>
+            <a <% if (aboutShowToc) { %> class="toc-link" href="#main" <% } else { %> href="/about/" rel="nofollow" <% } %>><img class="about-photo" src="<%= theme.avatarUri %>" alt=""/></a>
         </div>
     </div>
     <div class="textwidget">
-        <p class="text-center"><%- config.description %></p>
+        <% if (aboutShowToc) { %>
+            <%- toc(page.content) %>
+        <% } else { %>
+            <p class="text-center"><%- config.description %></p>
+        <% } %>
     </div>
 </aside>

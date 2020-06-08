@@ -357,6 +357,8 @@ td,th {padding:.2em 1em;border: 1px solid lightblue;}
 .widget_kratos_about .photo-wrapper img{margin:-50px 0 0;width:90px;height:90px;border:rgba(255,255,255,.4) 4px solid;border-radius:50%}
 .widget_kratos_about .photo-background{height:120px}
 .widget_kratos_about .textwidget{margin:10px 0 30px 0}
+.widget_kratos_about .toc{padding-left: 32px}
+.widget_kratos_about .toc li{list-style:none}
 .widget_kratos_ad{padding:5px}
 .widget_kratos_ad .img-responsive{display:block;max-width:100%;height:auto}
 .widget_kratos_ad h4{margin:10px 20px 5px}

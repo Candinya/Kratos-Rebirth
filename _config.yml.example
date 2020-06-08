@@ -75,6 +75,7 @@ aplayer:
 sidebar: right
 widgets:
 - about
+- toc
 - category
 - tagcloud
 - posts

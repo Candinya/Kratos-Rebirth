@@ -34,6 +34,7 @@ $(function() {
                     location.href = reqUrl;
                 } else {
                     $(ajx_main).html($(data).find(ajx_main).html());
+                    $('#kratos-widget-area').html($(data).find('#kratos-widget-area').html());
                 }
                 document.title = $(data).filter("title").text();
                 if (needPushState) {
@@ -54,9 +55,7 @@ $(function() {
             }
         });
     }
-    $(document).on("click", 'a[target!=_blank][rel!=gallery]', function() {
-      //var fancybox = $(this).data('fancybox');
-      //if(fancybox && fancybox === 'gallery') return false;
+    $(document).on("click", 'a[target!=_blank][rel!=gallery][class!=toc-link]', function() {
       var req_url = $(this).attr("href");
       if (req_url === undefined) return true;
       else if (req_url.indexOf( "javascript:") !== -1) return true;
