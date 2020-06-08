@@ -14,6 +14,10 @@
                 </div>
             </header>
             <div class="kratos-post-content">
+                <div class="kratos-post-inner-toc">
+                    <%- toc(page.content) %>
+                </div>
+                <hr />
                 <%- page.content %>
             </div>
             <% if (theme.posts.show_cc) { %>
