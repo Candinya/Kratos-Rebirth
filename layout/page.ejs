@@ -27,5 +27,8 @@
                 <% } %>
             </nav>
         <% } %>
+        <% if (theme.posts.comments && page.comments) { %>
+            <%- partial('_comments/' + theme.posts.comments) %>
+        <% } %>
     </article>
 </section>

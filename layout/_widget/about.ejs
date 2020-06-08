@@ -9,7 +9,7 @@
         </div>
     </div>
     <div class="textwidget">
-        <% if (aboutShowToc) { %>
+        <% if (aboutShowToc && page.toc) { %>
             <%- toc(page.content) %>
         <% } else { %>
             <p class="text-center"><%- config.description %></p>
