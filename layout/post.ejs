@@ -14,9 +14,11 @@
                 </div>
             </header>
             <div class="kratos-post-content">
-                <div class="kratos-post-inner-toc">
-                    <%- toc(page.content) %>
-                </div>
+                <% if (page.toc) { %>
+                    <div class="kratos-post-inner-toc">
+                        <%- toc(page.content) %>
+                    </div>
+                <% } %>
                 <hr />
                 <%- page.content %>
             </div>

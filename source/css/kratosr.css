@@ -398,8 +398,10 @@ td,th {padding:.2em 1em;border: 1px solid lightblue;}
 @media(min-width:992px){#footer .col-md-offset-3{margin-left:10%}#footer .col-md-6{width:80%}}
 #footer li{letter-spacing:1px;font-size:14px;text-transform:uppercase;display: inline-block}
 #footer li a{color:rgba(255,255,255,.5)}
+#footer .kratos-social-icons {padding-left: 0}
 #footer .kratos-social-icons li a{padding:4px 14px;text-decoration:none}
 #footer .kratos-social-icons li a i{font-size:36px}
+#footer .kratos-copyright{padding-left: 0}
 #footer .kratos-copyright{list-style: none}
 #footer .kratos-copyright li{color:rgba(255,255,255,.3);line-height:1;margin-left:1em;font-size:14px}
 @media screen and (max-width: 550px){#footer .kratos-copyright li{display:block;margin-top:1em}}
