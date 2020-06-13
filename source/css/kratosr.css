@@ -387,11 +387,11 @@ td,th {padding:.2em 1em;border: 1px solid lightblue;}
 .cd-tool span{display:table-cell;vertical-align:middle;color:#fff;width:40px;height:40px;font-size:18px}
 .cd-tool div {-webkit-transition:.5s;transition:.5s}
 
-.qqg-box{bottom:30px;background:#848484;opacity:.7}
+.group-box{bottom:30px;background:#848484;opacity:.7}
 .gotop-box{background:#848484;visibility:visible;opacity:.7;bottom: -40px}
 .gotop-box .gotop-btn{display:table;background:#848484;color:#fff;width:40px;height:40px;text-align:center}
 
-.cd-tool.scrollDown .qqg-box{bottom: 80px}
+.cd-tool.scrollDown .group-box{bottom: 80px}
 .cd-tool.scrollDown .gotop-box{bottom: 30px}
 
 #footer{background:#23282d;padding-top:40px}

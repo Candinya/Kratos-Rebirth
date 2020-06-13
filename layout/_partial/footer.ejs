@@ -20,11 +20,11 @@
                     <input type="hidden" name="sitesearch" value="<%= config.url %>">
                 </form>
             </div> -->
-            <% if (theme.qqg_link) { %>
-                <div class="qqg-box">
-                    <a href="<%= theme.qqg_link %>" target="_blank" rel="nofollow">
-                        <div id="qqg-box">
-                            <span class="fa fa-qq"></span>
+            <% if (theme.group_link) { %>
+                <div class="group-box">
+                    <a href="<%= theme.group_link %>" target="_blank" rel="nofollow">
+                        <div id="group-box">
+                            <span class="fa fa-users"></span>
                         </div>
                     </a>
                 </div>
@@ -39,14 +39,13 @@
             <div class="row">
                 <div class="col-md-6 col-md-offset-3 footer-list text-center">
                     <ul class="kratos-social-icons">
-                        <% if (theme.contact.weibo) {%><li><a target="_blank" rel="nofollow" href="<%= theme.contact.weibo %>"><i class="fa fa-weibo"></i></a></li><% } %>
-                        <% if (theme.contact.tweibo) {%><li><a target="_blank" rel="nofollow" href="<%= theme.contact.tweibo %>"><i class="fa fa-tencent-weibo"></i></a></li><% } %>
-                        <% if (theme.contact.mail) {%><li><a href="<%= theme.contact.mail %>"><i class="fa fa-envelope"></i></a></li><% } %>
-                        <% if (theme.contact.twitter) {%><li><a target="_blank" rel="nofollow" href="<%= theme.contact.twitter %>"><i class="fa fa-twitter"></i></a></li><% } %>
-                        <% if (theme.contact.facebook) {%><li><a target="_blank" rel="nofollow" href="<%= theme.contact.facebook %>"><i class="fa fa-facebook-official"></i></a></li><% } %>
-                        <% if (theme.contact.linkedin) {%><li><a target="_blank" rel="nofollow" href="<%= theme.contact.linkedin %>"><i class="fa fa-linkedin-square"></i></a></li><% } %>
-                        <% if (theme.contact.github) {%><li><a target="_blank" rel="nofollow" href="<%= theme.contact.github %>"><i class="fa fa-github"></i></a></li><% } %>
-                        <% if (theme.contact.rss) {%><li><a target="_blank" rel="nofollow" href="<%= theme.contact.rss %>"><i class="fa fa-rss"></i></a></li><% } %>
+                        <% if (theme.contact.weibo) {%><li><a target="_blank" rel="nofollow" href="https://weibo.com/u/<%- theme.contact.weibo %>"><i class="fa fa-weibo"></i></a></li><% } %>
+                        <% if (theme.contact.mail) {%><li><a href="mailto:<%- theme.contact.mail %>"><i class="fa fa-envelope"></i></a></li><% } %>
+                        <% if (theme.contact.twitter) {%><li><a target="_blank" rel="nofollow" href="https://twitter.com/<%- theme.contact.twitter %>"><i class="fa fa-twitter"></i></a></li><% } %>
+                        <% if (theme.contact.facebook) {%><li><a target="_blank" rel="nofollow" href="https://www.facebook.com/<%- theme.contact.facebook %>"><i class="fa fa-facebook-official"></i></a></li><% } %>
+                        <% if (theme.contact.linkedin) {%><li><a target="_blank" rel="nofollow" href="https://cn.linkedin.com/in/<%- theme.contact.linkedin %>"><i class="fa fa-linkedin-square"></i></a></li><% } %>
+                        <% if (theme.contact.github) {%><li><a target="_blank" rel="nofollow" href="https://github.com/<%- theme.contact.github %>"><i class="fa fa-github"></i></a></li><% } %>
+                        <% if (theme.contact.rss) {%><li><a target="_blank" rel="nofollow" href="<%- theme.contact.rss %>"><i class="fa fa-rss"></i></a></li><% } %>
                     </ul>
                     <ul class="kratos-copyright">
                         <div>

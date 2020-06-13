@@ -237,7 +237,7 @@ if (kr.copy_notify) {
 window.onload = ()=>{
     console.log('%c页面加载完毕消耗了'+Math.round(performance.now()*100)/100+'ms','background:#fff;color:#333;text-shadow:0 0 2px #eee,0 0 3px #eee,0 0 3px #eee,0 0 2px #eee,0 0 3px #eee;');
     // if (!(notMobile)) {
-    //     $('.qqg-box').attr("style", "display:none");
+    //     $('.group-box').attr("style", "display:none");
     // }
 };
 
