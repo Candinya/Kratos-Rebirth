@@ -40,14 +40,14 @@
     <meta name="description" itemprop="description" content="<%- config.description %>" />
     <meta name="keywords" content="<%- config.keywords %>" />
     <meta property="og:title" content="<%- page.title || config.title %>" />
-    <meta property="og:image" content="<%- theme.site_logo %>" />
+    <meta property="og:image" content="<%- full_url_for(theme.site_logo) %>" />
     <meta property="og:url" content="<%- page.permalink %>" />
     <% if (theme.contact.twitter) { %>
       <meta name="twitter:card" content="summary" />
       <meta name="twitter:site" content="@<%- theme.contact.twitter %>" />
       <meta name="twitter:title" content="<%- page.title || config.title %>" />
       <meta name="twitter:description" content="<%- config.description %>" />
-      <meta name="twitter:image" content="<%- theme.site_logo %>" />
+      <meta name="twitter:image" content="<%- full_url_for(theme.site_logo) %>" />
     <% } %>
   <% } %>
   <link rel="icon" href="<%- theme.site_logo %>">
