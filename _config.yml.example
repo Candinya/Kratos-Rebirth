@@ -20,16 +20,16 @@ menu:
     newapi: https://api.lcy.moe
 
 label:
-  index: <i class="fa fa-home"></i>&nbsp;首页
-  archives: <i class="fa fa-file"></i>&nbsp;档案馆
-  friends: <i class="fa fa-mars-double"></i>&nbsp;后宫团
-  about: <i class="fa fa-rocket"></i>&nbsp;关于我
+  index: <i class="fa fa-home"></i>首页
+  archives: <i class="fa fa-file"></i>档案馆
+  friends: <i class="fa fa-mars-double"></i>后宫团
+  about: <i class="fa fa-rocket"></i>关于我
   tools:
-    submenu: <i class="fa fa-flask"></i>&nbsp;实验室
+    submenu: <i class="fa fa-flask"></i>实验室
     candifonts: 缤纷字生成
     candidenty: 身份证工具
   sites:
-    submenu: <i class="fa fa-link"></i>&nbsp;小小站
+    submenu: <i class="fa fa-link"></i>API
     oldapi: 过气的老API
     newapi: 新API(建设中)
 
@@ -41,6 +41,9 @@ contact:
   twitter: 
   facebook: 
   linkedin: 
+  fediverse:
+    instance: 
+    username: 
   github: 
   rss: atom.xml
   

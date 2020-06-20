@@ -2,7 +2,7 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title><% if (page.title) { %><%- page.title %> | <% } %><%= config.title %></title>
+  <title><% if (page.title) { %><%- page.title %> | <% } %><%- config.title %></title>
   <meta http-equiv="Cache-Control" content="no-transform" />
   <meta http-equiv="Cache-Control" content="no-siteapp" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -37,7 +37,7 @@
       <% } %>
     <% } %>
   <% } else { %>
-    <meta name="description" itemprop="description" content="<%- config.description %>" />
+    <meta name="description" itemprop="description" content="<%- page.description || config.description %>" />
     <meta name="keywords" content="<%- config.keywords %>" />
     <meta property="og:title" content="<%- page.title || config.title %>" />
     <meta property="og:image" content="<%- full_url_for(theme.site_logo) %>" />
@@ -46,7 +46,7 @@
       <meta name="twitter:card" content="summary" />
       <meta name="twitter:site" content="@<%- theme.contact.twitter %>" />
       <meta name="twitter:title" content="<%- page.title || config.title %>" />
-      <meta name="twitter:description" content="<%- config.description %>" />
+      <meta name="twitter:description" content="<%- page.description || config.description %>" />
       <meta name="twitter:image" content="<%- full_url_for(theme.site_logo) %>" />
     <% } %>
   <% } %>
