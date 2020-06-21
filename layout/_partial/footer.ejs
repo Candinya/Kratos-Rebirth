@@ -12,27 +12,30 @@
 </div>
 <footer>
     <div id="footer">
-        <div class="cd-tool text-center">
-            <!-- <div class="search-box">
-                <span class="fa fa-search"></span>
-                <form action="//google.com/search" role="search" method="get" accept-charset="UTF-8" id="searchform" target="_blank">
-                    <input type="search" id="search" name="q" placeholder="Search"  style="display:none">
-                    <input type="hidden" name="sitesearch" value="<%= config.url %>">
-                </form>
-            </div> -->
-            <% if (theme.group_link) { %>
-                <div class="group-box">
-                    <a href="<%= theme.group_link %>" target="_blank" rel="nofollow">
-                        <div id="group-box">
+        <div class="kr-tool text-center">
+            <div class="tool">
+                <!-- <div class="search-box">
+                    <span class="fa fa-search"></span>
+                    <form action="//google.com/search" role="search" method="get" accept-charset="UTF-8" id="searchform" target="_blank">
+                        <input type="search" id="search" name="q" placeholder="Search"  style="display:none">
+                        <input type="hidden" name="sitesearch" value="<%= config.url %>">
+                    </form>
+                </div> -->
+                <% if (theme.enableDark) { %>
+                    <div class="box theme-box" id="darkmode-switch">
+                        <span class="fa fa-adjust"></span>
+                    </div>
+                <% } %>
+                <% if (theme.group_link) { %>
+                    <div class="box group-box">
+                        <a href="<%= theme.group_link %>" target="_blank" rel="nofollow">
                             <span class="fa fa-users"></span>
-                        </div>
-                    </a>
-                </div>
-            <% } %>
-            <div class="gotop-box">
-                <div class="gotop-btn">
-                    <span class="fa fa-chevron-up"></span>
-                </div>
+                        </a>
+                    </div>
+                <% } %>
+            </div>
+            <div class="box gotop-box">
+                <span class="fa fa-chevron-up"></span>
             </div>
         </div>
         <div class="container">
@@ -51,7 +54,7 @@
                     <ul class="kratos-copyright">
                         <div>
                             <li>&copy; <%= date(new Date(), 'YYYY') %> <%= config.author || config.title %> 版权所有.</li>
-                            <li>本站已运行<span id=span_dt_dt>Loading...</span></li>
+                            <li><%- theme.timenotice %><span id="span_dt">Loading...</span></li>
                         </div>
                         <div>
                             <li>Theme <a href="https://github.com/Candinya/Kratos-Rebirth" target="_blank">Kratos:Rebirth</a></li>
@@ -75,10 +78,10 @@
 <% if(theme.snow){ %>
     <div>
     <canvas id="Snow"></canvas>
-    <script defer type="text/javascript" src="/js/snow.js"></script>
+    <script async type="text/javascript" src="/js/snow.js"></script>
     </div>
 <% } %>
-<script defer src="/js/candy.js"></script>
+<script async src="/js/candy.js"></script>
 <% if (theme.aplayer.enabled) { %>
     <script src="https://cdn.jsdelivr.net/npm/aplayer@1.10.1/dist/APlayer.min.js"></script>
     <%- partial('../_tools/player') %>
@@ -88,6 +91,9 @@
 <% } %>
 <script defer src="/js/kratosr.js"></script>
 <script defer src="/js/pjax.js"></script>
+<% if (theme.enableDark) { %>
+    <script defer src="/js/kr-dark.js"></script>
+<% } %>
 <%- theme.site_analytics %>
 
 </body>

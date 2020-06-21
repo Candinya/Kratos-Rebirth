@@ -3,6 +3,7 @@ site_analytics:
 hoster: <a href="https://github.io" target="_blank">Github Pages</a>
 site_logo: /images/favicon.png
 snow: false
+enableDark: true
 
 # Top Menu
 menu:
@@ -46,6 +47,7 @@ contact:
     username: 
   github: 
   rss: atom.xml
+timenotice: 本站已运行
   
 # Post Page
 posts:

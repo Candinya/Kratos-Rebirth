@@ -1,0 +1,94 @@
+@charset "UTF-8";
+
+/******************* Default ********************/
+:root {
+    --color-mode: 'light';
+
+    --banner-image: url('/images/banner.jpg');
+    --about-image: url('/images/about.jpg');
+    --background-image: url('/images/bg.png');
+
+    --text: #000;
+    --text-alt: #666;
+    --link: #3e8dc5;
+    --link-hover: #51aded;
+    --border: #3c495b3a;
+    --tag-background: #fff;
+    --card-background: rgba(255, 255, 255, .8);
+    --page-background: none;
+    --info-background: rgba(220,220,220,.5);
+    --navbar-color: rgba(40,42,44,.6);
+}
+
+/******************* Theme ********************/
+@media (prefers-color-scheme: dark) {
+    :root {
+        --color-mode: 'dark';
+    }
+
+    :root:not([data-user-color-scheme]) {
+        --banner-image: url('/images/banner_dark.jpg');
+        --background-image: none;
+    
+        --text: #eee;
+        --text-alt: #ccc;
+        --link: lightblue;
+        --border: #ccc;
+        --tag-background: #252d38;
+        --card-background: #282c34;
+        --page-background: #181c27;
+        --info-background: #3c495b;
+        --navbar-color: #181c27cc;
+    }
+}
+
+[data-user-color-scheme='dark'] {
+    --banner-image: url('/images/banner_dark.jpg');
+    --background-image: none;
+
+    --text: #eee;
+    --text-alt: #ccc;
+    --link: lightblue;
+    --border: #ccc;
+    --tag-background: #252d38;
+    --card-background: #282c34;
+    --page-background: #181c27;
+    --info-background: #3c495b;
+    --navbar-color: #181c27cc;
+}
+
+/******************* Color ********************/
+::-webkit-selection{color:var(--select-text);background:var(--select-text-bg)}::-moz-selection{color:var(--select-text);background:var(--select-text-bg)}::selection{color:var(--select-text);background:var(--select-text-bg)}
+::-webkit-scrollbar{width:8px;height:8px}::-webkit-scrollbar-thumb{background:#bbb;border-radius:4px;box-shadow:inset 0 0 5px rgba(0,0,0,.2)}::-webkit-scrollbar-thumb:hover{background:#aaa}::-webkit-scrollbar-track{box-shadow:inset 0 0 5px rgba(0,0,0,.2);border-radius:10px;background:#ededed}
+body,h1,h2,h3,h4,h5,h6,ol,p,ul{color:var(--text)}
+h2.title-h2{background-color:var(--info-background)}
+a{color:var(--link)}
+blockquote{background-color:var(--info-background);border-color: var(--border);}
+blockquote p{color:var(--text)}
+.kratos-hentry{background-color:var(--tag-background)}
+.kratos-entry-border-new a{color:var(--text)}
+.kratos-entry-border-new .kratos-post-meta-new{border-top:1px solid var(--border);background:var(--tag-background)}
+.kratos-entry-header .kratos-post-meta span, .kratos-entry-header .kratos-post-meta a{color:var(--text)}
+.kratos-post-content p{color:var(--text)}
+.kratos-post-inner .kratos-copyright{background-color:var(--info-background)}
+.kratos-post-inner .kratos-copyright h5{color:var(--text)}
+.kratos-post-inner .kratos-copyright a{color:var(--text)}
+.kratos-entry-footer .footer-tag a{color:var(--text);background-color:var(--tag-background)}
+.kratos-entry-footer .pull-date span{color:var(--text)}
+.post-navigation a{color:var(--text)}
+.widget a{color:var(--text-alt)}
+.widget_kratos_tags .tag_clouds a{background:var(--tag-background)}
+.widget_categories .category-list-item .category-list-count{color:var(--text);background-color:var(--info-background)}
+.pagination a, .pagination span{background-color:var(--tag-background);color:var(--text)}
+.pagination>li>a{background-color:var(--card-background)}
+.kratos-hentry,.navigation div,#kratos-widget-area .widget{background-color:var(--card-background)!important}
+.arc-tag a.tag-link{color:var(--text-alt);background-color:var(--tag-background);border-color:var(--border)}
+#archives .posts-collapse .post-title a{color:var(--text-alt)}
+#kratos-header-section{background:var(--navbar-color)}
+#dsqjs-msg{color:var(--text)!important;background-color:var(--tag-background)!important}
+#disqus_thread{background-color:var(--tag-background)}
+
+/******************* Images ********************/
+.kratos-cover.kratos-cover_2{background-image:var(--banner-image)}
+.widget_kratos_about .photo-background{background-image:var(--about-image)}
+body.custom-background{background-color:var(--page-background);background-image:var(--background-image)}

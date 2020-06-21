@@ -9,10 +9,9 @@
   <meta name="robots" content="index,follow" />
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
   <meta name="format-detection" content="telphone=no, email=no" />
-  <!-- 对OG做了适配，但是暂时没有必要加入到pjax里面，因为这些用户看不到，爬虫爬的时候也不会使用pjax来跳转。 -->
   <% if (is_post()) { %>
     <% if (page.excerpt) { %>
-      <meta name="description" itemprop="description" content="<%- strip_html(page.excerpt) %>" />
+      <meta name="description" itemprop="description" content="<%- trim(strip_html(page.excerpt)) %>" />
       <meta name="keywords" content="<%- strip_html(list_tags(page.tags, { show_count: false, style: 'none' })) %>" />
     <% } else { %>
       <meta name="description" itemprop="description" content="<%- config.description %>" />
@@ -22,13 +21,12 @@
       <meta property="og:image" content="<%- full_url_for(page.path + page.pic) %>" />
     <% } %>
     <meta property="og:url" content="<%- page.permalink %>" />
-    
     <% if (theme.contact.twitter) { %>
       <meta name="twitter:card" content="summary" />
       <meta name="twitter:site" content="@<%- theme.contact.twitter %>" />
       <meta name="twitter:title" content="<%- page.title %>" />
       <% if (page.excerpt) { %>
-        <meta name="twitter:description" content="<%- strip_html(page.excerpt) %>" />
+        <meta name="twitter:description" content="<%- trim(strip_html(page.excerpt)) %>" />
       <% } else { %>
         <meta name="twitter:description" content="<%- config.description %>" />
       <% } %>
@@ -52,12 +50,14 @@
   <% } %>
   <link rel="icon" href="<%- theme.site_logo %>">
   <link rel="stylesheet" id="kratos-css" href="/css/kratosr.css" type="text/css" media="all">
+  <% if (theme.enableDark) { %>
+    <link rel="stylesheet" id="darkmode-css" href="/css/kr-dark.css" type="text/css" media="all">
+  <% } %>
   <link rel="stylesheet" id="fontawe-css" href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" type="text/css" media="all">
   <link rel="stylesheet" id="nprogress-css" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.css" type="text/css" media="all">
   <%- css('css/ext') %>
   <% if (theme.posts.comments == 'disqusjs') { %>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/disqusjs@1.2.6/dist/disqusjs.css">
-    <style>#dsqjs{padding:10px 15px;}#dsqjs-msg{color:#2a2e2e;background-color:#ebeef2;padding:10px;border-radius:5px;}</style>
   <% } %>
   <% if (theme.aplayer.enabled) { %>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer@1.10.1/dist/APlayer.min.css">
