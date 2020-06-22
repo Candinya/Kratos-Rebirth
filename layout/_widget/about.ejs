@@ -1,5 +1,5 @@
 <aside id="kratos-about" class="widget widget_kratos_about clearfix">
-    <% let aboutShowToc = is_post() && theme.widgets.includes('toc') && strip_html(toc(page.content)); %>
+    <% const aboutShowToc = is_post() && theme.widgets.includes('toc') && strip_html(toc(page.content)); %>
     <div class="photo-background"></div>
     <div class="photo-wrapper clearfix">
         <div class="photo-wrapper-tip text-center">

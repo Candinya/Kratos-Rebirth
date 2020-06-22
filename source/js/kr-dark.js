@@ -16,13 +16,11 @@ const setLS = (k, v) => {
         localStorage.setItem(k, v);
     } catch (e) { }
 }
-
 const removeLS = (k) => {
     try {
         localStorage.removeItem(k);
     } catch (e) { }
 }
-
 const getLS = (k) => {
     try {
         return localStorage.getItem(k);
@@ -34,7 +32,6 @@ const getLS = (k) => {
 const getModeFromCSSMediaQuery = () => {
     return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
 }
-
 const resetRootDarkModeAttributeAndLS = () => {
     rootElement.removeAttribute(rootElementDarkModeAttributeName);
     removeLS(darkModeStorageKey);

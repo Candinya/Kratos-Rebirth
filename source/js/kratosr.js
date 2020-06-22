@@ -15,7 +15,7 @@ var kr = new Object();
 //-------------------参数设置区 结束-------------------
 
 (function(){
-    let shareMenu = ()=>{
+    const shareMenu = ()=>{
         $(document).on("click",".Share",()=>{$(".share-wrap").fadeToggle("slow");});
     };
     
@@ -31,7 +31,7 @@ var kr = new Object();
     //     });
     //     $('#searchform').on("click",function(e){e.stopPropagation();})
     // }
-    let gotopInit = ()=>{
+    const gotopInit = ()=>{
         $('.gotop-box').on('click',function(event){
             event.preventDefault();
             $('html, body').animate({
@@ -47,7 +47,7 @@ var kr = new Object();
             }
         });
     };
-    let offcanvas = ()=>{
+    const offcanvas = ()=>{
         var $clone = $('#kratos-menu-wrap').clone();
         $clone.attr({
             'id':'offcanvas-menu'
@@ -79,7 +79,7 @@ var kr = new Object();
             }
         });
     };
-    let mobiClick = ()=>{
+    const mobiClick = ()=>{
         $(document).click((e)=>{
             var container = $("#offcanvas-menu,.js-kratos-nav-toggle");
             if(!container.is(e.target)&&container.has(e.target).length===0){
@@ -90,7 +90,7 @@ var kr = new Object();
             }
         });
     };
-    // let xControl = ()=>{
+    // const xControl = ()=>{
     //     $(document).on("click",".xHeading",()=>{
     //         var $this = $(this);
     //         $this.closest('.xControl').filter('.xContent').slideToggle(300);
@@ -102,7 +102,7 @@ var kr = new Object();
     //         event.preventDefault();
     //     });
     // };
-    // let donateConfig = ()=>{
+    // const donateConfig = ()=>{
     //     $(document).on("click",".Donate",()=>{
     //         layer.open({
     //             type:1,
@@ -120,7 +120,7 @@ var kr = new Object();
     //     });
     // };
 
-    let setrandpic = ()=>{
+    const setrandpic = ()=>{
         //图片
         var imageboxs = document.getElementsByClassName("kratos-entry-thumb-new-img");
         for(var i = 0, len = imageboxs.length; i < len; i++) {
@@ -130,7 +130,7 @@ var kr = new Object();
         }
     };
 
-    let fancyboxInit = ()=>{
+    const fancyboxInit = ()=>{
           if (typeof $.fancybox !== 'undefined'){
             $.fancybox.defaults.hash = false;
             $('.kratos-hentry').each(function(i){
@@ -149,7 +149,7 @@ var kr = new Object();
           }
     };
 
-    let tocNavInit = ()=> {
+    const tocNavInit = ()=> {
         $(document).on("click", 'a[class=toc-link]', function(){
             $('html, body').animate({
                 scrollTop:$($(this).attr("href")).offset().top - 60
@@ -178,8 +178,8 @@ var kr = new Object();
 
 {
     var now = new Date();
-    let grt = new Date(kr.ctime);
-    let upTimeNode = document.getElementById("span_dt");
+    const grt = new Date(kr.ctime);
+    const upTimeNode = document.getElementById("span_dt");
     setInterval(()=>{
         now.setTime(now.getTime()+1000);
         days = (now-grt)/1000/60/60/24;dnum = Math.floor(days);
@@ -203,7 +203,7 @@ window.onload = ()=>{
 
 if (kr.enable_site_leave_event) {
     var OriginTitile, titleTime;
-    let OriginLogo = $('[rel="icon"]').attr("href");
+    const OriginLogo = $('[rel="icon"]').attr("href");
     document.addEventListener('visibilitychange', ()=>{
         if (document.hidden) {
             OriginTitile = document.title;

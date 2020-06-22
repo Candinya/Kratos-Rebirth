@@ -42,38 +42,38 @@
     </div>
     <script type="text/javascript">
         $(function(){
-            var qrcode = new QRCode("wechat-qr", {
+            const qrcode = new QRCode("wechat-qr", {
                 text: "<%- page.permalink %>",
                 width: 150,
                 height: 150,
                 correctLevel : QRCode.CorrectLevel.H
             });
-        });
-        function share(obj){
-            var qqShareURL="http://connect.qq.com/widget/shareqq/index.html?";
-            var weiboShareURL="http://service.weibo.com/share/share.php?";
-            var qzoneShareURL="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?";
-            var facebookShareURL="https://www.facebook.com/sharer/sharer.php?";
-            var twitterShareURL="https://twitter.com/intent/tweet?";
-            var googleplusShareURL="https://plus.google.com/share?";
-            var host_url="<%- page.permalink %>";
-            var title="【<%- page.title %>】";
-            var excerpt="<% if (page.excerpt){ %><%- trim(strip_html(page.excerpt)) %><% } else { %><%- trim(strip_html(truncate(page.content, 45))) %><% } %>";
-            var _URL;
-            if(obj=="qq"){
-                _URL=qqShareURL+"url="+host_url+"&title="+title+"&desc=&summary="+excerpt+"&site=cxpy";
-            }else if(obj=="weibo"){
-                _URL=weiboShareURL+"url="+host_url+"&title="+title+excerpt;
-            }else if(obj=="qzone"){
-                _URL=qzoneShareURL+"url="+host_url+"&title="+title+"&desc=&summary="+excerpt+"&site=cxpy";
-            }else if(obj=="facebook"){
-                _URL=facebookShareURL+"u="+host_url;
-            }else if(obj=="twitter"){
-                _URL=twitterShareURL+"text="+title+excerpt+"&url="+host_url;
-            }else if(obj=="googleplus"){
-                _URL=googleplusShareURL+"url="+host_url;
+            function share(obj){
+                var qqShareURL="http://connect.qq.com/widget/shareqq/index.html?";
+                var weiboShareURL="http://service.weibo.com/share/share.php?";
+                var qzoneShareURL="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?";
+                var facebookShareURL="https://www.facebook.com/sharer/sharer.php?";
+                var twitterShareURL="https://twitter.com/intent/tweet?";
+                var googleplusShareURL="https://plus.google.com/share?";
+                var host_url="<%- page.permalink %>";
+                var title="【<%- page.title %>】";
+                var excerpt="<% if (page.excerpt){ %><%- trim(strip_html(page.excerpt)) %><% } else { %><%- trim(strip_html(truncate(page.content, 45))) %><% } %>";
+                var _URL;
+                if(obj=="qq"){
+                    _URL=qqShareURL+"url="+host_url+"&title="+title+"&desc=&summary="+excerpt+"&site=cxpy";
+                }else if(obj=="weibo"){
+                    _URL=weiboShareURL+"url="+host_url+"&title="+title+excerpt;
+                }else if(obj=="qzone"){
+                    _URL=qzoneShareURL+"url="+host_url+"&title="+title+"&desc=&summary="+excerpt+"&site=cxpy";
+                }else if(obj=="facebook"){
+                    _URL=facebookShareURL+"u="+host_url;
+                }else if(obj=="twitter"){
+                    _URL=twitterShareURL+"text="+title+excerpt+"&url="+host_url;
+                }else if(obj=="googleplus"){
+                    _URL=googleplusShareURL+"url="+host_url;
+                }
+                window.open(_URL);
             }
-            window.open(_URL);
-        }
+        });
     </script>
 </div>
