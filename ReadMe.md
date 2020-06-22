@@ -10,16 +10,9 @@
 
 核心结构&样式来源：[@MoeDog](https://github.com/xb2016) 狗狗大佬的[Kratos-pjax](https://github.com/xb2016/kratos-pjax)
 
-非常感谢：
+## 超棒的赞助者们
 
-- [Kratos-pjax](https://github.com/xb2016/kratos-pjax)
-- [hexo-theme-sagiri](https://github.com/DIYgod/diygod.me/tree/master/themes/sagiri)
-- [hexo-theme-landscape](https://github.com/hexojs/hexo-theme-landscape)
-- [DisqusJS](https://github.com/SukkaW/DisqusJS)
-- [APlayer](https://github.com/MoePlayer/APlayer)
-- [NProgress](https://github.com/rstacruz/nprogress)
-- [CloudFlare](https://www.cloudflare.com/)
-- [jsDelivr](https://www.jsdelivr.com/)
+- @vensing [GitHub](https://github.com/vensing) [Blog](https://vensing.com/)
 
 ## 关于使用的环境
 
@@ -59,3 +52,15 @@
   }
 }
 ```
+
+## 非常感谢
+
+- [Kratos-pjax](https://github.com/xb2016/kratos-pjax)
+- [hexo-theme-sagiri](https://github.com/DIYgod/diygod.me/tree/master/themes/sagiri)
+- [hexo-theme-landscape](https://github.com/hexojs/hexo-theme-landscape)
+- [hexo-theme-suka](https://github.com/SukkaW/hexo-theme-suka)
+- [DisqusJS](https://github.com/SukkaW/DisqusJS)
+- [APlayer](https://github.com/MoePlayer/APlayer)
+- [NProgress](https://github.com/rstacruz/nprogress)
+- [CloudFlare](https://www.cloudflare.com/)
+- [jsDelivr](https://www.jsdelivr.com/)
