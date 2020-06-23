@@ -60,7 +60,7 @@
 
 /******************* Color ********************/
 ::-webkit-selection{color:var(--select-text);background:var(--select-text-bg)}::-moz-selection{color:var(--select-text);background:var(--select-text-bg)}::selection{color:var(--select-text);background:var(--select-text-bg)}
-body,h1,h2,h3,h4,h5,h6,ol,p,ul{color:var(--text)}
+h1,h2,h3,h4,h5,h6,ol,p,ul{color:var(--text)}
 body.custom-background{background-color:var(--page-background)}
 h2.title-h2{background-color:var(--info-background)}
 a{color:var(--link)}
@@ -87,8 +87,10 @@ blockquote p{color:var(--text)}
 .linkpage li a h4{color:var(--text)}
 .linkpage li:hover{background-color:var(--info-background)}
 #archives .posts-collapse .post-title a{color:var(--text-alt)}
-#dsqjs-msg{color:var(--text)!important;background-color:var(--tag-background)!important}
 #disqus_thread{background-color:var(--tag-background)}
+#dsqjs a{color:var(--link)}
+#dsqjs .dsqjs-tab-active{color:var(--text)}
+#dsqjs-msg{color:var(--text)!important;background-color:var(--tag-background)!important}
 @media(min-width:768px){
     #kratos-header-section{background:var(--navbar-desktop)}
 }

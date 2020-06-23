@@ -81,7 +81,7 @@ var kr = new Object();
     };
     const mobiClick = ()=>{
         $(document).click((e)=>{
-            var container = $("#offcanvas-menu,.js-kratos-nav-toggle");
+            const container = $("#offcanvas-menu,.js-kratos-nav-toggle");
             if(!container.is(e.target)&&container.has(e.target).length===0){
                 if($('.nav-toggle').hasClass('toon')){
                     $('.nav-toggle').removeClass('toon');
@@ -122,7 +122,7 @@ var kr = new Object();
 
     const setrandpic = ()=>{
         //图片
-        var imageboxs = document.getElementsByClassName("kratos-entry-thumb-new-img");
+        const imageboxs = document.getElementsByClassName("kratos-entry-thumb-new-img");
         for(var i = 0, len = imageboxs.length; i < len; i++) {
             if (!($(imageboxs[i]).attr("src")))
                 $(imageboxs[i]).attr("src", kr.thome + "images/thumb/thumb_"+Math.floor(Math.random()*20+1)+".jpg");

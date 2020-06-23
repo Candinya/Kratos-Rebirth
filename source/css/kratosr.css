@@ -410,7 +410,7 @@ td,th {padding:.2em 1em;border: 1px solid lightblue;}
 .linkpage li a h4{color:#333;font-size:18px;margin:0 0 7px 0;padding-left:90px}
 .linkpage li a h4:hover{color:#51aded}
 .linkpage li a h4,.linkpage li a p{cursor:pointer;white-space:nowrap;text-overflow:ellipsis;overflow:hidden;line-height:1.4}
-.linkpage li a p{font-size:12px;color:#999;padding-left:90px}
+.linkpage li a p{font-size:12px;color:#999;padding-left:75px}
 
 @media(max-width:1200px){
 .kratos-entry-content-new{height:80px;overflow:hidden;text-overflow:ellipsis}
