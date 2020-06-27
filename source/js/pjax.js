@@ -1,5 +1,5 @@
 $(function() {
-    var ajx_main = '#main',
+    var row_content = '#kratos-blog-post .row';
     theTop = notMobile ? $("#kratos-blog-post").offset().top-40 : 0;
     function reload_func() {
         $(this).pjax_reload();
@@ -12,7 +12,7 @@ $(function() {
             if (typeof e.state.html === 'undefined') {
                 ajax(e.state.url, false);
             } else {
-                $(ajx_main).html( e.state.html );
+                $(row_content).html( e.state.html );
             }
             window.load = reload_func();
         }
@@ -24,24 +24,23 @@ $(function() {
                 history.replaceState({
                     url: location.href,
                     title: document.title,
-                    html: $(document).find(ajx_main).html()
+                    html: $(document).find(row_content).html()
                     }, document.title, location.href);
                 $("body,html").animate({scrollTop:theTop}, 600);
                 NProgress.start();
             },
             success: function(data) {
-                if (typeof $(data).find(ajx_main).html() === 'undefined') {
+                if (typeof $(data).find(row_content).html() === 'undefined') {
                     location.href = reqUrl;
                 } else {
-                    $(ajx_main).html($(data).find(ajx_main).html());
-                    $('#kratos-widget-area').html($(data).find('#kratos-widget-area').html());
+                    $(row_content).html($(data).find(row_content).html());
                 }
                 document.title = $(data).filter("title").text();
                 if (needPushState) {
                     window.history.pushState({
                         url: reqUrl,
                         title: $(data).filter("title").text(),
-                        html: $(data).find(ajx_main).html()
+                        html: $(data).find(row_content).html()
                     }, $(data).filter("title").text(), reqUrl);
                 }
             },
