@@ -1,6 +1,8 @@
 categories: 分类目录
 read_more: 阅读全文
 search: 搜索
+search_notice: 有什么想找找看的呢o(*￣▽￣*)ブ
+search_submit: 找一找~
 tags: 标签
 tagcloud: 标签聚合
 prev: 上一页
@@ -13,6 +15,6 @@ recent_posts: 最新文章
 newer: 上一篇
 older: 下一篇
 share: 分享
-rss_feed: RSS Feed
+rss_feed: RSS 订阅
 category: 分类
 tag: 标签

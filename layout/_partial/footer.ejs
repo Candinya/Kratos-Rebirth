@@ -14,13 +14,13 @@
     <div id="footer">
         <div class="kr-tool text-center">
             <div class="tool">
-                <!-- <div class="search-box">
-                    <span class="fa fa-search"></span>
-                    <form action="//google.com/search" role="search" method="get" accept-charset="UTF-8" id="searchform" target="_blank">
-                        <input type="search" id="search" name="q" placeholder="Search"  style="display:none">
-                        <input type="hidden" name="sitesearch" value="<%= config.url %>">
-                    </form>
-                </div> -->
+                <% if (config.kratos_rebirth && config.kratos_rebirth.search.enable) { %>
+                    <div class="box search-box">
+                        <a href="<%- config.root %>search/">
+                            <span class="fa fa-search"></span>
+                        </a>
+                    </div>
+                <% } %>
                 <% if (theme.enableDark) { %>
                     <div class="box theme-box" id="darkmode-switch">
                         <span class="fa fa-adjust"></span>
@@ -49,7 +49,7 @@
                         <% if (theme.contact.linkedin) {%><li><a target="_blank" rel="nofollow" href="https://cn.linkedin.com/in/<%- theme.contact.linkedin %>"><i class="fa fa-linkedin-square"></i></a></li><% } %>
                         <% if (theme.contact.fediverse.username) {%><li><a target="_blank" rel="nofollow" href="https://<%- theme.contact.fediverse.instance %>/@<%- theme.contact.fediverse.username %>"><i class="fa fa fa-share-alt-square"></i></a></li><% } %>
                         <% if (theme.contact.github) {%><li><a target="_blank" rel="nofollow" href="https://github.com/<%- theme.contact.github %>"><i class="fa fa-github"></i></a></li><% } %>
-                        <% if (theme.contact.rss) {%><li><a target="_blank" rel="nofollow" href="<%- theme.contact.rss %>"><i class="fa fa-rss"></i></a></li><% } %>
+                        <% if (theme.contact.rss) {%><li><a target="_blank" rel="nofollow" href="<%- config.root + theme.contact.rss %>"><i class="fa fa-rss"></i></a></li><% } %>
                     </ul>
                     <ul class="kratos-copyright">
                         <div>

@@ -33,8 +33,7 @@
         --banner-image: url('/images/banner_dark.jpg');
         --background-image: none;
     
-        --select-text: #181c27;
-        --select-text-bg: #fcfcfc;
+        --select-text-bg: #186cbb;
         --text: #eee;
         --text-alt: #ccc;
         --link: lightblue;
@@ -51,8 +50,7 @@
     --banner-image: url('/images/banner_dark.jpg');
     --background-image: none;
 
-    --select-text: #181c27;
-    --select-text-bg: #fcfcfc;
+    --select-text-bg: #186cbb;
     --text: #eee;
     --text-alt: #ccc;
     --link: lightblue;

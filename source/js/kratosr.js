@@ -1,4 +1,4 @@
-let kr = new Object();
+let kr = {};
 //-------------------参数设置区 开始-------------------
     kr.thome = "/";
     kr.ctime = "03/24/2018 15:31:36";
@@ -192,7 +192,7 @@ window.onload = ()=>{
 };
 
 if (kr.enable_site_leave_event) {
-    var OriginTitile, titleTime;
+    let OriginTitile, titleTime;
     const OriginLogo = $('[rel="icon"]').attr("href");
     document.addEventListener('visibilitychange', ()=>{
         if (document.hidden) {

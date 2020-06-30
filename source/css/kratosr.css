@@ -263,7 +263,6 @@ td,th {padding:.2em 1em;border: 1px solid lightblue;}
 .kratos-post-inner .kratos-copyright h5{margin:15px;color:#666;font-size:13px;font-weight:300}
 .kratos-post-inner .kratos-copyright a{color:#777}
 .kratos-post-inner-new{margin-left:255px;height:160px;padding:21px 20px 0 3px}
-.kratos-post-inner-new.kr-search-result{margin-left:50px;height:auto;margin-top:20px}
 .kratos-post-inner-new header .label-link{position:relative;display:inline-block;padding:4px 6px 3px;font-size:12px;font-weight:700;line-height:14px;color:#fff;vertical-align:baseline;white-space:nowrap;background-color:#51aded;margin-right:5px;position:relative;top:-2px;border-radius:0;cursor:pointer}
 .kratos-post-inner-new header .label-link:after{position:absolute;width:0;height:0;vertical-align:top;content:"";top:6px;right:-4px;border-left:4px solid #51aded;border-top:4px solid transparent;border-bottom:4px solid transparent;}
 .kratos-post-inner-new header .label-link:hover{color:#fff!important}

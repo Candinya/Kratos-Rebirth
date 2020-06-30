@@ -14,6 +14,10 @@
 
 - @vensing [GitHub](https://github.com/vensing) [Blog](https://vensing.com/)
 
+## 特别提示
+
+在运行之前，请您将`_config.yml.site.example`文件内的数据，复制到您**站点**的_config.yml中，否则可能会对相关代码的功能造成影响。
+
 ## 关于使用的环境
 
 为了获得更佳的使用体验，建议安装的插件有：

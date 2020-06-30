@@ -1,0 +1,9 @@
+# Append these configs to your site's _config.yml file (In Hexo root directory)
+# 请将这些设置加入到您站点的 _config.yml 文件中（在Hexo的根目录下）
+
+kratos_rebirth:
+  search:
+    enable: true
+    path: search.json
+    field: post # page | post | all. Default post
+    content: true # Include post | page content
