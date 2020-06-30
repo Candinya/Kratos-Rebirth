@@ -58,7 +58,7 @@ h3{font-size:1.1em}
 h4{font-size:1.0em}
 h5{font-size:1.0em}
 h6{font-size:1.0em}
-h2.title-h2{margin:15px -20px;padding:0 20px;border-left:5px solid #51aded;background-color:#f7f7f7;font-size:20px;line-height:40px}
+h2.title-h2{margin:15px -20px;padding:0 20px;border-left:5px solid #51aded;background-color:#f7f7f7;font-size:20px;line-height:40px;text-align:center;font-size:18pt}
 hr{margin-top:20px;margin-bottom:20px;border:0;border-top:1px solid #eee}
 img{vertical-align:middle}
 code{font-size:90%;color:#fff;border-radius:3px;padding:1px 6px;background-color:#6c6c6c}
@@ -86,7 +86,7 @@ td,th {padding:.2em 1em;border: 1px solid lightblue;}
 .btn-primary{border-color:#51aded;background-color:#51aded;color:#fff}
 .btn-primary:hover{border-color:#15b9fa;background-color:#15b9fa;color:#fff}
 .btn-primary:active,.btn-primary:active:focus,.btn-primary:active:hover,.btn-primary:focus{border-color:#0895cb;background-color:#0895cb;color:#fff}
-.btn.btn-primary{background:#51aded;color:#fff;border:none!important;border:2px solid transparent!important}
+.btn.btn-primary{background:#51aded;color:#fff;border:transparent;border-radius:3px;}
 .btn.btn-primary:active,.btn.btn-primary:focus,.btn.btn-primary:hover{box-shadow:none;background:#51aded;color:#fff!important}
 .carousel{margin-bottom:20px;box-shadow:0 1px 2px rgba(0,0,0,.1)}
 .carousel,.carousel-inner{position:relative}
@@ -263,10 +263,11 @@ td,th {padding:.2em 1em;border: 1px solid lightblue;}
 .kratos-post-inner .kratos-copyright h5{margin:15px;color:#666;font-size:13px;font-weight:300}
 .kratos-post-inner .kratos-copyright a{color:#777}
 .kratos-post-inner-new{margin-left:255px;height:160px;padding:21px 20px 0 3px}
+.kratos-post-inner-new.kr-search-result{margin-left:50px;height:auto;margin-top:20px}
 .kratos-post-inner-new header .label-link{position:relative;display:inline-block;padding:4px 6px 3px;font-size:12px;font-weight:700;line-height:14px;color:#fff;vertical-align:baseline;white-space:nowrap;background-color:#51aded;margin-right:5px;position:relative;top:-2px;border-radius:0;cursor:pointer}
 .kratos-post-inner-new header .label-link:after{position:absolute;width:0;height:0;vertical-align:top;content:"";top:6px;right:-4px;border-left:4px solid #51aded;border-top:4px solid transparent;border-bottom:4px solid transparent;}
 .kratos-post-inner-new header .label-link:hover{color:#fff!important}
-.kratos-post-content{word-break:break-all;word-wrap:break-word;margin:10px}
+.kratos-post-content{word-break:break-word;word-wrap:break-word;margin:10px}
 .kratos-post-content p{margin-bottom:1em;font-size:16px;color:#333;margin:1em}
 .kratos-post-content img{height:auto;max-width:100%;display:block;margin:0 auto;border-radius:2px}
 .kratos-post-content embed{max-width:100%}
@@ -287,7 +288,7 @@ td,th {padding:.2em 1em;border: 1px solid lightblue;}
 .kratos-entry-thumb-new img{padding:2px;border:1px solid #f3f3f3;height:145px;width:240px}
 .kratos-post-meta-new a{margin-right:2px;}
 .kratos-post-meta-new .read-more{margin-right:0}
-.kratos-entry-header .kratos-post-meta a{margin-right:10px;color:#777676}
+.kratos-entry-header .kratos-post-meta a{color:#777676}
 .kratos-entry-header{margin-bottom:0}
 .kratos-entry-header-new{margin:3px 0 6px}
 .kratos-entry-content p{font-size:16px}
@@ -316,7 +317,7 @@ td,th {padding:.2em 1em;border: 1px solid lightblue;}
 .donate-box .pay-button{margin:10px 5px;width:132px;height:45px;border:1px solid #e6e6e6;text-align:center;line-height:38px;cursor:pointer}
 .donate-box .pay-button img{height:26px}
 .d-none{display:none}
-.kratos-entry-footer .footer-tag a{background-color:#aaa;border-radius:0;color:#fff;display:inline-block;font-size:12px;line-height:13px;margin:0 0 2px 5px;padding:3px 7px;position:relative}
+.kratos-entry-footer .footer-tag a{background-color:#aaa;color:#fff;display:inline-block;font-size:12px;line-height:13px;padding:2px 5px;}
 .kratos-entry-footer .footer-tag a:focus,.kratos-entry-footer .footer-tag a:hover{background:#8d8d8d;color:#fff!important}
 .kratos-entry-footer .footer-tag .pull-date{float:right;margin-top:5px;font-size:14px}
 .share-wrap{display:block;margin:10px 0 -20px}
@@ -397,9 +398,11 @@ td,th {padding:.2em 1em;border: 1px solid lightblue;}
 #footer .kratos-social-icons li a i{font-size:36px}
 #footer .kratos-copyright{padding-left: 0}
 #footer .kratos-copyright{list-style: none}
-#footer .kratos-copyright li{color:rgba(255,255,255,.3);line-height:1;margin-left:1em;font-size:14px}
+#footer .kratos-copyright li{color:rgba(255,255,255,.3);line-height:1;margin:0 2px;font-size:14px}
 @media screen and (max-width: 550px){#footer .kratos-copyright li{display:block;margin-top:1em}}
 #footer .kratos-copyright:first-child{margin-top:25px}
+#searchform{position:fixed;right:60px;opacity:0}
+#searchform .input{height:40px;display:none}
 .linkpage ul{color:rgba(255,255,255,.15)}
 .linkpage ul:after{content:" ";clear:both;display:block}
 .linkpage li{float:left;width:48%;position:relative;transition:all .3s ease-out;border-radius:5px;line-height:1.3;height:90px;display:block}
@@ -448,6 +451,7 @@ h1.kratos-entry-title.text-center {font-size: 40px!important}
 .kratos-entry-thumb-new{position:relative;float:none;width:auto;height:auto;overflow:hidden;padding:0;margin:0;margin-bottom:20px}
 .kratos-entry-thumb-new img{height:auto;max-width:100%;width:750px;padding:0;border:0}
 .kratos-post-inner-new{margin-left:0;height:auto;padding:0 20px}
+.kratos-post-meta-new a{margin-right:15px}
 .kratos-post-meta-new .read-more{margin-right:8px}
 .kratos-entry-content-new{height:auto}
 .kratos-post-meta-new a{margin-right:10px}

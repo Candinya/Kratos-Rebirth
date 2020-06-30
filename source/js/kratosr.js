@@ -1,4 +1,4 @@
-var kr = new Object();
+let kr = new Object();
 //-------------------参数设置区 开始-------------------
     kr.thome = "/";
     kr.ctime = "03/24/2018 15:31:36";
@@ -14,24 +14,18 @@ var kr = new Object();
     kr.site_title_return = "(*´∇｀*)欸，又好啦~ ";
 //-------------------参数设置区 结束-------------------
 
-(function(){
+(()=>{
     const shareMenu = ()=>{
         $(document).on("click",".Share",()=>{$(".share-wrap").fadeToggle("slow");});
     };
-    
-    // var toSearch = function(){
-    //     $('.search-box').on("click",function(e){
-    //         $("#searchform").animate({width:"200px"},200),
-    //         $("#searchform input").css('display','block');
-    //         $(document).one("click", function(){
-    //             $("#searchform").animate({width:"0"},100),
-    //             $("#searchform input").hide();
-    //         });
-    //         e.stopPropagation();
-    //     });
-    //     $('#searchform').on("click",function(e){e.stopPropagation();})
-    // }
     const gotopInit = ()=>{
+        const toolScroll = ()=>{
+            if ($(window).scrollTop()>200){
+                $('.kr-tool').addClass('scroll-down');
+            } else {
+                $('.kr-tool').removeClass('scroll-down');
+            }
+        }
         $('.gotop-box').on('click',function(event){
             event.preventDefault();
             $('html, body').animate({
@@ -39,12 +33,9 @@ var kr = new Object();
             },500);
             return false;
         });
+        toolScroll();
         $(window).scroll(()=>{
-            if ($(window).scrollTop()>200){
-                $('.kr-tool').addClass('scroll-down');
-            }else{
-                $('.kr-tool').removeClass('scroll-down');
-            }
+            toolScroll();
         });
     };
     const offcanvas = ()=>{
@@ -69,7 +60,7 @@ var kr = new Object();
         $('#offcanvas-menu').css('height',$(window).height());
         $('#offcanvas-menu').css('right','-240px');
         $(window).resize(()=>{
-            var w = $(window);
+            const w = $(window);
             $('#offcanvas-menu').css('height',w.height());
             if(w.width()>769){
                 if($('.nav-toggle').hasClass('toon')){
@@ -166,7 +157,6 @@ var kr = new Object();
     $(()=>{
         shareMenu();
         gotopInit();
-        // toSearch();
         offcanvas();
         mobiClick();
         // xControl();
@@ -174,10 +164,10 @@ var kr = new Object();
         tocNavInit();
         $(this).pjax_reload();
     });
-}());
+})();
 
-{
-    var now = new Date();
+(()=>{
+    let now = new Date();
     const grt = new Date(kr.ctime);
     const upTimeNode = document.getElementById("span_dt");
     setInterval(()=>{
@@ -191,7 +181,7 @@ var kr = new Object();
         if(String(snum).length==1){snum = "0"+snum;}
         upTimeNode.innerText = dnum+"天"+hnum+"小时"+mnum+"分"+snum+"秒";
     }, 1000);
-}
+})();
 
 if (kr.copy_notify) {
     document.body.oncopy = ()=>{alert(kr.copy_notify_text);}

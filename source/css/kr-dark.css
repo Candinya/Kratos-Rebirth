@@ -8,6 +8,8 @@
     --about-image: url('/images/about.jpg');
     --background-image: url('/images/bg.png');
 
+    --select-text: #fcfcfc;
+    --select-text-bg: #262a30;
     --text: #000;
     --text-alt: #666;
     --link: #3e8dc5;
@@ -31,6 +33,8 @@
         --banner-image: url('/images/banner_dark.jpg');
         --background-image: none;
     
+        --select-text: #181c27;
+        --select-text-bg: #fcfcfc;
         --text: #eee;
         --text-alt: #ccc;
         --link: lightblue;
@@ -47,6 +51,8 @@
     --banner-image: url('/images/banner_dark.jpg');
     --background-image: none;
 
+    --select-text: #181c27;
+    --select-text-bg: #fcfcfc;
     --text: #eee;
     --text-alt: #ccc;
     --link: lightblue;
@@ -86,11 +92,13 @@ blockquote p{color:var(--text)}
 .arc-tag a.tag-link{color:var(--text-alt);background-color:var(--tag-background);border-color:var(--border)}
 .linkpage li a h4{color:var(--text)}
 .linkpage li:hover{background-color:var(--info-background)}
+.kratos-post-header-title{color:var(--text)}
 #archives .posts-collapse .post-title a{color:var(--text-alt)}
 #disqus_thread{background-color:var(--tag-background)}
 #dsqjs a{color:var(--link)}
 #dsqjs .dsqjs-tab-active{color:var(--text)}
-#dsqjs-msg{color:var(--text)!important;background-color:var(--tag-background)!important}
+#dsqjs-msg{color:var(--text);background-color:var(--tag-background)}
+#aplayer *{color:unset};
 @media(min-width:768px){
     #kratos-header-section{background:var(--navbar-desktop)}
 }
