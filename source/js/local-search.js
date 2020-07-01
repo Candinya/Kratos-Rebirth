@@ -5,12 +5,32 @@ function searchEscape(keyword) {
         '>': '&gt;',
         '"': '&quot;',
         '\'': '&#39;',
-        '/': '&#x2F;',
-        '?': '&iexcl;'
+        '/': '&#x2F;'
     };
 
-    return keyword.replace(/[&<>"'/?]/g, function (i) {
+    return keyword.replace(/[&<>"'/]/g, function (i) {
         return htmlEntityMap[i];
+    });
+}
+
+function regEscape(keyword) {
+    const regEntityMap = {
+        '{': '\\\{',
+        '}': '\\\}',
+        '[': '\\\[',
+        ']': '\\\]',
+        '(': '\\\(',
+        ')': '\\\)',
+        '?': '\\\?',
+        '*': '\\\*',
+        '.': '\\\.',
+        '+': '\\\+',
+        '^': '\\\^',
+        '$': '\\\$'
+    };
+
+    return keyword.replace(/[\{\}\[\]\(\)\?\*\.\+\^\$]/g, function (i) {
+        return regEntityMap[i];
     });
 }
 
@@ -139,7 +159,7 @@ function loadDataSearch(searchDataFile, skeys) {
                     tPage.category = data.categories[0] || [];
                     tPage.link = data.url;
                     keywords.forEach((keyword)=>{
-                        const regS = new RegExp(keyword + '(?!>)', 'gi');
+                        const regS = new RegExp(regEscape(keyword) + '(?!>)', 'gi');
                         tPage.title = tPage.title.replace(regS, '<m>$&</m>');
                     });
                     if (indexs.firstOccur >= 0) {
@@ -157,7 +177,7 @@ function loadDataSearch(searchDataFile, skeys) {
                         }
                         tPage.content = dataContent.substr(start, end-start);
                         keywords.forEach((keyword)=>{
-                            const regS = new RegExp(keyword + '(?!>)', 'gi');
+                            const regS = new RegExp(regEscape(keyword) + '(?!>)', 'gi');
                             tPage.content = tPage.content.replace(regS, '<m>$&</m>');
                         });
                     }
