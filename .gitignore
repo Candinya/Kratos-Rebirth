@@ -1,5 +1,5 @@
 # 配置文件
 _config.yml
 
-# live2d 资源
-source/l2d/
+# 站点图像
+source/images/favicon.png

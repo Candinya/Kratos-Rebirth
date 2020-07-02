@@ -24,9 +24,9 @@
                 <%- page.content %>
             </div>
             <% if (theme.posts.show_cc) { %>
-            <div class="kratos-copyright text-center clearfix">
-                <h5>本作品采用 <a rel="license nofollow" target="_blank" href="http://creativecommons.org/licenses/by-sa/4.0/">知识共享署名-相同方式共享 4.0 国际许可协议</a> 进行许可</h5>
-            </div>
+                <div class="kratos-copyright text-center clearfix">
+                    <h5>本作品采用 <a rel="license nofollow" target="_blank" href="http://creativecommons.org/licenses/by-sa/4.0/">知识共享署名-相同方式共享 4.0 国际许可协议</a> 进行许可</h5>
+                </div>
             <% } %>
             <footer class="kratos-entry-footer clearfix">
                 <% if (theme.posts.donate || theme.posts.share) { %>
@@ -49,7 +49,7 @@
                         }) %>
                     </div>
                     <div class="pull-date">
-                    <span>最后编辑：<%= date(page.edit?page.edit:page.date, null) %></span>
+                    <span>最后编辑：<%- date(page.updated) %></span>
                     </div>
                 </div>
             </footer>
@@ -58,12 +58,12 @@
             <nav class="navigation post-navigation clearfix" role="navigation">
                 <% if (page.next){ %>
                 <div class="nav-previous clearfix">
-                    <a title=" <% if (page.next.title){ %><%= page.next.title %><% } else { %>(no title)<% } %>" href="<%- "/"+page.next.path %>">&lt; <%= __('newer') %></a>
+                    <a title=" <% if (page.next.title){ %><%= page.next.title %><% } else { %>(no title)<% } %>" href="<%- config.root + page.next.path %>">&lt; <%= __('newer') %></a>
                 </div>
                 <% } %>
                 <% if (page.prev){ %>
                 <div class="nav-next clearfix">
-                    <a title=" <% if (page.prev.title){ %><%= page.prev.title %><% } else { %>(no title)<% } %>" href="<%- "/"+page.prev.path %>"><%= __('older') %> &gt;</a>
+                    <a title=" <% if (page.prev.title){ %><%= page.prev.title %><% } else { %>(no title)<% } %>" href="<%- config.root + page.prev.path %>"><%= __('older') %> &gt;</a>
                 </div>
                 <% } %>
             </nav>
