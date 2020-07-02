@@ -12,8 +12,8 @@
     --select-text-bg: #262a30;
     --text: #000;
     --text-alt: #666;
-    --link: #3e8dc5;
-    --link-hover: #51aded;
+    --link: #1e8cdb;
+    --link-hover: #6ec3f5;
     --border: #3c495b3a;
     --tag-background: #fff;
     --card-background: rgba(255, 255, 255, .8);
@@ -37,6 +37,7 @@
         --text: #eee;
         --text-alt: #ccc;
         --link: lightblue;
+        --link-hover: #51aded;
         --border: #ccc;
         --tag-background: #252d38;
         --card-background: #282c34;
@@ -54,6 +55,7 @@
     --text: #eee;
     --text-alt: #ccc;
     --link: lightblue;
+    --link-hover: #51aded;
     --border: #ccc;
     --tag-background: #252d38;
     --card-background: #282c34;
@@ -68,10 +70,12 @@ h1,h2,h3,h4,h5,h6,ol,p,ul{color:var(--text)}
 body.custom-background{background-color:var(--page-background)}
 h2.title-h2{background-color:var(--info-background)}
 a{color:var(--link)}
+a:hover{color:var(--link-hover)}
 blockquote{background-color:var(--info-background);border-color: var(--border);}
 blockquote p{color:var(--text)}
 .kratos-hentry{background-color:var(--tag-background)}
 .kratos-entry-border-new a{color:var(--text)}
+.kratos-entry-border-new a:hover{color:var(--link-hover)}
 .kratos-entry-border-new .kratos-post-meta-new{border-top:1px solid var(--border);background:var(--tag-background)}
 .kratos-entry-header .kratos-post-meta span, .kratos-entry-header .kratos-post-meta a{color:var(--text)}
 .kratos-post-content p{color:var(--text)}

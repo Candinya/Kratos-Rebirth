@@ -46,8 +46,8 @@
     "hexo-generator-archive": "^1.0.0",
     "hexo-generator-category": "^1.0.0",
     "hexo-generator-feed": "^2.2.0",
-    "hexo-generator-index": "^1.0.0",
     "hexo-generator-index-pin-top": "^0.2.2",
+    "hexo-generator-sitemap": "^2.0.0",
     "hexo-generator-tag": "^1.0.0",
     "hexo-renderer-ejs": "^1.0.0",
     "hexo-renderer-marked": "^2.0.0",
@@ -61,8 +61,8 @@
 
 - [Kratos-pjax](https://github.com/xb2016/kratos-pjax)
 - [hexo-theme-sagiri](https://github.com/DIYgod/diygod.me/tree/master/themes/sagiri)
-- [hexo-theme-landscape](https://github.com/hexojs/hexo-theme-landscape)
 - [hexo-theme-suka](https://github.com/SukkaW/hexo-theme-suka)
+- [hexo-theme-landscape](https://github.com/hexojs/hexo-theme-landscape)
 - [DisqusJS](https://github.com/SukkaW/DisqusJS)
 - [APlayer](https://github.com/MoePlayer/APlayer)
 - [NProgress](https://github.com/rstacruz/nprogress)
