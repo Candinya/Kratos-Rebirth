@@ -13,20 +13,6 @@
                 </div>
             </footer>
         </div>
-        <% if (page.prev || page.next){ %>
-            <nav class="navigation post-navigation clearfix" role="navigation">
-                <% if (page.next){ %>
-                <div class="nav-previous clearfix">
-                    <a title=" <% if (page.next.title){ %><%= page.next.title %><% } else { %>(no title)<% } %>" href="<%- "/"+page.next.path %>">&lt; <%= __('newer') %></a>
-                </div>
-                <% } %>
-                <% if (page.prev){ %>
-                <div class="nav-next clearfix">
-                    <a title=" <% if (page.prev.title){ %><%= page.prev.title %><% } else { %>(no title)<% } %>" href="<%- "/"+page.prev.path %>"><%= __('older') %> &gt;</a>
-                </div>
-                <% } %>
-            </nav>
-        <% } %>
         <% if (theme.posts.comments && page.comments) { %>
             <%- partial('_comments/' + theme.posts.comments) %>
         <% } %>

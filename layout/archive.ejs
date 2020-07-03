@@ -33,7 +33,7 @@
                       <% } %>
                       <div class="post-block archive post" style="margin-left: 2em;">
                           <div id="posts" class="posts-collapse">
-                            <span class="archive-page-counter">当前共有<%- site.posts.length %>篇文章 (゜-゜)つロ 干杯~</span>
+                            <h3 class="archive-page-counter">当前共有<%- site.posts.length %>篇文章 (゜-゜)つロ 干杯~</h3>
                             <% var year; %>
                             <% site.posts.sort('date', -1).each(function(post){ %>
                               <% var post_year = date(post.date, 'YYYY'); %>

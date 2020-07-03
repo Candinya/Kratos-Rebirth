@@ -9,6 +9,7 @@
   <meta name="robots" content="index,follow" />
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
   <meta name="format-detection" content="telphone=no, email=no" />
+  <meta name="author" content="<%- config.author  %>" />
   <% if (is_post()) { %>
     <% if (page.excerpt) { %>
       <meta name="description" itemprop="description" content="<%- trim(strip_html(page.excerpt)) %>" />

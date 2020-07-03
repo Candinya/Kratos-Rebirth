@@ -96,6 +96,7 @@ blockquote p{color:var(--text)}
 .linkpage li:hover{background-color:var(--info-background)}
 .kratos-post-header-title{color:var(--text)}
 #archives .posts-collapse .post-title a{color:var(--text-alt)}
+#archives .posts-collapse .post-title a:hover{color:var(--link-hover)}
 #disqus_thread{background-color:var(--tag-background)}
 #dsqjs a{color:var(--link)}
 #dsqjs .dsqjs-tab-active{color:var(--text)}

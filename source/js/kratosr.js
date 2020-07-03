@@ -2,16 +2,14 @@ let kr = {};
 //-------------------参数设置区 开始-------------------
     kr.thome = "/";
     kr.ctime = "03/24/2018 15:31:36";
-    kr.donate = "支持我~";
-    kr.scan = "扫一扫，好不好？";
-    kr.alipay = "/images/alipayqr.jpg";
-    kr.wechat = "/images/wechatpayqr.png";
-    kr.copy_notify = false;
-    kr.copy_notify_text = "欢迎转载，请记得标明出处哦~";
-    kr.enable_site_leave_event = false;
-    kr.site_logo_leave = "images/failure.ico";
-    kr.site_title_leave = "{{{(>_<)}}}哦哟，崩溃啦~ ";
-    kr.site_title_return = "(*´∇｀*)欸，又好啦~ ";
+    kr.donateBtn = "支持我~";
+    kr.scanNotice = "扫一扫，好不好？";
+    kr.qr_alipay = "/images/alipayqr.jpg";
+    kr.qr_wechat = "/images/wechatpayqr.png";
+    kr.siteLeaveEvent = false;
+    kr.leaveLogo = "images/failure.ico";
+    kr.leaveTitle = "{{{(>_<)}}}哦哟，崩溃啦~ ";
+    kr.returnTitle = "(*´∇｀*)欸，又好啦~ ";
 //-------------------参数设置区 结束-------------------
 
 (()=>{
@@ -98,10 +96,10 @@ let kr = {};
     //         layer.open({
     //             type:1,
     //             area:['300px', '370px'],
-    //             title:kr.donate,
+    //             title:kr.donateBtn,
     //             resize:false,
     //             scrollbar:false,
-    //             content:'<div class="donate-box"><div class="meta-pay text-center"><strong>'+kr.scan+'</strong></div><div class="qr-pay text-center"><img class="pay-img" id="alipay_qr" src="'+kr.alipay+'"><img class="pay-img d-none" id="wechat_qr" src="'+kr.wechat+'"></div><div class="choose-pay text-center mt-2"><input id="alipay" type="radio" name="pay-method" checked><label for="alipay" class="pay-button"><img src="' + kr.thome + 'images/alipay.png"></label><input id="wechatpay" type="radio" name="pay-method"><label for="wechatpay" class="pay-button"><img src="' + kr.thome + 'images/wechat.png"></label></div></div>'
+    //             content:'<div class="donate-box"><div class="meta-pay text-center"><strong>'+kr.scanNotice+'</strong></div><div class="qr-pay text-center"><img class="pay-img" id="alipay_qr" src="'+kr.qr_alipay+'"><img class="pay-img d-none" id="wechat_qr" src="'+kr.qr_wechat+'"></div><div class="choose-pay text-center mt-2"><input id="alipay" type="radio" name="pay-method" checked><label for="alipay" class="pay-button"><img src="' + kr.thome + 'images/alipay.png"></label><input id="wechatpay" type="radio" name="pay-method"><label for="wechatpay" class="pay-button"><img src="' + kr.thome + 'images/wechat.png"></label></div></div>'
     //         });
     //         $(".choose-pay input[type='radio']").click(()=>{
     //             var id = $(this).attr("id");
@@ -149,9 +147,33 @@ let kr = {};
         });
     };
 
+    let copyrightString;
+    const setCopyright = ()=>{
+        copyrightString = `
+
+-------------------------
+该内容采用 CC BY-NC-SA 4.0 许可协议，著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+作者：${document.querySelector("meta[name='author']").getAttribute('content')}
+来源：${document.title}
+链接：${window.location.href}
+`;
+    }
+
+    const copyEvent = ()=>{
+        if (copyrightString) {
+            document.body.oncopy = (e)=>{
+                e.preventDefault();
+                if (e.clipboardData) {
+                    e.clipboardData.setData("text/plain", window.getSelection().toString() + copyrightString);
+                }
+            };
+        }
+    };
+
     $.fn.pjax_reload = ()=>{
         setrandpic();
         fancyboxInit();
+        setCopyright();
     };
 
     $(()=>{
@@ -163,6 +185,7 @@ let kr = {};
         // donateConfig();
         tocNavInit();
         $(this).pjax_reload();
+        copyEvent();
     });
 })();
 
@@ -183,25 +206,21 @@ let kr = {};
     }, 1000);
 })();
 
-if (kr.copy_notify) {
-    document.body.oncopy = ()=>{alert(kr.copy_notify_text);}
-}
-
 window.onload = ()=>{
-    console.log('%c页面加载完毕消耗了'+Math.round(performance.now()*100)/100+'ms','background:#fff;color:#333;text-shadow:0 0 2px #eee,0 0 3px #eee,0 0 3px #eee,0 0 2px #eee,0 0 3px #eee;');
+    console.log('页面加载完毕消耗了 %c'+Math.round(performance.now()*100)/100+' ms','background:#282c34;color:#51aded;');
 };
 
-if (kr.enable_site_leave_event) {
+if (kr.siteLeaveEvent) {
     let OriginTitile, titleTime;
     const OriginLogo = $('[rel="icon"]').attr("href");
     document.addEventListener('visibilitychange', ()=>{
         if (document.hidden) {
             OriginTitile = document.title;
-            document.title = kr.site_title_leave + OriginTitile;
-            $('[rel="icon"]').attr("href", kr.thome + kr.site_logo_leave);
+            document.title = kr.leaveTitle + OriginTitile;
+            $('[rel="icon"]').attr("href", kr.thome + kr.leaveLogo);
             clearTimeout(titleTime);
         } else {
-            document.title = kr.site_title_return + OriginTitile;
+            document.title = kr.returnTitle + OriginTitile;
             $('[rel="icon"]').attr("href", OriginLogo);
             titleTime = setTimeout(()=>{
                 document.title = OriginTitile;
