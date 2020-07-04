@@ -1,0 +1,35 @@
+{
+  "name": "kratos-rebirth",
+  "version": "1.2.0",
+  "description": "A modified theme for Hexo, with many new features built with love.",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "setup": "npm cache clean && npm install",
+    "build": "gulp"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Candinya/Kratos-Rebirth.git"
+  },
+  "keywords": [
+    "hexo",
+    "theme",
+    "kratos",
+    "candinya"
+  ],
+  "author": "Candinya",
+  "license": "GPL-3.0-or-later",
+  "bugs": {
+    "url": "https://github.com/Candinya/Kratos-Rebirth/issues"
+  },
+  "homepage": "https://github.com/Candinya/Kratos-Rebirth#readme",
+  "dependencies": {},
+  "devDependencies": {
+    "gulp": "^4.0.2",
+    "gulp-autoprefixer": "^7.0.1",
+    "gulp-clean-css": "^4.3.0",
+    "gulp-cli": "^2.3.0",
+    "gulp-rename": "^2.0.0",
+    "gulp-terser": "^1.2.0"
+  }
+}

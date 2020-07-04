@@ -271,10 +271,11 @@ td,th {padding:.2em 1em;border: 1px solid lightblue;}
 .kratos-post-content img{height:auto;max-width:100%;display:block;margin:0 auto;border-radius:2px}
 .kratos-post-content embed{max-width:100%}
 .kratos-post-content div{margin:auto;}
-.kratos-post-content .caption {display: block;padding: 5px;font-size: 14px;text-align: center;}
+.kratos-post-content .caption {display: block;padding: 5px;font-size: 14px;text-align:center;}
 .kratos-entry-header{margin-bottom:15px}
 .kratos-entry-title{margin:0 0 15px;font-size:45px}
 .kratos-entry-title-new{display:inline;margin:0;font-size:21px}
+.kratos-entry-title-new strong {margin-left: .5em;}
 .kratos-entry-title-new sub {display:inline-block;}
 .kratos-entry-title a{color:#1c1c1c;-webkit-transition:color .3s;transition:.3s;text-decoration:none;font-size:25px}
 .kratos-entry-title a:hover{color:#618eba}
@@ -285,7 +286,7 @@ td,th {padding:.2em 1em;border: 1px solid lightblue;}
 .kratos-entry-border-new a{color:#333;}
 .kratos-entry-thumb-new{position:relative;float:left;width:240px;height:145px;overflow:hidden;margin:20px}
 .kratos-entry-thumb-new img{padding:2px;border:1px solid #f3f3f3;height:145px;width:240px}
-.kratos-post-meta-new a{margin-right:2px;}
+.kratos-post-meta-new a i{margin-left:.3em;margin-right:2px;}
 .kratos-post-meta-new .read-more{margin-right:0}
 .kratos-entry-header .kratos-post-meta a{color:#777676}
 .kratos-entry-header{margin-bottom:0}
@@ -450,10 +451,8 @@ h1.kratos-entry-title.text-center {font-size: 40px!important}
 .kratos-entry-thumb-new{position:relative;float:none;width:auto;height:auto;overflow:hidden;padding:0;margin:0;margin-bottom:20px}
 .kratos-entry-thumb-new img{height:auto;max-width:100%;width:750px;padding:0;border:0}
 .kratos-post-inner-new{margin-left:0;height:auto;padding:0 20px}
-.kratos-post-meta-new a{margin-right:15px}
 .kratos-post-meta-new .read-more{margin-right:8px}
 .kratos-entry-content-new{height:auto}
-.kratos-post-meta-new a{margin-right:10px}
 .downbtn{padding:9px 1pc;font-size:14px}
 .hide_notice,.info{font-size:11px}
 #archives .arc-t{width:45%}
@@ -483,10 +482,10 @@ h1.kratos-entry-title.text-center {font-size: 40px!important}
 .downbtn{padding:8px 13px}
 }
 @media(min-width:768px){
-.carousel-control .glyphicon-chevron-left,.carousel-control .glyphicon-chevron-right{margin-top:-10px;width:30px;height:30px;font-size:30px}
+/* .carousel-control .glyphicon-chevron-left,.carousel-control .glyphicon-chevron-right{margin-top:-10px;width:30px;height:30px;font-size:30px}
 .carousel-control .glyphicon-chevron-left{margin-left:-10px}
 .carousel-control .glyphicon-chevron-right{margin-right:-10px}
-.carousel-caption{right:20%;left:20%;padding-bottom:30px}
+.carousel-caption{right:20%;left:20%;padding-bottom:30px} */
 .container{width:750px}
 #kratos-header-section.color-banner{height:71px}
 .kratos-start.kratos-hero{height:70px}
@@ -544,7 +543,6 @@ td.code{text-align: left;}
 #dsqjs-msg{color:#2a2e2e;background-color:#ebeef2;padding:10px;border-radius:5px;}
 #disqus_thread{margin-top:16px;background-color:rgba(255,255,255,.8);padding: 0 10px;box-shadow: 0 1px 2px rgba(0,0,0,.1)}
 
-/******************* Images ********************/
 .kratos-cover.kratos-cover_2{background-image:url('/images/banner.jpg')}
 .widget_kratos_about .photo-background{background-image:url('/images/about.jpg')}
 body.custom-background{background-size:cover;background-attachment:fixed}

@@ -83,9 +83,6 @@ function createPosts(resArr) {
                         <a><i class="fa fa-tags"></i></a>
                         ${pageTags}
                     </span>
-                    <span class="pull-right">
-                        <a class="read-more" href="${pageInfo.link}" title="阅读全文">阅读全文 <i class="fa fa-chevron-circle-right"></i></a>
-                    </span>
                 </div>
             </div>
         </article>

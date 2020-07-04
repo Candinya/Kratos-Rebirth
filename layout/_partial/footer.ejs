@@ -78,10 +78,10 @@
 <% if(theme.snow){ %>
     <div>
     <canvas id="Snow"></canvas>
-    <script async type="text/javascript" src="/js/snow.js"></script>
+    <script async type="text/javascript" src="/js/snow.min.js"></script>
     </div>
 <% } %>
-<script async src="/js/candy.js"></script>
+<script async src="/js/candy.min.js"></script>
 <% if (theme.aplayer.enabled) { %>
     <script src="https://cdn.jsdelivr.net/npm/aplayer@1.10.1/dist/APlayer.min.js"></script>
     <%- partial('../_tools/player') %>
@@ -89,10 +89,10 @@
 <% if (theme.fancybox){ %>
     <script defer src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
 <% } %>
-<script defer src="/js/kratosr.js"></script>
-<script defer src="/js/pjax.js"></script>
+<script defer src="/js/kratosr.min.js"></script>
+<script defer src="/js/pjax.min.js"></script>
 <% if (theme.enableDark) { %>
-    <script defer src="/js/kr-dark.js"></script>
+    <script defer src="/js/kr-dark.min.js"></script>
 <% } %>
 <%- theme.site_analytics %>
 
