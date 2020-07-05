@@ -1,4 +1,4 @@
-<section id="main" class="col-md-8">
+<section class="col-md-8">
     <article>
         <div class="kratos-hentry kratos-post-inner clearfix">
             <header class="kratos-entry-header">
@@ -32,10 +32,10 @@
                 <% if (theme.posts.donate || theme.posts.share) { %>
                     <div class="post-like-donate text-center clearfix" id="post-like-donate">
                     <% if (theme.posts.donate) { %>
-                        <a class="Donate" href="javascript:;"><i class="fa fa-bitcoin"></i> 打赏</a>
+                        <a class="donate" href="javascript:;"><i class="fa fa-bitcoin"></i> 打赏</a>
                     <% } %>
                     <% if (theme.posts.share) { %>
-                        <a class="Share" href="javascript:;"><i class="fa fa-share-alt"></i> 分享</a>
+                        <a class="share" href="javascript:;"><i class="fa fa-share-alt"></i> 分享</a>
                         <%- partial('_partial/share', {page: page}) %>
                     <% } %>
                     </div>

@@ -13,9 +13,6 @@ let kr = {};
 //-------------------参数设置区 结束-------------------
 
 (()=>{
-    const shareMenu = ()=>{
-        $(document).on("click",".Share",()=>{$(".share-wrap").fadeToggle("slow");});
-    };
     const gotopInit = ()=>{
         const toolScroll = ()=>{
             if ($(window).scrollTop()>200){
@@ -92,7 +89,7 @@ let kr = {};
     //     });
     // };
     // const donateConfig = ()=>{
-    //     $(document).on("click",".Donate",()=>{
+    //     $(document).on("click",".donate",()=>{
     //         layer.open({
     //             type:1,
     //             area:['300px', '370px'],
@@ -108,6 +105,9 @@ let kr = {};
     //         });
     //     });
     // };
+    const shareMenu = ()=>{
+        $(document).on("click",".share",()=>{$(".share-wrap").fadeToggle("slow");});
+    };
 
     const setrandpic = ()=>{
         //图片
@@ -177,12 +177,12 @@ let kr = {};
     };
 
     $(()=>{
-        shareMenu();
         gotopInit();
         offcanvas();
         mobiClick();
         // xControl();
         // donateConfig();
+        shareMenu();
         tocNavInit();
         $(this).pjax_reload();
         copyEvent();

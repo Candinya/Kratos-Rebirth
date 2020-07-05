@@ -1,53 +1,86 @@
 
         <section class="col-md-8">
             <% page.posts.each(function(post) { %>
-                <article class="kratos-hentry clearfix">
-                    <div class="kratos-entry-border-new clearfix">
-                        <% if (post.top) { %><img class="stickyimg" src="/images/sticky.png"><% } %>
-                        <div class="kratos-entry-thumb-new">
-                            <a href="<%- config.root + post.path %>">
-                                <% if (post.pic) { %>
-                                    <img class="kratos-entry-thumb-new-img" src="<%- config.root + post.path + post.pic %>">
-                                <% } else { %>
-                                    <img class="kratos-entry-thumb-new-img" src="">
+                <% if (theme.indexPostType) { %>
+                    <article>
+                        <div class="kratos-hentry kratos-post-inner clearfix">
+                            <header class="kratos-entry-header">
+                                <a href="<%- url_for(post.path) %>"><h1 class="kratos-entry-title text-center"><%- post.title %></h1></a>
+                                <% if (post.subtitle) { %>
+                                    <h2 class="text-center"><%- post.subtitle %></h2>
                                 <% } %>
-                            </a>
-                        </div>
-                        <div class="kratos-post-inner-new">
-                            <header class="kratos-entry-header-new">
-                                    <%- list_categories(post.categories, {
+                                <div class="kratos-post-meta text-center">
+                                    <span>
+                                    <i class="fa fa-calendar"></i> <%- date(post.date, null) %>
+                                    <i class="fa fa-folder"></i> 分类于 <%- list_categories(post.categories, {show_count: false, class: 'label', style: 'none'}) %>
+                                    <i class="fa fa-tags"></i>
+                                    <%- list_tags(post.tags, {
                                         show_count: false,
-                                        class: 'label',
-                                        style: 'none'
+                                        style: 'none',
+                                        amount: 3
                                     }) %>
-                                <h2 class="kratos-entry-title-new"><a href="<%- config.root + post.path %>"><%- post.title %><% if (post.subtitle) { %><sub><%- post.subtitle %></sub><% } %></a><% if (post.top) { %><strong>——置顶</strong></h2><% } %>
+                                    </span>
+                                </div>
                             </header>
-                            <div class="kratos-entry-content-new">
-                                <p>
-                                    <% if (post.excerpt) { %>
-                                        <%- trim(strip_html(post.excerpt)) %>
+                            <div class="kratos-post-content">
+                                <hr />
+                                <%- post.excerpt || post.content %>
+                            </div>
+                            <footer class="kratos-entry-footer clearfix">
+                                <div class="post-like-donate text-center clearfix">
+                                    <a class="read-more" href="<%- url_for(post.path) %>" title="<%- __('read_more') %>"><i class="fa fa-plus-circle"></i> <%- __('read_more') %></a>
+                                </div>
+                            </footer>
+                    </article>
+                <% } else { %>
+                    <article class="kratos-hentry clearfix">
+                        <div class="kratos-entry-border-new clearfix">
+                            <% if (post.top) { %><img class="stickyimg" src="/images/sticky.png"><% } %>
+                            <div class="kratos-entry-thumb-new">
+                                <a href="<%- url_for(post.path) %>">
+                                    <% if (post.pic) { %>
+                                        <img class="kratos-entry-thumb-new-img" src="<%- url_for(post.path + post.pic) %>">
                                     <% } else { %>
-                                        <%- truncate(strip_html(post.content), {length: 120}) %>
+                                        <img class="kratos-entry-thumb-new-img" src="">
                                     <% } %>
-                                </p>
+                                </a>
+                            </div>
+                            <div class="kratos-post-inner-new">
+                                <header class="kratos-entry-header-new">
+                                        <%- list_categories(post.categories, {
+                                            show_count: false,
+                                            class: 'label',
+                                            style: 'none'
+                                        }) %>
+                                    <h2 class="kratos-entry-title-new"><a href="<%- url_for(post.path) %>"><%- post.title %><% if (post.subtitle) { %><sub><%- post.subtitle %></sub><% } %></a><% if (post.top) { %><strong>——置顶</strong></h2><% } %>
+                                </header>
+                                <div class="kratos-entry-content-new">
+                                    <p>
+                                        <% if (post.excerpt) { %>
+                                            <%- trim(strip_html(post.excerpt)) %>
+                                        <% } else { %>
+                                            <%- truncate(strip_html(post.content), {length: 120}) %>
+                                        <% } %>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="kratos-post-meta-new">
+                                <span class="pull-left">
+                                    <a><i class="fa fa-calendar"></i></a><a><%- date(post.date, null) %></a>
+                                    <a><i class="fa fa-tags"></i></a>
+                                    <%- list_tags(post.tags, {
+                                        show_count: false,
+                                        style: 'none',
+                                        amount: 3
+                                    }) %>
+                                </span>
+                                <span class="pull-right">
+                                    <a class="read-more" href="<%- url_for(post.path) %>" title="<%- __('read_more') %>"><%- __('read_more') %><i class="fa fa-chevron-circle-right"></i></a>
+                                </span>
                             </div>
                         </div>
-                        <div class="kratos-post-meta-new">
-                            <span class="pull-left">
-                                <a href="<%- config.root %>archives/"><i class="fa fa-calendar"></i></a><a><%- date(post.date, null) %></a>
-                                <a href="<%- config.root %>archives/"><i class="fa fa-tags"></i></a>
-                                <%- list_tags(post.tags, {
-                                    show_count: false,
-                                    style: 'none',
-                                    amount: 3
-                                }) %>
-                            </span>
-                            <span class="pull-right">
-                                <a class="read-more" href="<%- config.root + post.path %>" title="<%- __('read_more') %>"><%- __('read_more') %><i class="fa fa-chevron-circle-right"></i></a>
-                            </span>
-                        </div>
-                    </div>
-                </article>
+                    </article>
+                <% } %>
             <% }) %>
             
             <% if (page.total > 1) { %>

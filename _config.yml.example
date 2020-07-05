@@ -4,48 +4,37 @@ hoster: <a href="https://github.io" target="_blank">Github Pages</a>
 site_logo:
 snow: false
 enableDark: true
+index_post_type: false
 
 # Top Menu
 menu:
   index: /
   archives: /archives/
-  friends: /friends/
-  about: /about/
-  tools:
-    submenu: true
-    candifonts: https://fonts.candys.dev
-    candidenty: https://id.candys.dev
   sites:
     submenu: true
-    oldapi: https://old-api.lcy.moe
-    newapi: https://api.lcy.moe
+    author: https://candinya.com
+    project: https://github.com/Candinya/Kratos-Rebirth
 
 label:
   index: <i class="fa fa-home"></i>首页
   archives: <i class="fa fa-file"></i>档案馆
-  friends: <i class="fa fa-mars-double"></i>后宫团
-  about: <i class="fa fa-rocket"></i>关于我
-  tools:
-    submenu: <i class="fa fa-flask"></i>实验室
-    candifonts: 缤纷字生成
-    candidenty: 身份证工具
   sites:
-    submenu: <i class="fa fa-link"></i>API
-    oldapi: 过气的老API
-    newapi: 新API(建设中)
+    submenu: <i class="fa fa-link"></i>链接
+    author: 作者博客
+    project: 项目链接
 
 # Footer
 group_link: 
 contact:
   weibo: 
   mail: 
-  twitter: 
+  twitter: Candiinya
   facebook: 
   linkedin: 
   fediverse:
     instance: 
     username: 
-  github: 
+  github: Candinya
   rss: atom.xml
 timenotice: 本站已运行
   

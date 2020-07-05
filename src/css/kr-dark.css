@@ -5,6 +5,7 @@
 
 @charset "UTF-8";
 
+/******************* Default ********************/
 :root {
     --color-mode: 'light';
 
@@ -27,6 +28,7 @@
     --navbar-mobile: rgba(22, 23, 26, .9);
 }
 
+/******************* Theme ********************/
 @media (prefers-color-scheme: dark) {
     :root {
         --color-mode: 'dark';
@@ -67,6 +69,7 @@
     --navbar-desktop: #181c27cc;
 }
 
+/******************* Color ********************/
 ::-webkit-selection{color:var(--select-text);background:var(--select-text-bg);}::-moz-selection{color:var(--select-text);background:var(--select-text-bg);}::selection{color:var(--select-text);background:var(--select-text-bg);}
 h1,h2,h3,h4,h5,h6,ol,p,ul{color:var(--text);}
 body.custom-background{background-color:var(--page-background);}
@@ -80,6 +83,7 @@ blockquote p{color:var(--text);}
 .kratos-entry-border-new a:hover{color:var(--link-hover);}
 .kratos-entry-border-new .kratos-post-meta-new{border-top:1px solid var(--border);background:var(--tag-background);}
 .kratos-entry-header .kratos-post-meta span, .kratos-entry-header .kratos-post-meta a{color:var(--text);}
+.kratos-entry-header .kratos-post-meta a:hover{color:var(--link-hover)}
 .kratos-post-content p{color:var(--text);}
 .kratos-post-inner .kratos-copyright{background-color:var(--info-background);}
 .kratos-post-inner .kratos-copyright h5{color:var(--text);}
@@ -114,6 +118,7 @@ blockquote p{color:var(--text);}
     #kratos-header-section{background:var(--navbar-mobile);}
 }
 
+/******************* Images ********************/
 @media(min-width:768px){
     .kratos-cover.kratos-cover_2{background-image:var(--banner-image);}
     .widget_kratos_about .photo-background{background-image:var(--about-image);}
