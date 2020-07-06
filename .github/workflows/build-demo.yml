@@ -101,5 +101,5 @@ jobs:
       run: |
         cd ./public
         git add -A
-        git commit -m "Update Demo Site at `date +"%Y-%m-%d %H:%M"`"
+        git commit -m 'Update Demo Site at `date +"%Y-%m-%d %H:%M"`'
         git push
