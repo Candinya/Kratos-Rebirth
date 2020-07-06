@@ -1,0 +1,105 @@
+# Build the demo site when new changes are commited.
+
+name: Build Demo Site
+
+# This will run when push events occur on master branch.
+on:
+  push:
+    branches: [ master ]
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  # This workflow contains a single job called "build"
+  build:
+    # The type of container that the job will run in
+    runs-on: ubuntu-latest
+    
+    # Environment virables
+    env:
+      SITE_URL: kr-demo.candinya.com
+      AVATAR_LINK: https://cn.gravatar.com/avatar/a7f9e15fef26e0a540edc977e21cb3eb
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+    
+    # Setup Node.js env
+    - uses: actions/setup-node@v2.1.0
+      with:
+        node-version: '12.x'
+    
+    # Get Hexo test utils
+    - uses: actions/checkout@v2
+      with:
+        repository: 'hexojs/hexo-theme-unit-test'
+    
+    # Make dirs for themes
+    - name: Make dirs for themes
+      run: mkdir themes
+    
+    # Clone Kratos-Rebirth into themes dir
+    - name: Clone Kratos-Rebirth into themes dir
+      run: git clone --single-branch --branch master https://github.com/${GITHUB_REPOSITORY} ./themes/kratos-rebirth
+    
+    # Edit hexo site settings
+    - name: Edit Hexo site settings
+      run: |
+        sed -i 's/title: Hexo/title: Kratos-Rebirth/' '_config.yml'
+        sed -i 's/subtitle:/subtitle: A demo site of theme Kratos Rebirth/' '_config.yml'
+        sed -i 's/description:/description: A demo site of theme Kratos Rebirth/' '_config.yml'
+        sed -i 's/author: John Doe/author: Candinya/' '_config.yml'
+        sed -i 's/language:/language: zh-CN/' '_config.yml'
+        sed -i 's|url: http://yoursite.com|url: https://${SITE_URL}|' '_config.yml'
+        sed -i 's|permalink: :year/:month/:day/:title/|permalink: posts/:title/|' '_config.yml'
+        sed -i 's/theme: landscape/theme: kratos-rebirth/' '_config.yml'
+    
+    # Append more settings into site settings
+    - name: Append theme-specified settings into site configs
+      run: cat 'themes/kratos-rebirth/_config.yml.site.example' >> '_config.yml'
+    
+    # Copy theme settings
+    - name: Copy theme settings
+      run: cp 'themes/kratos-rebirth/_config.yml.example' 'themes/kratos-rebirth/_config.yml'
+    
+    # Edit theme settings
+    - name: Edit theme settings
+      run: |
+        sed -i 's|site_logo:|site_logo: ${AVATAR_LINK}|' 'themes/kratos-rebirth/_config.yml'
+        sed -i 's|comments: disqusjs|comments:|' 'themes/kratos-rebirth/_config.yml'
+        sed -i 's|avatarUri: /images/avatar.png|avatarUri: ${AVATAR_LINK}|' 'themes/kratos-rebirth/_config.yml'
+    
+    # Set Pages CNAME file
+    - name: Set github pages CNAME file
+      run: |
+        touch 'source/CNAME'
+        echo '${SITE_URL}' > source/CNAME
+    
+    # Install Hexo env
+    - name: Install Hexo environment
+      run: npm install
+    
+    # Get released page files
+    - name: Get released page files
+      run: git clone --single-branch --branch gh-pages https://github.com/${GITHUB_REPOSITORY} ./public
+    
+    # Hexo build demo site
+    - name: Hexo build demo site
+      run: npx hexo generate --force
+        
+    # Get deployment settings ready
+    - name: Get deployment settings ready
+      run: |
+        git config --global user.name "Github Actions"
+        git config --global user.email "dev@candinya.com"
+        # Set private key for deployment
+        mkdir -p ~/.ssh/
+        echo "${{ secrets.DEPLOY_KEY }}" | tr -d '\r' > ~/.ssh/id_rsa
+        chmod 600 ~/.ssh/id_rsa
+        ssh-keyscan github.com >> ~/.ssh/known_hosts
+        
+    # Deploy demo site
+    - name: Deploy demo site
+      run: |
+        cd ./public
+        git add -A
+        git commit -m "Update Demo Site at `date +"%Y-%m-%d %H:%M"`"
+        git push
