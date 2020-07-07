@@ -43,35 +43,35 @@ jobs:
     # Edit hexo site settings
     - name: Edit Hexo site settings
       run: |
-        sed -i 's/title: Hexo/title: Kratos-Rebirth/' '_config.yml'
-        sed -i 's/subtitle:/subtitle: A demo site of theme Kratos Rebirth/' '_config.yml'
-        sed -i 's/description:/description: A demo site of theme Kratos Rebirth/' '_config.yml'
-        sed -i 's/author: John Doe/author: Candinya/' '_config.yml'
-        sed -i 's/language:/language: zh-CN/' '_config.yml'
-        sed -i 's|url: http://yoursite.com|url: https://${SITE_URL}|' '_config.yml'
-        sed -i 's|permalink: :year/:month/:day/:title/|permalink: posts/:title/|' '_config.yml'
-        sed -i 's/theme: landscape/theme: kratos-rebirth/' '_config.yml'
+        sed -i "s/title: Hexo/title: Kratos-Rebirth/" "_config.yml"
+        sed -i "s/subtitle:/subtitle: A demo site of theme Kratos Rebirth/" "_config.yml"
+        sed -i "s/description:/description: A demo site of theme Kratos Rebirth/" "_config.yml"
+        sed -i "s/author: John Doe/author: Candinya/" "_config.yml"
+        sed -i "s/language:/language: zh-CN/" "_config.yml"
+        sed -i "s|url: http://yoursite.com|url: https://${SITE_URL}|" "_config.yml"
+        sed -i "s|permalink: :year/:month/:day/:title/|permalink: posts/:title/|" "_config.yml"
+        sed -i "s/theme: landscape/theme: kratos-rebirth/" "_config.yml"
     
     # Append more settings into site settings
     - name: Append theme-specified settings into site configs
-      run: cat 'themes/kratos-rebirth/_config.yml.site.example' >> '_config.yml'
+      run: cat "themes/kratos-rebirth/_config.yml.site.example" >> "_config.yml"
     
     # Copy theme settings
     - name: Copy theme settings
-      run: cp 'themes/kratos-rebirth/_config.yml.example' 'themes/kratos-rebirth/_config.yml'
+      run: cp "themes/kratos-rebirth/_config.yml.example" "themes/kratos-rebirth/_config.yml"
     
     # Edit theme settings
     - name: Edit theme settings
       run: |
-        sed -i 's|site_logo:|site_logo: ${AVATAR_LINK}|' 'themes/kratos-rebirth/_config.yml'
-        sed -i 's|comments: disqusjs|comments:|' 'themes/kratos-rebirth/_config.yml'
-        sed -i 's|avatarUri: /images/avatar.png|avatarUri: ${AVATAR_LINK}|' 'themes/kratos-rebirth/_config.yml'
+        sed -i "s|site_logo:|site_logo: ${AVATAR_LINK}|" "themes/kratos-rebirth/_config.yml"
+        sed -i "s|comments: disqusjs|comments:|" "themes/kratos-rebirth/_config.yml"
+        sed -i "s|avatarUri: /images/avatar.png|avatarUri: ${AVATAR_LINK}|" "themes/kratos-rebirth/_config.yml"
     
     # Set Pages CNAME file
     - name: Set github pages CNAME file
       run: |
-        touch 'source/CNAME'
-        echo '${SITE_URL}' > source/CNAME
+        touch "source/CNAME"
+        echo "${SITE_URL}" > source/CNAME
     
     # Install Hexo env
     - name: Install Hexo environment
