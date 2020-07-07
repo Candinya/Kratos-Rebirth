@@ -76,17 +76,9 @@ jobs:
     # Install Hexo env
     - name: Install Hexo environment
       run: npm install
-    
-    # Get released page files
-    - name: Get released page files
-      run: git clone --single-branch --branch gh-pages https://github.com/${GITHUB_REPOSITORY} ./public
-    
-    # Hexo build demo site
-    - name: Hexo build demo site
-      run: npx hexo generate --force
         
-    # Get deployment settings ready
-    - name: Get deployment settings ready
+    # Setup git configs
+    - name: Setup git configs
       run: |
         git config --global user.name "Github Actions"
         git config --global user.email "dev@candinya.com"
@@ -95,11 +87,19 @@ jobs:
         echo "${{ secrets.DEPLOY_KEY }}" | tr -d '\r' > ~/.ssh/id_rsa
         chmod 600 ~/.ssh/id_rsa
         ssh-keyscan github.com >> ~/.ssh/known_hosts
+    
+    # Get released page files
+    - name: Get released page files
+      run: git clone --single-branch --branch gh-pages git@github.com:${GITHUB_REPOSITORY} ./public
+    
+    # Hexo build demo site
+    - name: Hexo build demo site
+      run: npx hexo generate --force
         
     # Deploy demo site
     - name: Deploy demo site
       run: |
         cd ./public
         git add -A
-        git commit -m 'Update Demo Site at `date +"%Y-%m-%d %H:%M"`'
+        git commit -m "Update Demo Site at `date +'%Y-%m-%d %H:%M:%S'`"
         git push
