@@ -75,15 +75,12 @@ h1,h2,h3,h4,h5,h6,ol,p,ul{color:var(--text);}
 body.custom-background{background-color:var(--page-background);}
 h2.title-h2{background-color:var(--info-background);}
 a{color:var(--link);}
-a:hover{color:var(--link-hover);}
 blockquote{background-color:var(--info-background);border-color: var(--border);;}
 blockquote p{color:var(--text);}
 .kratos-hentry{background-color:var(--tag-background);}
 .kratos-entry-border-new a{color:var(--text);}
-.kratos-entry-border-new a:hover{color:var(--link-hover);}
 .kratos-entry-border-new .kratos-post-meta-new{border-top:1px solid var(--border);background:var(--tag-background);}
 .kratos-entry-header .kratos-post-meta span, .kratos-entry-header .kratos-post-meta a{color:var(--text);}
-.kratos-entry-header .kratos-post-meta a:hover{color:var(--link-hover)}
 .kratos-post-content p{color:var(--text);}
 .kratos-post-inner .kratos-copyright{background-color:var(--info-background);}
 .kratos-post-inner .kratos-copyright h5{color:var(--text);}
@@ -92,7 +89,7 @@ blockquote p{color:var(--text);}
 .kratos-entry-footer .pull-date span{color:var(--text);}
 .post-navigation a{color:var(--text);}
 .widget a{color:var(--text-alt);}
-.widget_kratos_tags .tag_clouds a{background:var(--tag-background);}
+.widget-kratos-tags .tag_clouds a{background:var(--tag-background);}
 .widget_categories .category-list-item .category-list-count{color:var(--text);background-color:var(--info-background);}
 .pagination a, .pagination span{background-color:var(--tag-background);color:var(--text);}
 .pagination>li>a{background-color:var(--card-background);}
@@ -102,14 +99,19 @@ blockquote p{color:var(--text);}
 .linkpage li a h4{color:var(--text);}
 .linkpage li:hover{background-color:var(--info-background);}
 .kratos-post-header-title{color:var(--text);}
-
 #archives .posts-collapse .post-title a{color:var(--text-alt);}
-#archives .posts-collapse .post-title a:hover{color:var(--link-hover);}
 #disqus_thread{background-color:var(--tag-background);}
 #dsqjs a{color:var(--link);}
 #dsqjs .dsqjs-tab-active{color:var(--text);}
 #dsqjs-msg{color:var(--text);background-color:var(--tag-background);}
 #aplayer *{color:unset;}
+
+a:hover,
+.kratos-entry-border-new a:hover,
+.kratos-entry-header .kratos-post-meta a:hover,
+.kratos-post-inner .kratos-copyright a:hover,
+#archives .posts-collapse .post-title a:hover
+    {color:var(--link-hover);}
 
 @media(min-width:768px){
     #kratos-header-section{background:var(--navbar-desktop);}
@@ -121,6 +123,6 @@ blockquote p{color:var(--text);}
 /******************* Images ********************/
 @media(min-width:768px){
     .kratos-cover.kratos-cover_2{background-image:var(--banner-image);}
-    .widget_kratos_about .photo-background{background-image:var(--about-image);}
+    .widget-kratos-about .photo-background{background-image:var(--about-image);}
     body.custom-background{background-image:var(--background-image);}
 }

@@ -2,14 +2,15 @@
 <html lang="zh">
 <head>
   <meta charset="utf-8">
+  <link rel="icon" href="<%- theme.site_logo %>">
   <title><% if (page.title) { %><%- page.title %> | <% } %><%- config.title %></title>
+  <meta name="author" content="<%- config.author  %>" />
   <meta http-equiv="Cache-Control" content="no-transform" />
   <meta http-equiv="Cache-Control" content="no-siteapp" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="robots" content="index,follow" />
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
   <meta name="format-detection" content="telphone=no, email=no" />
-  <meta name="author" content="<%- config.author  %>" />
   <% if (is_post()) { %>
     <% if (page.excerpt) { %>
       <meta name="description" itemprop="description" content="<%- trim(strip_html(page.excerpt)) %>" />
@@ -49,7 +50,8 @@
       <meta name="twitter:image" content="<%- full_url_for(theme.site_logo) %>" />
     <% } %>
   <% } %>
-  <link rel="icon" href="<%- theme.site_logo %>">
+  <% if (theme.contact.rss) {%><link rel="alternate" href="<%- theme.contact.rss %>" type="application/atom+xml"><% } %>
+  <!-- 样式表文件 -->
   <link rel="stylesheet" id="kratos-css" href="/css/kratosr.min.css" type="text/css" media="all">
   <link rel="stylesheet" id="fontawe-css" href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" type="text/css" media="all">
   <link rel="stylesheet" id="nprogress-css" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" type="text/css" media="all">

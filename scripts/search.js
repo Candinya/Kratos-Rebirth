@@ -28,11 +28,13 @@ if (pathFn.extname(config.path) === '.json') {
                     _item.tags.push([tag.name, url_for(tag.path)]);
                 });
             }
+            _item.categories = [];
             if (item.categories && item.categories.length > 0) {
-                _item.categories = [];
                 item.categories.forEach((cate) => {
                     _item.categories.push([cate.name, url_for(cate.path)]);
                 });
+            } else {
+                _item.categories.push(['', '']);
             }
             if (hexo.config.kratos_rebirth.search.content && item.content) {
                 _item.content = stripHTML(item.content.trim().replace(/<pre(.*?)\<\/pre\>/gs, ''))
