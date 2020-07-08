@@ -44,6 +44,7 @@
                     <ul class="kratos-social-icons">
                         <% if (theme.contact.weibo) {%><li><a target="_blank" rel="nofollow" href="https://weibo.com/u/<%- theme.contact.weibo %>"><i class="fa fa-weibo"></i></a></li><% } %>
                         <% if (theme.contact.mail) {%><li><a href="mailto:<%- theme.contact.mail %>"><i class="fa fa-envelope"></i></a></li><% } %>
+                        <% if (theme.contact.telegram) {%><li><a target="_blank" rel="nofollow" href="https://t.me/<%- theme.contact.telegram %>"><i class="fa fa-telegram"></i></a></li><% } %>
                         <% if (theme.contact.twitter) {%><li><a target="_blank" rel="nofollow" href="https://twitter.com/<%- theme.contact.twitter %>"><i class="fa fa-twitter"></i></a></li><% } %>
                         <% if (theme.contact.facebook) {%><li><a target="_blank" rel="nofollow" href="https://www.facebook.com/<%- theme.contact.facebook %>"><i class="fa fa-facebook-official"></i></a></li><% } %>
                         <% if (theme.contact.linkedin) {%><li><a target="_blank" rel="nofollow" href="https://cn.linkedin.com/in/<%- theme.contact.linkedin %>"><i class="fa fa-linkedin-square"></i></a></li><% } %>
@@ -53,7 +54,7 @@
                     </ul>
                     <ul class="kratos-copyright">
                         <div>
-                            <li>&copy; <%= date(new Date(), 'YYYY') %> <%= config.author || config.title %> 版权所有.</li>
+                            <li>&copy; <%- date(new Date(), 'YYYY') %> <%- config.author || config.title %> 版权所有.</li>
                             <li><%- theme.timenotice %><span id="span_dt">Loading...</span></li>
                         </div>
                         <div>

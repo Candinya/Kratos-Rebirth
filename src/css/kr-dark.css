@@ -89,7 +89,8 @@ blockquote p{color:var(--text);}
 .kratos-entry-footer .pull-date span{color:var(--text);}
 .post-navigation a{color:var(--text);}
 .widget a{color:var(--text-alt);}
-.widget-kratos-tags .tag_clouds a{background:var(--tag-background);}
+.widget-kratos-tags .tag_clouds a{background-color:var(--tag-background);}
+.widget-kratos-tags .tag_clouds a:hover{color:var(--tag-background);background-color: var(--text);}
 .widget_categories .category-list-item .category-list-count{color:var(--text);background-color:var(--info-background);}
 .pagination a, .pagination span{background-color:var(--tag-background);color:var(--text);}
 .pagination>li>a{background-color:var(--card-background);}
@@ -112,6 +113,7 @@ a:hover,
 .kratos-entry-border-new a:hover,
 .kratos-entry-header .kratos-post-meta a:hover,
 .kratos-post-inner .kratos-copyright a:hover,
+#footer li a:hover,
 #archives .posts-collapse .post-title a:hover
     {color:var(--link-hover);}
 

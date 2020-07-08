@@ -348,7 +348,7 @@ td,th {padding:.2em 1em;border: 1px solid lightblue;}
 .widget-title{position:relative;margin:0 0 10px;padding-bottom:12px;border-bottom:1px solid #e7e7e7;font-size:16px}
 .widget-title::after{position:absolute;left:0;bottom:0;height:2.5px!important;width:73px;background-color:#51aded;content:''}
 .widget img{max-width:100%;height:auto}
-.widget a{color:#666;text-decoration:none;-webkit-transition:color .3s;transition:color .3s}
+.widget a{color:#666;text-decoration:none;-webkit-transition:.4s;transition:.4s}
 .widget a:hover{color:#618eba}.widget li{padding-top:2px;padding-bottom:2px}
 .widget .children{padding-left:30px}
 .widget-kratos-about{padding:0!important}
