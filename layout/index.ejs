@@ -3,9 +3,9 @@
             <% page.posts.each(function(post) { %>
                 <% if (theme.indexPostType) { %>
                     <article>
-                        <div class="kratos-hentry kratos-post-inner clearfix">
+                        <div class="kratos-hentry kratos-post-inner clearfix index-post">
                             <header class="kratos-entry-header">
-                                <a href="<%- url_for(post.path) %>"><h1 class="kratos-entry-title text-center"><%- post.title %></h1></a>
+                                <h1 class="text-center"><a class="kratos-entry-title" href="<%- url_for(post.path) %>"><%- post.title %></a></h1>
                                 <% if (post.subtitle) { %>
                                     <h2 class="text-center"><%- post.subtitle %></h2>
                                 <% } %>
@@ -22,15 +22,17 @@
                                     </span>
                                 </div>
                             </header>
+                            <hr />
                             <div class="kratos-post-content">
-                                <hr />
                                 <%- post.excerpt || post.content %>
                             </div>
+                            <hr />
                             <footer class="kratos-entry-footer clearfix">
                                 <div class="post-like-donate text-center clearfix">
-                                    <a class="read-more" href="<%- url_for(post.path) %>" title="<%- __('read_more') %>"><i class="fa fa-plus-circle"></i> <%- __('read_more') %></a>
+                                    <a class="read-more" href="<%- url_for(post.path) %>" title="<%- post.title %>"><%- __('read_more') %> <i class="fa fa-chevron-circle-right"></i></a>
                                 </div>
                             </footer>
+                        </div>
                     </article>
                 <% } else { %>
                     <article class="kratos-hentry clearfix">

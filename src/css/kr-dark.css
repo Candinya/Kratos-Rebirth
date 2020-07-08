@@ -102,6 +102,8 @@ blockquote p{color:var(--text);}
 .kratos-post-header-title{color:var(--text);}
 .xControl{background-color: var(--info-background);}
 .xControl .xHeading span{color: var(--text);}
+.index-post .kratos-entry-header .kratos-entry-title{color: var(--text);}
+.index-post .kratos-entry-header .kratos-entry-title::after{background-color: var(--text);}
 #archives .posts-collapse .post-title a{color:var(--text-alt);}
 #disqus_thread{background-color:var(--tag-background);}
 #dsqjs a{color:var(--link);}
@@ -115,7 +117,7 @@ a:hover,
 .kratos-post-inner .kratos-copyright a:hover,
 #footer li a:hover,
 #archives .posts-collapse .post-title a:hover
-    {color:var(--link-hover);}
+{color:var(--link-hover);}
 
 @media(min-width:768px){
     #kratos-header-section{background:var(--navbar-desktop);}
