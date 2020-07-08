@@ -76,18 +76,17 @@ let kr = {};
             }
         });
     };
-    // const xControl = ()=>{
-    //     $(document).on("click",".xHeading",()=>{
-    //         var $this = $(this);
-    //         $this.closest('.xControl').filter('.xContent').slideToggle(300);
-    //         if ($this.closest('.xControl').hasClass('active')){
-    //             $this.closest('.xControl').removeClass('active');
-    //         }else{
-    //             $this.closest('.xControl').addClass('active');
-    //         }
-    //         event.preventDefault();
-    //     });
-    // };
+    const xControl = ()=>{
+        $(document).on("click",".xHeading", function(event){
+            $(this).next().slideToggle(300);
+            if ($(this).parent('.xControl').hasClass('active')){
+                $(this).parent('.xControl').removeClass('active');
+            } else {
+                $(this).parent('.xControl').addClass('active');
+            }
+            event.preventDefault();
+        });
+    };
     // const donateConfig = ()=>{
     //     $(document).on("click",".donate",()=>{
     //         layer.open({
@@ -180,7 +179,7 @@ let kr = {};
         gotopInit();
         offcanvas();
         mobiClick();
-        // xControl();
+        xControl();
         // donateConfig();
         shareMenu();
         tocNavInit();

@@ -99,6 +99,8 @@ blockquote p{color:var(--text);}
 .linkpage li a h4{color:var(--text);}
 .linkpage li:hover{background-color:var(--info-background);}
 .kratos-post-header-title{color:var(--text);}
+.xControl{background-color: var(--info-background);}
+.xControl .xHeading span{color: var(--text);}
 #archives .posts-collapse .post-title a{color:var(--text-alt);}
 #disqus_thread{background-color:var(--tag-background);}
 #dsqjs a{color:var(--link);}
