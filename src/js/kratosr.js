@@ -1,15 +1,16 @@
 let kr = {};
 //-------------------参数设置区 开始-------------------
     kr.thome = "/";
-    kr.ctime = "03/24/2018 15:31:36";
+    kr.ctime = "2018-03-24 15:31:36";
     kr.donateBtn = "支持我~";
     kr.scanNotice = "扫一扫，好不好？";
     kr.qr_alipay = "/images/alipayqr.jpg";
     kr.qr_wechat = "/images/wechatpayqr.png";
-    kr.siteLeaveEvent = false;
-    kr.leaveLogo = "images/failure.ico";
-    kr.leaveTitle = "{{{(>_<)}}}哦哟，崩溃啦~ ";
-    kr.returnTitle = "(*´∇｀*)欸，又好啦~ ";
+    kr.siteLeaveEvent = true;
+    // kr.leaveLogo = "/images/failure.ico";
+    kr.leaveTitle = "{{{(>_<)}}}哦哟，崩溃啦~";
+    kr.returnTitle = "(*´∇｀*)欸，又好啦~";
+    kr.copyrightNotice = `该内容采用 CC BY-NC-SA 4.0 许可协议，著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。`;
 //-------------------参数设置区 结束-------------------
 
 (()=>{
@@ -22,7 +23,7 @@ let kr = {};
             }
         }
         $('.gotop-box').on('click',function(event){
-            event.preventDefault();
+            // event.preventDefault();
             $('html, body').animate({
                 scrollTop:$('html').offset().top
             },500);
@@ -151,7 +152,7 @@ let kr = {};
         copyrightString = `
 
 -------------------------
-该内容采用 CC BY-NC-SA 4.0 许可协议，著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+${kr.copyrightNotice}
 作者：${document.querySelector("meta[name='author']").getAttribute('content')}
 来源：${document.title}
 链接：${window.location.href}
@@ -159,7 +160,7 @@ let kr = {};
     }
 
     const copyEvent = ()=>{
-        if (copyrightString) {
+        if (kr.copyrightNotice) {
             document.body.oncopy = (e)=>{
                 e.preventDefault();
                 if (e.clipboardData) {
@@ -169,10 +170,41 @@ let kr = {};
         }
     };
 
+    let docTitle = '';
+    const saveTitle = () => {
+        docTitle = document.title;
+    };
+
+    const leaveEventInit = () => {
+        if (kr.siteLeaveEvent) {
+            let titleTime;
+            const OriginLogo = $('[rel="icon"]').attr("href");
+            document.addEventListener('visibilitychange', ()=>{
+                if (document.hidden) {
+                    document.title = kr.leaveTitle;
+                    if (kr.leaveLogo) {
+                        $('[rel="icon"]').attr("href", kr.leaveLogo);
+                    }
+                    clearTimeout(titleTime);
+                } else {
+                    document.title = kr.returnTitle + " " + docTitle;
+                    if (kr.leaveLogo) {
+                        $('[rel="icon"]').attr("href", OriginLogo);
+                    }
+                    titleTime = setTimeout(()=>{
+                        document.title = docTitle;
+                        titleTime = 0;
+                    }, 2000);
+                }
+            });
+        }
+    };
+
     $.fn.pjax_reload = ()=>{
         setrandpic();
         fancyboxInit();
         setCopyright();
+        saveTitle();
     };
 
     $(()=>{
@@ -185,6 +217,7 @@ let kr = {};
         tocNavInit();
         $(this).pjax_reload();
         copyEvent();
+        leaveEventInit();
     });
 })();
 
@@ -208,22 +241,3 @@ let kr = {};
 window.onload = ()=>{
     console.log('页面加载完毕消耗了 %c'+Math.round(performance.now()*100)/100+' ms','background:#282c34;color:#51aded;');
 };
-
-if (kr.siteLeaveEvent) {
-    let OriginTitile, titleTime;
-    const OriginLogo = $('[rel="icon"]').attr("href");
-    document.addEventListener('visibilitychange', ()=>{
-        if (document.hidden) {
-            OriginTitile = document.title;
-            document.title = kr.leaveTitle + OriginTitile;
-            $('[rel="icon"]').attr("href", kr.thome + kr.leaveLogo);
-            clearTimeout(titleTime);
-        } else {
-            document.title = kr.returnTitle + OriginTitile;
-            $('[rel="icon"]').attr("href", OriginLogo);
-            titleTime = setTimeout(()=>{
-                document.title = OriginTitile;
-            }, 2000);
-        }
-    });
-}

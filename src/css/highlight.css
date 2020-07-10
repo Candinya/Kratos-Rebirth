@@ -1,0 +1,283 @@
+/* 主题 */
+
+    /* light */
+    /* :root {
+        --highlight-background   : #f7f7f7;
+        --highlight-current-line : #efefef;
+        --highlight-selection    : #d6d6d6;
+        --highlight-foreground   : #4d4d4c;
+        --highlight-comment      : #8e908c;
+        --highlight-red          : #c82829;
+        --highlight-orange       : #f5871f;
+        --highlight-yellow       : #eab700;
+        --highlight-green        : #718c00;
+        --highlight-aqua         : #3e999f;
+        --highlight-blue         : #4271ae;
+        --highlight-purple       : #8959a8;
+        --highlight-gutter-color : #869194;
+        --highlight-gutter-bg    : #eff2f3;
+        --highlight-deletion     : #fdd;
+        --highlight-addition     : #dfd;
+    } */
+
+    /* night */
+    /* :root {
+        --highlight-background   : #1d1f21;
+        --highlight-current-line : #282a2e;
+        --highlight-selection    : #373b41;
+        --highlight-foreground   : #c5c8c6;
+        --highlight-comment      : #969896;
+        --highlight-red          : #cc6666;
+        --highlight-orange       : #de935f;
+        --highlight-yellow       : #f0c674;
+        --highlight-green        : #b5bd68;
+        --highlight-aqua         : #8abeb7;
+        --highlight-blue         : #81a2be;
+        --highlight-purple       : #b294bb;
+        --highlight-gutter-color : #888f96;
+        --highlight-gutter-bg    : #000000;
+        --highlight-deletion     : #008000;
+        --highlight-addition     : #800000;
+    } */
+
+    /* night eighties */
+    :root {
+        --highlight-background   : #2d2d2d;
+        --highlight-current-line : #393939;
+        --highlight-selection    : #515151;
+        --highlight-foreground   : #cccccc;
+        --highlight-comment      : #999999;
+        --highlight-red          : #f2777a;
+        --highlight-orange       : #f99157;
+        --highlight-yellow       : #ffcc66;
+        --highlight-green        : #99cc99;
+        --highlight-aqua         : #66cccc;
+        --highlight-blue         : #6699cc;
+        --highlight-purple       : #cc99cc;
+        --highlight-gutter-color : #999999;
+        --highlight-gutter-bg    : #1b1b1b;
+        --highlight-deletion     : #008000;
+        --highlight-addition     : #800000;
+    }
+
+    /* night blue */
+    /* :root {
+        --highlight-background   : #002451;
+        --highlight-current-line : #00346e;
+        --highlight-selection    : #003f8e;
+        --highlight-foreground   : #ffffff;
+        --highlight-comment      : #7285b7;
+        --highlight-red          : #ff9da4;
+        --highlight-orange       : #ffc58f;
+        --highlight-yellow       : #ffeead;
+        --highlight-green        : #d1f1a9;
+        --highlight-aqua         : #99ffff;
+        --highlight-blue         : #bbdaff;
+        --highlight-purple       : #ebbbff;
+        --highlight-gutter-color : #7285b7;
+        --highlight-gutter-bg    : #000e20;
+        --highlight-deletion     : #008000;
+        --highlight-addition     : #800000;
+    } */
+
+    /*night bright*/
+    /* :root{
+        --highlight-background   : #000000;
+        --highlight-current-line : #2a2a2a;
+        --highlight-selection    : #424242;
+        --highlight-foreground   : #eaeaea;
+        --highlight-comment      : #969896;
+        --highlight-red          : #d54e53;
+        --highlight-orange       : #e78c45;
+        --highlight-yellow       : #e7c547;
+        --highlight-green        : #b9ca4a;
+        --highlight-aqua         : #70c0b1;
+        --highlight-blue         : #7aa6da;
+        --highlight-purple       : #c397d8;
+        --highlight-gutter-color : #666666;
+        --highlight-gutter-bg    : #292929;
+        --highlight-deletion     : #008000;
+        --highlight-addition     : #800000;
+    } */
+
+/* [highlight-color-mode = 'normal'] {
+    --highlight-deletion     : #fdd;
+    --highlight-addition     : #dfd;
+}
+
+:not([highlight-color-mode = 'normal']) {
+    --highlight-deletion     : #008000;
+    --highlight-addition     : #800000;
+} */
+
+/* 宽度对齐 */
+
+figure.highlight table, 
+figure.highlight table>tbody,
+figure.highlight table>tbody>tr,
+figure.highlight table>tbody>tr>td
+{
+    display: block;
+}
+
+figure.highlight {
+    position: relative;
+    overflow: auto;
+    margin: 20px 0;
+    padding: 0;
+    border-radius: 8px;
+    font-family: Consolas, 'Courier New', monospace, -apple-system;
+    font-size: 12px;
+    font-weight: unset;
+    color: var(--highlight-foreground);
+    background: var(--highlight-current-line);
+}
+
+figure.highlight::before {
+    content: " ";
+    position: absolute;
+    -webkit-border-radius: 50%;
+    border-radius: 50%;
+    background-color: #fc625d;
+    width: 12px;
+    height: 12px;
+    left: 10px;
+    top: 10px;
+    -webkit-box-shadow: 20px 0 #fdbc40, 40px 0 #35cd4b;
+    box-shadow: 20px 0 #fdbc40, 40px 0 #35cd4b;
+}
+
+figure.highlight pre {
+    border: none;
+    margin: 0;
+    padding: 10px 0;
+    color: var(--highlight-foreground);
+    background: none;
+}
+
+figure.highlight table {
+    margin: 30px 0 0 0;
+    width: auto;
+    border: none;
+    border-spacing: unset;
+    border-collapse: unset;
+}
+
+figure.highlight td {
+    border: none;
+    padding: 0;
+}
+
+figure.highlight .gutter {
+    position: absolute;
+    width: 40px;
+    user-select: none;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+}
+
+figure.highlight .gutter pre {
+    overflow: hidden;
+    padding-left: 10px;
+    padding-right: 10px;
+    color: var(--highlight-gutter-color);
+    text-align: right;
+    background-color: var(--highlight-gutter-bg);
+}
+
+figure.highlight .code {
+    overflow: auto;
+    margin-left: 40px;
+    background-color: var(--highlight-background);
+}
+
+figure.highlight .code pre {
+    padding-left: 10px;
+    padding-right: 15px;
+    text-align: left;
+    display: inline-block;
+}
+
+.gist table {
+    width: auto;
+}
+
+.gist table td {
+    border: none;
+}
+
+pre .deletion {
+    background: var(--highlight-deletion);
+}
+
+pre .addition {
+    background: var(--highlight-addition);
+}
+
+pre .meta {
+    color: var(--highlight-purple);
+}
+
+pre .comment {
+    color: var(--highlight-comment);
+}
+
+pre .variable,
+pre .attribute,
+pre .tag,
+pre .regexp,
+pre .ruby .constant,
+pre .xml .tag .title,
+pre .xml .pi,
+pre .xml .doctype,
+pre .html .doctype,
+pre .css .id,
+pre .css .class,
+pre .css .pseudo {
+    color: var(--highlight-red);
+}
+
+pre .number,
+pre .preprocessor,
+pre .built_in,
+pre .literal,
+pre .params,
+pre .constant,
+pre .command {
+    color: var(--highlight-orange);
+}
+
+pre .ruby .class .title,
+pre .css .rules .attribute,
+pre .string,
+pre .value,
+pre .inheritance,
+pre .header,
+pre .ruby .symbol,
+pre .xml .cdata,
+pre .special,
+pre .number,
+pre .formula {
+    color: var(--highlight-green);
+}
+
+pre .title,
+pre .css .hexcolor {
+    color: var(--highlight-aqua);
+}
+
+pre .function,
+pre .python .decorator,
+pre .python .title,
+pre .ruby .function .title,
+pre .ruby .title .keyword,
+pre .perl .sub,
+pre .javascript .title,
+pre .coffeescript .title {
+    color: var(--highlight-blue);
+}
+
+pre .keyword,
+pre .javascript .function {
+    color: var(--highlight-purple);
+}

@@ -11,11 +11,9 @@
     <div class="container">
             <div class="row">
                 <% if (theme.sidebar === 'left') { %>
-                    <aside id="kratos-widget-area" class="col-md-4 hidden-xs hidden-sm scrollspy">
-                        <div id="sidebar">
-                            <% theme.widgets.forEach(function(widget){ %>
-                                <%- partial('_widget/' + widget) %>
-                            <% }) %>
-                        </div>
-                    </aside>
+                    <section id="kratos-widget-area" class="col-md-4 hidden-xs hidden-sm">
+                        <% theme.widgets.forEach(function(widget){ %>
+                            <%- partial('_widget/' + widget) %>
+                        <% }) %>
+                    </section>
                 <% } %>

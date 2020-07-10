@@ -1,5 +1,5 @@
 $(function() {
-    var row_content = '#kratos-blog-post .row';
+    const mainElement = '#kratos-blog-post .row';
     theTop = notMobile ? $("#kratos-blog-post").offset().top-40 : 0;
     function reload_func() {
         $(this).pjax_reload();
@@ -12,7 +12,7 @@ $(function() {
             if (typeof e.state.html === 'undefined') {
                 ajax(e.state.url, false);
             } else {
-                $(row_content).html( e.state.html );
+                $(mainElement).html( e.state.html );
             }
             window.load = reload_func();
         }
@@ -24,23 +24,23 @@ $(function() {
                 history.replaceState({
                     url: location.href,
                     title: document.title,
-                    html: $(document).find(row_content).html()
+                    html: $(document).find(mainElement).html()
                     }, document.title, location.href);
                 $("body,html").animate({scrollTop:theTop}, 600);
                 NProgress.start();
             },
             success: function(data) {
-                if (typeof $(data).find(row_content).html() === 'undefined') {
+                if (typeof $(data).find(mainElement).html() === 'undefined') {
                     location.href = reqUrl;
                 } else {
-                    $(row_content).html($(data).find(row_content).html());
+                    $(mainElement).html($(data).find(mainElement).html());
                 }
                 document.title = $(data).filter("title").text();
                 if (needPushState) {
                     window.history.pushState({
                         url: reqUrl,
                         title: $(data).filter("title").text(),
-                        html: $(data).find(row_content).html()
+                        html: $(data).find(mainElement).html()
                     }, $(data).filter("title").text(), reqUrl);
                 }
             },
@@ -55,10 +55,10 @@ $(function() {
         });
     }
     $(document).on("click", 'a[target!=_blank][rel!=gallery][class!=toc-link]', function() {
-      var req_url = $(this).attr("href");
-      if (req_url === undefined) return true;
-      else if (req_url.indexOf( "javascript:") !== -1) return true;
-      else ajax(req_url, true);
-      return false;
+        const reqUrl = $(this).attr("href");
+        if (typeof reqUrl === 'undefined') return true;
+        else if (reqUrl.includes( "javascript:")) return true;
+        else ajax(reqUrl, true);
+        return false;
     });
 });

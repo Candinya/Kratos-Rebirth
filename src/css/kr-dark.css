@@ -37,8 +37,8 @@
     :root:not([data-user-color-scheme]) {
         --banner-image: url('/images/banner_dark.jpg');
         --background-image: none;
-    
-        --select-text-bg: #186cbb;
+
+        --select-text-bg: #ccc;
         --text: #eee;
         --text-alt: #ccc;
         --link: lightblue;
@@ -56,7 +56,7 @@
     --banner-image: url('/images/banner_dark.jpg');
     --background-image: none;
 
-    --select-text-bg: #186cbb;
+    --select-text-bg: #ccc;
     --text: #eee;
     --text-alt: #ccc;
     --link: lightblue;
@@ -89,9 +89,9 @@ blockquote p{color:var(--text);}
 .kratos-entry-footer .pull-date span{color:var(--text);}
 .post-navigation a{color:var(--text);}
 .widget a{color:var(--text-alt);}
-.widget-kratos-tags .tag_clouds a{background-color:var(--tag-background);}
-.widget-kratos-tags .tag_clouds a:hover{color:var(--tag-background);background-color: var(--text);}
-.widget_categories .category-list-item .category-list-count{color:var(--text);background-color:var(--info-background);}
+.widget-kratos-tags .tag-clouds a{background-color:var(--tag-background);}
+.widget-kratos-tags .tag-clouds a:hover{color:var(--tag-background);background-color: var(--text-alt);}
+.widget-categories .category-list-item .category-list-count{color:var(--text);background-color:var(--info-background);}
 .pagination a, .pagination span{background-color:var(--tag-background);color:var(--text);}
 .pagination>li>a{background-color:var(--card-background);}
 .kratos-hentry,.navigation div,#kratos-widget-area .widget{background-color:var(--card-background)!important;}
