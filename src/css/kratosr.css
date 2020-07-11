@@ -945,14 +945,14 @@ th {
   color: #54ff4e
 }
 
-#Snow {
+#snow {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
   z-index: 99999;
-  background: rgba(225, 225, 225, .1);
+  /* background: rgba(225, 225, 225, .05); */
   pointer-events: none
 }
 
@@ -2589,10 +2589,12 @@ th {
 
 @media(min-width:768px) {
 
-  /* .carousel-control .glyphicon-chevron-left,.carousel-control .glyphicon-chevron-right{margin-top:-10px;width:30px;height:30px;font-size:30px}
+/*
+.carousel-control .glyphicon-chevron-left,.carousel-control .glyphicon-chevron-right{margin-top:-10px;width:30px;height:30px;font-size:30px}
 .carousel-control .glyphicon-chevron-left{margin-left:-10px}
 .carousel-control .glyphicon-chevron-right{margin-right:-10px}
-.carousel-caption{right:20%;left:20%;padding-bottom:30px} */
+.carousel-caption{right:20%;left:20%;padding-bottom:30px}
+*/
   .container {
     width: 750px
   }
