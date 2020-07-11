@@ -1065,7 +1065,6 @@ th {
   background: #51aded;
   color: #fff;
   border: transparent;
-  border-radius: 3px;
 }
 
 .btn.btn-primary:active,
@@ -1160,7 +1159,8 @@ th {
 }
 
 .input-group {
-  display: table;
+  display: flex;
+  margin: 30px auto;
   border-collapse: separate
 }
 
@@ -3394,3 +3394,58 @@ body.custom-background {
     background-image: url('/images/bg.png')
   }
 }
+
+/**************** search input ****************/
+.input-group .form-input.input-lg {
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  -webkit-box-shadow: none;
+  -webkit-box-pack: start;
+  -ms-flex-pack: start;
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  box-shadow: none;
+  flex: auto;
+  justify-content: flex-start;
+  padding: 0 8px;
+  font-size: 15px;
+  max-width: 100%;
+  border: 1px solid transparent;
+}
+
+#search-input {
+  border-color: #dbdbdb;
+  background-color: #fff;
+  border-bottom-left-radius: 4px;
+  border-top-left-radius: 4px;
+  border-bottom-right-radius: 0px;
+  border-top-right-radius: 0px;
+}
+
+#search-input:hover {
+  border-color: #b5b5b5
+}
+
+#search-input:focus {
+  outline: 0
+}
+
+#search-input:active,#search-input:focus {
+  border-color: #3273dc;
+  box-shadow: 0 0 0 .125em rgba(50,115,220,.25)
+}
+
+.input-group .btn.btn-primary {
+  border: transparent;
+  border-top-right-radius: 4px;
+  border-bottom-right-radius: 4px;
+}
+
+
+#kr-search-notice.alert{transition:.3s}
+#result-posts .kr-search-result{margin:auto;height:auto;width:90%;padding-top: 22px;}
+#result-posts .kr-search-result .kratos-entry-content-new{height: auto;}
+#result-posts m{color:#333;background-color:yellow;}
