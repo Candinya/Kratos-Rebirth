@@ -1349,7 +1349,6 @@ th {
   float: left;
   text-align: left;
   max-width: 50%;
-  background-color: #fff;
   box-shadow: 0 1px 5px rgba(0, 0, 0, .1);
   padding: 7px 18px
 }
@@ -1358,7 +1357,6 @@ th {
   float: right;
   text-align: right;
   max-width: 50%;
-  background-color: #fff;
   box-shadow: 0 1px 5px rgba(0, 0, 0, .1);
   padding: 7px 18px
 }
