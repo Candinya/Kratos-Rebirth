@@ -1208,7 +1208,7 @@ th {
   height: 320px
 }
 
-.kratos-overlay {
+/* .kratos-overlay {
   position: absolute !important;
   width: 100%;
   top: 0;
@@ -1217,7 +1217,7 @@ th {
   right: 0;
   z-index: 1;
   background: rgba(66, 64, 64, .2)
-}
+} */
 
 .kratos-cover {
   background-size: cover;
@@ -1230,7 +1230,7 @@ th {
   opacity: .9
 }
 
-.kratos-cover.kratos-cover_2 {
+.kratos-cover.kratos-cover-2 {
   height: 320px;
   background-position: top
 }
@@ -2254,25 +2254,20 @@ th {
 }
 
 #footer .kratos-copyright {
-  padding-left: 0
+  padding-left: 0;
+  list-style: none;
 }
 
-#footer .kratos-copyright {
-  list-style: none
+#footer .kratos-copyright div{
+  line-height: 1.2;
+  margin: 0 50px;
 }
 
 #footer .kratos-copyright li {
   color: rgba(255, 255, 255, .3);
   line-height: 1;
   margin: 0 2px;
-  font-size: 14px
-}
-
-@media screen and (max-width: 550px) {
-  #footer .kratos-copyright li {
-    display: block;
-    margin-top: 1em
-  }
+  font-size: 12px
 }
 
 #footer .kratos-copyright:first-child {
@@ -2429,7 +2424,7 @@ th {
     height: 45px !important
   }
 
-  .kratos-cover.kratos-cover_2.text-center,
+  .kratos-cover.kratos-cover-2.text-center,
   .kratos-overlay {
     display: none
   }
@@ -2627,7 +2622,7 @@ th {
   .kratos-hentry,
   .navigation div,
   #kratos-widget-area .widget {
-    background-color: rgba(255, 255, 255, .8) !important
+    background-color: rgba(255, 255, 255, .8)
   }
 }
 
@@ -2864,7 +2859,7 @@ td.code {
 }
 
 /******************* Images ********************/
-.kratos-cover.kratos-cover_2 {
+.kratos-cover.kratos-cover-2 {
   background-image: url('/images/banner.jpg')
 }
 
