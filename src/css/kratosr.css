@@ -1948,10 +1948,34 @@ th {
   position: absolute;
   left: 0;
   bottom: 0;
-  height: 2.5px !important;
-  width: 73px;
+  height: 2.5px;
+  width: 100px;
   background-color: #51aded;
   content: ''
+}
+
+.widget-title i {
+  /* float: right; */
+  margin-right: 10px;
+}
+
+@keyframes widget-title-icon-animation
+{
+    0%, 25%, 50%, 75%, 100% {transform: rotate(0);}
+    12%, 63% {transform: rotate(10deg);}
+    37%, 88%  {transform: rotate(-10deg);}
+}
+ 
+@-webkit-keyframes widget-title-icon-animation
+{
+  0%, 25%, 50%, 75%, 100% {-webkit-transform: rotate(0);}
+  12%, 63% {-webkit-transform: rotate(10deg);}
+  37%, 88%  {-webkit-transform: rotate(-10deg);}
+}
+
+.widget:hover .widget-title i {
+  animation: widget-title-icon-animation .5s linear;
+  -webkit-animation: widget-title-icon-animation .5s linear;
 }
 
 .widget img {
@@ -2187,12 +2211,12 @@ th {
 }
 
 .kr-tool .box span {
-  width: 40px;
-  height: 40px;
+  width: 30px;
+  height: 30px;
   display: table-cell;
   vertical-align: middle;
   color: #fff;
-  font-size: 18px
+  font-size: 15px
 }
 
 .kr-tool .box.search-box a {
@@ -2205,7 +2229,7 @@ th {
 }
 
 .kr-tool.scroll-down .tool {
-  bottom: 70px;
+  bottom: 60px;
 }
 
 .kr-tool.scroll-down .box.gotop-box {
@@ -2258,7 +2282,7 @@ th {
 
 #footer .kratos-copyright div{
   line-height: 1.2;
-  margin: 0 50px;
+  margin: 0 40px;
 }
 
 #footer .kratos-copyright li {

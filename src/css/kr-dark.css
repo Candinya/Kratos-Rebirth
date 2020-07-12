@@ -20,10 +20,10 @@
     --link: #1e8cdb;
     --link-hover: #6ec3f5;
     --border: #3c495b3a;
-    --tag-background: #fff;
+    --tag-background: #fffd;
     --card-background: rgba(255, 255, 255, .8);
     --page-background: #f5f5f5;
-    --info-background: rgba(220, 220, 220, .3);
+    --info-background: #efefefaa;
     --navbar-desktop: rgba(40, 42, 44, .6);
     --navbar-mobile: rgba(22, 23, 26, .9);
 }
@@ -44,10 +44,10 @@
         --link: lightblue;
         --link-hover: #51aded;
         --border: #ccc;
-        --tag-background: #252d38;
+        --tag-background: #252d38df;
         --card-background: #282c34dd;
         --page-background: #181c27;
-        --info-background: #3c495b4d;
+        --info-background: #3c495bbb;
         --navbar-desktop: #181c27cc;
     }
 }
@@ -62,10 +62,10 @@
     --link: lightblue;
     --link-hover: #51aded;
     --border: #ccc;
-    --tag-background: #252d38;
+    --tag-background: #252d38df;
     --card-background: #282c34dd;
     --page-background: #181c27;
-    --info-background: #3c495b4d;
+    --info-background: #3c495bbb;
     --navbar-desktop: #181c27cc;
 }
 
@@ -89,7 +89,7 @@ blockquote p{color:var(--text);}
 .kratos-entry-footer .footer-tag a{color:var(--text);background-color:var(--tag-background);}
 .kratos-entry-footer .pull-date span{color:var(--text);}
 .post-navigation a{color:var(--text);}
-.widget a{color:var(--text-alt);}
+.widget a, .widget-title i{color:var(--text-alt);}
 .widget-kratos-tags .tag-clouds a{background-color:var(--tag-background);}
 .widget-kratos-tags .tag-clouds a:hover{color:var(--tag-background);background-color: var(--text-alt);}
 .widget-categories .category-list-item .category-list-count{color:var(--text);background-color:var(--info-background);}

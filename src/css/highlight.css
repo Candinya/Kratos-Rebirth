@@ -147,6 +147,12 @@ figure.highlight::before {
     box-shadow: 20px 0 #fdbc40, 40px 0 #35cd4b;
 }
 
+figure.highlight figcaption {
+    position: absolute;
+    margin-left: 75px;
+    font-size: 18px;
+}
+
 figure.highlight pre {
     border: none;
     margin: 0;

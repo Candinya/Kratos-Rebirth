@@ -138,7 +138,7 @@ let kr = {};
           }
     };
 
-    const tocNavInit = ()=> {
+    const tocNavInit = ()=>{
         $(document).on("click", 'a[class=toc-link]', function(){
             $('html, body').animate({
                 scrollTop:$($(this).attr("href")).offset().top - 60
