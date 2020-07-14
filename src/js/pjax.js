@@ -45,7 +45,7 @@ $(function() {
                 }
             },
             complete: function() {
-                window.load =  reload_func();
+                window.load = reload_func();
                 NProgress.done();
             },
             timeout: 8000,

@@ -35,7 +35,7 @@ let kr = {};
         });
     };
     const offcanvas = ()=>{
-        var $clone = $('#kratos-menu-wrap').clone();
+        let $clone = $('#kratos-menu-wrap').clone();
         $clone.attr({
             'id':'offcanvas-menu'
         });
@@ -99,7 +99,7 @@ let kr = {};
     //             content:'<div class="donate-box"><div class="meta-pay text-center"><strong>'+kr.scanNotice+'</strong></div><div class="qr-pay text-center"><img class="pay-img" id="alipay_qr" src="'+kr.qr_alipay+'"><img class="pay-img d-none" id="wechat_qr" src="'+kr.qr_wechat+'"></div><div class="choose-pay text-center mt-2"><input id="alipay" type="radio" name="pay-method" checked><label for="alipay" class="pay-button"><img src="' + kr.thome + 'images/alipay.png"></label><input id="wechatpay" type="radio" name="pay-method"><label for="wechatpay" class="pay-button"><img src="' + kr.thome + 'images/wechat.png"></label></div></div>'
     //         });
     //         $(".choose-pay input[type='radio']").click(()=>{
-    //             var id = $(this).attr("id");
+    //             const id = $(this).attr("id");
     //             if(id=='alipay'){$(".qr-pay #alipay_qr").removeClass('d-none');$(".qr-pay #wechat_qr").addClass('d-none')};
     //             if(id=='wechatpay'){$(".qr-pay #alipay_qr").addClass('d-none');$(".qr-pay #wechat_qr").removeClass('d-none')};
     //         });
@@ -112,9 +112,9 @@ let kr = {};
     const setrandpic = ()=>{
         //图片
         const imageboxs = document.getElementsByClassName("kratos-entry-thumb-new-img");
-        for(var i = 0, len = imageboxs.length; i < len; i++) {
+        for(let i = 0, len = imageboxs.length; i < len; i++) {
             if (!($(imageboxs[i]).attr("src")))
-                $(imageboxs[i]).attr("src", kr.thome + "images/thumb/thumb_"+Math.floor(Math.random()*20+1)+".jpg");
+                $(imageboxs[i]).attr("src", kr.thome + "images/thumb/thumb_"+Math.floor(Math.random()*20+1)+".webp");
 
         }
     };
@@ -125,7 +125,7 @@ let kr = {};
             $('.kratos-hentry').each(function(i){
                 $(this).find('img').each(function(){
                   if ($(this).parent().hasClass('fancybox') || $(this).parent().hasClass('qrcode') || $(this).parent().is('a')) return;
-                  var alt = this.alt;
+                  const alt = this.alt;
                   if (alt) $(this).after('<span class="caption">' + alt + '</span>');
                   $(this).wrap('<a rel="gallery" href="' + this.src + '" data-fancybox=\"gallery\" data-caption="' + alt + '"></a>')
                 });
