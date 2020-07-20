@@ -17,6 +17,11 @@ const configs = {
     },
     cleanCSS: {
         level: 2
+    },
+    terser: {
+        output: {
+            comments: /^!/
+        }
     }
 };
 
@@ -31,11 +36,7 @@ function minifycss(cb) {
 
 function minifyjs(cb) {
     src('src/**/*.js')
-        .pipe(terser({
-            output: {
-                comments: /^!/
-            }
-        }))
+        .pipe(terser(configs.terser))
         .pipe(rename({ suffix: '.min' }))
         .pipe(dest('source'));
     cb();
