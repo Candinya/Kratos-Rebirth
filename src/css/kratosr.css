@@ -24,15 +24,11 @@
 */
 
 * {
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
   box-sizing: border-box
 }
 
 :after,
 :before {
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
   box-sizing: border-box
 }
 
@@ -67,7 +63,6 @@
 }
 
 ::-webkit-scrollbar-track {
-  -webkit-box-shadow: inset 0 0 5px rgba(0, 0, 0, .2);
   box-shadow: inset 0 0 5px rgba(0, 0, 0, .2);
   border-radius: 10px;
   background: #fff3;
@@ -282,7 +277,6 @@ h4,
 h5,
 h6,
 a {
-  -webkit-transition: .5s;
   transition: .5s;
 }
 
@@ -370,12 +364,13 @@ img {
   vertical-align: middle
 }
 
-code {
+code,
+kbd {
   font-size: 90%;
   color: #fff;
   border-radius: 3px;
   padding: 1px 6px;
-  background-color: #6c6c6c
+  background-color: #6c6c6cc6
 }
 
 legend {
@@ -589,6 +584,7 @@ th {
 .carousel-indicators{bottom:5px;z-index:2;margin-bottom:8px;position:absolute;left:50%;margin-left:-30%;padding-left:0;width:60%;list-style:none;text-align:center}
 .carousel-indicators li{display:inline-block;margin:1px 5px;width:10px;height:10px;border:1px solid #fff;border-radius:10px;cursor:pointer}
 .carousel-indicators .active{background-color:#fff} */
+
 .clearfix:after,
 .clearfix:before,
 .container:after,
@@ -609,9 +605,6 @@ th {
 }
 
 .col-md-1,
-.col-md-10,
-.col-md-11,
-.col-md-12,
 .col-md-2,
 .col-md-3,
 .col-md-4,
@@ -619,7 +612,10 @@ th {
 .col-md-6,
 .col-md-7,
 .col-md-8,
-.col-md-9 {
+.col-md-9,
+.col-md-10,
+.col-md-11,
+.col-md-12 {
   position: relative;
   min-height: 1px;
   padding-right: 15px;
@@ -679,12 +675,12 @@ th {
   width: 55%
 }
 
-.pull-right {
-  float: right !important
+.pull-left, .pullquote .left {
+  float: left !important
 }
 
-.pull-left {
-  float: left !important
+.pull-right, .pullquote .right {
+  float: right !important
 }
 
 .row {
@@ -1091,6 +1087,7 @@ th {
 }
 
 /* #kratos-primary-menu>li>a:hover{color:#fff!important} */
+
 #kratos-primary-menu>li>ul li {
   position: relative
 }
@@ -1304,7 +1301,7 @@ th {
 }
 
 #kratos-blog-post .row article {
-  margin-bottom: 30px;
+  margin-bottom: 15px;
 }
 
 .pagination {
@@ -1369,6 +1366,39 @@ th {
 .kratos-post-meta .fa-thumbs-o-up,
 .kratos-post-meta i:not(:first-child) {
   margin-left: 12px
+}
+
+.kratos-status {
+  margin: 15px 15px 15px 38px;
+  border-left: 1px dotted #7b7b7b7b;
+  position: relative
+}
+
+.kratos-status.kratos-status-post {
+  margin: 0 15px 0 38px
+}
+
+.kratos-status>i:first-child {
+  position: absolute;
+  top: 50%;
+  left: -8px;
+  margin: -8px 0 0
+}
+
+.kratos-status-inner {
+  margin-left: 30px
+}
+
+.kratos-status-inner .kratos-status-content p {
+  margin: 0;
+}
+
+.kratos-status-inner .kratos-status-content img {
+  max-width: 100%
+}
+
+.kratos-status-inner footer {
+  font-size: 12px;
 }
 
 .kratos-hentry {
@@ -1574,7 +1604,8 @@ th {
   position: absolute;
   z-index: 2;
   left: 100%;
-  margin-left: -65px
+  margin-left: -65px;
+  user-select: none;
 }
 
 .kratos-entry-border-new a {

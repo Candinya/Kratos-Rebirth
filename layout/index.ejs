@@ -1,7 +1,42 @@
 
         <section class="col-md-8">
             <% page.posts.each(function(post) { %>
-                <% if (theme.indexPostType) { %>
+                <% if (post.type == 'status' || post.link) { %>
+                    <article class="kratos-hentry kratos-entry-border-new clearfix">
+                        <div class="kratos-status">
+                            <% if (post.link) { %>
+                                <i class="fa fa-link"></i>
+                            <% } else { %>
+                                <i class="fa fa-refresh"></i>
+                            <% } %>
+                            <div class="kratos-status-inner">
+                                <div class="kratos-status-content">
+                                    <% if (post.link) { %>
+                                        <a href="<%- url_for(post.link) %>"><%- post.title %> <i class="fa fa-external-link"></i></a>
+                                    <% } else { %>
+                                        <%- post.excerpt || post.content %>
+                                    <% } %>
+                                </div>
+                            </div>
+                        </div>
+                        <% if (!post.link) { %>
+                            <footer class="kratos-post-meta-new">
+                                <span class="pull-left">
+                                    <a><i class="fa fa-calendar"></i></a><a><%- date(post.date, null) %></a>
+                                    <a><i class="fa fa-tags"></i></a>
+                                    <%- list_tags(post.tags, {
+                                        show_count: false,
+                                        style: 'none',
+                                        amount: 3
+                                    }) %>
+                                </span>
+                                <span class="pull-right">
+                                    <a class="read-more" href="<%- url_for(post.path) %>" title="<%- __('read_full') %>"><%- __('read_full') %><i class="fa fa-chevron-circle-right"></i></a>
+                                </span>
+                            </footer>
+                        <% } %>
+                    </article>
+                <% } else if (theme.indexPostType) { %>
                     <article>
                         <div class="kratos-hentry kratos-post-inner clearfix index-post">
                             <header class="kratos-entry-header">
@@ -66,7 +101,7 @@
                                     </p>
                                 </div>
                             </div>
-                            <div class="kratos-post-meta-new">
+                            <footer class="kratos-post-meta-new">
                                 <span class="pull-left">
                                     <a><i class="fa fa-calendar"></i></a><a><%- date(post.date, null) %></a>
                                     <a><i class="fa fa-tags"></i></a>
@@ -77,9 +112,9 @@
                                     }) %>
                                 </span>
                                 <span class="pull-right">
-                                    <a class="read-more" href="<%- url_for(post.path) %>" title="<%- __('read_more') %>"><%- __('read_more') %><i class="fa fa-chevron-circle-right"></i></a>
+                                    <a class="read-more" href="<%- url_for(post.path) %>" title="<%- __('read_full') %>"><%- __('read_full') %><i class="fa fa-chevron-circle-right"></i></a>
                                 </span>
-                            </div>
+                            </footer>
                         </div>
                     </article>
                 <% } %>

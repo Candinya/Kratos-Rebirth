@@ -32,7 +32,8 @@
 @media (prefers-color-scheme: dark) {
     :root {
         --color-mode: 'dark';
-    ;}
+        ;
+    }
 
     :root:not([data-user-color-scheme]) {
         --banner-image: url('/images/banner_dark.jpg');
@@ -70,66 +71,237 @@
 }
 
 /******************* Color ********************/
-::-webkit-selection{color:var(--select-text);background:var(--select-text-bg);}::-moz-selection{color:var(--select-text);background:var(--select-text-bg);}::selection{color:var(--select-text);background:var(--select-text-bg);}
-h1,h2,h3,h4,h5,h6,ol,p,ul{color:var(--text);}
-body.custom-background{background-color:var(--page-background);}
-h2.title-h2{background-color:var(--info-background);}
-a{color:var(--link);}
-blockquote{background-color:var(--info-background);border-color: var(--border);;}
-blockquote p{color:var(--text);}
-.kratos-cover.kratos-cover-2{background-color: var(--page-background);}
-.kratos-hentry{background-color:var(--tag-background);}
-.kratos-entry-border-new a{color:var(--text);}
-.kratos-entry-border-new .kratos-post-meta-new{border-top:1px solid var(--border);background:var(--tag-background);}
-.kratos-entry-header .kratos-post-meta span, .kratos-entry-header .kratos-post-meta a{color:var(--text);}
-.kratos-post-content p{color:var(--text);}
-.kratos-post-inner .kratos-copyright{background-color:var(--info-background);}
-.kratos-post-inner .kratos-copyright h5{color:var(--text);}
-.kratos-post-inner .kratos-copyright a{color:var(--text);}
-.kratos-entry-footer .footer-tag a{color:var(--text);background-color:var(--tag-background);}
-.kratos-entry-footer .pull-date span{color:var(--text);}
-.post-navigation a{color:var(--text);}
-.widget a, .widget-title i{color:var(--text-alt);}
-.widget-kratos-tags .tag-clouds a{background-color:var(--tag-background);}
-.widget-kratos-tags .tag-clouds a:hover{color:var(--tag-background);background-color: var(--text-alt);}
-.widget-categories .category-list-item .category-list-count{color:var(--text);background-color:var(--info-background);}
-.pagination a, .pagination span{background-color:var(--tag-background);color:var(--text);}
-.pagination>li>a{background-color:var(--card-background);}
-.kratos-hentry,.navigation div,#kratos-widget-area .widget{background-color:var(--card-background);}
-.arc-tag a.tag-link{color:var(--text-alt);background-color:var(--tag-background);border-color:var(--border);}
-.arc-tag a.tag-link:hover{color:var(--link-hover);}
-.linkpage li a h4{color:var(--text);}
-.linkpage li:hover{background-color:var(--info-background);}
-.kratos-post-header-title{color:var(--text);}
-.xControl{background-color: var(--info-background);}
-.xControl .xHeading span{color: var(--text);}
-.index-post .kratos-entry-header .kratos-entry-title{color: var(--text);}
-.index-post .kratos-entry-header .kratos-entry-title::after{background-color: var(--text);}
-#archives .posts-collapse .post-title a{color:var(--text-alt);}
-#disqus_thread{background-color:var(--tag-background);}
-#dsqjs a{color:var(--link);}
-#dsqjs .dsqjs-tab-active{color:var(--text);}
-#dsqjs-msg{color:var(--text);background-color:var(--tag-background);}
-#aplayer *{color:unset;}
+::-webkit-selection {
+    color: var(--select-text);
+    background: var(--select-text-bg);
+}
+
+::-moz-selection {
+    color: var(--select-text);
+    background: var(--select-text-bg);
+}
+
+::selection {
+    color: var(--select-text);
+    background: var(--select-text-bg);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+ol,
+p,
+ul {
+    color: var(--text);
+}
+
+body.custom-background {
+    background-color: var(--page-background);
+}
+
+h2.title-h2 {
+    background-color: var(--info-background);
+}
+
+a {
+    color: var(--link);
+}
+
+blockquote {
+    background-color: var(--info-background);
+    border-color: var(--border);
+    ;
+}
+
+blockquote p {
+    color: var(--text);
+}
+
+.kratos-cover.kratos-cover-2 {
+    background-color: var(--page-background);
+}
+
+.kratos-hentry {
+    background-color: var(--tag-background);
+}
+
+.kratos-entry-border-new a {
+    color: var(--text);
+}
+
+.kratos-entry-border-new .kratos-post-meta-new {
+    border-top: 1px solid var(--border);
+    background: var(--tag-background);
+}
+
+.kratos-entry-header .kratos-post-meta span,
+.kratos-entry-header .kratos-post-meta a {
+    color: var(--text);
+}
+
+.kratos-post-content p,
+.kratos-post-content table td {
+    color: var(--text);
+}
+
+.kratos-post-inner .kratos-copyright {
+    background-color: var(--info-background);
+}
+
+.kratos-post-inner .kratos-copyright h5 {
+    color: var(--text);
+}
+
+.kratos-post-inner .kratos-copyright a {
+    color: var(--text);
+}
+
+.kratos-entry-footer .footer-tag a {
+    color: var(--text);
+    background-color: var(--tag-background);
+}
+
+.kratos-entry-footer .pull-date span {
+    color: var(--text);
+}
+
+.post-navigation a {
+    color: var(--text);
+}
+
+.widget a,
+.widget-title i {
+    color: var(--text-alt);
+}
+
+.widget-kratos-tags .tag-clouds a {
+    background-color: var(--tag-background);
+}
+
+.widget-kratos-tags .tag-clouds a:hover {
+    color: var(--tag-background);
+    background-color: var(--text-alt);
+}
+
+.widget-categories .category-list-item .category-list-count {
+    color: var(--text);
+    background-color: var(--info-background);
+}
+
+.pagination a,
+.pagination span {
+    background-color: var(--tag-background);
+    color: var(--text);
+}
+
+.pagination>li>a {
+    background-color: var(--card-background);
+}
+
+.kratos-hentry,
+.navigation div,
+#kratos-widget-area .widget {
+    background-color: var(--card-background);
+}
+
+.arc-tag a.tag-link {
+    color: var(--text-alt);
+    background-color: var(--tag-background);
+    border-color: var(--border);
+}
+
+.arc-tag a.tag-link:hover {
+    color: var(--link-hover);
+}
+
+.linkpage li a h4 {
+    color: var(--text);
+}
+
+.linkpage li:hover {
+    background-color: var(--info-background);
+}
+
+.kratos-post-header-title {
+    color: var(--text);
+}
+
+.xControl {
+    background-color: var(--info-background);
+}
+
+.xControl .xHeading span {
+    color: var(--text);
+}
+
+.index-post .kratos-entry-header .kratos-entry-title {
+    color: var(--text);
+}
+
+.index-post .kratos-entry-header .kratos-entry-title::after {
+    background-color: var(--text);
+}
+
+#archives .posts-collapse .post-title a {
+    color: var(--text-alt);
+}
+
+#disqus_thread {
+    background-color: var(--tag-background);
+}
+
+#dsqjs a {
+    color: var(--link);
+}
+
+#dsqjs .dsqjs-tab-active {
+    color: var(--text);
+}
+
+#dsqjs-msg {
+    color: var(--text);
+    background-color: var(--tag-background);
+}
+
+#aplayer * {
+    color: unset;
+}
 
 a:hover,
 .kratos-entry-border-new a:hover,
 .kratos-entry-header .kratos-post-meta a:hover,
 .kratos-post-inner .kratos-copyright a:hover,
 #footer li a:hover,
-#archives .posts-collapse .post-title a:hover
-{color:var(--link-hover);}
-
-@media(min-width:768px){
-    #kratos-header-section{background:var(--navbar-desktop);}
+#archives .posts-collapse .post-title a:hover {
+    color: var(--link-hover);
 }
-@media(max-width:768px){
-    #kratos-header-section{background:var(--navbar-mobile);}
+
+@media(min-width:768px) {
+    #kratos-header-section {
+        background: var(--navbar-desktop);
+    }
+}
+
+@media(max-width:768px) {
+    #kratos-header-section {
+        background: var(--navbar-mobile);
+    }
 }
 
 /******************* Images ********************/
-@media(min-width:768px){
-    body.custom-background{background-image:var(--background-image);}
-    .kratos-cover.kratos-cover-2{background-image:var(--banner-image);}
-    .widget-kratos-about .photo-background{background-image:var(--about-image);}
+@media(min-width:768px) {
+    body.custom-background {
+        background-image: var(--background-image);
+    }
+
+    .kratos-cover.kratos-cover-2 {
+        background-image: var(--banner-image);
+    }
+
+    .widget-kratos-about .photo-background {
+        background-image: var(--about-image);
+    }
 }

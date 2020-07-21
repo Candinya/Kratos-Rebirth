@@ -47,8 +47,14 @@ $(function() {
             complete: function() {
                 window.load = reload_func();
                 NProgress.done();
+                
+                // 如果URL里有指定节点ID，则滚动到相应的节点位置
+                const reqId = reqUrl.match(/\#.+$/);
+                if (reqId) {
+                    $("body,html").animate({scrollTop:$(reqId[0]).offset().top - 40}, 600);
+                }
             },
-            timeout: 8000,
+            timeout: 6000,
             error: function() {
                 location.href = reqUrl;
             }
