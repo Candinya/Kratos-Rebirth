@@ -2,27 +2,33 @@
 
 ## 关于这个主题
 
-一只移植的主题，主要是个人使用，相关介绍可以参见主题说明页面~
+一只移植的主题，主要是个人使用，相关介绍可以参见[主题说明](https://candinya.com/posts/Kratos-Rebirth/)页面~
 
-![构建版本](https://img.shields.io/github/v/release/Candinya/Kratos-Rebirth)
-![样例站点部署状态](https://github.com/Candinya/Kratos-Rebirth/workflows/Build%20Demo%20Site/badge.svg)
+[![构建版本](https://img.shields.io/github/v/release/Candinya/Kratos-Rebirth)](https://github.com/Candinya/Kratos-Rebirth/releases/latest)
+[![样例站点部署状态](https://github.com/Candinya/Kratos-Rebirth/workflows/Build%20Demo%20Site/badge.svg)](https://kr-demo.candinya.com/)
 [![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2FCandinya%2FKratos-Rebirth.svg?type=shield)](https://app.fossa.com/projects/git%2Bgithub.com%2FCandinya%2FKratos-Rebirth?ref=badge_shield)
 
 [样例站点](https://kr-demo.candinya.com)自动部署已经上线，具体可以参照这篇日志：[使用Github Actions部署主题样例站](https://candinya.com/posts/theme-demo-deployment-with-github-actions/)
 
 全新的配置文档增加了！戳[这里](https://candinya.com/posts/Kratos-Rebirth-Manual/)查看更多~
 
+或者也可以去[项目Wiki](https://github.com/Candinya/Kratos-Rebirth/wiki)里面找找哦~
+
 有为这个主题专门开发两个页面，详见[Kratos-Rebirth-Specified-Pages](https://github.com/Candinya/Kratos-Rebirth-Specified-Pages)
 
 核心结构&样式来源：[@MoeDog](https://github.com/xb2016) 狗狗大佬的[Kratos](https://github.com/xb2016/kratos)的某个上古版本
 
+## 特别提示
+
+1. 为了防止更新时配置文件的更新覆盖掉您的配置文件，主题的主配置文件是需要您**手动**复制一份`_config.yml.example`，并删除后缀的`.example`才可正常读取与使用的，请千万不要忘记啦。
+
+2. 在运行之前，还请您将`_config.yml.site.example`文件内的数据，复制到您**站点**的_config.yml中，否则可能会对相关代码的功能造成影响。
+
+3. 另外也有不少被Javascript调用的配置项是写在相关的js文件里面的(例如主js文件，原始文件`src/js/kratosr.js`，压缩后的文件`source/js/kratosr.min.js`)，之后如果有机会统一归并的话会想办法整合起来哒（没有放在站点配置里是因为没找到合适的方法对js进行注入，同时为了压缩空间无奈就分了很多出来（逃）
+
 ## 超棒的赞助者们
 
 - @vensing [GitHub](https://github.com/vensing) [Blog](https://vensing.com/)
-
-## 特别提示
-
-在运行之前，请您将`_config.yml.site.example`文件内的数据，复制到您**站点**的_config.yml中，否则可能会对相关代码的功能造成影响。
 
 ## 关于使用的环境
 
@@ -62,6 +68,8 @@
   }
 }
 ```
+
+之后也会找时间升级到 Hexo 5.0 哒
 
 ## 关于二次开发
 

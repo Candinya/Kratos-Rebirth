@@ -1,7 +1,7 @@
 {
   "name": "@candinya/kratos-rebirth",
   "version": "1.3.1",
-  "description": "A modified theme for Hexo, with many new features built with love.",
+  "description": "A transplanted theme for Hexo, with many new features built with love.",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "setup": "npm cache clean && npm install",
