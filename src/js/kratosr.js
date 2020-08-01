@@ -158,7 +158,7 @@ let kr = {};
     const tocNavInit = ()=>{
         $(document).on("click", 'a[class=toc-link]', function(){
             $('html, body').animate({
-                scrollTop:$($(this).attr("href")).offset().top - 60
+                scrollTop:$(decodeURI($(this).attr("href"))).offset().top - 60
             },500);
             return false;
         });
