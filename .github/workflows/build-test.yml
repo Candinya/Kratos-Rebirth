@@ -31,7 +31,8 @@ jobs:
 
     # Edit hexo site settings
     - name: Edit Hexo Theme settings
-      run: sed -i "s/theme: landscape/theme: kratos-rebirth/" "_config.yml"
+      run: |
+        sed -i "s/theme: landscape/theme: kratos-rebirth/" "_config.yml"
     
     # Copy theme settings
     - name: Copy theme settings
