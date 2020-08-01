@@ -207,13 +207,13 @@ blockquote p {
     background-color: var(--card-background);
 }
 
-.arc-tag a.tag-link {
+.arc-tag a.tag-none-link {
     color: var(--text-alt);
     background-color: var(--tag-background);
     border-color: var(--border);
 }
 
-.arc-tag a.tag-link:hover {
+.arc-tag a.tag-none-link:hover {
     color: var(--link-hover);
 }
 

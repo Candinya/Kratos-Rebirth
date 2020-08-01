@@ -6,7 +6,8 @@
 
 // 提示横幅
 hexo.extend.tag.register('alertbox', function(args){
-    return `<div class="alert alert-${args[0]}">${args[1]}</div>`;
+    const content = hexo.render.renderSync({text: args[1], engine: 'markdown'});
+    return `<div class="alert alert-${args[0]}">${content}</div>`;
 });
 
 // 折叠内容

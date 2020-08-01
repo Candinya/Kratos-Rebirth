@@ -1,0 +1,47 @@
+# Test if the theme works well
+
+name: Build Test
+
+on: pull_request
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    
+    # Setup Node.js env
+    - uses: actions/setup-node@v2.1.0
+      with:
+        node-version: '12.x'
+    
+    # Get Hexo test utils
+    - uses: actions/checkout@v2
+      with:
+        repository: 'hexojs/hexo-theme-unit-test'
+    
+    # Make dirs for themes
+    - name: Make dirs for themes
+      run: mkdir themes
+    
+    # Clone Kratos-Rebirth into themes dir
+    - uses: actions/checkout@v2
+      with:
+        path: 'themes/kratos-rebirth'
+
+    # Edit hexo site settings
+    - name: Edit Hexo Theme settings
+      run: |
+        sed -i "s/theme: landscape/theme: kratos-rebirth/" "_config.yml"
+    
+    # Copy theme settings
+    - name: Copy theme settings
+      run: cp "themes/kratos-rebirth/_config.yml.example" "themes/kratos-rebirth/_config.yml"
+
+    # Install Hexo env
+    - name: Install Hexo environment
+      run: npm install
+
+    # Hexo build demo site
+    - name: Hexo build test
+      run: npx hexo generate

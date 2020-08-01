@@ -77,3 +77,25 @@ avatarUri: /images/avatar.png
 
 # Fancybox
 fancybox: true
+
+# 搜索
+search:
+  enable: true
+  path: search.json
+  field: post # page | post | all. Default post
+  content: true # Include post | page content
+
+# JavaScript相关的配置
+# 由于Javascript被压缩后难以有效编辑与生成，因而为了简化操作，将相关的配置项在生成文件时以独立的json文件写出，调用时使用fetch API获取。
+jsconfig:
+  main:
+    picCDN: false
+    createTime: "1970-01-01 00:00:00"
+    donateBtn: "支持我~"
+    scanNotice: "扫一扫，好不好？"
+    qr_alipay: "/images/alipayqr.jpg"
+    qr_wechat: "/images/wechatpayqr.png"
+    siteLeaveEvent: false
+    leaveTitle: "{{{(>_<)}}}哦哟，崩溃啦~"
+    returnTitle: "(*´∇｀*)欸，又好啦~"
+    copyrightNotice: "该内容采用 CC BY-NC-SA 4.0 许可协议，著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。"
