@@ -20,11 +20,9 @@
 
 ## 特别提示
 
-1. 为了防止更新时配置文件的更新覆盖掉您的配置文件，主题的主配置文件是需要您**手动**复制一份`_config.yml.example`，并删除后缀的`.example`才可正常读取与使用的，请千万不要忘记啦。
+1. 为了防止更新时配置文件的更新覆盖掉您的配置文件，主题的主配置文件是需要您**手动**复制一份`_config.yml.example`，并改名为`_config.yml`才可正常读取与使用的，请千万不要忘记啦。之前版本的站点配置文件从这个版本开始已经**不需要**加入了，使用[带上主题设置加载Hexo自定义功能](https://candinya.com/posts/process-with-theme-config-using-process-after/)的方法即可在代码生成阶段就完成主题配置的读取，进而在监听运行时也能完美地调用相关的配置参数。同时，也可以使用同样的方法精简掉JavaScript的配置，不必再去翻找那些被压缩得面目全非的代码啦。
 
-2. 在运行之前，还请您将`_config.yml.site.example`文件内的数据，复制到您**站点**的_config.yml中，否则可能会对相关代码的功能造成影响。
-
-3. 另外也有不少被Javascript调用的配置项是写在相关的js文件里面的(例如主js文件，原始文件`src/js/kratosr.js`，压缩后的文件`source/js/kratosr.min.js`)，之后如果有机会统一归并的话会想办法整合起来哒（没有放在站点配置里是因为没找到合适的方法对js进行注入，同时为了压缩空间无奈就分了很多出来（逃）
+2. 这个Branch之后会持续加入一些也许是Hexo 5的新特性，这些特性未必完全兼容Hexo 4，如果您使用的是Hexo 4.x的话您可以移步[hexo-4 branch](https://github.com/Candinya/Kratos-Rebirth/tree/hexo-4)哦，或是更为推荐的，将Hexo升级至5.x版本呢。
 
 ## 超棒的赞助者们
 
@@ -51,10 +49,10 @@
     "server": "hexo server"
   },
   "hexo": {
-    "version": "4.2.0"
+    "version": "5.0.0"
   },
   "dependencies": {
-    "hexo": "^4.2.0",
+    "hexo": "^5.0.0",
     "hexo-generator-archive": "^1.0.0",
     "hexo-generator-category": "^1.0.0",
     "hexo-generator-feed": "^2.2.0",
@@ -62,14 +60,12 @@
     "hexo-generator-sitemap": "^2.0.0",
     "hexo-generator-tag": "^1.0.0",
     "hexo-renderer-ejs": "^1.0.0",
-    "hexo-renderer-marked": "^2.0.0",
+    "hexo-renderer-marked": "^3.0.0",
     "hexo-renderer-stylus": "^1.1.0",
     "hexo-server": "^1.0.0"
   }
 }
 ```
-
-之后也会找时间升级到 Hexo 5.0 哒
 
 ## 关于二次开发
 

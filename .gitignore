@@ -6,3 +6,6 @@ _config.yml
 
 # 站点图像
 source/images/favicon.png
+
+# 锁文件
+package-lock.json

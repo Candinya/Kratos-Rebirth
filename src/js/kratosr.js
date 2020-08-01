@@ -1,19 +1,32 @@
 let kr = {};
 //-------------------参数设置区 开始-------------------
-    kr.thome = "/";
-    kr.ctime = "2018-03-24 15:31:36";
-    kr.donateBtn = "支持我~";
-    kr.scanNotice = "扫一扫，好不好？";
-    kr.qr_alipay = "/images/alipayqr.jpg";
-    kr.qr_wechat = "/images/wechatpayqr.png";
-    kr.siteLeaveEvent = true;
-    // kr.leaveLogo = "/images/failure.ico";
-    kr.leaveTitle = "{{{(>_<)}}}哦哟，崩溃啦~";
-    kr.returnTitle = "(*´∇｀*)欸，又好啦~";
-    kr.copyrightNotice = `该内容采用 CC BY-NC-SA 4.0 许可协议，著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。`;
+    // kr.createTime = "1970-1-1 00:00:00";
+    // kr.donateBtn = "支持我~";
+    // kr.scanNotice = "扫一扫，好不好？";
+    // kr.qr_alipay = "/images/alipayqr.jpg";
+    // kr.qr_wechat = "/images/wechatpayqr.png";
+    // kr.siteLeaveEvent = false;
+    // kr.picCDN = false;
+    // // kr.leaveLogo = "/images/failure.ico";
+    // kr.leaveTitle = "{{{(>_<)}}}哦哟，崩溃啦~";
+    // kr.returnTitle = "(*´∇｀*)欸，又好啦~";
+    // kr.copyrightNotice = `该内容采用 CC BY-NC-SA 4.0 许可协议，著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。`;
 //-------------------参数设置区 结束-------------------
 
 (()=>{
+    const loadConfig = (cb) => {
+        // 读取配置文件
+        fetch('/config/main.json')
+            .then((res) => {
+                return res.json();
+            })
+            .then((cfg) => {
+                kr = cfg;
+            })
+            .then(()=>{
+                cb();
+            });
+    };
     const gotopInit = ()=>{
         const toolScroll = ()=>{
             if ($(window).scrollTop()>200){
@@ -88,6 +101,7 @@ let kr = {};
             event.preventDefault();
         });
     };
+
     // const donateConfig = ()=>{
     //     $(document).on("click",".donate",()=>{
     //         layer.open({
@@ -96,7 +110,7 @@ let kr = {};
     //             title:kr.donateBtn,
     //             resize:false,
     //             scrollbar:false,
-    //             content:'<div class="donate-box"><div class="meta-pay text-center"><strong>'+kr.scanNotice+'</strong></div><div class="qr-pay text-center"><img class="pay-img" id="alipay_qr" src="'+kr.qr_alipay+'"><img class="pay-img d-none" id="wechat_qr" src="'+kr.qr_wechat+'"></div><div class="choose-pay text-center mt-2"><input id="alipay" type="radio" name="pay-method" checked><label for="alipay" class="pay-button"><img src="' + kr.thome + 'images/alipay.png"></label><input id="wechatpay" type="radio" name="pay-method"><label for="wechatpay" class="pay-button"><img src="' + kr.thome + 'images/wechat.png"></label></div></div>'
+    //             content:'<div class="donate-box"><div class="meta-pay text-center"><strong>'+kr.scanNotice+'</strong></div><div class="qr-pay text-center"><img class="pay-img" id="alipay_qr" src="'+kr.qr_alipay+'"><img class="pay-img d-none" id="wechat_qr" src="'+kr.qr_wechat+'"></div><div class="choose-pay text-center mt-2"><input id="alipay" type="radio" name="pay-method" checked><label for="alipay" class="pay-button"><img src="/images/alipay.png"></label><input id="wechatpay" type="radio" name="pay-method"><label for="wechatpay" class="pay-button"><img src="/images/wechat.png"></label></div></div>'
     //         });
     //         $(".choose-pay input[type='radio']").click(()=>{
     //             const id = $(this).attr("id");
@@ -105,6 +119,7 @@ let kr = {};
     //         });
     //     });
     // };
+
     const shareMenu = ()=>{
         $(document).on("click",".share",()=>{$(".share-wrap").fadeToggle("slow");});
     };
@@ -112,10 +127,12 @@ let kr = {};
     const setrandpic = ()=>{
         //图片
         const imageboxs = document.getElementsByClassName("kratos-entry-thumb-new-img");
-        for(let i = 0, len = imageboxs.length; i < len; i++) {
-            if (!($(imageboxs[i]).attr("src")))
-                $(imageboxs[i]).attr("src", kr.thome + "images/thumb/thumb_"+Math.floor(Math.random()*20+1)+".webp");
-
+        const prefix = kr.picCDN ? "//cdn.jsdelivr.net/gh/Candinya/Kratos-Rebirth@latest/source/" : "/";
+        for (let i = 0, len = imageboxs.length; i < len; i++) {
+            if (!($(imageboxs[i]).attr("src"))) {
+                $(imageboxs[i]).attr("src", prefix + `images/thumb/thumb_${Math.floor(Math.random()*20+1)}.webp`);
+            }
+                
         }
     };
 
@@ -159,7 +176,7 @@ ${kr.copyrightNotice}
 `;
     }
 
-    const copyEvent = ()=>{
+    const copyEventInit = ()=>{
         if (kr.copyrightNotice) {
             document.body.oncopy = (e)=>{
                 e.preventDefault();
@@ -200,6 +217,33 @@ ${kr.copyrightNotice}
         }
     };
 
+    const initTime = () => {
+        let now = new Date();
+        const grt = new Date(kr.createTime);
+        const upTimeNode = document.getElementById("span_dt");
+        setInterval(()=>{
+            now.setTime(now.getTime() + 1000);
+            days = (now - grt) / 1000 / 60 / 60 / 24;
+                dnum = Math.floor(days);
+            hours = (now - grt) / 1000 / 60 / 60 - (24 * dnum);
+                hnum = Math.floor(hours);
+            if (String(hnum).length === 1) {
+                hnum = "0" + hnum;
+            }
+            minutes = (now - grt) / 1000 / 60 - (24 * 60 * dnum) - (60 * hnum);
+                mnum = Math.floor(minutes);
+            if (String(mnum).length === 1) {
+                mnum = "0" + mnum;
+            }
+            seconds = (now - grt) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum);
+                snum = Math.round(seconds);
+            if (String(snum).length === 1) {
+                snum = "0" + snum;
+            }
+            upTimeNode.innerText = dnum + "天" + hnum + "小时" + mnum + "分" + snum + "秒";
+        }, 1000);
+    };
+
     $.fn.pjax_reload = ()=>{
         setrandpic();
         fancyboxInit();
@@ -207,37 +251,29 @@ ${kr.copyrightNotice}
         saveTitle();
     };
 
-    $(()=>{
+    const finishInfo = () => {
+        console.log('页面加载完毕！消耗了 %c'+Math.round(performance.now()*100)/100+' ms','background:#282c34;color:#51aded;');
+    };
+
+    const funcUsingConfig = () => {
+        // 因为涉及到配置文件，所以这些是只有在完成配置加载后才能调用的函数
+        $(this).pjax_reload();
+        copyEventInit();
+        leaveEventInit();
+        initTime();
+        // donateConfig();
+    };
+
+    $(() => {
+        loadConfig(funcUsingConfig);
         gotopInit();
         offcanvas();
         mobiClick();
         xControl();
-        // donateConfig();
         shareMenu();
         tocNavInit();
-        $(this).pjax_reload();
-        copyEvent();
-        leaveEventInit();
     });
-})();
 
-(()=>{
-    let now = new Date();
-    const grt = new Date(kr.ctime);
-    const upTimeNode = document.getElementById("span_dt");
-    setInterval(()=>{
-        now.setTime(now.getTime()+1000);
-        days = (now-grt)/1000/60/60/24;dnum = Math.floor(days);
-        hours = (now-grt)/1000/60/60-(24*dnum);hnum = Math.floor(hours);
-        if(String(hnum).length==1){hnum = "0"+hnum;}
-        minutes = (now-grt)/1000/60-(24*60*dnum)-(60*hnum);mnum = Math.floor(minutes);
-        if(String(mnum).length==1){mnum = "0"+mnum;}
-        seconds = (now-grt)/1000-(24*60*60*dnum)-(60*60*hnum)-(60*mnum);snum = Math.round(seconds);
-        if(String(snum).length==1){snum = "0"+snum;}
-        upTimeNode.innerText = dnum+"天"+hnum+"小时"+mnum+"分"+snum+"秒";
-    }, 1000);
-})();
+    window.onload = finishInfo();
 
-window.onload = ()=>{
-    console.log('页面加载完毕消耗了 %c'+Math.round(performance.now()*100)/100+' ms','background:#282c34;color:#51aded;');
-};
+})();

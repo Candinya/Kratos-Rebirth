@@ -738,6 +738,10 @@ th {
   border: 1px solid transparent
 }
 
+.alert * {
+  color: #fff !important;
+}
+
 .alert>p,
 .alert>ul {
   margin-bottom: 0
@@ -747,33 +751,24 @@ th {
   margin-top: 5px
 }
 
-.alert a,
-.alert a:hover {
-  color: #fff !important
-}
-
 .alert-success {
   border-color: #3bb273;
   background-color: #3bb273;
-  color: #fff
 }
 
 .alert-danger {
   border-color: #e15554;
   background-color: #e15554;
-  color: #fff
 }
 
 .alert-info {
   border-color: #4d9de0;
   background-color: #4d9de0;
-  color: #fff
 }
 
 .alert-warning {
   border-color: #ffc320;
   background-color: #ffc320;
-  color: #fff
 }
 
 .panel {
