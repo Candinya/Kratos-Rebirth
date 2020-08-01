@@ -52,10 +52,6 @@ jobs:
         sed -i "s|permalink: :year/:month/:day/:title/|permalink: posts/:title/|" "_config.yml"
         sed -i "s/theme: landscape/theme: kratos-rebirth/" "_config.yml"
     
-    # Append more settings into site settings
-    - name: Append theme-specified settings into site configs
-      run: cat "themes/kratos-rebirth/_config.yml.site.example" >> "_config.yml"
-    
     # Copy theme settings
     - name: Copy theme settings
       run: cp "themes/kratos-rebirth/_config.yml.example" "themes/kratos-rebirth/_config.yml"
