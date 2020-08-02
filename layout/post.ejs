@@ -68,7 +68,7 @@
                 <% } %>
             </nav>
         <% } %>
-        <% if (theme.posts.comments && page.comments) { %>
+        <% if (theme.posts.comments && page.comments && page.title && !page.link) { %>
             <%- partial('_comments/' + theme.posts.comments) %>
         <% } %>
     </article>
