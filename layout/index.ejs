@@ -1,7 +1,7 @@
 
         <section class="col-md-8">
             <% page.posts.each(function(post) { %>
-                <% if (post.type == 'status' || post.link) { %>
+                <% if (!post.title || post.link) { %>
                     <article class="kratos-hentry kratos-entry-border-new clearfix">
                         <div class="kratos-status">
                             <% if (post.link) { %>
