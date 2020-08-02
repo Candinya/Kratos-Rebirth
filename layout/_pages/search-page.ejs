@@ -9,9 +9,35 @@
         </div>
     </div>
 
-    <div class="alert" id="kr-search-notice"></div>
+    <div class="alert alert-info" id="kr-search-notice">
+        <%- __('search_notice_page', config.title) %>
+    </div>
 
-    <div id="result-posts"></div>
+    <div id="result-posts">
+        <div class="kratos-hentry kratos-post-inner clearfix">
+            <div class="kratos-post-content">
+                <p><%- __('search_notice_keys', strip_html(list_tags({
+                    orderby: 'date',
+                    show_count: false,
+                    style: 'none',
+                    separator: ' ',
+                    amount: 3
+                }))) %></p>
+                <p><%- __('search_notice_tags') %></p>
+                <p class="search-demo-tags">
+                    <%- tagcloud({
+                        orderby: 'date',
+                        min_font: 18, 
+                        max_font: 24,
+                        unit: 'px',
+                        color: true,
+                        start_color: '#b2b7be',
+                        end_color: '#6c7588'
+                    }) %>
+                </p>
+            </div>
+        </div>
+    </div>
 
 </section>
 

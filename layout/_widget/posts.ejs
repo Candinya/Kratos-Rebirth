@@ -3,8 +3,15 @@
   <h4 class="widget-title"><i class="fa fa-file"></i><%- __('recent_posts') %></h4>
   <div class="tab-content">
       <ul class="list-group">
-        <% site.posts.sort('date', -1).limit(5).each(function(post){ %>
-          <a class="list-group-item" href="<%- url_for(post.path) %>"><i class="fa  fa-book"></i> <%= post.title || '(no title)' %></a>
+        <% let limit = 5; %>
+        <% site.posts.sort('date', -1).each(function(post){ %>
+          <% if (limit <= 0) { %>
+            <% return false; %>
+          <% } %>
+          <% if (post.title) { %>
+            <a class="list-group-item" href="<%- url_for(post.path) %>"><i class="fa  fa-book"></i> <%- post.title %></a>
+            <% limit--; %>
+          <% } %>
         <% }) %>
       </ul>
   </div>

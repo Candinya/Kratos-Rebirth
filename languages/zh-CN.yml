@@ -4,13 +4,16 @@ read_full: 阅读全文
 search: 搜索
 search_notice: 有什么想找找看的呢o(*￣▽￣*)ブ
 search_submit: 找一找~
+search_notice_page: 这里是 %s 的搜索引擎~
+search_notice_keys: 搜索多个关键词时请用空格分割，例如「%s」这样；
+search_notice_tags: 您也可以使用这些标签碰碰运气哦~
 tags: 标签
 tagcloud: 标签聚合
 prev: 上一页
 next: 下一页
 comment: 留言
-archive_a: 文章归档
-archive_b: 档案馆：%s
+archive: 文章归档
+archive_count: 当前共有 %d 篇文章 (゜-゜)つロ 干杯~
 page: 第 %d 页
 recent_posts: 最新文章
 newer: 上一篇

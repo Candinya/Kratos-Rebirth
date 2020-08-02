@@ -16,59 +16,63 @@
     .posts-collapse .post-comments-count{display:none}
     .posts-collapse .post-title{margin-left:70px;font-size:16px;font-weight:400;line-height:inherit}
     .posts-collapse .post-title::after{margin-left:3px;opacity:.6}.posts-collapse .post-title a{color:#666;border-bottom:none}
-    .kratos-post-content div.arc-tag{margin-bottom:30px}
-    .arc-tag a{-webkit-box-shadow:0 1px 4px rgba(0,0,0,.1);box-shadow:0 1px 4px rgba(0,0,0,.1);border:1px solid #fff;border-radius:15px;margin:4px 8px 0 0;font-weight:500;display:inline-block;padding:0 12px;background:rgba(255,255,255,.5);font-size:16px;}
-    .arc-tag a::before{content:"# ";color:#e8a6a6}
+    .kratos-post-content div.arc-tags{margin-bottom:30px}
+    .arc-tags a{-webkit-box-shadow:0 1px 4px rgba(0,0,0,.1);box-shadow:0 1px 4px rgba(0,0,0,.1);border:1px solid #fff;border-radius:15px;margin:4px 8px 0 0;font-weight:500;display:inline-block;padding:0 12px;background:rgba(255,255,255,.5);font-size:16px;}
+    .arc-tags a::before{content:"# ";color:#e8a6a6}
   </style>
     <% if (page.posts) { %>
         <article>
             <div class="kratos-hentry kratos-post-inner clearfix">
                 <div class="kratos-post-content">
-                  <h2 class="title-h2 text-center"><%- __('archive_a') %></h2>
+                  <h2 class="title-h2 text-center"><%- __('archive') %></h2>
                   <div id="archives">
                       <% if (site.tags.length){ %>
-                        <div class="arc-tag">
-                            <%- list_tags({show_count: false, style: 'none'}) %>
+                        <div class="arc-tags">
+                            <%- list_tags({
+                              show_count: false, 
+                              style: 'none',
+                              separator: ' '
+                            }) %>
                         </div>
                       <% } %>
                       <div class="post-block archive post" style="margin-left: 2em;">
-                          <div class="posts-collapse">
-                            <h3 class="archive-page-counter">当前共有<%- page.posts.length %>篇文章 (゜-゜)つロ 干杯~</h3>
-                            <% let year; %>
-                            <% page.posts.sort('date', -1).each(function(post){ %>
-                              <% let post_year = date(post.date, 'YYYY'); %>
-                              <% if (post_year !== year) { %>
-                                <% year = post_year; %>
-                                <div class="collection-title">
-                                  <a href="<%- url_for(config.root + config.archive_dir + '/' + year + '/') %>"><h2 class="archive-year"><%- year %></h2></a>
-                                </div>
-                              <% } %>
-                              <article class="post" itemscope>
-                                <header class="post-header">
-                                  <h3 class="post-title">
-                                    <% if (post.link) { %>
-                                      <a class="post-title-link post-title-link-external" target="_blank" href="<%- url_for(post.link) %>" itemprop="url">
-                                        <%- post.title %>
-                                        <i class="fa fa-external-link"></i>
+                        <h3 class="archive-page-counter"><%- __('archive_count', page.posts.length) %></h3>
+                        <div class="posts-collapse">
+                          <% let year; %>
+                          <% page.posts.sort('date', -1).each(function(post){ %>
+                            <% let post_year = date(post.date, 'YYYY'); %>
+                            <% if (post_year !== year) { %>
+                              <% year = post_year; %>
+                              <div class="collection-title">
+                                <a href="<%- url_for(config.root + config.archive_dir + '/' + year + '/') %>"><h2 class="archive-year"><%- year %></h2></a>
+                              </div>
+                            <% } %>
+                            <article class="post" itemscope>
+                              <header class="post-header">
+                                <h3 class="post-title">
+                                  <% if (post.link) { %>
+                                    <a class="post-title-link post-title-link-external" target="_blank" href="<%- url_for(post.link) %>" itemprop="url">
+                                      <%- post.title %>
+                                      <i class="fa fa-external-link"></i>
+                                    </a>
+                                  <% } else { %>
+                                      <a class="post-title-link" href="<%- url_for(post.path) %>" itemprop="url">
+                                        <span itemprop="name"><%- post.title %></span>
                                       </a>
-                                    <% } else { %>
-                                        <a class="post-title-link" href="<%- url_for(post.path) %>" itemprop="url">
-                                          <span itemprop="name"><%- post.title %></span>
-                                        </a>
-                                    <% } %>
-                                  </h3>
-                                  <div class="post-meta">
-                                    <time class="post-time" itemprop="dateCreated"
-                                          datetime="<%- moment(post.date).format() %>"
-                                          content="<%- date(post.date, config.date_format) %>" >
-                                      <%- date(post.date, 'MM-DD') %>
-                                    </time>
-                                  </div>
-                                </header>
-                              </article>
-                            <% }) %>
-                          </div>
+                                  <% } %>
+                                </h3>
+                                <div class="post-meta">
+                                  <time class="post-time" itemprop="dateCreated"
+                                        datetime="<%- moment(post.date).format() %>"
+                                        content="<%- date(post.date, config.date_format) %>" >
+                                    <%- date(post.date, 'MM-DD') %>
+                                  </time>
+                                </div>
+                              </header>
+                            </article>
+                          <% }) %>
                         </div>
+                      </div>
                   </div>
               </div>
             </div>

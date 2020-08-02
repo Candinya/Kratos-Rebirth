@@ -94,7 +94,7 @@
                                 <div class="kratos-entry-content-new">
                                     <p>
                                         <% if (post.excerpt) { %>
-                                            <%- trim(strip_html(post.excerpt)) %>
+                                            <%- strip_html(post.excerpt) %>
                                         <% } else { %>
                                             <%- truncate(strip_html(post.content), {length: 120}) %>
                                         <% } %>

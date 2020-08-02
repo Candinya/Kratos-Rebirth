@@ -13,43 +13,19 @@
   <meta name="format-detection" content="telphone=no, email=no" />
   <% if (is_post()) { %>
     <% if (page.excerpt) { %>
-      <meta name="description" itemprop="description" content="<%- trim(strip_html(page.excerpt)) %>" />
+      <meta name="description" itemprop="description" content="<%- page.excerpt ? strip_html(page.excerpt) : truncate(strip_html(post.content), {length: 120}) %>" />
       <meta name="keywords" content="<%- strip_html(list_tags(page.tags, { show_count: false, style: 'none' })) %>" />
     <% } else { %>
       <meta name="description" itemprop="description" content="<%- config.description %>" />
     <% } %>
-    <meta property="og:title" content="<%- page.title %>" />
-    <% if (page.pic) { %>
-      <meta property="og:image" content="<%- full_url_for(page.path + page.pic) %>" />
-    <% } %>
-    <meta property="og:url" content="<%- page.permalink %>" />
-    <% if (theme.contact.twitter) { %>
-      <meta name="twitter:card" content="summary" />
-      <meta name="twitter:site" content="@<%- theme.contact.twitter %>" />
-      <meta name="twitter:title" content="<%- page.title %>" />
-      <% if (page.excerpt) { %>
-        <meta name="twitter:description" content="<%- trim(strip_html(page.excerpt)) %>" />
-      <% } else { %>
-        <meta name="twitter:description" content="<%- config.description %>" />
-      <% } %>
-      <% if (page.pic) { %>
-        <meta name="twitter:image" content="<%- full_url_for(page.path + page.pic) %>" />
-      <% } %>
-    <% } %>
   <% } else { %>
     <meta name="description" itemprop="description" content="<%- page.description || config.description %>" />
     <meta name="keywords" content="<%- config.keywords %>" />
-    <meta property="og:title" content="<%- page.title || config.title %>" />
-    <meta property="og:image" content="<%- full_url_for(theme.site_logo) %>" />
-    <meta property="og:url" content="<%- page.permalink %>" />
-    <% if (theme.contact.twitter) { %>
-      <meta name="twitter:card" content="summary" />
-      <meta name="twitter:site" content="@<%- theme.contact.twitter %>" />
-      <meta name="twitter:title" content="<%- page.title || config.title %>" />
-      <meta name="twitter:description" content="<%- page.description || config.description %>" />
-      <meta name="twitter:image" content="<%- full_url_for(theme.site_logo) %>" />
-    <% } %>
   <% } %>
+  <%- open_graph({
+    image: full_url_for(page.pic ? page.path + page.pic : theme.site_logo),
+    twitter_site: "@" + theme.contact.twitter
+  }) %>
   <% if (theme.contact.rss) {%><link rel="alternate" href="<%- theme.contact.rss %>" type="application/atom+xml"><% } %>
   <!-- 样式表文件 -->
   <link rel="stylesheet" id="kratos-css" href="/css/kratosr.min.css" type="text/css" media="all">

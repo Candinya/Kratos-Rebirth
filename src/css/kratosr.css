@@ -734,10 +734,10 @@ th {
 
 .alert {
   padding: 15px;
-  margin-bottom: 20px;
   border: 1px solid transparent
 }
 
+.alert,
 .alert * {
   color: #fff !important;
 }
@@ -2906,37 +2906,32 @@ td.code {
   font-size: 10px;
 }
 
-/******************* Images ********************/
-.kratos-cover.kratos-cover-2 {
-  background-image: url('/images/banner.jpg')
+/**************** Search Page related ****************/
+#kr-search-notice.alert {
+  transition:.3s
 }
 
-.widget-kratos-about .photo-background {
-  background-image: url('/images/about.jpg')
+#result-posts {
+  margin-top: 20px;
 }
 
-body.custom-background {
-  background-size: cover;
-  background-attachment: fixed
+#result-posts .kr-search-result {
+  margin:auto;
+  height:auto;
+  width:90%;
+  padding-top: 22px;
 }
 
-@media(min-width:768px) {
-  body.custom-background {
-    background-image: url('/images/bg.png')
-  }
+#result-posts .kr-search-result .kratos-entry-content-new {
+  height: auto;
 }
 
-/**************** search input ****************/
+#result-posts m {
+  color:#333;
+  background-color:yellow;
+}
+
 .input-group .form-input.input-lg {
-  -moz-appearance: none;
-  -webkit-appearance: none;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  -webkit-box-shadow: none;
-  -webkit-box-pack: start;
-  -ms-flex-pack: start;
-  display: -webkit-inline-box;
-  display: -ms-inline-flexbox;
   display: inline-flex;
   box-shadow: none;
   flex: auto;
@@ -2971,8 +2966,28 @@ body.custom-background {
   border-radius: 0 4px 4px 0;
 }
 
+.search-demo-tags a {
+  margin: 5px 10px;
+}
 
-#kr-search-notice.alert{transition:.3s}
-#result-posts .kr-search-result{margin:auto;height:auto;width:90%;padding-top: 22px;}
-#result-posts .kr-search-result .kratos-entry-content-new{height: auto;}
-#result-posts m{color:#333;background-color:yellow;}
+/******************* Images ********************/
+.kratos-cover.kratos-cover-2 {
+  background-image: url('/images/banner.jpg')
+}
+
+.widget-kratos-about .photo-background {
+  background-image: url('/images/about.jpg')
+}
+
+body.custom-background {
+  background-size: cover;
+  background-attachment: fixed
+}
+
+@media(min-width:768px) {
+  body.custom-background {
+    background-image: url('/images/bg.png')
+  }
+}
+
+
