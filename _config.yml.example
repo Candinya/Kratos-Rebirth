@@ -73,7 +73,7 @@ widgets:
 - category
 - tagcloud
 - posts
-avatarUri: /images/avatar.png
+avatarUri: /images/avatar.webp
 
 # Fancybox
 fancybox: true
@@ -93,8 +93,8 @@ jsconfig:
     createTime: "1970-01-01 00:00:00"
     donateBtn: "支持我~"
     scanNotice: "扫一扫，好不好？"
-    qr_alipay: "/images/alipayqr.jpg"
-    qr_wechat: "/images/wechatpayqr.png"
+    qr_alipay: "/images/alipayqr.webp"
+    qr_wechat: "/images/wechatpayqr.webp"
     siteLeaveEvent: false
     leaveTitle: "{{{(>_<)}}}哦哟，崩溃啦~"
     returnTitle: "(*´∇｀*)欸，又好啦~"

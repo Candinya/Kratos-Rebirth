@@ -3,8 +3,8 @@ let kr = {};
     // kr.createTime = "1970-1-1 00:00:00";
     // kr.donateBtn = "支持我~";
     // kr.scanNotice = "扫一扫，好不好？";
-    // kr.qr_alipay = "/images/alipayqr.jpg";
-    // kr.qr_wechat = "/images/wechatpayqr.png";
+    // kr.qr_alipay = "/images/alipayqr.webp";
+    // kr.qr_wechat = "/images/wechatpayqr.webp";
     // kr.siteLeaveEvent = false;
     // kr.picCDN = false;
     // // kr.leaveLogo = "/images/failure.ico";
@@ -110,7 +110,7 @@ let kr = {};
     //             title:kr.donateBtn,
     //             resize:false,
     //             scrollbar:false,
-    //             content:'<div class="donate-box"><div class="meta-pay text-center"><strong>'+kr.scanNotice+'</strong></div><div class="qr-pay text-center"><img class="pay-img" id="alipay_qr" src="'+kr.qr_alipay+'"><img class="pay-img d-none" id="wechat_qr" src="'+kr.qr_wechat+'"></div><div class="choose-pay text-center mt-2"><input id="alipay" type="radio" name="pay-method" checked><label for="alipay" class="pay-button"><img src="/images/alipay.png"></label><input id="wechatpay" type="radio" name="pay-method"><label for="wechatpay" class="pay-button"><img src="/images/wechat.png"></label></div></div>'
+    //             content:'<div class="donate-box"><div class="meta-pay text-center"><strong>'+kr.scanNotice+'</strong></div><div class="qr-pay text-center"><img class="pay-img" id="alipay_qr" src="'+kr.qr_alipay+'"><img class="pay-img d-none" id="wechat_qr" src="'+kr.qr_wechat+'"></div><div class="choose-pay text-center mt-2"><input id="alipay" type="radio" name="pay-method" checked><label for="alipay" class="pay-button"><img src="/images/alipay.webp"></label><input id="wechatpay" type="radio" name="pay-method"><label for="wechatpay" class="pay-button"><img src="/images/wechat.webp"></label></div></div>'
     //         });
     //         $(".choose-pay input[type='radio']").click(()=>{
     //             const id = $(this).attr("id");

@@ -2972,11 +2972,11 @@ td.code {
 
 /******************* Images ********************/
 .kratos-cover.kratos-cover-2 {
-  background-image: url('/images/banner.jpg')
+  background-image: url('/images/banner.webp')
 }
 
 .widget-kratos-about .photo-background {
-  background-image: url('/images/about.jpg')
+  background-image: url('/images/about.webp')
 }
 
 body.custom-background {
@@ -2986,7 +2986,7 @@ body.custom-background {
 
 @media(min-width:768px) {
   body.custom-background {
-    background-image: url('/images/bg.png')
+    background-image: url('/images/bg.webp')
   }
 }
 

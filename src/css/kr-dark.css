@@ -9,9 +9,9 @@
 :root {
     --color-mode: 'light';
 
-    --banner-image: url('/images/banner.jpg');
-    --about-image: url('/images/about.jpg');
-    --background-image: url('/images/bg.png');
+    --banner-image: url('/images/banner.webp');
+    --about-image: url('/images/about.webp');
+    --background-image: url('/images/bg.webp');
 
     --select-text: #fcfcfc;
     --select-text-bg: #262a30;
@@ -36,7 +36,7 @@
     }
 
     :root:not([data-user-color-scheme]) {
-        --banner-image: url('/images/banner_dark.jpg');
+        --banner-image: url('/images/banner_dark.webp');
         /* --background-image: none; */
 
         --select-text-bg: #ccc;
@@ -54,7 +54,7 @@
 }
 
 [data-user-color-scheme='dark'] {
-    --banner-image: url('/images/banner_dark.jpg');
+    --banner-image: url('/images/banner_dark.webp');
     /* --background-image: none; */
 
     --select-text-bg: #ccc;
