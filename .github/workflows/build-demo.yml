@@ -60,7 +60,6 @@ jobs:
     - name: Edit theme settings
       run: |
         sed -i "s|site_logo:|site_logo: ${AVATAR_LINK}|" "themes/kratos-rebirth/_config.yml"
-        sed -i "s|comments: disqusjs|comments:|" "themes/kratos-rebirth/_config.yml"
         sed -i "s|avatarUri: /images/avatar.webp|avatarUri: ${AVATAR_LINK}|" "themes/kratos-rebirth/_config.yml"
     
     # Set Pages CNAME file

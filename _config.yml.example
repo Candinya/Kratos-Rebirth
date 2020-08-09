@@ -36,7 +36,7 @@ contact:
     instance: 
     username: 
   github: Candinya
-  rss: atom.xml
+  rss:
 timenotice: 本站已运行
   
 # Post Page
@@ -44,7 +44,7 @@ posts:
   show_cc: true
   donate: false
   share: true
-  comments: disqusjs
+  comments:
 
 # Disqus
 disqus:
@@ -61,7 +61,7 @@ disqusjs:
 
 # APlayer
 aplayer:
-  enabled: true
+  enabled: false
   playlist: 
   order: random
 
