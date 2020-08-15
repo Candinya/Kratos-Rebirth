@@ -2233,7 +2233,8 @@ th {
 }
 
 .kr-tool .box:hover {
-  cursor: pointer
+  background: #656565;
+  cursor: pointer;
 }
 
 .kr-tool .box span {
