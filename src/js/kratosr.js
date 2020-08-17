@@ -1,17 +1,4 @@
 let kr = {};
-//-------------------参数设置区 开始-------------------
-    // kr.createTime = "1970-1-1 00:00:00";
-    // kr.donateBtn = "支持我~";
-    // kr.scanNotice = "扫一扫，好不好？";
-    // kr.qr_alipay = "/images/alipayqr.webp";
-    // kr.qr_wechat = "/images/wechatpayqr.webp";
-    // kr.siteLeaveEvent = false;
-    // kr.picCDN = false;
-    // // kr.leaveLogo = "/images/failure.ico";
-    // kr.leaveTitle = "{{{(>_<)}}}哦哟，崩溃啦~";
-    // kr.returnTitle = "(*´∇｀*)欸，又好啦~";
-    // kr.copyrightNotice = `该内容采用 CC BY-NC-SA 4.0 许可协议，著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。`;
-//-------------------参数设置区 结束-------------------
 
 (()=>{
     const loadConfig = (cb) => {
@@ -82,8 +69,8 @@ let kr = {};
     const mobiClick = ()=>{
         $(document).click((e)=>{
             const container = $("#offcanvas-menu,.js-kratos-nav-toggle");
-            if(!container.is(e.target)&&container.has(e.target).length===0){
-                if($('.nav-toggle').hasClass('toon')){
+            if (!container.is(e.target) && container.has(e.target).length === 0) {
+                if ($('.nav-toggle').hasClass('toon')) {
                     $('.nav-toggle').removeClass('toon');
                     $('#offcanvas-menu').css('right','-240px');
                 }
@@ -93,7 +80,7 @@ let kr = {};
     const xControl = ()=>{
         $(document).on("click",".xHeading", function(event){
             $(this).next().slideToggle(300);
-            if ($(this).parent('.xControl').hasClass('active')){
+            if ($(this).parent('.xControl').hasClass('active')) {
                 $(this).parent('.xControl').removeClass('active');
             } else {
                 $(this).parent('.xControl').addClass('active');

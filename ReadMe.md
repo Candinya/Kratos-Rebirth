@@ -85,6 +85,10 @@
 - [CloudFlare](https://www.cloudflare.com/)
 - [jsDelivr](https://www.jsdelivr.com/)
 
+## 特别赞助者
+
+[![JetBrains](https://user-images.githubusercontent.com/20502130/90419395-14409500-e0e9-11ea-8b3b-ade4589dca84.png)](https://www.jetbrains.com/?from=Kratos%20%3a%20Rebirth)
+
 ## 证书
 
 - GNU General Public License v3

@@ -7,8 +7,6 @@
 
 /******************* Default ********************/
 :root {
-    --color-mode: 'light';
-
     --banner-image: url('/images/banner.webp');
     --about-image: url('/images/about.webp');
     --background-image: url('/images/bg.webp');
@@ -30,10 +28,6 @@
 
 /******************* Theme ********************/
 @media (prefers-color-scheme: dark) {
-    :root {
-        --color-mode: 'dark';
-        ;
-    }
 
     :root:not([data-user-color-scheme]) {
         --banner-image: url('/images/banner_dark.webp');
