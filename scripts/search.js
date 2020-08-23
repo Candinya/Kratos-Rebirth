@@ -37,7 +37,7 @@ hexo.theme.on('processAfter', () => {
                         _item.categories.push([cate.name, url_for(cate.path)]);
                     });
                 } else {
-                    _item.categories.push([' ', '']);
+                    _item.categories.push(['undefined', '']);
                 }
                 if (hexo.theme.config.search.content && item.content) {
                     _item.content = stripHTML(item.content.trim().replace(/<pre(.*?)\<\/pre\>/gs, ''))

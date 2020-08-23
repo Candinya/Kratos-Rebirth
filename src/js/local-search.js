@@ -70,7 +70,7 @@ function createPosts(resArr) {
             <div class="kratos-entry-border-new clearfix">
                 <div class="kratos-post-inner-new kr-search-result">
                     <header class="kratos-entry-header-new">
-                        <a class="label-link" href="${pageInfo.category[1]}">${pageInfo.category[0]}</a>
+                        ${ pageInfo.category[0]!=='undefined' ? `<a class="label-link" href="${pageInfo.category[1]}">${pageInfo.category[0]}</a>` : '' }
                         <h2 class="kratos-entry-title-new"><a href="${pageInfo.link}">${pageInfo.title}</a></h2>
                     </header>
                     <div class="kratos-entry-content-new">
@@ -125,6 +125,7 @@ function loadDataSearch(searchDataFile, skeys) {
                 indexs.content      = -1;
                 indexs.firstOccur   = -1;
                 indexs.lastOccur    = -1;
+                const halfLenth = 100;
 
                 if (dataTitle) {
                     keywords.forEach((keyword)=>{
@@ -139,6 +140,10 @@ function loadDataSearch(searchDataFile, skeys) {
                                 if (indexs.lastOccur < indexs.content) {
                                     indexs.lastOccur = indexs.content;
                                 }
+                            } else {
+                                //命中 title，但正文 conten 未命中时
+                                indexs.firstOccur = halfLenth;
+                                indexs.lastOccur = 0;
                             }
                             dataWeight += indexs.title   !== -1 ? 2 : 0;
                             dataWeight += indexs.content !== -1 ? 1 : 0;
@@ -160,7 +165,7 @@ function loadDataSearch(searchDataFile, skeys) {
                         tPage.title = tPage.title.replace(regS, '<m>$&</m>');
                     });
                     if (indexs.firstOccur >= 0) {
-                        const halfLenth = 100;
+                        //const halfLenth = 100;
                         let start = indexs.firstOccur - halfLenth;
                         let end   = indexs.lastOccur + halfLenth;
                         if (start < 0) {
