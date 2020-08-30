@@ -1128,11 +1128,13 @@ th {
   float: left
 }
 
-#kratos-header-section .sf-menu li:hover>ul {
-  display: block
+#kratos-header-section .sf-menu li:hover>ul.sub-menu {
+  /* display: block; */
+  visibility: visible;
+  opacity: 1;
 }
 
-#kratos-header-section .sf-menu>li>ul:after {
+#kratos-header-section .sf-menu>li>ul.sub-menu:after {
   position: absolute;
   top: -8px;
   left: 58px;
@@ -1142,42 +1144,44 @@ th {
   content: ''
 }
 
-#kratos-header-section .sub-menu {
+#kratos-header-section .sf-menu>li>ul.sub-menu {
+  transition: .3s all ease-in-out;
   position: absolute;
-  display: none;
+  /* display: none; */
+  visibility: hidden;
+  opacity: 0;
   top: 100%;
-  width: 135px;
+  min-width: 135px;
   padding: 10px 5px;
   background: #fff;
   border-radius: 5px;
   left: -18px;
-  -webkit-box-shadow: 0 5px 15px rgba(0, 0, 0, .15);
   box-shadow: 0 5px 15px rgba(0, 0, 0, .15)
 }
 
-#kratos-header-section .sub-menu .sub-menu {
+#kratos-header-section .sf-menu>li>ul.sub-menu {
   padding: 5px 5px
 }
 
-#kratos-header-section .sub-menu a {
+#kratos-header-section .sf-menu>li>ul.sub-menu a {
   letter-spacing: 0;
   padding: 7px 15px !important;
   line-height: 20px;
   color: #848484
 }
 
-#kratos-header-section .sub-menu a:hover {
+#kratos-header-section .sf-menu>li>ul.sub-menu a:hover {
   color: #51aded
 }
 
-#kratos-header-section .sub-menu li a {
+#kratos-header-section .sf-menu>li>ul.sub-menu li a {
   text-align: center
 }
 
-#kratos-header-section .sub-menu>li>.sub-menu {
+/* #kratos-header-section .sf-menu>li>ul.sub-menu>li>.sub-menu {
   left: 100%;
   top: 0
-}
+} */
 
 #kratos-header-section .nav-header {
   position: relative;
