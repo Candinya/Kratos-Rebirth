@@ -4,6 +4,7 @@ hoster: <a href="https://github.io" target="_blank">Github Pages</a>
 site_logo:
 snow: false
 enableDark: true
+cdn: false
 indexPostType: false
 
 # Top Menu
