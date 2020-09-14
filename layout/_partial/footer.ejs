@@ -100,6 +100,9 @@
 <% if (theme.enableDark) { %>
     <script defer src="<% if (theme.cdn) { %>https://cdn.jsdelivr.net/gh/Candinya/Kratos-Rebirth@latest/source<% } %>/js/kr-dark.min.js"></script>
 <% } %>
+<% if (theme.mathjax) { %>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<% } %>
 <%- theme.site_analytics %>
 
 </body>

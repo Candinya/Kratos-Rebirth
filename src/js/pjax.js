@@ -64,7 +64,7 @@ $(function() {
         const reqUrl = $(this).attr("href");
         if (typeof reqUrl === 'undefined') return true;
         else if (reqUrl.includes( "javascript:")) return true;
-        else ajax(reqUrl, true);
+        else ajax(decodeURI(reqUrl), true);
         return false;
     });
 });

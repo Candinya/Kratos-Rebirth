@@ -129,6 +129,15 @@ let kr = {};
         }
     };
 
+    const initMathjax = ()=>{
+        if (typeof MathJax !== 'undefined') {
+            // 渲染Mathjax的初始化函数（用于处理ajax后的情况）
+            // 使用了同步处理的方式，可惜第一次加载页面时会双倍触发
+            // （MathJax载入时会自动初始化一次）
+            MathJax.typeset();
+        }
+    };
+
     const fancyboxInit = ()=>{
           if (typeof $.fancybox !== 'undefined'){
             $.fancybox.defaults.hash = false;
@@ -242,6 +251,7 @@ ${kr.copyrightNotice}
         fancyboxInit();
         setCopyright();
         saveTitle();
+        initMathjax();
     };
 
     const finishInfo = () => {
