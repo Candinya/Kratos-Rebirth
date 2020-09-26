@@ -2377,7 +2377,9 @@ th {
   position: absolute;
   top: 15px;
   left: 15px;
-  cursor: pointer
+  cursor: pointer;
+  margin: auto;
+  border: none;
 }
 
 .linkpage li a h4 {
