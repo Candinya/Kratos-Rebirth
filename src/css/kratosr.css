@@ -1526,8 +1526,9 @@ th {
   height: auto;
   max-width: 100%;
   display: block;
-  margin: 0 auto;
-  border-radius: 2px
+  margin: 1em auto;
+  border: 2px solid #bbb;
+  border-radius: 2px;
 }
 
 .kratos-post-content embed {
