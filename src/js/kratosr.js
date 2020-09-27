@@ -181,9 +181,12 @@ ${kr.copyrightNotice}
     const copyEventInit = ()=>{
         if (kr.copyrightNotice) {
             document.body.oncopy = (e)=>{
-                e.preventDefault();
-                if (e.clipboardData) {
-                    e.clipboardData.setData("text/plain", window.getSelection().toString() + copyrightString);
+                const copiedContent = window.getSelection().toString();
+                if (copiedContent.length > 150) {
+                    e.preventDefault();
+                    if (e.clipboardData) {
+                        e.clipboardData.setData("text/plain", copiedContent + copyrightString);
+                    }
                 }
             };
         }
