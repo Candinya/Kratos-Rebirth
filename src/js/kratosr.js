@@ -226,7 +226,7 @@ ${kr.copyrightNotice}
         let now = new Date();
         const grt = new Date(kr.createTime);
         const upTimeNode = document.getElementById("span_dt");
-        setInterval(()=>{
+        setInterval(() => {
             now.setTime(now.getTime() + 1000);
             days = (now - grt) / 1000 / 60 / 60 / 24;
                 dnum = Math.floor(days);
@@ -249,12 +249,43 @@ ${kr.copyrightNotice}
         }, 1000);
     };
 
+    const codeCopyInit = () => {
+        // 使用了clipboard.js，所以非常的简洁，只需在前端生成对应的按钮和指定代码框的ID即可
+        const codeFigures = document.querySelectorAll('figure.highlight');
+        codeFigures.forEach((figure, count) => {
+            figure
+                .getElementsByTagName('table')[0]
+                .getElementsByTagName('tbody')[0]
+                .getElementsByTagName('tr')[0]
+                .getElementsByClassName('code')[0]
+            .setAttribute('id', `code-${count}`);
+
+            figure.innerHTML += 
+            `<button class="copy" data-clipboard-target="#code-${count}">
+                <i class="fa fa-copy"></i>&nbsp;复制
+            </button>`;
+        });
+
+        const clipboard = new ClipboardJS('button.copy');
+
+        clipboard.on('success', (e) => {
+            const origInner = e.trigger.innerHTML;
+            e.trigger.innerHTML = `<i class="fa fa-check-circle"></i>&nbsp;成功~`;
+            setTimeout(() => {
+                e.trigger.innerHTML = origInner;
+            }, 3000);
+
+            e.clearSelection();
+        });
+    };
+
     $.fn.pjax_reload = ()=>{
         setrandpic();
         fancyboxInit();
         setCopyright();
         saveTitle();
         initMathjax();
+        codeCopyInit();
     };
 
     const finishInfo = () => {

@@ -287,3 +287,26 @@ pre .keyword,
 pre .javascript .function {
     color: var(--highlight-purple);
 }
+
+figure.highlight>button.copy {
+    transition: all .3s;
+    opacity: 0;
+    position: absolute;
+    color: #ddd;
+    background: none;
+    right: 5px;
+    top: 5px;
+    font-size: 12px;
+    line-height: 12px;
+    padding: 3px 5px;
+    border: 1px solid;
+    border-radius: 4px;
+}
+
+figure.highlight:hover>button.copy {
+    opacity: 1;
+}
+
+figure.highlight:hover>button.copy:hover {
+    color: #fff;
+}
