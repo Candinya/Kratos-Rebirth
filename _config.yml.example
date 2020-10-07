@@ -63,6 +63,11 @@ disqusjs:
   admin: 
   adminlabel: 
 
+# Valine
+valine:
+  app_id: 
+  app_key: 
+
 # APlayer
 aplayer:
   enabled: false

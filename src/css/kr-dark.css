@@ -243,7 +243,7 @@ blockquote p {
     color: var(--text-alt);
 }
 
-#disqus_thread {
+.post-comments {
     background-color: var(--tag-background);
 }
 
