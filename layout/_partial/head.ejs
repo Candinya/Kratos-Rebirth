@@ -49,9 +49,9 @@
   <% if (theme.posts.share) { %>
     <script src="https://cdn.jsdelivr.net/npm/qrcode_js@1.0.0/qrcode.min.js"></script>
   <% } %>
-  <% if (theme.posts.comments == 'disqusjs') { %>
+  <% if (theme.posts.comments === 'disqusjs') { %>
     <script src="https://cdn.jsdelivr.net/npm/disqusjs@1.2.6/dist/disqus.js"></script>
-  <% } else if (theme.posts.comments == 'valine') { %>
+  <% } else if (theme.posts.comments === 'valine') { %>
     <script src="https://cdn.jsdelivr.net/npm/valine@1.4.14/dist/Valine.min.js"></script>
   <% } %>
 </head>

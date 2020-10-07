@@ -67,6 +67,7 @@ disqusjs:
 valine:
   app_id: 
   app_key: 
+  visitor: true
 
 # APlayer
 aplayer:

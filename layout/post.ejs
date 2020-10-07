@@ -7,10 +7,13 @@
                     <h2 class="text-center"><%- page.subtitle %></h2>
                 <% } %>
                 <div class="kratos-post-meta text-center">
-                    <span>
-                    <i class="fa fa-calendar"></i> <%- date(page.date, null) %>
-                    <i class="fa fa-folder"></i> 分类于 <%- list_categories(page.categories, {show_count: false, class: 'label', style: 'none'}) %>
-                    <i class="fa fa-user"></i> 作者 <%- page.author || config.author %>
+                    <span<% if (theme.posts.comments === 'valine' && theme.valine.visitor) { %> class="leancloud_visitors" data-flag-title="<%- page.title %>"<% } %>>
+                        <i class="fa fa-calendar"></i> <%- date(page.date, null) %>
+                        <i class="fa fa-folder"></i> 分类于 <%- list_categories(page.categories, {show_count: false, class: 'label', style: 'none'}) %>
+                        <i class="fa fa-user"></i> 作者 <%- page.author || config.author %>
+                        <% if (theme.posts.comments === 'valine' && theme.valine.visitor) { %>
+                            <i class="fa fa-eye"></i> 阅读 <span class="leancloud-visitors-count"></span> 次
+                        <% } %>
                     </span>
                 </div>
             </header>
