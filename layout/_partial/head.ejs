@@ -29,8 +29,16 @@
   }) %>
   <% if (theme.contact.rss) {%><link rel="alternate" href="<%- theme.contact.rss %>" type="application/atom+xml"><% } %>
   <!-- 站点验证相关 -->
-  <% if (theme.site_verify && theme.site_verify.google) { %>
-    <meta name="google-site-verification" content="<% theme.site_verify.google %>" />
+  <% if (theme.site_verify) { %>
+    <% if (theme.site_verify.google) { %>
+      <meta name="google-site-verification" content="<%- theme.site_verify.google %>" />
+    <% } %>
+    <% if (theme.site_verify.baidu) { %>
+      <meta name="baidu-site-verification" content="<%- theme.site_verify.baidu %>" />
+    <% } %>
+    <% if (theme.site_verify.bing) { %>
+      <meta name="msvalidate.01" content="<%- theme.site_verify.bing %>" />
+    <% } %>
   <% } %>
   <!-- 样式表文件 -->
   <link rel="stylesheet" id="kratos-css" href="<% if (theme.cdn) { %>https://cdn.jsdelivr.net/gh/Candinya/Kratos-Rebirth@latest/source<% } %>/css/kratosr.min.css" type="text/css" media="all">
