@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="zh">
 <head>
+  <!-- 元数据 -->
   <meta charset="utf-8">
   <link rel="icon" href="<%- theme.site_logo %>">
   <title><% if (page.title) { %><%- page.title %> | <% } %><%- config.title %></title>
@@ -27,6 +28,10 @@
     twitter_site: "@" + theme.contact.twitter
   }) %>
   <% if (theme.contact.rss) {%><link rel="alternate" href="<%- theme.contact.rss %>" type="application/atom+xml"><% } %>
+  <!-- 站点验证相关 -->
+  <% if (theme.site_verify && theme.site_verify.google) { %>
+    <meta name="google-site-verification" content="<% theme.site_verify.google %>" />
+  <% } %>
   <!-- 样式表文件 -->
   <link rel="stylesheet" id="kratos-css" href="<% if (theme.cdn) { %>https://cdn.jsdelivr.net/gh/Candinya/Kratos-Rebirth@latest/source<% } %>/css/kratosr.min.css" type="text/css" media="all">
   <link rel="stylesheet" id="highlight-css" href="<% if (theme.cdn) { %>https://cdn.jsdelivr.net/gh/Candinya/Kratos-Rebirth@latest/source<% } %>/css/highlight.min.css" type="text/css" media="all">
