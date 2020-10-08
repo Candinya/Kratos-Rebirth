@@ -68,36 +68,4 @@
     <script src="https://cdn.jsdelivr.net/npm/valine@1.4.14/dist/Valine.min.js"></script>
   <% } %>
 </head>
-<body class="custom-background">
-    <div id="kratos-wrapper">
-        <div id="kratos-page">
-            <div id="kratos-header">
-                <div class="nav-toggle"><a class="kratos-nav-toggle js-kratos-nav-toggle"><i></i></a></div>
-                <header id="kratos-header-section">
-                    <div class="container">
-                        <div class="nav-header">
-                            <div class="color-logo"><a href="/"><%= config.title %></a></div>
-                            <nav id="kratos-menu-wrap">
-                              <ul id="kratos-primary-menu" class="sf-menu">
-                              <% for (var i in theme.menu){ %>
-                                <% if (typeof (theme.menu[i]['submenu']) !== 'undefined') { %>
-                                  <li>
-                                    <a><%- theme.label[i]['submenu'] %></a>
-                                    <ul class="sub-menu">
-                                      <% for (var j in theme.menu[i]){ %>
-                                        <% if (j !== 'submenu') { %>
-                                          <li><a href="<%- url_for(theme.menu[i][j]) %>"><%- theme.label[i][j] %></a></li>
-                                        <% } %>
-                                      <% } %>
-                                    </ul>
-                                  </li>
-                                <% } else { %>
-                                  <li><a href="<%- url_for(theme.menu[i]) %>"><%- theme.label[i] %></a></li>
-                                <% } %>
-                              <% } %>
-                              </ul>
-                            </nav>
-                        </div>
-                    </div>
-                </header>
-            </div>
+

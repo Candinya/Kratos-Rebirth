@@ -1,19 +1,51 @@
-<div class="kratos-start kratos-hero-2">
-    <!-- <div class="kratos-overlay"></div> -->
-    <div class="kratos-cover kratos-cover-2 text-center">
-        <div class="desc desc2 animate-box">
-            <a href="<%- url_for() %>"><h2><%= config.title %></h2><br><span><%= config.subtitle %></span></a>
+<div id="kratos-wrapper">
+    <div id="kratos-page">
+        <div id="kratos-header">
+            <div class="nav-toggle"><a class="kratos-nav-toggle js-kratos-nav-toggle"><i></i></a></div>
+            <header id="kratos-header-section">
+                <div class="container">
+                    <div class="nav-header">
+                        <div class="color-logo"><a href="/"><%= config.title %></a></div>
+                        <nav id="kratos-menu-wrap">
+                            <ul id="kratos-primary-menu" class="sf-menu">
+                            <% for (var i in theme.menu){ %>
+                            <% if (typeof (theme.menu[i]['submenu']) !== 'undefined') { %>
+                                <li>
+                                <a><%- theme.label[i]['submenu'] %></a>
+                                <ul class="sub-menu">
+                                    <% for (var j in theme.menu[i]){ %>
+                                    <% if (j !== 'submenu') { %>
+                                        <li><a href="<%- url_for(theme.menu[i][j]) %>"><%- theme.label[i][j] %></a></li>
+                                    <% } %>
+                                    <% } %>
+                                </ul>
+                                </li>
+                            <% } else { %>
+                                <li><a href="<%- url_for(theme.menu[i]) %>"><%- theme.label[i] %></a></li>
+                            <% } %>
+                            <% } %>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+            </header>
         </div>
-    </div>
-</div>
+        <div class="kratos-start kratos-hero-2">
+            <!-- <div class="kratos-overlay"></div> -->
+            <div class="kratos-cover kratos-cover-2 text-center">
+                <div class="desc desc2 animate-box">
+                    <a href="<%- url_for() %>"><h2><%= config.title %></h2><br><span><%= config.subtitle %></span></a>
+                </div>
+            </div>
+        </div>
 
-<div id="kratos-blog-post">
-    <div class="container">
-            <div class="row">
-                <% if (theme.sidebar === 'left') { %>
-                    <section id="kratos-widget-area" class="col-md-4 hidden-xs hidden-sm">
-                        <% theme.widgets.forEach(function(widget){ %>
-                            <%- partial('_widget/' + widget) %>
-                        <% }) %>
-                    </section>
-                <% } %>
+        <div id="kratos-blog-post">
+            <div class="container">
+                    <div class="row">
+                        <% if (theme.sidebar === 'left') { %>
+                            <section id="kratos-widget-area" class="col-md-4 hidden-xs hidden-sm">
+                                <% theme.widgets.forEach(function(widget){ %>
+                                    <%- partial('_widget/' + widget) %>
+                                <% }) %>
+                            </section>
+                        <% } %>

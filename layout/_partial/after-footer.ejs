@@ -1,0 +1,30 @@
+<script defer src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.4/dist/js/bootstrap.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.js"></script>
+<script>const notMobile = (!(navigator.userAgent.match(/(phone|pad|pod|iPhone|iPod|ios|iPad|Android|Mobile|BlackBerry|IEMobile|MQQBrowser|JUC|Fennec|wOSBrowser|BrowserNG|WebOS|Symbian|Windows Phone)/i)));</script>
+<% if(theme.snow){ %>
+    <div>
+        <canvas id="snow"></canvas>
+        <script async type="text/javascript" src="<% if (theme.cdn) { %>https://cdn.jsdelivr.net/gh/Candinya/Kratos-Rebirth@latest/source<% } %>/js/snow.min.js"></script>
+    </div>
+<% } %>
+<script async src="<% if (theme.cdn) { %>https://cdn.jsdelivr.net/gh/Candinya/Kratos-Rebirth@latest/source<% } %>/js/candy.min.js"></script>
+<% if (theme.aplayer.enabled) { %>
+    <script src="https://cdn.jsdelivr.net/npm/aplayer@1.10.1/dist/APlayer.min.js"></script>
+    <%- partial('../_tools/player') %>
+<% }%>
+<% if (theme.fancybox){ %>
+    <script defer src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+<% } %>
+<script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js"></script>
+<script defer src="<% if (theme.cdn) { %>https://cdn.jsdelivr.net/gh/Candinya/Kratos-Rebirth@latest/source<% } %>/js/kratosr.min.js"></script>
+<script defer src="<% if (theme.cdn) { %>https://cdn.jsdelivr.net/gh/Candinya/Kratos-Rebirth@latest/source<% } %>/js/pjax.min.js"></script>
+<% if (theme.posts.donate) { %>
+    <script defer src="https://cdn.jsdelivr.net/npm/layui-src@2.5.5/dist/layui.all.js"></script>
+<% } %>
+<% if (theme.enableDark) { %>
+    <script defer src="<% if (theme.cdn) { %>https://cdn.jsdelivr.net/gh/Candinya/Kratos-Rebirth@latest/source<% } %>/js/kr-dark.min.js"></script>
+<% } %>
+<% if (theme.mathjax) { %>
+    <script async id="MathJax-script" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<% } %>
+<%- theme.site_analytics %>

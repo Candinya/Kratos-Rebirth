@@ -14,9 +14,9 @@
                         <i class="fa fa-edit"></i> 
                         <% const wordsCount = strip_html(page.content).length; %>
                         <% if (wordsCount < 1500) { %>
-                            <%- wordsCount %>
+                            <%= wordsCount %>
                         <% } else { %>
-                            ~<%- (wordsCount / 1000).toFixed(2); %>K
+                            ~<%= (wordsCount / 1000).toFixed(2) %>K
                         <% } %>
                         字
                         <% if (theme.posts.comments === 'valine' && theme.valine.visitor) { %>
