@@ -49,18 +49,18 @@
     "server": "hexo server"
   },
   "hexo": {
-    "version": "5.0.0"
+    "version": "5.2.0"
   },
   "dependencies": {
-    "hexo": "^5.0.0",
+    "hexo": "^5.2.0",
     "hexo-generator-archive": "^1.0.0",
     "hexo-generator-category": "^1.0.0",
     "hexo-generator-feed": "^2.2.0",
     "hexo-generator-index-pin-top": "^0.2.2",
-    "hexo-generator-sitemap": "^2.0.0",
+    "hexo-generator-sitemap": "^2.1.0",
     "hexo-generator-tag": "^1.0.0",
     "hexo-renderer-ejs": "^1.0.0",
-    "hexo-renderer-marked": "^3.0.0",
+    "hexo-renderer-marked": "^3.3.0",
     "hexo-renderer-stylus": "^1.1.0",
     "hexo-server": "^1.0.0"
   }

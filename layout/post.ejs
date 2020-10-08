@@ -11,6 +11,14 @@
                         <i class="fa fa-calendar"></i> <%- date(page.date, null) %>
                         <i class="fa fa-folder"></i> 分类于 <%- list_categories(page.categories, {show_count: false, class: 'label', style: 'none'}) %>
                         <i class="fa fa-user"></i> 作者 <%- page.author || config.author %>
+                        <i class="fa fa-edit"></i> 
+                        <% const wordsCount = strip_html(page.content).length; %>
+                        <% if (wordsCount < 1500) { %>
+                            <%- wordsCount %>
+                        <% } else { %>
+                            ~<%- (wordsCount / 1000).toFixed(2); %>K
+                        <% } %>
+                        字
                         <% if (theme.posts.comments === 'valine' && theme.valine.visitor) { %>
                             <i class="fa fa-eye"></i> 阅读 <span class="leancloud-visitors-count"></span> 次
                         <% } %>
