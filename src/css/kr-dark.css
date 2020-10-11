@@ -92,7 +92,7 @@ ul {
     color: var(--text);
 }
 
-body.custom-background {
+body {
     background-color: var(--page-background);
 }
 
