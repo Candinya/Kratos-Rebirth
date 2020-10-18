@@ -1689,7 +1689,6 @@ th {
   text-decoration: none;
   font-size: 14.5px;
   line-height: 40px;
-  -webkit-transition: all .3s ease;
   transition: all .3s ease
 }
 
@@ -2513,13 +2512,6 @@ th {
     height: auto
   }
 
-  .kratos-entry-footer .post-like-donate a {
-    width: 75pt;
-    height: 31px;
-    font-size: 13px;
-    line-height: 29px
-  }
-
   h1.kratos-entry-title.text-center {
     font-size: 40px !important
   }
@@ -2560,7 +2552,7 @@ th {
   /* .downbtn{padding:9px 1pc;font-size:14px} */
   .hide_notice,
   .info {
-    font-size: 11px
+    font-size: 12px
   }
 
   #archives .arc-t {
@@ -2584,7 +2576,7 @@ th {
   }
 
   .kratos-entry-footer .post-like-donate a {
-    width: 80px
+    width: 100px
   }
 
   .kratos-entry-footer .footer-tag a {
@@ -2617,28 +2609,6 @@ th {
   .linkpage ul {
     padding-left: 5px
   }
-}
-
-@media(max-width:450px) {
-  .kratos-entry-footer .post-like-donate a {
-    width: 70px;
-    height: 31px;
-    font-size: 13px;
-    line-height: 29px
-  }
-
-  /* .downbtn{padding:8px 1pc} */
-}
-
-@media(max-width:415px) {
-  .kratos-entry-footer .post-like-donate a {
-    width: 65px;
-    height: 31px;
-    font-size: 9pt;
-    line-height: 29px
-  }
-
-  /* .downbtn{padding:8px 13px} */
 }
 
 @media(min-width:768px) {
@@ -2911,10 +2881,6 @@ td.code {
   -ms-transform: scaleX(1);
   -o-transform: scaleX(1);
   transform: scaleX(1);
-}
-
-.index-post .kratos-post-meta span {
-  font-size: 10px;
 }
 
 /**************** Search Page related ****************/
