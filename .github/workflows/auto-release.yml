@@ -1,0 +1,19 @@
+name: Release events
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+jobs:
+  gpr_publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v1
+        with:
+          registry-url: 'https://npm.pkg.github.com'
+      - name: Publish to Github Packages
+        run: npm publish
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
