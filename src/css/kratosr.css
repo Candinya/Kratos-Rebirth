@@ -2883,6 +2883,25 @@ td.code {
   transform: scaleX(1);
 }
 
+.index-post .kratos-entry-thumb-new {
+  position: relative;
+  float: none;
+  width: auto;
+  height: auto;
+  overflow: hidden;
+  padding: 0;
+  margin: 0;
+  margin-bottom: 20px
+}
+
+.index-post .kratos-entry-thumb-new img {
+  height: auto;
+  max-width: 100%;
+  width: 750px;
+  padding: 0;
+  border: 0
+}
+
 /**************** Search Page related ****************/
 #kr-search-notice.alert {
   transition:.3s
