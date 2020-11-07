@@ -1,17 +1,24 @@
 <div id="disqus_thread" class="post-comments"></div>
 <script>
-    $(function(){
-        window.DISQUS = null;
-        new DisqusJS({
-            shortname: '<%- theme.disqusjs.shortname %>',
-            siteName: '<%- theme.disqusjs.sitename %>',
-            identifier: '<%- page.path %>',
-            url: '<%- page.permalink %>',
-            api: '<%- theme.disqusjs.api %>',
-            apikey: '<%- theme.disqusjs.apikey %>',
-            admin: '<%- theme.disqusjs.admin %>',
-            adminLabel: '<%- theme.disqusjs.adminlabel %>'
-        });
-    });
+    var load_comm = () => {
+        const init = () => {
+            new DisqusJS({
+                shortname: '<%- theme.disqusjs.shortname %>',
+                siteName: '<%- theme.disqusjs.sitename %>',
+                identifier: '<%- page.path %>',
+                url: '<%- page.permalink %>',
+                api: '<%- theme.disqusjs.api %>',
+                apikey: '<%- theme.disqusjs.apikey %>',
+                admin: '<%- theme.disqusjs.admin %>',
+                adminLabel: '<%- theme.disqusjs.adminlabel %>'
+            });
+        }
+        if (typeof DisqusJS == 'undefined') {
+            const src = 'https://cdn.jsdelivr.net/npm/disqusjs@1.3.0/dist/disqus.js';
+            $.getScript(src, init);
+        } else {
+            init();
+        }
+    };
 </script>
 <noscript>Please enable JavaScript to view the <a href="https://github.com/SukkaW/DisqusJS">comments powered by DisqusJS.</a></noscript>

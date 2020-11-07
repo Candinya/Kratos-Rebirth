@@ -279,6 +279,23 @@ ${kr.copyrightNotice}
         });
     };
 
+    const disqusLazyLoad = () => {
+        const commsArea = document.getElementById('disqus_thread');
+        if (commsArea) {
+            const observer = new IntersectionObserver((entries) => {
+                if (entries[0].isIntersecting) {
+                    if (window.loadCommentsEventHandler) {
+                        window.cancelIdleCallback(window.loadCommentsEventHandler);
+                    }
+                    window.loadCommentsEventHandler = window.requestIdleCallback(load_comm);
+                    observer.disconnect();
+                    load_comm = null;
+                }
+            }, { threshold: 0 });
+            observer.observe(commsArea);
+        }
+    };
+
     $.fn.pjax_reload = ()=>{
         setrandpic();
         fancyboxInit();
@@ -286,6 +303,7 @@ ${kr.copyrightNotice}
         saveTitle();
         initMathjax();
         codeCopyInit();
+        disqusLazyLoad();
     };
 
     const finishInfo = () => {
