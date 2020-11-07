@@ -2,6 +2,7 @@
 <script>
     var load_comm = () => {
         const init = () => {
+            window.DISQUS = null;
             new DisqusJS({
                 shortname: '<%- theme.disqusjs.shortname %>',
                 siteName: '<%- theme.disqusjs.sitename %>',
