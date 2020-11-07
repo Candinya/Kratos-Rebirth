@@ -70,6 +70,7 @@ valine:
   app_id: 
   app_key: 
   visitor: true
+  enableQQ: false
 
 # APlayer
 aplayer:

@@ -1,9 +1,14 @@
 <div id="v-comments" class="post-comments"></div>
 <script>
-    new Valine({
-        el: '#v-comments',
-        appId: '<%- theme.valine.app_id %>',
-        appKey: '<%- theme.valine.app_key %>',
-        visitor: <%- theme.valine.visitor %>
+    $(function(){
+        new Valine({
+            el: '#v-comments',
+            appId: '<%- theme.valine.app_id %>',
+            appKey: '<%- theme.valine.app_key %>',
+            visitor: <%- theme.valine.visitor %>,
+            enableQQ: <%- theme.valine.enableQQ %>,
+            path: '<%- url_for(page.path) %>'
+        });
     });
 </script>
+<noscript>Please enable JavaScript to view the <a href="https://valine.js.org/">comments powered by Valine.</a></noscript>

@@ -24,4 +24,9 @@
 <% if (theme.enable_dark) { %>
     <script defer src="<% if (theme.cdn) { %>https://cdn.jsdelivr.net/gh/Candinya/Kratos-Rebirth@latest/source<% } %>/js/kr-dark.min.js"></script>
 <% } %>
+<% if (theme.posts.comments === 'disqusjs') { %>
+    <script defer src="https://cdn.jsdelivr.net/npm/disqusjs@1.2.6/dist/disqus.js"></script>
+  <% } else if (theme.posts.comments === 'valine') { %>
+    <script defer src="https://cdn.jsdelivr.net/npm/valine@1.4.14/dist/Valine.min.js"></script>
+  <% } %>
 <%- theme.site_analytics %>
