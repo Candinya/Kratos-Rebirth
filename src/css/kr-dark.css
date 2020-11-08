@@ -299,3 +299,8 @@ a:hover,
         background-image: var(--about-image);
     }
 }
+
+/**************** MathJaxColor *****************/
+span.mjx-chtml.MJXc-display {
+    color: var(--text);
+}

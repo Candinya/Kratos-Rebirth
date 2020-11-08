@@ -2987,4 +2987,7 @@ body.custom-background {
   }
 }
 
-
+/**************** MathJaxColor *****************/
+span.mjx-chtml.MJXc-display {
+  color: #000000;
+}
