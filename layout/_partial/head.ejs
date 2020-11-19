@@ -37,6 +37,9 @@
   <% if (config.highlight && config.highlight.enable) { %>
     <link rel="stylesheet" id="highlight-css" href="<% if (theme.cdn) { %>https://cdn.jsdelivr.net/gh/Candinya/Kratos-Rebirth@latest/source<% } %>/css/highlight.min.css" type="text/css" media="all">
   <% } %>
+  <% if (config.prismjs && config.prismjs.enable) { %>
+    <link rel="stylesheet" id="prismjs-css" href="<% if (theme.cdn) { %>https://cdn.jsdelivr.net/gh/Candinya/Kratos-Rebirth@latest/source<% } %>/css/prismjs.min.css" type="text/css" media="all">
+  <% } %>
   <link rel="stylesheet" id="fontawe-css" href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" type="text/css" media="all">
   <link rel="stylesheet" id="nprogress-css" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" type="text/css" media="all">
   <% if (theme.posts.comments == 'disqusjs') { %>
