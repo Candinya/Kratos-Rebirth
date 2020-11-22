@@ -2,6 +2,7 @@
 pre {
     border-radius: 8px;
     padding-top: 30px!important;
+    position: relative;
 }
 pre::before {
     content: " ";
