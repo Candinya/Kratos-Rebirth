@@ -1,4 +1,4 @@
-<div id="v-comments" class="post-comments"></div>
+<div id="v-comments" class="post-comments<% if (!theme.valine.visitor) { %> lazy-load<% } %>"></div>
 <script>
     var load_comm = () => {
         const init = () => {
@@ -18,8 +18,5 @@
             init();
         }
     };
-
-    // 因为Valine涉及到访问统计的内容，所以不能使用lazyload，因而在此处就直接加载了
-    window.requestIdleCallback(load_comm);
 </script>
 <noscript>Please enable JavaScript to view the <a href="https://valine.js.org/">comments powered by Valine.</a></noscript>

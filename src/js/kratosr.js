@@ -279,20 +279,37 @@ ${kr.copyrightNotice}
         });
     };
 
-    const disqusLazyLoad = () => {
-        const commsArea = document.getElementById('disqus_thread');
-        if (commsArea) {
+    const commentsLazyLoad = () => {
+        // 检查当前是否在浏览器中运行
+        const runningOnBrowser = typeof window !== "undefined";
+        // 通过检查 scroll 事件 API 和 User-Agent 来匹配爬虫
+        const isBot = runningOnBrowser && !("onscroll" in window) || typeof navigator !== "undefined" && /(gle|ing|ro|msn)bot|crawl|spider|yand|duckgo/i.test(navigator.userAgent);
+        // 检查当前浏览器是否支持 IntersectionObserver API
+        const supportsIntersectionObserver = runningOnBrowser && "IntersectionObserver" in window;
+        // 需要懒加载的评论区块
+        const commsArea = document.querySelector('.post-comments.lazy-load');
+        // 加载评论的函数
+        const loadwork = () => {
+            if (window.loadCommentsEventHandler) {
+                // 取消上一个加载事件
+                window.cancelIdleCallback(window.loadCommentsEventHandler);
+            }
+            // 加载新评论模块
+            window.loadCommentsEventHandler = window.requestIdleCallback(load_comm);
+            // 防止二次加载，清理掉函数
+            load_comm = null;
+        };
+        if (runningOnBrowser && !isBot && supportsIntersectionObserver && commsArea !== null) {
             const observer = new IntersectionObserver((entries) => {
                 if (entries[0].isIntersecting) {
-                    if (window.loadCommentsEventHandler) {
-                        window.cancelIdleCallback(window.loadCommentsEventHandler);
-                    }
-                    window.loadCommentsEventHandler = window.requestIdleCallback(load_comm);
+                    loadwork();
                     observer.disconnect();
-                    load_comm = null;
                 }
             }, { threshold: 0 });
             observer.observe(commsArea);
+        } else if (typeof load_comm !== 'undefined' && load_comm !== null) {
+            // 直接加载
+            loadwork();
         }
     };
 
@@ -303,7 +320,7 @@ ${kr.copyrightNotice}
         saveTitle();
         initMathjax();
         codeCopyInit();
-        disqusLazyLoad();
+        commentsLazyLoad();
     };
 
     const finishInfo = () => {
