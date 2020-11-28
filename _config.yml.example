@@ -107,7 +107,7 @@ search:
 jsconfig:
   main:
     picCDN: false
-    createTime: "1970-01-01 00:00:00"
+    createTime: "1970/01/01 00:00:00"
     donateBtn: "支持我~"
     scanNotice: "扫一扫，好不好？"
     qr_alipay: "/images/alipayqr.webp"
