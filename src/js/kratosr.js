@@ -1,5 +1,29 @@
 let kr = {};
 
+/**
+ * 因为后台任务API还是相当新的，而你的代码可能需要在那些不仍不支持此API的浏览器上运行。
+ * 你可以把 setTimeout() 用作回调选项来做这样的事。
+ * 这个并不是 polyfill ，因为它在功能上并不相同； 
+ * setTimeout() 并不会让你利用空闲时段，而是使你的代码在情况允许时执行你的代码，
+ * 以使我们可以尽可能地避免造成用户体验性能表现延迟的后果。
+ */
+// https://developer.mozilla.org/zh-CN/docs/Web/API/Background_Tasks_API 
+window.requestIdleCallback = window.requestIdleCallback || function(handler) {
+    let startTime = Date.now();
+    return setTimeout(function() {
+      handler({
+        didTimeout: false,
+        timeRemaining: function() {
+          return Math.max(0, 50.0 - (Date.now() - startTime));
+        }
+      });
+    }, 1);
+};
+
+window.cancelIdleCallback = window.cancelIdleCallback || function(id) {
+    clearTimeout(id);
+};
+
 (()=>{
     const loadConfig = (cb) => {
         // 读取配置文件
