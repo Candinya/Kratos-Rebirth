@@ -2967,6 +2967,21 @@ td.code {
   margin: 5px 10px;
 }
 
+/**************** Plugins *****************/
+span.mjx-chtml.MJXc-display {
+  color: #000000;
+}
+
+#hexo-blog-encrypt label {
+  padding-left: 10px;
+  pointer-events: none;
+}
+
+#hexo-blog-encrypt #hbePass {
+  padding: 0;
+  border-radius: 4px;
+}
+
 /******************* Images ********************/
 .kratos-cover.kratos-cover-2 {
   background-image: url('/images/banner.webp')
@@ -2985,9 +3000,4 @@ body.custom-background {
   body.custom-background {
     background-image: url('/images/bg.webp')
   }
-}
-
-/**************** MathJaxColor *****************/
-span.mjx-chtml.MJXc-display {
-  color: #000000;
 }

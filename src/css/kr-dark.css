@@ -247,23 +247,6 @@ blockquote p {
     background-color: var(--tag-background);
 }
 
-#dsqjs a {
-    color: var(--link);
-}
-
-#dsqjs .dsqjs-tab-active {
-    color: var(--text);
-}
-
-#dsqjs-msg {
-    color: var(--text);
-    background-color: var(--tag-background);
-}
-
-#aplayer * {
-    color: unset;
-}
-
 a:hover,
 .kratos-entry-border-new a:hover,
 .kratos-entry-header .kratos-post-meta a:hover,
@@ -285,6 +268,37 @@ a:hover,
     }
 }
 
+/******************* Plugins ********************/
+
+#dsqjs a {
+    color: var(--link);
+}
+
+#dsqjs .dsqjs-tab-active {
+    color: var(--text);
+}
+
+#dsqjs-msg {
+    color: var(--text);
+    background-color: var(--tag-background);
+}
+
+#aplayer * {
+    color: unset;
+}
+
+span.mjx-chtml.MJXc-display {
+    color: var(--text);
+}
+
+#hexo-blog-encrypt label {
+    color: var(--text);
+}
+
+#hexo-blog-encrypt #hbePass {
+    background-color: var(--info-background);
+}
+
 /******************* Images ********************/
 @media(min-width:768px) {
     body.custom-background {
@@ -298,9 +312,4 @@ a:hover,
     .widget-kratos-about .photo-background {
         background-image: var(--about-image);
     }
-}
-
-/**************** MathJaxColor *****************/
-span.mjx-chtml.MJXc-display {
-    color: var(--text);
 }
