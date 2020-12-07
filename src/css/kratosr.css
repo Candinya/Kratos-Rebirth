@@ -1317,7 +1317,7 @@ th {
   margin: 0 3px;
   position: relative;
   padding: 6px 12px;
-  line-height: 1.42857143;
+  line-height: 1.5;
   text-decoration: none;
   background-color: #fff;
   color: #626262
@@ -1331,7 +1331,7 @@ th {
 
 .pagination .page-number,
 .pagination .extend {
-  width: 36px;
+  min-width: 36px;
   height: 36px;
   display: inline-block;
 }
