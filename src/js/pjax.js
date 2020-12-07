@@ -14,13 +14,17 @@ $(function() {
             } else {
                 $(mainElement).html( e.state.html );
             }
-            window.load = reload_func();
+            window.onload = reload_func();
         }
     });
     function ajax(reqUrl, needPushState) {
         $.ajax({
             url: reqUrl,
             beforeSend: function () {
+                // 防止评论区再被加载，重置加载函数
+                if (typeof load_comm !== 'undefined' && load_comm !== null) {
+                    load_comm = null;
+                }
                 history.replaceState({
                     url: location.href,
                     title: document.title,
@@ -45,7 +49,7 @@ $(function() {
                 }
             },
             complete: function() {
-                window.load = reload_func();
+                window.onload = reload_func();
                 NProgress.done();
                 
                 // 如果URL里有指定节点ID，则滚动到相应的节点位置
