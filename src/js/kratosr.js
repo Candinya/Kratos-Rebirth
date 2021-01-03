@@ -142,7 +142,7 @@ window.cancelIdleCallback = window.cancelIdleCallback || function(id) {
     };
 
     const setrandpic = ()=>{
-        //图片
+        // 图片
         const imageboxs = document.getElementsByClassName("kratos-entry-thumb-new-img");
         const prefix = kr.picCDN ? "//cdn.jsdelivr.net/gh/Candinya/Kratos-Rebirth@latest/source/" : "/";
         for (let i = 0, len = imageboxs.length; i < len; i++) {
@@ -172,11 +172,7 @@ window.cancelIdleCallback = window.cancelIdleCallback || function(id) {
                   if (alt) $(this).after('<span class="caption">' + alt + '</span>');
                   $(this).wrap('<a rel="gallery" href="' + this.src + '" data-fancybox=\"gallery\" data-caption="' + alt + '"></a>')
                 });
-            
-                $(this).find('.fancybox').each(function(){
-                  $(this).attr('rel', 'article' + i);
-                });
-              });
+            });
             $('.fancybox').fancybox();
           }
     };
@@ -246,30 +242,36 @@ ${kr.copyrightNotice}
         }
     };
 
+    const getTimeString = (msec, exact = true) => {
+        const sec = msec / 1000;
+        const dnum = Math.floor(sec / 60 / 60 / 24);
+        const hnum = Math.floor(sec / 60 / 60 - (24 * dnum));
+        const mnum = Math.floor(sec / 60 - (24 * 60 * dnum) - (60 * hnum));
+        const snum = Math.floor(sec - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum));
+        let dstr = dnum.toString();
+        let hstr = hnum.toString();
+        let mstr = mnum.toString();
+        let sstr = snum.toString();
+        if (dstr && dstr.length === 1) {
+            dstr = '0' + dstr;
+        }
+        if (hstr && hstr.length === 1) {
+            hstr = '0' + hstr;
+        }
+        if (mstr && mstr.length === 1) {
+            mstr = '0' + mstr;
+        }
+        if (sstr && sstr.length === 1) {
+            sstr = '0' + sstr;
+        }
+        return dstr + "天" + (exact ? hstr + "小时" + mstr + "分" + sstr + "秒" : '');
+    };
+
     const initTime = () => {
-        let now = new Date();
-        const grt = new Date(kr.createTime);
+        const createTime = new Date(kr.createTime);
         const upTimeNode = document.getElementById("span_dt");
         setInterval(() => {
-            now.setTime(now.getTime() + 1000);
-            days = (now - grt) / 1000 / 60 / 60 / 24;
-                dnum = Math.floor(days);
-            hours = (now - grt) / 1000 / 60 / 60 - (24 * dnum);
-                hnum = Math.floor(hours);
-            if (String(hnum).length === 1) {
-                hnum = "0" + hnum;
-            }
-            minutes = (now - grt) / 1000 / 60 - (24 * 60 * dnum) - (60 * hnum);
-                mnum = Math.floor(minutes);
-            if (String(mnum).length === 1) {
-                mnum = "0" + mnum;
-            }
-            seconds = (now - grt) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum);
-                snum = Math.round(seconds);
-            if (String(snum).length === 1) {
-                snum = "0" + snum;
-            }
-            upTimeNode.innerText = dnum + "天" + hnum + "小时" + mnum + "分" + snum + "秒";
+            upTimeNode.innerText = getTimeString(Date.now() - createTime);
         }, 1000);
     };
 
@@ -337,7 +339,28 @@ ${kr.copyrightNotice}
         }
     };
 
-    $.fn.pjax_reload = ()=>{
+    const expireNotify = () => {
+        if (kr.expire_day) {
+            const updateDateTag = document.getElementById('last-modify-datetime');
+            if (updateDateTag) {
+                const updateDateTime = new Date(updateDateTag.getAttribute('datetime'));
+                const nowDateTime = Date.now();
+                const gap = nowDateTime - updateDateTime;
+                if (gap > kr.expire_day * 24 * 3600 * 1000) {
+                    // 内容可能过期，需要提示
+                    const postContent = document.querySelector('article div.kratos-post-content');
+                    const expiresNotify = 
+                        '<div class="alert alert-warning" role="alert">' + 
+                            '本文最后编辑于' + getTimeString(gap, false) + '前，其中的内容可能需要更新。' +
+                        '</div>';
+                        postContent.innerHTML = expiresNotify + postContent.innerHTML;
+                }
+            }
+            
+        }
+    };
+
+    $.fn.pjax_reload = () => {
         setrandpic();
         fancyboxInit();
         setCopyright();
@@ -345,6 +368,7 @@ ${kr.copyrightNotice}
         initMathjax();
         codeCopyInit();
         commentsLazyLoad();
+        expireNotify();
     };
 
     const finishInfo = () => {
