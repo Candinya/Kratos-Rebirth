@@ -75,6 +75,10 @@ jobs:
     # Install Hexo env
     - name: Install Hexo environment
       run: npm install
+
+    # Install post-time-fix plugin
+    - name: Install post-time-fix plugin
+      run: npm install hexo-filter-date-from-git --save
         
     # Setup git configs
     - name: Setup git configs

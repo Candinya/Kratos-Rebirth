@@ -9,8 +9,8 @@
                 <div class="kratos-post-meta text-center">
                     <span<% if (theme.posts.comments === 'valine' && theme.valine.visitor) { %> id="<%- url_for(page.path) %>" class="leancloud_visitors" data-flag-title="<%- page.title %>"<% } %>>
                         <i class="fa fa-calendar"></i> <%- date(page.date, null) %>
-                        <i class="fa fa-folder"></i> 分类于 <%- list_categories(page.categories, {show_count: false, class: 'label', style: 'none'}) %>
-                        <i class="fa fa-user"></i> 作者 <%- page.author || config.author %>
+                        <i class="fa fa-folder"></i> <%- __('category') %> <%- list_categories(page.categories, {show_count: false, class: 'label', style: 'none'}) %>
+                        <i class="fa fa-user"></i> <%- __('author') %> <%- page.author || config.author %>
                         <i class="fa fa-edit"></i> 
                         <% const wordsCount = strip_html(page.content).length; %>
                         <% if (wordsCount < 1500) { %>
@@ -20,13 +20,15 @@
                         <% } %>
                         字
                         <% if (theme.posts.comments === 'valine' && theme.valine.visitor) { %>
-                            <i class="fa fa-eye"></i> 阅读 <span class="leancloud-visitors-count"></span> 次
+                            <i class="fa fa-eye"></i> <%- __('read_count', '<span class="leancloud-visitors-count"></span>') %>
                         <% } %>
                     </span>
-                    <time id="last-modify-datetime" datetime="<%= page.updated %>"></time>
                 </div>
             </header>
             <div class="kratos-post-content">
+                <div id="expire-alert" class="alert alert-warning hidden" role="alert">
+                    <%- __('last_modify_alert', '<time datetime="' + page.updated + '"></time>') %>
+                </div>
                 <% if (page.toc && strip_html(toc(page.content))) { %>
                     <div class="kratos-post-inner-toc">
                         <%- toc(page.content) %>
@@ -37,17 +39,17 @@
             </div>
             <% if (theme.posts.show_cc) { %>
                 <div class="kratos-copyright text-center clearfix">
-                    <h5>本作品采用 <a rel="license nofollow" target="_blank" href="http://creativecommons.org/licenses/by-sa/4.0/">知识共享署名-相同方式共享 4.0 国际许可协议</a> 进行许可</h5>
+                    <h5><%- __('use_cc4_license') %></h5>
                 </div>
             <% } %>
             <footer class="kratos-entry-footer clearfix">
                 <% if (theme.posts.donate || theme.posts.share) { %>
                     <div class="post-like-donate text-center clearfix" id="post-like-donate">
                     <% if (theme.posts.donate) { %>
-                        <a class="donate" href="javascript:;"><i class="fa fa-bitcoin"></i> 打赏</a>
+                        <a class="donate" href="javascript:;"><i class="fa fa-bitcoin"></i> <%- __('reward') %></a>
                     <% } %>
                     <% if (theme.posts.share) { %>
-                        <a class="share" href="javascript:;"><i class="fa fa-share-alt"></i> 分享</a>
+                        <a class="share" href="javascript:;"><i class="fa fa-share-alt"></i> <%- __('share') %></a>
                         <%- partial('_tools/share', {page: page}) %>
                     <% } %>
                     </div>
@@ -61,21 +63,21 @@
                         }) %>
                     </div>
                     <div class="pull-date">
-                    <span>最后编辑：<%- date(page.updated) %></span>
+                    <span><%- __('last_modify') %><%- date(page.updated) %></span>
                     </div>
                 </div>
             </footer>
         </div>
-        <% if (page.prev || page.next){ %>
+        <% if (page.prev || page.next) { %>
             <nav class="navigation post-navigation clearfix" role="navigation">
-                <% if (page.next){ %>
+                <% if (page.next) { %>
                 <div class="nav-previous clearfix">
-                    <a title=" <% if (page.next.title){ %><%= page.next.title %><% } else { %>(no title)<% } %>" href="<%- config.root + page.next.path %>">&lt; <%= __('newer') %></a>
+                    <a title=" <% if (page.next.title){ %><%= page.next.title %><% } else { %>(<%- __('no_title') %>)<% } %>" href="<%- config.root + page.next.path %>">&lt; <%- __('newer') %></a>
                 </div>
                 <% } %>
-                <% if (page.prev){ %>
+                <% if (page.prev) { %>
                 <div class="nav-next clearfix">
-                    <a title=" <% if (page.prev.title){ %><%= page.prev.title %><% } else { %>(no title)<% } %>" href="<%- config.root + page.prev.path %>"><%= __('older') %> &gt;</a>
+                    <a title=" <% if (page.prev.title){ %><%= page.prev.title %><% } else { %>(<%- __('no_title') %>)<% } %>" href="<%- config.root + page.prev.path %>"><%- __('older') %> &gt;</a>
                 </div>
                 <% } %>
             </nav>

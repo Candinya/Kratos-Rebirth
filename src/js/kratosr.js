@@ -243,6 +243,7 @@ ${kr.copyrightNotice}
     };
 
     const getTimeString = (msec, exact = true) => {
+        let tString;
         const sec = msec / 1000;
         const dnum = Math.floor(sec / 60 / 60 / 24);
         const hnum = Math.floor(sec / 60 / 60 - (24 * dnum));
@@ -252,19 +253,37 @@ ${kr.copyrightNotice}
         let hstr = hnum.toString();
         let mstr = mnum.toString();
         let sstr = snum.toString();
-        if (dstr && dstr.length === 1) {
-            dstr = '0' + dstr;
+        if (exact) {
+            if (dstr && dstr.length === 1) {
+                dstr = '0' + dstr;
+            }
+            if (hstr && hstr.length === 1) {
+                hstr = '0' + hstr;
+            }
+            if (mstr && mstr.length === 1) {
+                mstr = '0' + mstr;
+            }
+            if (sstr && sstr.length === 1) {
+                sstr = '0' + sstr;
+            }
+            tString = dstr + "天" + hstr + "小时" + mstr + "分" + sstr + "秒";
+        } else {
+            // 大概值
+            if (dnum < 540) {
+                // 一年半内
+                if (dnum < 60) {
+                    // 两个月内
+                    tString = dstr + "天";
+                } else {
+                    // 年内月外
+                    tString = Math.floor(dnum / 30).toString() + '个月';
+                }
+            } else {
+                // 年外
+                tString = Math.floor(dnum / 365).toString() + '年';
+            }
         }
-        if (hstr && hstr.length === 1) {
-            hstr = '0' + hstr;
-        }
-        if (mstr && mstr.length === 1) {
-            mstr = '0' + mstr;
-        }
-        if (sstr && sstr.length === 1) {
-            sstr = '0' + sstr;
-        }
-        return dstr + "天" + (exact ? hstr + "小时" + mstr + "分" + sstr + "秒" : '');
+        return tString;
     };
 
     const initTime = () => {
@@ -341,19 +360,16 @@ ${kr.copyrightNotice}
 
     const expireNotify = () => {
         if (kr.expire_day) {
-            const updateDateTag = document.getElementById('last-modify-datetime');
-            if (updateDateTag) {
-                const updateDateTime = new Date(updateDateTag.getAttribute('datetime'));
+            const expireAlert = document.getElementById('expire-alert');
+            if (expireAlert) {
+                const dateTimeTag = expireAlert.querySelector('time');
+                const updateDateTime = new Date(parseInt(dateTimeTag.getAttribute('datetime')));
                 const nowDateTime = Date.now();
                 const gap = nowDateTime - updateDateTime;
                 if (gap > kr.expire_day * 24 * 3600 * 1000) {
                     // 内容可能过期，需要提示
-                    const postContent = document.querySelector('article div.kratos-post-content');
-                    const expiresNotify = 
-                        '<div class="alert alert-warning" role="alert">' + 
-                            '本文最后编辑于' + getTimeString(gap, false) + '前，其中的内容可能需要更新。' +
-                        '</div>';
-                        postContent.innerHTML = expiresNotify + postContent.innerHTML;
+                    dateTimeTag.innerText = getTimeString(gap, false);
+                    expireAlert.classList.remove('hidden');
                 }
             }
             
