@@ -45,7 +45,7 @@
         <div id="kratos-blog-post">
             <div class="container">
                 <div class="row">
-                    <% if (theme.sidebar === 'left') { %>
+                    <% if (page.type !== '404' && theme.sidebar === 'left') { %>
                         <section id="kratos-widget-area" class="col-md-4 hidden-xs hidden-sm">
                             <% theme.widgets.forEach(function(widget){ %>
                                 <%- partial('_widget/' + widget) %>

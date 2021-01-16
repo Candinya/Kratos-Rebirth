@@ -12,13 +12,13 @@
     <script src="https://cdn.jsdelivr.net/npm/aplayer@1.10.1/dist/APlayer.min.js"></script>
     <%- partial('../_tools/player') %>
 <% }%>
-<% if (theme.fancybox){ %>
+<% if (page.type !== '404' && theme.fancybox){ %>
     <script defer src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
 <% } %>
 <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js"></script>
 <script defer src="<% if (theme.cdn) { %>https://cdn.jsdelivr.net/gh/Candinya/Kratos-Rebirth@latest/source<% } %>/js/kratosr.min.js"></script>
 <script defer src="<% if (theme.cdn) { %>https://cdn.jsdelivr.net/gh/Candinya/Kratos-Rebirth@latest/source<% } %>/js/pjax.min.js"></script>
-<% if (theme.posts.donate) { %>
+<% if (page.type !== '404' && theme.posts.donate) { %>
     <script defer src="https://cdn.jsdelivr.net/npm/layui-src@2.5.5/dist/layui.all.js"></script>
 <% } %>
 <% if (theme.enable_dark) { %>
