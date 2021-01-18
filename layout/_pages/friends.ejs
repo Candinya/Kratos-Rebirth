@@ -1,0 +1,35 @@
+<section class="col-md-8">
+    <article>
+        <div class="kratos-hentry kratos-post-inner clearfix">
+            <div class="kratos-post-content">
+                <h2 class="title-h2 text-center"><%- page.title %></h2>
+                <div class="linkpage">
+                    <ul id="friendsList"></ul>
+                </div>
+
+                <script type="text/javascript">
+                {
+                    const flist = JSON.parse(`<%- page.flist %>`);
+                    let friendNodes = '';
+                    while (flist.length > 0) {
+                        const rndNum = Math.floor(Math.random()*flist.length);
+                        friendNodes += `<li><a target="_blank" href="${flist[rndNum].link}"><img src="${flist[rndNum].avatar}"><h4>${flist[rndNum].name}</h4><p>${flist[rndNum].bio}</p></a></li>`;
+                        flist.splice(rndNum, 1);
+                    }
+                    document.getElementById("friendsList").innerHTML = friendNodes;
+                }
+                </script>
+            </div>
+            <footer class="kratos-entry-footer clearfix">
+                <div class="footer-tag clearfix">
+                    <div class="pull-date">
+                    <span><%- __('last_modify') %><%- date(page.updated) %></span>
+                    </div>
+                </div>
+            </footer>
+        </div>
+        <% if (theme.posts.comments && page.comments) { %>
+            <%- partial('_comments/' + theme.posts.comments) %>
+        <% } %>
+    </article>
+</section>

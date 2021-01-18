@@ -14,6 +14,7 @@ index:
 menu:
   index: /
   archives: /archives/
+  friends: /friends/
   sites:
     submenu: true
     author: https://candinya.com
@@ -22,6 +23,7 @@ menu:
 label:
   index: <i class="fa fa-home"></i>首页
   archives: <i class="fa fa-file"></i>档案馆
+  friends: <i class="fa fa-paw"></i>好伙伴
   sites:
     submenu: <i class="fa fa-link"></i>链接
     author: 作者博客
@@ -123,3 +125,24 @@ site_verify:
   google: 
   baidu: 
   bing: 
+
+friends:
+  href: "friends"
+  page:
+    title: "好伙伴们"
+    comments: false
+    description: "好伙伴们在哪里~"
+    updated: "2021-01-18"
+  list:
+  - name: "猫猫①号"
+    bio: "喵~"
+    avatar: "/images/avatar.png"
+    link: "#"
+  - name: "猫猫②号"
+    bio: "喵喵~"
+    avatar: "/images/avatar.png"
+    link: "#"
+  - name: "猫猫⑨号"
+    bio: "咪啪~"
+    avatar: "/images/avatar.png"
+    link: "#"
