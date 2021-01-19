@@ -45,7 +45,7 @@
         --highlight-background   : #2d2d2d;
         --highlight-current-line : #393939;
         --highlight-selection    : #515151;
-        --highlight-foreground   : #cccccc;
+        --highlight-foreground   : #efefef;
         --highlight-comment      : #999999;
         --highlight-red          : #f2777a;
         --highlight-orange       : #f99157;
@@ -56,8 +56,8 @@
         --highlight-purple       : #cc99cc;
         --highlight-gutter-color : #999999;
         --highlight-gutter-bg    : #1b1b1b;
-        --highlight-deletion     : #008000;
-        --highlight-addition     : #800000;
+        --highlight-addition     : #008000;
+        --highlight-deletion     : #800000;
     }
 
     /* night blue */
