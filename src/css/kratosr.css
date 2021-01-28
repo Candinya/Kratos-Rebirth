@@ -2295,13 +2295,14 @@ th {
   padding-top: 40px
 }
 
-@media(min-width:992px) {
-  #footer .col-md-offset-3 {
-    margin-left: 10%
-  }
+#footer.ap-lrc {
+  padding-bottom: 32px;
+}
 
+@media(min-width:992px) {
   #footer .col-md-6 {
-    width: 80%
+    width: 80%;
+    margin: auto 10%;
   }
 }
 
