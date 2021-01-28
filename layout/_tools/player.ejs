@@ -1,17 +1,31 @@
-<div id="aplayer"></div>
-<script>
-$.ajax({
-    type:"get",
-    url:"<%- theme.aplayer.playlist %>",
-    dataType:"json",
-    success: function(data){
-        new APlayer({
-            container: document.getElementById('aplayer'),
-            fixed: true,
-            order: '<%- theme.aplayer.order %>',
-            lrcType: 3,
-            audio: data
+<% if (theme.aplayer.meting) { %>
+    <script defer src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js"></script>
+    <meting-js
+        server="<%= theme.aplayer.meting.server %>"
+        type="<%= theme.aplayer.meting.type %>"
+        id="<%= theme.aplayer.meting.id %>"
+        order="<%= theme.aplayer.order %>"
+        fixed="true"
+    >
+    </meting-js>
+<% } else if (theme.aplayer.playlist) { %>
+    <div id="aplayer"></div>
+    <script>
+    $(() => {
+        $.ajax({
+            type:"get",
+            url:"<%= theme.aplayer.playlist %>",
+            dataType:"json",
+            success: function(data){
+                new APlayer({
+                    container: document.getElementById('aplayer'),
+                    fixed: true,
+                    order: '<%= theme.aplayer.order %>',
+                    lrcType: 3,
+                    audio: data
+                });
+            }
         });
-    }
-});
-</script>
+    });
+    </script>
+<% } %>

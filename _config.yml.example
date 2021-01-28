@@ -80,8 +80,12 @@ twikoo:
 
 # APlayer
 aplayer:
-  enabled: false
+  enabled: true
   playlist: 
+  meting:
+    server: netease
+    type: playlist
+    id: 3204190542
   order: random
 
 # Widgets
