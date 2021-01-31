@@ -739,11 +739,11 @@ th {
 
 .alert>p,
 .alert>ul {
-  margin-bottom: 0
+  margin: 0 1em!important;
 }
 
 .alert>p+p {
-  margin-top: 5px
+  margin-top: .5em!important;
 }
 
 .alert-primary {
