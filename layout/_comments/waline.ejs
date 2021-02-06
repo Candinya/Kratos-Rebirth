@@ -1,0 +1,18 @@
+<div id="w-comments" class="post-comments<% if (!theme.waline.visitor) { %> lazy-load<% } %>"></div>
+<script>
+    var load_comm = () => {
+        const init = () => {
+            new Waline(Object.assign({
+                el: '#w-comments',
+                path: '<%- url_for(page.path) %>'
+            }, JSON.parse('<%- JSON.stringify(theme.waline) %>')));
+        }
+        if (typeof Waline == 'undefined') {
+            const src = 'https://cdn.jsdelivr.net/npm/@waline/client/dist/Waline.min.js';
+            $.getScript(src, init);
+        } else {
+            init();
+        }
+    };
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://waline.js.org/">comments powered by Waline.</a></noscript>

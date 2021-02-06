@@ -23,7 +23,8 @@ rss_feed: RSS 订阅
 category: 分类
 copyright: 版权所有
 author: 作者
-read_count: 阅读 %s 次
+read_count: '%s 次阅读'
+comments_count: '%s 条评论'
 last_modify: 最后编辑：
 last_modify_alert: 本文最后编辑于 %s 前，其中的内容可能需要更新。
 reward: 打赏
