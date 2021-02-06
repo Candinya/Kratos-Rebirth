@@ -1380,13 +1380,14 @@ th {
   padding: 7px 18px
 }
 
-.kratos-post-meta span {
+ul.kratos-post-meta>li {
+  list-style: none;
+  display: inline-block;
   font-size: 13px;
-  color: #777
+  color: #777;
 }
 
-.kratos-post-meta .fa-thumbs-o-up,
-.kratos-post-meta i:not(:first-child) {
+ul.kratos-post-meta>li:not(:first-child) {
   margin-left: 12px
 }
 
