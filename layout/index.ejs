@@ -1,131 +1,130 @@
-
-        <section class="col-md-8">
-            <% page.posts.each(function(post) { %>
-                <% if (!post.title || post.link) { %>
-                    <article class="kratos-hentry kratos-entry-border-new clearfix">
-                        <div class="kratos-status">
+<section class="col-md-8">
+    <% page.posts.each(function(post) { %>
+        <% if (!post.title || post.link) { %>
+            <article class="kratos-hentry kratos-entry-border-new clearfix">
+                <div class="kratos-status">
+                    <% if (post.link) { %>
+                        <i class="fa fa-link"></i>
+                    <% } else { %>
+                        <i class="fa fa-refresh"></i>
+                    <% } %>
+                    <div class="kratos-status-inner">
+                        <div class="kratos-status-content">
                             <% if (post.link) { %>
-                                <i class="fa fa-link"></i>
+                                <a href="<%- url_for(post.link) %>"><%- post.title %> <i class="fa fa-external-link"></i></a>
                             <% } else { %>
-                                <i class="fa fa-refresh"></i>
-                            <% } %>
-                            <div class="kratos-status-inner">
-                                <div class="kratos-status-content">
-                                    <% if (post.link) { %>
-                                        <a href="<%- url_for(post.link) %>"><%- post.title %> <i class="fa fa-external-link"></i></a>
-                                    <% } else { %>
-                                        <%- post.excerpt || post.content %>
-                                    <% } %>
-                                </div>
-                            </div>
-                        </div>
-                        <% if (!post.link) { %>
-                            <footer class="kratos-post-meta-new">
-                                <span class="pull-left">
-                                    <a><i class="fa fa-calendar"></i></a><a><%- date(post.date, null) %></a>
-                                    <a><i class="fa fa-tags"></i></a>
-                                    <%- list_tags(post.tags, {
-                                        show_count: false,
-                                        style: 'none',
-                                        amount: 3
-                                    }) %>
-                                </span>
-                            </footer>
-                        <% } %>
-                    </article>
-                <% } else if (theme.index && theme.index.post_type) { %>
-                    <article>
-                        <div class="kratos-hentry kratos-post-inner clearfix index-post">
-                            <div class="kratos-entry-thumb-new">
-                                <a href="<%- url_for(post.path) %>">
-                                    <% if (post.pic) { %>
-                                        <img class="kratos-entry-thumb-new-img" src="<%- post.pic.includes('://') ? post.pic : url_for(post.path + post.pic) %>">
-                                    <% } %>
-                                </a>
-                            </div>
-                            <header class="kratos-entry-header">
-                                <h1 class="text-center"><a class="kratos-entry-title" href="<%- url_for(post.path) %>"><%- post.title %></a></h1>
-                                <% if (post.subtitle) { %>
-                                    <h2 class="text-center"><%- post.subtitle %></h2>
-                                <% } %>
-                                <div class="kratos-post-meta text-center">
-                                    <span>
-                                    <i class="fa fa-calendar"></i> <%- date(post.date, null) %>
-                                    <i class="fa fa-folder"></i> 分类于 <%- list_categories(post.categories, {show_count: false, class: 'label', style: 'none'}) %>
-                                    <i class="fa fa-tags"></i>
-                                    <%- list_tags(post.tags, {
-                                        show_count: false,
-                                        style: 'none',
-                                        amount: 3
-                                    }) %>
-                                    </span>
-                                </div>
-                            </header>
-                            <hr />
-                            <div class="kratos-post-content">
                                 <%- post.excerpt || post.content %>
-                            </div>
-                            <footer class="kratos-entry-footer clearfix">
-                                <div class="post-like-donate text-center clearfix">
-                                    <a class="read-more" href="<%- url_for(post.path) %>#more" title="<%- post.title %>"><%- __('read_more') %> <i class="fa fa-chevron-circle-right"></i></a>
-                                </div>
-                            </footer>
+                            <% } %>
                         </div>
-                    </article>
-                <% } else { %>
-                    <article class="kratos-hentry clearfix">
-                        <div class="kratos-entry-border-new clearfix">
-                            <% if (post.top) { %><img class="stickyimg" src="/images/sticky.webp"><% } %>
-                            <div class="kratos-entry-thumb-new">
-                                <a href="<%- url_for(post.path) %>">
-                                    <% if (post.pic) { %>
-                                        <img class="kratos-entry-thumb-new-img" src="<%- post.pic.includes('://') ? post.pic : url_for(post.path + post.pic) %>">
-                                    <% } else { %>
-                                        <img class="kratos-entry-thumb-new-img">
-                                    <% } %>
-                                </a>
-                            </div>
-                            <div class="kratos-post-inner-new">
-                                <header class="kratos-entry-header-new">
-                                        <%- list_categories(post.categories, {
-                                            show_count: false,
-                                            class: 'label',
-                                            style: 'none'
-                                        }) %>
-                                    <h2 class="kratos-entry-title-new"><a href="<%- url_for(post.path) %>"><%- post.title %><% if (post.subtitle) { %><sub><%- post.subtitle %></sub><% } %></a><% if (post.top) { %><strong>——置顶</strong></h2><% } %>
-                                </header>
-                                <div class="kratos-entry-content-new">
-                                    <p>
-                                        <% if (post.excerpt) { %>
-                                            <%- strip_html(post.excerpt) %>
-                                        <% } else { %>
-                                            <%- truncate(strip_html(post.content), {length: 120}) %>
-                                        <% } %>
-                                    </p>
-                                </div>
-                            </div>
-                            <footer class="kratos-post-meta-new">
-                                <span class="pull-left">
-                                    <a><i class="fa fa-calendar"></i></a><a><%- date(post.date, null) %></a>
-                                    <a><i class="fa fa-tags"></i></a>
-                                    <%- list_tags(post.tags, {
-                                        show_count: false,
-                                        style: 'none',
-                                        amount: 3
-                                    }) %>
-                                </span>
-                                <span class="pull-right">
-                                    <a class="read-more" href="<%- url_for(post.path) %>" title="<%- __('read_full') %>"><%- __('read_full') %><i class="fa fa-chevron-circle-right"></i></a>
-                                </span>
-                            </footer>
-                        </div>
-                    </article>
-                <% } %>
-            <% }) %>
-            
-            <% if (page.total > 1) { %>
-                <div class='text-center pagination'>
-                <%- paginator({prev_text: '<i class="fa fa-angle-left"></i>', next_text: '<i class="fa fa-angle-right"></i>', escape: false}) %>
+                    </div>
                 </div>
-            <% } %>
-        </section>
+                <% if (!post.link) { %>
+                    <footer class="kratos-post-meta-new">
+                        <span class="pull-left">
+                            <a><i class="fa fa-calendar"></i></a><a><%- date(post.date, null) %></a>
+                            <a><i class="fa fa-tags"></i></a>
+                            <%- list_tags(post.tags, {
+                                show_count: false,
+                                style: 'none',
+                                amount: 3
+                            }) %>
+                        </span>
+                    </footer>
+                <% } %>
+            </article>
+        <% } else if (theme.index && theme.index.post_type) { %>
+            <article>
+                <div class="kratos-hentry kratos-post-inner clearfix index-post">
+                    <div class="kratos-entry-thumb-new">
+                        <a href="<%- url_for(post.path) %>">
+                            <% if (post.pic) { %>
+                                <img class="kratos-entry-thumb-new-img" src="<%- post.pic.includes('://') ? post.pic : url_for(post.path + post.pic) %>">
+                            <% } %>
+                        </a>
+                    </div>
+                    <header class="kratos-entry-header">
+                        <h1 class="text-center"><a class="kratos-entry-title" href="<%- url_for(post.path) %>"><%- post.title %></a></h1>
+                        <% if (post.subtitle) { %>
+                            <h2 class="text-center"><%- post.subtitle %></h2>
+                        <% } %>
+                        <div class="kratos-post-meta text-center">
+                            <span>
+                            <i class="fa fa-calendar"></i> <%- date(post.date, null) %>
+                            <i class="fa fa-folder"></i> 分类于 <%- list_categories(post.categories, {show_count: false, class: 'label', style: 'none'}) %>
+                            <i class="fa fa-tags"></i>
+                            <%- list_tags(post.tags, {
+                                show_count: false,
+                                style: 'none',
+                                amount: 3
+                            }) %>
+                            </span>
+                        </div>
+                    </header>
+                    <hr />
+                    <div class="kratos-post-content">
+                        <%- post.excerpt || post.content %>
+                    </div>
+                    <footer class="kratos-entry-footer clearfix">
+                        <div class="post-like-donate text-center clearfix">
+                            <a class="read-more" href="<%- url_for(post.path) %>#more" title="<%- post.title %>"><%- __('read_more') %> <i class="fa fa-chevron-circle-right"></i></a>
+                        </div>
+                    </footer>
+                </div>
+            </article>
+        <% } else { %>
+            <article class="kratos-hentry clearfix">
+                <div class="kratos-entry-border-new clearfix">
+                    <% if (post.top) { %><img class="stickyimg" src="/images/sticky.webp"><% } %>
+                    <div class="kratos-entry-thumb-new">
+                        <a href="<%- url_for(post.path) %>">
+                            <% if (post.pic) { %>
+                                <img class="kratos-entry-thumb-new-img" src="<%- post.pic.includes('://') ? post.pic : url_for(post.path + post.pic) %>">
+                            <% } else { %>
+                                <img class="kratos-entry-thumb-new-img">
+                            <% } %>
+                        </a>
+                    </div>
+                    <div class="kratos-post-inner-new">
+                        <header class="kratos-entry-header-new">
+                                <%- list_categories(post.categories, {
+                                    show_count: false,
+                                    class: 'label',
+                                    style: 'none'
+                                }) %>
+                            <h2 class="kratos-entry-title-new"><a href="<%- url_for(post.path) %>"><%- post.title %><% if (post.subtitle) { %><sub><%- post.subtitle %></sub><% } %></a><% if (post.top) { %><strong>——置顶</strong></h2><% } %>
+                        </header>
+                        <div class="kratos-entry-content-new">
+                            <p>
+                                <% if (post.excerpt) { %>
+                                    <%- strip_html(post.excerpt) %>
+                                <% } else { %>
+                                    <%- truncate(strip_html(post.content), {length: 120}) %>
+                                <% } %>
+                            </p>
+                        </div>
+                    </div>
+                    <footer class="kratos-post-meta-new">
+                        <span class="pull-left">
+                            <a><i class="fa fa-calendar"></i></a><a><%- date(post.date, null) %></a>
+                            <a><i class="fa fa-tags"></i></a>
+                            <%- list_tags(post.tags, {
+                                show_count: false,
+                                style: 'none',
+                                amount: 3
+                            }) %>
+                        </span>
+                        <span class="pull-right">
+                            <a class="read-more" href="<%- url_for(post.path) %>" title="<%- __('read_full') %>"><%- __('read_full') %><i class="fa fa-chevron-circle-right"></i></a>
+                        </span>
+                    </footer>
+                </div>
+            </article>
+        <% } %>
+    <% }) %>
+    
+    <% if (page.total > 1) { %>
+        <div class='text-center pagination'>
+        <%- paginator({prev_text: '<i class="fa fa-angle-left"></i>', next_text: '<i class="fa fa-angle-right"></i>', escape: false}) %>
+        </div>
+    <% } %>
+</section>
