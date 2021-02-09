@@ -1,9 +1,5 @@
         <% if (page.type !== '404' && theme.sidebar === 'right') { %>
-            <section id="kratos-widget-area" class="col-md-4 hidden-xs hidden-sm">
-                <% theme.widgets.forEach(function(widget){ %>
-                    <%- partial('_widget/' + widget) %>
-                <% }) %>
-            </section>
+            <%- partial('_partial/sidebar') %>
         <% } %>
         </div>
     </div>

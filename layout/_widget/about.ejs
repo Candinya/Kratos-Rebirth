@@ -1,5 +1,4 @@
 <aside id="krw-about" class="widget widget-kratos-about clearfix">
-    <% const aboutShowToc = is_post() && theme.widgets.includes('toc') && strip_html(toc(page.content)); %>
     <div class="photo-background"></div>
     <div class="photo-wrapper clearfix">
         <div class="photo-wrapper-tip text-center">
@@ -7,10 +6,6 @@
         </div>
     </div>
     <div class="textwidget">
-        <% if (aboutShowToc && page.toc) { %>
-            <%- toc(page.content) %>
-        <% } else { %>
-            <p class="text-center"><%- config.description %></p>
-        <% } %>
+        <p class="text-center"><%- config.description %></p>
     </div>
 </aside>

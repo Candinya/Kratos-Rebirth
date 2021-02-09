@@ -27,6 +27,10 @@
   box-sizing: border-box
 }
 
+html {
+  height: 100%;
+}
+
 :after,
 :before {
   box-sizing: border-box
@@ -69,7 +73,6 @@
 }
 
 body {
-  font-family: -apple-system, BlinkMacSystemFont, opensans, Optima, "Microsoft Yahei", sans-serif;
   line-height: 1.8;
   font-size: 18px;
   background: #f5f5f5;
@@ -235,7 +238,7 @@ cite {
 code,
 pre,
 samp {
-  font-family: Menlo, Monaco, Consolas, "Courier New", monospace
+  font-family: "Fira Code", Consolas, "Courier New", monospace
 }
 
 dfn {
@@ -1954,13 +1957,12 @@ ul.kratos-post-meta>li:not(:first-child) {
 
 .share-plain .share-int canvas,
 .share-plain .share-int img {
-  margin: 15px 0 -6px;
+  margin: 15px;
   height: auto;
   max-width: 100%
 }
 
 .share-plain .share-int p {
-  margin: 15px 0 0;
   color: #676767;
   white-space: normal;
   word-wrap: break-word;
@@ -1972,10 +1974,9 @@ ul.kratos-post-meta>li:not(:first-child) {
   display: inline-block !important;
 }
 
-#kratos-widget-area {
+#kratos-widget-area.sticky-area {
+  top: 56px;
   position: sticky;
-  position: -webkit-sticky;
-  top: 56px
 }
 
 .widget {
@@ -1990,7 +1991,7 @@ ul.kratos-post-meta>li:not(:first-child) {
   margin: 0
 }
 
-.widget-title {
+.widget>.widget-title {
   position: relative;
   margin: 0 0 10px;
   padding-bottom: 12px;
@@ -1998,17 +1999,19 @@ ul.kratos-post-meta>li:not(:first-child) {
   font-size: 16px
 }
 
-.widget-title::after {
+.widget>.widget-title:not(.no-after)::after,
+.widget>.widget-title>.toc-progress-bar {
   position: absolute;
   left: 0;
   bottom: 0;
   height: 2.5px;
   width: 100px;
   background-color: #51aded;
-  content: ''
+  content: '';
+  height: 2px !important
 }
 
-.widget-title i {
+.widget>.widget-title i {
   /* float: right; */
   margin-right: 10px;
 }
@@ -2092,14 +2095,47 @@ ul.kratos-post-meta>li:not(:first-child) {
   margin: 20px
 }
 
-.widget-kratos-about .toc {
-  padding-left: 32px;
+.toc {
+  padding: 0;
   max-height: 400px;
   overflow: auto;
 }
 
 .toc li {
-  list-style: none
+  list-style: none;
+  padding: 0;
+}
+
+.toc-item>a {
+  display: block;
+  padding-left: 1em;
+  position: relative;
+}
+
+.toc-item:not(.show)>.toc-child {
+  display: none;
+}
+
+.toc-item.active>a {
+  color: #fff;
+  background: linear-gradient(120deg, #e0c3fc 0%, #8ec5fc 100%);
+}
+
+.toc-item.active>a::before {
+  position: absolute;
+  width: 0;
+  height: 0;
+  content: "";
+  top: 10px;
+  margin: auto;
+  left: 0;
+  border-left: 6px solid;
+  border-top: 4px solid transparent;
+  border-bottom: 4px solid transparent;
+}
+
+.toc-item.active>a::before {
+  border-left-color: #fff;
 }
 
 .kratos-post-inner-toc {
@@ -2140,10 +2176,6 @@ ul.kratos-post-meta>li:not(:first-child) {
   height: auto
 }
 
-.widget-kratos-tags .widget-title::after {
-  height: 2px !important
-}
-
 .widget-kratos-tags .tag-clouds a {
   display: inline-block;
   margin: 3px 4px;
@@ -2155,32 +2187,28 @@ ul.kratos-post-meta>li:not(:first-child) {
   border-radius: 5px
 }
 
-.widget-kratos-poststab .widget-title::after {
-  height: 2px !important
-}
-
-.widget-kratos-poststab .tab-content {
+.widget-kratos-posts .tab-content {
   margin: 0 8px -18px 8px
 }
 
-.widget-kratos-poststab .tab-content>.tab-pane {
+.widget-kratos-posts .tab-content>.tab-pane {
   display: none
 }
 
-.widget-kratos-poststab .tab-content>.active {
+.widget-kratos-posts .tab-content>.active {
   display: block
 }
 
-.widget-kratos-poststab .list-group {
+.widget-kratos-posts .list-group {
   padding-left: 0;
   margin-bottom: 20px
 }
 
-.widget-kratos-poststab .tab-content .list-group a:last-child {
+.widget-kratos-posts .tab-content .list-group a:last-child {
   border-bottom: 0
 }
 
-.widget-kratos-poststab .tab-content .list-group a {
+.widget-kratos-posts .tab-content .list-group a {
   overflow: hidden;
   border-bottom: 1px dashed #b4afaf;
   text-decoration: none;
@@ -2190,7 +2218,7 @@ ul.kratos-post-meta>li:not(:first-child) {
   transition: color .3s
 }
 
-.widget-kratos-poststab .list-group-item {
+.widget-kratos-posts .list-group-item {
   position: relative;
   display: block;
   margin-bottom: 0;
@@ -2198,11 +2226,11 @@ ul.kratos-post-meta>li:not(:first-child) {
   border: 0
 }
 
-.widget-kratos-poststab .list-group-item:first-child {
+.widget-kratos-posts .list-group-item:first-child {
   margin-top: 1px
 }
 
-.widget-kratos-poststab .list-group-item i {
+.widget-kratos-posts .list-group-item i {
   margin: 0 5px 0 0
 }
 

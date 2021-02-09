@@ -28,7 +28,7 @@ hexo.theme.on('processAfter', () => {
 
     if (friends.href) {
         // Page模式
-        hexo.extend.generator.register('notfoundPage', () => {
+        hexo.extend.generator.register('friendsPage', () => {
             return {
                 path: friends.href + '/index.html',
                 data: Object.assign(friends.page, {content: friendsModule}), // 直接传递JSON串，运行时解析
