@@ -83,7 +83,7 @@
         <% } else { %>
             <article class="kratos-hentry clearfix">
                 <div class="kratos-entry-border-new clearfix">
-                    <% if (post.top) { %><img class="stickyimg" src="/images/sticky.webp"><% } %>
+                    <% if (post.sticky || post.top) { %><img class="stickyimg" src="/images/sticky.webp"><% } %>
                     <div class="kratos-entry-thumb-new">
                         <a href="<%- url_for(post.path) %>">
                             <% if (post.pic) { %>
@@ -100,7 +100,7 @@
                                     class: 'label',
                                     style: 'none'
                                 }) %>
-                            <h2 class="kratos-entry-title-new"><a href="<%- url_for(post.path) %>"><%- post.title %><% if (post.subtitle) { %><sub><%- post.subtitle %></sub><% } %></a><% if (post.top) { %><strong>——置顶</strong></h2><% } %>
+                            <h2 class="kratos-entry-title-new"><a href="<%- url_for(post.path) %>"><%- post.title %><% if (post.subtitle) { %><sub><%- post.subtitle %></sub><% } %></a><% if (post.sticky || post.top) { %><strong>——置顶</strong></h2><% } %>
                         </header>
                         <div class="kratos-entry-content-new">
                             <p>
