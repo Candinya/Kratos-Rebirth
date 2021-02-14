@@ -1406,9 +1406,8 @@ ul.kratos-post-meta>li:not(:first-child) {
 
 .kratos-status>i:first-child {
   position: absolute;
-  top: 50%;
+  top: calc(50% - .5em);
   left: -8px;
-  margin: -8px 0 0
 }
 
 .kratos-status-inner {
