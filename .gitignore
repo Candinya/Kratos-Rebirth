@@ -5,7 +5,7 @@ node_modules/
 _config.yml
 
 # 站点图像
-source/images/favicon.webp
+source/images/
 
 # 锁文件
 package-lock.json
