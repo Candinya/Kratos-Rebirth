@@ -1325,6 +1325,10 @@ th {
   vertical-align: text-bottom
 }
 
+#kratos-blog-post .row {
+  display: flex;
+}
+
 #kratos-blog-post .row article {
   margin-bottom: 15px;
 }
@@ -1973,7 +1977,7 @@ ul.kratos-post-meta>li:not(:first-child) {
   display: inline-block !important;
 }
 
-#kratos-widget-area.sticky-area {
+#kratos-widget-area>.sticky-area {
   top: 56px;
   position: sticky;
 }
