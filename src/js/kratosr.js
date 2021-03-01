@@ -543,16 +543,17 @@ ${kr.copyrightNotice}
         tocAnimInit();
     };
 
-    window.addEventListener('pjax:complete', pjaxReload);
-
     const funcUsingConfig = () => {
         // 因为涉及到配置文件，所以这些是只有在完成配置加载后才能调用的函数
         pjaxReload();
+
         copyEventInit();
         leaveEventInit();
         initTime();
         donateConfig();
     };
+
+    window.addEventListener('pjax:complete', pjaxReload);
 
     window.addEventListener('window:onload', () => {
         loadConfig(funcUsingConfig);
@@ -564,11 +565,9 @@ ${kr.copyrightNotice}
         tocNavInit();
     }, { once: true });
 
-    const finishInfo = () => {
+    window.onload = () => {
         window.dispatchEvent(new Event('window:onload'));
         console.log('页面加载完毕！消耗了 %c'+Math.round(performance.now()*100)/100+' ms','background:#282c34;color:#51aded;');
     };
-
-    window.onload = finishInfo();
 
 })();

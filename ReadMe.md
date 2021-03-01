@@ -14,8 +14,6 @@
 
 或者也可以去[项目Wiki](https://github.com/Candinya/Kratos-Rebirth/wiki)里面找找哦~
 
-有为这个主题专门开发两个页面，详见[Kratos-Rebirth-Specified-Pages](https://github.com/Candinya/Kratos-Rebirth-Specified-Pages)
-
 核心结构&样式来源：[@MoeDog](https://github.com/xb2016) 狗狗大佬的[Kratos](https://github.com/xb2016/kratos)的某个上古版本
 
 ## 💞 特别提示
@@ -30,10 +28,6 @@
 - @TsumugiWenders [GitHub](https://github.com/TsumugiWenders) [Blog](https://blog.nekopara.net/)
 
 ## 🎁 使用环境小贴士
-
-为了获得更佳的使用体验，建议安装的插件有：
-
-- hexo-generator-feed
 
 hexo的官方渲染器现在也已经支持文章置顶啦，配置`Front-Matter`段中的`sticky`参数即可实现置顶降序排序，可以参见生成器的[官方文档](https://github.com/hexojs/hexo-generator-index#usage)哦
 
