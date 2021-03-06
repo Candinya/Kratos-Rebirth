@@ -23,17 +23,12 @@
 @keyframes a{2%,24%,80%{-webkit-transform:translateY(1.5px) rotate(1.5deg);transform:translateY(1.5px) rotate(1.5deg)}4%,68%,98%{-webkit-transform:translateY(-1.5px) rotate(-.5deg);transform:translateY(-1.5px) rotate(-.5deg)}38%,6%{-webkit-transform:translateY(1.5px) rotate(-1.5deg);transform:translateY(1.5px) rotate(-1.5deg)}8%,86%{-webkit-transform:translateY(-1.5px) rotate(-1.5deg);transform:translateY(-1.5px) rotate(-1.5deg)}10%,72%{-webkit-transform:translateY(2.5px) rotate(1.5deg);transform:translateY(2.5px) rotate(1.5deg)}12%,64%,78%,96%{-webkit-transform:translateY(-.5px) rotate(1.5deg);transform:translateY(-.5px) rotate(1.5deg)}14%,54%{-webkit-transform:translateY(-1.5px) rotate(1.5deg);transform:translateY(-1.5px) rotate(1.5deg)}16%{-webkit-transform:translateY(-.5px) rotate(-1.5deg);transform:translateY(-.5px) rotate(-1.5deg)}18%,22%{-webkit-transform:translateY(.5px) rotate(-1.5deg);transform:translateY(.5px) rotate(-1.5deg)}20%,36%,46%{-webkit-transform:translateY(-1.5px) rotate(2.5deg);transform:translateY(-1.5px) rotate(2.5deg)}26%,50%{-webkit-transform:translateY(.5px) rotate(.5deg);transform:translateY(.5px) rotate(.5deg)}28%{-webkit-transform:translateY(.5px) rotate(1.5deg);transform:translateY(.5px) rotate(1.5deg)}30%,40%,62%,76%,88%{-webkit-transform:translateY(-.5px) rotate(2.5deg);transform:translateY(-.5px) rotate(2.5deg)}32%,34%,66%{-webkit-transform:translateY(1.5px) rotate(-.5deg);transform:translateY(1.5px) rotate(-.5deg)}42%{-webkit-transform:translateY(2.5px) rotate(-1.5deg);transform:translateY(2.5px) rotate(-1.5deg)}44%,70%{-webkit-transform:translateY(1.5px) rotate(.5deg);transform:translateY(1.5px) rotate(.5deg)}48%,74%,82%{-webkit-transform:translateY(-.5px) rotate(.5deg);transform:translateY(-.5px) rotate(.5deg)}52%,56%,60%{-webkit-transform:translateY(2.5px) rotate(2.5deg);transform:translateY(2.5px) rotate(2.5deg)}58%{-webkit-transform:translateY(.5px) rotate(2.5deg);transform:translateY(.5px) rotate(2.5deg)}84%{-webkit-transform:translateY(1.5px) rotate(2.5deg);transform:translateY(1.5px) rotate(2.5deg)}90%{-webkit-transform:translateY(2.5px) rotate(-.5deg);transform:translateY(2.5px) rotate(-.5deg)}92%{-webkit-transform:translateY(.5px) rotate(-.5deg);transform:translateY(.5px) rotate(-.5deg)}94%{-webkit-transform:translateY(2.5px) rotate(.5deg);transform:translateY(2.5px) rotate(.5deg)}0%,to{-webkit-transform:translate(0) rotate(0);transform:translate(0) rotate(0)}}
 */
 
-* {
-  box-sizing: border-box
+*, :after, :before {
+  box-sizing: border-box;
 }
 
 html {
   height: 100%;
-}
-
-:after,
-:before {
-  box-sizing: border-box;
 }
 
 ::-webkit-selection {
@@ -1191,6 +1186,10 @@ table {
   .row {
     display: flex;
 
+    > * {
+      max-width: 100%;
+    }
+
     article {
       margin-bottom: 15px;
     }
@@ -1249,14 +1248,22 @@ table {
   }
 }
 
-ul.kratos-post-meta>li {
-  list-style: none;
-  display: inline-block;
-  font-size: 13px;
-  color: #777;
+ul.kratos-post-meta {
+  padding: 0;
 
-  :not(:first-child) {
-    margin-left: 12px;
+  > li {
+    list-style: none;
+    display: inline-block;
+    font-size: 13px;
+    color: #777;
+  
+    &:not(:first-child) {
+      margin-left: 12px;
+    }
+  }
+
+  &:not(:last-child) {
+    margin-bottom: 0;
   }
 }
 
@@ -2445,7 +2452,7 @@ ul.kratos-post-meta>li {
   }
 
   h1.kratos-entry-title.text-center {
-    font-size: 40px !important;
+    font-size: 36px !important;
   }
 
   .kratos-entry-thumb-new {
