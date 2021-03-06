@@ -947,25 +947,25 @@ table {
     background: #fff;
     -webkit-transition: .2s;
     transition: .2s;
-  }
 
-  &::before, &::after {
-    content: '';
-    width: 28px;
-    height: 2.5px;
-    background: #fff;
-    position: absolute;
-    left: 0;
-    -webkit-transition: .2s;
-    transition: .2s
-  }
+    &::before, &::after {
+      content: '';
+      width: 28px;
+      height: 2.5px;
+      background: #fff;
+      position: absolute;
+      left: 0;
+      -webkit-transition: .2s;
+      transition: .2s
+    }
 
-  &::before {
-    top: -9px;
-  }
-
-  &::after {
-    bottom: -9px;
+    &::before {
+      top: -9px;
+    }
+  
+    &::after {
+      bottom: -9px;
+    }
   }
 }
 
