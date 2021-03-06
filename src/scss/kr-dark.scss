@@ -27,27 +27,7 @@
 }
 
 /******************* Theme ********************/
-@media (prefers-color-scheme: dark) {
-
-    :root:not([data-user-color-scheme]) {
-        --banner-image: url('/images/banner_dark.webp');
-        /* --background-image: none; */
-
-        --select-text-bg: #ccc;
-        --text: #eee;
-        --text-alt: #ccc;
-        --link: lightblue;
-        --link-hover: #51aded;
-        --border: #ccc;
-        --tag-background: #252d38df;
-        --card-background: #282c34dd;
-        --page-background: #181c27;
-        --info-background: #3c495bbb;
-        --navbar-desktop: #181c27cc;
-    }
-}
-
-[data-user-color-scheme='dark'] {
+@mixin dark-mode {
     --banner-image: url('/images/banner_dark.webp');
     /* --background-image: none; */
 
@@ -62,6 +42,17 @@
     --page-background: #181c27;
     --info-background: #3c495bbb;
     --navbar-desktop: #181c27cc;
+}
+
+@media (prefers-color-scheme: dark) {
+
+    :root:not([data-user-color-scheme]) {
+        @include dark-mode;
+    }
+}
+
+[data-user-color-scheme='dark'] {
+    @include dark-mode;
 }
 
 /******************* Color ********************/
@@ -107,12 +98,13 @@ a {
 blockquote {
     background-color: var(--info-background);
     border-color: var(--border);
-    ;
+    
+    p {
+        color: var(--text);
+    }
 }
 
-blockquote p {
-    color: var(--text);
-}
+blockquote 
 
 .kratos-cover.kratos-cover-2 {
     background-color: var(--page-background);
@@ -122,101 +114,127 @@ blockquote p {
     background-color: var(--tag-background);
 }
 
-.kratos-entry-border-new a {
+.kratos-entry-border-new {
+    a {
+        color: var(--text);
+    
+        .kratos-post-meta-new {
+            border-top: 1px solid var(--border);
+            background: var(--tag-background);
+        }
+    }
+
+    .kratos-status p a {
+        color: var(--link);
+
+        &:hover {
+            color: var(--link-hover);
+        }
+    }
+}
+
+.kratos-entry-header .kratos-post-meta {
+    span, a {
+        color: var(--text);
+    }
+}
+
+.kratos-post-content {
+    p, table td {
     color: var(--text);
+    }
 }
 
-.kratos-entry-border-new .kratos-post-meta-new {
-    border-top: 1px solid var(--border);
-    background: var(--tag-background);
+.kratos-post-inner {
+    .kratos-copyright {
+        background-color: var(--info-background);
+
+        h5 {
+            color: var(--text);
+        }
+
+        a {
+            color: var(--text);
+        }
+    }
 }
 
-.kratos-entry-header .kratos-post-meta span,
-.kratos-entry-header .kratos-post-meta a {
-    color: var(--text);
-}
+.kratos-entry-footer {
+    .footer-tag a {
+        color: var(--text);
+        background-color: var(--tag-background);
+    }
 
-.kratos-post-content p,
-.kratos-post-content table td {
-    color: var(--text);
-}
-
-.kratos-post-inner .kratos-copyright {
-    background-color: var(--info-background);
-}
-
-.kratos-post-inner .kratos-copyright h5 {
-    color: var(--text);
-}
-
-.kratos-post-inner .kratos-copyright a {
-    color: var(--text);
-}
-
-.kratos-entry-footer .footer-tag a {
-    color: var(--text);
-    background-color: var(--tag-background);
-}
-
-.kratos-entry-footer .pull-date span {
-    color: var(--text);
+    .pull-date span {
+        color: var(--text);
+    }
 }
 
 .post-navigation a {
     color: var(--text);
 }
 
-.widget a,
-.widget-title i {
-    color: var(--text-alt);
+#kratos-widget-area {
+
+    .widget {
+        a, &-title i {
+            color: var(--text-alt);
+        }
+    }
+    
+    .kratos-widget {
+        &-tags {
+            .tag-clouds a {
+                background-color: var(--tag-background);
+        
+                &:hover {
+                    color: var(--tag-background);
+                    background-color: var(--text-alt);
+                }
+            }
+        }
+    
+        &-categories .category-list-item .category-list-count {
+            color: var(--text);
+            background-color: var(--info-background);
+        }
+    }
+
 }
 
-.widget-kratos-tags .tag-clouds a {
-    background-color: var(--tag-background);
+.pagination {
+    a, span {
+        background-color: var(--tag-background);
+        color: var(--text);
+    }
+
+    > li > a {
+        background-color: var(--card-background);
+    }
 }
 
-.widget-kratos-tags .tag-clouds a:hover {
-    color: var(--tag-background);
-    background-color: var(--text-alt);
-}
-
-.widget-categories .category-list-item .category-list-count {
-    color: var(--text);
-    background-color: var(--info-background);
-}
-
-.pagination a,
-.pagination span {
-    background-color: var(--tag-background);
-    color: var(--text);
-}
-
-.pagination>li>a {
-    background-color: var(--card-background);
-}
-
-.kratos-hentry,
-.navigation div,
-#kratos-widget-area .widget {
+.kratos-hentry, .navigation div, #kratos-widget-area .widget {
     background-color: var(--card-background);
 }
 
 .arc-tags a {
-    color: var(--text-alt)!important;
-    background-color: var(--tag-background)!important;
-    border-color: var(--border)!important;
+    color: var(--text-alt) !important;
+    background-color: var(--tag-background) !important;
+    border-color: var(--border) !important;
+
+    &:hover {
+        color: var(--link-hover) !important;
+    }
 }
 
-.arc-tags a:hover {
-    color: var(--link-hover)!important;
-}
+.linkpage li {
+    a h4 {
+        color: var(--text);
+    }
 
-.linkpage li a h4 {
-    color: var(--text);
-}
-
-.linkpage li:hover {
-    background-color: var(--info-background);
+    &:hover {
+        background-color: var(--info-background);
+    }
 }
 
 .kratos-post-header-title {
@@ -225,18 +243,18 @@ blockquote p {
 
 .xControl {
     background-color: var(--info-background);
-}
 
-.xControl .xHeading span {
-    color: var(--text);
+    .xHeading span {
+        color: var(--text);
+    }
 }
 
 .index-post .kratos-entry-header .kratos-entry-title {
     color: var(--text);
-}
 
-.index-post .kratos-entry-header .kratos-entry-title::after {
-    background-color: var(--text);
+    &::after {
+        background-color: var(--text);
+    }
 }
 
 #archives .posts-collapse .post-title a {
@@ -270,25 +288,27 @@ a:hover,
 
 .toc-item.active>a {
   color: var(--tag-background);
-}
 
-.toc-item.active>a::before {
-  border-left-color: var(--tag-background);
+  &::before {
+    border-left-color: var(--tag-background);
+  }
 }
 
 /******************* Plugins ********************/
 
-#dsqjs a {
-    color: var(--link);
-}
+#dsqjs {
+    a {
+        color: var(--link);
+    }
 
-#dsqjs .dsqjs-tab-active {
-    color: var(--text);
-}
+    .dsqjs-tab-active {
+        color: var(--text);
+    }
 
-#dsqjs-msg {
-    color: var(--text);
-    background-color: var(--tag-background);
+    &-msg {
+        color: var(--text);
+        background-color: var(--tag-background);
+    }
 }
 
 #aplayer * {
@@ -309,7 +329,7 @@ span.mjx-chtml.MJXc-display {
         background-image: var(--banner-image);
     }
 
-    .widget-kratos-about .photo-background {
+    .kratos-widget-about .photo-background {
         background-image: var(--about-image);
     }
 }

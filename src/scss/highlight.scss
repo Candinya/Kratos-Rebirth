@@ -1,0 +1,307 @@
+$highlight_theme: 'night eighties';
+
+/* 主题 */
+
+    // @if $highlight_theme == 'light' {
+    //     /* light */
+    //     $highlight_background   : #f7f7f7;
+    //     $highlight_current_line : #efefef;
+    //     $highlight_selection    : #d6d6d6;
+    //     $highlight_foreground   : #4d4d4c;
+    //     $highlight_comment      : #8e908c;
+    //     $highlight_red          : #c82829;
+    //     $highlight_orange       : #f5871f;
+    //     $highlight_yellow       : #eab700;
+    //     $highlight_green        : #718c00;
+    //     $highlight_aqua         : #3e999f;
+    //     $highlight_blue         : #4271ae;
+    //     $highlight_purple       : #8959a8;
+    //     $highlight_gutter_color : #869194;
+    //     $highlight_gutter_bg    : #eff2f3;
+    //     $highlight_deletion     : #fdd;
+    //     $highlight_addition     : #dfd;
+    // }
+    // @else if $highlight_theme == 'night' {
+    //     /* night */
+    //     $highlight_background   : #1d1f21;
+    //     $highlight_current_line : #282a2e;
+    //     $highlight_selection    : #373b41;
+    //     $highlight_foreground   : #c5c8c6;
+    //     $highlight_comment      : #969896;
+    //     $highlight_red          : #cc6666;
+    //     $highlight_orange       : #de935f;
+    //     $highlight_yellow       : #f0c674;
+    //     $highlight_green        : #b5bd68;
+    //     $highlight_aqua         : #8abeb7;
+    //     $highlight_blue         : #81a2be;
+    //     $highlight_purple       : #b294bb;
+    //     $highlight_gutter_color : #888f96;
+    //     $highlight_gutter_bg    : #000000;
+    //     $highlight_addition     : #008000;
+    //     $highlight_deletion     : #800000;
+    // } 
+    // @else if $highlight_theme == 'night eighties' {
+        /* night eighties */
+        $highlight_background   : #2d2d2d;
+        $highlight_current_line : #393939;
+        $highlight_selection    : #515151;
+        $highlight_foreground   : #efefef;
+        $highlight_comment      : #999999;
+        $highlight_red          : #f2777a;
+        $highlight_orange       : #f99157;
+        $highlight_yellow       : #ffcc66;
+        $highlight_green        : #99cc99;
+        $highlight_aqua         : #66cccc;
+        $highlight_blue         : #6699cc;
+        $highlight_purple       : #cc99cc;
+        $highlight_gutter_color : #999999;
+        $highlight_gutter_bg    : #1b1b1b;
+        $highlight_addition     : #008000;
+        $highlight_deletion     : #800000;
+    // } 
+    // @else if $highlight_theme == 'night blue' {
+    //     /* night blue */
+    //     $highlight_background   : #002451;
+    //     $highlight_current_line : #00346e;
+    //     $highlight_selection    : #003f8e;
+    //     $highlight_foreground   : #ffffff;
+    //     $highlight_comment      : #7285b7;
+    //     $highlight_red          : #ff9da4;
+    //     $highlight_orange       : #ffc58f;
+    //     $highlight_yellow       : #ffeead;
+    //     $highlight_green        : #d1f1a9;
+    //     $highlight_aqua         : #99ffff;
+    //     $highlight_blue         : #bbdaff;
+    //     $highlight_purple       : #ebbbff;
+    //     $highlight_gutter_color : #7285b7;
+    //     $highlight_gutter_bg    : #000e20;
+    //     $highlight_addition     : #008000;
+    //     $highlight_deletion     : #800000;
+    // } 
+    // @else if $highlight_theme == 'night bright' {
+    //     /*night bright*/
+    //     $highlight_background   : #000000;
+    //     $highlight_current_line : #2a2a2a;
+    //     $highlight_selection    : #424242;
+    //     $highlight_foreground   : #eaeaea;
+    //     $highlight_comment      : #969896;
+    //     $highlight_red          : #d54e53;
+    //     $highlight_orange       : #e78c45;
+    //     $highlight_yellow       : #e7c547;
+    //     $highlight_green        : #b9ca4a;
+    //     $highlight_aqua         : #70c0b1;
+    //     $highlight_blue         : #7aa6da;
+    //     $highlight_purple       : #c397d8;
+    //     $highlight_gutter_color : #666666;
+    //     $highlight_gutter_bg    : #292929;
+    //     $highlight_addition     : #008000;
+    //     $highlight_deletion     : #800000;
+    // }
+
+/* [highlight_color-mode = 'normal'] {
+    $highlight_deletion     : #fdd;
+    $highlight_addition     : #dfd;
+}
+
+:not([highlight_color-mode = 'normal']) {
+    $highlight_deletion     : #008000;
+    $highlight_addition     : #800000;
+} */
+
+/* 宽度对齐 */
+
+figure.highlight {
+    table, table>tbody, table>tbody>tr, table>tbody>tr>td
+    {
+        display: block;
+    }
+}
+
+figure.highlight {
+    position: relative;
+    overflow: auto;
+    margin: 20px 0;
+    padding: 0;
+    border-radius: 8px;
+    font-family: Consolas, 'Courier New', monospace, -apple-system;
+    font-size: 12px;
+    font-weight: unset;
+    color: $highlight_foreground;
+    background: $highlight_current_line;
+
+    &::before {
+        content: " ";
+        position: absolute;
+        -webkit-border-radius: 50%;
+        border-radius: 50%;
+        background-color: #fc625d;
+        width: 12px;
+        height: 12px;
+        left: 10px;
+        top: 10px;
+        -webkit-box-shadow: 20px 0 #fdbc40, 40px 0 #35cd4b;
+        box-shadow: 20px 0 #fdbc40, 40px 0 #35cd4b;
+    }
+
+    figcaption {
+        position: absolute;
+        margin-left: 75px;
+        font-size: 18px;
+    }
+
+    pre {
+        border: none;
+        margin: 0;
+        padding: 10px 0;
+        color: $highlight_foreground;
+        background: none;
+    }
+
+    table {
+        margin: 30px 0 0 0;
+        width: auto;
+        border: none;
+        border-spacing: unset;
+        border-collapse: unset;
+    }
+
+    td {
+        border: none;
+        padding: 0;
+    }
+
+    .gutter {
+        position: absolute;
+        width: 40px;
+        user-select: none;
+        -moz-user-select: none;
+        -webkit-user-select: none;
+
+        pre {
+            overflow: hidden;
+            padding-left: 10px;
+            padding-right: 10px;
+            color: $highlight_gutter_color;
+            text-align: right;
+            background-color: $highlight_gutter_bg;
+        }
+    }
+
+    .code {
+        overflow: auto;
+        margin-left: 40px;
+        background-color: $highlight_background;
+
+        pre {
+            padding-left: 10px;
+            padding-right: 15px;
+            text-align: left;
+            display: inline-block;
+        }
+    }
+
+    > button.copy {
+        transition: all .3s;
+        opacity: 0;
+        position: absolute;
+        color: #ddd;
+        background: none;
+        right: 5px;
+        top: 5px;
+        font-size: 12px;
+        line-height: 12px;
+        padding: 3px 5px;
+        border: 1px solid;
+        border-radius: 4px;
+    }
+
+    &:hover > button.copy {
+        opacity: 1;
+    
+        &:hover {
+            color: #fff;
+        }
+    }
+}
+
+.gist table {
+    width: auto;
+
+    td {
+        border: none;
+    }
+}
+
+pre {
+    .deletion {
+        background: $highlight_deletion;
+    }
+
+    .meta {
+        color: $highlight_purple;
+    }
+
+    .comment {
+        color: $highlight_comment;
+    }
+
+    .variable,
+    .attribute,
+    .tag,
+    .regexp,
+    .ruby .constant,
+    .xml .tag .title,
+    .xml .pi,
+    .xml .doctype,
+    .html .doctype,
+    .css .id,
+    .css .class,
+    .css .pseudo {
+        color: $highlight_red;
+    }
+
+    .number,
+    .preprocessor,
+    .built_in,
+    .literal,
+    .params,
+    .constant,
+    .command {
+        color: $highlight_orange;
+    }
+
+    .ruby .class .title,
+    .css .rules .attribute,
+    .string,
+    .value,
+    .inheritance,
+    .header,
+    .ruby .symbol,
+    .xml .cdata,
+    .special,
+    .number,
+    .formula {
+        color: $highlight_green;
+    }
+
+    .title,
+    .css .hexcolor {
+        color: $highlight_aqua;
+    }
+
+    .function,
+    .python .decorator,
+    .python .title,
+    .ruby .function .title,
+    .ruby .title .keyword,
+    .perl .sub,
+    .javascript .title,
+    .coffeescript .title {
+        color: $highlight_blue;
+    }
+
+    .keyword,
+    .javascript .function {
+        color: $highlight_purple;
+    }
+}

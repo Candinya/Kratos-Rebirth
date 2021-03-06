@@ -1,0 +1,20 @@
+/* 请注意本文件只负责代码块的Mac样式显示，高亮部分的配色请自行选择高亮主题文件谢谢！ */
+pre {
+    border-radius: 8px;
+    padding-top: 30px!important;
+    position: relative;
+
+    &::before {
+        content: " ";
+        position: absolute;
+        -webkit-border-radius: 50%;
+        border-radius: 50%;
+        background-color: #fc625d;
+        width: 12px;
+        height: 12px;
+        left: 10px;
+        top: 10px;
+        -webkit-box-shadow: 20px 0 #fdbc40, 40px 0 #35cd4b;
+        box-shadow: 20px 0 #fdbc40, 40px 0 #35cd4b;
+    }
+}
