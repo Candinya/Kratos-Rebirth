@@ -45,6 +45,7 @@ $highlight_theme: 'night eighties';
         $highlight_background   : #2d2d2d;
         $highlight_current_line : #393939;
         $highlight_selection    : #515151;
+        $highlight_selection_bg : #afe7e7;
         $highlight_foreground   : #efefef;
         $highlight_comment      : #999999;
         $highlight_red          : #f2777a;
@@ -197,6 +198,23 @@ figure.highlight {
             padding-right: 15px;
             text-align: left;
             display: inline-block;
+
+            @mixin selection {
+                color: $highlight_selection;
+                background: $highlight_selection_bg;
+            }
+            
+            ::-webkit-selection {
+                @include selection;
+            }
+            
+            ::-moz-selection {
+                @include selection;
+            }
+            
+            ::selection {
+                @include selection;
+            }
         }
     }
 

@@ -31,6 +31,7 @@
     --banner-image: url('/images/banner_dark.webp');
     /* --background-image: none; */
 
+    --select-text: #333;
     --select-text-bg: #ccc;
     --text: #eee;
     --text-alt: #ccc;
@@ -56,19 +57,23 @@
 }
 
 /******************* Color ********************/
-::-webkit-selection {
+@mixin selection {
     color: var(--select-text);
     background: var(--select-text-bg);
 }
 
-::-moz-selection {
-    color: var(--select-text);
-    background: var(--select-text-bg);
-}
-
-::selection {
-    color: var(--select-text);
-    background: var(--select-text-bg);
+* {
+    &::-webkit-selection {
+        @include selection;
+    }
+    
+    &::-moz-selection {
+        @include selection;
+    }
+    
+    &::selection {
+        @include selection;
+    }
 }
 
 h1,

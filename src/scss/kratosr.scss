@@ -31,19 +31,21 @@ html {
   height: 100%;
 }
 
-::-webkit-selection {
+@mixin selection {
   color: #fcfcfc;
   background: #262a30;
+}
+
+::-webkit-selection {
+  @include selection;
 }
 
 ::-moz-selection {
-  color: #fcfcfc;
-  background: #262a30;
+  @include selection;
 }
 
 ::selection {
-  color: #fcfcfc;
-  background: #262a30;
+  @include selection;
 }
 
 ::-webkit-scrollbar {
