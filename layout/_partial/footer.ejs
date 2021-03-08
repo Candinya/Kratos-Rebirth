@@ -48,12 +48,12 @@
                     </ul>
                     <ul class="kratos-copyright">
                         <div>
-                            <li>&copy; <%- date(new Date(), 'YYYY') %> <%- config.author || config.title %> <%- __('copyright') %>.</li>
+                            <li>&copy; <%- date(new Date(), 'YYYY') %> <%- config.title || config.author %> <%- __('copyright') %>.</li>
                             <li><%- theme.timenotice %><span id="span_dt">Loading...</span></li>
                         </div>
                         <div>
                             <li>Theme <a href="https://github.com/Candinya/Kratos-Rebirth" target="_blank">Kratos:Rebirth</a></li>
-                            <li>Made with&nbsp;<i class="fa fa-heart throb" style="color:#d43f57"></i>&nbsp;by <a href="https://candinya.com" target="_blank" rel="nofollow">Candinya</a>.</li>
+                            <li>Site built with&nbsp;<i class="fa fa-heart throb" style="color:#d43f57"></i>&nbsp;by <%- config.author %>.</li>
                         </div>
                         <div>
                             <li>Powered by <a href="https://hexo.io" target="_blank" rel="nofollow">Hexo</a></li>

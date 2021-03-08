@@ -5,6 +5,7 @@ site_logo:
 snow: false
 enable_dark: true
 cdn: false
+check_update: true
 
 # Index 首页配置
 index:

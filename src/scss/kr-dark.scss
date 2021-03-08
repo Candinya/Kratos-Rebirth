@@ -7,9 +7,9 @@
 
 /******************* Default ********************/
 :root {
-    --banner-image: url('/images/banner.webp');
-    --about-image: url('/images/about.webp');
-    --background-image: url('/images/bg.webp');
+    --banner-image: url('../images/banner.webp');
+    --about-image: url('../images/about.webp');
+    --background-image: url('../images/bg.webp');
 
     --select-text: #fcfcfc;
     --select-text-bg: #262a30;
@@ -28,7 +28,7 @@
 
 /******************* Theme ********************/
 @mixin dark-mode {
-    --banner-image: url('/images/banner_dark.webp');
+    --banner-image: url('../images/banner_dark.webp');
     /* --background-image: none; */
 
     --select-text: #333;
@@ -122,11 +122,11 @@ blockquote
 .kratos-entry-border-new {
     a {
         color: var(--text);
+    }
     
-        .kratos-post-meta-new {
-            border-top: 1px solid var(--border);
-            background: var(--tag-background);
-        }
+    .kratos-post-meta-new {
+        border-top: 1px solid var(--border);
+        background: var(--tag-background);
     }
 
     .kratos-status p a {
@@ -185,23 +185,23 @@ blockquote
         a, &-title i {
             color: var(--text-alt);
         }
-    }
-    
-    .kratos-widget {
-        &-tags {
-            .tag-clouds a {
-                background-color: var(--tag-background);
-        
-                &:hover {
-                    color: var(--tag-background);
-                    background-color: var(--text-alt);
+
+        &.widget-kratos {
+            &-tags {
+                .tag-clouds a {
+                    background-color: var(--tag-background);
+            
+                    &:hover {
+                        color: var(--tag-background);
+                        background-color: var(--text-alt);
+                    }
                 }
             }
-        }
-    
-        &-categories .category-list-item .category-list-count {
-            color: var(--text);
-            background-color: var(--info-background);
+        
+            &-categories .category-list-item .category-list-count {
+                color: var(--text);
+                background-color: var(--info-background);
+            }
         }
     }
 
@@ -334,7 +334,7 @@ span.mjx-chtml.MJXc-display {
         background-image: var(--banner-image);
     }
 
-    .kratos-widget-about .photo-background {
+    .widget-kratos-about .photo-background {
         background-image: var(--about-image);
     }
 }

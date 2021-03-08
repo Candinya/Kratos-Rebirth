@@ -1952,7 +1952,7 @@ ul.kratos-post-meta {
       padding-left: 30px;
     }
 
-    &.kratos-widget {
+    &.widget-kratos {
   
       &-about {
         padding: 0 !important;
@@ -2868,20 +2868,20 @@ span.mjx-chtml.MJXc-display {
 
 /******************* Images ********************/
 .kratos-cover.kratos-cover-2 {
-  background-image: url('/images/banner.webp')
+  background-image: url('../images/banner.webp');
 }
 
-.kratos-widget-about .photo-background {
-  background-image: url('/images/about.webp')
+.widget-kratos-about .photo-background {
+  background-image: url('../images/about.webp');
 }
 
 body.custom-background {
   background-size: cover;
-  background-attachment: fixed
+  background-attachment: fixed;
 }
 
 @media(min-width:768px) {
   body.custom-background {
-    background-image: url('/images/bg.webp')
+    background-image: url('../images/bg.webp');
   }
 }
