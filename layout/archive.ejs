@@ -36,12 +36,21 @@
                         </div>
                       <% } %>
                       <div class="post-block archive post" style="margin-left: 2em;">
-                        <h3 class="archive-page-counter"><%- __('archive_count', page.posts.length) %></h3>
+                        <h3 class="archive-page-counter"><%- __('archive_count', () => {
+                          let pCount = 0;
+                          page.posts.each((p) => {
+                            if (p.title) {
+                              pCount++;
+                            }
+                          });
+                          return pCount;
+                        }) %></h3>
                         <div class="posts-collapse">
                           <% let year; %>
-                          <% page.posts.sort('date', -1).each(function(post){ %>
+                          <% page.posts.sort('date', -1).each((post) => { %>
                             <% let post_year = date(post.date, 'YYYY'); %>
-                            <% if (post_year !== year) { %>
+                            <% if (post_year !== year && post.title) { %>
+                              <!-- 没遇到Title的会被自动忽略年份，即使并不一致 -->
                               <% year = post_year; %>
                               <div class="collection-title">
                                 <a href="<%- url_for(config.root + config.archive_dir + '/' + year + '/') %>"><h2 class="archive-year"><%- year %></h2></a>
