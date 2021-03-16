@@ -501,7 +501,7 @@ table {
     cursor: pointer
   }
 
-  .btn-primary {
+  &.btn-primary {
     border: transparent;
     border-color: #51aded;
     background-color: #51aded;
