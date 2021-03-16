@@ -17,7 +17,7 @@
                         <% } else { %>
                             ~<%= (wordsCount / 1000).toFixed(2) %>K
                         <% } %>
-                        字
+                        <%- __('words') %>
                     </li>
                     <% if (/[vw]aline/.test(theme.posts.comments) && theme[theme.posts.comments].visitor) { %>
                         <li id="<%- url_for(page.path) %>" class="leancloud_visitors" data-flag-title="<%- page.title %>">

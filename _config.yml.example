@@ -10,6 +10,8 @@ check_update: true
 # Index 首页配置
 index:
   post_type: false
+  read_count: true
+  comment_count: true
 
 # Top Menu 顶部导航栏配置 （具体格式请参照文档）
 menu:
