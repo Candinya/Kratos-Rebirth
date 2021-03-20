@@ -61,7 +61,7 @@
                                 <i class="fa fa-calendar"></i>
                                 <%- date(post.date, null) %>
                             </li>
-                            <% if (post.categories) { %>
+                            <% if (post.categories.length) { %>
                                 <li>
                                     <i class="fa fa-folder"></i>
                                     <%- __('category_in') %>
@@ -73,7 +73,7 @@
                                         }) %>
                                 </li>
                             <% } %>
-                            <% if (post.tags) { %>
+                            <% if (post.tags.length) { %>
                                 <li>
                                     <i class="fa fa-tags"></i>
                                     <%- list_tags(post.tags, {
@@ -153,7 +153,7 @@
                                 <%- date(post.date, null) %>
                             </a>
                             <a>
-                                <% if (post.tags) { %>
+                                <% if (post.tags.length) { %>
                                     <i class="fa fa-tags"></i>
                                     <%- list_tags(post.tags, {
                                         show_count: false,
