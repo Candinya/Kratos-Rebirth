@@ -28,7 +28,7 @@ const configs = {
     }
 };
 
-function minifycss(cb) {
+function buildSass(cb) {
     src('src/scss/*.scss')
         .pipe(sass().on('error', sass.logError))
         .pipe(autoprefixer(configs.autoprefixer))
@@ -38,7 +38,17 @@ function minifycss(cb) {
     cb();
 }
 
-function minifyjs(cb) {
+function buildHighlight(cb) {
+    src('src/scss/highlight/theme/*.scss')
+        .pipe(sass().on('error', sass.logError))
+        .pipe(autoprefixer(configs.autoprefixer))
+        .pipe(cleanCSS(configs.cleanCSS))
+        .pipe(rename({ suffix: '.min' }))
+        .pipe(dest('source/css/highlight'));
+    cb();
+}
+
+function minifyJs(cb) {
     src('src/js/*.js')
         .pipe(terser(configs.terser))
         .pipe(rename({ suffix: '.min' }))
@@ -48,5 +58,4 @@ function minifyjs(cb) {
 
 // watch('src/**', parallel(minifycss, minifyjs));
 
-exports.build = parallel(minifycss, minifyjs);
-exports.default = parallel(minifycss, minifyjs);
+exports.default = parallel(buildSass, minifyJs, buildHighlight);

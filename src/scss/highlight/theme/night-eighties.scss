@@ -1,0 +1,19 @@
+$highlight_background   : #2d2d2d;
+$highlight_current_line : #393939;
+$highlight_selection    : #515151;
+$highlight_selection_bg : #afe7e7;
+$highlight_foreground   : #efefef;
+$highlight_comment      : #999999;
+$highlight_red          : #f2777a;
+$highlight_orange       : #f99157;
+$highlight_yellow       : #ffcc66;
+$highlight_green        : #99cc99;
+$highlight_aqua         : #66cccc;
+$highlight_blue         : #6699cc;
+$highlight_purple       : #cc99cc;
+$highlight_gutter_color : #999999;
+$highlight_gutter_bg    : #1b1b1b;
+$highlight_addition     : #008000;
+$highlight_deletion     : #800000;
+
+@import '../style.scss';
