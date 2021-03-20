@@ -1,0 +1,12 @@
+<script>
+    // Initialize
+    const init = () => {
+        mermaid.initialize({theme: '<%= mermaidConfig.theme || "forest" %>'});
+    }
+    if (typeof mermaid == 'undefined') {
+        const src = 'https://cdn.jsdelivr.net/npm/mermaid@<%= mermaidConfig.version || "latest" %>/dist/mermaid.min.js';
+        $.getScript(src, init);
+    }
+    // Set PJAX callback function
+    window.addEventListener('pjax:complete', init);
+</script>

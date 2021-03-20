@@ -25,3 +25,8 @@
     <script defer src="<%- url_cdn('js/kr-dark.min.js') %>"></script>
 <% } %>
 <%- theme.site_analytics %>
+
+<!-- Extra support for third-party plguins  -->
+<% if (config.mermaid && config.mermaid.enable || theme.mermaid && theme.mermaid.enable) { %>
+    <%- partial('../_plugins/mermaid', { mermaidConfig: config.mermaid || theme.mermaid }) %>
+<% } %>
