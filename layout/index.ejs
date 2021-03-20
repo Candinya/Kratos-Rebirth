@@ -132,7 +132,8 @@
                                 <%- list_categories(post.categories, {
                                     show_count: false,
                                     class: 'label',
-                                    style: 'none'
+                                    style: 'none',
+                                    separator: ' '
                                 }) %>
                             <h2 class="kratos-entry-title-new"><a href="<%- url_for(post.path) %>"><%- post.title %><% if (post.subtitle) { %><sub><%- post.subtitle %></sub><% } %></a><% if (post.sticky || post.top) { %><strong>——置顶</strong></h2><% } %>
                         </header>
