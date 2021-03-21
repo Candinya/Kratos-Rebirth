@@ -2,11 +2,14 @@
     // Initialize
     const init = () => {
         mermaid.initialize({theme: '<%= mermaidConfig.theme || "forest" %>'});
-    }
+    };
+    const reload = () => {
+        mermaid.init(undefined, ".mermaid");
+    };
     if (typeof mermaid == 'undefined') {
         const src = 'https://cdn.jsdelivr.net/npm/mermaid@<%= mermaidConfig.version || "latest" %>/dist/mermaid.min.js';
         $.getScript(src, init);
     }
     // Set PJAX callback function
-    window.addEventListener('pjax:complete', init);
+    window.addEventListener('pjax:complete', reload);
 </script>
