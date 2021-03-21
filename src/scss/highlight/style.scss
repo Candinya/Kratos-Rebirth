@@ -140,6 +140,10 @@ figure.highlight {
 }
 
 pre {
+    .addition {
+        background: $highlight_addition;
+    }
+
     .deletion {
         background: $highlight_deletion;
     }
