@@ -35,7 +35,7 @@
   <!-- 样式表文件 -->
   <link rel="stylesheet" id="kratos-css" href="<%- url_cdn('css/kratosr.min.css') %>" type="text/css" media="all">
   <% if (config.highlight && config.highlight.enable && theme.highlight_theme) { %>
-    <link rel="stylesheet" id="highlight-css" href="<%- url_cdn(`css/highlight/${theme.highlight_theme}.min.css`) %>" type="text/css" media="all">
+    <link rel="stylesheet" id="highlight-css" href="<%- url_cdn(`css/highlight/${theme.highlight_theme || 'night-eighties'}.min.css`) %>" type="text/css" media="all">
   <% } %>
   <% if (config.prismjs && config.prismjs.enable) { %>
     <link rel="stylesheet" id="prismjs-css" href="<%- url_cdn('css/prismjs.min.css') %>" type="text/css" media="all">
