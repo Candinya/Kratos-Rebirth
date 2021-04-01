@@ -1883,6 +1883,9 @@ ul.kratos-post-meta {
 }
 
 #kratos-widget-area {
+
+  user-select: none;
+  
   > .sticky-area {
     top: 56px;
     position: sticky;
