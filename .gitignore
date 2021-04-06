@@ -13,3 +13,6 @@ yarn.lock
 
 # (自定义)备份文件夹
 _backup/
+
+# IDEA工程文件
+.idea/
