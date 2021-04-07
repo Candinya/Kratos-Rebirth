@@ -25,7 +25,6 @@
     "url": "https://github.com/Candinya/Kratos-Rebirth/issues"
   },
   "homepage": "https://github.com/Candinya/Kratos-Rebirth#readme",
-  "dependencies": {},
   "devDependencies": {
     "gulp": "^4.0.2",
     "gulp-autoprefixer": "^7.0.1",

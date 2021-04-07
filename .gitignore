@@ -10,6 +10,8 @@ source/images/
 # 锁文件
 package-lock.json
 yarn.lock
+.yarn/
+.pnp.js
 
 # (自定义)备份文件夹
 _backup/
