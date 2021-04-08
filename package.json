@@ -17,7 +17,7 @@
     "candinya"
   ],
   "author": "Candinya",
-  "license": "GPL-3.0-or-later",
+  "license": "GPL-3.0",
   "publishConfig": {
     "registry": "https://npm.pkg.github.com/"
   },
