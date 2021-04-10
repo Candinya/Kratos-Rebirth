@@ -801,20 +801,21 @@ table {
     }
 
     .xIcon {
-      -webkit-transition: .3s;
       transition: .3s;
       position: absolute;
       right: 15px;
     }
   }
 
-  *.active .xIcon {
-    -webkit-transform: rotate(-45deg);
+  &.active .xIcon {
     transform: rotate(-45deg)
   }
 
-  .xContent {
+  .xContent:not(.pre-open) {
     display: none;
+  }
+
+  .xContent {
     border-top: 1px solid #e6e6e6;
 
     .inner {

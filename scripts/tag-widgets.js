@@ -14,9 +14,9 @@ hexo.extend.tag.register('alertbox', function(args){
 hexo.extend.tag.register('collapse', function(args, content){
     content = hexo.render.renderSync({text: content, engine: 'markdown'});
 
-    return `<div class="xControl">
+    return `<div class="xControl${args[1] === 'open' ? ' active' : ''}">
     <div class="xHeading"><div class="xIcon"><i class="fa fa-plus"></i></div><span>${args[0]}</span></div>
-    <div class="xContent"><div class="inner">
+    <div class="xContent${args[1] === 'open' ? ' pre-open' : ''}"><div class="inner">
         ${content} 
     </div></div>
     </div>`;
