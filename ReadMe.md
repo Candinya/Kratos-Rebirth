@@ -24,8 +24,10 @@
 
 ## 🍬 超棒的赞助者们
 
-- @vensing [GitHub](https://github.com/vensing) [Blog](https://vensing.com/)
-- @TsumugiWenders [GitHub](https://github.com/TsumugiWenders) [Blog](https://blog.nekopara.net/)
+| [<img src="https://avatars.githubusercontent.com/u/22054842?v=4" width="100px;"/>](https://vensing.com/) | [<img src="https://avatars.githubusercontent.com/u/45732838?v=4" width="100px;"/>](https://blog.nekopara.net/) |
+| :---: | :---: |
+| [@vensing](https://github.com/vensing) | [@TsumugiWenders](https://github.com/TsumugiWenders) |
+| [Blog](https://vensing.com/) | [Blog](https://blog.nekopara.net/) |
 
 ## 🎁 使用环境小贴士
 
