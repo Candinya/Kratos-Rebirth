@@ -56,6 +56,14 @@ function minifyJs(cb) {
     cb();
 }
 
+const build = parallel(buildSass, minifyJs, buildHighlight);
+
+function build_watch(cb) {
+    watch('src/**', {ignoreInitial: true}, build);
+}
+
 // watch('src/**', parallel(minifycss, minifyjs));
 
-exports.default = parallel(buildSass, minifyJs, buildHighlight);
+exports.default = build;
+exports.build = build;
+exports.watch = build_watch;

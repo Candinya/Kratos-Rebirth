@@ -4,7 +4,8 @@
   "description": "A transplanted theme for Hexo, with many new features built with love.",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "gulp"
+    "build": "gulp build",
+    "watch": "gulp watch"
   },
   "repository": {
     "type": "git",
