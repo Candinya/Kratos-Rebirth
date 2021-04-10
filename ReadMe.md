@@ -27,7 +27,7 @@
 | [<img src="https://avatars.githubusercontent.com/u/22054842?v=4" width="100px;"/>](https://vensing.com/) | [<img src="https://avatars.githubusercontent.com/u/45732838?v=4" width="100px;"/>](https://blog.nekopara.net/) |
 | :---: | :---: |
 | [@vensing](https://github.com/vensing) | [@TsumugiWenders](https://github.com/TsumugiWenders) |
-| [Blog](https://vensing.com/) | [Blog](https://blog.nekopara.net/) |
+| [Blog](https://chee5e.space/) | [Blog](https://blog.nekopara.net/) |
 
 ## 🎁 使用环境小贴士
 
