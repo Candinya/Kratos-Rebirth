@@ -557,19 +557,20 @@ ${kr.copyrightNotice}
                         document.body.classList.add('nav-up');
                         isTopNavHidden = true;
                     }
-                } else {
+                } else if (lastHeight > window.scrollY) {
                     // 向上滚动
                     if (isTopNavHidden) {
                         document.body.classList.remove('nav-up');
                         isTopNavHidden = false;
                     }
                 }
+                // 相等则不做处理
                 lastHeight = window.scrollY;
             });
         };
 
-        // 切换状态
-        window.addEventListener('scroll', handleTopNavScrollToggle);
+        // 仅处理鼠标滚动
+        window.addEventListener('wheel', handleTopNavScrollToggle);
 
     };
 
