@@ -1,5 +1,5 @@
 // 生成运行时调用的配置专用JS文件
-hexo.theme.on('processAfter', () => {
+hexo.theme.once('processAfter', () => {
     hexo.extend.generator.register('configMain', function(locals){
         return {
             path: 'config/main.json',

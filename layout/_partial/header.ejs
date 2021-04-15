@@ -1,11 +1,9 @@
 <div id="kratos-wrapper">
     <div id="kratos-page">
         <div id="kratos-header">
-            <div class="nav-toggle"><a class="kratos-nav-toggle js-kratos-nav-toggle"><i></i></a></div>
-            <header id="kratos-header-section">
+            <header id="kratos-desktop-topnav" class="kratos-topnav">
                 <div class="container">
                     <div class="nav-header">
-                        <div class="color-logo"><a href="/"><%= config.title %></a></div>
                         <nav id="kratos-menu-wrap">
                             <ul id="kratos-primary-menu" class="sf-menu">
                                 <% for (const i in theme.menu){ %>
@@ -26,6 +24,16 @@
                                 <% } %>
                             </ul>
                         </nav>
+                    </div>
+                </div>
+            </header>
+            <header id="kratos-mobile-topnav" class="kratos-topnav">
+                <div class="container">
+                    <div class="color-logo"><a href="/"><%= config.title %></a></div>
+                    <div class="nav-toggle">
+                        <a class="kratos-nav-toggle js-kratos-nav-toggle">
+                            <i></i>
+                        </a>
                     </div>
                 </div>
             </header>

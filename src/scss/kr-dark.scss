@@ -279,16 +279,12 @@ a:hover,
     color: var(--link-hover);
 }
 
-@media(min-width:768px) {
-    #kratos-header-section {
-        background: var(--navbar-desktop);
-    }
+#kratos-desktop-topnav {
+    background: var(--navbar-desktop);
 }
 
-@media(max-width:768px) {
-    #kratos-header-section {
-        background: var(--navbar-mobile);
-    }
+#kratos-mobile-topnav {
+    background: var(--navbar-mobile);
 }
 
 .toc-item.active>a {

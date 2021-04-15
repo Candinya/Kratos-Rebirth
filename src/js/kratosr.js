@@ -38,14 +38,23 @@ window.cancelIdleCallback = window.cancelIdleCallback || function(id) {
                 cb();
             });
     };
-    const gotopInit = ()=>{
-        const toolScroll = ()=>{
-            if ($(window).scrollTop()>200){
-                $('.kr-tool').addClass('scroll-down');
-            } else {
-                $('.kr-tool').removeClass('scroll-down');
-            }
-        }
+    const pageScrollDownInit = ()=>{
+        let isScrolledDown = false;
+        const pageScrollDownClass = () => {
+            window.requestAnimationFrame(() => {
+                if (window.scrollY > 200){
+                    if (!isScrolledDown) {
+                        document.body.classList.add('scroll-down');
+                        isScrolledDown = true;
+                    }
+                } else {
+                    if (isScrolledDown) {
+                        document.body.classList.remove('scroll-down');
+                        isScrolledDown = false;
+                    }
+                }
+            });
+        };
         $('.gotop-box').on('click',function(event){
             // event.preventDefault();
             $('html, body').animate({
@@ -53,10 +62,8 @@ window.cancelIdleCallback = window.cancelIdleCallback || function(id) {
             },500);
             return false;
         });
-        toolScroll();
-        $(window).scroll(()=>{
-            toolScroll();
-        });
+        pageScrollDownClass();
+        window.addEventListener('scroll', pageScrollDownClass);
     };
     const offcanvas = ()=>{
         let $clone = $('#kratos-menu-wrap').clone();
@@ -531,6 +538,41 @@ ${kr.copyrightNotice}
         }
     };
 
+    const topNavScrollToggleInit = () => {
+        // 判断设置参数
+        if (!kr.topNavScrollToggle) {
+            return; // 没有启用
+        }
+        // 记录上一次滚动高度，用于判断滚动方向
+        let lastHeight = window.innerHeight;
+        // 记录顶部栏隐藏状态
+        let isTopNavHidden = false;
+
+        // 处理事件的函数
+        const handleTopNavScrollToggle = () => {
+            window.requestAnimationFrame(() => {
+                if (lastHeight < window.scrollY) {
+                    // 向下滚动
+                    if (!isTopNavHidden) {
+                        document.body.classList.add('nav-up');
+                        isTopNavHidden = true;
+                    }
+                } else {
+                    // 向上滚动
+                    if (isTopNavHidden) {
+                        document.body.classList.remove('nav-up');
+                        isTopNavHidden = false;
+                    }
+                }
+                lastHeight = window.scrollY;
+            });
+        };
+
+        // 切换状态
+        window.addEventListener('scroll', handleTopNavScrollToggle);
+
+    };
+
     const pjaxReload = () => {
         setrandpic();
         fancyboxInit();
@@ -551,13 +593,14 @@ ${kr.copyrightNotice}
         leaveEventInit();
         initTime();
         donateConfig();
+        topNavScrollToggleInit();
     };
 
     window.addEventListener('pjax:complete', pjaxReload);
 
     window.addEventListener('window:onload', () => {
         loadConfig(funcUsingConfig);
-        gotopInit();
+        pageScrollDownInit();
         offcanvas();
         mobiClick();
         xControl();

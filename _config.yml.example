@@ -135,6 +135,7 @@ jsconfig:
     returnTitle: "(*´∇｀*)欸，又好啦~"
     copyrightNotice: "该内容采用 CC BY-NC-SA 4.0 许可协议，著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。"
     expire_day: 30
+    topNavScrollToggle: true
 
 # Site verify 站点验证相关配置内容
 site_verify:
@@ -163,3 +164,4 @@ friends:
     bio: "咪啪~"
     avatar: "../images/avatar.webp"
     link: "#"
+  verify: true # 验证每个友链的可访问性，炸了会有提示

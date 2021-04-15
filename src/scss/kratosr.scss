@@ -917,71 +917,77 @@ table {
   margin-bottom: 0;
   z-index: 5;
 
-  .color-logo img {
-    max-width: 200px;
-    height: 40px;
-    margin-top: -5px
-  }
-}
-
-.kratos-nav-toggle {
-  position: fixed;
-  top: 11px;
-  right: 15px;
-  z-index: 999;
-  height: 38px;
-  display: none;
-
-  i {
-    position: relative;
-    display: inline-block;
-    zoom: 1;
-    width: 28px;
-    height: 2.5px;
-    color: #fff;
-    font: 700 14px/.4 Helvetica;
-    text-transform: uppercase;
-    text-indent: -55px;
-    background: #fff;
-    -webkit-transition: .2s;
-    transition: .2s;
-
-    &::before, &::after {
-      content: '';
-      width: 28px;
-      height: 2.5px;
-      background: #fff;
-      position: absolute;
-      left: 0;
-      -webkit-transition: .2s;
-      transition: .2s
-    }
-
-    &::before {
-      top: -9px;
+  #kratos-mobile-topnav {
+  
+    .color-logo img {
+      max-width: 200px;
+      height: 40px;
+      margin-top: -5px
     }
   
-    &::after {
-      bottom: -9px;
+    .kratos-nav-toggle {
+      position: fixed;
+      top: 11px;
+      right: 15px;
+      z-index: 999;
+      height: 38px;
+    
+      i {
+        position: relative;
+        display: inline-block;
+        zoom: 1;
+        width: 28px;
+        height: 2.5px;
+        color: #fff;
+        font: 700 14px/.4 Helvetica;
+        text-transform: uppercase;
+        text-indent: -55px;
+        background: #fff;
+        -webkit-transition: .2s;
+        transition: .2s;
+    
+        &::before, &::after {
+          content: '';
+          width: 28px;
+          height: 2.5px;
+          background: #fff;
+          position: absolute;
+          left: 0;
+          -webkit-transition: .2s;
+          transition: .2s
+        }
+    
+        &::before {
+          top: -9px;
+        }
+      
+        &::after {
+          bottom: -9px;
+        }
+      }
     }
-  }
-}
-
-.nav-toggle.toon i {
-  background: 0 0;
-
-  &::before {
-    top: 0;
-    height: 2px;
-    -webkit-transform: rotateZ(45deg);
-    transform: rotateZ(45deg);
+  
   }
 
-  &::after {
-    bottom: 0;
-    height: 2px;
-    -webkit-transform: rotateZ(-45deg);
-    transform: rotateZ(-45deg);
+  #kratos-mobile-topnav {
+  
+    .nav-toggle.toon i {
+      background: 0 0;
+    
+      &::before {
+        top: 0;
+        height: 2px;
+        -webkit-transform: rotateZ(45deg);
+        transform: rotateZ(45deg);
+      }
+    
+      &::after {
+        bottom: 0;
+        height: 2px;
+        -webkit-transform: rotateZ(-45deg);
+        transform: rotateZ(-45deg);
+      }
+    }
   }
 }
 
@@ -1014,13 +1020,18 @@ table {
   }
 }
 
-#kratos-header-section {
+.kratos-topnav {
   padding: 0;
   position: fixed;
   left: 0;
   width: 100%;
   z-index: 2;
   background: rgba(40, 42, 44, .6);
+  top: 0;
+  transition: .5s all;
+}
+
+#kratos-desktop-topnav {
 
   .sf-menu {
     list-style: none;
@@ -1096,6 +1107,10 @@ table {
   .menu-right {
     float: right;
   }
+}
+
+body.scroll-down.nav-up #kratos-desktop-topnav {
+  top: -41px;
 }
 
 .kratos {
@@ -1890,6 +1905,7 @@ ul.kratos-post-meta {
   > .sticky-area {
     top: 56px;
     position: sticky;
+    transition: .5s all;
   }
 
   .widget {
@@ -2153,6 +2169,10 @@ ul.kratos-post-meta {
   }
 }
 
+body.nav-up #kratos-widget-area > .sticky-area {
+  top: 15px;
+}
+
 .toc li {
   list-style: none;
   padding: 0;
@@ -2199,14 +2219,14 @@ ul.kratos-post-meta {
       position: fixed;
     }
   }
+}
 
-  &.scroll-down {
-    .tool {
-      bottom: 60px;
-    }
-    .box.gotop-box {
-      bottom: 20px;
-    }
+body.scroll-down .kr-tool {
+  .tool {
+    bottom: 60px;
+  }
+  .box.gotop-box {
+    bottom: 20px;
   }
 }
 
@@ -2432,7 +2452,7 @@ ul.kratos-post-meta {
     display: none;
   }
 
-  #kratos-header-section {
+  #kratos-header {
     background: rgba(22, 23, 26, .9)
   }
 
@@ -2559,7 +2579,7 @@ ul.kratos-post-meta {
     width: 750px;
   }
 
-  #kratos-header-section.color-banner {
+  #kratos-desktop-topnav.color-banner {
     height: 71px;
   }
 
@@ -2576,7 +2596,7 @@ ul.kratos-post-meta {
     padding: 14px 0;
   }
 
-  .color-logo {
+  #kratos-mobile-topnav {
     display: none;
   }
 
