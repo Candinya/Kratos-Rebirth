@@ -1,4 +1,4 @@
-hexo.theme.once('processAfter', () => {
+hexo.theme.on('processAfter', () => {
 
     if (!hexo.theme.config.search || !hexo.theme.config.search.enable) {
         return;
