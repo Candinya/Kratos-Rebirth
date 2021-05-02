@@ -99,7 +99,7 @@ jobs:
     - name: Deploy demo site
       run: |
         cd ./public
-        git init -b master
+        git init -b gh-pages
         git remote add origin git@github.com:${GITHUB_REPOSITORY}
         git add -A
         git commit -m "Update Demo Site at `date +'%Y-%m-%d %H:%M:%S'`"
