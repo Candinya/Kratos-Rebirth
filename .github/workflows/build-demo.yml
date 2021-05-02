@@ -103,4 +103,4 @@ jobs:
         git remote add origin git@github.com:${GITHUB_REPOSITORY}
         git add -A
         git commit -m "Update Demo Site at `date +'%Y-%m-%d %H:%M:%S'`"
-        git push --set-upstream origin master -f
+        git push --set-upstream origin gh-pages -f
