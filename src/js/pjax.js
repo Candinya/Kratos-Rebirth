@@ -4,7 +4,6 @@ $(function() {
 
     const popStateHandler = (e) => {
         if ( e.state ) {
-            console.log('popstate - triggered');
             document.title = e.state.title || document.title;
             $("body,html").animate({scrollTop:theTop}, 600);
             if (typeof e.state.content === 'undefined') {
