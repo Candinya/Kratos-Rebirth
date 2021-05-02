@@ -17,7 +17,7 @@ jobs:
     # Environment virables
     env:
       SITE_URL: kr-demo.candinya.com
-      AVATAR_LINK: https://cn.gravatar.com/avatar/a7f9e15fef26e0a540edc977e21cb3eb
+      AVATAR_LINK: https://ga.candinya.com/avatar/a7f9e15fef26e0a540edc977e21cb3eb
       VALINE_APPID: cbKvgGbVMmzhOYvwuq5ULzgd-MdYXbMMI
 
     # Steps represent a sequence of tasks that will be executed as part of the job
@@ -91,10 +91,6 @@ jobs:
         chmod 600 ~/.ssh/id_rsa
         ssh-keyscan github.com >> ~/.ssh/known_hosts
     
-    # Get released page files
-    - name: Get released page files
-      run: git clone --single-branch --branch gh-pages git@github.com:${GITHUB_REPOSITORY} ./public
-    
     # Hexo build demo site
     - name: Hexo build demo site
       run: npx hexo generate --force
@@ -105,4 +101,4 @@ jobs:
         cd ./public
         git add -A
         git commit -m "Update Demo Site at `date +'%Y-%m-%d %H:%M:%S'`"
-        git push
+        git push -f
