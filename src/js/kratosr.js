@@ -151,10 +151,29 @@ window.cancelIdleCallback = window.cancelIdleCallback || function(id) {
     const setrandpic = ()=>{
         // 图片
         const imageboxs = document.getElementsByClassName("kratos-entry-thumb-new-img");
-        const prefix = kr.picCDN ? "//cdn.jsdelivr.net/gh/Candinya/Kratos-Rebirth@latest/source/" : "/";
+        let prefix = kr.site_root;
+        if (kr.picCDN || (kr.pic && kr.pic.CDN)) {
+            prefix = "//cdn.jsdelivr.net/gh/Candinya/Kratos-Rebirth@latest/source/";
+        }
+        let randomAmount = 20;
+        if (kr.pic && parseInt(kr.pic.random_amount)) {
+            randomAmount = parseInt(kr.pic.random_amount);
+        }
+        let picFileNameTemplate = "images/thumb/thumb_{no}.webp";
+        if (kr.pic && kr.pic.filename) {
+            if (kr.pic.filename.includes('//')) {
+                // 是绝对路径，那么忽略 CDN 选项
+                picFileNameTemplate = kr.pic.filename;
+            } else {
+                // 是相对主题根目录的路径
+                picFileNameTemplate = prefix + kr.pic.filename;
+            }
+        }
         for (let i = 0, len = imageboxs.length; i < len; i++) {
             if (!($(imageboxs[i]).attr("src"))) {
-                $(imageboxs[i]).attr("src", prefix + `images/thumb/thumb_${Math.floor(Math.random()*20+1)}.webp`);
+                const picNo = Math.floor(Math.random() * randomAmount + 1);
+                const picFileName = picFileNameTemplate.replace("{no}", picNo.toString());
+                $(imageboxs[i]).attr("src", picFileName);
             }
                 
         }
