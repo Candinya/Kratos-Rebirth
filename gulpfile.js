@@ -4,6 +4,7 @@ const autoprefixer = require('gulp-autoprefixer');
 const cleanCSS = require('gulp-clean-css');
 const terser = require('gulp-terser');
 const rename = require('gulp-rename');
+const browserSync = require('browser-sync').create();
 
 sass.compiler = require('sass');
 
@@ -34,7 +35,8 @@ function buildSass(cb) {
         .pipe(autoprefixer(configs.autoprefixer))
         .pipe(cleanCSS(configs.cleanCSS))
         .pipe(rename({ suffix: '.min' }))
-        .pipe(dest('source/css'));
+        .pipe(dest('source/css'))
+        .pipe(browserSync.reload({stream: true}));
     cb();
 }
 
@@ -44,7 +46,8 @@ function buildHighlight(cb) {
         .pipe(autoprefixer(configs.autoprefixer))
         .pipe(cleanCSS(configs.cleanCSS))
         .pipe(rename({ suffix: '.min' }))
-        .pipe(dest('source/css/highlight'));
+        .pipe(dest('source/css/highlight'))
+        .pipe(browserSync.reload({stream: true}));
     cb();
 }
 
@@ -52,14 +55,18 @@ function minifyJs(cb) {
     src('src/js/*.js')
         .pipe(terser(configs.terser))
         .pipe(rename({ suffix: '.min' }))
-        .pipe(dest('source/js'));
+        .pipe(dest('source/js'))
+        .pipe(browserSync.reload({stream: true}));
     cb();
 }
 
 const build = parallel(buildSass, minifyJs, buildHighlight);
 
 function build_watch(cb) {
-    watch('src/**', {ignoreInitial: true}, build);
+    browserSync.init({
+      proxy: 'http://127.0.0.1:4000/'
+    });
+    watch('src/**', {ignoreInitial: true}, build).on('change', browserSync.reload);
 }
 
 // watch('src/**', parallel(minifycss, minifyjs));
