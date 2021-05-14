@@ -2,7 +2,9 @@
     <article>
         <div class="kratos-hentry kratos-post-inner clearfix">
             <header class="kratos-entry-header">
-                <h1 class="kratos-entry-title text-center"><%- page.title %></h1>
+                <% if (page.title) { %>
+                    <h1 class="kratos-entry-title text-center"><%- page.title %></h1>
+                <% } %>
                 <% if (page.subtitle) { %>
                     <h2 class="text-center"><%- page.subtitle %></h2>
                 <% } %>
