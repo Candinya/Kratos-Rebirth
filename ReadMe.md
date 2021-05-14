@@ -10,9 +10,9 @@
 
 [样例站点](https://kr-demo.candinya.com)自动部署已经上线，具体可以参照这篇日志：[使用Github Actions部署主题样例站](https://candinya.com/posts/theme-demo-deployment-with-github-actions/)
 
-全新的配置文档增加了！戳[这里](https://candinya.com/posts/Kratos-Rebirth-Manual/)查看更多~
+全新的配置文档增加了！戳[这里](https://github.com/Candinya/Kratos-Rebirth/blob/master/Kratos-Rebirth-Manual.md)就能查看~
 
-或者也可以去[项目Wiki](https://github.com/Candinya/Kratos-Rebirth/wiki)里面找找哦~
+或者也可以去[我的博客](https://candinya.com/posts/Kratos-Rebirth/)踩踩哦~
 
 核心结构&样式来源：[@MoeDog](https://github.com/xb2016) 狗狗大佬的[Kratos](https://github.com/xb2016/kratos)的某个上古版本
 
@@ -43,7 +43,11 @@ hexo的官方渲染器现在也已经支持文章置顶啦，配置`Front-Matter
 
 ## 🍩 二次开发相关
 
-为了保证最终上线产品的有效空间利用，我们引入了gulp对静态资源文件（js、css）进行压缩；因而您在src文件夹下直接修改的静态文件会无法实时生效，请安装gulp及相应的插件（在主题文件夹下`npm install`，使用`npx gulp`指令开启压缩与文件监听应该即可），以便压缩静态文件。
+为了保证最终上线产品的有效空间利用，我们引入了gulp对静态资源文件（js、css）进行压缩；因而您在src文件夹下直接修改的静态文件会无法实时生效，请安装gulp及相应的插件（在主题文件夹下 `npm install` 或是 `yarn install` ）。
+
+您可以使用 `npm run build` 或是 `yarn build` 来构建一次静态文件。
+
+同时，为方便变化内容实时更新和多浏览器测试开发，您可以使用 `npm run watch` 或是 `yarn watch` 来运行。我们也有引入 Browser Sync 功能方便地在多个浏览器上查看变化，推荐您在 Hexo 启动后运行该指令。
 
 ## 💮 非常感谢
 
