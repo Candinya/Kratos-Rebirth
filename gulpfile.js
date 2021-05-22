@@ -73,7 +73,9 @@ function build_watch(cb) {
     browserSync.init({
       proxy: 'http://127.0.0.1:4000/'
     });
-    watch('src/**', {ignoreInitial: true}, build).on('change', browserSync.reload);
+    watch('src/scss/*.scss', buildSass).on('change', browserSync.reload);
+    watch('src/scss/highlight/theme/*.scss', buildHighlight).on('change', browserSync.reload);
+    watch('src/js/*.js', minifyJs).on('change', browserSync.reload);
 }
 
 // watch('src/**', parallel(minifycss, minifyjs));
