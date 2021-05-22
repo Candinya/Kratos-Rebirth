@@ -4,6 +4,7 @@ const autoprefixer = require('gulp-autoprefixer');
 const cleanCSS = require('gulp-clean-css');
 const terser = require('gulp-terser');
 const rename = require('gulp-rename');
+const sourcemaps = require('gulp-sourcemaps');
 const browserSync = require('browser-sync').create();
 
 sass.compiler = require('sass');
@@ -31,10 +32,12 @@ const configs = {
 
 function buildSass(cb) {
     src('src/scss/*.scss')
-        .pipe(sass().on('error', sass.logError))
-        .pipe(autoprefixer(configs.autoprefixer))
-        .pipe(cleanCSS(configs.cleanCSS))
-        .pipe(rename({ suffix: '.min' }))
+        .pipe(sourcemaps.init())
+            .pipe(sass().on('error', sass.logError))
+            .pipe(autoprefixer(configs.autoprefixer))
+            .pipe(cleanCSS(configs.cleanCSS))
+            .pipe(rename({ suffix: '.min' }))
+        .pipe(sourcemaps.write('../maps'))
         .pipe(dest('source/css'))
         .pipe(browserSync.reload({stream: true}));
     cb();
@@ -42,10 +45,12 @@ function buildSass(cb) {
 
 function buildHighlight(cb) {
     src('src/scss/highlight/theme/*.scss')
-        .pipe(sass().on('error', sass.logError))
-        .pipe(autoprefixer(configs.autoprefixer))
-        .pipe(cleanCSS(configs.cleanCSS))
-        .pipe(rename({ suffix: '.min' }))
+        .pipe(sourcemaps.init())
+            .pipe(sass().on('error', sass.logError))
+            .pipe(autoprefixer(configs.autoprefixer))
+            .pipe(cleanCSS(configs.cleanCSS))
+            .pipe(rename({ suffix: '.min' }))
+        .pipe(sourcemaps.write('../../maps'))
         .pipe(dest('source/css/highlight'))
         .pipe(browserSync.reload({stream: true}));
     cb();
@@ -53,8 +58,10 @@ function buildHighlight(cb) {
 
 function minifyJs(cb) {
     src('src/js/*.js')
-        .pipe(terser(configs.terser))
-        .pipe(rename({ suffix: '.min' }))
+        .pipe(sourcemaps.init())
+            .pipe(terser(configs.terser))
+            .pipe(rename({ suffix: '.min' }))
+        .pipe(sourcemaps.write('../maps'))
         .pipe(dest('source/js'))
         .pipe(browserSync.reload({stream: true}));
     cb();
