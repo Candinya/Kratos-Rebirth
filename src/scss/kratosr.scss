@@ -2805,6 +2805,17 @@ td.code {
 
 }
 
+span.blur {
+  text-shadow: 0 0 .5em rgb(0, 0, 0);
+  color: rgba(1, 1, 1, .1)!important;
+  transition: .2s;
+
+  &:hover {
+    text-shadow: 0 0 0;
+    color:#000000!important;
+  }
+}
+
 
 /**************** Search Page related ****************/
 #kr-search-notice.alert {

@@ -295,6 +295,14 @@ a:hover,
   }
 }
 
+span.blur {
+  text-shadow: 0 0 .5em var(--text);
+
+  &:hover {
+    color: var(--text)!important;
+  }
+}
+
 /******************* Plugins ********************/
 
 #dsqjs {

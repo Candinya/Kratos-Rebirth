@@ -34,3 +34,7 @@ hexo.extend.tag.register('colorpanel', function(args, content){
     </div>`;
 }, {ends: true});
 
+// 模糊隐藏
+hexo.extend.tag.register('blur', function(args) {
+    return `<span class="blur">${args[0]}</span>`;
+})
