@@ -57,6 +57,14 @@ jobs:
     - name: Copy theme settings
       run: cp "themes/kratos-rebirth/_config.yml.example" "themes/kratos-rebirth/_config.yml"
     
+    # Copy document
+    - name: Copy document
+      run: cp "themes/kratos-rebirth/Kratos-Rebirth-Manual.md" "source/_posts/Kratos-Rebirth-Manual.md"
+
+    # Pin document
+    - name: Pin document
+      run: sed '2 isticky: 1' -i source/_posts/Kratos-Rebirth-Manual.md
+    
     # Edit theme settings
     - name: Edit theme settings
       run: |
