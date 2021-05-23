@@ -1468,17 +1468,17 @@ ul.kratos-post-meta {
     border-radius: 10px;
     padding-top: 15px;
   }
-}
 
-@media(max-width:991px) {
-  .kratos-post-inner-toc {
-    display: block
+  @media(max-width:991px) {
+    .kratos-post-inner-toc {
+      display: block;
+    }
   }
-}
 
-@media(max-width:768px) {
-  .kratos-post-inner-toc .toc {
-    padding-left: 20px;
+  @media(max-width:768px) {
+    .kratos-post-inner-toc .toc {
+      padding-left: 20px;
+    }
   }
 }
 
