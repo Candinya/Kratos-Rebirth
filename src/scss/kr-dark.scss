@@ -109,8 +109,6 @@ blockquote {
     }
 }
 
-blockquote 
-
 .kratos-cover.kratos-cover-2 {
     background-color: var(--page-background);
 }
@@ -141,6 +139,12 @@ blockquote
 .kratos-entry-header .kratos-post-meta {
     span, a {
         color: var(--text);
+    }
+}
+
+ul.kratos-post-meta {
+    > li {
+        color: var(--text-alt);
     }
 }
 
