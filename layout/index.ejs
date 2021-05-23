@@ -27,7 +27,7 @@
                         </div>
                     </div>
                 </div>
-                <% if (!post.link && post.comments) { %>
+                <% if (!post.link || post.comments) { %>
                     <footer class="kratos-post-meta-new">
                         <span class="pull-left">
                             <a><i class="fa fa-calendar"></i></a><a><%- date(post.date, null) %></a>
@@ -144,7 +144,11 @@
         <% } else { %>
             <article class="kratos-hentry clearfix">
                 <div class="kratos-entry-border-new clearfix">
-                    <% if (post.sticky || post.top) { %><img class="stickyimg" src="/images/sticky.webp"><% } %>
+                    <% if (post.sticky || post.top) { %>
+                        <div class="pin-top wrapper">
+                            <div class="pin-top inner"></div>
+                        </div>
+                    <% } %>
                     <div class="kratos-entry-thumb-new">
                         <a href="<%- url_for(post.path) %>">
                             <% if (post.pic) { %>
