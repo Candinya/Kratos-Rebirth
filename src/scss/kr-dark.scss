@@ -324,6 +324,36 @@ span.blur {
     }
 }
 
+.post-comments {
+    .v[data-class=v] {
+        p, 
+        .vheader label, 
+        .veditor, .veditor::placeholder {
+            color: var(--text);
+        }
+
+        .vbtn,
+        .vcount,
+        .vcard .vhead span.vnick,
+        .vcard .vhead .vtime {
+            color: var(--text-alt);
+        }
+
+        .vicon,
+        .vcard .vhead .vreply svg {
+            fill: var(--text-alt);
+        }
+
+        .vpanel {
+            background-color: var(--tag-background);
+        }
+
+        .veditor:focus, .vinput:focus {
+            background-color: var(--info-background);
+        }
+    }
+}
+
 #aplayer * {
     color: unset;
 }
@@ -331,6 +361,8 @@ span.blur {
 span.mjx-chtml.MJXc-display {
     color: var(--text);
 }
+
+
 
 /******************* Images ********************/
 @media(min-width:768px) {
