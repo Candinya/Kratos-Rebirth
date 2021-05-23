@@ -27,7 +27,7 @@
                         </div>
                     </div>
                 </div>
-                <% if (!post.link || post.comments) { %>
+                <% if (!post.link && post.comments) { %>
                     <footer class="kratos-post-meta-new">
                         <span class="pull-left">
                             <a><i class="fa fa-calendar"></i></a><a><%- date(post.date, null) %></a>
