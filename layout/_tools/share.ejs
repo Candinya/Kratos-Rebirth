@@ -52,7 +52,7 @@
             const twitterBase   = "https://twitter.com/intent/tweet?";
             const hostUrl       = "<%- page.permalink %>";
             const title         = "「<%- page.title %>」";
-            const excerpt       = `<% if (page.excerpt){ %><%- trim(strip_html(page.excerpt)) %><% } else { %><%- truncate(strip_html(page.content), {length: 120}) %><% } %>`;
+            const excerpt       = `<% if (page.excerpt){ %><%- trim(strip_html(page.excerpt)).replaceAll('\`', '\\\`') %><% } else { %><%- truncate(strip_html(page.content), {length: 120}).replaceAll('\`', '\\\`') %><% } %>`;
             let _URL;
             switch (dest) {
                 case "qq"       : _URL = qqBase+"url="+hostUrl+"&title="+title+"&desc=&summary="+excerpt+"&site=cxpy";     break;
