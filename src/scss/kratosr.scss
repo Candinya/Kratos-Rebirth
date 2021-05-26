@@ -1704,7 +1704,7 @@ ul.kratos-post-meta {
           line-height: 30px;
         }
 
-        .qq {
+        &.qq {
           border-color: #00bfff;
           color: #00bfff;
 
@@ -1713,7 +1713,7 @@ ul.kratos-post-meta {
           }
         }
 
-        .qzone {
+        &.qzone {
           border-color: #fece00;
           color: #fece00;
 
@@ -1722,38 +1722,38 @@ ul.kratos-post-meta {
           }
         }
 
-        .weixin {
+        &.weixin {
           border-color: #38ad5a;
           color: #38ad5a;
 
-          :hover {
+          &:hover {
             background-color: #38ad5a;
           }
         }
 
-        .weibo {
+        &.weibo {
           border-color: #e6162d;
           color: #e6162d;
 
-          :hover {
+          &:hover {
             background-color: #e6162d;
           }
         }
 
-        .twitter {
+        &.twitter {
           border-color: #55acee;
           color: #55acee;
 
-          :hover {
+          &:hover {
             background-color: #55acee;
           }
         }
 
-        .facebook {
+        &.facebook {
           border-color: #3e569b;
           color: #3e569b;
 
-          :hover {
+          &:hover {
             background-color: #3e569b;
           }
         }
