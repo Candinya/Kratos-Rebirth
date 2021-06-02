@@ -2023,6 +2023,7 @@ ul.kratos-post-meta {
             margin: -50px 0 0;
             width: 90px;
             height: 90px;
+            object-fit: cover;
             border: rgba(255, 255, 255, .4) 4px solid;
             border-radius: 50%;
           }
@@ -2356,6 +2357,7 @@ body.scroll-down .kr-tool {
         img {
           width: 60px;
           height: 60px;
+          object-fit: cover;
           border-radius: 50%;
           position: absolute;
           top: 15px;
