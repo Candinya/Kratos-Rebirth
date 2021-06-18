@@ -4,7 +4,9 @@
     <body class="custom-background">
         <%- partial('_partial/header') %>
 
-        <%- body %>
+        <section class="col-md-<%- (theme.sidebar === 'left' || theme.sidebar === 'right') ? '8' : '12' %>">
+            <%- body %>
+        </section>
 
         <%- partial('_partial/footer') %>
         <%- partial('_partial/after-footer') %>

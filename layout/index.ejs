@@ -1,233 +1,231 @@
-<section class="col-md-8">
-    <% page.posts.each(function(post) { %>
-        <% if (post.only) {
-            const postShow = 
-                post.only.includes('home') && is_home()
-                || post.only.includes('category') && is_category()
-                || post.only.includes('tag') && is_tag();
-            if (!postShow) {
-                return false;
-            }
-        } %>
-        <% if (!post.title || post.link) { %>
-            <article class="kratos-hentry kratos-entry-border-new clearfix">
-                <div class="kratos-status">
-                    <% if (post.link) { %>
-                        <i class="fa fa-link"></i>
-                    <% } else { %>
-                        <i class="fa fa-refresh"></i>
-                    <% } %>
-                    <div class="kratos-status-inner">
-                        <div class="kratos-status-content">
-                            <% if (post.link) { %>
-                                <a href="<%- url_for(post.link) %>"><%- post.title %> <i class="fa fa-external-link"></i></a>
-                            <% } else { %>
-                                <%- post.excerpt || post.content %>
-                            <% } %>
-                        </div>
+<% page.posts.each(function(post) { %>
+    <% if (post.only) {
+        const postShow = 
+            post.only.includes('home') && is_home()
+            || post.only.includes('category') && is_category()
+            || post.only.includes('tag') && is_tag();
+        if (!postShow) {
+            return false;
+        }
+    } %>
+    <% if (!post.title || post.link) { %>
+        <article class="kratos-hentry kratos-entry-border-new clearfix">
+            <div class="kratos-status">
+                <% if (post.link) { %>
+                    <i class="fa fa-link"></i>
+                <% } else { %>
+                    <i class="fa fa-refresh"></i>
+                <% } %>
+                <div class="kratos-status-inner">
+                    <div class="kratos-status-content">
+                        <% if (post.link) { %>
+                            <a href="<%- url_for(post.link) %>"><%- post.title %> <i class="fa fa-external-link"></i></a>
+                        <% } else { %>
+                            <%- post.excerpt || post.content %>
+                        <% } %>
                     </div>
                 </div>
-                <% if (!post.link || post.comments) { %>
-                    <footer class="kratos-post-meta-new">
-                        <span class="pull-left">
-                            <a><i class="fa fa-calendar"></i></a><a><%- date(post.date, null) %></a>
+            </div>
+            <% if (!post.link || post.comments) { %>
+                <footer class="kratos-post-meta-new">
+                    <span class="pull-left">
+                        <a><i class="fa fa-calendar"></i></a><a><%- date(post.date, null) %></a>
+                        <% if (post.tags.length) { %>
+                            <a><i class="fa fa-tags"></i></a>
+                            <%- list_tags(post.tags, {
+                                show_count: false,
+                                style: 'none',
+                                amount: 3
+                            }) %>
+                        <% } %>
+                        <% if (theme.index.read_count) { %>
+                            <!-- 当前仅支持valine/waline自带的统计功能 -->
+                            <% if (/[vw]aline/.test(theme.posts.comments) && theme[theme.posts.comments].visitor) { %>
+                                <a id="<%- url_for(post.path) %>" class="leancloud_visitors" data-flag-title="<%- post.title %>">
+                                    <i class="fa fa-eye"></i>
+                                    <%- __('read_count', '<span class="leancloud-visitors-count"> </span>') %>
+                                </a>
+                            <% } %>
+                        <% } %>
+                        <% if (theme.index.comment_count) { %>
+                            <!-- 当前仅支持waline自带的统计功能 -->
+                            <% if (theme.posts.comments === 'waline') { %>
+                                <a>
+                                    <i class="fa fa-commenting-o"></i>
+                                    <%- __('comments_count', '<span data-xid="' + url_for(post.path) + '" class="waline-comment-count"> </span>') %>
+                                </a>
+                            <% } %>
+                        <% } %>
+                    </span>
+                    
+                    <% if (post.comments) { %>
+                        <span class="pull-right">
+                            <a class="read-more" href="<%- url_for(post.path) %>" title="<%- __('comment') %>"><%- __('comment') %><i class="fa fa-chevron-circle-right"></i></a>
+                        </span>
+                    <% } %>
+
+                </footer>
+            <% } %>
+        </article>
+    <% } else if (theme.index && theme.index.post_type) { %>
+        <article>
+            <div class="kratos-hentry kratos-post-inner clearfix index-post">
+                <div class="kratos-entry-thumb-new">
+                    <a href="<%- url_for(post.path) %>">
+                        <% if (post.pic) { %>
+                            <img class="kratos-entry-thumb-new-img" src="<%- post.pic.includes('://') ? post.pic : url_for(post.path + post.pic) %>">
+                        <% } %>
+                    </a>
+                </div>
+                <header class="kratos-entry-header">
+                    <h1 class="text-center"><a class="kratos-entry-title" href="<%- url_for(post.path) %>"><%- post.title %></a></h1>
+                    <% if (post.subtitle) { %>
+                        <h2 class="text-center"><%- post.subtitle %></h2>
+                    <% } %>
+                    <ul class="kratos-post-meta text-center">
+                        <li>
+                            <i class="fa fa-calendar"></i>
+                            <%- date(post.date, null) %>
+                        </li>
+                        <% if (post.categories.length) { %>
+                            <li>
+                                <i class="fa fa-folder"></i>
+                                <%- __('category_in') %>
+                                <%- list_categories(
+                                    post.categories, {
+                                        show_count: false, 
+                                        class: 'label', 
+                                        style: 'none'
+                                    }) %>
+                            </li>
+                        <% } %>
+                        <% if (post.tags.length) { %>
+                            <li>
+                                <i class="fa fa-tags"></i>
+                                <%- list_tags(post.tags, {
+                                    show_count: false,
+                                    style: 'none',
+                                    amount: 3
+                                }) %>
+                            </li>
+                        <% } %>
+                        <% if (theme.index.read_count) { %>
+                            <!-- 当前仅支持valine/waline自带的统计功能 -->
+                            <% if (/[vw]aline/.test(theme.posts.comments) && theme[theme.posts.comments].visitor) { %>
+                                <li id="<%- url_for(post.path) %>" class="leancloud_visitors" data-flag-title="<%- post.title %>">
+                                    <i class="fa fa-eye"></i>
+                                    <%- __('read_count', '<span class="leancloud-visitors-count"> </span>') %>
+                                </li>
+                            <% } %>
+                        <% } %>
+                        <% if (theme.index.comment_count) { %>
+                            <!-- 当前仅支持waline自带的统计功能 -->
+                            <% if (theme.posts.comments === 'waline') { %>
+                                <li>
+                                    <i class="fa fa-commenting-o"></i>
+                                    <%- __('comments_count', '<span data-xid="' + url_for(post.path) + '" class="waline-comment-count"> </span>') %>
+                                </li>
+                            <% } %>
+                        <% } %>
+                    </ul>
+                </header>
+                <hr />
+                <div class="kratos-post-content">
+                    <%- post.excerpt || post.content %>
+                </div>
+                <footer class="kratos-entry-footer clearfix">
+                    <div class="post-like-donate text-center clearfix">
+                        <a class="read-more" href="<%- url_for(post.path) %>#more" title="<%- post.title %>"><%- __('read_more') %> <i class="fa fa-chevron-circle-right"></i></a>
+                    </div>
+                </footer>
+            </div>
+        </article>
+    <% } else { %>
+        <article class="kratos-hentry clearfix">
+            <div class="kratos-entry-border-new clearfix">
+                <% if (post.sticky || post.top) { %>
+                    <div class="pin-top wrapper">
+                        <div class="pin-top inner"></div>
+                    </div>
+                <% } %>
+                <div class="kratos-entry-thumb-new">
+                    <a href="<%- url_for(post.path) %>">
+                        <% if (post.pic) { %>
+                            <img class="kratos-entry-thumb-new-img" src="<%- post.pic.includes('://') ? post.pic : url_for(post.path + post.pic) %>">
+                        <% } else { %>
+                            <img class="kratos-entry-thumb-new-img">
+                        <% } %>
+                    </a>
+                </div>
+                <div class="kratos-post-inner-new">
+                    <header class="kratos-entry-header-new">
+                            <%- list_categories(post.categories, {
+                                show_count: false,
+                                class: 'label',
+                                style: 'none',
+                                separator: ' '
+                            }) %>
+                        <h2 class="kratos-entry-title-new"><a href="<%- url_for(post.path) %>"><%- post.title %><% if (post.subtitle) { %><sub><%- post.subtitle %></sub><% } %></a>
+                    </header>
+                    <div class="kratos-entry-content-new">
+                        <p>
+                            <% if (post.excerpt) { %>
+                                <%- strip_html(post.excerpt) %>
+                            <% } else { %>
+                                <%- truncate(strip_html(post.content), {length: 120}) %>
+                            <% } %>
+                        </p>
+                    </div>
+                </div>
+                <footer class="kratos-post-meta-new">
+                    <span class="pull-left">
+                        <a>
+                            <i class="fa fa-calendar"></i>
+                            <%- date(post.date, null) %>
+                        </a>
+                        <a>
                             <% if (post.tags.length) { %>
-                                <a><i class="fa fa-tags"></i></a>
+                                <i class="fa fa-tags"></i>
                                 <%- list_tags(post.tags, {
                                     show_count: false,
                                     style: 'none',
                                     amount: 3
                                 }) %>
                             <% } %>
-                            <% if (theme.index.read_count) { %>
-                                <!-- 当前仅支持valine/waline自带的统计功能 -->
-                                <% if (/[vw]aline/.test(theme.posts.comments) && theme[theme.posts.comments].visitor) { %>
-                                    <a id="<%- url_for(post.path) %>" class="leancloud_visitors" data-flag-title="<%- post.title %>">
-                                        <i class="fa fa-eye"></i>
-                                        <%- __('read_count', '<span class="leancloud-visitors-count"> </span>') %>
-                                    </a>
-                                <% } %>
-                            <% } %>
-                            <% if (theme.index.comment_count) { %>
-                                <!-- 当前仅支持waline自带的统计功能 -->
-                                <% if (theme.posts.comments === 'waline') { %>
-                                    <a>
-                                        <i class="fa fa-commenting-o"></i>
-                                        <%- __('comments_count', '<span data-xid="' + url_for(post.path) + '" class="waline-comment-count"> </span>') %>
-                                    </a>
-                                <% } %>
-                            <% } %>
-                        </span>
-                        
-                        <% if (post.comments) { %>
-                            <span class="pull-right">
-                                <a class="read-more" href="<%- url_for(post.path) %>" title="<%- __('comment') %>"><%- __('comment') %><i class="fa fa-chevron-circle-right"></i></a>
-                            </span>
-                        <% } %>
-
-                    </footer>
-                <% } %>
-            </article>
-        <% } else if (theme.index && theme.index.post_type) { %>
-            <article>
-                <div class="kratos-hentry kratos-post-inner clearfix index-post">
-                    <div class="kratos-entry-thumb-new">
-                        <a href="<%- url_for(post.path) %>">
-                            <% if (post.pic) { %>
-                                <img class="kratos-entry-thumb-new-img" src="<%- post.pic.includes('://') ? post.pic : url_for(post.path + post.pic) %>">
-                            <% } %>
                         </a>
-                    </div>
-                    <header class="kratos-entry-header">
-                        <h1 class="text-center"><a class="kratos-entry-title" href="<%- url_for(post.path) %>"><%- post.title %></a></h1>
-                        <% if (post.subtitle) { %>
-                            <h2 class="text-center"><%- post.subtitle %></h2>
+                        <% if (theme.index.read_count) { %>
+                            <!-- 当前仅支持valine/waline自带的统计功能 -->
+                            <% if (/[vw]aline/.test(theme.posts.comments) && theme[theme.posts.comments].visitor) { %>
+                                <a id="<%- url_for(post.path) %>" class="leancloud_visitors" data-flag-title="<%- post.title %>">
+                                    <i class="fa fa-eye"></i>
+                                    <%- __('read_count', '<span class="leancloud-visitors-count"> </span>') %>
+                                </a>
+                            <% } %>
                         <% } %>
-                        <ul class="kratos-post-meta text-center">
-                            <li>
-                                <i class="fa fa-calendar"></i>
-                                <%- date(post.date, null) %>
-                            </li>
-                            <% if (post.categories.length) { %>
-                                <li>
-                                    <i class="fa fa-folder"></i>
-                                    <%- __('category_in') %>
-                                    <%- list_categories(
-                                        post.categories, {
-                                            show_count: false, 
-                                            class: 'label', 
-                                            style: 'none'
-                                        }) %>
-                                </li>
+                        <% if (theme.index.comment_count) { %>
+                            <!-- 当前仅支持waline自带的统计功能 -->
+                            <% if (theme.posts.comments === 'waline') { %>
+                                <a>
+                                    <i class="fa fa-commenting-o"></i>
+                                    <%- __('comments_count', '<span data-xid="' + url_for(post.path) + '" class="waline-comment-count"> </span>') %>
+                                </a>
                             <% } %>
-                            <% if (post.tags.length) { %>
-                                <li>
-                                    <i class="fa fa-tags"></i>
-                                    <%- list_tags(post.tags, {
-                                        show_count: false,
-                                        style: 'none',
-                                        amount: 3
-                                    }) %>
-                                </li>
-                            <% } %>
-                            <% if (theme.index.read_count) { %>
-                                <!-- 当前仅支持valine/waline自带的统计功能 -->
-                                <% if (/[vw]aline/.test(theme.posts.comments) && theme[theme.posts.comments].visitor) { %>
-                                    <li id="<%- url_for(post.path) %>" class="leancloud_visitors" data-flag-title="<%- post.title %>">
-                                        <i class="fa fa-eye"></i>
-                                        <%- __('read_count', '<span class="leancloud-visitors-count"> </span>') %>
-                                    </li>
-                                <% } %>
-                            <% } %>
-                            <% if (theme.index.comment_count) { %>
-                                <!-- 当前仅支持waline自带的统计功能 -->
-                                <% if (theme.posts.comments === 'waline') { %>
-                                    <li>
-                                        <i class="fa fa-commenting-o"></i>
-                                        <%- __('comments_count', '<span data-xid="' + url_for(post.path) + '" class="waline-comment-count"> </span>') %>
-                                    </li>
-                                <% } %>
-                            <% } %>
-                        </ul>
-                    </header>
-                    <hr />
-                    <div class="kratos-post-content">
-                        <%- post.excerpt || post.content %>
-                    </div>
-                    <footer class="kratos-entry-footer clearfix">
-                        <div class="post-like-donate text-center clearfix">
-                            <a class="read-more" href="<%- url_for(post.path) %>#more" title="<%- post.title %>"><%- __('read_more') %> <i class="fa fa-chevron-circle-right"></i></a>
-                        </div>
-                    </footer>
-                </div>
-            </article>
-        <% } else { %>
-            <article class="kratos-hentry clearfix">
-                <div class="kratos-entry-border-new clearfix">
-                    <% if (post.sticky || post.top) { %>
-                        <div class="pin-top wrapper">
-                            <div class="pin-top inner"></div>
-                        </div>
-                    <% } %>
-                    <div class="kratos-entry-thumb-new">
-                        <a href="<%- url_for(post.path) %>">
-                            <% if (post.pic) { %>
-                                <img class="kratos-entry-thumb-new-img" src="<%- post.pic.includes('://') ? post.pic : url_for(post.path + post.pic) %>">
-                            <% } else { %>
-                                <img class="kratos-entry-thumb-new-img">
-                            <% } %>
-                        </a>
-                    </div>
-                    <div class="kratos-post-inner-new">
-                        <header class="kratos-entry-header-new">
-                                <%- list_categories(post.categories, {
-                                    show_count: false,
-                                    class: 'label',
-                                    style: 'none',
-                                    separator: ' '
-                                }) %>
-                            <h2 class="kratos-entry-title-new"><a href="<%- url_for(post.path) %>"><%- post.title %><% if (post.subtitle) { %><sub><%- post.subtitle %></sub><% } %></a>
-                        </header>
-                        <div class="kratos-entry-content-new">
-                            <p>
-                                <% if (post.excerpt) { %>
-                                    <%- strip_html(post.excerpt) %>
-                                <% } else { %>
-                                    <%- truncate(strip_html(post.content), {length: 120}) %>
-                                <% } %>
-                            </p>
-                        </div>
-                    </div>
-                    <footer class="kratos-post-meta-new">
-                        <span class="pull-left">
-                            <a>
-                                <i class="fa fa-calendar"></i>
-                                <%- date(post.date, null) %>
-                            </a>
-                            <a>
-                                <% if (post.tags.length) { %>
-                                    <i class="fa fa-tags"></i>
-                                    <%- list_tags(post.tags, {
-                                        show_count: false,
-                                        style: 'none',
-                                        amount: 3
-                                    }) %>
-                                <% } %>
-                            </a>
-                            <% if (theme.index.read_count) { %>
-                                <!-- 当前仅支持valine/waline自带的统计功能 -->
-                                <% if (/[vw]aline/.test(theme.posts.comments) && theme[theme.posts.comments].visitor) { %>
-                                    <a id="<%- url_for(post.path) %>" class="leancloud_visitors" data-flag-title="<%- post.title %>">
-                                        <i class="fa fa-eye"></i>
-                                        <%- __('read_count', '<span class="leancloud-visitors-count"> </span>') %>
-                                    </a>
-                                <% } %>
-                            <% } %>
-                            <% if (theme.index.comment_count) { %>
-                                <!-- 当前仅支持waline自带的统计功能 -->
-                                <% if (theme.posts.comments === 'waline') { %>
-                                    <a>
-                                        <i class="fa fa-commenting-o"></i>
-                                        <%- __('comments_count', '<span data-xid="' + url_for(post.path) + '" class="waline-comment-count"> </span>') %>
-                                    </a>
-                                <% } %>
-                            <% } %>
-                        </span>
-                        <span class="pull-right">
-                            <a class="read-more" href="<%- url_for(post.path) %>" title="<%- __('read_full') %>"><%- __('read_full') %><i class="fa fa-chevron-circle-right"></i></a>
-                        </span>
-                    </footer>
-                </div>
-            </article>
-        <% } %>
-    <% }) %>
-    
-    <% if (page.total > 1) { %>
-        <div class='text-center pagination'>
-        <%- paginator({prev_text: '<i class="fa fa-angle-left"></i>', next_text: '<i class="fa fa-angle-right"></i>', escape: false}) %>
-        </div>
+                        <% } %>
+                    </span>
+                    <span class="pull-right">
+                        <a class="read-more" href="<%- url_for(post.path) %>" title="<%- __('read_full') %>"><%- __('read_full') %><i class="fa fa-chevron-circle-right"></i></a>
+                    </span>
+                </footer>
+            </div>
+        </article>
     <% } %>
-</section>
+<% }) %>
+
+<% if (page.total > 1) { %>
+    <div class='text-center pagination'>
+    <%- paginator({prev_text: '<i class="fa fa-angle-left"></i>', next_text: '<i class="fa fa-angle-right"></i>', escape: false}) %>
+    </div>
+<% } %>
 
 <% if (theme.index.read_count || theme.index.comment_count) { %>
     <div class="hidden">

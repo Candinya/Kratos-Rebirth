@@ -1,20 +1,18 @@
-<section class="col-md-8">
-    <article>
-        <div class="kratos-hentry kratos-post-inner clearfix">
-            <div class="kratos-post-content">
-                <h2 class="title-h2 text-center"><%- page.title %></h2>
-                <%- page.content %>
-            </div>
-            <footer class="kratos-entry-footer clearfix">
-                <div class="footer-tag clearfix">
-                    <div class="pull-date">
-                    <span><%- __('last_modify') %><%- date(page.updated) %></span>
-                    </div>
-                </div>
-            </footer>
+<article>
+    <div class="kratos-hentry kratos-post-inner clearfix">
+        <div class="kratos-post-content">
+            <h2 class="title-h2 text-center"><%- page.title %></h2>
+            <%- page.content %>
         </div>
-        <% if (theme.posts.comments && page.comments) { %>
-            <%- partial('_comments/' + theme.posts.comments) %>
-        <% } %>
-    </article>
-</section>
+        <footer class="kratos-entry-footer clearfix">
+            <div class="footer-tag clearfix">
+                <div class="pull-date">
+                <span><%- __('last_modify') %><%- date(page.updated) %></span>
+                </div>
+            </div>
+        </footer>
+    </div>
+    <% if (theme.posts.comments && page.comments) { %>
+        <%- partial('_comments/' + theme.posts.comments) %>
+    <% } %>
+</article>
