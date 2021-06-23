@@ -1401,6 +1401,8 @@ ul.kratos-post-meta {
   margin-left: 255px;
   height: 160px;
   padding: 21px 20px 0 3px;
+  overflow: hidden;
+  text-overflow: ellipsis;
 
   header .label-link {
     position: relative;
@@ -1631,9 +1633,7 @@ ul.kratos-post-meta {
   }
 
   &-new {
-    overflow: hidden;
     text-overflow: ellipsis;
-    height: 100px;
 
     p {
       font-size: 15px
