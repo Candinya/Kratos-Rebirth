@@ -49,7 +49,7 @@ hexo的官方渲染器现在也已经支持文章置顶啦，配置`Front-Matter
 
 您可以使用 `npm run build` 或是 `yarn build` 来构建一次静态文件。
 
-同时，为方便变化内容实时更新和多浏览器测试开发，您可以使用 `npm run watch` 或是 `yarn watch` 来运行。我们也有引入 Browser Sync 功能方便地在多个浏览器上查看变化，**推荐**您在 Hexo 启动后运行该指令。
+同时，为方便变化内容实时更新和多浏览器测试开发，您可以使用 `npm run dev` 或是 `yarn dev` 来运行。我们也有引入 Browser Sync 功能方便地在多个浏览器上查看变化，**推荐**您在 Hexo 启动后运行该指令。
 
 ## 💮 非常感谢
 
