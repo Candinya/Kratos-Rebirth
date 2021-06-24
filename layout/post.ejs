@@ -38,9 +38,9 @@
             <div id="expire-alert" class="alert alert-warning hidden" role="alert">
                 <%- __('last_modify_alert', '<time datetime="' + page.updated + '"></time>') %>
             </div>
-            <% if (page.toc && strip_html(toc(page.content))) { %>
+            <% if (!theme.mobile_toc?.hide && page.toc && strip_html(toc(page.content))) { %>
                 <div class="kratos-post-inner-toc">
-                    <%- toc(page.content) %>
+                    <%- toc(page.content, { list_number: !theme.mobile_toc?.hide_id }) %>
                 </div>
             <% } %>
             <hr />

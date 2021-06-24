@@ -109,6 +109,9 @@ widgets:
 - tagcloud
 - posts
 avatarUri: /images/avatar.webp
+mobile_toc: 
+  hide: false
+  hide_id: false
 
 # Fancybox 文章内图片单击放大
 fancybox: true
