@@ -4,9 +4,19 @@
     <body class="custom-background">
         <%- partial('_partial/header') %>
 
-        <section class="col-md-<%- (theme.sidebar === 'left' || theme.sidebar === 'right') ? '8' : '12' %>">
+        <% if (page.type !== "404") { %>
+
+            <section class="col-md-<%- (theme.sidebar === 'left' || theme.sidebar === 'right') ? '8' : '12' %>">
+
+        <% } %>
+
             <%- body %>
-        </section>
+
+        <% if (page.type !== "404") { %>
+
+            </section>
+
+        <% } %>
 
         <%- partial('_partial/footer') %>
         <%- partial('_partial/after-footer') %>
