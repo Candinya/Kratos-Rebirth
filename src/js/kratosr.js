@@ -415,7 +415,7 @@ ${kr.copyrightNotice}
                 // 获取链接地址
                 const titleText = decodeURI(linkItem.getAttribute('href'));
                 // 获取目标标题高度
-                const titleHeight = document.querySelector(titleText).offsetTop;
+                const titleHeight = document.getElementById(titleText.replace('#', '')).offsetTop;
                 // 压入记录
                 tocHeightMap.push({
                     h: titleHeight,
