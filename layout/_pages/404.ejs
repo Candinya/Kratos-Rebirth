@@ -43,14 +43,14 @@
 <div class="page404">
     <div class="kratos-hentry kratos-post-inner clearfix">
         <div class="col-md-7">
-            <img src="/images/404.webp">
+            <img src="<%- url_cdn('images/404.webp') %>">
         </div>
         <div class="col-md-5 text-center errtxt">
             <h3>这个页面搬家啦</h3>
             <h5>要不要试着回到主页找一找呢~</h5>
             <p>
                 <a href="javascript:history.go(-1)" class="back-p">返回上页</a>
-                <a href="/" class="back-index">返回主页</a>
+                <a href="<%- url_for() %>" class="back-index">返回主页</a>
             </p>
         </div>
     </div>
