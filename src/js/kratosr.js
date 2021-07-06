@@ -152,13 +152,10 @@ window.cancelIdleCallback = window.cancelIdleCallback || function(id) {
         // 图片
         const imageboxs = document.getElementsByClassName("kratos-entry-thumb-new-img");
         let prefix = kr.site_root;
-        if (kr.picCDN || (kr.pic && kr.pic.CDN)) {
+        if (kr.picCDN || kr.pic?.CDN) {
             prefix = "//cdn.jsdelivr.net/gh/Candinya/Kratos-Rebirth@latest/source/";
         }
-        let randomAmount = 20;
-        if (kr.pic && parseInt(kr.pic.random_amount)) {
-            randomAmount = parseInt(kr.pic.random_amount);
-        }
+        const randomAmount = parseInt(kr.pic?.random_amount) || 20;
         let picFileNameTemplate = "images/thumb/thumb_{no}.webp";
         if (kr.pic && kr.pic.filename) {
             if (kr.pic.filename.includes('//')) {
@@ -169,13 +166,57 @@ window.cancelIdleCallback = window.cancelIdleCallback || function(id) {
                 picFileNameTemplate = prefix + kr.pic.filename;
             }
         }
+        const usedPics = new Array(randomAmount + 1);
+
+        const generateNewPicID = () => {
+            let remailFailCounts = 5; // set max fail counts
+            let picNo;
+            while (remailFailCounts > 0) {
+                // rand one
+                picNo = Math.floor(Math.random() * randomAmount + 1);
+                if (!usedPics[picNo]) {
+                    // valid
+                    break;
+                } else {
+                    // fails
+                    remailFailCounts--;
+                }
+            }
+
+            if (remailFailCounts <= 0) {
+                // rand failed, find one manually
+                picNo = -1;
+                for (let i = 1; i <= randomAmount; i++) {
+                    if (!usedPics[i]) {
+                        // use first
+                        picNo = i;
+                        break;
+                    }
+                }
+                if (picNo === -1) {
+                    // All used
+                    // clear all
+                    for (let i = 1; i <= randomAmount; i++) {
+                        usedPics[i] = false;
+                    }
+                    // rand one
+                    picNo = Math.floor(Math.random() * randomAmount + 1);
+                }
+            }
+
+            // mark as used
+            usedPics[picNo] = true;
+            
+            // return
+            return picNo;
+        }
+
         for (let i = 0, len = imageboxs.length; i < len; i++) {
             if (!($(imageboxs[i]).attr("src"))) {
-                const picNo = Math.floor(Math.random() * randomAmount + 1);
+                const picNo = generateNewPicID();
                 const picFileName = picFileNameTemplate.replace("{no}", picNo.toString());
                 $(imageboxs[i]).attr("src", picFileName);
-            }
-                
+            } 
         }
     };
 
