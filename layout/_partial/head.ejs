@@ -59,5 +59,21 @@
   <% if (theme.posts.share) { %>
     <script src="https://cdn.jsdelivr.net/npm/qrcode_js@1.0.0/qrcode.min.js"></script>
   <% } %>
+  <% if (theme.customStyles) { %>
+  <style>
+    <% if (theme.customStyles.images?.banner) { %>
+      .kratos-cover.kratos-cover-2 {
+        background-image: url('<%- theme.customStyles.images?.banner %>');
+      }
+    <% } %>
+    <% if (theme.customStyles.images?.background) { %>
+      @media(min-width:768px) {
+        body.custom-background {
+          background-image: url('<%- theme.customStyles.images?.background %>');
+        }
+      }
+    <% } %>
+  </style>
+  <% } %>
 </head>
 

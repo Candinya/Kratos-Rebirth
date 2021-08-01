@@ -44,6 +44,14 @@ toc: true
 
 - **check_update** (*true/false*)版本更新检查，无需检查的话就记得关闭哦。
 
+### - Custom Styles 自定义样式
+
+这部分配置的内容可以覆盖 CSS 文件中指定的部分。
+
+- **images** 图片
+  - **banner** 站点横幅
+  - **background** 站点背景
+
 ### - Index 首页配置相关
 
 - **post_type** (*true/false*)站点首页是否使用文章主题的显示模式（即一开始可见一部分，点击阅读更多可以加载全文，Hexo许多主题都默认的显示模式（而不是默认的这种卡片式的陈列方式）
