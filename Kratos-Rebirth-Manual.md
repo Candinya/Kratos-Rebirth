@@ -36,6 +36,8 @@ toc: true
 
 - **snow** : (*true/false*)站点下雪特效开关，控制是否在载入下雪相关的代码。
 
+- **click_animate_js** : (<i>**filename**/false</i>) 点击事件使用的动画 js 文件，默认为 `candy` 即主题自带的 `candy.js` 文件，您可以设置成 false 表示禁用，或是引入其他您喜欢的动画 js 文件。
+
 - **enable_dark** : (*true/false*)站点是否启用暗色模式适配。请注意，即使启用了暗色模式，在亮色的环境下主题仍然会渲染为亮色模式；同时用户可以手动选择使用的颜色（右下角菜单栏按钮处）。
 
 - **highlight_theme** : 代码高亮主题，五选一（light | night | night-eighties | night-blue | night-bright），控制代码高亮时候使用的配色。会根据用户的选择自动加载对应的高亮主题文件。

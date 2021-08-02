@@ -7,7 +7,10 @@
         <script async type="text/javascript" src="<%- url_cdn('js/snow.min.js') %>"></script>
     </div>
 <% } %>
-<script async src="<%- url_cdn('js/candy.min.js') %>"></script>
+<% if (theme.click_animate_js) { %>
+    <script async src="<%- url_cdn('js/' + theme.click_animate_js + '.min.js') %>"></script>
+<% } %>
+
 <% if (theme.aplayer.enabled) { %>
     <script defer src="https://cdn.jsdelivr.net/npm/aplayer@1.10.1/dist/APlayer.min.js"></script>
     <%- partial('../_tools/player') %>
