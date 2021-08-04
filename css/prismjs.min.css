@@ -1,0 +1,2 @@
+@charset "UTF-8";pre{border-radius:8px;padding-top:30px!important;position:relative}pre::before{content:" ";position:absolute;border-radius:50%;background-color:#fc625d;width:12px;height:12px;left:10px;top:10px;-webkit-box-shadow:20px 0 #fdbc40,40px 0 #35cd4b;box-shadow:20px 0 #fdbc40,40px 0 #35cd4b}
+/*# sourceMappingURL=../maps/prismjs.min.css.map */
