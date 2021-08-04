@@ -7,6 +7,8 @@ hexo.theme.on('processAfter', () => {
         return;
     }
 
+    const defaultAvatar = 'https://cdn.jsdelivr.net/gh/Candinya/Kratos-Rebirth/source/images/avatar.webp';
+
     // Module模式
     const friendsModule = 
 `<div class="linkpage">
@@ -19,7 +21,7 @@ hexo.theme.on('processAfter', () => {
     let friendNodes = '';
     while (flist.length > 0) {
         const rndNum = Math.floor(Math.random()*flist.length);
-        friendNodes += \`<li><a target="_blank" href="\${flist[rndNum].link}"><img src="\${flist[rndNum].avatar}"><h4>\${flist[rndNum].name}</h4><p>\${flist[rndNum].bio}</p></a></li>\`;
+        friendNodes += \`<li><a target="_blank" href="\${flist[rndNum].link}"><img src="\${flist[rndNum].avatar || '${defaultAvatar}'}"><h4>\${flist[rndNum].name}</h4><p>\${flist[rndNum].bio || ''}</p></a></li>\`;
         flist.splice(rndNum, 1);
     }
     document.getElementById("friendsList").innerHTML = friendNodes;
