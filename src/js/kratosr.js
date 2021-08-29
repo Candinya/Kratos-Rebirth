@@ -27,7 +27,7 @@ window.cancelIdleCallback = window.cancelIdleCallback || function(id) {
 (()=>{
     const loadConfig = (cb) => {
         // 读取配置文件
-        fetch('/config/main.json')
+        fetch((window.kr?.siteRoot || '/') + 'config/main.json')
             .then((res) => {
                 return res.json();
             })
@@ -151,7 +151,7 @@ window.cancelIdleCallback = window.cancelIdleCallback || function(id) {
     const setrandpic = ()=>{
         // 图片
         const imageboxs = document.getElementsByClassName("kratos-entry-thumb-new-img");
-        let prefix = kr.site_root;
+        let prefix = window.kr?.siteRoot || '/';
         if (kr.picCDN || kr.pic?.CDN) {
             prefix = "//cdn.jsdelivr.net/gh/Candinya/Kratos-Rebirth@latest/source/";
         }

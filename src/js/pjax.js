@@ -1,6 +1,6 @@
 $(function() {
     const mainElement = '#kratos-blog-post .row';
-    theTop = notMobile ? $("#kratos-blog-post").offset().top-40 : 0;
+    theTop = window.kr?.notMobile ? $("#kratos-blog-post").offset().top-40 : 0;
 
     const popStateHandler = (e) => {
         if ( e.state ) {

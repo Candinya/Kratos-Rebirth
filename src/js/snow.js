@@ -1,5 +1,5 @@
 // 移动端默认关闭
-notMobile && (()=>{
+window.kr?.notMobile && (()=>{
     let snowConf = {};
     //-------------------参数设置区 开始-------------------
         snowConf.flakeCount = 100;
