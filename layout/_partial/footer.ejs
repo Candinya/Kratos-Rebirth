@@ -6,32 +6,6 @@
 </div>
 <footer>
     <div id="footer" <% if (theme.aplayer.enabled) { %> class="ap-lrc" <% } %> >
-        <div class="kr-tool text-center">
-            <div class="tool">
-                <% if (theme.search.enable) { %>
-                    <div class="box search-box">
-                        <a href="<%- config.root %>search/">
-                            <span class="fa fa-search"></span>
-                        </a>
-                    </div>
-                <% } %>
-                <% if (theme.enable_dark) { %>
-                    <div class="box theme-box" id="darkmode-switch">
-                        <span class="fa fa-adjust"></span>
-                    </div>
-                <% } %>
-                <% if (theme.group_link) { %>
-                    <div class="box group-box">
-                        <a href="<%- theme.group_link %>" target="_blank" rel="nofollow">
-                            <span class="fa fa-users"></span>
-                        </a>
-                    </div>
-                <% } %>
-            </div>
-            <div class="box gotop-box">
-                <span class="fa fa-chevron-up"></span>
-            </div>
-        </div>
         <div class="container">
             <div class="row">
                 <div class="col-md-6 col-md-offset-3 footer-list text-center">
@@ -65,6 +39,32 @@
                         </div>
                     </ul>
                 </div>
+            </div>
+        </div>
+        <div class="kr-tool text-center">
+            <div class="tool">
+                <% if (theme.search.enable) { %>
+                    <div class="box search-box">
+                        <a href="<%- config.root %>search/">
+                            <span class="fa fa-search"></span>
+                        </a>
+                    </div>
+                <% } %>
+                <% if (theme.enable_dark) { %>
+                    <div class="box theme-box" id="darkmode-switch">
+                        <span class="fa fa-adjust"></span>
+                    </div>
+                <% } %>
+                <% if (theme.group_link) { %>
+                    <div class="box group-box">
+                        <a href="<%- theme.group_link %>" target="_blank" rel="nofollow">
+                            <span class="fa fa-users"></span>
+                        </a>
+                    </div>
+                <% } %>
+            </div>
+            <div class="box gotop-box">
+                <span class="fa fa-chevron-up"></span>
             </div>
         </div>
     </div>
