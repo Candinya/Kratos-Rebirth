@@ -114,7 +114,7 @@ label:
 
 - **share** : (*true/false*)控制文章页面是否显示分享链接的按钮
 
-- **comments** : (*disqus/disqusjs/valine/twikoo/waline/false*)会从`layout/_comments`文件夹中加载指定的评论系统，您也可以自定义其他的解决方案。如果不想开启评论的话，那就还是设置为false吧\~
+- **comments** : (*disqus/disqusjs/valine/twikoo/waline/gitalk/false*)会从`layout/_comments`文件夹中加载指定的评论系统，您也可以自定义其他的解决方案。如果不想开启评论的话，那就还是设置为false吧\~
 
 ### - Disqus 评论相关
 
@@ -158,7 +158,7 @@ label:
 
 ### - Gitalk 评论相关
 
-这里使用了[Gitalk](https://gitalk.github.io/)这个项目，具体的参数配置相关的可以参考[Gitalk 文档]((https://github.com/gitalk/gitalk/blob/master/readme-cn.md#%E8%AE%BE%E7%BD%AE))，自行调整相关前后端的配置。在该配置段下的内容都会被自动引入至评论模块中。id 会在页面自动生成，不必加入。
+这里使用了[Gitalk](https://gitalk.github.io/)这个项目，具体的参数配置相关的可以参考[Gitalk 文档](https://github.com/gitalk/gitalk/blob/master/readme-cn.md#%E8%AE%BE%E7%BD%AE)，自行调整相关前后端的配置。在该配置段下的内容都会被自动引入至评论模块中。id 会在页面自动生成，不必加入。
 
 ### - APlayer 音乐播放器相关（页面左下角）
 
