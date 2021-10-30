@@ -156,6 +156,10 @@ label:
 
 这里使用了[Waline](https://waline.js.org/)这个项目，具体的参数配置相关的可以参考Waline文档的[前端配置](https://waline.js.org/client/basic.html)段，自行调整相关前后端的配置。在该配置段下的内容都会被自动引入至评论模块中。el 和 path 会在页面自动生成，不必加入。
 
+### - Gitalk 评论相关
+
+这里使用了[Gitalk](https://gitalk.github.io/)这个项目，具体的参数配置相关的可以参考[Gitalk 文档]((https://github.com/gitalk/gitalk/blob/master/readme-cn.md#%E8%AE%BE%E7%BD%AE))，自行调整相关前后端的配置。在该配置段下的内容都会被自动引入至评论模块中。id 会在页面自动生成，不必加入。
+
 ### - APlayer 音乐播放器相关（页面左下角）
 
 - **enabled** : (*true/false*)用音乐来点缀全新的体验吧！这里可以选择是否开启aplayer播放器哦\~

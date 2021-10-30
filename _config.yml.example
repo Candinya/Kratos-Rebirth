@@ -96,6 +96,18 @@ waline:
   serverURL: #后端服务器地址，必填
   visitor: true
 
+# Gitalk [Gitalk](https://gitalk.github.io/) 评论相关
+## 不仅限于以下内容，您可以参照 [Gitalk 文档](https://github.com/gitalk/gitalk/blob/master/readme-cn.md#%E8%AE%BE%E7%BD%AE) 设置您需要的配置项
+## id 会在页面自动生成，不必加入
+gitalk:
+  clientID: 'GitHub Application Client ID'
+  clientSecret: 'GitHub Application Client Secret'
+  repo: 'GitHub repo'
+  owner: 'GitHub repo owner'
+  admin: 
+    - 'Candinya'
+  distractionFreeMode: false
+
 # APlayer 左下角音乐播放器
 aplayer:
   enabled: true
