@@ -43,6 +43,7 @@
 - [Valine](https://valine.js.org)
 - [Twikoo](https://twikoo.js.org)
 - [Waline](https://waline.js.org)
+- [Gitalk](https://gitalk.github.io/)
 
 ## 🍩 二次开发相关
 
