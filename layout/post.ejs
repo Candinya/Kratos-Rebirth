@@ -46,7 +46,7 @@
             <hr />
             <%- page.content %>
         </div>
-        <% if (theme.posts.show_cc) { %>
+        <% if (typeof page.show_cc !== 'undefined' ? page.show_cc : theme.posts.show_cc) { %>
             <div class="kratos-copyright text-center clearfix">
                 <h5><%- __('use_cc4_license') %></h5>
             </div>
