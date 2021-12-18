@@ -374,7 +374,7 @@ toc: true
 
 TYPE是面板框的类型，可以是：
 
-- successs
+- success
 - danger
 - info
 - warning
