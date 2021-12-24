@@ -74,6 +74,7 @@ jobs:
         sed -i "s|comments:|comments: valine|"                                "themes/kratos-rebirth/_config.yml"
         sed -i "s|app_id:|app_id: ${VALINE_APPID}|"                           "themes/kratos-rebirth/_config.yml"
         sed -i "s|app_key:|app_key: ${{ secrets.VALINE_APPKEY }}|"            "themes/kratos-rebirth/_config.yml"
+        sed -i "s|cdn: false|cdn: unpkg|"                                     "themes/kratos-rebirth/_config.yml"
     
     # Set Pages CNAME file
     - name: Set github pages CNAME file
