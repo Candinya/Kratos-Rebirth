@@ -159,7 +159,7 @@ window.cancelIdleCallback = window.cancelIdleCallback || function(id) {
                     break;
                 case 'jsdelivr':
                 default:
-                    prefix = "//cdn.jsdelivr.net/npm/Kratos-Rebirth@latest/source/";
+                    prefix = "//cdn.jsdelivr.net/npm/kratos-rebirth@latest/source/";
                     break;
             }
         }
