@@ -7,7 +7,7 @@ hexo.theme.on('processAfter', () => {
         return;
     }
 
-    const defaultAvatar = 'https://cdn.jsdelivr.net/gh/Candinya/Kratos-Rebirth/source/images/avatar.webp';
+    const defaultAvatar = '<%- url_cdn("images/avatar.webp") %>';
 
     // Module模式
     const friendsModule = 

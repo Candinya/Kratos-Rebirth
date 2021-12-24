@@ -1,5 +1,5 @@
-<script defer src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.4/dist/js/bootstrap.min.js"></script>
-<script defer src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.js"></script>
+<script defer src="<%- url_npm_cdn('bootstrap@3.3.4/dist/js/bootstrap.min.js') %>"></script>
+<script defer src="<%- url_npm_cdn('nprogress@0.2.0/nprogress.js') %>"></script>
 <script>
     if (!window.kr) {
         window.kr = {};
@@ -18,17 +18,17 @@
 <% } %>
 
 <% if (theme.aplayer.enabled) { %>
-    <script defer src="https://cdn.jsdelivr.net/npm/aplayer@1.10.1/dist/APlayer.min.js"></script>
+    <script defer src="<%- url_npm_cdn('aplayer@1.10.1/dist/APlayer.min.js') %>"></script>
     <%- partial('../_tools/player') %>
 <% }%>
 <% if (page.type !== '404' && theme.fancybox){ %>
-    <script defer src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+    <script defer src="<%- url_npm_cdn('@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js') %>"></script>
 <% } %>
-<script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js"></script>
+<script defer src="<%- url_npm_cdn('clipboard@2.0.6/dist/clipboard.min.js') %>"></script>
 <script defer src="<%- url_cdn('js/kratosr.min.js') %>"></script>
 <script defer src="<%- url_cdn('js/pjax.min.js') %>"></script>
 <% if (page.type !== '404' && theme.posts.donate) { %>
-    <script defer src="https://cdn.jsdelivr.net/npm/layui-src@2.5.5/dist/layui.all.js"></script>
+    <script defer src="<%- url_npm_cdn('layui-src@2.5.5/dist/layui.all.js') %>"></script>
 <% } %>
 <% if (theme.enable_dark) { %>
     <script defer src="<%- url_cdn('js/kr-dark.min.js') %>"></script>

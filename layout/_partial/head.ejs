@@ -40,24 +40,24 @@
   <% if (config.prismjs && config.prismjs.enable) { %>
     <link rel="stylesheet" id="prismjs-css" href="<%- url_cdn('css/prismjs.min.css') %>" type="text/css" media="all">
   <% } %>
-  <link rel="stylesheet" id="fontawe-css" href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" type="text/css" media="all">
-  <link rel="stylesheet" id="nprogress-css" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" type="text/css" media="all">
+  <link rel="stylesheet" id="fontawe-css" href="<%- url_npm_cdn('font-awesome@4.7.0/css/font-awesome.min.css') %>" type="text/css" media="all">
+  <link rel="stylesheet" id="nprogress-css" href="<%- url_npm_cdn('nprogress@0.2.0/nprogress.min.css') %>" type="text/css" media="all">
   <% if (theme.posts.comments == 'disqusjs') { %>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/disqusjs@1.2.6/dist/disqusjs.css">
+    <link rel="stylesheet" href="<%- url_npm_cdn('disqusjs@1.2.6/dist/disqusjs.css') %>">
   <% } %>
   <% if (theme.aplayer.enabled) { %>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer@1.10.1/dist/APlayer.min.css">
+    <link rel="stylesheet" href="<%- url_npm_cdn('aplayer@1.10.1/dist/APlayer.min.css') %>">
   <% }%>
   <% if (theme.fancybox){ %>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css">
+    <link rel="stylesheet" href="<%- url_npm_cdn('@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css') %>">
   <% } %>
   <% if (theme.enable_dark) { %>
     <link rel="stylesheet" id="darkmode-css" href="<%- url_cdn('css/kr-dark.min.css') %>" type="text/css" media="all">
   <% } %>
   <!-- 不得不预先加载的一些JS文件 -->
-  <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
+  <script src="<%- url_npm_cdn('jquery@3.6.0/dist/jquery.min.js') %>"></script>
   <% if (theme.posts.share) { %>
-    <script src="https://cdn.jsdelivr.net/npm/qrcode_js@1.0.0/qrcode.min.js"></script>
+    <script src="<%- url_npm_cdn('qrcode_js@1.0.0/qrcode.min.js') %>"></script>
   <% } %>
   <% if (theme.customStyles) { %>
   <style>

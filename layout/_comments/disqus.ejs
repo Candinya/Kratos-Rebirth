@@ -6,7 +6,7 @@
         this.page.identifier = '<%- page.path %>'; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
     };
     var load_comm = () => {
-        if (typeof DISQUS == 'undefined') {
+        if (typeof DISQUS === 'undefined') {
             var d = document, s = d.createElement('script');
             s.src = 'https://<%- theme.disqus.shortname %>.disqus.com/embed.js';
             s.setAttribute('data-timestamp', +new Date());

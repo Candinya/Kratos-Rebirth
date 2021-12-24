@@ -11,8 +11,8 @@
                 path: '<%- url_for(page.path) %>'
             });
         }
-        if (typeof Valine == 'undefined') {
-            const src = 'https://cdn.jsdelivr.net/npm/valine@1.4.14/dist/Valine.min.js';
+        if (typeof Valine === 'undefined') {
+            const src = '<%- url_npm_cdn("valine@1.4.14/dist/Valine.min.js") %>';
             $.getScript(src, init);
         } else {
             init();

@@ -153,7 +153,15 @@ window.cancelIdleCallback = window.cancelIdleCallback || function(id) {
         const imageboxs = document.getElementsByClassName("kratos-entry-thumb-new-img");
         let prefix = window.kr?.siteRoot || '/';
         if (kr.picCDN || kr.pic?.CDN) {
-            prefix = "//cdn.jsdelivr.net/gh/Candinya/Kratos-Rebirth@latest/source/";
+            switch (kr.picCDN) {
+                case 'unpkg':
+                    prefix = "//unpkg.com/kratos-rebirth@latest/source/";
+                    break;
+                case 'jsdelivr':
+                default:
+                    prefix = "//cdn.jsdelivr.net/npm/Kratos-Rebirth@latest/source/";
+                    break;
+            }
         }
         const randomAmount = parseInt(kr.pic?.random_amount) || 20;
         let picFileNameTemplate = "images/thumb/thumb_{no}.webp";

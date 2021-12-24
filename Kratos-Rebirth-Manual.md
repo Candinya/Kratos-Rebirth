@@ -42,7 +42,7 @@ toc: true
 
 - **highlight_theme** : 代码高亮主题，五选一（light | night | night-eighties | night-blue | night-bright），控制代码高亮时候使用的配色。会根据用户的选择自动加载对应的高亮主题文件。
 
-- **cdn** (*true/false*)为静态资源开启CDN加速（使用jsDelivr）。请注意，如果您修改了任何静态资源，那么请保持此项为false（同时也是默认状态）
+- **cdn** (*jsdelivr/unpkg/false*)为静态资源开启CDN加速（使用jsDelivr或是unpkg，如果开启则默认使用jsdelivr，有其他什么好建议可以随时提出issue）。请注意，如果您修改了任何静态资源，那么请保持此项为false（同时也是默认状态）
 
 - **check_update** (*true/false*)版本更新检查，无需检查的话就记得关闭哦。
 
@@ -206,7 +206,7 @@ label:
 
 - **main** : 主JavaScript配置
   - **pic** : 无图片文章使用的随机图片相关设置
-    - **CDN** : (*true/false*)图片是否使用CDN来载入（如果有本地替换过图片的话，请千万不要设置成true）
+    - **CDN** : (*jsdelivr/unpkg/false*)图片是否使用CDN来载入（如果有本地替换过图片，请设置为 false 以避免图片失效）
     - **random_amount** : 表示图片的编号为 1 ~ 您设定的值，默认是 20 
     - **filename** : 图片的文件名格式
   - **createTime** 站点建立的时间，请改成您站点建立的时间。该项与页脚的运行时间有直接关联，建议按照样例格式进行书写，以免出现莫名其妙的报错。

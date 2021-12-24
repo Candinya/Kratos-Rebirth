@@ -14,8 +14,8 @@
                 adminLabel: '<%- theme.disqusjs.adminlabel %>'
             });
         }
-        if (typeof DisqusJS == 'undefined') {
-            const src = 'https://cdn.jsdelivr.net/npm/disqusjs@1.3.0/dist/disqus.js';
+        if (typeof DisqusJS === 'undefined') {
+            const src = '<%- url_npm_cdn("disqusjs@1.3.0/dist/disqus.js") %>';
             $.getScript(src, init);
         } else {
             init();

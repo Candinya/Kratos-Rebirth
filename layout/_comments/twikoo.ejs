@@ -6,8 +6,8 @@
         const init = () => {
             twikoo.init({ envId: '<%- theme.twikoo.env_id %>', el: '#tcomment' });
         }
-        if (typeof twikoo == 'undefined') {
-            const src = 'https://cdn.jsdelivr.net/npm/twikoo@latest/dist/twikoo.all.min.js';
+        if (typeof twikoo === 'undefined') {
+            const src = '<%- url_npm_cdn("twikoo@latest/dist/twikoo.all.min.js") %>';
             $.getScript(src, init);
         } else {
             init();
