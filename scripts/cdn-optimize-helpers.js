@@ -24,6 +24,6 @@ hexo.theme.on('processAfter', () => {
         return npmCDNHandler(hexo.config.root, hexo.theme.config.cdn, `kratos-rebirth@${version}/source/`) + file;
     });
     hexo.extend.helper.register('url_npm_cdn', (file) => {
-        return npmCDNHandler('https://cdn.jsdelivr.net/npm/', hexo.theme.config.cdn) + file;
+        return npmCDNHandler('https://unpkg.com/', hexo.theme.config.cdn) + file;
     });
 });
