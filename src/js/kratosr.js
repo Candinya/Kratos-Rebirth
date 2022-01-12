@@ -489,8 +489,6 @@ ${kr.copyrightNotice}
                 return a.h - b.h;
             });
 
-            console.log(tocHeightMap);
-
             // 标题定位函数
             const tocGetId = (startPos = -1) => {
                 let newPos;
@@ -500,7 +498,6 @@ ${kr.copyrightNotice}
                     newPos = startPos;
                 }
                 const nowY = window.scrollY;
-                console.log(nowY);
                 if (tocHeightMap[0].h > nowY) {
                     // 还没到第一级标题
                     newPos = -1;
