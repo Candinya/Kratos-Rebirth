@@ -1299,7 +1299,7 @@ ul.kratos-post-meta {
 
 .kratos-breadcrumb {
   margin: 10px 25px;
-  a {
+  > a, span {
     padding: 0 5px;
   }
 }
