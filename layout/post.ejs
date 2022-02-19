@@ -91,7 +91,7 @@
             <% } %>
         </nav>
     <% } %>
-    <% if (theme.posts.comments && page.comments && !page.link) { %>
+    <% if (theme.posts.comments && page.comments) { %>
         <%- partial('_comments/' + theme.posts.comments) %>
     <% } %>
 </article>
