@@ -63,6 +63,8 @@
 - [NProgress](https://github.com/rstacruz/nprogress)
 - [CloudFlare](https://www.cloudflare.com/)
 - [jsDelivr](https://www.jsdelivr.com/)
+- [unpkg](https://www.unpkg.com/)
+- [npm](https://www.npmjs.com/)
 
 ## 🎉 特别赞助
 
