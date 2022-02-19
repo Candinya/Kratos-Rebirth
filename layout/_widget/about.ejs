@@ -8,4 +8,30 @@
     <div class="textwidget">
         <p class="text-center"><%- config.description %></p>
     </div>
+    <div class="site-meta">
+        <a class="meta-item" href="<%- url_for('/archives/') %>">
+            <span class="title">
+                <%- __('post') %>
+            </span>
+            <span class="count">
+                <%- site.posts.length %>
+            </span>
+        </a>
+        <a class="meta-item" href="<%- url_for('/categories/') %>">
+            <span class="title">
+                <%- __('category') %>
+            </span>
+            <span class="count">
+                <%- site.categories.length %>
+            </span>
+        </a>
+        <a class="meta-item" href="<%- url_for('/tags/') %>">
+            <span class="title">
+                <%- __('tag') %>
+            </span>
+            <span class="count">
+                <%- site.tags.length %>
+            </span>
+        </a>
+    </div>
 </aside>

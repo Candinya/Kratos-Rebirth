@@ -1,4 +1,4 @@
-categories: 分类目录
+categories_list: 分类目录
 read_more: 继续阅读
 read_full: 阅读全文
 search: 搜索
@@ -33,3 +33,6 @@ no_title: 无标题
 use_cc4_license: 本作品采用 <a rel="license nofollow" target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/">知识共享署名-相同方式共享 4.0 国际许可协议</a> 进行许可
 toc: 文章目录
 words: 字
+post: 文章
+tags_count: 当前共有 %d 个标签 (゜-゜)つロ 干杯~
+categories_count: 当前共有 %d 种分类 (゜-゜)つロ 干杯~

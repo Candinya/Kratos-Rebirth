@@ -1,3 +1,38 @@
+<!-- Breadcrumb for tag & category page -->
+<% if (page.tag || page.category) { %>
+    <article class="kratos-hentry kratos-entry-border-new clearfix">
+        <div class="kratos-breadcrumb">
+            <a href="<%- url_for('/') %>">
+                <%= config.title %>
+            </a>
+            <i class="fa fa-angle-right"></i>
+            <% if (page.tag) { %>
+                <a href="<%- url_for('/tags/') %>">
+                    <%= __('tag') %>
+                </a>
+                <i class="fa fa-angle-right"></i>
+                <a href="<%- url_for('/tags/' + page.tag) %>">
+                    <%= page.tag %>
+                </a>
+            <% } else if (page.category) { %>
+                <a href="<%- url_for('/categories/') %>">
+                    <%= __('category') %>
+                </a>
+                <i class="fa fa-angle-right"></i>
+                <a href="<%- url_for('/categories/' + page.category) %>">
+                    <%= page.category %>
+                </a>
+            <% } %>
+            <% if (page.current > 1) { %>
+                <i class="fa fa-angle-right"></i>
+                <span>
+                    <%= __('page', page.current) %>
+                </a>
+            <% } %>
+        </div>
+    </article>
+<% } %>
+
 <% page.posts.each(function(post) { %>
     <% if (post.only) {
         const postShow = 

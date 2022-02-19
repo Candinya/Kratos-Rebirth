@@ -1,0 +1,44 @@
+<style>
+  .arc-tags {
+    margin-bottom: 8rem;
+  }
+
+  .arc-tags a {
+    -webkit-box-shadow: 0 1px 4px rgba(0, 0, 0, .1);
+    box-shadow: 0 1px 4px rgba(0, 0, 0, .1);
+    border: 1px solid #fff;
+    border-radius: 15px;
+    margin: 4px 8px 0 0;
+    font-weight: 500;
+    display: inline-block;
+    padding: 0 12px;
+    background: rgba(255, 255, 255, .5);
+    font-size: 16px;
+  }
+
+  .arc-tags a::before {
+    content: "# ";
+    color: #e8a6a6;
+  }
+</style>
+<article>
+  <div class="kratos-hentry kratos-post-inner clearfix">
+    <div class="kratos-post-content">
+      <h2 class="title-h2 text-center">
+        <%- __('tagcloud') %>
+      </h2>
+      <div style="margin-left: 2em;">
+        <h3 class="archive-page-counter">
+          <%- __('tags_count', site.tags.length ) %>
+        </h3>
+        <div class="tags">
+          <% if (site.tags.length){ %>
+            <div class="arc-tags">
+              <%- list_tags({ show_count: false, style: 'none' , separator: ' ' }) %>
+            </div>
+          <% } %>
+        </div>
+      </div>
+    </div>
+  </div>
+</article>

@@ -1,0 +1,72 @@
+<style>
+  .categories .category-list {
+    list-style: none;
+  }
+
+  .categories .category-list-item {
+    position: relative;
+    padding: 10px 0;
+  }
+
+  .categories .category-list-item .category-list-link::before {
+    content: " ";
+    position: absolute;
+    left: -30px;
+    top: 50%;
+    margin-left: -4px;
+    margin-top: -4px;
+    width: 8px;
+    height: 8px;
+    background: #bbb;
+    border-radius: 50%;
+    transition: all .3s ease-in-out;
+  }
+
+  .categories .category-list-item .category-list-link:hover::before {
+    background: #222;
+  }
+
+  a {
+    color:#666;
+  }
+
+  .categories .category-list-item .category-list-link {
+    position: relative;
+    margin-left: 24px;
+    font-size: 20px;
+    font-weight: 400;
+    line-height: inherit;
+  }
+
+  .categories .category-list-item .category-list-link::after {
+    font-family: fontawesome;
+    opacity: 0;
+    content: "\f138";
+    margin-left: 12px;
+    color: #00a7e0;
+    transition: opacity .3s ease-in-out;
+  }
+
+  .categories .category-list-item .category-list-link:hover::after {
+    opacity: 100%;
+  }
+</style>
+<article>
+  <div class="kratos-hentry kratos-post-inner clearfix">
+    <div class="kratos-post-content">
+      <h2 class="title-h2 text-center">
+        <%- __('categories_list') %>
+      </h2>
+      <div style="margin-left: 2em;">
+        <h3 class="archive-page-counter">
+          <%- __('categories_count', site.categories.length ) %>
+        </h3>
+        <div class="categories">
+          <% if (site.categories.length){ %>
+            <%- list_categories({show_count: false}) %>
+          <% } %>
+        </div>
+      </div>
+    </div>
+  </div>
+</article>

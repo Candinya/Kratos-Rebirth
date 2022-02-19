@@ -1297,6 +1297,13 @@ ul.kratos-post-meta {
   }
 }
 
+.kratos-breadcrumb {
+  margin: 10px 25px;
+  a {
+    padding: 0 5px;
+  }
+}
+
 .kratos-status {
   margin: 15px 15px 15px 38px;
   border-left: 1px dotted #7b7b7b7b;
@@ -2014,7 +2021,9 @@ ul.kratos-post-meta {
     &.widget-kratos {
   
       &-about {
-        padding: 0 !important;
+        padding-left: 0;
+        padding-right: 0;
+        padding-top: 0;
     
         .photo-background {
           -webkit-background-size: cover;
@@ -2046,6 +2055,26 @@ ul.kratos-post-meta {
           margin-bottom: 1em;
           font-size: 16px;
           margin: 20px;
+        }
+  
+        .site-meta {
+          display: flex;
+          flex-direction: row;
+          justify-content: space-around;
+
+          > .meta-item {
+            display: flex;
+            flex-direction: column;
+            padding: .5rem 1rem;
+            border-radius: 5px;
+            &:hover {
+              background-color: #efefefaa;
+            }
+            > * {
+              display: flex;
+              justify-content: center;
+            }
+          }
         }
       }
 

@@ -2,23 +2,25 @@
 <style>
   .post-meta time{color:#00a7e0}
   @media (max-width:767px){.posts-collapse{margin:0 20px}
-  .posts-collapse .post-meta,.posts-collapse .post-title{display:block;width:auto;text-align:left}}
+  .posts-collapse .post-meta,
+  .posts-collapse .post-title{display:block;width:auto;text-align:left}}
   .posts-collapse{position:relative}
   .posts-collapse::after{content:" ";position:absolute;top:20px;left:0;margin-left:-2px;width:4px;height:calc(100% - 35px);background:#f5f5f5;z-index:-1}
   @media (max-width:991px){.posts-collapse{margin:0 20px}}
   .posts-collapse .collection-title{position:relative}
-  .posts-collapse .collection-title h1,.posts-collapse .collection-title h2{margin-left:20px}.posts-collapse .collection-title small{color:#bbb;margin-left:5px}
+  .posts-collapse .collection-title h1,
+  .posts-collapse .collection-title h2{margin-left:20px}
+  .posts-collapse .collection-title small{color:#bbb;margin-left:5px}
   .posts-collapse .collection-title::before{content:" ";position:absolute;left:0;top:50%;margin-left:-4px;margin-top:-4px;width:8px;height:8px;background:#bbb;border-radius:50%}
   .posts-collapse .post-header{position:relative;transition-duration:.2s;transition-timing-function:ease-in-out;transition-delay:0s;transition-property:border}
-  .posts-collapse .post-header::before{content:" ";position:absolute;left:0;top:12px;width:6px;height:6px;margin-left:-4px;background:#bbb;border-radius:50%;border:1px solid #fff}
-  .posts-collapse .post-header:hover{border-bottom-color:#666}.posts-collapse .post-header:hover::before{background:#222}
+  .posts-collapse .post-header::before{content:" ";position:absolute;left:0;top:12px;width:6px;height:6px;margin-left:-4px;background:#bbb;border-radius:50%;border:1px solid #fff;transition: all .3s ease-in-out}
+  .posts-collapse .post-header:hover{border-bottom-color:#666}
+  .posts-collapse .post-header:hover::before{background:#222}
   .posts-collapse .post-meta{position:absolute;font-size:12px;left:20px;top:5px}
   .posts-collapse .post-comments-count{display:none}
   .posts-collapse .post-title{margin-left:70px;font-size:16px;font-weight:400;line-height:inherit}
-  .posts-collapse .post-title::after{margin-left:3px;opacity:.6}.posts-collapse .post-title a{color:#666;border-bottom:none}
-  .kratos-post-content div.arc-tags{margin-bottom:30px}
-  .arc-tags a{-webkit-box-shadow:0 1px 4px rgba(0,0,0,.1);box-shadow:0 1px 4px rgba(0,0,0,.1);border:1px solid #fff;border-radius:15px;margin:4px 8px 0 0;font-weight:500;display:inline-block;padding:0 12px;background:rgba(255,255,255,.5);font-size:16px;}
-  .arc-tags a::before{content:"# ";color:#e8a6a6}
+  .posts-collapse .post-title::after{margin-left:3px;opacity:.6}
+  .posts-collapse .post-title a{color:#666;border-bottom:none}
 </style>
 <% if (page.posts) { %>
   <article>
@@ -26,64 +28,55 @@
           <div class="kratos-post-content">
             <h2 class="title-h2 text-center"><%- __('archive') %></h2>
             <div id="archives">
-                <% if (site.tags.length){ %>
-                  <div class="arc-tags">
-                      <%- list_tags({
-                        show_count: false, 
-                        style: 'none',
-                        separator: ' '
-                      }) %>
-                  </div>
-                <% } %>
-                <div class="post-block archive post" style="margin-left: 2em;">
-                  <h3 class="archive-page-counter"><%- __('archive_count', () => {
-                    let pCount = 0;
-                    page.posts.each((p) => {
-                      if (p.title) {
-                        pCount++;
-                      }
-                    });
-                    return pCount;
-                  }) %></h3>
-                  <div class="posts-collapse">
-                    <% let year; %>
-                    <% page.posts.sort('date', -1).each((post) => { %>
-                      <% let post_year = date(post.date, 'YYYY'); %>
-                      <% if (post_year !== year && post.title) { %>
-                        <!-- 没遇到Title的会被自动忽略年份，即使并不一致 -->
-                        <% year = post_year; %>
-                        <div class="collection-title">
-                          <a href="<%- url_for(config.root + config.archive_dir + '/' + year + '/') %>"><h2 class="archive-year"><%- year %></h2></a>
-                        </div>
-                      <% } %>
-                      <% if (post.title) { %>
-                        <article class="post" itemscope>
-                          <header class="post-header">
-                            <h3 class="post-title">
-                              <% if (post.link) { %>
-                                <a class="post-title-link post-title-link-external" target="_blank" href="<%- url_for(post.link) %>" itemprop="url">
-                                  <%- post.title %>
-                                  <i class="fa fa-external-link"></i>
+              <div class="post-block archive post" style="margin-left: 2em;">
+                <h3 class="archive-page-counter"><%- __('archive_count', () => {
+                  let pCount = 0;
+                  page.posts.each((p) => {
+                    if (p.title) {
+                      pCount++;
+                    }
+                  });
+                  return pCount;
+                }) %></h3>
+                <div class="posts-collapse">
+                  <% let year; %>
+                  <% page.posts.sort('date', -1).each((post) => { %>
+                    <% let post_year = date(post.date, 'YYYY'); %>
+                    <% if (post_year !== year && post.title) { %>
+                      <!-- 没遇到Title的会被自动忽略年份，即使并不一致 -->
+                      <% year = post_year; %>
+                      <div class="collection-title">
+                        <a href="<%- url_for(config.root + config.archive_dir + '/' + year + '/') %>"><h2 class="archive-year"><%- year %></h2></a>
+                      </div>
+                    <% } %>
+                    <% if (post.title) { %>
+                      <article class="post" itemscope>
+                        <header class="post-header">
+                          <h3 class="post-title">
+                            <% if (post.link) { %>
+                              <a class="post-title-link post-title-link-external" target="_blank" href="<%- url_for(post.link) %>" itemprop="url">
+                                <%- post.title %>
+                                <i class="fa fa-external-link"></i>
+                              </a>
+                            <% } else { %>
+                                <a class="post-title-link" href="<%- url_for(post.path) %>" itemprop="url">
+                                  <span itemprop="name"><%- post.title %></span>
                                 </a>
-                              <% } else { %>
-                                  <a class="post-title-link" href="<%- url_for(post.path) %>" itemprop="url">
-                                    <span itemprop="name"><%- post.title %></span>
-                                  </a>
-                              <% } %>
-                            </h3>
-                            <div class="post-meta">
-                              <time class="post-time" itemprop="dateCreated"
-                                    datetime="<%- moment(post.date).format() %>"
-                                    content="<%- date(post.date, config.date_format) %>" >
-                                <%- date(post.date, 'MM-DD') %>
-                              </time>
-                            </div>
-                          </header>
-                        </article>
-                      <% } %>
-                    <% }) %>
-                  </div>
+                            <% } %>
+                          </h3>
+                          <div class="post-meta">
+                            <time class="post-time" itemprop="dateCreated"
+                                  datetime="<%- moment(post.date).format() %>"
+                                  content="<%- date(post.date, config.date_format) %>" >
+                              <%- date(post.date, 'MM-DD') %>
+                            </time>
+                          </div>
+                        </header>
+                      </article>
+                    <% } %>
+                  <% }) %>
                 </div>
+              </div>
             </div>
         </div>
       </div>

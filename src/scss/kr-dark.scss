@@ -83,8 +83,7 @@ h4,
 h5,
 h6,
 ol,
-p,
-ul {
+p {
     color: var(--text);
 }
 
@@ -187,6 +186,10 @@ ul.kratos-post-meta {
         }
 
         &.widget-kratos {
+            &-about .site-meta > .meta-item:hover {
+                background-color: var(--info-background);
+            }
+
             &-tags {
                 .tag-clouds a {
                     background-color: var(--tag-background);
