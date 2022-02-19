@@ -56,7 +56,7 @@
 ## 💮 非常感谢
 
 - [Kratos-pjax](https://github.com/xb2016/kratos-pjax)
-- [hexo-theme-sagiri](https://github.com/DIYgod/diygod.me/tree/master/themes/sagiri).
+- [hexo-theme-sagiri](https://github.com/DIYgod/diygod.me/tree/master/themes/sagiri)
 - [hexo-theme-suka](https://github.com/SukkaW/hexo-theme-suka)
 - [hexo-theme-landscape](https://github.com/hexojs/hexo-theme-landscape)
 - [APlayer](https://github.com/MoePlayer/APlayer)
