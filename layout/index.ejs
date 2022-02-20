@@ -82,7 +82,7 @@
                                 </a>
                             <% } %>
                         <% } %>
-                        <% if (theme.index.comment_count) { %>
+                        <% if (theme.index.comment_count && post.comments) { %>
                             <!-- 当前仅支持waline自带的统计功能 -->
                             <% if (theme.posts.comments === 'waline') { %>
                                 <a>
@@ -153,7 +153,7 @@
                                 </li>
                             <% } %>
                         <% } %>
-                        <% if (theme.index.comment_count) { %>
+                        <% if (theme.index.comment_count && post.comments) { %>
                             <!-- 当前仅支持waline自带的统计功能 -->
                             <% if (theme.posts.comments === 'waline') { %>
                                 <li>
