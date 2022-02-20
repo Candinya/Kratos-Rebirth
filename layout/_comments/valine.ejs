@@ -12,7 +12,7 @@
             });
         }
         if (typeof Valine === 'undefined') {
-            const src = '<%- url_npm_cdn("valine@1.4.14/dist/Valine.min.js") %>';
+            const src = '<%- url_npm_cdn("valine/dist/Valine.min.js") %>';
             $.getScript(src, init);
         } else {
             init();
