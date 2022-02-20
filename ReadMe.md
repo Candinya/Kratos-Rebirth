@@ -5,6 +5,7 @@
 一只移植的主题，兼具亮暗双主题，身负多种小挂件，短能卡片列首页，长能文章读更多，退可罗列全归档，进可搜索全文章，相关介绍可以参见[主题说明](https://candinya.com/posts/Kratos-Rebirth/)页面哦~
 
 [![构建版本](https://img.shields.io/github/v/release/Candinya/Kratos-Rebirth)](https://github.com/Candinya/Kratos-Rebirth/releases/latest)
+[![npm版本](https://img.shields.io/npm/v/kratos-rebirth?color=red&logo=npm)](https://www.npmjs.com/package/kratos-rebirth)
 [![样例站点部署状态](https://github.com/Candinya/Kratos-Rebirth/workflows/Build%20Demo%20Site/badge.svg)](https://kr-demo.candinya.com/)
 [![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2FCandinya%2FKratos-Rebirth.svg?type=shield)](https://app.fossa.com/projects/git%2Bgithub.com%2FCandinya%2FKratos-Rebirth?ref=badge_shield)
 
