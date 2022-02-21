@@ -201,9 +201,14 @@ ul.kratos-post-meta {
                 }
             }
         
-            &-categories .category-list-item .category-list-count {
-                color: var(--text);
-                background-color: var(--info-background);
+            &-categories .category-list-item {
+                &::before {
+                    color: var(--text-alt);
+                }
+                .category-list-count {
+                    color: var(--text);
+                    background-color: var(--info-background);
+                }
             }
         }
     }
