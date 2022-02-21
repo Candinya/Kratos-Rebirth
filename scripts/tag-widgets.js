@@ -7,7 +7,17 @@
 // 提示横幅
 hexo.extend.tag.register('alertbox', function(args){
     // const content = hexo.render.renderSync({text: args[1], engine: 'markdown'});
-    return `<div class="alert alert-${args[0]}">${hexo.render.renderSync({text: args[1], engine: 'markdown'})}</div>`;
+    const icon = {
+        'primary': 'refresh',
+        'success': 'check',
+        'danger': 'exclamation',
+        'info': 'info',
+        'warning': 'warning',
+    };
+    return `<div class="alert alert-${args[0]}">` +
+    `<div class="icon"><i class="fa fa-${icon[args[0]]}"></i></div>` +
+    `<div class="text">${hexo.render.renderSync({text: args[1], engine: 'markdown'})}</div>` +
+    `</div>`;
 });
 
 // 折叠内容

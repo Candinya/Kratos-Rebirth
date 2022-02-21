@@ -654,8 +654,31 @@ table {
 }
 
 .alert {
-  padding: 15px;
+  padding: 1rem;
+  margin: 2rem 0;
   border: 1px solid transparent;
+  display: flex;
+  flex-direction: row;
+
+  .icon, .text {
+    display: flex;
+  }
+
+  .icon {
+    width: 2rem;
+    height: 2rem;
+    border-radius: 50%;
+    background-color: #fffc;
+    border: 1px solid;
+    justify-content: center;
+    align-items: center;
+    margin-right: .5rem;
+  }
+
+  .text {
+    flex: 1;
+    border-left: 1px dashed;
+  }
 
   ul, p {
     margin: 0 1em!important;
@@ -670,7 +693,7 @@ table {
     background-color: #cfe2ff;
     border-color: #b6d4fe;
     
-    p {
+    .icon, .text p {
       color: #084298!important;
     }
   }
@@ -679,7 +702,7 @@ table {
     background-color: #d1e7dd;
     border-color: #badbcc;
     
-    p {
+    .icon, .text p {
       color: #0f5132!important;
     }
   }
@@ -688,7 +711,7 @@ table {
     background-color: #f8d7da;
     border-color: #f5c2c7;
 
-    p {
+    .icon, .text p {
       color: #842029!important;
     }
   }
@@ -697,7 +720,7 @@ table {
     background-color: #cff4fc;
     border-color: #b6effb;
 
-    p {
+    .icon, .text p {
       color: #055160!important;
     }
   }
@@ -706,7 +729,7 @@ table {
     background-color: #fff3cd;
     border-color: #ffecb5;
     
-    p {
+    .icon, .text p {
       color: #664d03!important;
     }
   }

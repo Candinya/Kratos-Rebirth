@@ -313,6 +313,8 @@ toc: true
 
 ### 提示信息
 
+{% alertbox primary "喵呼呼o(=•ェ•=)m" %}
+
 {% alertbox success "成功啦o(*￣▽￣*)ブ" %}
 
 {% alertbox danger "有危险Σ(っ °Д °;)っ" %}
@@ -322,6 +324,7 @@ toc: true
 {% alertbox warning "当心哦≧ ﹏ ≦" %}
 
 ``` md
+{% alertbox primary "喵呼呼o(=•ェ•=)m" %}
 {% alertbox success "成功啦o(*￣▽￣*)ブ" %}
 {% alertbox danger "有危险Σ(っ °Д °;)っ" %}
 {% alertbox info "有消息(・∀・(・∀・(・∀・*)" %}
