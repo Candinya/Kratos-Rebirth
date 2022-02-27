@@ -71,8 +71,8 @@ jobs:
         sed -i "s|site_logo:|site_logo: ${AVATAR_LINK}|"                                                           "themes/kratos-rebirth/_config.yml"
         sed -i "s|avatarUri: /images/avatar.webp|avatarUri: ${AVATAR_LINK}|"                                       "themes/kratos-rebirth/_config.yml"
         sed -i "s|comments:|comments: gitalk|"                                                                     "themes/kratos-rebirth/_config.yml"
-        sed -i "s|clientID: 'GitHub Application Client ID'|client_id: ${{ secrets.GH_OAUTH_ID }}|"                 "themes/kratos-rebirth/_config.yml"
-        sed -i "s|clientSecret: 'GitHub Application Client Secret'|client_secret: ${{ secrets.GH_OAUTH_SECRET }}|" "themes/kratos-rebirth/_config.yml"
+        sed -i "s|clientID: 'GitHub Application Client ID'|clientID: ${{ secrets.GH_OAUTH_ID }}|"                 "themes/kratos-rebirth/_config.yml"
+        sed -i "s|clientSecret: 'GitHub Application Client Secret'|clientSecret: ${{ secrets.GH_OAUTH_SECRET }}|" "themes/kratos-rebirth/_config.yml"
     
     # Set Pages CNAME file
     - name: Set github pages CNAME file
@@ -108,7 +108,7 @@ jobs:
       run: |
         cd ./public
         git init -b gh-pages
-        git remote add origin git@github.com:${GITHUB_REPOSITORY}
+        git remote add origin git@github.com:Candinya/Kratos-Rebirth-Demo.git
         git add -A
         git commit -m "Update Demo Site at `date +'%Y-%m-%d %H:%M:%S'`"
         git push --set-upstream origin gh-pages -f
