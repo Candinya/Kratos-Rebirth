@@ -102,11 +102,21 @@ waline:
 gitalk:
   clientID: 'GitHub Application Client ID'
   clientSecret: 'GitHub Application Client Secret'
-  repo: 'GitHub repo'
-  owner: 'GitHub repo owner'
+  repo: 'Kratos-Rebirth-Demo'
+  owner: 'Candinya'
   admin: 
     - 'Candinya'
   distractionFreeMode: false
+
+# Gitment [Gitment](https://github.com/imsun/gitment/) 评论相关
+## 不仅限于以下内容，您可以参照 [Gitment 文档](https://github.com/imsun/gitment#methods) 设置您需要的配置项
+## id 会在页面自动生成，不必加入
+gitment:
+  owner: 'Candinya'
+  repo: 'Kratos-Rebirth-Demo'
+  oauth:
+    client_id: 'Your client ID'
+    client_secret: 'Your client secret'
 
 # APlayer 左下角音乐播放器
 aplayer:

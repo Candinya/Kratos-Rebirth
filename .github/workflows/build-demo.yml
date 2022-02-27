@@ -18,7 +18,6 @@ jobs:
     env:
       SITE_URL: kr-demo.candinya.com
       AVATAR_LINK: https://ga.candinya.com/avatar/a7f9e15fef26e0a540edc977e21cb3eb
-      VALINE_APPID: cbKvgGbVMmzhOYvwuq5ULzgd-MdYXbMMI
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
@@ -26,7 +25,7 @@ jobs:
     # Setup Node.js env
     - uses: actions/setup-node@v2.1.2
       with:
-        node-version: '14.x'
+        node-version: '16.x'
     
     # Get Hexo test utils
     - uses: actions/checkout@v2
@@ -44,14 +43,14 @@ jobs:
     # Edit hexo site settings
     - name: Edit Hexo site settings
       run: |
-        sed -i "s/title: Hexo/title: Kratos-Rebirth/"                             "_config.yml"
-        sed -i "s/subtitle:/subtitle: A demo site of theme Kratos Rebirth/"       "_config.yml"
-        sed -i "s/description:/description: A demo site of theme Kratos Rebirth/" "_config.yml"
-        sed -i "s/author: John Doe/author: Candinya/"                             "_config.yml"
-        sed -i "s/language:/language: zh-CN/"                                     "_config.yml"
-        sed -i "s|url: http://yoursite.com|url: https://${SITE_URL}|"             "_config.yml"
-        sed -i "s|permalink: :year/:month/:day/:title/|permalink: posts/:title/|" "_config.yml"
-        sed -i "s/theme: landscape/theme: kratos-rebirth/"                        "_config.yml"
+        sed -i "s/title: Hexo/title: Kratos-Rebirth/"                                "_config.yml"
+        sed -i "s/subtitle: ''/subtitle: A demo site of theme Kratos Rebirth/"       "_config.yml"
+        sed -i "s/description: ''/description: A demo site of theme Kratos Rebirth/" "_config.yml"
+        sed -i "s/author: John Doe/author: Candinya/"                                "_config.yml"
+        sed -i "s/language:/language: zh-CN/"                                        "_config.yml"
+        sed -i "s|url: http://yoursite.com|url: https://${SITE_URL}|"                "_config.yml"
+        sed -i "s|permalink: :year/:month/:day/:title/|permalink: posts/:title/|"    "_config.yml"
+        sed -i "s/theme: landscape/theme: kratos-rebirth/"                           "_config.yml"
     
     # Copy theme settings
     - name: Copy theme settings
@@ -69,11 +68,11 @@ jobs:
     # Edit theme settings
     - name: Edit theme settings
       run: |
-        sed -i "s|site_logo:|site_logo: ${AVATAR_LINK}|"                      "themes/kratos-rebirth/_config.yml"
-        sed -i "s|avatarUri: /images/avatar.webp|avatarUri: ${AVATAR_LINK}|"  "themes/kratos-rebirth/_config.yml"
-        sed -i "s|comments:|comments: valine|"                                "themes/kratos-rebirth/_config.yml"
-        sed -i "s|app_id:|app_id: ${VALINE_APPID}|"                           "themes/kratos-rebirth/_config.yml"
-        sed -i "s|app_key:|app_key: ${{ secrets.VALINE_APPKEY }}|"            "themes/kratos-rebirth/_config.yml"
+        sed -i "s|site_logo:|site_logo: ${AVATAR_LINK}|"                                                           "themes/kratos-rebirth/_config.yml"
+        sed -i "s|avatarUri: /images/avatar.webp|avatarUri: ${AVATAR_LINK}|"                                       "themes/kratos-rebirth/_config.yml"
+        sed -i "s|comments:|comments: gitalk|"                                                                     "themes/kratos-rebirth/_config.yml"
+        sed -i "s|clientID: 'GitHub Application Client ID'|client_id: ${{ secrets.GH_OAUTH_ID }}|"                 "themes/kratos-rebirth/_config.yml"
+        sed -i "s|clientSecret: 'GitHub Application Client Secret'|client_secret: ${{ secrets.GH_OAUTH_SECRET }}|" "themes/kratos-rebirth/_config.yml"
     
     # Set Pages CNAME file
     - name: Set github pages CNAME file
