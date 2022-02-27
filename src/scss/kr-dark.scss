@@ -29,7 +29,7 @@
 /******************* Theme ********************/
 @mixin dark-mode {
     --banner-image: url('../images/banner_dark.webp');
-    /* --background-image: none; */
+    --background-image: url('../images/bg_dark.webp');
 
     --select-text: #333;
     --select-text-bg: #ccc;
