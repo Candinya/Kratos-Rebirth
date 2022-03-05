@@ -121,7 +121,7 @@
                 <div class="kratos-entry-thumb-new">
                     <a href="<%- url_for(post.path) %>">
                         <% if (post.pic) { %>
-                            <img class="kratos-entry-thumb-new-img" src="<%- post.pic.includes('://') ? post.pic : url_for(post.path + post.pic) %>">
+                            <img class="kratos-entry-thumb-new-img" src="<%- post.pic.includes('://') ? post.pic : url_for(post.path.replace(/(\/index)?\.html?$/, '') + '/' + post.pic) %>">
                         <% } %>
                     </a>
                 </div>
@@ -199,7 +199,7 @@
                 <div class="kratos-entry-thumb-new">
                     <a href="<%- url_for(post.path) %>">
                         <% if (post.pic) { %>
-                            <img class="kratos-entry-thumb-new-img" src="<%- post.pic.includes('://') ? post.pic : url_for(post.path + post.pic) %>">
+                            <img class="kratos-entry-thumb-new-img" src="<%- post.pic.includes('://') ? post.pic : url_for(post.path.replace(/(\/index)?\.html?$/, '') + '/' + post.pic) %>">
                         <% } else { %>
                             <img class="kratos-entry-thumb-new-img">
                         <% } %>
