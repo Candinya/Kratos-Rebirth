@@ -22,17 +22,23 @@
 
                 <%
                 /* Find full category */
-                const fullCategories = site.categories.toArray(); // transfer from DB model to array
-                const pCategory = fullCategories.find(category => category.name === page.category); // find the category
-                // console.log(pCategory.path); // categories/Cat1/Cat2/
-                const categoryPath = pCategory.path.split('/'); // split the path into array
-                // first is 'categories', last is '' (empty), valid is .slice(1, -1)
-                const categoryLength = categoryPath.length; // just skip the first and the last
+                var pCategory = site.categories.filter(category => is_current(category.path, true)).first();
+                if (!pCategory) {
+                    // fallback
+                    pCategory = site.categories.findOne({"name": page.category});
+                }
+                var categroyInfo = [pCategory];
+                while (pCategory.parent) {
+                    pCategory = site.categories.findOne({"_id": pCategory.parent});
+                    categroyInfo.push(pCategory);
+                }
+                categroyInfo = categroyInfo.reverse();
+                const categoryLength = categroyInfo.length;
                 %>
-                <% for (let i = 1; i <= categoryLength - 2; i++) { %>
+                <% for (let i = 0; i < categoryLength; i++) { %>
                     <i class="fa fa-angle-right"></i>
-                    <a href="<%- url_for(categoryPath.slice(0, i + 1).join('/') + '/') %>">
-                        <%= categoryPath[i] %>
+                    <a href="<%- url_for(categroyInfo[i].path) %>">
+                        <%= categroyInfo[i].name %>
                     </a>
                 <% } %>
             <% } %>
