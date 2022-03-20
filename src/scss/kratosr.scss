@@ -678,6 +678,7 @@ table {
   .text {
     flex: 1;
     border-left: 1px dashed;
+    flex-direction: column;
   }
 
   ul, p {
