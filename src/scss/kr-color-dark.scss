@@ -1,0 +1,17 @@
+$banner_image: url('../images/banner_dark.webp');
+$about_image: url('../images/about.webp');
+$background-image: url('../images/bg_dark.webp');
+$select_text: #333;
+$select_text_bg: #ccc;
+$text: #eee;
+$text_alt: #ccc;
+$link: lightblue;
+$link_hover: #51aded;
+$border: #ccc;
+$tag_background: #252d38df;
+$card_background: #282c34dd;
+$page_background: #181c27;
+$info_background: #3c495bbb;
+$navbar_desktop: #181c27cc;
+$navbar_mobile: #16171ae6;
+@import './kr-color/base.scss';
