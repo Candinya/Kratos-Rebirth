@@ -37,6 +37,7 @@
 1. hexo的官方渲染器现在也已经支持文章置顶啦，配置`Front-Matter`段中的`sticky`参数即可实现置顶降序排序，可以参见生成器的[官方文档](https://github.com/hexojs/hexo-generator-index#usage)哦
 2. 由于使用了 `?.` 运算符，在旧版本的 NodeJS 上可能出现工作不正常的情况，因而我们推荐您使用 Node v14 或更新的版本。详情请参见 [可选链操作符](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/Optional_chaining) 。
 3. 为了防止主题配置文件被上传导致版本管理冲突，主题的 `_config.yml` 文件是默认被忽略的（ .gitignore ），如果您使用远程构建部署的方式（例如 Pages 或是 Vercel 等），您需要手动添加对主题配置文件的追踪，可以使用 `git add -f ./themes/kratos-rebirth/_config.yml` 来恢复追踪。
+4. 如果发现代码块渲染样式出错（例如块代码被渲染成了行代码样式），可以试着检查一下是不是同时开启了 highlightjs 和 prismajs 的选项哦，主题对 highlightjs 的支持更佳呢
 
 ## 💬 支持的评论系统
 
