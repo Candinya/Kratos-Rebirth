@@ -43,23 +43,6 @@ html {
   height: 100%;
 }
 
-@mixin selection {
-  color: #fcfcfc;
-  background: #262a30;
-}
-
-::-webkit-selection {
-  @include selection;
-}
-
-::-moz-selection {
-  @include selection;
-}
-
-::selection {
-  @include selection;
-}
-
 ::-webkit-scrollbar {
   width: 8px;
   height: 8px;
@@ -85,7 +68,6 @@ body {
   line-height: 1.8;
   font-size: 18px;
   background: #f5f5f5;
-  color: #848484;
   font-weight: 300;
   cursor: auto;
   overflow-x: hidden;
@@ -94,7 +76,6 @@ body {
 }
 
 a {
-  color: #3e8dc5;
   text-decoration: none;
   font-weight: 400;
 
@@ -204,9 +185,8 @@ input::-moz-focus-inner {
 blockquote {
   font-size: 17.5px;
   margin: 12px 0;
-  border-left: 5px solid #080808;
+  border-left: 5px solid;
   padding: 4px 0 5px 10px;
-  background: #f1f1f1;
   border-radius: 5px;
 
   footer:before {
@@ -295,7 +275,6 @@ a {
 
 h1, h2, h3,
 h4, h5, h6 {
-  // color: #333;
   font-weight: 400;
   margin: 0 0 15px 0;
   font-family: inherit;
@@ -331,7 +310,6 @@ h {
       margin: 15px -20px;
       padding: 0 20px;
       border-left: 5px solid #51aded;
-      background-color: #f7f7f7;
       font-size: 20px;
       line-height: 40px;
       font-size: 18pt;
@@ -398,7 +376,6 @@ mark {
 p, ol, ul {
   margin: 0 0 1em 0;
   font-size: 16px;
-  color: #333
 }
 
 ol, ul {
@@ -2835,7 +2812,6 @@ td.code {
 
 .post-comments {
   margin-top: 16px;
-  background-color: rgba(255, 255, 255, .8);
   padding: 10px;
   box-shadow: 0 1px 2px rgba(0, 0, 0, .1)
 }
@@ -2994,21 +2970,9 @@ span.mjx-chtml.MJXc-display {
 }
 
 /******************* Images ********************/
-.kratos-cover.kratos-cover-2 {
-  background-image: url('../images/banner.webp');
-}
-
-.widget-kratos-about .photo-background {
-  background-image: url('../images/about.webp');
-}
-
 body.custom-background {
   background-size: cover;
   background-attachment: fixed;
 }
 
-@media(min-width:768px) {
-  body.custom-background {
-    background-image: url('../images/bg.webp');
-  }
-}
+@import './kr-color/default.scss';

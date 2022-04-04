@@ -34,6 +34,10 @@
   <% } %>
   <!-- 样式表文件 -->
   <link rel="stylesheet" id="kratos-css" href="<%- url_cdn('css/kratosr.min.css') %>" type="text/css" media="all">
+  <% if (theme.enable_dark) { %>
+    <link rel="stylesheet" id="darkmode-css" href="<%- url_cdn('css/kr-color-dark.min.css') %>" type="text/css" media="(prefers-color-scheme: dark)">
+    <script src="<%- url_cdn('js/kr-dark.min.js') %>"></script>
+  <% } %>
   <% if (config.highlight && config.highlight.enable && theme.highlight_theme) { %>
     <link rel="stylesheet" id="highlight-css" href="<%- url_cdn(`css/highlight/${theme.highlight_theme || 'night-eighties'}.min.css`) %>" type="text/css" media="all">
   <% } %>
@@ -50,9 +54,6 @@
   <% }%>
   <% if (theme.fancybox){ %>
     <link rel="stylesheet" href="<%- url_npm_cdn('@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css') %>">
-  <% } %>
-  <% if (theme.enable_dark) { %>
-    <link rel="stylesheet" id="darkmode-css" href="<%- url_cdn('css/kr-dark.min.css') %>" type="text/css" media="all">
   <% } %>
   <!-- 不得不预先加载的一些JS文件 -->
   <script src="<%- url_npm_cdn('jquery@3.6.0/dist/jquery.min.js') %>"></script>
