@@ -1,5 +1,6 @@
 // 生成友链页面
 hexo.on('generateBefore', () => {
+    const cdn = require('./lib/cdn');
     // 需要等到初步处理完成后才能注册，因为要使用一些配置文件中的内容
     const friends = hexo.theme.config.friends;
     if (!friends || !friends.list) {
@@ -7,8 +8,15 @@ hexo.on('generateBefore', () => {
         return;
     }
 
-    const defaultAvatar = '<%- url_cdn("images/avatar.webp") %>';
-
+    const defaultAvatar = cdn.url_cdn(hexo, "images/avatar.webp");
+    const flist = friends.list.map(friend => {
+        return {
+            name: friend.name,
+            link: friend.link,
+            avatar: friend.avatar || defaultAvatar,
+            bio: friend.bio || ''
+        }
+    });
     // Module模式
     const friendsModule = 
 `<div class="linkpage">
@@ -17,11 +25,11 @@ hexo.on('generateBefore', () => {
 
 <script type="text/javascript">
 {
-    const flist = JSON.parse(\`${JSON.stringify(friends.list)}\`);
+    const flist = ${JSON.stringify(flist)};
     let friendNodes = '';
     while (flist.length > 0) {
         const rndNum = Math.floor(Math.random()*flist.length);
-        friendNodes += \`<li><a target="_blank" href="\${flist[rndNum].link}"><img src="\${flist[rndNum].avatar || '${defaultAvatar}'}"><h4>\${flist[rndNum].name}</h4><p>\${flist[rndNum].bio || ''}</p></a></li>\`;
+        friendNodes += \`<li><a target="_blank" href="\${flist[rndNum].link}"><img src="\${flist[rndNum].avatar}"><h4>\${flist[rndNum].name}</h4><p>\${flist[rndNum].bio}</p></a></li>\`;
         flist.splice(rndNum, 1);
     }
     document.getElementById("friendsList").innerHTML = friendNodes;
