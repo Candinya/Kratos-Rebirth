@@ -22,8 +22,7 @@
 1. `hexo init your-awesome-blog` 初始化您的 Hexo 站点文件夹（已经完成则可以忽略）
 2. 进入您的站点文件夹，使用 `git clone https://github.com/Candinya/Kratos-Rebirth/ themes/kratos-rebirth` 将主题安装到站点文件夹下的 theme 主题目录中
 3. 修改站点文件夹下的 `_config.yml` 站点配置文件，将默认的 `theme: landscape` 修改成 `theme: kratos-rebirth`
-4. 进入主题文件夹，手动复制一份 `_config.yml.example` ，并改名为 `_config.yml` 。您可以在这里进行主题设置的修改。
-    补注：由于 [Hexo生命周期事件与主题注入代码的冲突](https://github.com/Candinya/Kratos-Rebirth/issues/56) 的问题，暂时不能完美支持将主题配置文件拷贝到站点根目录下的使用方式，还请您谅解。
+4. 进入主题文件夹，手动复制一份 `_config.yml.example` ，并改名为 `_config.kratos-rebirth.yml` ，移动至您的站点目录下，以便更有效地管理您的主题配置文件。
 
 ## 🍬 超棒的赞助者们
 
@@ -36,7 +35,7 @@
 
 1. hexo的官方渲染器现在也已经支持文章置顶啦，配置`Front-Matter`段中的`sticky`参数即可实现置顶降序排序，可以参见生成器的[官方文档](https://github.com/hexojs/hexo-generator-index#usage)哦
 2. 由于使用了 `?.` 运算符，在旧版本的 NodeJS 上可能出现工作不正常的情况，因而我们推荐您使用 Node v14 或更新的版本。详情请参见 [可选链操作符](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/Optional_chaining) 。
-3. 为了防止主题配置文件被上传导致版本管理冲突，主题的 `_config.yml` 文件是默认被忽略的（ .gitignore ），如果您使用远程构建部署的方式（例如 Pages 或是 Vercel 等），您需要手动添加对主题配置文件的追踪，可以使用 `git add -f ./themes/kratos-rebirth/_config.yml` 来恢复追踪。
+3. （如果您使用的是主题目录内的配置的方案，现在已经不推荐这种方案了）为了防止主题配置文件被上传导致版本管理冲突，主题的 `_config.yml` 文件是默认被忽略的（ .gitignore ），如果您使用远程构建部署的方式（例如 Pages 或是 Vercel 等），您需要手动添加对主题配置文件的追踪，可以使用 `git add -f ./themes/kratos-rebirth/_config.yml` 来恢复追踪。
 4. 如果发现代码块渲染样式出错（例如块代码被渲染成了行代码样式），可以试着检查一下是不是同时开启了 highlight 和 prismjs 的选项哦，主题对 highlight 的支持更佳呢
 
 ## 💬 支持的评论系统

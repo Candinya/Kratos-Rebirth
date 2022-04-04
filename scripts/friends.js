@@ -1,5 +1,5 @@
 // 生成友链页面
-hexo.theme.on('processAfter', () => {
+hexo.on('generateBefore', () => {
     // 需要等到初步处理完成后才能注册，因为要使用一些配置文件中的内容
     const friends = hexo.theme.config.friends;
     if (!friends || !friends.list) {
@@ -45,7 +45,7 @@ hexo.theme.on('processAfter', () => {
     }
 });
 
-hexo.theme.once('generateAfter', () => {
+hexo.once('generateAfter', () => {
     // 完全处理完成后
     const friends = hexo.theme.config.friends;
     if (!friends || !friends.list || !friends.verify) {

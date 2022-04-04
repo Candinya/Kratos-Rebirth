@@ -19,7 +19,7 @@ const npmCDNHandler = (defaultRoot, cdnConfig, cdnSuffix = '') => {
 }
 
 // 使用CDN提供静态资源，改写URL
-hexo.theme.on('processAfter', () => {
+hexo.on('generateBefore', () => {
     hexo.extend.helper.register('url_cdn', (file) => {
         return npmCDNHandler(hexo.config.root, hexo.theme.config.cdn, `kratos-rebirth@${version}/source/`) + file;
     });

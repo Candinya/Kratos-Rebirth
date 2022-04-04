@@ -1,6 +1,6 @@
 // 生成运行时调用的配置专用JS文件
 
-hexo.theme.on('processAfter', () => {
+hexo.on('generateBefore', () => {
 
     hexo.extend.generator.register('configMain', function(locals){
         return {
