@@ -1,5 +1,5 @@
 // 生成友链页面
-hexo.on('generateBefore', () => {
+hexo.once('generateBefore', () => {
     const cdn = require('./lib/cdn');
     // 需要等到初步处理完成后才能注册，因为要使用一些配置文件中的内容
     const friends = hexo.theme.config.friends;
