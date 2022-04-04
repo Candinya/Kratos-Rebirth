@@ -7,7 +7,7 @@ hexo.on('generateBefore', () => {
         return;
     }
 
-    const defaultAvatar = '<%- url_cdn("images/avatar.webp") %>';
+    const defaultAvatar = 'https://unpkg.com/kratos-rebirth/source/images/avatar.webp';
 
     // Module模式
     const friendsModule = 
@@ -21,7 +21,7 @@ hexo.on('generateBefore', () => {
     let friendNodes = '';
     while (flist.length > 0) {
         const rndNum = Math.floor(Math.random()*flist.length);
-        friendNodes += \`<li><a target="_blank" href="\${flist[rndNum].link}"><img src="\${flist[rndNum].avatar || '${defaultAvatar}'}"><h4>\${flist[rndNum].name}</h4><p>\${flist[rndNum].bio || ''}</p></a></li>\`;
+        friendNodes += \`<li><a target="_blank" href="\${flist[rndNum].link}"><img src="\${flist[rndNum].avatar}" onerror="this.src = '${defaultAvatar}'"><h4>\${flist[rndNum].name}</h4><p>\${flist[rndNum].bio || ''}</p></a></li>\`;
         flist.splice(rndNum, 1);
     }
     document.getElementById("friendsList").innerHTML = friendNodes;
