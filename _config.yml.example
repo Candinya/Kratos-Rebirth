@@ -118,6 +118,11 @@ gitment:
     client_id: 'Your client ID'
     client_secret: 'Your client secret'
 
+# LiveRe [LiveRe](https://livere.com/) 评论相关
+livere:
+  id: city
+  uid:
+
 # APlayer 左下角音乐播放器
 aplayer:
   enabled: true
