@@ -114,7 +114,9 @@ label:
 
 - **share** : (*true/false*)控制文章页面是否显示分享链接的按钮
 
-- **comments** : (*disqus/disqusjs/valine/twikoo/waline/gitalk/gitment/false*)会从`layout/_comments`文件夹中加载指定的评论系统，您也可以自定义其他的解决方案。如果不想开启评论的话，那就还是设置为false吧\~
+- **comments** : 
+  - **provider**: (*disqus/disqusjs/valine/twikoo/waline/gitalk/gitment/false*)会从`layout/_comments`文件夹中加载指定的评论系统，您也可以自定义其他的解决方案。如果不想开启评论的话，那就还是设置为false吧\~
+  - **enableBGImage**: (*true/false*)控制是否在评论系统中显示背景图片
 
 ### - Disqus 评论相关
 
