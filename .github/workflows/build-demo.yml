@@ -70,7 +70,7 @@ jobs:
       run: |
         sed -i "s|site_logo:|site_logo: ${AVATAR_LINK}|"                                                           "themes/kratos-rebirth/_config.yml"
         sed -i "s|avatarUri: /images/avatar.webp|avatarUri: ${AVATAR_LINK}|"                                       "themes/kratos-rebirth/_config.yml"
-        sed -i "s|comments:|comments: gitalk|"                                                                     "themes/kratos-rebirth/_config.yml"
+        sed -i "s|provider:|provider: gitalk|"                                                                     "themes/kratos-rebirth/_config.yml"
         sed -i "s|clientID: 'GitHub Application Client ID'|clientID: ${{ secrets.GH_OAUTH_ID }}|"                 "themes/kratos-rebirth/_config.yml"
         sed -i "s|clientSecret: 'GitHub Application Client Secret'|clientSecret: ${{ secrets.GH_OAUTH_SECRET }}|" "themes/kratos-rebirth/_config.yml"
     

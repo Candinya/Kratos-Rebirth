@@ -328,3 +328,7 @@ span.mjx-chtml.MJXc-display {
         background-image: $background-image;
     }
 }
+
+.post-comments.bg-image textarea {
+    background: $comment-background-image right bottom no-repeat!important;
+}

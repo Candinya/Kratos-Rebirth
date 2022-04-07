@@ -1,4 +1,4 @@
-<div id="v-comments" class="post-comments<% if (!theme.valine.visitor) { %> lazy-load<% } %>"></div>
+<div id="v-comments" class="post-comments<% if (!theme.valine.visitor) { %> lazy-load<% } %><% if (theme.posts.comments?.enableBGImage) { %> bg-image<% } %>"></div>
 <script>
     var load_comm = () => {
         const init = () => {

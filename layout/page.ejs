@@ -12,7 +12,8 @@
             </div>
         </footer>
     </div>
-    <% if (theme.posts.comments && page.comments) { %>
-        <%- partial('_comments/' + theme.posts.comments) %>
+    <% const commentProvider = theme.posts.comments?.provider ?? theme.posts.comments; %>
+    <% if (commentProvider && page.comments) { %>
+        <%- partial('_comments/' + commentProvider) %>
     <% } %>
 </article>

@@ -1,4 +1,4 @@
-<div id="lv-container" class="post-comments lazy-load" data-id="<%- theme.livere.id || 'city' %>" data-uid="<%- theme.livere.uid %>"></div>
+<div id="lv-container" class="post-comments lazy-load<% if (theme.posts.comments?.enableBGImage) { %> bg-image<% } %>" data-id="<%- theme.livere.id || 'city' %>" data-uid="<%- theme.livere.uid %>"></div>
 
 <script>
     window.livereOptions = {

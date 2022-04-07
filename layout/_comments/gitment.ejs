@@ -1,5 +1,5 @@
 <link rel="stylesheet" href="<%- url_npm_cdn('gitment/style/default.css') %>">
-<div id="gitment-container" class="post-comments lazy-load"></div>
+<div id="gitment-container" class="post-comments lazy-load<% if (theme.posts.comments?.enableBGImage) { %> bg-image<% } %>"></div>
 <script>
     var load_comm = () => {
         const init = () => {
