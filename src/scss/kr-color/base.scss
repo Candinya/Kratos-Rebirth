@@ -67,11 +67,17 @@ blockquote {
         background: $tag_background;
     }
 
-    .kratos-status p a {
-        color: $link;
+    .kratos-status {
+        i {
+            color: $text_alt;
+        }
 
-        &:hover {
-            color: $link_hover;
+        p a {
+            color: $link;
+    
+            &:hover {
+                color: $link_hover;
+            }
         }
     }
 }
