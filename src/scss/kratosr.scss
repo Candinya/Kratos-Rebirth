@@ -1004,13 +1004,12 @@ table {
   }
 }
 
-#kratos-primary-menu {
+.sf-menu {
   li {
     position: relative;
-  }
-
-  &.sf-menu li i {
-    margin-right: .5em;
+    i {
+      margin-right: .5em;
+    }
   }
 }
 

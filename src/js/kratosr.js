@@ -70,10 +70,9 @@ window.cancelIdleCallback = window.cancelIdleCallback || function(id) {
         $clone.attr({
             'id':'offcanvas-menu'
         });
-        $clone.filter('> ul').attr({
-            'class':'ul-me',
+        $clone.find('> ul').attr({
             'id':''
-        });
+        }).addClass('ul-me');
         $('#kratos-page').prepend($clone);
         $('.js-kratos-nav-toggle').on('click',()=>{
             if($('.nav-toggle').hasClass('toon')){
