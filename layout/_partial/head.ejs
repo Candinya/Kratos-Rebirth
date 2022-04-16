@@ -16,8 +16,11 @@
     <meta name="keywords" content="<%- config.keywords %>" />
   <% } %>
   <%- open_graph({
-    image: full_url_for(page.pic ? page.path + page.pic : theme.site_logo),
-    twitter_site: "@" + theme.contact.twitter
+    image: (function(){
+      const image_path = page.pic ? page.path + page.pic : theme.site_logo;
+      return image_path ? full_url_for(image_path) : null;
+    })(),
+    twitter_site: theme.contact.twitter ? "@" + theme.contact.twitter : null
   }) %>
   <% if (theme.contact.rss) {%><link rel="alternate" href="<%- theme.contact.rss %>" type="application/atom+xml"><% } %>
   <!-- 站点验证相关 -->
