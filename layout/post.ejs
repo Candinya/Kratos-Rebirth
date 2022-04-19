@@ -1,16 +1,19 @@
-<article>
+<article itemscope itemtype="https://schema.org/Article">
     <% const commentProvider = theme.posts.comments?.provider ?? theme.posts.comments; %>
+    <link itemprop="mainEntityOfPage" href="<%= page.permalink %>">
     <div class="kratos-hentry kratos-post-inner clearfix">
         <header class="kratos-entry-header">
             <% if (page.title) { %>
-                <h1 class="kratos-entry-title text-center"><%- page.title %></h1>
+                <h1 class="kratos-entry-title text-center" itemprop="name headline"><%- page.title %></h1>
             <% } %>
             <% if (page.subtitle) { %>
                 <h2 class="text-center"><%- page.subtitle %></h2>
             <% } %>
             <ul class="kratos-post-meta text-center">
-                <li><i class="fa fa-calendar"></i> <%- date(page.date, null) %></li>
-                <li><i class="fa fa-user"></i> <%- __('author') %> <%- page.author || config.author %></li>
+                <li><time datetime="<%= date_xml(page.date) %>" itemprop="datePublished"><i class="fa fa-calendar"></i> <%- date(page.date, null) %></time></li>
+                <li itemprop="author" itemscope itemtype="https://schema.org/Person">
+                    <i class="fa fa-user"></i> <%- __('author') %> <span itemprop="name"><%- page.author || config.author %></span>
+                </li>
                 <li>
                     <i class="fa fa-edit"></i> 
                     <% const wordsCount = strip_html(page.content).length; %>
@@ -46,11 +49,11 @@
                 </div>
             <% } %>
             <hr />
-            <%- page.content %>
+            <div itemprop="articleBody"><%- page.content %></div>
         </div>
         <% if (typeof page.show_cc !== 'undefined' ? page.show_cc : theme.posts.show_cc) { %>
             <div class="kratos-copyright text-center clearfix">
-                <h5><%- __('use_cc4_license') %></h5>
+                <h5 itemprop="copyrightNotice"><%- __('use_cc4_license') %></h5>
             </div>
         <% } %>
         <footer class="kratos-entry-footer clearfix">
@@ -74,7 +77,7 @@
                     }) %>
                 </div>
                 <div class="pull-date">
-                <span><%- __('last_modify') %><%- date(page.updated) %></span>
+                    <time datetime="<%= date_xml(page.updated) %>" itemprop="dateModified"><%- __('last_modify') %><%- date(page.updated) %></time>
                 </div>
             </div>
         </footer>

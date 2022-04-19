@@ -1,13 +1,14 @@
-<article>
+<article itemscope itemtype="https://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="<%= page.permalink %>">
     <div class="kratos-hentry kratos-post-inner clearfix">
         <div class="kratos-post-content">
-            <h2 class="title-h2 text-center"><%- page.title %></h2>
-            <%- page.content %>
+            <h2 class="title-h2 text-center" itemprop="name headline"><%- page.title %></h2>
+            <div itemprop="articleBody"><%- page.content %></div>
         </div>
         <footer class="kratos-entry-footer clearfix">
             <div class="footer-tag clearfix">
                 <div class="pull-date">
-                <span><%- __('last_modify') %><%- date(page.updated) %></span>
+                    <time datetime="<%= date_xml(page.updated) %>" itemprop="dateModified"><%- __('last_modify') %><%- date(page.updated) %></time>
                 </div>
             </div>
         </footer>
