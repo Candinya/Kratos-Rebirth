@@ -82,14 +82,15 @@ blockquote {
     }
 }
 
-.kratos-entry-header .kratos-post-meta {
+.kratos-entry-header {
     span, a {
         color: $text;
     }
 }
 
 ul.kratos-post-meta {
-    > li {
+    color: $text_alt;
+    span, a {
         color: $text_alt;
     }
 }

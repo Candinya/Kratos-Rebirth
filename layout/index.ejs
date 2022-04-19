@@ -64,7 +64,7 @@
         }
     } %>
     <% if (!post.title || post.link) { %>
-        <article class="kratos-hentry kratos-entry-border-new clearfix">
+        <article class="kratos-hentry kratos-entry-border-new clearfix" itemscope itemtype="https://schema.org/Article">
             <div class="kratos-status">
                 <% if (post.link) { %>
                     <i class="fa fa-link"></i>
@@ -72,7 +72,7 @@
                     <i class="fa fa-refresh"></i>
                 <% } %>
                 <div class="kratos-status-inner">
-                    <div class="kratos-status-content">
+                    <div class="kratos-status-content" itemprop="articleBody">
                         <% if (post.link) { %>
                             <a href="<%- url_for(post.link) %>"><%- post.title %> <i class="fa fa-external-link"></i></a>
                         <% } else { %>
@@ -84,7 +84,9 @@
             <% if (!post.link || post.comments) { %>
                 <footer class="kratos-post-meta-new">
                     <span class="pull-left">
-                        <a><i class="fa fa-calendar"></i></a><a><%- date(post.date, null) %></a>
+                        <time datetime="<%= date_xml(page.date) %>" itemprop="datePublished">
+                            <a><i class="fa fa-calendar"></i> <%- date(page.date, null) %></a>
+                        </time>
                         <% if (post.tags.length) { %>
                             <a><i class="fa fa-tags"></i></a>
                             <%- list_tags(post.tags, {
@@ -123,7 +125,7 @@
             <% } %>
         </article>
     <% } else if (theme.index && theme.index.post_type) { %>
-        <article>
+        <article itemscope itemtype="https://schema.org/Article">
             <div class="kratos-hentry kratos-post-inner clearfix index-post">
                 <div class="kratos-entry-thumb-new">
                     <a href="<%- url_for(post.path) %>">
@@ -133,14 +135,15 @@
                     </a>
                 </div>
                 <header class="kratos-entry-header">
-                    <h1 class="text-center"><a class="kratos-entry-title" href="<%- url_for(post.path) %>"><%- post.title %></a></h1>
+                    <h1 class="text-center"><a class="kratos-entry-title" href="<%- url_for(post.path) %>" itemprop="mainEntityOfPage"><span itemprop="name headline"><%- post.title %></span></a></h1>
                     <% if (post.subtitle) { %>
                         <h2 class="text-center"><%- post.subtitle %></h2>
                     <% } %>
                     <ul class="kratos-post-meta text-center">
                         <li>
-                            <i class="fa fa-calendar"></i>
-                            <%- date(post.date, null) %>
+                        <time datetime="<%= date_xml(page.date) %>" itemprop="datePublished">
+                            <i class="fa fa-calendar"></i> <%- date(page.date, null) %>
+                        </time>
                         </li>
                         <% if (post.categories.length) { %>
                             <li>
@@ -185,7 +188,7 @@
                     </ul>
                 </header>
                 <hr />
-                <div class="kratos-post-content">
+                <div class="kratos-post-content" itemprop="articleBody">
                     <%- post.excerpt || post.content %>
                 </div>
                 <footer class="kratos-entry-footer clearfix">
@@ -196,7 +199,7 @@
             </div>
         </article>
     <% } else { %>
-        <article class="kratos-hentry clearfix">
+        <article class="kratos-hentry clearfix" itemscope itemtype="https://schema.org/Article">
             <div class="kratos-entry-border-new clearfix">
                 <% if (post.sticky || post.top) { %>
                     <div class="pin-top wrapper">
@@ -220,10 +223,10 @@
                                 style: 'none',
                                 separator: ' '
                             }) %>
-                        <h2 class="kratos-entry-title-new"><a href="<%- url_for(post.path) %>"><%- post.title %><% if (post.subtitle) { %><sub><%- post.subtitle %></sub><% } %></a>
+                        <h2 class="kratos-entry-title-new"><a href="<%- url_for(post.path) %>" itemprop="mainEntityOfPage"><span itemprop="name headline"><%- post.title %><% if (post.subtitle) { %><sub><%- post.subtitle %></sub><% } %></span></a>
                     </header>
                     <div class="kratos-entry-content-new">
-                        <p>
+                        <p itemProp="description">
                             <% if (post.excerpt) { %>
                                 <%- strip_html(post.excerpt) %>
                             <% } else { %>
@@ -234,10 +237,9 @@
                 </div>
                 <footer class="kratos-post-meta-new">
                     <span class="pull-left">
-                        <a>
-                            <i class="fa fa-calendar"></i>
-                            <%- date(post.date, null) %>
-                        </a>
+                        <time datetime="<%= date_xml(page.date) %>" itemprop="datePublished">
+                            <a><i class="fa fa-calendar"></i> <%- date(page.date, null) %></a>
+                        </time>
                         <a>
                             <% if (post.tags.length) { %>
                                 <i class="fa fa-tags"></i>
