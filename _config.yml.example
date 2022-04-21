@@ -64,7 +64,7 @@ posts:
   donate: false
   share: true
   comments: 
-    provider:
+    provider: ''
     enableBGImage: false
 
 # Disqus [Disqus](https://disqus.com) 评论相关
