@@ -589,8 +589,24 @@ ${kr.copyrightNotice}
 
             // 阅读进度
             const readProgBar = document.getElementsByClassName('toc-progress-bar')[0];
+            const articleElem = document.querySelector('.kratos-post-content');
             const setPercent = () => {
-                readProgBar.style.width = (window.scrollY / document.body.clientHeight * 100).toString() + '%';
+                // 参考 Butterfly 主题相关实现
+                // https://github.com/jerryc127/hexo-theme-butterfly/blob/c1ac4a5e167f7bb26287fc9ca32a182cfc293231/source/js/main.js#L337-L346
+                if (articleElem) {
+                    const currentTop = window.scrollY || document.documentElement.scrollTop
+                    const docHeight = articleElem.clientHeight
+                    const winHeight = document.documentElement.clientHeight
+                    const headerHeight = articleElem.offsetTop
+                    const contentMath =
+                        (docHeight > winHeight) ?
+                            (docHeight - winHeight) :
+                            (document.documentElement.scrollHeight - winHeight)
+                    const scrollPercent = Math.max(0, Math.min((currentTop - headerHeight) / (contentMath), 1))
+                    const scrollPercentRound = Math.round(scrollPercent * 100)
+                    readProgBar.style.width = (scrollPercent * 100).toString() + '%';
+                    readProgBar.setAttribute('aria-valuenow', scrollPercentRound);
+                }
             }
             window.addEventListener('scroll', () => {
                 window.requestAnimationFrame(setPercent);
