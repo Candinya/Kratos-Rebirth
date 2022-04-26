@@ -8,7 +8,7 @@
             }, JSON.parse('<%- JSON.stringify(theme.waline) %>')));
         }
         if (typeof Waline === 'undefined') {
-            const src = '<%- url_npm_cdn("@waline/client/dist/Waline.min.js") %>';
+            const src = '<%- url_npm_cdn("@waline/client@1/dist/Waline.min.js") %>';
             $.getScript(src, init);
         } else {
             init();
