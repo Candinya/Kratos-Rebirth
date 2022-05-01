@@ -59,7 +59,11 @@ $(function () {
             if (!script.type || script.type.toLowerCase() === "text/javascript") {
                 var newScript = document.createElement("script");
                 newScript.setAttribute('type', 'text/javascript');
-                newScript.appendChild(document.createTextNode(script.text));
+                if (script.src) {
+                    newScript.src = script.src;
+                } else {
+                    newScript.appendChild(document.createTextNode(script.text));
+                }
                 if (typeof script.replaceWith === 'function') {
                     script.replaceWith(newScript);
                 } else {
