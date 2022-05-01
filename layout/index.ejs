@@ -84,8 +84,8 @@
             <% if (!post.link || post.comments) { %>
                 <footer class="kratos-post-meta-new">
                     <span class="pull-left">
-                        <time datetime="<%= date_xml(page.date) %>" itemprop="datePublished">
-                            <a><i class="fa fa-calendar"></i> <%- date(page.date, null) %></a>
+                        <time datetime="<%= date_xml(post.date) %>" itemprop="datePublished">
+                            <a><i class="fa fa-calendar"></i> <%- date(post.date, null) %></a>
                         </time>
                         <% if (post.tags.length) { %>
                             <a><i class="fa fa-tags"></i></a>
@@ -141,8 +141,8 @@
                     <% } %>
                     <ul class="kratos-post-meta text-center">
                         <li>
-                        <time datetime="<%= date_xml(page.date) %>" itemprop="datePublished">
-                            <i class="fa fa-calendar"></i> <%- date(page.date, null) %>
+                        <time datetime="<%= date_xml(post.date) %>" itemprop="datePublished">
+                            <i class="fa fa-calendar"></i> <%- date(post.date, null) %>
                         </time>
                         </li>
                         <% if (post.categories.length) { %>
@@ -237,8 +237,8 @@
                 </div>
                 <footer class="kratos-post-meta-new">
                     <span class="pull-left">
-                        <time datetime="<%= date_xml(page.date) %>" itemprop="datePublished">
-                            <a><i class="fa fa-calendar"></i> <%- date(page.date, null) %></a>
+                        <time datetime="<%= date_xml(post.date) %>" itemprop="datePublished">
+                            <a><i class="fa fa-calendar"></i> <%- date(post.date, null) %></a>
                         </time>
                         <a>
                             <% if (post.tags.length) { %>
