@@ -450,28 +450,38 @@ ${kr.copyrightNotice}
         }
     };
 
+    const makeDelay = (callback, ms) => {
+        var timer = 0;
+        return function () {
+            var context = this, args = arguments;
+            clearTimeout(timer);
+            timer = setTimeout(function () {
+                callback.apply(context, args);
+            }, ms || 0);
+        };
+    }
+
     const tocAnimInit = () => {
         if (document.getElementById('krw-toc') !== null) {
             // 有toc的页面
             // 获取侧边栏所有的toc项
             const tocDOMs = document.getElementById("krw-toc").getElementsByClassName('toc-item');
             // 元素高度映射记录
-            const tocHeightMap = [];
+            const tocItems = [];
             try {
                 Array.from(tocDOMs).forEach((tocItem) => {
-                    // 获取链接子元素
-                    const linkItem = tocItem.getElementsByClassName('toc-link')[0];
-                    // 获取链接地址
+                    const linkItem = tocItem.querySelector('.toc-link');
                     const titleText = decodeURI(linkItem.getAttribute('href'));
-                    // 检测链接是否有效：无效则进行回落处理
-                    if (!titleText.includes('#')) {
-                        throw new Error('TOC 小标题链接无效，进行回落处理');
+                    if (titleText.substring(0, 1) != '#') {
+                        throw new Error('TOC 小标题链接无效，格式无限');
                     }
-                    // 获取目标标题高度
-                    const titleHeight = document.getElementById(titleText.replace('#', '')).offsetTop;
-                    // 压入记录
-                    tocHeightMap.push({
-                        h: titleHeight,
+                    const titleElem = document.getElementById(titleText.substring(1));
+                    if (!titleElem) {
+                        throw new Error('TOC 小标题链接无效，未找到相关引用');
+                    }
+                    titleElem.setAttribute("data-toc-id", tocItems.length)
+                    tocItems.push({
+                        at: titleElem,
                         el: tocItem
                     });
                 });
@@ -483,50 +493,20 @@ ${kr.copyrightNotice}
                 return;
             }
 
-            // 排序
-            tocHeightMap.sort((a, b) => {
-                return a.h - b.h;
-            });
-
-            // 标题定位函数
-            const tocGetId = (startPos = -1) => {
-                let newPos;
-                if (!Number.isInteger(startPos) || startPos < 0 || startPos > tocHeightMap.length - 1) {
-                    newPos = 0;
-                } else {
-                    newPos = startPos;
-                }
-                const nowY = window.scrollY;
-                if (tocHeightMap[0].h > nowY) {
-                    // 还没到第一级标题
-                    newPos = -1;
-                } else if (tocHeightMap[tocHeightMap.length - 1].h <= nowY) {
-                    // 最后一级标题
-                    newPos = tocHeightMap.length - 1;
-                } else {
-                    while (!(tocHeightMap[newPos].h <= nowY && tocHeightMap[newPos+1].h > nowY)) {
-                        if (tocHeightMap[newPos].h > nowY && newPos > 0) {
-                            newPos--;
-                        } else if (tocHeightMap[newPos+1].h <= nowY && newPos < tocHeightMap.length - 1) {
-                            newPos++;
-                        }
-                    }
-                }
-                return newPos;
-            }
-
+            // 初始化为不存在的标题
+            let curTocId = -1;
             // 标题激活状态修改函数
-            const tocActivate = (oldId, newId) => {
-                if (oldId === newId) {
+            const tocActivate = (newId) => {
+                if (curTocId === newId) {
                     // Do nothing...
                     return;
                 }
-                if (oldId !== -1) {
+                if (curTocId !== -1) {
                     // 清除旧标题激活状态
-                    tocHeightMap[oldId].el.classList.remove('active');
-                    tocHeightMap[oldId].el.classList.remove('show');
+                    tocItems[curTocId].el.classList.remove('active');
+                    tocItems[curTocId].el.classList.remove('show');
                     // 清除旧元素层级展示状态
-                    let nCur = tocHeightMap[oldId].el
+                    let nCur = tocItems[curTocId].el
                     while (!nCur.classList.contains('toc')) {
                         if (nCur.classList.contains('toc-item')) {
                             nCur.classList.remove('show');
@@ -536,10 +516,10 @@ ${kr.copyrightNotice}
                 }
                 if (newId !== -1) {
                     // 构建新标题激活状态
-                    tocHeightMap[newId].el.classList.add('active');
-                    tocHeightMap[newId].el.classList.add('show');
+                    tocItems[newId].el.classList.add('active');
+                    tocItems[newId].el.classList.add('show');
                     // 建立新元素层级展示状态
-                    let nCur = tocHeightMap[newId].el
+                    let nCur = tocItems[newId].el
                     while (!nCur.classList.contains('toc')) {
                         if (nCur.classList.contains('toc-item')) {
                             nCur.classList.add('show');
@@ -547,45 +527,105 @@ ${kr.copyrightNotice}
                         nCur = nCur.parentNode;
                     }
                 }
+                curTocId = newId;
             };
 
-            // 初始化为不存在的标题
-            let curTocId = -1;
-            // 切换 toc 状态的处理函数
-            const toggleToc = () => {
-                const newTocId = tocGetId(curTocId);
-                tocActivate(curTocId, newTocId);
-                curTocId = newTocId;
-            };
-
-            // 处理事件的函数
-            const handleTocAnim = () => {
-                // 现在的检测事件ID
-                let nowEvent = 0;
-                window.requestAnimationFrame(() => {
-                    if (nowEvent) {
-                        // 为避免高频触发，使用检测事件来控制频率
-                        clearTimeout(nowEvent);
+            if ("IntersectionObserver" in window) {
+                const applyDecision = makeDelay((i, pos) => {
+                    if (pos === window.scrollY) {
+                        window.requestAnimationFrame(() => {
+                            tocActivate(i);
+                        });
+                    } else {
+                        applyDecision(i, window.scrollY);
                     }
-                    nowEvent = setTimeout((nowY) => {
-                        if (nowY === window.scrollY) {
-                            // 0.1s位置没有变化，视为页面停止
-                            toggleToc();
+                }, 100)
+
+                const observer = new IntersectionObserver((entries) => {
+                    let decision = null
+                    entries.forEach((entry) => {
+                        const currentIndex = Number.parseInt(entry.target.getAttribute('data-toc-id'), 10);
+                        if (!entry.isIntersecting
+                            && entry.boundingClientRect.top <= entry.rootBounds.top) {
+                            decision = currentIndex
+                        } else if (entry.isIntersecting
+                            && entry.boundingClientRect.bottom < entry.rootBounds.top + entry.rootBounds.height / 2
+                            && entry.intersectionRatio === 1) {
+                            decision = currentIndex - 1
                         }
-                    }, 100, window.scrollY);
+                    })
+                    if (decision !== null) {
+                        applyDecision(decision, window.scrollY);
+                    }
+                }, {
+                    rootMargin: '-62px 0px 0px 0px',
+                    threshold: 1.0,
+                })
+                tocItems.forEach((x) => {
+                    observer.observe(x.at)
                 });
+                window.addEventListener('pjax:before', () => {
+                    observer.disconnect();
+                    tocItems.length = 0; // 奇妙的数组清空方式
+                }, { once: true });
+            } else {
+                const tocUpdatePos = () => {
+                    tocItems.forEach((x) => {
+                        x.h = x.at.getBoundingClientRect().top + window.scrollY - 61 // 比 click 事件那里多减掉1，避免浏览器 round 后导致的判断失败
+                    });
+                };
+
+                tocUpdatePos();
+
+                // 标题定位函数
+                const tocGetId = () => {
+                    let newPos;
+                    if (!Number.isInteger(curTocId) || curTocId < 0 || curTocId > tocItems.length - 1) {
+                        newPos = 0;
+                    } else {
+                        newPos = curTocId;
+                    }
+                    const nowY = window.scrollY;
+                    if (nowY >= tocItems[newPos].h) {
+                        if (nowY >= tocItems[tocItems.length - 1].h) {
+                            newPos = tocItems.length - 1;
+                        } else {
+                            while (nowY >= tocItems[newPos + 1].h) {
+                                newPos++;
+                            }
+                        }
+                    } else {
+                        while (nowY < tocItems[newPos].h) {
+                            newPos--;
+                            if (newPos < 0) break;
+                        }
+                    }
+                    return newPos;
+                }
+
+                // 处理事件的函数
+                const tocOnScroll = makeDelay(() => {
+                    window.requestAnimationFrame(() => {
+                        tocActivate(tocGetId());
+                    });
+                }, 100);
+
+                const tocOnResize = makeDelay(() => {
+                    tocUpdatePos();
+                    window.requestAnimationFrame(() => {
+                        tocActivate(tocGetId());
+                    });
+                }, 100);
+
+                window.addEventListener("resize", tocOnResize);
+                window.addEventListener('scroll', tocOnScroll);
+                // pjax前销毁
+                window.addEventListener('pjax:before', () => {
+                    window.removeEventListener('resize', tocOnResize);
+                    window.removeEventListener('scroll', tocOnScroll);
+                    tocItems.length = 0; // 奇妙的数组清空方式
+                }, { once: true });
             }
-
-            window.addEventListener('scroll', handleTocAnim);
-
-            // 初始化完成运行一次
-            toggleToc();
-
-            // pjax前销毁
-            window.addEventListener('pjax:before', () => {
-                tocHeightMap.length = 0; // 奇妙的数组清空方式
-                window.removeEventListener('scroll', handleTocAnim);
-            }, { once: true });
 
             // 阅读进度
             const readProgBar = document.getElementsByClassName('toc-progress-bar')[0];
@@ -612,24 +652,6 @@ ${kr.copyrightNotice}
                 window.requestAnimationFrame(setPercent);
             });
             setPercent(); // 初始运行一次
-
-            /**
-             * 现在的问题：
-             * 首次打开页面时候由于会有 window.onload 事件的等待存在，
-             * 所以会等待所有图片加载完成再调用核心的函数，因而基本保证
-             * 各标题间的位置不会乱动，但代价就是要等页面加载完成才能加
-             * 载toc样式，问题不是太大；
-             * pjax后则会由于没有 window.onload 事件的限制，因而容易
-             * 出现图片还没加载但是标题已经计算完成的情况，进而导致标题
-             * 定位乱飘，失去引导意义；
-             * 有一种解决方案是每次触发定位事件时都重新计算各元素高度，
-             * 但是怀疑那样会非常耗费时间，降低用户使用体验；
-             * 或者就是定时检测变化，但总觉得也非常不优雅，比较难受；
-             * 之后会考虑重载 hexo 的辅助函数，重写 asset_img 标签
-             * 用来内置 fancybox 的调用、计算图片大小进行格式转换与预
-             * 设置大小，但不知道 hexo 是否支持这样的操作，是否会报错，
-             * 还是说需要提交一个 PR 才能正确运行（猫咪摊手.jpg
-             */
         }
     };
 
