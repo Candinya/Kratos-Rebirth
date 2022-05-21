@@ -1,9 +1,6 @@
 # NodeJS
 node_modules/
 
-# 配置文件
-_config.yml
-
 # 站点图像
 source/images/
 

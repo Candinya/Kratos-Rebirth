@@ -52,10 +52,6 @@ jobs:
         sed -i "s|permalink: :year/:month/:day/:title/|permalink: posts/:title/|"    "_config.yml"
         sed -i "s/theme: landscape/theme: kratos-rebirth/"                           "_config.yml"
     
-    # Copy theme settings
-    - name: Copy theme settings
-      run: cp "themes/kratos-rebirth/_config.yml.example" "themes/kratos-rebirth/_config.yml"
-    
     # Copy document
     - name: Copy document
       run: cp "themes/kratos-rebirth/Kratos-Rebirth-Manual.md" "source/_posts/Kratos-Rebirth-Manual.md"
