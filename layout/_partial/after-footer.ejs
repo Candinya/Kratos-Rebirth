@@ -13,7 +13,11 @@
         <script async type="text/javascript" src="<%- url_cdn('js/snow.min.js') %>"></script>
     </div>
 <% } %>
-<% if (theme.click_animate_js) { %>
+<% if (theme.click_animate_js == 'fireworks') { %>
+    <canvas class="fireworks" style="position: fixed;left: 0;top: 0;z-index: 1; pointer-events: none;" ></canvas>
+    <script defer src="<%- url_npm_cdn('animejs@3.2.1/lib/anime.min.js') %>"></script>
+    <script async src="<%- url_cdn('js/fireworks.min.js') %>"></script>
+<% } else if (theme.click_animate_js) { %>
     <script async src="<%- url_cdn('js/' + theme.click_animate_js + '.min.js') %>"></script>
 <% } %>
 

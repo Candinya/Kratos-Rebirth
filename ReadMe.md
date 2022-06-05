@@ -55,6 +55,7 @@
 - [hexo-theme-sagiri](https://github.com/DIYgod/diygod.me/tree/master/themes/sagiri)
 - [hexo-theme-suka](https://github.com/SukkaW/hexo-theme-suka)
 - [hexo-theme-landscape](https://github.com/hexojs/hexo-theme-landscape)
+- [hexo-theme-melody](https://github.com/Molunerfinn/hexo-theme-melody)
 - [APlayer](https://github.com/MoePlayer/APlayer)
 - [NProgress](https://github.com/rstacruz/nprogress)
 - [CloudFlare](https://www.cloudflare.com/)
