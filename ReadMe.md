@@ -22,7 +22,7 @@
 1. `hexo init your-awesome-blog` 初始化您的 Hexo 站点目录（已经完成则可以忽略）
 2. 进入您的站点目录，使用 `npm install --save hexo-theme-kratos-rebirth` 或 `yarn add hexo-theme-kratos-rebirth` 将主题安装到站点目录下的 theme 主题目录中
 3. 修改站点目录下的 `_config.yml` 站点配置文件，将默认的 `theme: landscape` 修改成 `theme: kratos-rebirth`
-4. 如有自定义配置的需要，您可以从该主题代码仓库中，手动复制一份 `_config.yml` ，并改名为 `_config.kratos-rebirth.yml` ，移动至您的站点目录下，以便更有效地管理您的主题配置文件。
+4. 如有自定义配置的需要，为更有效地管理您的主题配置文件，您可以从该主题代码仓库中，手动复制一份 `_config.yml` ，并改名为 `_config.kratos-rebirth.yml` ，移动至您的站点目录下；或者您也可以参考 `.demo` 目录下的 `_config.kratos-rebirth.yml` 这个用于构建样例站点的配置文件扩展，将其移动至站点目录下。
 
 ## 🎁 使用环境小贴士
 

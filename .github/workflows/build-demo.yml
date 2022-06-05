@@ -17,7 +17,6 @@ jobs:
     # Environment virables
     env:
       SITE_URL: kr-demo.candinya.com
-      AVATAR_LINK: https://ga.candinya.com/avatar/a7f9e15fef26e0a540edc977e21cb3eb
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
@@ -60,15 +59,16 @@ jobs:
     - name: Pin document
       run: |
         sed '2 isticky: 1' -i source/_posts/Kratos-Rebirth-Manual.md
+
+    # Copy extended theme settings
+    - name: Copy extended theme settings
+      run: cp "themes/kratos-rebirth/.demo/_config.kratos-rebirth.yml" "_config.kratos-rebirth.yml"
     
     # Edit theme settings
     - name: Edit theme settings
       run: |
-        sed -i "s|site_logo:|site_logo: ${AVATAR_LINK}|"                                                           "themes/kratos-rebirth/_config.yml"
-        sed -i "s|avatarUri: /images/avatar.webp|avatarUri: ${AVATAR_LINK}|"                                       "themes/kratos-rebirth/_config.yml"
-        sed -i "s|provider: ''|provider: gitalk|"                                                                  "themes/kratos-rebirth/_config.yml"
-        sed -i "s|clientID: 'GitHub Application Client ID'|clientID: ${{ secrets.GH_OAUTH_ID }}|"                  "themes/kratos-rebirth/_config.yml"
-        sed -i "s|clientSecret: 'GitHub Application Client Secret'|clientSecret: ${{ secrets.GH_OAUTH_SECRET }}|"  "themes/kratos-rebirth/_config.yml"
+        sed -i "s|clientID: 'GitHub Application Client ID'|clientID: ${{ secrets.GH_OAUTH_ID }}|"                  "_config.kratos-rebirth.yml"
+        sed -i "s|clientSecret: 'GitHub Application Client Secret'|clientSecret: ${{ secrets.GH_OAUTH_SECRET }}|"  "_config.kratos-rebirth.yml"
     
     # Set Pages CNAME file
     - name: Set github pages CNAME file

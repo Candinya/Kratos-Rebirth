@@ -1,7 +1,7 @@
 # Global 全局配置
-site_analytics: 
+site_analytics: ''
 hoster: <a href="https://github.io" target="_blank">Github Pages</a>
-site_logo:
+site_logo: ''
 snow: false
 click_animate_js: 'candy'
 enable_dark: true
@@ -23,22 +23,22 @@ index:
 
 # Top Menu 顶部导航栏配置 （具体格式请参照文档）
 menu:
-  index: /
-  archives: /archives/
-  friends: /friends/
-  sites:
-    submenu: true
-    author: https://candinya.com
-    project: https://github.com/Candinya/Kratos-Rebirth
+  # index: /
+  # archives: /archives/
+  # friends: /friends/
+  # sites:
+  #   submenu: true
+  #   author: https://candinya.com
+  #   project: https://github.com/Candinya/Kratos-Rebirth
 
 label:
-  index: <i class="fa fa-home"></i>首页
-  archives: <i class="fa fa-file"></i>档案馆
-  friends: <i class="fa fa-paw"></i>好伙伴
-  sites:
-    submenu: <i class="fa fa-link"></i>链接
-    author: 作者博客
-    project: 项目链接
+  # index: <i class="fa fa-home"></i>首页
+  # archives: <i class="fa fa-file"></i>档案馆
+  # friends: <i class="fa fa-paw"></i>好伙伴
+  # sites:
+  #   submenu: <i class="fa fa-link"></i>链接
+  #   author: 作者博客
+  #   project: 项目链接
 
 # Footer 页脚配置
 group_link: 
@@ -195,16 +195,16 @@ friends:
     description: "好伙伴们在哪里~"
     updated: "2021-01-18"
   list:
-  - name: "猫猫①号"
-    bio: "喵~"
-    avatar: "../images/avatar.webp"
-    link: "https://candinya.com"
-  - name: "猫猫②号"
-    bio: "喵喵~"
-    avatar: "../images/avatar.webp"
-    link: "https://candinya.com"
-  - name: "猫猫⑨号"
-    bio: "咪啪~"
-    avatar: "../images/avatar.webp"
-    link: "https://candinya.com"
+  # - name: "猫猫①号"
+  #   bio: "喵~"
+  #   avatar: "../images/avatar.webp"
+  #   link: "https://candinya.com"
+  # - name: "猫猫②号"
+  #   bio: "喵喵~"
+  #   avatar: "../images/avatar.webp"
+  #   link: "https://candinya.com"
+  # - name: "猫猫⑨号"
+  #   bio: "咪啪~"
+  #   avatar: "../images/avatar.webp"
+  #   link: "https://candinya.com"
   verify: true # 验证每个友链的可访问性，炸了会有提示

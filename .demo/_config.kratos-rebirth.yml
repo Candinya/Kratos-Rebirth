@@ -1,0 +1,48 @@
+site_logo: https://ga.candinya.com/avatar/a7f9e15fef26e0a540edc977e21cb3eb
+avatarUri: https://ga.candinya.com/avatar/a7f9e15fef26e0a540edc977e21cb3eb
+
+menu:
+  index: /
+  archives: /archives/
+  friends: /friends/
+  sites:
+    submenu: true
+    author: https://candinya.com
+    project: https://github.com/Candinya/Kratos-Rebirth
+
+label:
+  index: <i class="fa fa-home"></i>首页
+  archives: <i class="fa fa-file"></i>档案馆
+  friends: <i class="fa fa-paw"></i>好伙伴
+  sites:
+    submenu: <i class="fa fa-link"></i>链接
+    author: 作者博客
+    project: 项目链接
+
+friends:
+  list:
+  - name: "猫猫①号"
+    bio: "喵~"
+    avatar: "../images/avatar.webp"
+    link: "https://candinya.com"
+  - name: "猫猫②号"
+    bio: "喵喵~"
+    avatar: "../images/avatar.webp"
+    link: "https://candinya.com"
+  - name: "猫猫⑨号"
+    bio: "咪啪~"
+    avatar: "../images/avatar.webp"
+    link: "https://candinya.com"
+
+posts:
+  comments: 
+    provider: gitalk
+
+gitalk:
+  clientID: 'GitHub Application Client ID'
+  clientSecret: 'GitHub Application Client Secret'
+  # repo: 'Kratos-Rebirth-Demo'
+  # owner: 'Candinya'
+  # admin: 
+  #   - 'Candinya'
+  # distractionFreeMode: false
