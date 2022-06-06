@@ -219,7 +219,7 @@ label:
   - **siteLeaveEvent** (*true/false*)是否启用站点失焦事件（只是为了卖萌，有可能会影响到历史记录，请谨慎开启）
   - **leaveTitle** 离开时候站点标题的追加内容
   - **returnTitle** 返回时候站点标题的追加内容
-  - **expire_day** 文章过期提示：距离最后更新时间多少天时，打开文件会给出提示信息
+  - **expire_day** 文章过期提示：距离最后更新时间多少天时，打开文章页面会给出提示信息。对于无标题的 Status 类默认不启用，但您可以在 Front Matter 区域内加上 `expire: true` 来手动开启。
   - **topNavScrollToggle** (*true/false*)顶部导航栏在页面向下滚动时隐藏
 
 ### - Site verify related 站点所有权验证相关
@@ -282,6 +282,7 @@ sticky: 100
 pic:
 comments: true
 toc: true
+expire: true
 only:
 - home
 - category

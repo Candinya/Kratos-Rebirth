@@ -39,10 +39,12 @@
             </ul>
         </header>
         <div class="kratos-post-content">
+            <% if (page.expire === true || page.expire !== false && !!page.title) { %>
             <div id="expire-alert" class="alert alert-warning hidden" role="alert">
                 <div class="icon"><i class="fa fa-warning"></i></div>
                 <div class="text"><p><%- __('last_modify_alert', '<time datetime="' + page.updated + '"></time>') %></p></div>
             </div>
+            <% } %>
             <% if (!theme.mobile_toc?.hide && page.toc && strip_html(toc(page.content))) { %>
                 <div class="kratos-post-inner-toc">
                     <%- toc(page.content, { list_number: !theme.mobile_toc?.hide_id }) %>
