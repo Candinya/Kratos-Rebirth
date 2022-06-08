@@ -23,6 +23,6 @@ module.exports = {
         return npmCDNHandler(locals.config.root, locals.theme.config.cdn, `hexo-theme-kratos-rebirth@${version}/source/`) + file;
     },
     url_npm_cdn: (locals, file) => {
-        return npmCDNHandler('https://unpkg.com/', locals.theme.config.cdn) + file;
+        return npmCDNHandler(locals.config.root + 'vendors/', locals.theme.config.cdn, `hexo-theme-kratos-rebirth@${version}/source/vendors/`) + file;
     }
 }

@@ -1,0 +1,25 @@
+{
+  "name": "qrcode_js",
+  "version": "1.0.0",
+  "description": "this is davidshimjs qrcode but he does not make npm package so I make that",
+  "main": "qrcode.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/davidshimjs/qrcodejs.git"
+  },
+  "keywords": [
+    "qrcode"
+  ],
+  "author": "chenxinle <chenxinle@126.com>",
+  "license": [{
+      "type": "MIT",
+      "url": "https://github.com/davidshimjs/qrcodejs/blob/master/LICENSE"
+    }],
+  "bugs": {
+    "url": "https://github.com/davidshimjs/qrcodejs/issues"
+  },
+  "homepage": "https://github.com/davidshimjs/qrcodejs#readme"
+}

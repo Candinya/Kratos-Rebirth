@@ -14,7 +14,7 @@
     </div>
 <% } %>
 <% if (theme.click_animate_js) { %>
-    <script async src="<%- url_cdn('js/' + theme.click_animate_js + '.min.js') %>"></script>
+    <script async src="<%- theme.click_animate_js.includes('//') ? theme.click_animate_js : url_cdn('js/' + theme.click_animate_js + '.min.js') %>"></script>
 <% } %>
 
 <% if (theme.aplayer.enabled) { %>
