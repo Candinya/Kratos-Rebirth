@@ -208,7 +208,6 @@ label:
 
 - **main** : 主JavaScript配置
   - **pic** : 无图片文章使用的随机图片相关设置
-    - **CDN** : (*jsdelivr/unpkg/false*)图片是否使用CDN来载入（如果有本地替换过图片，请设置为 false 以避免图片失效）
     - **random_amount** : 表示图片的编号为 1 ~ 您设定的值，默认是 20 
     - **filename** : 图片的文件名格式
   - **createTime** 站点建立的时间，请改成您站点建立的时间。该项与页脚的运行时间有直接关联，建议按照样例格式进行书写，以免出现莫名其妙的报错。
@@ -272,7 +271,7 @@ label:
 
 ``` md
 title: 文章标题
-date: 1970-01-01 00:00:00
+date: 2018-03-24 15:31:36
 categories: Demo
 tags:
 - Tag0

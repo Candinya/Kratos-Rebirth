@@ -151,8 +151,9 @@ window.cancelIdleCallback = window.cancelIdleCallback || function(id) {
         // 图片
         const imageboxs = document.getElementsByClassName("kratos-entry-thumb-new-img");
         let prefix = window.kr?.siteRoot || '/';
-        if (kr.picCDN || kr.pic?.CDN) {
-            switch (kr.picCDN) {
+        const picCDN = kr.picCDN ?? kr.pic?.CDN;
+        if (picCDN) {
+            switch (picCDN) {
                 case 'unpkg':
                     prefix = "//unpkg.com/hexo-theme-kratos-rebirth@latest/source/";
                     break;

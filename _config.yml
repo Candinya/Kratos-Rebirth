@@ -164,7 +164,6 @@ search:
 jsconfig:
   main:
     pic:
-      CDN: true # 表示使用 CDN 加载图片
       random_amount: 20 # 表示从1~20
       filename: "images/thumb/thumb_{no}.webp" # 相对于主题根目录，表示文件名的格式, {no} 用以指代随机的编号。
                                               # 如果包含 // 表示使用指定域名的绝对路径（例如第三方图床服务等），那么会忽略 CDN 选项

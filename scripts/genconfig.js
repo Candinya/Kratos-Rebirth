@@ -7,6 +7,7 @@ hexo.once('generateBefore', () => {
             path: 'config/main.json',
             data: JSON.stringify(Object.assign({
                 site_root: hexo.config.root,
+                picCDN: hexo.theme.config.cdn,
             }, hexo.theme.config.jsconfig.main))
         };
     });
