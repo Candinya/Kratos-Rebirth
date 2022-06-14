@@ -16,3 +16,4 @@ _backup/
 # IDE相关配置目录
 .vscode/
 .idea/
+_config.yml
