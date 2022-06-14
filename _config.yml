@@ -1,13 +1,24 @@
-# Global 全局配置
-site_analytics: ''
+# Global
+site_analytics: '<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-177307259-1"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() {
+        dataLayer.push(arguments);
+    }
+    gtag("js", new Date());
+    gtag("config", "UA-177307259-1");
+</script>
+' 
 hoster: <a href="https://github.io" target="_blank">Github Pages</a>
-site_logo: ''
-snow: false
+site_logo: https://greenhandzdl.github.io/favicon.ico
+snow: true
 click_animate_js: 'candy'
 enable_dark: true
 highlight_theme: night-eighties # 代码高亮主题（light | night | night-eighties | night-blue | night-bright）
-cdn: false # 请注意这里是静态资源的 CDN 来源，图片的 CDN 在下方 jsconfig.main.pic.CDN 段配置
+cdn: true
 check_update: true
+
 
 # 自定义样式
 customStyles:
@@ -15,63 +26,72 @@ customStyles:
     banner: /images/banner.webp # 站点横幅
     background: /images/bg.webp # 站点背景
 
-# Index 首页配置
+# Index
 index:
-  post_type: false
+  post_type: true
   read_count: true
   comment_count: true
 
-# Top Menu 顶部导航栏配置 （具体格式请参照文档）
+# Top Menu
 menu:
-  # index: /
-  # archives: /archives/
-  # friends: /friends/
-  # sites:
-  #   submenu: true
-  #   author: https://candinya.com
-  #   project: https://github.com/Candinya/Kratos-Rebirth
+  index: /
+  archives: /archives/
+  sites:
+    submenu: true
+    author: about
+    robots: https://tbp.cloud.tencent.com/tbp-h5-v2/?AgentId=V55IxOGZQu%2FQXAJKpYPuZlEZvTiikEo6q4C4W3wcMse3ZFM84hOg1qpjsjAqVYRhATRFq0BnLiv31b2twpk%2B3X3RzaHDE%2BInLe7XiNLV4M0%3D&ufc=&ubc=&bfc=&bbc=&tfc=&tbc=
+    logs: logs
+    friends: friends
+    admin: admin
 
 label:
-  # index: <i class="fa fa-home"></i>首页
-  # archives: <i class="fa fa-file"></i>档案馆
-  # friends: <i class="fa fa-paw"></i>好伙伴
-  # sites:
-  #   submenu: <i class="fa fa-link"></i>链接
-  #   author: 作者博客
-  #   project: 项目链接
+  index: <i class="fa fa-home"></i>首页
+  archives: <i class="fa fa-file"></i>档案馆
+  sites:
+    submenu: <i class="fa fa-link"></i>更多关于
+    author: 关于
+    robots: 咨询机器人
+    logs: 更新修复日志
+    friends: 友链
+    admin: 管理(量子加密)
 
-# Footer 页脚配置
-group_link: 
-contact:
-  weibo: 
-  mail: 
-  telegram: CandyUnion
-  twitter: 
-  facebook: 
+# Footer
+group_link: https://jq.qq.com/?_wv=1027&k=oSomZE55
+contact: 
+  weibo: 6570808175
+  mail: greenhandzdl@foxmail.com
+  telegram: greenhandzdl
+  twitter: greenhandzdl
+  facebook: zdl.greenhand
   linkedin: 
   fediverse:
-    instance: nya.one
-    username: Candinya
-  github: Candinya
-  rss:
+    instance: 
+    username: 
+  github: greenhandzdl
+  rss: atom.xml
 timenotice: 本站已运行
 icp: 
 psr:
   
-# Post Page 文章页配置
+# Post Page
 posts:
   show_cc: true
   donate: false
   share: true
-  comments: 
-    provider: ''
-    enableBGImage: false
+  # comments: valine
+  comments: twikoo
+  enableBGImage: true
 
-# Disqus [Disqus](https://disqus.com) 评论相关
+# Twikoo
+twikoo:
+   env_id: 'discuss-3gikwy11a3a40cf7'
+
+
+# Disqus
 disqus:
   shortname: 
 
-# DisqusJS [DisqusJS](https://disqusjs.skk.moe/) 评论相关
+# DisqusJS
 disqusjs:
   shortname: 
   sitename: 
@@ -80,62 +100,24 @@ disqusjs:
   admin: 
   adminlabel: 
 
-# Valine [Valine](https://valine.js.org) 评论相关
+# Valine
 valine:
-  app_id: 
-  app_key: 
+  app_id: 5CFGIgy8PICon0qChbpVd8p4-gzGzoHsz
+  app_key: QKaE5jcE1VLe0NWDNdizm60W
   visitor: true
-  enableQQ: false
-
-# Twikoo [Twikoo](https://twikoo.js.org) 评论相关
-twikoo:
-  env_id: 
-
-# Waline [Waline](https://waline.js.org) 评论相关
-## 不仅限于以下内容，您可以参照 Waline的 [前端配置文档](https://waline.js.org/reference/client.html) 设置您需要的配置项
-## el 和 path 会在页面自动生成，不必加入
-waline:
-  serverURL: #后端服务器地址，必填
-  visitor: true
-
-# Gitalk [Gitalk](https://gitalk.github.io/) 评论相关
-## 不仅限于以下内容，您可以参照 [Gitalk 文档](https://github.com/gitalk/gitalk/blob/master/readme-cn.md#%E8%AE%BE%E7%BD%AE) 设置您需要的配置项
-## id 会在页面自动生成，不必加入
-gitalk:
-  clientID: 'GitHub Application Client ID'
-  clientSecret: 'GitHub Application Client Secret'
-  repo: 'Kratos-Rebirth-Demo'
-  owner: 'Candinya'
-  admin: 
-    - 'Candinya'
-  distractionFreeMode: false
-
-# Gitment [Gitment](https://github.com/imsun/gitment/) 评论相关
-## 不仅限于以下内容，您可以参照 [Gitment 文档](https://github.com/imsun/gitment#methods) 设置您需要的配置项
-## id 会在页面自动生成，不必加入
-gitment:
-  owner: 'Candinya'
-  repo: 'Kratos-Rebirth-Demo'
-  oauth:
-    client_id: 'Your client ID'
-    client_secret: 'Your client secret'
-
-# LiveRe [LiveRe](https://livere.com/) 评论相关
-livere:
-  id: city
-  uid:
+  enableQQ: true
 
 # APlayer 左下角音乐播放器
 aplayer:
   enabled: true
-  playlist: 
+  playlist:
   meting:
     server: netease
     type: playlist
     id: 3204190542
   order: random
 
-# Widgets 侧边栏小挂件
+# Widgets
 sidebar: right
 widgets:
 - about
@@ -144,66 +126,68 @@ widgets:
 - category
 - tagcloud
 - posts
+
+# avatarUri: ../images/avatar.webp
 avatarUri: /images/avatar.webp
 mobile_toc: 
-  hide: false
-  hide_id: false
+  hide: true
+  hide_id: true
+
 
 # Fancybox 文章内图片单击放大
 fancybox: true
 
-# Search 搜索
+# 搜索
 search:
   enable: true
   path: search.json
   field: post # page | post | all. Default post
   content: true # Include post | page content
 
-# JavaScript 相关配置
-## 由于Javascript被压缩后难以有效编辑与生成，因而为了简化操作，将相关的配置项在生成文件时以独立的json文件写出，调用时使用fetch API获取。
+# JavaScript相关的配置
+# 由于Javascript被压缩后难以有效编辑与生成，因而为了简化操作，将相关的配置项在生成文件时以独立的json文件写出，调用时使用fetch API获取。
 jsconfig:
   main:
-    pic:
+    # picCDN: true
+     pic:
       random_amount: 20 # 表示从1~20
       filename: "images/thumb/thumb_{no}.webp" # 相对于主题根目录，表示文件名的格式, {no} 用以指代随机的编号。
                                               # 如果包含 // 表示使用指定域名的绝对路径（例如第三方图床服务等），那么会忽略 CDN 选项
-    createTime: "2018/05/06 17:03:12"
+    createTime: "2020/08/26 00:00:00"
     donateBtn: "支持我~"
     scanNotice: "扫一扫，好不好？"
-    qr_alipay: "/images/alipayqr.webp"
-    qr_wechat: "/images/wechatpayqr.webp"
-    siteLeaveEvent: false
+    # qr_alipay: "/images/alipayqr.webp"
+    # qr_wechat: "/images/wechatpayqr.webp"
+    siteLeaveEvent: true
     leaveTitle: "{{{(>_<)}}}哦哟，崩溃啦~"
     returnTitle: "(*´∇｀*)欸，又好啦~"
-    copyrightNotice: "该内容采用 CC BY-NC-SA 4.0 许可协议，著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。"
+    copyrightNotice: "该内容采用 CC BY-NC-SA 4.0 许可协议，著作权归Greenhandzdl所有。商业转载请联系作者获得授权，非商业转载请注明出处。"
     expire_day: 30
     topNavScrollToggle: true
 
-# Site verify 站点验证相关配置内容
+
+
+# Site verify related
 site_verify:
-  google: 
-  baidu: 
-  bing: 
+  google: u5-ucM9Wqi-8aW-jdL2fwPCCP8-ad5DyMXHu3dTxOoI
+  baidu: q96y7Oo5hW
+  bing:
 
 # Friends 友链相关内容
 friends:
   href: "friends"
   page:
     title: "好伙伴们"
-    comments: false
+    comments: true
     description: "好伙伴们在哪里~"
     updated: "2021-01-18"
   list:
-  # - name: "猫猫①号"
-  #   bio: "喵~"
-  #   avatar: "../images/avatar.webp"
-  #   link: "https://candinya.com"
-  # - name: "猫猫②号"
-  #   bio: "喵喵~"
-  #   avatar: "../images/avatar.webp"
-  #   link: "https://candinya.com"
-  # - name: "猫猫⑨号"
-  #   bio: "咪啪~"
-  #   avatar: "../images/avatar.webp"
-  #   link: "https://candinya.com"
+  - name: "杂的项目地址"
+    bio: "喵~"
+    avatar: "../images/avatar.webp"
+    link: "https://github.com/greenhandzdl/others"
+  - name: "EasyTools项目地址"
+    bio: "喵喵~"
+    avatar: "../images/avatar.webp"
+    link: "https://github.com/greenhandzdl/EasyTools"
   verify: true # 验证每个友链的可访问性，炸了会有提示
