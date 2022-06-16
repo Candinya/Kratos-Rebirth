@@ -88,7 +88,9 @@ hexo.once('generateBefore', () => {
     hexo.extend.generator.register('searchPage', function(locals){
         return {
             path: 'search/index.html',
-            data: locals.posts,
+            data: {
+                title_i18n: 'title.search'
+            },
             layout: '_pages/search-page'
         };
     });

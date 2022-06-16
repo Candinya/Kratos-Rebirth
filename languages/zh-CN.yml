@@ -1,3 +1,10 @@
+title:
+  archive: 档案馆
+  category: 分类
+  tag: 标签
+  search: 搜索
+  not_found: 这个页面走丢了呢…
+  status: 查看动态
 categories_list: 分类目录
 read_more: 继续阅读
 read_full: 阅读全文
