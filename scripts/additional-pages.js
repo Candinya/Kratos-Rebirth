@@ -4,7 +4,7 @@ hexo.extend.generator.register('page-notfound', function(locals){
         path: '404.html',
         data: {
             type: '404',
-            title: '这个页面走丢了呢…'
+            title_i18n: 'title.not_found'
         },
         layout: '_pages/404',
     };
@@ -14,7 +14,9 @@ hexo.extend.generator.register('page-notfound', function(locals){
 hexo.extend.generator.register('page-tags', function(locals){
     return {
         path: hexo.route.format(hexo.config.tag_dir + '/'),
-        data: locals.posts,
+        data: {
+            title_i18n: 'title.tag'
+        },
         layout: '_pages/tags',
     };
 });
@@ -23,7 +25,9 @@ hexo.extend.generator.register('page-tags', function(locals){
 hexo.extend.generator.register('page-categories', function(locals){
     return {
         path: hexo.route.format(hexo.config.category_dir + '/'),
-        data: locals.posts,
+        data: {
+            title_i18n: 'title.category'
+        },
         layout: '_pages/categories',
     };
 });

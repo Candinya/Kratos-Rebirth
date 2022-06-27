@@ -1,8 +1,25 @@
 <head>
   <!-- 元数据 -->
   <meta charset="utf-8">
-  <link rel="icon" href="<%- theme.site_logo %>">
-  <title><% if (page.title) { %><%- page.title %> | <% } %><%- config.title %></title>
+  <% if (theme.site_logo) { %><link rel="icon" href="<%- theme.site_logo %>"><% } %>
+  <%
+  var title = page.title || __(page.title_i18n);
+  if (is_archive()){
+    title = __('title.archive');
+    if (is_month()){
+      title += ': ' + page.year + '-' + String(page.month).padStart(2, '0');
+    } else if (is_year()){
+      title += ': ' + page.year;
+    }
+  } else if (is_category()){
+    title = __('title.category') + ': ' + page.category;
+  } else if (is_tag()){
+    title = __('title.tag') + ': ' + page.tag;
+  } else if (is_post() && !title){
+    title = __('title.status');
+  }
+  %>
+  <title><% if (title) { %><%= title %> | <% } %><%= config.title %></title>
   <meta name="author" content="<%- config.author  %>" />
   <meta http-equiv="Cache-Control" content="no-transform" />
   <meta http-equiv="Cache-Control" content="no-siteapp" />
@@ -20,7 +37,8 @@
       const image_path = page.pic ? page.path + page.pic : theme.site_logo;
       return image_path ? full_url_for(image_path) : null;
     })(),
-    twitter_site: theme.contact.twitter ? "@" + theme.contact.twitter : null
+    twitter_site: theme.contact.twitter ? "@" + theme.contact.twitter : null,
+    title
   }) %>
   <% if (theme.contact.rss) {%><link rel="alternate" href="<%- theme.contact.rss %>" type="application/atom+xml"><% } %>
   <!-- 站点验证相关 -->
