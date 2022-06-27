@@ -6,20 +6,52 @@
                     <div class="nav-header">
                         <nav id="kratos-menu-wrap">
                             <ul id="kratos-primary-menu" class="sf-menu">
-                                <% for (const i in theme.menu){ %>
-                                    <% if (typeof (theme.menu[i]['submenu']) !== 'undefined') { %>
+                                <% if (theme.topMenu) { %>
+                                    <% for (const menu of theme.topMenu) { %>
                                         <li>
-                                            <a><%- theme.label[i]['submenu'] %></a>
-                                            <ul class="sub-menu">
-                                                <% for (const j in theme.menu[i]){ %>
-                                                    <% if (j !== 'submenu') { %>
-                                                        <li><a href="<%- url_for(theme.menu[i][j]) %>"><%- theme.label[i][j] %></a></li>
-                                                    <% } %>
+                                            <% if (menu.submenu) { %>
+                                                <a>
+                                            <% } else { %>
+                                                <a href="<%- url_for(menu.url) %>">
+                                            <% } %>
+                                                <% if (menu.icon) { %>
+                                                    <i class="fa fa-<%- menu.icon %>"></i>
                                                 <% } %>
-                                            </ul>
+                                                <%- menu.label %>
+                                            </a>
+                                            <% if (menu.submenu) { %>
+                                                <ul class="sub-menu">
+                                                    <% for (const submenu of menu.submenu) { %>
+                                                        <li>
+                                                            <a href="<%- url_for(submenu.url) %>">
+                                                                <% if (submenu.icon) { %>
+                                                                    <i class="fa fa-<%- submenu.icon %>"></i>
+                                                                <% } %>
+                                                                <%- submenu.label %>
+                                                            </a>
+                                                        </li>
+                                                    <% } %>
+                                                </ul>
+                                            <% } %>
                                         </li>
-                                    <% } else { %>
-                                        <li><a href="<%- url_for(theme.menu[i]) %>"><%- theme.label[i] %></a></li>
+                                    <% } %>
+                                <% } else { %>
+                                    <% /* Fallback to classic settings */ %>
+                                    <% for (const i in theme.menu){ %>
+                                        <% if (typeof (theme.menu[i]['submenu']) !== 'undefined') { %>
+                                            <li>
+                                                <a><%- theme.label[i]['submenu'] %></a>
+                                                <ul class="sub-menu">
+                                                    <% for (const j in theme.menu[i]){ %>
+                                                        <% if (j !== 'submenu') { %>
+                                                            <li><a href="<%- url_for(theme.menu[i][j]) %>"><%- theme.label[i][j] %></a></li>
+                                                        <% } %>
+                                                    <% } %>
+                                                </ul>
+                                            </li>
+                                        <% } else { %>
+                                            <li><a href="<%- url_for(theme.menu[i]) %>"><%- theme.label[i] %></a></li>
+                                        <% } %>
                                     <% } %>
                                 <% } %>
                             </ul>

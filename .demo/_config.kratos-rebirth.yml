@@ -1,23 +1,23 @@
 site_logo: https://ga.candinya.com/avatar/a7f9e15fef26e0a540edc977e21cb3eb
 avatarUri: https://ga.candinya.com/avatar/a7f9e15fef26e0a540edc977e21cb3eb
 
-menu:
-  index: /
-  archives: /archives/
-  friends: /friends/
-  sites:
-    submenu: true
-    author: https://candinya.com
-    project: https://github.com/Candinya/Kratos-Rebirth
-
-label:
-  index: <i class="fa fa-home"></i>首页
-  archives: <i class="fa fa-file"></i>档案馆
-  friends: <i class="fa fa-paw"></i>好伙伴
-  sites:
-    submenu: <i class="fa fa-link"></i>链接
-    author: 作者博客
-    project: 项目链接
+topMenu:
+  - label: 首页
+    icon: home
+    url: /
+  - label: 档案馆
+    icon: file
+    url: /archives/
+  - label: 好伙伴
+    icon: paw
+    url: /friends/
+  - label: 链接
+    icon: link
+    submenu:
+      - label: 作者博客
+        url: https://candinya.com
+      - label: 项目链接
+        url: https://github.com/Candinya/Kratos-Rebirth
 
 friends:
   list:
