@@ -32,11 +32,12 @@ jobs:
     # Edit hexo site settings
     - name: Edit Hexo Theme settings
       run: |
+        sed -i "s/language:/language: zh-CN/" "_config.yml"
         sed -i "s/theme: landscape/theme: kratos-rebirth/" "_config.yml"
     
     # Copy theme settings
     - name: Copy theme settings
-      run: cp "themes/kratos-rebirth/_config.yml.example" "themes/kratos-rebirth/_config.yml"
+      run: cp "themes/kratos-rebirth/.demo/_config.kratos-rebirth.yml" "_config.kratos-rebirth.yml"
 
     # Install Hexo env
     - name: Install Hexo environment
