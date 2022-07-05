@@ -8,7 +8,7 @@ hexo.once('generateBefore', () => {
         return;
     }
 
-    const defaultAvatar = cdn.url_cdn(hexo, "images/avatar.webp");
+    const defaultAvatar = cdn.url_theme_cdn(hexo, "images/avatar.webp");
     const flist = friends.list.map(friend => ({
         name: friend.name,
         link: friend.link,

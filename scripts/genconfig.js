@@ -2,13 +2,21 @@
 
 hexo.once('generateBefore', () => {
 
-    hexo.extend.generator.register('configMain', function(locals){
+    hexo.extend.generator.register('configMain', function(){
+        const cdn = require('./lib/cdn');
+        var configMain = hexo.theme.config.jsconfig.main;
+        const defaultCoverBaseUrl = cdn.url_theme_cdn(hexo, "source/images/thumb/");
+        configMain.site_root = hexo.config.root
+        if (!configMain.cover){
+            configMain.cover = {
+                "baseUrl": defaultCoverBaseUrl
+            }
+        } else if (configMain.cover.baseUrl === undefined) {
+            configMain.cover.baseUrl = defaultCoverBaseUrl
+        }
         return {
             path: 'config/main.json',
-            data: JSON.stringify(Object.assign({
-                site_root: hexo.config.root,
-                picCDN: hexo.theme.config.cdn,
-            }, hexo.theme.config.jsconfig.main))
+            data: JSON.stringify(configMain)
         };
     });
     // hexo.extend.generator.register('configSnow', function(locals){
