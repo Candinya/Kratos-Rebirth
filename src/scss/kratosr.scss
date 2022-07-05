@@ -1541,31 +1541,21 @@ ul.kratos-post-meta {
   }
 }
 
-.kratos-entry-thumb {
-  text-align: center;
+.kratos-entry-thumb-new {
   position: relative;
-
+  float: left;
+  width: 240px;
+  height: 145px;
+  overflow: hidden;
+  margin: 20px;
+  padding: 0;
   img {
-    height: auto;
-    max-width: 100%;
-    width: 750px
-  }
-
-  &-new {
-    position: relative;
-    float: left;
-    width: 240px;
-    height: 145px;
-    overflow: hidden;
-    margin: 20px;
-
-    img {
-      padding: 2px;
-      border: 1px solid #f3f3f3;
-      height: 145px;
-      width: 240px;
-      object-fit: cover;
-    }
+    position: absolute;
+    padding: 2px;
+    border: 1px solid #f3f3f3;
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
   }
 }
 
@@ -2554,15 +2544,9 @@ body.scroll-down .kr-tool {
     float: none;
     width: auto;
     height: auto;
-    overflow: hidden;
-    padding: 0;
-    margin: 0;
-    margin-bottom: 20px;
-
+    margin: 0 0 20px 0;
+    padding: 0 0 60% 0;
     img {
-      height: auto;
-      max-width: 100%;
-      width: 750px;
       padding: 0;
       border: 0;
     }
@@ -2857,14 +2841,9 @@ td.code {
     float: none;
     width: auto;
     height: auto;
-    overflow: hidden;
-    padding: 0;
-    margin: 0;
-    margin-bottom: 20px;
-
+    margin: 0 0 20px 0;
+    padding: 0 0 60% 0;
     img {
-      height: 100%;
-      width: 100%;
       padding: 0;
       border: 0
     }
