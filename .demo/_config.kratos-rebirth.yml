@@ -19,6 +19,40 @@ topMenu:
       - label: 项目链接
         url: https://github.com/Candinya/Kratos-Rebirth
 
+vendors:
+  # 常用CDN基地址:
+  # https://unpkg.com/
+  # https://cdn.jsdelivr.net/npm/
+
+  # 以下一行代码指定 npm cdn 基地址，该 CDN 应该兼容 jsdelivr 使用的路径格式
+  # npm_cdn: https://cdn.jsdelivr.net/npm/
+  packages:
+    hexo-theme-kratos-rebirth: 
+      # 以下一行代码用于对某个包单独配置 cdn 基地址，使用 null 表示不从 cdn 获取此包
+      # cdn_url: null
+      # cdn_url: https://cdn.jsdelivr.net/npm/hexo-theme-kratos-rebirth@latest/
+    aplayer:
+      # 以下一行代码指定所使用的库版本
+      # 默认情况下会使用主题开发组进行开发调试时所使用的版本（通常而言也是最适合的版本）
+      # 因此该值不建议修改
+      # 
+      # 注意：如果选择其他版本，则必须配置 npm_cdn 或 为包单独配置 cdn_url 或 修改 vendors 目录，
+      # 这是因为主题自带的库只含有默认版本，必须从 cdn 加载其他版本或由用户手动提供其他版本的相关文件
+      #
+      # 警告：随意切换版本可能造成主题无法正常工作
+      # 
+      # version: 1.10.1
+      files:
+        "dist/APlayer.min.css":
+          # 以下代码用于单独对某个文件进行映射，以便于使用不符合 jsdelivr 路径格式的CDN（或其他特殊情形）
+          # 使用 null 表示不重定向（默认行为）
+          # relocate: null
+          # relocate: https://cdn.jsdelivr.net/npm/aplayer@1.10.1/dist/APlayer.min.css
+
+          # 以下代码用于指定 SRI 以增强安全性
+          # 注意，仅有部分组件支持 SRI，不支持的组件会忽略此值
+          # integrity: sha256-6Y7CJDaltoeNgk+ZftgCD9jLgmGv4xKUo8nQ0HgAwVo=
+
 friends:
   list:
   - name: "猫猫①号"

@@ -1,5 +1,5 @@
 <% if (theme.aplayer.meting) { %>
-    <script defer src="<%- url_npm_cdn('meting@2.0.1/dist/Meting.min.js') %>"></script>
+    <%- js_npm_cdn('meting', 'dist/Meting.min.js', {defer: true}) %>
     <meting-js
         server="<%= theme.aplayer.meting.server %>"
         type="<%= theme.aplayer.meting.type %>"

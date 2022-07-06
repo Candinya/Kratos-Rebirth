@@ -54,30 +54,30 @@
     <% } %>
   <% } %>
   <!-- 样式表文件 -->
-  <link rel="stylesheet" id="kratos-css" href="<%- url_cdn('css/kratosr.min.css') %>" type="text/css" media="all">
+  <%- css_theme_cdn('css/kratosr.min.css', {id: "kratos-css", media:"all"}) %>
   <% if (theme.enable_dark) { %>
-    <link rel="stylesheet" id="darkmode-css" href="<%- url_cdn('css/kr-color-dark.min.css') %>" type="text/css" media="(prefers-color-scheme: dark)">
-    <script src="<%- url_cdn('js/kr-dark.min.js') %>"></script>
+    <%- css_theme_cdn('css/kr-color-dark.min.css', {id: "darkmode-css", media:"(prefers-color-scheme: dark)"}) %>
+    <%- js_theme_cdn('js/kr-dark.min.js') %>
   <% } %>
   <% if (config.highlight && config.highlight.enable && theme.highlight_theme) { %>
-    <link rel="stylesheet" id="highlight-css" href="<%- url_cdn(`css/highlight/${theme.highlight_theme || 'night-eighties'}.min.css`) %>" type="text/css" media="all">
+    <%- css_theme_cdn(`css/highlight/${theme.highlight_theme || 'night-eighties'}.min.css`, {id: "highlight-css", media:"all"}) %>
   <% } %>
   <% if (config.prismjs && config.prismjs.enable) { %>
-    <link rel="stylesheet" id="prismjs-css" href="<%- url_cdn('css/prismjs.min.css') %>" type="text/css" media="all">
+    <%- css_theme_cdn('css/prismjs.min.css', {id: "prismjs-css", media:"all"}) %>
   <% } %>
-  <link rel="stylesheet" id="fontawe-css" href="<%- url_npm_cdn('font-awesome@4.7.0/css/font-awesome.min.css') %>" type="text/css" media="all">
-  <link rel="stylesheet" id="nprogress-css" href="<%- url_npm_cdn('nprogress@0.2.0/nprogress.css') %>" type="text/css" media="all">
+  <%- css_npm_cdn('font-awesome', 'css/font-awesome.min.css', {id:"fontawe-css", media:"all"}) %>
+  <%- css_npm_cdn('nprogress', 'nprogress.css', {id:"nprogress-css", media:"all"}) %>
   <% const commentProvider = theme.posts.comments?.provider ?? theme.posts.comments; %>
   <% if (theme.aplayer.enabled) { %>
-    <link rel="stylesheet" href="<%- url_npm_cdn('aplayer@1.10.1/dist/APlayer.min.css') %>">
+    <%- css_npm_cdn('aplayer', 'dist/APlayer.min.css') %>
   <% }%>
   <% if (theme.fancybox){ %>
-    <link rel="stylesheet" href="<%- url_npm_cdn('@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css') %>">
+    <%- css_npm_cdn('@fancyapps/fancybox', 'dist/jquery.fancybox.min.css') %>
   <% } %>
   <!-- 不得不预先加载的一些JS文件 -->
-  <script src="<%- url_npm_cdn('jquery@3.6.0/dist/jquery.min.js') %>"></script>
+  <%- js_npm_cdn('jquery', 'dist/jquery.min.js') %>
   <% if (theme.posts.share) { %>
-    <script src="<%- url_npm_cdn('qrcode_js@1.0.0/qrcode.min.js') %>"></script>
+    <%- js_npm_cdn('qrcode_js', 'qrcode.min.js') %>
   <% } %>
   <% if (theme.customStyles) { %>
   <style>
