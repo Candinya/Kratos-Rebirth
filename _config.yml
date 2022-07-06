@@ -42,6 +42,8 @@ vendors:
       version: 1.0.0
     mermaid: 
       version: 9.1.1
+    meting:
+      version: 2.0.1
 
 # 自定义样式
 customStyles:
