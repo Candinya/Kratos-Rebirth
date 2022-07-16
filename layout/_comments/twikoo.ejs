@@ -7,7 +7,7 @@
             twikoo.init({ envId: '<%- theme.twikoo.env_id %>', el: '#tcomment' });
         }
         if (typeof twikoo === 'undefined') {
-            const src = '<%- url_npm_cdn("twikoo@1.5.11/dist/twikoo.all.min.js") %>';
+            const src = '<%- url_npm_cdn("twikoo", "dist/twikoo.all.min.js") %>';
             $.getScript(src, init);
         } else {
             init();

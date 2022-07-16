@@ -39,4 +39,4 @@
 </div>
 
 <script>var searchDataFile = "<%- config.root + (theme.search.path || 'search.json') %>";</script>
-<script defer src="<%- url_cdn('js/local-search.min.js') %>"></script>
+<%- js_theme_cdn('js/local-search.min.js', {defer: true}) %>

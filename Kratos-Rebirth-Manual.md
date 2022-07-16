@@ -64,6 +64,23 @@ toc: true
 
 ### - Top Menu 顶部导航栏相关
 
+- *(>2.0.3)* 可以尝试更优雅的新配置方案，配置格式为：
+
+``` ts
+topMenu: Array<{
+  label: String;
+  icon?: String; // Select from FontAwesome@4.7.0
+  url?: String;
+  submenu?: Array<{
+    label: String;
+    icon?: String; // Select from FontAwesome@4.7.0
+    url: String
+  }>
+}> 
+```
+
+具体可以参见 `.demo/_config.kratos-rebirth.yml` 中示例的配置哦。
+
 - 分为**menu**和**label**两个模块，控制页首的顶部导航栏内容。
 menu模块提供导航到的页面位置，label模块提供导航选项卡的显示内容。
 请注意menu项与label项需要一一对应，否则可能会出现无法正常显示的情况。

@@ -127,13 +127,13 @@
     <% } else if (theme.index && theme.index.post_type) { %>
         <article itemscope itemtype="https://schema.org/Article">
             <div class="kratos-hentry kratos-post-inner clearfix index-post">
+                <% if (post.pic) { %>
                 <div class="kratos-entry-thumb-new">
                     <a href="<%- url_for(post.path) %>">
-                        <% if (post.pic) { %>
-                            <img class="kratos-entry-thumb-new-img" src="<%- post.pic.includes('://') ? post.pic : url_for(post.path.replace(/(\/index)?\.html?$/, '') + '/' + post.pic) %>">
-                        <% } %>
+                        <img class="kratos-entry-thumb-new-img" src="<%- post.pic.includes('://') ? post.pic : url_for(post.path.replace(/(\/index)?\.html?$/, '') + '/' + post.pic) %>" alt="">
                     </a>
                 </div>
+                <% } %>
                 <header class="kratos-entry-header">
                     <h1 class="text-center"><a class="kratos-entry-title" href="<%- url_for(post.path) %>" itemprop="mainEntityOfPage"><span itemprop="name headline"><%- post.title %></span></a></h1>
                     <% if (post.subtitle) { %>
@@ -209,9 +209,9 @@
                 <div class="kratos-entry-thumb-new">
                     <a href="<%- url_for(post.path) %>">
                         <% if (post.pic) { %>
-                            <img class="kratos-entry-thumb-new-img" src="<%- post.pic.includes('://') ? post.pic : url_for(post.path.replace(/(\/index)?\.html?$/, '') + '/' + post.pic) %>">
+                            <img class="kratos-entry-thumb-new-img" src="<%- post.pic.includes('://') ? post.pic : url_for(post.path.replace(/(\/index)?\.html?$/, '') + '/' + post.pic) %>" alt="">
                         <% } else { %>
-                            <img class="kratos-entry-thumb-new-img">
+                            <img class="kratos-entry-thumb-new-img" alt="">
                         <% } %>
                     </a>
                 </div>

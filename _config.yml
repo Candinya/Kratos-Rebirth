@@ -14,17 +14,47 @@ hoster: <a href="https://github.io" target="_blank">Github Pages</a>
 site_logo: https://greenhandzdl.github.io/favicon.ico
 snow: true
 click_animate_js: 'candy'
-enable_dark: true
-highlight_theme: night-eighties # 代码高亮主题（light | night | night-eighties | night-blue | night-bright）
+enable_dark: 
 cdn: true
-check_update: true
-
+highlight_theme: night-eighties # 代码高亮主题（light | night | night-eighties | night-blue | night-bright）
+      version: 1.2.6
+    gitalk: 
+      version: 1.7.2
+    gitment: 
+      version: 0.0.3
+    twikoo: 
+      version: 1.5.11
+    valine: 
+      version: 1.4.18
+    "@waline/client": 
+      version: 1.6.0
+    bootstrap: 
+      version: 3.3.4
+    nprogress: 
+      version: 0.2.0
+    aplayer: 
+      version: 1.10.1
+    "@fancyapps/fancybox": 
+      version: 3.5.7
+    clipboard: 
+      version: 2.0.6
+    layui-src: 
+      version: 2.5.5
+    font-awesome: 
+      version: 4.7.0
+    jquery: 
+      version: 3.6.0
+    qrcode_js: 
+      version: 1.0.0
+    mermaid: 
+      version: 9.1.1
+    meting:
+      version: 2.0.1
 
 # 自定义样式
 customStyles:
   images: # 图片相关设置
     banner: /images/banner.webp # 站点横幅
-    background: /images/bg.webp # 站点背景
 
 # Index
 index:
@@ -148,21 +178,12 @@ search:
 # 由于Javascript被压缩后难以有效编辑与生成，因而为了简化操作，将相关的配置项在生成文件时以独立的json文件写出，调用时使用fetch API获取。
 jsconfig:
   main:
-    # picCDN: true
-     pic:
-      random_amount: 20 # 表示从1~20
-      filename: "images/thumb/thumb_{no}.webp" # 相对于主题根目录，表示文件名的格式, {no} 用以指代随机的编号。
-                                              # 如果包含 // 表示使用指定域名的绝对路径（例如第三方图床服务等），那么会忽略 CDN 选项
+      randomAmount: 20 # 表示从1~20
+      baseUrl: null # 使用默认值（不单独配置），将跟随 vendors 中的相关设定选择是否使用 cdn
+      filenameTemplate: "thumb_{no}.webp" 
     createTime: "2020/08/26 00:00:00"
     donateBtn: "支持我~"
     scanNotice: "扫一扫，好不好？"
-    # qr_alipay: "/images/alipayqr.webp"
-    # qr_wechat: "/images/wechatpayqr.webp"
-    siteLeaveEvent: true
-    leaveTitle: "{{{(>_<)}}}哦哟，崩溃啦~"
-    returnTitle: "(*´∇｀*)欸，又好啦~"
-    copyrightNotice: "该内容采用 CC BY-NC-SA 4.0 许可协议，著作权归Greenhandzdl所有。商业转载请联系作者获得授权，非商业转载请注明出处。"
-    expire_day: 30
     topNavScrollToggle: true
 
 

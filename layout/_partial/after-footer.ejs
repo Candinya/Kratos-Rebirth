@@ -1,5 +1,5 @@
-<script defer src="<%- url_npm_cdn('bootstrap@3.3.4/dist/js/bootstrap.min.js') %>"></script>
-<script defer src="<%- url_npm_cdn('nprogress@0.2.0/nprogress.js') %>"></script>
+<%- js_npm_cdn('bootstrap', 'dist/js/bootstrap.min.js', {defer: true}) %>
+<%- js_npm_cdn('nprogress', 'nprogress.js', {defer: true}) %>
 <script>
     if (!window.kr) {
         window.kr = {};
@@ -10,25 +10,25 @@
 <% if(theme.snow){ %>
     <div>
         <canvas id="snow"></canvas>
-        <script async type="text/javascript" src="<%- url_cdn('js/snow.min.js') %>"></script>
+        <%- js_theme_cdn('js/snow.min.js', {async: true}) %>
     </div>
 <% } %>
 <% if (theme.click_animate_js) { %>
-    <script async src="<%- theme.click_animate_js.includes('//') ? theme.click_animate_js : url_cdn('js/' + theme.click_animate_js + '.min.js') %>"></script>
+    <script async src="<%- theme.click_animate_js.includes('//') ? theme.click_animate_js : url_theme_cdn('js/' + theme.click_animate_js + '.min.js') %>"></script>
 <% } %>
 
 <% if (theme.aplayer.enabled) { %>
-    <script defer src="<%- url_npm_cdn('aplayer@1.10.1/dist/APlayer.min.js') %>"></script>
+    <%- js_npm_cdn('aplayer', 'dist/APlayer.min.js', {defer: true}) %>
     <%- partial('../_tools/player') %>
 <% }%>
 <% if (page.type !== '404' && theme.fancybox){ %>
-    <script defer src="<%- url_npm_cdn('@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js') %>"></script>
+    <%- js_npm_cdn('@fancyapps/fancybox', 'dist/jquery.fancybox.min.js', {defer: true}) %>
 <% } %>
-<script defer src="<%- url_npm_cdn('clipboard@2.0.6/dist/clipboard.min.js') %>"></script>
-<script defer src="<%- url_cdn('js/kratosr.min.js') %>"></script>
-<script defer src="<%- url_cdn('js/pjax.min.js') %>"></script>
+<%- js_npm_cdn('clipboard', 'dist/clipboard.min.js', {defer: true}) %>
+<%- js_theme_cdn('js/kratosr.min.js', {defer: true}) %>
+<%- js_theme_cdn('js/pjax.min.js', {defer: true}) %>
 <% if (page.type !== '404' && theme.posts.donate) { %>
-    <script defer src="<%- url_npm_cdn('layui-src@2.5.5/dist/layui.all.js') %>"></script>
+    <%- js_npm_cdn('layui-src', 'dist/layui.all.js', {defer: true}) %>
 <% } %>
 <%- theme.site_analytics %>
 

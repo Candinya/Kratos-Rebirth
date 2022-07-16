@@ -147,42 +147,21 @@ window.cancelIdleCallback = window.cancelIdleCallback || function(id) {
         $(document).on("click",".share",()=>{$(".share-wrap").fadeToggle("slow");});
     };
 
-    const setrandpic = ()=>{
+    const loadRandomCover = ()=>{
         // 图片
         const imageboxs = document.getElementsByClassName("kratos-entry-thumb-new-img");
-        let prefix = window.kr?.siteRoot || '/';
-        const picCDN = kr.picCDN ?? kr.pic?.CDN;
-        if (picCDN) {
-            switch (picCDN) {
-                case 'unpkg':
-                    prefix = "//unpkg.com/hexo-theme-kratos-rebirth@latest/source/";
-                    break;
-                case 'jsdelivr':
-                default:
-                    prefix = "//cdn.jsdelivr.net/npm/hexo-theme-kratos-rebirth@latest/source/";
-                    break;
-            }
-        }
-        const randomAmount = parseInt(kr.pic?.random_amount) || 20;
-        let picFileNameTemplate = "images/thumb/thumb_{no}.webp";
-        if (kr.pic && kr.pic.filename) {
-            if (kr.pic.filename.includes('//')) {
-                // 是绝对路径，那么忽略 CDN 选项
-                picFileNameTemplate = kr.pic.filename;
-            } else {
-                // 是相对主题根目录的路径
-                picFileNameTemplate = prefix + kr.pic.filename;
-            }
-        }
-        const usedPics = new Array(randomAmount + 1);
+        const randomAmount = kr.cover && kr.cover.randomAmount || 20;
+        const baseUrl = kr.cover && kr.cover.baseUrl || 'https://cdn.jsdelivr.net/npm/hexo-theme-kratos-rebirth@latest/source/images/thumb/'
+        const coverFileNameTemplate = kr.cover && kr.cover.filenameTemplate || "thumb_{no}.webp";
+        const usedCovers = new Array(randomAmount + 1);
 
-        const generateNewPicID = () => {
+        const generateNewCoverID = () => {
             let remailFailCounts = 5; // set max fail counts
-            let picNo;
+            let coverNo;
             while (remailFailCounts > 0) {
                 // rand one
-                picNo = Math.floor(Math.random() * randomAmount + 1);
-                if (!usedPics[picNo]) {
+                coverNo = Math.floor(Math.random() * randomAmount + 1);
+                if (!usedCovers[coverNo]) {
                     // valid
                     break;
                 } else {
@@ -193,38 +172,46 @@ window.cancelIdleCallback = window.cancelIdleCallback || function(id) {
 
             if (remailFailCounts <= 0) {
                 // rand failed, find one manually
-                picNo = -1;
+                coverNo = -1;
                 for (let i = 1; i <= randomAmount; i++) {
-                    if (!usedPics[i]) {
+                    if (!usedCovers[i]) {
                         // use first
-                        picNo = i;
+                        coverNo = i;
                         break;
                     }
                 }
-                if (picNo === -1) {
+                if (coverNo === -1) {
                     // All used
                     // clear all
                     for (let i = 1; i <= randomAmount; i++) {
-                        usedPics[i] = false;
+                        usedCovers[i] = false;
                     }
                     // rand one
-                    picNo = Math.floor(Math.random() * randomAmount + 1);
+                    coverNo = Math.floor(Math.random() * randomAmount + 1);
                 }
             }
 
             // mark as used
-            usedPics[picNo] = true;
+            usedCovers[coverNo] = true;
             
             // return
-            return picNo;
+            return coverNo;
         }
 
         for (let i = 0, len = imageboxs.length; i < len; i++) {
             if (!($(imageboxs[i]).attr("src"))) {
-                const picNo = generateNewPicID();
-                const picFileName = picFileNameTemplate.replace("{no}", picNo.toString());
-                $(imageboxs[i]).attr("src", picFileName);
-            } 
+                const coverNo = generateNewCoverID();
+                const coverFileName = coverFileNameTemplate.replace("{no}", coverNo.toString());
+                let coverUrl;
+                if (coverFileName.includes("//")) {
+                    coverUrl = coverFileName;
+                } else if (baseUrl.substring(baseUrl.length - 1) === "/") {
+                    coverUrl = baseUrl + coverFileName;
+                } else {
+                    coverUrl = baseUrl + '/' + coverFileName;
+                }
+                $(imageboxs[i]).attr("src", coverUrl);
+            }
         }
     };
 
@@ -693,7 +680,7 @@ ${kr.copyrightNotice}
     };
 
     const pjaxReload = () => {
-        setrandpic();
+        loadRandomCover();
         fancyboxInit();
         setCopyright();
         saveTitle();
