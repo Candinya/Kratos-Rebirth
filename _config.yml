@@ -14,7 +14,7 @@ hoster: <a href="https://github.io" target="_blank">Github Pages</a>
 site_logo: https://greenhandzdl.github.io/favicon.ico
 snow: true
 click_animate_js: 'candy'
-enable_dark: 
+enable_dark: true
 cdn: true
 highlight_theme: night-eighties # 代码高亮主题（light | night | night-eighties | night-blue | night-bright）
       version: 1.2.6
