@@ -23,16 +23,29 @@
     "url": "https://github.com/Candinya/Kratos-Rebirth/issues"
   },
   "homepage": "https://github.com/Candinya/Kratos-Rebirth#readme",
+  "browserslist": [
+    "last 2 versions",
+    "> 1%",
+    "Chrome >= 30",
+    "Firefox >= 30",
+    "ie >= 9",
+    "Safari >= 8"
+  ],
   "devDependencies": {
-    "browser-sync": "^2.27.4",
+    "@babel/core": "^7.18.9",
+    "@babel/preset-env": "^7.18.9",
+    "autoprefixer": "^10.4.7",
+    "browser-sync": "^2.27.10",
+    "cssnano": "^5.1.12",
     "gulp": "^4.0.2",
-    "gulp-autoprefixer": "^8.0.0",
-    "gulp-clean-css": "^4.3.0",
+    "gulp-babel": "^8.0.0",
     "gulp-cli": "^2.3.0",
     "gulp-dart-sass": "^1.0.2",
+    "gulp-postcss": "^9.0.1",
     "gulp-rename": "^2.0.0",
     "gulp-sourcemaps": "^3.0.0",
-    "gulp-terser": "^2.0.1",
-    "sass": "^1.35.1"
+    "gulp-terser": "^2.1.0",
+    "postcss": "^8.4.14",
+    "sass": "^1.53.0"
   }
 }

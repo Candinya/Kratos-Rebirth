@@ -1,2 +1,2 @@
-@charset "UTF-8";pre{border-radius:8px;padding-top:30px!important;position:relative}pre::before{content:" ";position:absolute;border-radius:50%;background-color:#fc625d;width:12px;height:12px;left:10px;top:10px;-webkit-box-shadow:20px 0 #fdbc40,40px 0 #35cd4b;box-shadow:20px 0 #fdbc40,40px 0 #35cd4b}
+pre{border-radius:8px;padding-top:30px!important;position:relative}pre:before{background-color:#fc625d;border-radius:50%;-webkit-box-shadow:20px 0 #fdbc40,40px 0 #35cd4b;box-shadow:20px 0 #fdbc40,40px 0 #35cd4b;content:" ";height:12px;left:10px;position:absolute;top:10px;width:12px}
 /*# sourceMappingURL=../maps/prismjs.min.css.map */
