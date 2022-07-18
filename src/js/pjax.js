@@ -77,9 +77,6 @@ $(function () {
         // 使用部分组件时可能会自动读取这些数据（如LiveRe评论系统）
         setMetaProperty(document, 'og:title', data.ogTitle);
         setMetaProperty(document, 'og:url', data.ogUrl);
-
-        // 更新外域变量
-        OriginTitile = document.title;
     }
     function getPageData(url, doc) {
         return {
