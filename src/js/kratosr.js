@@ -449,11 +449,12 @@ ${kr.copyrightNotice}
         };
     }
 
-    const tocAnimInit = () => {
-        if (document.getElementById('krw-toc') !== null) {
+    const tocWidgetAnimInit = () => {
+        const sidebarTocWidget = document.getElementById('krw-toc');
+        const initFunc = () => {
             // 有toc的页面
             // 获取侧边栏所有的toc项
-            const tocDOMs = document.getElementById("krw-toc").getElementsByClassName('toc-item');
+            const tocDOMs = sidebarTocWidget.getElementsByClassName('toc-item');
             // 元素高度映射记录
             const tocItems = [];
             try {
@@ -641,6 +642,17 @@ ${kr.copyrightNotice}
             });
             setPercent(); // 初始运行一次
         }
+        if (sidebarTocWidget) {
+            if (sidebarTocWidget.offsetParent !== null) {
+                initFunc();
+            } else if ("IntersectionObserver" in window) {
+                // Init when become visible
+                new IntersectionObserver(initFunc, {
+                    threshold: 0,
+                    once: true,
+                }).observe(sidebarTocWidget);
+            }
+        }
     };
 
     const topNavScrollToggleInit = () => {
@@ -688,7 +700,7 @@ ${kr.copyrightNotice}
         codeCopyInit();
         commentsLazyLoad();
         expireNotify();
-        tocAnimInit();
+        tocWidgetAnimInit();
     };
 
     const funcUsingConfig = () => {

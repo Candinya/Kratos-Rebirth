@@ -1487,7 +1487,7 @@ ul.kratos-post-meta {
   }
 
   .kratos-post-inner-toc {
-    display: none;
+    display: none!important; // So it won't be overwritten by hbe decrypt func
     border: 2px dashed #ddd;
     border-radius: 10px;
     padding-top: 15px;
@@ -1495,7 +1495,7 @@ ul.kratos-post-meta {
 
   @media(max-width:991px) {
     .kratos-post-inner-toc {
-      display: block;
+      display: block!important; // So it won't be overwritten by hbe decrypt func
     }
   }
 
@@ -2186,6 +2186,10 @@ ul.kratos-post-meta {
   }
 
   #krw-toc {
+    // Use important to prevent its style being by hbe decrypt func 
+    // (https://github.com/D0n9X1n/hexo-blog-encrypt/blob/7a820d3bd1b2d1f6aa748f870230f892fd72b330/lib/hbe.js#L213-L218)
+    display: block!important;
+
     .toc {
       padding: 0;
       overflow: auto;

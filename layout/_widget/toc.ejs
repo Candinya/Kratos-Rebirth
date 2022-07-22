@@ -1,4 +1,4 @@
-<aside id="krw-toc" class="widget widget-kratos-toc clearfix">
+<aside id="krw-toc" class="widget widget-kratos-toc clearfix toc-div-class" <% if (page.encrypt) { %>style="display:none!important" <% } %>>
     <div class="photo-background"></div>
     <h4 class="widget-title no-after">
         <i class="fa fa-compass"></i>
@@ -6,6 +6,6 @@
         <span class="toc-progress-bar" role="progressbar" aria-label="阅读进度："></span>
     </h4>
     <div class="textwidget">
-        <%- toc(page.content, { list_number: false }) %>
+        <%- tocContent %>
     </div>
 </aside>

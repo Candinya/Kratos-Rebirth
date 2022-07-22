@@ -1,5 +1,5 @@
 <% const needSplit = theme.widgets.includes('splitter') && (is_post() || is_page()); %>
-<% const showToc = page.toc && strip_html(toc(page.content)); %>
+<% const tocContent = toc(page.encrypt ? page.origin : page.content, { list_number: false }); %>
 <section id="kratos-widget-area" class="col-md-4 hidden-xs hidden-sm">
     <!-- 文章和页面根据splitter来分割，没有的话就从头开始设置为sticky -->
     <% if (!needSplit) { %>
@@ -8,8 +8,8 @@
     <% theme.widgets.forEach(function(widget){
         switch (widget) {
             case 'toc':
-                if (showToc) { %>
-                    <%- partial('_widget/toc') %>
+                if (page.toc && strip_html(tocContent)) { %>
+                    <%- partial('_widget/toc', { tocContent }) %>
                 <% }
             break;
             case 'splitter':
