@@ -1,5 +1,3 @@
-let kr = {};
-
 /**
  * 因为后台任务API还是相当新的，而你的代码可能需要在那些仍不支持此API的浏览器上运行。
  * 你可以把 setTimeout() 用作回调选项来做这样的事。
@@ -25,18 +23,9 @@ window.cancelIdleCallback = window.cancelIdleCallback || function(id) {
 };
 
 (()=>{
-    const loadConfig = (cb) => {
-        // 读取配置文件
-        fetch((window.kr?.siteRoot || '/') + 'config/main.json')
-            .then((res) => {
-                return res.json();
-            })
-            .then((cfg) => {
-                kr = cfg;
-            })
-            .then(()=>{
-                cb();
-            });
+    const loadConfig = async () => {
+        var url = (window.kr?.siteRoot || '/') + 'config/main.json';
+        return await (await fetch(url)).json()
     };
     const pageScrollDownInit = ()=>{
         let isScrolledDown = false;
@@ -119,7 +108,7 @@ window.cancelIdleCallback = window.cancelIdleCallback || function(id) {
         });
     };
 
-    const donateConfig = ()=>{
+    const donateConfig = (kr)=>{
         $(document).on("click",".donate",()=>{
             layer.open({
                 type:1,
@@ -147,7 +136,7 @@ window.cancelIdleCallback = window.cancelIdleCallback || function(id) {
         $(document).on("click",".share",()=>{$(".share-wrap").fadeToggle("slow");});
     };
 
-    const loadRandomCover = ()=>{
+    const loadRandomCover = (kr)=>{
         // 图片
         const imageboxs = document.getElementsByClassName("kratos-entry-thumb-new-img");
         const randomAmount = kr.cover && kr.cover.randomAmount || 20;
@@ -215,15 +204,6 @@ window.cancelIdleCallback = window.cancelIdleCallback || function(id) {
         }
     };
 
-    const initMathjax = ()=>{
-        if (typeof MathJax !== 'undefined') {
-            // 渲染Mathjax的初始化函数（用于处理ajax后的情况）
-            // 使用了同步处理的方式，可惜第一次加载页面时会双倍触发
-            // （MathJax载入时会自动初始化一次）
-            MathJax.Hub.Typeset();
-        }
-    };
-
     const fancyboxInit = ()=>{
           if (typeof $.fancybox !== 'undefined'){
             $.fancybox.defaults.hash = false;
@@ -249,7 +229,7 @@ window.cancelIdleCallback = window.cancelIdleCallback || function(id) {
     };
 
     let copyrightString;
-    const setCopyright = ()=>{
+    const setCopyright = (kr)=>{
         copyrightString = `
 
 -------------------------
@@ -260,14 +240,16 @@ ${kr.copyrightNotice}
 `;
     }
 
-    const copyEventInit = ()=>{
+    const copyEventInit = (kr)=>{
         if (kr.copyrightNotice) {
             document.body.oncopy = (e)=>{
-                const copiedContent = window.getSelection().toString();
-                if (copiedContent.length > 150) {
-                    e.preventDefault();
-                    if (e.clipboardData) {
-                        e.clipboardData.setData("text/plain", copiedContent + copyrightString);
+                if (copyrightString) {
+                    const copiedContent = window.getSelection().toString();
+                    if (copiedContent.length > 150) {
+                        e.preventDefault();
+                        if (e.clipboardData) {
+                            e.clipboardData.setData("text/plain", copiedContent + copyrightString);
+                        }
                     }
                 }
             };
@@ -279,7 +261,7 @@ ${kr.copyrightNotice}
         docTitle = document.title;
     };
 
-    const leaveEventInit = () => {
+    const leaveEventInit = (kr) => {
         if (kr.siteLeaveEvent) {
             let titleTime;
             const OriginLogo = $('[rel="icon"]').attr("href");
@@ -348,7 +330,7 @@ ${kr.copyrightNotice}
         return tString;
     };
 
-    const initTime = () => {
+    const initTime = (kr) => {
         const createTime = new Date(kr.createTime);
         const upTimeNode = document.getElementById("span_dt");
         setInterval(() => {
@@ -401,6 +383,9 @@ ${kr.copyrightNotice}
                 // 取消上一个加载事件
                 window.cancelIdleCallback(window.loadCommentsEventHandler);
             }
+            if (typeof load_comm === 'undefined' || load_comm === null) {
+                return;
+            }
             // 加载新评论模块
             window.loadCommentsEventHandler = window.requestIdleCallback(load_comm);
             // 防止二次加载，清理掉函数
@@ -414,13 +399,12 @@ ${kr.copyrightNotice}
                 }
             }, { threshold: 0 });
             observer.observe(commsArea);
-        } else if (typeof load_comm !== 'undefined' && load_comm !== null) {
-            // 直接加载
+        } else {
             loadwork();
         }
     };
 
-    const expireNotify = () => {
+    const expireNotify = (kr) => {
         if (kr.expire_day) {
             const expireAlert = document.getElementById('expire-alert');
             if (expireAlert) {
@@ -655,7 +639,7 @@ ${kr.copyrightNotice}
         }
     };
 
-    const topNavScrollToggleInit = () => {
+    const topNavScrollToggleInit = (kr) => {
         // 判断设置参数
         if (!kr.topNavScrollToggle) {
             return; // 没有启用
@@ -691,44 +675,56 @@ ${kr.copyrightNotice}
 
     };
 
-    const pjaxReload = () => {
-        loadRandomCover();
-        fancyboxInit();
-        setCopyright();
-        saveTitle();
-        initMathjax();
-        codeCopyInit();
-        commentsLazyLoad();
-        expireNotify();
+    const initPerPage = () => {
         tocWidgetAnimInit();
+        saveTitle();
+        codeCopyInit();
+        fancyboxInit();
+        commentsLazyLoad();
     };
 
-    const funcUsingConfig = () => {
-        // 因为涉及到配置文件，所以这些是只有在完成配置加载后才能调用的函数
-        pjaxReload();
-
-        copyEventInit();
-        leaveEventInit();
-        initTime();
-        donateConfig();
-        topNavScrollToggleInit();
+    const initPerPageWithConfig = kr => {
+        loadRandomCover(kr);
+        setCopyright(kr);
+        expireNotify(kr);
     };
 
-    window.addEventListener('pjax:complete', pjaxReload);
+    window.addEventListener('pjax:complete', () => {
+        initPerPage();
+        if (typeof MathJax !== 'undefined') {
+            MathJax.Hub.Typeset();
+        }
+    });
 
-    window.addEventListener('window:onload', () => {
-        loadConfig(funcUsingConfig);
+    function themeInit() {
+        document.removeEventListener("DOMContentLoaded", themeInit, false);
+        window.removeEventListener("load", themeInit, false);
+
+        loadConfig().then(kr => {
+            copyEventInit(kr);
+            leaveEventInit(kr);
+            initTime(kr);
+            donateConfig(kr);
+            topNavScrollToggleInit(kr);
+            initPerPageWithConfig(kr);
+            window.addEventListener('pjax:complete', () => {
+                initPerPageWithConfig(kr);
+            });
+        });
+        
         pageScrollDownInit();
         offcanvas();
         mobiClick();
         xControl();
         shareMenu();
         tocNavInit();
-    }, { once: true });
+        initPerPage();
+    }
 
-    window.onload = () => {
-        window.dispatchEvent(new Event('window:onload'));
-        console.log('页面加载完毕！消耗了 %c'+Math.round(performance.now()*100)/100+' ms','background:#282c34;color:#51aded;');
-    };
-
+    if (document.readyState === "complete") {
+        setTimeout(themeInit);
+    } else {
+        document.addEventListener("DOMContentLoaded", themeInit, false);
+        window.addEventListener("load", themeInit, false); //fallback
+    }
 })();

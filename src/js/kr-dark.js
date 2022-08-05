@@ -103,11 +103,20 @@
     // 加载页面时即立刻提交一次
     emitColorMode();
 
-    // DOM完成后才能监听按钮
-    window.addEventListener('DOMContentLoaded', (event) => {
-        const darkModeTogglebuttonElement = document.getElementById('darkmode-switch');
-        darkModeTogglebuttonElement.addEventListener('click', () => {
+    const krDarkInit = () => {
+        document.removeEventListener("DOMContentLoaded", krDarkInit, false);
+        window.removeEventListener("load", krDarkInit, false);
+
+        const darkModeSwitchElement = document.getElementById('darkmode-switch');
+        darkModeSwitchElement.addEventListener('click', () => {
             emitColorMode(toggleColorMode());
         });
-    });
+    };
+
+    if (document.readyState === "complete") {
+        setTimeout(krDarkInit);
+    } else {
+        document.addEventListener("DOMContentLoaded", krDarkInit, false);
+        window.addEventListener("load", krDarkInit, false); //fallback
+    }
 })();
