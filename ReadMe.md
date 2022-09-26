@@ -24,6 +24,8 @@
 3. 修改站点目录下的 `_config.yml` 站点配置文件，将默认的 `theme: landscape` 修改成 `theme: kratos-rebirth`
 4. 如有自定义配置的需要，为更有效地管理您的主题配置文件，您可以从该主题代码仓库中，手动复制一份 `_config.yml` ，并改名为 `_config.kratos-rebirth.yml` ，移动至您的站点目录下；或者您也可以参考 `.demo` 目录下的 `_config.kratos-rebirth.yml` 这个用于构建样例站点的配置文件扩展，将其移动至站点目录下。
 
+**每一项配置项的具体解释可以参照[配置文档](https://kr-demo.candinya.com/posts/Kratos-Rebirth-Manual/)**。
+
 ## 🎁 使用环境小贴士
 
 1. hexo的官方渲染器现在也已经支持文章置顶啦，配置`Front-Matter`段中的`sticky`参数即可实现置顶降序排序，可以参见生成器的[官方文档](https://github.com/hexojs/hexo-generator-index#usage)哦

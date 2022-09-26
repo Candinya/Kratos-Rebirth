@@ -20,8 +20,6 @@ toc: true
 
 由于本模板使用了和默认模板landscape一样的ejs引擎，因此当您完成Hexo站点的安装后，您应该能够直接运行本主题。
 
-在运行之前，请您将`_config.yml.example`文件复制一份，并重命名为`_config.yml`；
-
 ## 主题配置
 
 **配置文件地址：`./kratos-rebirth/_config.yml`**
