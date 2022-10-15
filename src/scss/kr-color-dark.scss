@@ -16,3 +16,34 @@ $info_background: #3c495bbb;
 $navbar_desktop: #181c27cc;
 $navbar_mobile: #16171ae6;
 @import './kr-color/base.scss';
+
+// for Gitalk
+.gt-counts {
+    color: #ffffff;
+}
+
+.gt-header-textarea {
+    background-color: rgb(16 19 28) !important;
+    color: #ffffff !important;
+}
+
+.gt-user-name {
+    color: #ffffff;
+}
+
+.gt-header-preview {
+    background-color: rgb(16 19 28) !important;
+}
+
+.gt-btn-preview {
+    background-color: rgb(16 19 28) !important;
+}
+
+.gt-comment-content {
+    background-color: rgb(16 19 28) !important;
+}
+
+.gt-popup {
+    background-color: rgb(16 19 28) !important;
+    border-color: #6190e8 !important;
+}
