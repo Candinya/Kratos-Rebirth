@@ -1,6 +1,6 @@
 {
   "name": "hexo-theme-kratos-rebirth",
-  "version": "2.1.0",
+  "version": "2.1.1",
   "description": "A transplanted theme for Hexo, with many new features built with love.",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
