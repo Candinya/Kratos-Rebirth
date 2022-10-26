@@ -53,6 +53,13 @@ blockquote {
     }
 }
 
+table {
+    th {
+        color: $text;
+        background-color: $info_background;
+    }
+}
+
 .kratos-hentry {
     background-color: $tag_background;
 }
