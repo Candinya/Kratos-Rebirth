@@ -2954,6 +2954,11 @@ span.mjx-chtml.MJXc-display {
   }
 }
 
+mjx-container {
+  display: block;
+  overflow-x: auto;
+}
+
 /******************* Images ********************/
 body.custom-background {
   background-size: cover;
