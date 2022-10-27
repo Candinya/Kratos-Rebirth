@@ -2955,8 +2955,9 @@ span.mjx-chtml.MJXc-display {
 }
 
 mjx-container {
-  display: block;
+  display: inline-flex;
   overflow-x: auto;
+  max-width: 100%;
 }
 
 /******************* Images ********************/
