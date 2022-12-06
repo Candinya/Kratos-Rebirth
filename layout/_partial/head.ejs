@@ -62,9 +62,6 @@
   <% if (config.highlight && config.highlight.enable && theme.highlight_theme) { %>
     <%- css_theme_cdn(`css/highlight/${theme.highlight_theme || 'night-eighties'}.min.css`, {id: "highlight-css", media:"all"}) %>
   <% } %>
-  <% if (config.prismjs && config.prismjs.enable) { %>
-    <%- css_theme_cdn('css/prismjs.min.css', {id: "prismjs-css", media:"all"}) %>
-  <% } %>
   <%- css_npm_cdn('font-awesome', 'css/font-awesome.min.css', {id:"fontawe-css", media:"all"}) %>
   <%- css_npm_cdn('nprogress', 'nprogress.css', {id:"nprogress-css", media:"all"}) %>
   <% const commentProvider = theme.posts.comments?.provider ?? theme.posts.comments; %>
