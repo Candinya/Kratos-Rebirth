@@ -77,9 +77,12 @@ figure.highlight {
         }
     }
 
+    .gutter + .code {
+        margin-left: 40px;
+    }
+
     .code {
         overflow: auto;
-        margin-left: 40px;
         background-color: $highlight_background;
 
         pre {
