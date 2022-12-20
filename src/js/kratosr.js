@@ -22,6 +22,32 @@ window.cancelIdleCallback = window.cancelIdleCallback || function(id) {
     clearTimeout(id);
 };
 
+/**
+ * 一些暴露给 DOM 交互使用的全局函数
+ */
+
+window.copyCode = window.copyCode || function(triggerBtn, targetCodeID) {
+    // 用了 navigator.clipboard API ，不要再用老依赖和写法了
+    // https://developer.mozilla.org/en-US/docs/Web/API/Navigator/clipboard
+    const targetCodeElement = document.getElementById(targetCodeID);
+    if (targetCodeElement) {
+        const code = targetCodeElement.innerText;
+        navigator.clipboard.writeText(code);
+
+        // 复制成功，庆祝一下
+        const origInner = triggerBtn.innerHTML;
+        triggerBtn.innerHTML = `<i class="fa fa-check-circle"></i>&nbsp;成功~`;
+        setTimeout(() => {
+            triggerBtn.innerHTML = origInner;
+        }, 3000);
+    }
+    // 并且这样复制不会触发 CC 提示，就不用担心代码被提示弄出一堆错了
+};
+
+/**
+ * 核心的配置体，包一层防止全局变量命名导致的冲突
+ */
+
 (()=>{
     const loadConfig = async () => {
         var url = (window.kr?.siteRoot || '/') + 'config/main.json';
@@ -339,7 +365,6 @@ ${kr.copyrightNotice}
     };
 
     const codeCopyInit = () => {
-        // 使用了clipboard.js，所以非常的简洁，只需在前端生成对应的按钮和指定代码框的ID即可
         const codeFigures = document.querySelectorAll('figure.highlight');
         codeFigures.forEach((figure, count) => {
             figure
@@ -350,21 +375,9 @@ ${kr.copyrightNotice}
             .setAttribute('id', `code-${count}`);
 
             figure.innerHTML += 
-            `<button class="copy" data-clipboard-target="#code-${count}">
+            `<button class="copy" onclick="copyCode(this, 'code-${count}')">
                 <i class="fa fa-copy"></i>&nbsp;复制
             </button>`;
-        });
-
-        const clipboard = new ClipboardJS('button.copy');
-
-        clipboard.on('success', (e) => {
-            const origInner = e.trigger.innerHTML;
-            e.trigger.innerHTML = `<i class="fa fa-check-circle"></i>&nbsp;成功~`;
-            setTimeout(() => {
-                e.trigger.innerHTML = origInner;
-            }, 3000);
-
-            e.clearSelection();
         });
     };
 

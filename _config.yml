@@ -30,8 +30,6 @@ vendors:
       version: 1.10.1
     "@fancyapps/fancybox": 
       version: 3.5.7
-    clipboard: 
-      version: 2.0.6
     layui-src: 
       version: 2.5.5
     font-awesome: 
