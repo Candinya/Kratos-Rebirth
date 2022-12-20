@@ -2259,6 +2259,12 @@ ul.kratos-post-meta {
   }
 }
 
+.widget-kratos-toc, .kratos-post-inner-toc {
+  .toc-child {
+    padding-left: 1rem;
+  }
+}
+
 body.nav-up #kratos-widget-area > .sticky-area {
   top: 15px;
 }
