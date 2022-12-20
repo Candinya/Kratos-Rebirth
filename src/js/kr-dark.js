@@ -61,8 +61,12 @@
      * 提交指定的深色/浅色显示模式的设置
      */
     const emitColorMode = (mode) => {
-        var currentSetting = mode || getLS(darkModeStorageKey);
-        if (!validColorModeKeys[currentSetting] || currentSetting === getModeFromCSSMediaQuery()) {
+        let currentSetting = mode || getLS(darkModeStorageKey);
+        const systemTheme = getModeFromCSSMediaQuery();
+        // 在 html tag 上设置主题颜色，方便第三方插件读取使用
+        document.documentElement.setAttribute('data-theme', currentSetting || systemTheme);
+        // 检查是否无效或可以被忽略
+        if (!validColorModeKeys[currentSetting] || currentSetting === systemTheme) {
             removeLS(darkModeStorageKey); //reset
             currentSetting = null;
         }

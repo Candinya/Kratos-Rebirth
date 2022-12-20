@@ -5,7 +5,8 @@
         const init = () => {
             Waline.init(Object.assign({
                 el: '#w-comments',
-                path: '<%- url_for(page.path) %>'
+                path: '<%- url_for(page.path) %>',
+                dark: 'html[data-theme="dark"]',
             }, JSON.parse('<%- JSON.stringify(theme.waline) %>')));
         }
         if (typeof Waline === 'undefined') {
