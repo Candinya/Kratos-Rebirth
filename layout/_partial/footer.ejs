@@ -55,6 +55,11 @@
                         <span class="fa fa-adjust"></span>
                     </div>
                 <% } %>
+                <% if (theme.snow) { %>
+                    <div class="box theme-box" id="snow-switch">
+                        <span class="fa fa-snowflake-o"></span>
+                    </div>
+                <% } %>
                 <% if (theme.group_link) { %>
                     <div class="box group-box">
                         <a href="<%- theme.group_link %>" target="_blank" rel="nofollow">

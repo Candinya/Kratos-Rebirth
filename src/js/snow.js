@@ -1,15 +1,18 @@
-// 移动端默认关闭
-window.kr?.notMobile && (()=>{
-    let snowConf = {};
-    //-------------------参数设置区 开始-------------------
-        snowConf.flakeCount = 100;
-        snowConf.minDist = 150;
-        snowConf.color = "255, 255, 255";
-        snowConf.size = 2;
-        snowConf.speed = 0.5;
-        snowConf.opacity = 0.2;
-        snowConf.stepsize = .5;
-    //-------------------参数设置区 结束-------------------
+(()=>{
+    // 设置雪花参数
+    let snowConf = {
+        flakeCount: 100,
+        minDist: 150,
+        color: "255, 255, 255",
+        size: 2,
+        speed: 0.5,
+        opacity: 0.3,
+        stepsize: .5,
+    };
+
+    // 记录下雪状态
+    let isSnowing = true;
+
     const requestAnimationFrame = window.requestAnimationFrame || window.mozRequestAnimationFrame || window.webkitRequestAnimationFrame || window.msRequestAnimationFrame || function(callback){window.setTimeout(callback, 1000/60);};
     window.requestAnimationFrame = requestAnimationFrame;
     const canvas = document.getElementById("snow");
@@ -19,8 +22,15 @@ window.kr?.notMobile && (()=>{
     let flakes = [];
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
-    const snow = ()=>{
+    const snow = () => {
+
+        // 清空画布
         ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+        if (!isSnowing) {
+            return; // 结束
+        }
+
         const minDist = snowConf.minDist;
         for (let i = 0; i < flakeCount; i++){
             let flake = flakes[i];
@@ -65,8 +75,21 @@ window.kr?.notMobile && (()=>{
         flake.velX    = 0;
         flake.opacity = (Math.random()*0.5)+0.3;
     };
-    const init = ()=>{
-        for(let i = 0; i < flakeCount; i++){
+    // 初始化函数
+    const init = () => {
+        // 判断当前是否应该下雪
+        const isSnowDisabled = localStorage.getItem('kr-disable-snow') !== null;
+        if (isSnowDisabled || window.kr?.notMobile === false) {
+            // 用户禁用了或者是移动端，就不下雪了
+            isSnowing = false;
+            return;
+        }
+
+        startSnow();
+    };
+    const startSnow = () => {
+        // 生成初始雪花
+        for (let i = 0; i < flakeCount; i++) {
             const x       = Math.floor(Math.random()*canvas.width);
             const y       = Math.floor(Math.random()*canvas.height);
             const size    = (Math.random()*3) + snowConf.size;
@@ -83,9 +106,29 @@ window.kr?.notMobile && (()=>{
                 opacity: opacity
             });
         }
+        // 开始下雪
         snow();
     };
+    // 雪花避让鼠标
     document.addEventListener("mousemove", (e)=>{mX = e.clientX, mY = e.clientY});
+    // 窗口大小调整
     window.addEventListener("resize",()=>{canvas.width = window.innerWidth; canvas.height = window.innerHeight;});
+    // 监听下雪状态改变事件
+    document.getElementById("snow-switch")?.addEventListener("click", () => {
+        // 下雪状态按钮被点击，切换下雪状态
+        if (isSnowing) {
+            // 停停停
+            isSnowing = false;
+            localStorage.setItem('kr-disable-snow', true);
+        } else {
+            // 来了来了
+            isSnowing = true;
+            localStorage.removeItem('kr-disable-snow');
+
+            startSnow();
+        }
+    });
+
+    // 初始化
     init();
 })();
