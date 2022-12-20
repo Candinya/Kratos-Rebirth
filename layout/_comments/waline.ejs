@@ -1,14 +1,15 @@
 <div id="w-comments" class="post-comments<% if (!theme.waline.visitor) { %> lazy-load<% } %><% if (theme.posts.comments?.enableBGImage) { %> bg-image<% } %>"></div>
+<link rel="stylesheet" href="<%- url_npm_cdn('@waline/client', 'dist/waline.css') %>" />
 <script>
     var load_comm = () => {
         const init = () => {
-            new Waline(Object.assign({
+            Waline.init(Object.assign({
                 el: '#w-comments',
                 path: '<%- url_for(page.path) %>'
             }, JSON.parse('<%- JSON.stringify(theme.waline) %>')));
         }
         if (typeof Waline === 'undefined') {
-            const src = '<%- url_npm_cdn("@waline/client", "dist/Waline.min.js") %>';
+            const src = '<%- url_npm_cdn("@waline/client", "dist/waline.js") %>';
             $.getScript(src, init);
         } else {
             init();
