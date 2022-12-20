@@ -23,13 +23,12 @@
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
     const snow = () => {
-
-        // 清空画布
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
-
         if (!isSnowing) {
             return; // 结束
         }
+
+        // 清空画布
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
 
         const minDist = snowConf.minDist;
         for (let i = 0; i < flakeCount; i++){
@@ -82,6 +81,7 @@
         if (isSnowDisabled || window.kr?.notMobile === false) {
             // 用户禁用了或者是移动端，就不下雪了
             isSnowing = false;
+            canvas.classList.add('disabled');
             return;
         }
 
@@ -120,10 +120,12 @@
             // 停停停
             isSnowing = false;
             localStorage.setItem('kr-disable-snow', true);
+            canvas.classList.add('disabled');
         } else {
             // 来了来了
             isSnowing = true;
             localStorage.removeItem('kr-disable-snow');
+            canvas.classList.remove('disabled');
 
             startSnow();
         }
