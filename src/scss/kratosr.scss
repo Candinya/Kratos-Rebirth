@@ -1604,6 +1604,10 @@ ul.kratos-post-meta {
     .read-more {
       margin-right: 0;
     }
+
+    > span > * {
+      display: inline-block;
+    }
   }
 
   .stickyimg {
