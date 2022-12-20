@@ -24,15 +24,22 @@
                     <% } %>
                     <%- __('words') %>
                 </li>
-                <% if (/[vw]aline/.test(commentProvider) && theme[commentProvider].visitor) { %>
+                <% if (commentProvider === 'valine' && theme.valine.visitor) { %>
                     <li id="<%- url_for(page.path) %>" class="leancloud_visitors" data-flag-title="<%- page.title %>">
                         <i class="fa fa-eye"></i>
                         <%- __('read_count', '<span class="leancloud-visitors-count"> </span>') %>
                     </li>
-                    <% if (commentProvider === 'waline') { %>
+                <% } else if (commentProvider === 'waline') { %>
+                    <% if (theme.waline.pageview) { %>
+                        <li>
+                            <i class="fa fa-eye"></i>
+                            <%- __('read_count', '<span data-path="' + url_for(page.path) + '" class="waline-pageview-count"> </span>') %>
+                        </li>
+                    <% } %>
+                    <% if (theme.waline.comment) { %>
                         <li>
                             <i class="fa fa-commenting-o"></i>
-                            <%- __('comments_count', '<span data-xid="' + url_for(page.path) + '" class="waline-comment-count"> </span>') %>
+                            <%- __('comments_count', '<span data-path="' + url_for(page.path) + '" class="waline-comment-count"> </span>') %>
                         </li>
                     <% } %>
                 <% } %>

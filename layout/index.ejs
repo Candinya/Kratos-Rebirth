@@ -97,10 +97,15 @@
                         <% } %>
                         <% if (theme.index.read_count) { %>
                             <!-- 当前仅支持valine/waline自带的统计功能 -->
-                            <% if (/[vw]aline/.test(commentProvider) && theme[commentProvider].visitor) { %>
+                            <% if (commentProvider === 'valine' && theme.valine.visitor) { %>
                                 <a id="<%- url_for(post.path) %>" class="leancloud_visitors" data-flag-title="<%- post.title %>">
                                     <i class="fa fa-eye"></i>
                                     <%- __('read_count', '<span class="leancloud-visitors-count"> </span>') %>
+                                </a>
+                            <% } else if (commentProvider === 'waline' && theme.waline.pageview) { %>
+                                <a>
+                                    <i class="fa fa-eye"></i>
+                                    <%- __('read_count', '<span data-path="' + url_for(post.path) + '" class="waline-pageview-count"> </span>') %>
                                 </a>
                             <% } %>
                         <% } %>
@@ -109,7 +114,7 @@
                             <% if (commentProvider === 'waline') { %>
                                 <a>
                                     <i class="fa fa-commenting-o"></i>
-                                    <%- __('comments_count', '<span data-xid="' + url_for(post.path) + '" class="waline-comment-count"> </span>') %>
+                                    <%- __('comments_count', '<span data-path="' + url_for(post.path) + '" class="waline-comment-count"> </span>') %>
                                 </a>
                             <% } %>
                         <% } %>
@@ -169,10 +174,15 @@
                         <% } %>
                         <% if (theme.index.read_count) { %>
                             <!-- 当前仅支持valine/waline自带的统计功能 -->
-                            <% if (/[vw]aline/.test(commentProvider) && theme[commentProvider].visitor) { %>
+                            <% if (commentProvider === 'valine' && theme.valine.visitor) { %>
                                 <li id="<%- url_for(post.path) %>" class="leancloud_visitors" data-flag-title="<%- post.title %>">
                                     <i class="fa fa-eye"></i>
                                     <%- __('read_count', '<span class="leancloud-visitors-count"> </span>') %>
+                                </li>
+                            <% } else if (commentProvider === 'waline' && theme.waline.pageview) { %>
+                                <li>
+                                    <i class="fa fa-eye"></i>
+                                    <%- __('read_count', '<span data-path="' + url_for(post.path) + '" class="waline-pageview-count"> </span>') %>
                                 </li>
                             <% } %>
                         <% } %>
@@ -181,7 +191,7 @@
                             <% if (commentProvider === 'waline') { %>
                                 <li>
                                     <i class="fa fa-commenting-o"></i>
-                                    <%- __('comments_count', '<span data-xid="' + url_for(post.path) + '" class="waline-comment-count"> </span>') %>
+                                    <%- __('comments_count', '<span data-path="' + url_for(post.path) + '" class="waline-comment-count"> </span>') %>
                                 </li>
                             <% } %>
                         <% } %>
@@ -252,19 +262,24 @@
                         </a>
                         <% if (theme.index.read_count) { %>
                             <!-- 当前仅支持valine/waline自带的统计功能 -->
-                            <% if (/[vw]aline/.test(commentProvider) && theme[commentProvider].visitor) { %>
+                            <% if (commentProvider === 'valine' && theme.valine.visitor) { %>
                                 <a id="<%- url_for(post.path) %>" class="leancloud_visitors" data-flag-title="<%- post.title %>">
                                     <i class="fa fa-eye"></i>
                                     <%- __('read_count', '<span class="leancloud-visitors-count"> </span>') %>
+                                </a>
+                            <% } else if (commentProvider === 'waline' && theme.waline.pageview) { %>
+                                <a>
+                                    <i class="fa fa-eye"></i>
+                                    <%- __('read_count', '<span data-path="' + url_for(post.path) + '" class="waline-pageview-count"> </span>') %>
                                 </a>
                             <% } %>
                         <% } %>
                         <% if (theme.index.comment_count) { %>
                             <!-- 当前仅支持waline自带的统计功能 -->
-                            <% if (commentProvider === 'waline') { %>
+                            <% if (commentProvider === 'waline' && theme.waline.comment) { %>
                                 <a>
                                     <i class="fa fa-commenting-o"></i>
-                                    <%- __('comments_count', '<span data-xid="' + url_for(post.path) + '" class="waline-comment-count"> </span>') %>
+                                    <%- __('comments_count', '<span data-path="' + url_for(post.path) + '" class="waline-comment-count"> </span>') %>
                                 </a>
                             <% } %>
                         <% } %>
