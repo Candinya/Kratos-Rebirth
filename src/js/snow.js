@@ -118,7 +118,10 @@
         // 下雪状态按钮被点击，切换下雪状态
         if (isSnowing) {
             // 停停停
-            isSnowing = false;
+            setTimeout(() => {
+                // 让淡化动画播放完成后再停止
+                isSnowing = false;
+            }, 600);
             localStorage.setItem('kr-disable-snow', true);
             canvas.classList.add('disabled');
         } else {
