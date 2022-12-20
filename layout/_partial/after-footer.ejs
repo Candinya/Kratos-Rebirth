@@ -24,7 +24,6 @@
 <% if (page.type !== '404' && theme.fancybox){ %>
     <%- js_npm_cdn('@fancyapps/fancybox', 'dist/jquery.fancybox.min.js', {defer: true}) %>
 <% } %>
-<%- js_npm_cdn('clipboard', 'dist/clipboard.min.js', {defer: true}) %>
 <%- js_theme_cdn('js/kratosr.min.js', {defer: true}) %>
 <%- js_theme_cdn('js/pjax.min.js', {defer: true}) %>
 <% if (page.type !== '404' && theme.posts.donate) { %>
