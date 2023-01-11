@@ -46,8 +46,8 @@ vendors:
 # 自定义样式
 customStyles:
   images: # 图片相关设置
-    banner: /images/banner.webp # 站点横幅
-    background: /images/bg.webp # 站点背景
+    # banner: /images/banner.webp # 站点横幅
+    # background: /images/bg.webp # 站点背景
 
 # Index 首页配置
 index:
