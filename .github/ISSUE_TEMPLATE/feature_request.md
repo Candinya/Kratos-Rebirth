@@ -1,22 +1,47 @@
 ---
 name: 新功能建议
-about: 为该项目提供新功能相关的建议
-title: 新功能建议： （请简略描述新功能的需求）
+description: 为该项目提供新功能相关的建议
+title: 新功能建议： （请在此简略描述新功能的需求）
 labels: enhancement
-assignees: Candinya
+body:
+  - type: checkboxes
+    id: before-report
+    attributes:
+      label: 报告前须知
+      description: 一些注意事项
+      options:
+        - label: 我已确认该功能确实不存在
+          required: true
+        - label: 我会认真详细地描述清楚我想要的功能
+          required: true
+
+  - type: textarea
+    id: feature-request-reason
+    attributes:
+      label: 您的新功能建议是由使用时出现的不便引发的吗？
+      description: 如果是的话，您可在此给出一个大致的描述。
+    validations:
+      required: true
+
+  - type: textarea
+    id: feature-description
+    attributes:
+      label: 请描述您所设想的功能或是解决方案
+      description: 加入了这个新功能之后，会有什么好事情发生呢
+    validations:
+      required: true
+
+  - type: textarea
+    id: appendix
+    attributes:
+      label: 补充内容
+      description: 如果有什么需要补充的内容，可以一并附在这里
+    validations:
+      required: false
+
+  - type: markdown
+    attributes:
+      value: |
+        非常感谢您愿意抽出时间来填写这份新功能建议表单，我们会尽快处理！
 
 ---
-
-0. **报告前须知**
-
-- [ ] 我已确认该功能确实不存在
-- [ ] 我会认真详细地描述清楚我想要的功能
-
-1. **您的新功能建议是由使用时出现的不便引发的吗？**
-<!-- 如果是的话，您可在此给出一个大致的描述。例如：作者是~~ばか~~。  -->
-
-2. **请描述您所设想的功能或是解决方案**
-<!-- 加入了这个新功能之后，会有什么好事情发生呢~ -->
-
-3. **补充内容:**
-<!-- 如果有什么需要补充的内容的话，可以一并附在这里。 -->

@@ -1,49 +1,111 @@
 ---
 name: Bug 上报
-about: 发现了可复现的bug
-title: Bug 回报：（请简略描述Bug的情况）
+description: 发现了可复现的bug
+title: Bug 回报：（请在此简略描述Bug的情况）
 labels: bug
-assignees: Candinya
+body:
+  - type: checkboxes
+    id: before-report
+    attributes:
+      label: 报告前须知
+      description: 一些注意事项
+      options:
+        - label: 我确认该 Bug 是可复现的，我会根据下面的模板提供完整详尽的复现步骤
+          required: true
+        - label: 我确认已认真阅读 ReadMe.md 和 文档，确认描述的内容有误或是不能解决我的问题
+          required: true
+        - label: 我已知晓如果没有认真阅读且勾选这里所有的条目，或是没有使用此模板认真详细地描述问题，是对彼此时间的浪费，我的 issue 可能会被无解释关闭
+          required: true
 
+  - type: dropdown
+    id: install-method
+    attributes:
+      label: 安装方式
+      description: 您是通过何种方式安装主题的
+      options:
+        - Git clone 项目仓库至 themes 目录下
+        - 使用 npm 等包管理工具安装至 node_modules 目录下
+    validations:
+      required: true
+
+  - type: textarea
+    id: bug-description
+    attributes:
+      label: 对 Bug 的描述
+      description: 关于这个Bug的现象描述
+      placeholder: 快来看看我发现了什么？
+    validations:
+      required: true
+
+  - type: textarea
+    id: bug-replay
+    attributes:
+      label: 复现的方法
+      description: 可以使用如下的方案进行复现
+      placeholder: |
+        1. 前往 '...'
+        2. 点击 '....'
+        3. 滚动到 '....'
+        4. 看，出错了吧！ 
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected-behavior
+    attributes:
+      label: 期望的行为
+      description: 消除 Bug 后应有的正确表现
+    validations:
+      required: true
+
+  - type: textarea
+    id: screenshots
+    attributes:
+      label: 相关的截图
+      description: 如果有必要的话，您可以使用截图来方便表达 Bug 的现象
+    validations:
+      required: false
+
+  - type: textarea
+    id: environment
+    attributes:
+      label: 运行环境
+      description: 如果该 Bug 的产生和环境有关，例如浏览器不兼容导致
+      placeholder: |
+        操作系统: [e.g. iOS]
+        浏览器及: [e.g. Chrome 108.0.5359.126, Safari 16.2]
+        版本: [e.g. 22] 
+    validations:
+      required: true
+
+  - type: textarea
+    id: theme-configurations
+    attributes:
+      label: 主题配置文件
+      description: 如果您觉得可能会有所帮助，此处可以附上您的主题配置文件，请记得隐去隐私内容（例如密码，授权密钥等）
+      render: yaml
+    validations:
+      required: false
+
+  - type: textarea
+    id: site-configurations
+    attributes:
+      label: 站点配置文件
+      description: 如果您觉得可能会有所帮助，此处可以附上您的站点配置文件，请记得隐去隐私内容（例如密码，授权密钥等）
+      render: yaml
+    validations:
+      required: false
+
+  - type: textarea
+    id: appendix
+    attributes:
+      label: 补充内容
+      description: 如果有什么需要补充的内容，可以一并附在这里
+    validations:
+      required: false
+
+  - type: markdown
+    attributes:
+      value: |
+        非常感谢您愿意抽出时间来填写这份 bug 上报表单，我们会尽快处理！
 ---
-
-0. **报告前须知**
-
-- [ ] 我确认该Bug是可复现的，我会根据下面的模板提供完整详尽的复现步骤
-- [ ] 我确认已认真阅读 ReadMe.md 和文档，确认描述的内容有误或是不能解决我的问题
-- [ ] 我已知晓如果没有认真阅读且勾选这里所有的条目，或是没有使用此模板认真详细地描述问题，是对彼此时间的浪费，我的 issue 可能会被无解释关闭
-
-1. **对Bug的描述:**
-<!-- 关于这个Bug的现象描述 -->
-
-2. **复现Bug的方法:**
-<!-- 
-可以使用如下的方案进行复现:
-1. 前往 '...'
-2. 点击 '....'
-3. 滚动到 '....'
-4. 看，出错了吧！ 
--->
-
-3. **期望的行为:**
-<!-- 消除Bug后应有的正确表现。 -->
-
-4. **相关的截图:**
-<!-- 如果有必要的话，您可以使用截图来方便表达Bug的现象。 -->
-
-5. **运行环境(如果该Bug的产生和环境有关，例如浏览器不兼容导致):**
-<!-- 
- - 操作系统: [e.g. iOS]
- - 浏览器: [e.g. chrome, safari]
- - 版本: [e.g. 22] 
--->
-
-6. **您的配置文件:**
-<!-- 
- - 此处可以附上您的主题配置文件，
- - 或是您觉得可能有关联的配置部分。
- - 请记得隐去隐私内容（例如密码，授权密钥等）
--->
-
-7. **补充内容:**
-<!-- 如果有什么需要补充的内容，可以一并附在这里。 -->
