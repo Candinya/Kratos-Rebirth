@@ -76,18 +76,19 @@ label:
 
 # Footer 页脚配置
 group_link: 
-contact:
+contact: # 出于兼容性考虑，继续保留
   weibo: 
   mail: 
-  telegram: CandyUnion
+  telegram:
   twitter: 
   facebook: 
   linkedin: 
   fediverse:
-    instance: nya.one
-    username: Candinya
-  github: Candinya
+    instance:
+    username:
+  github:
   rss:
+footerLinks: [] # 可以自定义
 timenotice: 本站已运行
 icp: 
 psr:

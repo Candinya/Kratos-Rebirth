@@ -116,8 +116,19 @@ label:
 
 - **group_link** : 控制是否在页面右下角显示群聊的加入按钮。如果显示的话，这里可以指定加群的链接。无需显示的话请留空（而*不是*删除这个设置项），相关的代码会自行处理结构生成关系。
 
-- **contact** : 联系方式相关，控制是否在页脚(./kratos-rebirth/layout/\_partial/footer.ejs)显示各种联系方式的按钮
+- ~~**contact**~~ （即将废弃）: 联系方式相关，控制是否在页脚(./kratos-rebirth/layout/\_partial/footer.ejs)显示各种联系方式的按钮
 如果要启用的话，请输入相关联系方式的代码，直接输入用户名即可（fediverse的实例需要输入实例地址，邮箱请使用mail@example.com这样的格式）；无需显示的内容请留空。
+
+- **footerLinks** : 控制在页脚显示各种联系方式的按钮，为数组，其中每个元素应为以下的样式：
+
+  ``` yaml
+  - icon: # 和 html 二选一，该选项表示使用来自 FontAwesome 4.7.0 图标库，内容为图标库中的唯一标识 （会被渲染为 <i class="fa fa-icon %>"></i>
+    html: # 和 icon 二选一，该选项表示插入自定义的 HTML 作为标识，例如您可在此放置一串 svg
+    link: # 按钮导向的目标链接
+    currentPage: # 可选，默认为否，启用该选项表示在当前页内打开目标链接
+  ```
+
+  具体的样例可以参照项目的 `.demo/_config.kratos_rebirth.yml` 配置样例。
 
 - **timenotice** : 本站运行时间前的提示文本。
 

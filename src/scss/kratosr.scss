@@ -2347,12 +2347,26 @@ body.scroll-down .kr-tool {
   .kratos-social-icons {
     padding-left: 0;
   
-    li a {
+    li {
       padding: 4px 14px;
-      text-decoration: none;
   
-      i {
-        font-size: 36px;
+      a {
+        display: inline-block;
+        text-decoration: none;
+
+        > i {
+          font-size: 36px;
+        }
+
+        > :not(i) {
+          width: 36px;
+          height: 36px;
+        }
+
+        > * {
+          display: inline-block;
+          vertical-align: middle;
+        }
       }
     }
   }

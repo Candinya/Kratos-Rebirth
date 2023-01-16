@@ -10,6 +10,7 @@
             <div class="row">
                 <div class="col-md-6 col-md-offset-3 footer-list text-center">
                     <ul class="kratos-social-icons">
+                        <!-- Keep for compatibility -->
                         <% if (theme.contact.weibo) {%><li><a target="_blank" rel="nofollow" href="https://weibo.com/u/<%- theme.contact.weibo %>"><i class="fa fa-weibo"></i></a></li><% } %>
                         <% if (theme.contact.mail) {%><li><a href="mailto:<%- theme.contact.mail %>"><i class="fa fa-envelope"></i></a></li><% } %>
                         <% if (theme.contact.telegram) {%><li><a target="_blank" rel="nofollow" href="https://t.me/<%- theme.contact.telegram %>"><i class="fa fa-telegram"></i></a></li><% } %>
@@ -19,6 +20,18 @@
                         <% if (theme.contact.fediverse.username) {%><li><a target="_blank" rel="me" href="https://<%- theme.contact.fediverse.instance %>/@<%- theme.contact.fediverse.username %>"><i class="fa fa fa-share-alt-square"></i></a></li><% } %>
                         <% if (theme.contact.github) {%><li><a target="_blank" rel="nofollow" href="https://github.com/<%- theme.contact.github %>"><i class="fa fa-github"></i></a></li><% } %>
                         <% if (theme.contact.rss) {%><li><a target="_blank" rel="nofollow" href="<%- config.root + theme.contact.rss %>"><i class="fa fa-rss"></i></a></li><% } %>
+                        <!-- New links -->
+                        <% for (const link of theme.footerLinks) { %>
+                            <li>
+                                <a <% if (!link.currentPage) { %>target="_blank" rel="nofollow" <% } %>href="<%- link.link %>">
+                                    <% if (link.icon) { %>
+                                        <i class="fa fa-<%- link.icon %>"></i>
+                                    <% } else if (link.html) { %>
+                                        <%- link.html %>
+                                    <% } %>
+                                </a>
+                            </li>
+                        <% } %>
                     </ul>
                     <ul class="kratos-copyright">
                         <div>

@@ -37,10 +37,10 @@
       const image_path = page.pic ? page.path + page.pic : theme.site_logo;
       return image_path ? full_url_for(image_path) : null;
     })(),
-    twitter_site: theme.contact.twitter ? "@" + theme.contact.twitter : null,
+    // twitter_site: theme.contact.twitter ? "@" + theme.contact.twitter : null,
     title
   }) %>
-  <% if (theme.contact.rss) {%><link rel="alternate" href="<%- theme.contact.rss %>" type="application/atom+xml"><% } %>
+  <% if (config.feed?.path) {%><link rel="alternate" href="<%- config.feed.path %>" type="application/atom+xml"><% } %>
   <!-- 站点验证相关 -->
   <% if (theme.site_verify) { %>
     <% if (theme.site_verify.google) { %>
