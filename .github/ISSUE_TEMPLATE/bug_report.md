@@ -1,6 +1,6 @@
 ---
 name: Bug 上报
-description: 发现了可复现的bug
+about: 发现了可复现的bug
 title: Bug 回报：（请在此简略描述Bug的情况）
 labels: bug
 body:

@@ -1,6 +1,6 @@
 ---
 name: 新功能建议
-description: 为该项目提供新功能相关的建议
+about: 为该项目提供新功能相关的建议
 title: 新功能建议： （请在此简略描述新功能的需求）
 labels: enhancement
 body:
