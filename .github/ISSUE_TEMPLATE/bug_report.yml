@@ -1,6 +1,5 @@
----
 name: Bug 上报
-about: 发现了可复现的bug
+description: 发现了可复现的bug
 title: Bug 回报：（请在此简略描述Bug的情况）
 labels: bug
 body:
@@ -108,4 +107,3 @@ body:
     attributes:
       value: |
         非常感谢您愿意抽出时间来填写这份 bug 上报表单，我们会尽快处理！
----
