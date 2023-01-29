@@ -62,19 +62,16 @@ toc: true
 
 ### - Top Menu 顶部导航栏相关
 
-- *(>2.0.3)* 可以尝试更优雅的新配置方案，配置格式为：
+- *(>2.0.3)* 可以尝试更优雅的新配置方案，每一项的配置含义解释为：
 
-``` ts
-topMenu: Array<{
-  label: String;
-  icon?: String; // Select from FontAwesome@4.7.0
-  url?: String;
-  submenu?: Array<{
-    label: String;
-    icon?: String; // Select from FontAwesome@4.7.0
-    url: String
-  }>
-}> 
+``` yaml
+- label: 这个菜单的标签文字
+  icon: 这个菜单前的图标（在 FontAwesome 4.7.0 图标库中选择，可以不设置）
+  url: 这个菜单指向的链接（站内或是站外均可）
+  submenu: 这个菜单是否为一个二级菜单，有了这个选项就会忽略上面的 url
+    - label: 二级菜单项的标签文字 
+      icon: 二级菜单前的图标（在 FontAwesome 4.7.0 图标库中选择，可以不设置）
+      url: 二级菜单项指向的链接
 ```
 
 具体可以参见 `.demo/_config.kratos-rebirth.yml` 中示例的配置哦。
