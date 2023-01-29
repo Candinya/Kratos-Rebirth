@@ -42,6 +42,11 @@
                             <%- __('comments_count', '<span data-path="' + url_for(page.path) + '" class="waline-comment-count"> </span>') %>
                         </li>
                     <% } %>
+                <% } else if (commentProvider === 'twikoo') { %>
+                    <li>
+                        <i class="fa fa-eye"></i>
+                        <%- __('read_count', '<span id="twikoo_visitors"> </span>') %>
+                    </li>
                 <% } %>
             </ul>
         </header>
