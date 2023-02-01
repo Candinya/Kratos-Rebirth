@@ -243,3 +243,7 @@ friends:
   #   avatar: "../images/avatar.webp"
   #   link: "https://candinya.com"
   verify: true # 验证每个友链的可访问性，炸了会有提示
+
+# Misc 杂项
+misc:
+  showWordCountEstimateWavy: true # 在文章字数处显示表示大约字数的波浪号
