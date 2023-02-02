@@ -135,7 +135,7 @@
                 <% if (post.pic) { %>
                 <div class="kratos-entry-thumb-new">
                     <a href="<%- url_for(post.path) %>">
-                        <img class="kratos-entry-thumb-new-img" src="<%- post.pic.includes('//') ? post.pic : url_for(post.path.replace(/(\/index)?\.html?$/, '') + '/' + post.pic) %>" alt="">
+                        <img class="kratos-entry-thumb-new-img" src="<%- /^(#|\/\/|http(s)?:)/.test(post.pic) ? post.pic : url_for(post.pic.startsWith('/') ? post.pic : post.path.replace(/(\/index)?\.html?$/, '') + '/' + post.pic) %>" alt="">
                     </a>
                 </div>
                 <% } %>
@@ -219,7 +219,7 @@
                 <div class="kratos-entry-thumb-new">
                     <a href="<%- url_for(post.path) %>">
                         <% if (post.pic) { %>
-                            <img class="kratos-entry-thumb-new-img" src="<%- post.pic.includes('//') ? post.pic : url_for(post.path.replace(/(\/index)?\.html?$/, '') + '/' + post.pic) %>" alt="">
+                            <img class="kratos-entry-thumb-new-img" src="<%- /^(#|\/\/|http(s)?:)/.test(post.pic) ? post.pic : url_for(post.pic.startsWith('/') ? post.pic : post.path.replace(/(\/index)?\.html?$/, '') + '/' + post.pic) %>" alt="">
                         <% } else { %>
                             <img class="kratos-entry-thumb-new-img" alt="">
                         <% } %>
