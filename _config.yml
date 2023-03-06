@@ -101,6 +101,9 @@ posts:
   comments: 
     provider: ''
     enableBGImage: false
+  wordCount: 
+    enable: true
+    threshold: 1500
 
 # Disqus [Disqus](https://disqus.com) 评论相关
 disqus:
