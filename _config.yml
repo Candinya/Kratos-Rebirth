@@ -7,6 +7,7 @@ click_animate_js: 'candy'
 enable_dark: true
 highlight_theme: night-eighties # 代码高亮主题（light | night | night-eighties | night-blue | night-bright）
 check_update: true
+# canonical: true
 
 vendors:
   packages:
