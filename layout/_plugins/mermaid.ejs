@@ -7,7 +7,7 @@
         mermaid.init(undefined, ".mermaid");
     };
     if (typeof mermaid == 'undefined') {
-        const src = '<%- url_npm_cdn(`mermaid", "dist/mermaid.min.js`) %>';
+        const src = '<%- url_npm_cdn("mermaid", "dist/mermaid.min.js") %>';
         $.getScript(src, init);
     }
     // Set PJAX callback function
