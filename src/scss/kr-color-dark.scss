@@ -15,6 +15,11 @@ $page_background: #181c27;
 $info_background: #3c495bbb;
 $navbar_desktop: #181c27cc;
 $navbar_mobile: #16171ae6;
+$search_background:#282c34de;
+$search_text:#fff;
+$search_border:#fff;
+$search_shadow:0 0 0 .125em rgba(255,255,255,.25);
+
 @import './kr-color/base.scss';
 
 // for Gitalk

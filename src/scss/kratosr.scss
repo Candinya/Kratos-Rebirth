@@ -2944,7 +2944,7 @@ span.blur {
 #search-input {
   -webkit-appearance: none;
   border-color: #dbdbdb;
-  background-color: #fff;
+  // background-color: #fff;
   border-radius: 4px 0 0 4px;
 
   &:hover {
@@ -2955,10 +2955,10 @@ span.blur {
     outline: 0;
   }
 
-  &:active, &:focus {
-    border-color: #3273dc;
-    box-shadow: 0 0 0 .125em rgba(50,115,220,.25)
-  }
+  // &:active, &:focus {
+  //   border-color: #3273dc;
+  //   box-shadow: 0 0 0 .125em rgba(50,115,220,.25)
+  // }
 }
 
 .input-group {
