@@ -150,6 +150,10 @@ gitalk:
     - 'Candinya'
   distractionFreeMode: false
 
+#默认不计算hash 但是如果id过长(默认为url_for(page.path))会导致创建评论区失败 见[#139](https://github.com/Candinya/Kratos-Rebirth/issues/139)
+gitalk_id_hasher: false
+# gitalk_id_hasher: md5
+
 # Gitment [Gitment](https://github.com/imsun/gitment/) 评论相关
 ## 不仅限于以下内容，您可以参照 [Gitment 文档](https://github.com/imsun/gitment#methods) 设置您需要的配置项
 ## id 会在页面自动生成，不必加入

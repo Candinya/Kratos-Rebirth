@@ -5,7 +5,7 @@
         const init = () => {
             console.log('Gitalk loading...');
             const gitalk = new Gitalk(Object.assign({
-                id: '<%- url_for(page.path) %>',
+                id: '<%- hash_gitalk_id(url_for(page.path)) %>',
                 path: '<%- url_for(page.path) %>'
             }, JSON.parse('<%- JSON.stringify(theme.gitalk) %>')));
 
