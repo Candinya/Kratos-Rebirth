@@ -271,6 +271,17 @@ span.blur {
   }
 }
 
+#search-input {
+    background-color: $search_background;
+    color: $search_text;
+
+    &:active, &:focus {
+      border-color: $search_border;
+      box-shadow: $search_shadow;
+    }
+
+}
+
 /******************* Plugins ********************/
 
 #dsqjs {
