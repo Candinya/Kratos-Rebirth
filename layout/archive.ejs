@@ -30,13 +30,7 @@
             <div id="archives">
               <div class="post-block archive post" style="margin-left: 2em;">
                 <h3 class="archive-page-counter"><%- __('archive_count', () => {
-                  let pCount = 0;
-                  page.posts.each((p) => {
-                    if (p.title) {
-                      pCount++;
-                    }
-                  });
-                  return pCount;
+                  return site.posts.filter((post) => { return !!post.title }).length;
                 }) %></h3>
                 <div class="posts-collapse">
                   <% let year; %>
