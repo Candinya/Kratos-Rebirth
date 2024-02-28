@@ -60,7 +60,7 @@
     <%- css_theme_cdn('css/kr-color-dark.min.css', {id: "darkmode-css", media:"(prefers-color-scheme: dark)"}) %>
     <%- js_theme_cdn('js/kr-dark.min.js') %>
   <% } %>
-  <% if (config.highlight && config.highlight.enable && theme.highlight_theme) { %>
+  <% if (((config.highlight && config.highlight.enable) || config.syntax_highlighter === "highlight.js") && theme.highlight_theme) { %>
     <%- css_theme_cdn(`css/highlight/${theme.highlight_theme || 'night-eighties'}.min.css`, {id: "highlight-css", media:"all"}) %>
   <% } %>
   <%- css_npm_cdn('font-awesome', 'css/font-awesome.min.css', {id:"fontawe-css", media:"all"}) %>
