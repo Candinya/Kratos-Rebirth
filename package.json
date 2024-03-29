@@ -37,7 +37,7 @@
     "autoprefixer": "^10.4.17",
     "browser-sync": "^3.0.2",
     "cssnano": "^6.0.5",
-    "gulp": "^4.0.2",
+    "gulp": "^5.0.0",
     "gulp-babel": "^8.0.0",
     "gulp-cli": "^2.3.0",
     "gulp-dart-sass": "^1.1.0",
