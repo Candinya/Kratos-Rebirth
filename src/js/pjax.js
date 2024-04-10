@@ -78,9 +78,8 @@ $(function () {
         setMetaProperty(document, 'og:title', data.ogTitle);
         setMetaProperty(document, 'og:url', data.ogUrl);
     }
-    function getPageData(url, doc) {
+    function getPageData(doc) {
         return {
-            url: url,
             title: doc.title,
             ogTitle: getMetaProperty(doc, 'og:title'),
             ogUrl: getMetaProperty(doc, 'og:url'),
@@ -92,7 +91,7 @@ $(function () {
         if (e.state) {
             scrollToMainTop();
             if (typeof e.state.content === 'undefined') {
-                pjax(e.state.url, false);
+                pjax(location.href, false);
             } else {
                 replacePageContent(e.state)
             }
@@ -131,10 +130,10 @@ $(function () {
             newDoc.documentElement.innerHTML = responseText;
             const isSuccessRequest = !!newDoc.getElementById("main");
             if (isSuccessRequest) {
-                history.replaceState(getPageData(location.href, document), document.title, location.href);
-                const data = getPageData(reqUrl, newDoc)
+                history.replaceState(getPageData(document), document.title, location.href);
+                const data = getPageData(newDoc)
                 if (needPushState) {
-                    window.history.pushState(data, data.title, data.url);
+                    window.history.pushState(data, data.title, reqUrl);
                 }
                 replacePageContent(data, newDoc);
 
