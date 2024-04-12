@@ -17,7 +17,7 @@
     <script async src="<%- theme.click_animate_js.includes('//') ? theme.click_animate_js : url_theme_cdn('js/' + theme.click_animate_js + '.min.js') %>"></script>
 <% } %>
 
-<% if (theme.aplayer.enabled) { %>
+<% if (theme.aplayer?.enabled) { %>
     <%- js_npm_cdn('aplayer', 'dist/APlayer.min.js', {defer: true}) %>
     <%- partial('../_tools/player') %>
 <% }%>
@@ -26,7 +26,7 @@
 <% } %>
 <%- js_theme_cdn('js/kratosr.min.js', {defer: true}) %>
 <%- js_theme_cdn('js/pjax.min.js', {defer: true}) %>
-<% if (page.type !== '404' && theme.posts.donate) { %>
+<% if (page.type !== '404' && theme.posts?.donate) { %>
     <%- js_npm_cdn('layui-src', 'dist/layui.all.js', {defer: true}) %>
 <% } %>
 <%- theme.site_analytics %>

@@ -52,7 +52,7 @@
     </article>
 <% } %>
 
-<% const commentProvider = theme.posts.comments?.provider ?? theme.posts.comments; %>
+<% const commentProvider = theme.posts?.comments?.provider ?? theme.posts?.comments; %>
 <% page.posts.each(function(post) { %>
     <% if (post.only) {
         const postShow = 
@@ -95,21 +95,21 @@
                                 amount: 3
                             }) %>
                         <% } %>
-                        <% if (theme.index.read_count) { %>
+                        <% if (theme.index?.read_count) { %>
                             <!-- 当前仅支持valine/waline自带的统计功能 -->
-                            <% if (commentProvider === 'valine' && theme.valine.visitor) { %>
+                            <% if (commentProvider === 'valine' && theme.valine?.visitor) { %>
                                 <a id="<%- url_for(post.path) %>" class="leancloud_visitors" data-flag-title="<%- post.title %>">
                                     <i class="fa fa-eye"></i>
                                     <%- __('read_count', '<span class="leancloud-visitors-count"> </span>') %>
                                 </a>
-                            <% } else if (commentProvider === 'waline' && theme.waline.pageview) { %>
+                            <% } else if (commentProvider === 'waline' && theme.waline?.pageview) { %>
                                 <a>
                                     <i class="fa fa-eye"></i>
                                     <%- __('read_count', '<span data-path="' + url_for(post.path) + '" class="waline-pageview-count"> </span>') %>
                                 </a>
                             <% } %>
                         <% } %>
-                        <% if (theme.index.comment_count && post.comments) { %>
+                        <% if (theme.index?.comment_count && post.comments) { %>
                             <!-- 当前仅支持waline自带的统计功能 -->
                             <% if (commentProvider === 'waline') { %>
                                 <a>
@@ -172,7 +172,7 @@
                                 }) %>
                             </li>
                         <% } %>
-                        <% if (theme.index.read_count) { %>
+                        <% if (theme.index?.read_count) { %>
                             <!-- 当前仅支持valine/waline自带的统计功能 -->
                             <% if (commentProvider === 'valine' && theme.valine.visitor) { %>
                                 <li id="<%- url_for(post.path) %>" class="leancloud_visitors" data-flag-title="<%- post.title %>">
@@ -186,7 +186,7 @@
                                 </li>
                             <% } %>
                         <% } %>
-                        <% if (theme.index.comment_count && post.comments) { %>
+                        <% if (theme.index?.comment_count && post.comments) { %>
                             <!-- 当前仅支持waline自带的统计功能 -->
                             <% if (commentProvider === 'waline') { %>
                                 <li>
@@ -260,7 +260,7 @@
                                 }) %>
                             <% } %>
                         </a>
-                        <% if (theme.index.read_count) { %>
+                        <% if (theme.index?.read_count) { %>
                             <!-- 当前仅支持valine/waline自带的统计功能 -->
                             <% if (commentProvider === 'valine' && theme.valine.visitor) { %>
                                 <a id="<%- url_for(post.path) %>" class="leancloud_visitors" data-flag-title="<%- post.title %>">
@@ -274,7 +274,7 @@
                                 </a>
                             <% } %>
                         <% } %>
-                        <% if (theme.index.comment_count) { %>
+                        <% if (theme.index?.comment_count) { %>
                             <!-- 当前仅支持waline自带的统计功能 -->
                             <% if (commentProvider === 'waline' && theme.waline.comment) { %>
                                 <a>
@@ -299,7 +299,7 @@
     </div>
 <% } %>
 
-<% if (theme.index.read_count || theme.index.comment_count) { %>
+<% if (theme.index?.read_count || theme.index?.comment_count) { %>
     <div class="hidden">
         <!-- 加载文章阅读对应的统计功能，评论自带的那种 -->
         <% if (/[vw]aline/.test(commentProvider)) { %>

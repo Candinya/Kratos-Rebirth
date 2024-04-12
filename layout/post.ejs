@@ -1,5 +1,5 @@
 <article itemscope itemtype="https://schema.org/Article">
-    <% const commentProvider = theme.posts.comments?.provider ?? theme.posts.comments; %>
+    <% const commentProvider = theme.posts?.comments?.provider ?? theme.posts?.comments; %>
     <link itemprop="mainEntityOfPage" href="<%= page.permalink %>">
     <div class="kratos-hentry kratos-post-inner clearfix">
         <header class="kratos-entry-header">
@@ -14,31 +14,31 @@
                 <li itemprop="author" itemscope itemtype="https://schema.org/Person">
                     <i class="fa fa-user"></i> <%- __('author') %> <span itemprop="name"><%- page.author || config.author %></span>
                 </li>
-                <% if (theme.posts.wordCount?.enable) { %>
+                <% if (theme.posts?.wordCount?.enable) { %>
                     <li>
                         <i class="fa fa-edit"></i> 
                         <% const wordsCount = strip_html(page.content).length; %>
                         <% if (wordsCount < (theme.posts.wordCount?.threshold || 1500)) { %>
                             <%= wordsCount %>
                         <% } else { %>
-                            <% if (theme.misc.showWordCountEstimateWavy) { %>~<% } %><%= (wordsCount / 1000).toFixed(2) %>K
+                            <% if (theme.misc?.showWordCountEstimateWavy) { %>~<% } %><%= (wordsCount / 1000).toFixed(2) %>K
                         <% } %>
                         <%- __('words') %>
                     </li>
                 <% } %>
-                <% if (commentProvider === 'valine' && theme.valine.visitor) { %>
+                <% if (commentProvider === 'valine' && theme.valine?.visitor) { %>
                     <li id="<%- url_for(page.path) %>" class="leancloud_visitors" data-flag-title="<%- page.title %>">
                         <i class="fa fa-eye"></i>
                         <%- __('read_count', '<span class="leancloud-visitors-count"> </span>') %>
                     </li>
                 <% } else if (commentProvider === 'waline') { %>
-                    <% if (theme.waline.pageview) { %>
+                    <% if (theme.waline?.pageview) { %>
                         <li>
                             <i class="fa fa-eye"></i>
                             <%- __('read_count', '<span data-path="' + url_for(page.path) + '" class="waline-pageview-count"> </span>') %>
                         </li>
                     <% } %>
-                    <% if (theme.waline.comment) { %>
+                    <% if (theme.waline?.comment) { %>
                         <li>
                             <i class="fa fa-commenting-o"></i>
                             <%- __('comments_count', '<span data-path="' + url_for(page.path) + '" class="waline-comment-count"> </span>') %>
@@ -68,13 +68,13 @@
             <hr />
             <div itemprop="articleBody"><%- page.content %></div>
         </div>
-        <% if (typeof page.show_cc !== 'undefined' ? page.show_cc : theme.posts.show_cc) { %>
+        <% if (typeof page.show_cc !== 'undefined' ? page.show_cc : theme.posts?.show_cc) { %>
             <div class="kratos-copyright text-center clearfix">
                 <h5 itemprop="copyrightNotice"><%- __('use_cc4_license') %></h5>
             </div>
         <% } %>
         <footer class="kratos-entry-footer clearfix">
-            <% if (theme.posts.donate || theme.posts.share) { %>
+            <% if (theme.posts && (theme.posts.donate || theme.posts.share)) { %>
                 <div class="post-like-donate text-center clearfix" id="post-like-donate">
                 <% if (theme.posts.donate) { %>
                     <a class="donate" href="javascript:;"><i class="fa fa-bitcoin"></i> <%- __('reward') %></a>

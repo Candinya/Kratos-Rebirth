@@ -65,8 +65,8 @@
   <% } %>
   <%- css_npm_cdn('font-awesome', 'css/font-awesome.min.css', {id:"fontawe-css", media:"all"}) %>
   <%- css_npm_cdn('nprogress', 'nprogress.css', {id:"nprogress-css", media:"all"}) %>
-  <% const commentProvider = theme.posts.comments?.provider ?? theme.posts.comments; %>
-  <% if (theme.aplayer.enabled) { %>
+  <% const commentProvider = theme.posts?.comments?.provider ?? theme.posts?.comments; %>
+  <% if (theme.aplayer?.enabled) { %>
     <%- css_npm_cdn('aplayer', 'dist/APlayer.min.css') %>
   <% }%>
   <% if (theme.fancybox){ %>
@@ -74,7 +74,7 @@
   <% } %>
   <!-- 不得不预先加载的一些JS文件 -->
   <%- js_npm_cdn('jquery', 'dist/jquery.min.js') %>
-  <% if (theme.posts.share) { %>
+  <% if (theme.posts?.share) { %>
     <%- js_npm_cdn('qrcode_js', 'qrcode.min.js') %>
   <% } %>
   <% if (theme.customStyles) { %>
