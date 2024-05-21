@@ -43,14 +43,16 @@ image:
     dark: "/images/about.webp"  # 暗色模式
 
 # 顶部导航栏配置
-top_nav: []
-# - label: 这个菜单的标签文字
-#   icon: 这个菜单前的图标（在 tabler icons 图标库中选择，可以不设置）
-#   url: 这个菜单指向的链接（站内或是站外均可）
-#   submenu: 这个菜单是否为一个二级菜单，有了这个选项就会忽略上面的 url
-#     - label: 二级菜单项的标签文字 
-#       icon: 二级菜单前的图标（在 tabler icons 图标库中选择，可以不设置）
-#       url: 二级菜单项指向的链接
+top_nav:
+  auto_hide: true
+  items: []
+  # - label: 这个菜单的标签文字
+  #   icon: 这个菜单前的图标（在 tabler icons 图标库中选择，可以不设置）
+  #   url: 这个菜单指向的链接（站内或是站外均可）
+  #   submenu: 这个菜单是否为一个二级菜单，有了这个选项就会忽略上面的 url
+  #     - label: 二级菜单项的标签文字 
+  #       icon: 二级菜单前的图标（在 tabler icons 图标库中选择，可以不设置）
+  #       url: 二级菜单项指向的链接
 
 # 文章的列表配置（首页/分页/标签页）
 post_index:
@@ -68,9 +70,10 @@ footer_links: []
 # 一些有特色的组件 （其他的请在 additional_injections 自行追加）
 footer_components:
   uptime:
+    since: "2018/05/06 17:03:12"
     text: 本站已运行
 
-# Post Page 文章内页配置
+# Post 文章页配置
 posts:
   default_cover: "/images/about.webp" # 没有头图的文章使用的默认图片
   show_cc: true
@@ -80,7 +83,14 @@ posts:
     enable: true
     threshold: 1500
     estimate_wavy: true # 在文章字数处显示表示大约字数的波浪号
+  expire_after: 30 # 天
 
+pages:
+  show_cc: true
+  donate: true
+  share: true
+
+# 代码高亮
 code_highlight:
   theme: night-eighties # 代码高亮主题（light | night | night-eighties | night-blue | night-bright）
 
@@ -98,21 +108,41 @@ sidebar:
     hide: false
     hide_id: false
 
-# JavaScript 相关配置
-## 由于Javascript被压缩后难以有效编辑与生成，因而为了简化操作，将相关的配置项在生成文件时以独立的json文件写出，调用时使用fetch API获取。
-jsconfig:
-  main:
-    createTime: "2018/05/06 17:03:12"
-    donateBtn: "支持我~"
-    scanNotice: "扫一扫，好不好？"
-    qr_alipay: "/images/alipayqr.webp"
-    qr_wechat: "/images/wechatpayqr.webp"
-    siteLeaveEvent: false
-    leaveTitle: "{{{(>_<)}}}哦哟，崩溃啦~"
-    returnTitle: "(*´∇｀*)欸，又好啦~"
-    copyrightNotice: "该内容采用 CC BY-NC-SA 4.0 许可协议，著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。"
-    expire_day: 30
-    topNavScrollToggle: true
+# 分享组件设置
+share:
+  platforms: []
+  # - icon: ""
+  #   color: ""
+  #   qrcode: true
+  #   link_template: ""
+
+# 捐赠组件设置
+donate:
+  title: "支持我~"
+  subtitle: "扫一扫，好不好？"
+  platforms: []
+  # - icon: ""
+  #   text: ""
+  #   qrcode: ""
+
+# 站点离开提示
+inactive_notice:
+  enabled: true
+  message:
+    leave: "{{{(>_<)}}}哦哟，崩溃啦~"
+    return: "(*´∇｀*)欸，又好啦~"
+
+# 复制时自动追加版权相关说明
+copyright_notice:
+  enabled: true
+  threshold: 150
+  template: |
+    $NEWLINE
+    -------------------------
+    该内容采用 CC BY-NC-SA 4.0 许可协议，著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+    作者：$AUTHOR
+    来源：$TITLE
+    链接：$LINK
 
 # Friends 友链相关内容
 friends:

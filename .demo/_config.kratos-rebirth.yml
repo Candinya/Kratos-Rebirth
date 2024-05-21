@@ -16,6 +16,7 @@ image:
 
 # 顶部导航栏配置
 top_nav:
+  items:
   - label: 首页
     icon: home
     url: /
@@ -64,22 +65,6 @@ sidebar:
   - category
   - tagcloud
   - posts
-
-# JavaScript 相关配置
-## 由于Javascript被压缩后难以有效编辑与生成，因而为了简化操作，将相关的配置项在生成文件时以独立的json文件写出，调用时使用fetch API获取。
-jsconfig:
-  main:
-    createTime: "2018/05/06 17:03:12"
-    donateBtn: "支持我~"
-    scanNotice: "扫一扫，好不好？"
-    qr_alipay: "/images/alipayqr.webp"
-    qr_wechat: "/images/wechatpayqr.webp"
-    siteLeaveEvent: false
-    leaveTitle: "{{{(>_<)}}}哦哟，崩溃啦~"
-    returnTitle: "(*´∇｀*)欸，又好啦~"
-    copyrightNotice: "该内容采用 CC BY-NC-SA 4.0 许可协议，著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。"
-    expire_day: 30
-    topNavScrollToggle: true
 
 # Friends 友链相关内容
 friends:

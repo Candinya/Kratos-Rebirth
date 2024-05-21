@@ -6,35 +6,33 @@
                     <div class="nav-header">
                         <nav id="kratos-menu-wrap">
                             <ul id="kratos-primary-menu" class="sf-menu">
-                                <% if (theme.top_nav) { %>
-                                    <% for (const item of theme.top_nav) { %>
-                                        <li>
-                                            <% if (item.submenu) { %>
-                                                <a>
-                                            <% } else { %>
-                                                <a href="<%- url_for(item.url) %>">
+                                <% for (const item of theme.top_nav.items) { %>
+                                    <li>
+                                        <% if (item.submenu) { %>
+                                            <a>
+                                        <% } else { %>
+                                            <a href="<%- url_for(item.url) %>">
+                                        <% } %>
+                                            <% if (item.icon) { %>
+                                                <i class="ti ti-<%- item.icon %>"></i>
                                             <% } %>
-                                                <% if (item.icon) { %>
-                                                    <i class="ti ti-<%- item.icon %>"></i>
+                                            <%- item.label %>
+                                        </a>
+                                        <% if (item.submenu) { %>
+                                            <ul class="sub-menu">
+                                                <% for (const submenu of item.submenu) { %>
+                                                    <li>
+                                                        <a href="<%- url_for(submenu.url) %>">
+                                                            <% if (submenu.icon) { %>
+                                                                <i class="ti ti-<%- submenu.icon %>"></i>
+                                                            <% } %>
+                                                            <%- submenu.label %>
+                                                        </a>
+                                                    </li>
                                                 <% } %>
-                                                <%- item.label %>
-                                            </a>
-                                            <% if (item.submenu) { %>
-                                                <ul class="sub-menu">
-                                                    <% for (const submenu of item.submenu) { %>
-                                                        <li>
-                                                            <a href="<%- url_for(submenu.url) %>">
-                                                                <% if (submenu.icon) { %>
-                                                                    <i class="ti ti-<%- submenu.icon %>"></i>
-                                                                <% } %>
-                                                                <%- submenu.label %>
-                                                            </a>
-                                                        </li>
-                                                    <% } %>
-                                                </ul>
-                                            <% } %>
-                                        </li>
-                                    <% } %>
+                                            </ul>
+                                        <% } %>
+                                    </li>
                                 <% } %>
                             </ul>
                         </nav>

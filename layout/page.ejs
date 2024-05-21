@@ -6,6 +6,17 @@
             <div itemprop="articleBody"><%- page.content %></div>
         </div>
         <footer class="kratos-entry-footer clearfix">
+            <% if (theme.pages.donate || theme.pages.share) { %>
+                <div class="post-like-donate text-center clearfix" id="post-like-donate">
+                <% if (theme.pages.donate) { %>
+                    <a class="donate" href="javascript:;"><i class="ti ti-coins"></i> <%- __('reward') %></a>
+                <% } %>
+                <% if (theme.pages.share) { %>
+                    <a class="share" href="javascript:;"><i class="ti ti-share"></i> <%- __('share') %></a>
+                    <%- partial('_tools/share', {page: page}) %>
+                <% } %>
+                </div>
+            <% } %>
             <div class="footer-tag clearfix">
                 <div class="pull-date">
                     <time datetime="<%= date_xml(page.updated) %>" itemprop="dateModified"><%- __('last_modify') %><%- date(page.updated) %></time>

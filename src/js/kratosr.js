@@ -26,8 +26,8 @@ window.copyCode = window.copyCode || function(triggerBtn, targetCodeID) {
 
 (()=>{
     const loadConfig = async () => {
-        var url = (window.kr?.siteRoot || '/') + 'config/main.json';
-        return await (await fetch(url)).json()
+        const url = (window.kr?.siteRoot || '/') + 'config.json';
+        return await fetch(url).then(res => res.json());
     };
     const pageScrollDownInit = ()=>{
         let isScrolledDown = false;
@@ -181,22 +181,19 @@ window.copyCode = window.copyCode || function(triggerBtn, targetCodeID) {
 
     let copyrightString;
     const setCopyright = (kr)=>{
-        copyrightString = `
-
--------------------------
-${kr.copyrightNotice}
-作者：${document.querySelector("meta[name='author']").getAttribute('content')}
-来源：${document.title}
-链接：${window.location.href}
-`;
+        copyrightString = kr.copyrightNotice.
+            replaceAll("$NEWLINE", "\n").
+            replaceAll("$AUTHOR", document.querySelector("meta[name='author']").getAttribute('content')).
+            replaceAll("$TITLE", document.title).
+            replaceAll("$LINK", window.location.href);
     }
 
     const copyEventInit = (kr)=>{
-        if (kr.copyrightNotice) {
+        if (kr.copyrightNoticeEnabled) {
             document.body.oncopy = (e)=>{
                 if (copyrightString) {
                     const copiedContent = window.getSelection().toString();
-                    if (copiedContent.length > 150) {
+                    if (copiedContent.length > kr.copyrightNoticeThreshold) {
                         e.preventDefault();
                         if (e.clipboardData) {
                             e.clipboardData.setData("text/plain", copiedContent + copyrightString);
