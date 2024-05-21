@@ -9,6 +9,7 @@ hexo.once('generateBefore', () => {
         const jsCfg = {
             createTime: themeConfig.footer_components.uptime.since,
             siteLeaveEvent: themeConfig.inactive_notice.enabled,
+            leaveLogo: themeConfig.inactive_notice.favicon.leave,
             leaveTitle: themeConfig.inactive_notice.message.leave,
             returnTitle: themeConfig.inactive_notice.message.return,
             copyrightNoticeEnabled: themeConfig.copyright_notice.enabled,
