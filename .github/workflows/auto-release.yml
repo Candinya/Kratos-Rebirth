@@ -6,14 +6,23 @@ on:
       - 'v*'
 
 jobs:
-  gpr_publish:
+  publish:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v1
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
         with:
           registry-url: 'https://registry.npmjs.org'
+      
       - name: Publish to NPM
         run: npm publish
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN_CANDINYA }}
+
+      - name: Create release (draft)
+        uses: softprops/action-gh-release@v2
+        with:
+          name: [${{ github.ref_name }}]
+          generate_release_notes: true
+          draft: true

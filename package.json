@@ -3,9 +3,8 @@
   "version": "2.1.5",
   "description": "A transplanted theme for Hexo, with many new features built with love.",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "gulp build",
-    "dev": "gulp watch"
+    "build": "node ./devtools/build-once.js",
+    "watch": "node ./devtools/build-watch.js"
   },
   "repository": {
     "type": "git",
@@ -23,29 +22,11 @@
     "url": "https://github.com/Candinya/Kratos-Rebirth/issues"
   },
   "homepage": "https://github.com/Candinya/Kratos-Rebirth#readme",
-  "browserslist": [
-    "last 2 versions",
-    "> 1%",
-    "Chrome >= 30",
-    "Firefox >= 30",
-    "ie >= 9",
-    "Safari >= 8"
-  ],
-  "devDependencies": {
-    "@babel/core": "^7.23.9",
-    "@babel/preset-env": "^7.23.9",
-    "autoprefixer": "^10.4.17",
-    "browser-sync": "^3.0.2",
-    "cssnano": "^6.0.5",
-    "gulp": "^4.0.2",
-    "gulp-babel": "^8.0.0",
-    "gulp-cli": "^2.3.0",
-    "gulp-dart-sass": "^1.1.0",
-    "gulp-postcss": "^10.0.0",
-    "gulp-rename": "^2.0.0",
-    "gulp-sourcemaps": "^3.0.0",
-    "gulp-terser": "^2.1.0",
-    "postcss": "^8.4.35",
-    "sass": "^1.71.1"
+  "dependencies": {
+    "autoprefixer": "^10.4.19",
+    "esbuild": "^0.21.3",
+    "esbuild-plugin-sass": "^1.0.1",
+    "postcss": "^8.4.38",
+    "postcss-preset-env": "^9.5.13"
   }
 }

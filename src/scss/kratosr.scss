@@ -148,6 +148,7 @@ button,
 html input[type=button],
 input[type=reset],
 input[type=submit] {
+  appearance: button;
   -webkit-appearance: button;
   cursor: pointer;
 }
@@ -1856,8 +1857,19 @@ ul.kratos-post-meta {
 
 .share {
   &-wrap {
-    display: block;
+    // display: none;
+    height: 0;
+    opacity: 0;
     margin: 10px 0 -20px;
+    transition: all .3s ease-in-out;
+    pointer-events: none;
+
+    &.show {
+      // display: block;
+      pointer-events: all;
+      height: auto;
+      opacity: 100;
+    }
   }
   &-plain, &-wrap {
     position: relative;
@@ -2076,10 +2088,11 @@ ul.kratos-post-meta {
         .site-meta {
           display: flex;
           flex-direction: row;
-          justify-content: space-around;
+          margin: 20px;
 
           > .meta-item {
             display: flex;
+            flex: 1;
             flex-direction: column;
             padding: .5rem 1rem;
             border-radius: 5px;
@@ -2181,7 +2194,6 @@ ul.kratos-post-meta {
         }
         li {
           &::before {
-            font-family: fontawesome;
             font-size: 15px;
             margin-right: 8px;
           }
@@ -2189,7 +2201,7 @@ ul.kratos-post-meta {
       }
       
       &-archive li::before {
-        content: '\f133';
+        content: '\f749';
       }
       
       &-categories {
@@ -2197,7 +2209,7 @@ ul.kratos-post-meta {
           margin-left: 10px;
       
           &::before {
-            content: '\f114';
+            content: '\eaad';
           }
         }
       
@@ -2424,6 +2436,10 @@ body.scroll-down .kr-tool {
       &:hover {
         background: rgba(230, 244, 250, .5);
         cursor: pointer;
+        
+        a h4 {
+          color: #51aded;
+        }
       }
 
       a {
@@ -2463,12 +2479,6 @@ body.scroll-down .kr-tool {
           text-overflow: ellipsis;
           overflow: hidden;
           line-height: 1.4;
-        }
-
-        &:hover {
-          h4 {
-            color: #51aded;
-          }
         }
       }
     }

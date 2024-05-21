@@ -2,7 +2,8 @@
 
 name: Build Test
 
-on: pull_request
+on:
+  pull_request:
 
 jobs:
   build:
@@ -11,12 +12,10 @@ jobs:
     steps:
     
     # Setup Node.js env
-    - uses: actions/setup-node@v2.1.2
-      with:
-        node-version: '14.x'
+    - uses: actions/setup-node@v4
     
     # Get Hexo test utils
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v4
       with:
         repository: 'hexojs/hexo-theme-unit-test'
     
@@ -25,7 +24,7 @@ jobs:
       run: mkdir themes
     
     # Clone Kratos-Rebirth into themes dir
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v4
       with:
         path: 'themes/kratos-rebirth'
 

@@ -79,8 +79,8 @@ function createPosts(resArr) {
                 </div>
                 <div class="kratos-post-meta-new">
                     <span class="pull-left">
-                        <a><i class="fa fa-calendar"></i></a><a>${pageInfo.date}</a>
-                        <a><i class="fa fa-tags"></i></a>
+                        <a><i class="ti ti-calendar"></i></a><a>${pageInfo.date}</a>
+                        <a><i class="ti ti-tags"></i></a>
                         ${pageTags}
                     </span>
                 </div>

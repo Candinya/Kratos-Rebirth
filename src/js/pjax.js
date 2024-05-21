@@ -1,4 +1,4 @@
-$(function () {
+(() => {
     if (!window.history ||
         !window.history.pushState ||
         !window.history.replaceState) {
@@ -9,11 +9,11 @@ $(function () {
         const postTop = document.getElementById("kratos-blog-post").offsetTop
         const navHeight = document.getElementById("kratos-desktop-topnav").offsetHeight;
         const theTop = navHeight ? postTop - navHeight : 0;
-        $("body,html").animate({ scrollTop: theTop }, 600);
+        window.scrollTo({ top: theTop, behavior: 'smooth' });
     }
 
     function setMetaProperty(doc, property, content) {
-        var meta = doc.querySelector('meta[property="' + property + '"]');
+        let meta = doc.querySelector('meta[property="' + property + '"]');
         if (meta) {
             if (content) {
                 meta.setAttribute('content', content);
@@ -168,11 +168,17 @@ $(function () {
         beforeSend();
         request.send();
     }
-    $(document).on("click", 'a[target!=_blank][rel!=gallery][class!=toc-link]', function () {
-        const reqUrl = $(this).attr("href");
-        if (typeof reqUrl === 'undefined') return true;
-        else if (reqUrl.includes("javascript:")) return true;
-        else pjax(decodeURI(reqUrl), true);
-        return false;
-    });
-});
+    // document.addEventListener("click", (e) => {
+    //     if (e.target.tagName.toLowerCase() === "a") {
+    //         // 是 a 标签
+    //         alert("aaaaaa");
+    //     } // 其他标签直接忽略
+    // });
+    // $(document).on("click", 'a[target!=_blank][rel!=gallery][class!=toc-link]', function () {
+    //     const reqUrl = $(this).attr("href");
+    //     if (typeof reqUrl === 'undefined') return true;
+    //     else if (reqUrl.includes("javascript:")) return true;
+    //     else pjax(decodeURI(reqUrl), true);
+    //     return false;
+    // });
+})();

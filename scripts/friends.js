@@ -8,7 +8,7 @@ hexo.once('generateBefore', () => {
         return;
     }
 
-    const defaultAvatar = cdn.url_theme_cdn(hexo, "images/avatar.webp");
+    const defaultAvatar = cdn.url_theme_cdn(hexo, "images/user.svg");
     const flist = friends.list.map(friend => ({
         name: friend.name,
         link: friend.link,
@@ -18,7 +18,7 @@ hexo.once('generateBefore', () => {
     // Module模式
     const friendsModule = 
 `<div class="linkpage">
-    <ul id="friendsList"></ul>
+    <ul id="friends-list"></ul>
 </div>
 
 <script type="text/javascript">
@@ -30,7 +30,7 @@ hexo.once('generateBefore', () => {
         friendNodes += \`<li><a target="_blank" href="\${flist[rndNum].link}"><img src="\${flist[rndNum].avatar}" onerror="this.src='${defaultAvatar}';this.onerror=null;"><h4>\${flist[rndNum].name}</h4><p>\${flist[rndNum].bio}</p></a></li>\`;
         flist.splice(rndNum, 1);
     }
-    document.getElementById("friendsList").innerHTML = friendNodes;
+    document.getElementById("friends-list").innerHTML = friendNodes;
 }
 </script>`;
 

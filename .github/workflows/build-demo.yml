@@ -22,12 +22,12 @@ jobs:
     steps:
     
     # Setup Node.js env
-    - uses: actions/setup-node@v2.1.2
+    - uses: actions/setup-node@v4
       with:
-        node-version: '16.x'
+        node-version: 'lts'
     
     # Get Hexo test utils
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v4
       with:
         repository: 'hexojs/hexo-theme-unit-test'
     
@@ -50,15 +50,6 @@ jobs:
         sed -i "s|url: http://yoursite.com|url: https://${SITE_URL}|"                "_config.yml"
         sed -i "s|permalink: :year/:month/:day/:title/|permalink: posts/:title/|"    "_config.yml"
         sed -i "s/theme: landscape/theme: kratos-rebirth/"                           "_config.yml"
-    
-    # Copy document
-    - name: Copy document
-      run: cp "themes/kratos-rebirth/Kratos-Rebirth-Manual.md" "source/_posts/Kratos-Rebirth-Manual.md"
-
-    # Pin document
-    - name: Pin document
-      run: |
-        sed '2 isticky: 1' -i source/_posts/Kratos-Rebirth-Manual.md
 
     # Copy extended theme settings
     - name: Copy extended theme settings

@@ -1,7 +1,21 @@
-site_logo: https://ga.candinya.com/avatar/a7f9e15fef26e0a540edc977e21cb3eb
-avatarUri: https://ga.candinya.com/avatar/a7f9e15fef26e0a540edc977e21cb3eb
+################## 样式配置 ##################
 
-topMenu:
+# 图片配置
+image:
+  favicon: "https://ga.candinya.com/avatar/a7f9e15fef26e0a540edc977e21cb3eb" # 站点图标
+  avatar: "https://ga.candinya.com/avatar/a7f9e15fef26e0a540edc977e21cb3eb" # 个人信息挂件上的头像
+  banner:
+    light: "/assets/banner.webp"
+    dark: "/assets/banner_dark.webp"
+  background:
+    light: "/assets/bg.webp"
+    dark: "/assets/bg_dark.webp"
+  about:
+    light: "/images/about.webp"
+    dark: "/images/about.webp"
+
+# 顶部导航栏配置
+top_nav:
   - label: 首页
     icon: home
     url: /
@@ -19,73 +33,84 @@ topMenu:
       - label: 项目链接
         url: https://github.com/Candinya/Kratos-Rebirth
 
-group_link: https://matrix.to/#/#CandyUnion:nya.one
-footerLinks:
-  - icon: github
+# 文章的列表配置（首页/分页/标签页）
+post_index:
+  post_type: true
+  read_count: true
+  comment_count: true
+
+# Footer 页脚配置
+footer_links:
+  - icon: users-group
+    link: https://matrix.to/#/#CandyUnion:nya.one
+  - icon: brand-github
     link: https://github.com/Candinya
   - html: <svg fill="currentColor" viewBox="0 0 1024 1024"><path d="M512,0C794.58,0 1024,229.42 1024,512C1024,794.58 794.58,1024 512,1024C229.42,1024 0,794.58 0,512C0,229.42 229.42,0 512,0ZM292.789,304.042L292.789,723.567C292.789,750.225 314.432,771.868 341.091,771.868C367.749,771.868 389.393,750.225 389.393,723.567L389.393,440.596L641.699,748.461C650.156,762.483 665.536,771.868 683.091,771.868C709.749,771.868 731.393,750.225 731.393,723.567L731.393,304.042C731.393,277.384 709.749,255.74 683.091,255.74C664.98,255.74 649.184,265.729 640.916,280.494L565.431,372.601L565.452,372.618C558.836,380.884 554.877,391.367 554.877,402.768C554.877,429.426 576.521,451.07 603.179,451.07C615.262,451.07 626.315,446.624 634.789,439.28L634.789,587.625L383.634,281.165C375.473,266.033 359.474,255.74 341.091,255.74C314.432,255.74 292.789,277.384 292.789,304.042Z" /></svg>
     link: https://nya.one/@Candinya
   - icon: rss
     link: /atom.xml
 
-vendors:
-  # 常用CDN基地址:
-  # https://unpkg.com/
-  # https://cdn.jsdelivr.net/npm/
+# 一些有特色的组件 （其他的请在 additional_injections 自行追加）
+footer_components:
+  uptime:
+    text: 本站已在风雨中飘摇
 
-  # 以下一行代码指定 npm cdn 基地址，该 CDN 应该兼容 jsdelivr 使用的路径格式
-  # npm_cdn: https://cdn.jsdelivr.net/npm/
-  packages:
-    hexo-theme-kratos-rebirth: 
-      # 以下一行代码用于对某个包单独配置 cdn 基地址，使用 null 表示不从 cdn 获取此包
-      # cdn_url: null
-      # cdn_url: https://cdn.jsdelivr.net/npm/hexo-theme-kratos-rebirth@latest/
-    aplayer:
-      # 以下一行代码指定所使用的库版本
-      # 默认情况下会使用主题开发组进行开发调试时所使用的版本（通常而言也是最适合的版本）
-      # 因此该值不建议修改
-      # 
-      # 注意：如果选择其他版本，则必须配置 npm_cdn 或 为包单独配置 cdn_url 或 修改 vendors 目录，
-      # 这是因为主题自带的库只含有默认版本，必须从 cdn 加载其他版本或由用户手动提供其他版本的相关文件
-      #
-      # 警告：随意切换版本可能造成主题无法正常工作
-      # 
-      # version: 1.10.1
-      files:
-        "dist/APlayer.min.css":
-          # 以下代码用于单独对某个文件进行映射，以便于使用不符合 jsdelivr 路径格式的CDN（或其他特殊情形）
-          # 使用 null 表示不重定向（默认行为）
-          # relocate: null
-          # relocate: https://cdn.jsdelivr.net/npm/aplayer@1.10.1/dist/APlayer.min.css
+# Widgets 侧边栏小挂件
+sidebar:
+  widgets:
+  - about
+  - splitter
+  - toc
+  - category
+  - tagcloud
+  - posts
 
-          # 以下代码用于指定 SRI 以增强安全性
-          # 注意，仅有部分组件支持 SRI，不支持的组件会忽略此值
-          # integrity: sha256-6Y7CJDaltoeNgk+ZftgCD9jLgmGv4xKUo8nQ0HgAwVo=
+# JavaScript 相关配置
+## 由于Javascript被压缩后难以有效编辑与生成，因而为了简化操作，将相关的配置项在生成文件时以独立的json文件写出，调用时使用fetch API获取。
+jsconfig:
+  main:
+    createTime: "2018/05/06 17:03:12"
+    donateBtn: "支持我~"
+    scanNotice: "扫一扫，好不好？"
+    qr_alipay: "/images/alipayqr.webp"
+    qr_wechat: "/images/wechatpayqr.webp"
+    siteLeaveEvent: false
+    leaveTitle: "{{{(>_<)}}}哦哟，崩溃啦~"
+    returnTitle: "(*´∇｀*)欸，又好啦~"
+    copyrightNotice: "该内容采用 CC BY-NC-SA 4.0 许可协议，著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。"
+    expire_day: 30
+    topNavScrollToggle: true
 
+# Friends 友链相关内容
 friends:
+  href: "friends"
+  page:
+    title: "好伙伴们"
+    comments: false
+    description: "好伙伴们在这里~"
+    updated: "2024-05-21"
   list:
   - name: "猫猫①号"
     bio: "喵~"
-    avatar: "../images/avatar.webp"
+    avatar: "../images/user.svg"
     link: "https://candinya.com"
   - name: "猫猫②号"
     bio: "喵喵~"
-    avatar: "../images/avatar.webp"
+    avatar: "../images/user.svg"
     link: "https://candinya.com"
   - name: "猫猫⑨号"
     bio: "咪啪~"
-    avatar: "../images/avatar.webp"
+    avatar: "../images/user.svg"
     link: "https://candinya.com"
+  verify: true # 验证每个友链的可访问性，炸了会有提示
 
-posts:
-  comments: 
-    provider: gitalk
 
-gitalk:
-  clientID: 'GitHub Application Client ID'
-  clientSecret: 'GitHub Application Client Secret'
-  # repo: 'Kratos-Rebirth-Demo'
-  # owner: 'Candinya'
-  # admin: 
-  #   - 'Candinya'
-  # distractionFreeMode: false
+################## 额外的注入代码 ##################
+additional_injections:
+  head: "" # 搜索引擎的站点验证
+  footer: |
+    <div>
+        <li>由 <a href="https://hexo.io" target="_blank" rel="nofollow">Hexo</a> 强力驱动</li>
+        <li>在 <a href="https://github.io" target="_blank">Github Pages</a> 暖心托管</li>
+    </div>
+  after_footer: "" # 站点分析

@@ -1,216 +1,107 @@
-# Global 全局配置
-site_analytics: ''
-hoster: <a href="https://github.io" target="_blank">Github Pages</a>
-site_logo: ''
-snow: false
-click_animate_js: 'candy'
-enable_dark: true
-highlight_theme: night-eighties # 代码高亮主题（light | night | night-eighties | night-blue | night-bright）
-check_update: true
-# canonical: true
-
+################## 系统配置 ##################
+# 依赖文件
 vendors:
   packages:
-    disqusjs: 
-      version: 1.2.6
-    gitalk: 
-      version: 1.7.2
-    gitment: 
-      version: 0.0.3
-    twikoo: 
-      version: 1.5.11
-    valine: 
-      version: 1.4.18
-    "@waline/client": 
-      version: 2.14.1
     bootstrap: 
-      version: 3.3.4
+      version: "5.3.3"
     nprogress: 
-      version: 0.2.0
-    aplayer: 
-      version: 1.10.1
-    "@fancyapps/fancybox": 
-      version: 3.5.7
-    layui-src: 
-      version: 2.5.5
-    font-awesome: 
-      version: 4.7.0
-    jquery: 
-      version: 3.6.0
+      version: "0.2.0"
     qrcode_js: 
-      version: 1.0.0
-    mermaid: 
-      version: 9.1.1
-    meting:
-      version: 2.0.1
+      version: "1.0.0"
+    "@tabler/icons-webfont": 
+      version: "3.4.0"
+    viewerjs:
+      version: "1.11.6"
 
-# 自定义样式
-customStyles:
-  images: # 图片相关设置
-    # banner: /images/banner.webp # 站点横幅
-    # background: /images/bg.webp # 站点背景
+# 检查更新
+check_update: true
 
-# Index 首页配置
-index:
-  post_type: false
-  read_count: true
-  comment_count: true
+# 规范重复内容 URL ( https://developer.mozilla.org/zh-CN/docs/Web/HTML/Attributes/rel#canonical )
+canonical: true
 
-# Top Menu 顶部导航栏配置 （具体格式请参照文档）
-menu:
-  # index: /
-  # archives: /archives/
-  # friends: /friends/
-  # sites:
-  #   submenu: true
-  #   author: https://candinya.com
-  #   project: https://github.com/Candinya/Kratos-Rebirth
-
-label:
-  # index: <i class="fa fa-home"></i>首页
-  # archives: <i class="fa fa-file"></i>档案馆
-  # friends: <i class="fa fa-paw"></i>好伙伴
-  # sites:
-  #   submenu: <i class="fa fa-link"></i>链接
-  #   author: 作者博客
-  #   project: 项目链接
-
-# Footer 页脚配置
-group_link: 
-contact: # 出于兼容性考虑，继续保留
-  weibo: 
-  mail: 
-  telegram:
-  twitter: 
-  facebook: 
-  linkedin: 
-  fediverse:
-    instance:
-    username:
-  github:
-  rss:
-footerLinks: [] # 可以自定义
-timenotice: 本站已运行
-icp: 
-psr:
-  
-# Post Page 文章页配置
-posts:
-  show_cc: true
-  donate: false
-  share: true
-  comments: 
-    provider: ''
-    enableBGImage: false
-  wordCount: 
-    enable: true
-    threshold: 1500
-
-# Disqus [Disqus](https://disqus.com) 评论相关
-disqus:
-  shortname: 
-
-# DisqusJS [DisqusJS](https://disqusjs.skk.moe/) 评论相关
-disqusjs:
-  shortname: 
-  sitename: 
-  api: 
-  apikey: 
-  admin: 
-  adminlabel: 
-
-# Valine [Valine](https://valine.js.org) 评论相关
-valine:
-  app_id: 
-  app_key: 
-  visitor: true
-  enableQQ: false
-
-# Twikoo [Twikoo](https://twikoo.js.org) 评论相关
-twikoo:
-  env_id: 
-
-# Waline [Waline](https://waline.js.org) 评论相关
-## 不仅限于以下内容，您可以参照 Waline的 [前端配置文档](https://waline.js.org/reference/client.html) 设置您需要的配置项
-## el 和 path 会在页面自动生成，不必加入
-waline:
-  serverURL: #后端服务器地址，必填
-  comment: true
-  pageview: true
-
-# Gitalk [Gitalk](https://gitalk.github.io/) 评论相关
-## 不仅限于以下内容，您可以参照 [Gitalk 文档](https://github.com/gitalk/gitalk/blob/master/readme-cn.md#%E8%AE%BE%E7%BD%AE) 设置您需要的配置项
-## id 会在页面自动生成，不必加入
-gitalk:
-  clientID: 'GitHub Application Client ID'
-  clientSecret: 'GitHub Application Client Secret'
-  repo: 'Kratos-Rebirth-Demo'
-  owner: 'Candinya'
-  admin: 
-    - 'Candinya'
-  distractionFreeMode: false
-
-#默认不计算hash 但是如果id过长(默认为url_for(page.path))会导致创建评论区失败 见[#139](https://github.com/Candinya/Kratos-Rebirth/issues/139)
-gitalk_id_hasher: false
-# gitalk_id_hasher: md5
-
-# Gitment [Gitment](https://github.com/imsun/gitment/) 评论相关
-## 不仅限于以下内容，您可以参照 [Gitment 文档](https://github.com/imsun/gitment#methods) 设置您需要的配置项
-## id 会在页面自动生成，不必加入
-gitment:
-  owner: 'Candinya'
-  repo: 'Kratos-Rebirth-Demo'
-  oauth:
-    client_id: 'Your client ID'
-    client_secret: 'Your client secret'
-
-# LiveRe [LiveRe](https://livere.com/) 评论相关
-livere:
-  id: city
-  uid:
-
-# APlayer 左下角音乐播放器
-aplayer:
-  enabled: true
-  playlist: 
-  meting:
-    server: netease
-    type: playlist
-    id: 3204190542
-  order: random
-
-# Widgets 侧边栏小挂件
-sidebar: right
-widgets:
-- about
-- splitter
-- toc
-- category
-- tagcloud
-- posts
-avatarUri: /images/avatar.webp
-mobile_toc: 
-  hide: false
-  hide_id: false
-
-# Fancybox 文章内图片单击放大
-fancybox: true
-
-# Search 搜索
+# 搜索
 search:
   enable: true
   path: search.json
   field: post # page | post | all. Default post
   content: true # Include post | page content
 
+################## 样式配置 ##################
+
+# 图片配置
+image:
+  favicon: "" # 站点图标
+  avatar: "/images/user.svg" # 个人信息挂件上的头像
+  banner:     # 站点横幅
+    light: "" # 亮色模式
+    dark: ""  # 暗色模式
+  background: # 站点背景
+    light: "" # 亮色模式
+    dark: ""  # 暗色模式
+  about:      # 介绍卡片
+    light: "/images/about.webp" # 亮色模式
+    dark: "/images/about.webp"  # 暗色模式
+
+# 顶部导航栏配置
+top_nav: []
+# - label: 这个菜单的标签文字
+#   icon: 这个菜单前的图标（在 tabler icons 图标库中选择，可以不设置）
+#   url: 这个菜单指向的链接（站内或是站外均可）
+#   submenu: 这个菜单是否为一个二级菜单，有了这个选项就会忽略上面的 url
+#     - label: 二级菜单项的标签文字 
+#       icon: 二级菜单前的图标（在 tabler icons 图标库中选择，可以不设置）
+#       url: 二级菜单项指向的链接
+
+# 文章的列表配置（首页/分页/标签页）
+post_index:
+  post_type: false
+  read_count: true
+  comment_count: true
+
+# Footer 页脚配置
+footer_links: []
+# - icon: # 和 html 二选一，该选项表示使用来自 tabler icons 图标库，内容为图标库中的唯一标识
+#   html: # 和 icon 二选一，该选项表示插入自定义的 HTML 作为标识，例如您可在此放置一串 svg
+#   link: # 按钮导向的目标链接
+#   currentPage: # 可选，默认为否，启用该选项表示在当前页内打开目标链接
+
+# 一些有特色的组件 （其他的请在 additional_injections 自行追加）
+footer_components:
+  uptime:
+    text: 本站已运行
+
+# Post Page 文章内页配置
+posts:
+  default_cover: "/images/about.webp" # 没有头图的文章使用的默认图片
+  show_cc: true
+  donate: true
+  share: true
+  word_count: 
+    enable: true
+    threshold: 1500
+    estimate_wavy: true # 在文章字数处显示表示大约字数的波浪号
+
+code_highlight:
+  theme: night-eighties # 代码高亮主题（light | night | night-eighties | night-blue | night-bright）
+
+# 侧边栏小挂件
+sidebar:
+  location: right
+  widgets: []
+  # - about
+  # - splitter
+  # - toc
+  # - category
+  # - tagcloud
+  # - posts
+  mobile_toc: 
+    hide: false
+    hide_id: false
+
 # JavaScript 相关配置
 ## 由于Javascript被压缩后难以有效编辑与生成，因而为了简化操作，将相关的配置项在生成文件时以独立的json文件写出，调用时使用fetch API获取。
 jsconfig:
   main:
-    cover:
-      randomAmount: 20 # 表示从1~20
-      baseUrl: null # 使用默认值（不单独配置），将跟随 vendors 中的相关设定选择是否使用 cdn
-      filenameTemplate: "thumb_{no}.webp" 
     createTime: "2018/05/06 17:03:12"
     donateBtn: "支持我~"
     scanNotice: "扫一扫，好不好？"
@@ -223,12 +114,6 @@ jsconfig:
     expire_day: 30
     topNavScrollToggle: true
 
-# Site verify 站点验证相关配置内容
-site_verify:
-  google: 
-  baidu: 
-  bing: 
-
 # Friends 友链相关内容
 friends:
   href: "friends"
@@ -237,21 +122,22 @@ friends:
     comments: false
     description: "好伙伴们在哪里~"
     updated: "2021-01-18"
-  list:
-  # - name: "猫猫①号"
-  #   bio: "喵~"
-  #   avatar: "../images/avatar.webp"
-  #   link: "https://candinya.com"
-  # - name: "猫猫②号"
-  #   bio: "喵喵~"
-  #   avatar: "../images/avatar.webp"
-  #   link: "https://candinya.com"
-  # - name: "猫猫⑨号"
-  #   bio: "咪啪~"
-  #   avatar: "../images/avatar.webp"
-  #   link: "https://candinya.com"
+  list: []
+  # - name: "链接的名称"
+  #   bio: "链接的描述文本"
+  #   avatar: "链接使用的图标"
+  #   link: "链接的地址"
   verify: true # 验证每个友链的可访问性，炸了会有提示
 
-# Misc 杂项
-misc:
-  showWordCountEstimateWavy: true # 在文章字数处显示表示大约字数的波浪号
+comments:
+  template: ""
+  enabled_at: []
+  # - index
+  # - post
+  # - page
+
+################## 额外的注入代码 ##################
+additional_injections:
+  head: "" # 搜索引擎的站点验证
+  footer: "" # 托管信息等
+  after_footer: "" # 站点分析脚本

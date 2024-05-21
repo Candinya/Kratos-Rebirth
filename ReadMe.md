@@ -15,7 +15,7 @@
 
 或者也可以去[我的博客](https://candinya.com/posts/Kratos-Rebirth/)踩踩哦~
 
-核心结构&样式来源：[@MoeDog](https://github.com/xb2016) 狗狗大佬的[Kratos](https://github.com/xb2016/kratos)的某个上古版本
+核心结构&样式来源：[@MoeDog](https://github.com/xb2016) 狗狗大佬的[Kratos](https://github.com/xb2016/kratos-pjax)的某个上古版本
 
 ## 💞 安装使用
 

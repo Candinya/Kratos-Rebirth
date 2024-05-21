@@ -336,24 +336,3 @@ span.blur {
 span.mjx-chtml.MJXc-display {
     color: $text;
 }
-
-
-
-/******************* Images ********************/
-.widget-kratos-about .photo-background {
-    background-image: $about_image;
-}
-
-.kratos-cover.kratos-cover-2 {
-    background-image: $banner_image;
-}
-
-@media(min-width:768px) {
-    body.custom-background {
-        background-image: $background-image;
-    }
-}
-
-.post-comments.bg-image textarea {
-    background: $comment-background-image right bottom no-repeat!important;
-}

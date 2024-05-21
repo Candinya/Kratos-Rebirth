@@ -1,28 +1,4 @@
 /**
- * 因为后台任务API还是相当新的，而你的代码可能需要在那些仍不支持此API的浏览器上运行。
- * 你可以把 setTimeout() 用作回调选项来做这样的事。
- * 这个并不是 polyfill ，因为它在功能上并不相同； 
- * setTimeout() 并不会让你利用空闲时段，而是使你的代码在情况允许时执行你的代码，
- * 以使我们可以尽可能地避免造成用户体验性能表现延迟的后果。
- */
-// https://developer.mozilla.org/zh-CN/docs/Web/API/Background_Tasks_API 
-window.requestIdleCallback = window.requestIdleCallback || function(handler) {
-    let startTime = Date.now();
-    return setTimeout(function() {
-      handler({
-        didTimeout: false,
-        timeRemaining: function() {
-          return Math.max(0, 50.0 - (Date.now() - startTime));
-        }
-      });
-    }, 1);
-};
-
-window.cancelIdleCallback = window.cancelIdleCallback || function(id) {
-    clearTimeout(id);
-};
-
-/**
  * 一些暴露给 DOM 交互使用的全局函数
  */
 
@@ -36,7 +12,7 @@ window.copyCode = window.copyCode || function(triggerBtn, targetCodeID) {
 
         // 复制成功，庆祝一下
         const origInner = triggerBtn.innerHTML;
-        triggerBtn.innerHTML = `<i class="fa fa-check-circle"></i>&nbsp;成功~`;
+        triggerBtn.innerHTML = `<i class="ti ti-circle-check"></i>&nbsp;成功~`;
         setTimeout(() => {
             triggerBtn.innerHTML = origInner;
         }, 3000);
@@ -70,187 +46,136 @@ window.copyCode = window.copyCode || function(triggerBtn, targetCodeID) {
                 }
             });
         };
-        $('.gotop-box').on('click',function(event){
-            // event.preventDefault();
-            $('html, body').animate({
-                scrollTop:$('html').offset().top
-            },500);
+        document.getElementById('gotop-box').addEventListener('click', e => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
             return false;
         });
         pageScrollDownClass();
         window.addEventListener('scroll', pageScrollDownClass);
     };
+
+    // 构建移动端的侧边展开导航
     const offcanvas = ()=>{
-        let $clone = $('#kratos-menu-wrap').clone();
-        $clone.attr({
-            'id':'offcanvas-menu'
+        const menuWrapClone = document.getElementById('kratos-menu-wrap').cloneNode(true);
+        menuWrapClone.setAttribute("id", "offcanvas-menu");
+        menuWrapClone.querySelectorAll("ul").forEach(el => {
+            el.setAttribute("id", "");
+            el.classList.add("ul-me");
         });
-        $clone.find('> ul').attr({
-            'id':''
-        }).addClass('ul-me');
-        $('#kratos-page').prepend($clone);
-        $('.js-kratos-nav-toggle').on('click',()=>{
-            if($('.nav-toggle').hasClass('toon')){
-                $('.nav-toggle').removeClass('toon');
-                $('#offcanvas-menu').css('right','-240px');
-            }else{
-                $('.nav-toggle').addClass('toon');
-                $('#offcanvas-menu').css('right','0px');
-            }
-        });
-        $('#offcanvas-menu').css('height',$(window).height());
-        $('#offcanvas-menu').css('right','-240px');
-        $(window).resize(()=>{
-            const w = $(window);
-            $('#offcanvas-menu').css('height',w.height());
-            if(w.width()>769){
-                if($('.nav-toggle').hasClass('toon')){
-                    $('.nav-toggle').removeClass('toon');
-                    $('#offcanvas-menu').css('right','-240px');
-                }
-            }
-        });
-    };
-    const mobiClick = ()=>{
-        $(document).click((e)=>{
-            const container = $("#offcanvas-menu,.js-kratos-nav-toggle");
-            if (!container.is(e.target) && container.has(e.target).length === 0) {
-                if ($('.nav-toggle').hasClass('toon')) {
-                    $('.nav-toggle').removeClass('toon');
-                    $('#offcanvas-menu').css('right','-240px');
-                }
-            }
-        });
-    };
-    const xControl = ()=>{
-        $(document).on("click",".xHeading", function(event){
-            $(this).next().slideToggle(300);
-            if ($(this).parent('.xControl').hasClass('active')) {
-                $(this).parent('.xControl').removeClass('active');
+        menuWrapClone.style.height = 'calc(100% - 60px)';
+        menuWrapClone.style.right = '-240px';
+
+        document.getElementById('kratos-nav-toggle').addEventListener('click', () => {
+            const navToggleWrapper = document.getElementById('kratos-nav-toggle-wrapper');
+            if (navToggleWrapper.classList.contains('toon')) {
+                navToggleWrapper.classList.remove('toon');
+                menuWrapClone.style.right = '-240px';
             } else {
-                $(this).parent('.xControl').addClass('active');
+                navToggleWrapper.classList.add('toon');
+                menuWrapClone.style.right = '0px';
             }
-            event.preventDefault();
+        });
+
+        document.getElementById("kratos-page").prepend(menuWrapClone);
+
+        // 在页面放大到超过断点时自动关闭
+        window.addEventListener("resize", e => {
+            const navToggleWrapper = document.getElementById('kratos-nav-toggle-wrapper');
+
+            if (window.innerWidth > 768) {
+                // 关闭
+                if (navToggleWrapper.classList.contains('toon')) {
+                    navToggleWrapper.classList.remove('toon');
+                    menuWrapClone.style.right = '-240px';
+                }
+            }
+        });
+
+        // TODO: 追加点击表项自动关闭的逻辑（就是下面这个注释掉的 mobiClick ）
+    };
+    // const mobiClick = ()=>{
+    //     $(document).click((e)=>{
+    //         const container = $("#offcanvas-menu,.js-kratos-nav-toggle");
+    //         if (!container.is(e.target) && container.has(e.target).length === 0) {
+    //             if ($('.nav-toggle').hasClass('toon')) {
+    //                 $('.nav-toggle').removeClass('toon');
+    //                 document.getElementById("offcanvas-menu").style.right = '-240px';
+    //             }
+    //         }
+    //     });
+    // };
+    const collapseBoxControl = ()=>{
+        const collapseBoxes = 
+        document.querySelectorAll(".xControl")?.forEach(node => {
+            const hotZone = node.getElementsByClassName(".xHeading");
+            hotZone?.[0].addEventListener("click", e => {
+                node.classList.toggle('active');
+            });
         });
     };
 
     const donateConfig = (kr)=>{
-        $(document).on("click",".donate",()=>{
-            layer.open({
-                type:1,
-                area:['300px', '370px'],
-                title:kr.donateBtn,
-                resize:false,
-                scrollbar:false,
-                content:'<div class="donate-box"><div class="meta-pay text-center"><strong>'+kr.scanNotice+'</strong></div><div class="qr-pay text-center"><img class="pay-img" id="alipay_qr" src="'+kr.qr_alipay+'"><img class="pay-img d-none" id="wechat_qr" src="'+kr.qr_wechat+'"></div><div class="choose-pay text-center mt-2"><input id="alipay" type="radio" name="pay-method" checked><label for="alipay" class="pay-button"><img src="/images/alipay.webp"></label><input id="wechatpay" type="radio" name="pay-method"><label for="wechatpay" class="pay-button"><img src="/images/wechat.webp"></label></div></div>'
-            });
-            $(".choose-pay input[type='radio']").click(function(){
-                const id = $(this).attr("id");
-                if (id == 'alipay') {
-                    $(".qr-pay #alipay_qr").removeClass('d-none');
-                    $(".qr-pay #wechat_qr").addClass('d-none');
-                }
-                if (id == 'wechatpay') {
-                    $(".qr-pay #alipay_qr").addClass('d-none');
-                    $(".qr-pay #wechat_qr").removeClass('d-none');
-                }
-            });
-        });
+        // $(document).on("click",".donate",()=>{
+        //     layer.open({
+        //         type:1,
+        //         area:['300px', '370px'],
+        //         title:kr.donateBtn,
+        //         resize:false,
+        //         scrollbar:false,
+        //         content:'<div class="donate-box"><div class="meta-pay text-center"><strong>'+kr.scanNotice+'</strong></div><div class="qr-pay text-center"><img class="pay-img" id="alipay_qr" src="'+kr.qr_alipay+'"><img class="pay-img d-none" id="wechat_qr" src="'+kr.qr_wechat+'"></div><div class="choose-pay text-center mt-2"><input id="alipay" type="radio" name="pay-method" checked><label for="alipay" class="pay-button"><img src="/images/alipay.webp"></label><input id="wechatpay" type="radio" name="pay-method"><label for="wechatpay" class="pay-button"><img src="/images/wechat.webp"></label></div></div>'
+        //     });
+        //     $(".choose-pay input[type='radio']").click(function(){
+        //         const id = $(this).attr("id");
+        //         if (id == 'alipay') {
+        //             $(".qr-pay #alipay_qr").removeClass('d-none');
+        //             $(".qr-pay #wechat_qr").addClass('d-none');
+        //         }
+        //         if (id == 'wechatpay') {
+        //             $(".qr-pay #alipay_qr").addClass('d-none');
+        //             $(".qr-pay #wechat_qr").removeClass('d-none');
+        //         }
+        //     });
+        // });
+        // TODO: 重写这部分的逻辑
     };
 
     const shareMenu = ()=>{
-        $(document).on("click",".share",()=>{$(".share-wrap").fadeToggle("slow");});
-    };
-
-    const loadRandomCover = (kr)=>{
-        // 图片
-        const imageboxs = document.getElementsByClassName("kratos-entry-thumb-new-img");
-        const randomAmount = kr.cover && kr.cover.randomAmount || 20;
-        const baseUrl = kr.cover && kr.cover.baseUrl || 'https://cdn.jsdelivr.net/npm/hexo-theme-kratos-rebirth@latest/source/images/thumb/'
-        const coverFileNameTemplate = kr.cover && kr.cover.filenameTemplate || "thumb_{no}.webp";
-        const usedCovers = new Array(randomAmount + 1);
-
-        const generateNewCoverID = () => {
-            let remailFailCounts = 5; // set max fail counts
-            let coverNo;
-            while (remailFailCounts > 0) {
-                // rand one
-                coverNo = Math.floor(Math.random() * randomAmount + 1);
-                if (!usedCovers[coverNo]) {
-                    // valid
-                    break;
-                } else {
-                    // fails
-                    remailFailCounts--;
-                }
-            }
-
-            if (remailFailCounts <= 0) {
-                // rand failed, find one manually
-                coverNo = -1;
-                for (let i = 1; i <= randomAmount; i++) {
-                    if (!usedCovers[i]) {
-                        // use first
-                        coverNo = i;
-                        break;
-                    }
-                }
-                if (coverNo === -1) {
-                    // All used
-                    // clear all
-                    for (let i = 1; i <= randomAmount; i++) {
-                        usedCovers[i] = false;
-                    }
-                    // rand one
-                    coverNo = Math.floor(Math.random() * randomAmount + 1);
-                }
-            }
-
-            // mark as used
-            usedCovers[coverNo] = true;
-            
-            // return
-            return coverNo;
-        }
-
-        for (let i = 0, len = imageboxs.length; i < len; i++) {
-            if (!($(imageboxs[i]).attr("src"))) {
-                const coverNo = generateNewCoverID();
-                const coverFileName = coverFileNameTemplate.replace("{no}", coverNo.toString());
-                let coverUrl;
-                if (coverFileName.includes("//")) {
-                    coverUrl = coverFileName;
-                } else if (baseUrl.substring(baseUrl.length - 1) === "/") {
-                    coverUrl = baseUrl + coverFileName;
-                } else {
-                    coverUrl = baseUrl + '/' + coverFileName;
-                }
-                $(imageboxs[i]).attr("src", coverUrl);
-            }
-        }
-    };
-
-    const fancyboxInit = ()=>{
-          if (typeof $.fancybox !== 'undefined'){
-            $.fancybox.defaults.hash = false;
-            $('.kratos-hentry').each(function(i){
-                $(this).find('img').each(function(){
-                  if ($(this).parent().hasClass('fancybox') || $(this).parent().hasClass('qrcode') || $(this).parent().is('a')) return;
-                  const alt = this.alt;
-                  if (alt) $(this).after('<span class="caption">' + alt + '</span>');
-                  $(this).wrap('<a rel="gallery" href="' + this.src + '" data-fancybox=\"gallery\" data-caption="' + alt + '"></a>')
-                });
+        document.querySelectorAll(".share").forEach(el => {
+            el.addEventListener("click", () => {
+                document.getElementsByClassName("share-wrap")?.[0].classList.toggle('show');
             });
-            $('.fancybox').fancybox();
-          }
+        })
+    };
+
+    // const fancyboxInit = ()=>{
+    //       if (typeof $.fancybox !== 'undefined'){
+    //         $.fancybox.defaults.hash = false;
+    //         $('.kratos-hentry').each(function(i){
+    //             $(this).find('img').each(function(){
+    //               if ($(this).parent().hasClass('fancybox') || $(this).parent().hasClass('qrcode') || $(this).parent().is('a')) return;
+    //               const alt = this.alt;
+    //               if (alt) $(this).after('<span class="caption">' + alt + '</span>');
+    //               $(this).wrap('<a rel="gallery" href="' + this.src + '" data-fancybox=\"gallery\" data-caption="' + alt + '"></a>')
+    //             });
+    //         });
+    //         $('.fancybox').fancybox();
+    //       }
+    // };
+
+    const viewerJsInit = () => {
+        // TODO: 完成这部分替代上面的 fancyboxInit
     };
 
     const tocNavInit = ()=>{
-        $(document).on("click", 'a[class=toc-link]', function(){
-            $('html, body').animate({
-                scrollTop:$(decodeURI($(this).attr("href"))).offset().top - 60
-            },500);
-            return false;
+        document.querySelectorAll("a[class=toc-link]").forEach(el => {
+            el.addEventListener("click", e => {
+                window.scrollTo({ 
+                    top: document.getElementById(
+                        decodeURI(el.getAttribute(href)).replace("#", "")
+                    ).offsetTop,
+                    behavior: 'smooth',
+                });
+            });
         });
     };
 
@@ -290,18 +215,19 @@ ${kr.copyrightNotice}
     const leaveEventInit = (kr) => {
         if (kr.siteLeaveEvent) {
             let titleTime;
-            const OriginLogo = $('[rel="icon"]').attr("href");
+            const siteFavicon = document.querySelector('[rel="icon"]');
+            const originIcon = siteFavicon.getAttribute("href");
             document.addEventListener('visibilitychange', ()=>{
                 if (document.hidden) {
                     document.title = kr.leaveTitle;
                     if (kr.leaveLogo) {
-                        $('[rel="icon"]').attr("href", kr.leaveLogo);
+                        siteFavicon.setAttribute("href", kr.leaveLogo);
                     }
                     clearTimeout(titleTime);
                 } else {
                     document.title = kr.returnTitle + " " + docTitle;
                     if (kr.leaveLogo) {
-                        $('[rel="icon"]').attr("href", OriginLogo);
+                        siteFavicon.setAttribute("href", originIcon);
                     }
                     titleTime = setTimeout(()=>{
                         document.title = docTitle;
@@ -376,7 +302,7 @@ ${kr.copyrightNotice}
 
             figure.innerHTML += 
             `<button class="copy" onclick="copyCode(this, 'code-${count}')">
-                <i class="fa fa-copy"></i>&nbsp;复制
+                <i class="ti ti-copy"></i>&nbsp;复制
             </button>`;
         });
     };
@@ -436,9 +362,9 @@ ${kr.copyrightNotice}
     };
 
     const makeDelay = (callback, ms) => {
-        var timer = 0;
+        let timer = 0;
         return function () {
-            var context = this, args = arguments;
+            let context = this, args = arguments;
             clearTimeout(timer);
             timer = setTimeout(function () {
                 callback.apply(context, args);
@@ -692,12 +618,12 @@ ${kr.copyrightNotice}
         tocWidgetAnimInit();
         saveTitle();
         codeCopyInit();
-        fancyboxInit();
+        // fancyboxInit();
+        tocNavInit();
         commentsLazyLoad();
     };
 
     const initPerPageWithConfig = kr => {
-        loadRandomCover(kr);
         setCopyright(kr);
         expireNotify(kr);
     };
@@ -727,8 +653,8 @@ ${kr.copyrightNotice}
         
         pageScrollDownInit();
         offcanvas();
-        mobiClick();
-        xControl();
+        // mobiClick();
+        collapseBoxControl();
         shareMenu();
         tocNavInit();
         initPerPage();

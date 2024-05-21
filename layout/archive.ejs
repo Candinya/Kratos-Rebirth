@@ -50,7 +50,7 @@
                             <% if (post.link) { %>
                               <a class="post-title-link post-title-link-external" target="_blank" href="<%- url_for(post.link) %>" itemprop="mainEntityOfPage">
                                 <span itemprop="name headline"><%- post.title %></span>
-                                <i class="fa fa-external-link"></i>
+                                <i class="ti ti-external-link"></i>
                               </a>
                             <% } else { %>
                                 <a class="post-title-link" href="<%- url_for(post.path) %>" itemprop="mainEntityOfPage">
@@ -75,7 +75,7 @@
       </div>
       <% if (page.total > 1) { %>
         <div class='text-center pagination'>
-        <%- paginator({prev_text: '<i class="fa fa-angle-left"></i>', next_text: '<i class="fa fa-angle-right"></i>', escape: false}) %>
+        <%- paginator({prev_text: '<i class="ti ti-angle-left"></i>', next_text: '<i class="ti ti-angle-right"></i>', escape: false}) %>
         </div>
       <% } %>
   </article>

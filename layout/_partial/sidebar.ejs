@@ -1,11 +1,11 @@
-<% const needSplit = theme.widgets.includes('splitter') && (is_post() || is_page()); %>
+<% const needSplit = theme.sidebar.widgets.includes('splitter') && (is_post() || is_page()); %>
 <% const tocContent = toc(page.encrypt ? page.origin : page.content, { list_number: false }); %>
 <section id="kratos-widget-area" class="col-md-4 hidden-xs hidden-sm">
     <!-- 文章和页面根据splitter来分割，没有的话就从头开始设置为sticky -->
     <% if (!needSplit) { %>
         <div class="sticky-area">
     <% } %>
-    <% theme.widgets.forEach(function(widget){
+    <% theme.sidebar.widgets.forEach(function(widget){
         switch (widget) {
             case 'toc':
                 if (page.toc && strip_html(tocContent)) { %>

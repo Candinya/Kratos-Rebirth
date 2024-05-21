@@ -10,43 +10,43 @@
                 <h2 class="text-center"><%- page.subtitle %></h2>
             <% } %>
             <ul class="kratos-post-meta text-center">
-                <li><time datetime="<%= date_xml(page.date) %>" itemprop="datePublished"><i class="fa fa-calendar"></i> <%- date(page.date, null) %></time></li>
+                <li><time datetime="<%= date_xml(page.date) %>" itemprop="datePublished"><i class="ti ti-calendar"></i> <%- date(page.date, null) %></time></li>
                 <li itemprop="author" itemscope itemtype="https://schema.org/Person">
-                    <i class="fa fa-user"></i> <%- __('author') %> <span itemprop="name"><%- page.author || config.author %></span>
+                    <i class="ti ti-user"></i> <%- __('author') %> <span itemprop="name"><%- page.author || config.author %></span>
                 </li>
-                <% if (theme.posts?.wordCount?.enable) { %>
+                <% if (theme.posts.word_count.enable) { %>
                     <li>
-                        <i class="fa fa-edit"></i> 
-                        <% const wordsCount = strip_html(page.content).length; %>
-                        <% if (wordsCount < (theme.posts.wordCount?.threshold || 1500)) { %>
-                            <%= wordsCount %>
+                        <i class="ti ti-edit"></i> 
+                        <% const total_words = strip_html(page.content).length; %>
+                        <% if (total_words < (theme.posts.word_count.threshold)) { %>
+                            <%= total_words %>
                         <% } else { %>
-                            <% if (theme.misc?.showWordCountEstimateWavy) { %>~<% } %><%= (wordsCount / 1000).toFixed(2) %>K
+                            <% if (theme.posts.word_count.estimate_wavy) { %>~<% } %><%= (total_words / 1000).toFixed(2) %>K
                         <% } %>
                         <%- __('words') %>
                     </li>
                 <% } %>
                 <% if (commentProvider === 'valine' && theme.valine?.visitor) { %>
                     <li id="<%- url_for(page.path) %>" class="leancloud_visitors" data-flag-title="<%- page.title %>">
-                        <i class="fa fa-eye"></i>
+                        <i class="ti ti-eye"></i>
                         <%- __('read_count', '<span class="leancloud-visitors-count"> </span>') %>
                     </li>
                 <% } else if (commentProvider === 'waline') { %>
                     <% if (theme.waline?.pageview) { %>
                         <li>
-                            <i class="fa fa-eye"></i>
+                            <i class="ti ti-eye"></i>
                             <%- __('read_count', '<span data-path="' + url_for(page.path) + '" class="waline-pageview-count"> </span>') %>
                         </li>
                     <% } %>
                     <% if (theme.waline?.comment) { %>
                         <li>
-                            <i class="fa fa-commenting-o"></i>
+                            <i class="ti ti-commenting-o"></i>
                             <%- __('comments_count', '<span data-path="' + url_for(page.path) + '" class="waline-comment-count"> </span>') %>
                         </li>
                     <% } %>
                 <% } else if (commentProvider === 'twikoo') { %>
                     <li>
-                        <i class="fa fa-eye"></i>
+                        <i class="ti ti-eye"></i>
                         <%- __('read_count', '<span id="twikoo_visitors"> </span>') %>
                     </li>
                 <% } %>
@@ -55,12 +55,12 @@
         <div class="kratos-post-content">
             <% if (page.expire === true || page.expire !== false && !!page.title) { %>
             <div id="expire-alert" class="alert alert-warning hidden" role="alert">
-                <div class="icon"><i class="fa fa-warning"></i></div>
+                <div class="icon"><i class="ti ti-warning"></i></div>
                 <div class="text"><p><%- __('last_modify_alert', '<time datetime="' + page.updated + '"></time>') %></p></div>
             </div>
             <% } %>
-            <% const tocContent = toc(page.encrypt ? page.origin : page.content, { list_number: !theme.mobile_toc?.hide_id }); %>
-            <% if (!theme.mobile_toc?.hide && page.toc && strip_html(tocContent)) { %>
+            <% const tocContent = toc(page.encrypt ? page.origin : page.content, { list_number: !theme.sidebar.mobile_toc?.hide_id }); %>
+            <% if (!theme.sidebar.mobile_toc?.hide && page.toc && strip_html(tocContent)) { %>
                 <div class="kratos-post-inner-toc toc-div-class" <% if (page.encrypt) { %>style="display:none!important" <% } %>>
                     <%- tocContent %>
                 </div>
@@ -77,17 +77,17 @@
             <% if (theme.posts && (theme.posts.donate || theme.posts.share)) { %>
                 <div class="post-like-donate text-center clearfix" id="post-like-donate">
                 <% if (theme.posts.donate) { %>
-                    <a class="donate" href="javascript:;"><i class="fa fa-bitcoin"></i> <%- __('reward') %></a>
+                    <a class="donate" href="javascript:;"><i class="ti ti-coins"></i> <%- __('reward') %></a>
                 <% } %>
                 <% if (theme.posts.share) { %>
-                    <a class="share" href="javascript:;"><i class="fa fa-share-alt"></i> <%- __('share') %></a>
+                    <a class="share" href="javascript:;"><i class="ti ti-share"></i> <%- __('share') %></a>
                     <%- partial('_tools/share', {page: page}) %>
                 <% } %>
                 </div>
             <% } %>
             <div class="footer-tag clearfix">
                 <div class="pull-left">
-                <i class="fa fa-tags"></i>
+                <i class="ti ti-tags"></i>
                     <%- list_tags(page.tags, {
                         show_count: false,
                         style: 'none'
@@ -113,7 +113,9 @@
             <% } %>
         </nav>
     <% } %>
-    <% if (commentProvider && page.comments) { %>
-        <%- partial('_comments/' + commentProvider) %>
+    <% if (page.comment && theme.comments.template && theme.comments.enabled_at.includes('post')) { %>
+        <div class="comment-post">
+            <%- theme.comments.template %>
+        </div>
     <% } %>
 </article>

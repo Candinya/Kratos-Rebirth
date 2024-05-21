@@ -1,7 +1,9 @@
 <head>
   <!-- 元数据 -->
   <meta charset="utf-8">
-  <% if (theme.site_logo) { %><link rel="icon" href="<%- theme.site_logo %>"><% } %>
+  <% if (theme.image.favicon) { %>
+    <link rel="icon" href="<%- theme.image.favicon %>">
+  <% } %>
   <%
   var title = page.title || __(page.title_i18n);
   if (is_archive()){
@@ -41,57 +43,57 @@
     // twitter_site: theme.contact.twitter ? "@" + theme.contact.twitter : null,
     title
   }) %>
-  <% if (config.feed?.path) {%><link rel="alternate" href="<%- config.feed.path %>" type="application/atom+xml"><% } %>
-  <!-- 站点验证相关 -->
-  <% if (theme.site_verify) { %>
-    <% if (theme.site_verify.google) { %>
-      <meta name="google-site-verification" content="<%- theme.site_verify.google %>" />
-    <% } %>
-    <% if (theme.site_verify.baidu) { %>
-      <meta name="baidu-site-verification" content="<%- theme.site_verify.baidu %>" />
-    <% } %>
-    <% if (theme.site_verify.bing) { %>
-      <meta name="msvalidate.01" content="<%- theme.site_verify.bing %>" />
-    <% } %>
+  <% if (config.feed) { %>
+    <%- feed_tag() %>
   <% } %>
   <!-- 样式表文件 -->
   <%- css_theme_cdn('css/kratosr.min.css', {id: "kratos-css", media:"all"}) %>
-  <% if (theme.enable_dark) { %>
-    <%- css_theme_cdn('css/kr-color-dark.min.css', {id: "darkmode-css", media:"(prefers-color-scheme: dark)"}) %>
-    <%- js_theme_cdn('js/kr-dark.min.js') %>
+  <% if (((config.highlight && config.highlight.enable) || config.syntax_highlighter === "highlight.js") && theme.code_highlight.theme) { %>
+    <%- css_theme_cdn(`css/highlight/${theme.code_highlight.theme || 'night-eighties'}.min.css`, {id: "highlight-css", media:"all"}) %>
   <% } %>
-  <% if (((config.highlight && config.highlight.enable) || config.syntax_highlighter === "highlight.js") && theme.highlight_theme) { %>
-    <%- css_theme_cdn(`css/highlight/${theme.highlight_theme || 'night-eighties'}.min.css`, {id: "highlight-css", media:"all"}) %>
-  <% } %>
-  <%- css_npm_cdn('font-awesome', 'css/font-awesome.min.css', {id:"fontawe-css", media:"all"}) %>
+  <%- css_theme_cdn('css/kr-color-dark.min.css', {id: "darkmode-css", media:"(prefers-color-scheme: dark)"}) %>
+  <%- js_theme_cdn('js/kr-dark.min.js') %>
+  <%- css_npm_cdn('@tabler/icons-webfont', 'dist/tabler-icons.min.css', {id:"tabler-icons-css", media:"all"}) %>
   <%- css_npm_cdn('nprogress', 'nprogress.css', {id:"nprogress-css", media:"all"}) %>
-  <% const commentProvider = theme.posts?.comments?.provider ?? theme.posts?.comments; %>
-  <% if (theme.aplayer?.enabled) { %>
-    <%- css_npm_cdn('aplayer', 'dist/APlayer.min.css') %>
-  <% }%>
-  <% if (theme.fancybox){ %>
-    <%- css_npm_cdn('@fancyapps/fancybox', 'dist/jquery.fancybox.min.css') %>
+  <% if (page.type !== '404'){ %>
+    <%- css_npm_cdn('viewerjs', 'dist/viewer.min.css', {defer: true}) %>
   <% } %>
   <!-- 不得不预先加载的一些JS文件 -->
-  <%- js_npm_cdn('jquery', 'dist/jquery.min.js') %>
   <% if (theme.posts?.share) { %>
     <%- js_npm_cdn('qrcode_js', 'qrcode.min.js') %>
   <% } %>
-  <% if (theme.customStyles) { %>
+  <!-- 自定义站点横幅和背景 -->
   <style>
-    <% if (theme.customStyles.images?.banner) { %>
+    <% if (theme.image.banner) { %>
       .kratos-cover.kratos-cover-2 {
-        background-image: url('<%- theme.customStyles.images?.banner %>');
+        background-image: url('<%- theme.image.banner.light %>');
+      }
+      html[data-theme="dark"] .kratos-cover.kratos-cover-2 {
+        background-image: url('<%- theme.image.banner.dark %>');
       }
     <% } %>
-    <% if (theme.customStyles.images?.background) { %>
+    <% if (theme.image.background) { %>
       @media(min-width:768px) {
         body.custom-background {
-          background-image: url('<%- theme.customStyles.images?.background %>');
+          background-image: url('<%- theme.image.background.light %>');
+        }
+        html[data-theme="dark"] body.custom-background {
+          background-image: url('<%- theme.image.background.dark %>');
         }
       }
     <% } %>
+    <% if (theme.image.about) { %>
+      .widget-kratos-about .photo-background {
+        background-image: url('<%- theme.image.about.light %>');
+      }
+      html[data-theme="dark"] .widget-kratos-about .photo-background {
+        background-image: url('<%- theme.image.about.dark %>');
+      }
+    <% } %>
   </style>
+
+  <!-- 额外的追加注入项 -->
+  <% if (theme.additional_injections.head) { %>
+    <%- theme.additional_injections.head %>
   <% } %>
 </head>
-
