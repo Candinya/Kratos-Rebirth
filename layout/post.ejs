@@ -103,12 +103,12 @@
         <nav class="navigation post-navigation clearfix" role="navigation">
             <% if (page.next) { %>
             <div class="nav-previous clearfix">
-                <a title=" <% if (page.next.title){ %><%= page.next.title %><% } else { %>(<%- __('no_title') %>)<% } %>" href="<%- config.root + page.next.path %>">&lt; <%- __('newer') %></a>
+                <a title=" <% if (page.next.title){ %><%= page.next.title %><% } else { %>(<%- __('no_title') %>)<% } %>" href="<%- config.root + page.next.path %>"><i class="fa fa-angle-left"></i> <%- __('newer') %></a>
             </div>
             <% } %>
             <% if (page.prev) { %>
             <div class="nav-next clearfix">
-                <a title=" <% if (page.prev.title){ %><%= page.prev.title %><% } else { %>(<%- __('no_title') %>)<% } %>" href="<%- config.root + page.prev.path %>"><%- __('older') %> &gt;</a>
+                <a title=" <% if (page.prev.title){ %><%= page.prev.title %><% } else { %>(<%- __('no_title') %>)<% } %>" href="<%- config.root + page.prev.path %>"><%- __('older') %> <i class="fa fa-angle-right"></i></a>
             </div>
             <% } %>
         </nav>

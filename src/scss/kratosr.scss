@@ -1244,19 +1244,21 @@ body.scroll-down.nav-up #kratos-desktop-topnav {
     color: #5a5a5a;
   }
 
-  @mixin nav {
-    max-width: 50%;
+  .nav-previous, .nav-next {
+    display: inline-block;
+  }
+
+  .nav-previous a, .nav-next a {
     box-shadow: 0 1px 5px rgba(0, 0, 0, .1);
     padding: 7px 18px;
+    display: block;
   }
 
   .nav-previous {
-    @include nav;
     float: left;
     text-align: left;
   }
   .nav-next {
-    @include nav;
     float: right;
     text-align: right;
   }
