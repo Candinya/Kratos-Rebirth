@@ -1250,8 +1250,10 @@ body.scroll-down.nav-up #kratos-desktop-topnav {
 
 .pagination {
   padding-left: 0;
-  border-radius: 4px;
   margin: 23px 0 7px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
 
   a,
   span {
