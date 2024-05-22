@@ -3,14 +3,14 @@
     <article class="kratos-hentry kratos-entry-border-new clearfix">
         <div class="kratos-breadcrumb">
             <a href="<%- url_for('/') %>">
-                <i class="ti ti-home"></i>
+                <i class="fa fa-home"></i>
             </a>
-            <i class="ti ti-angle-right"></i>
+            <i class="fa fa-angle-right"></i>
             <% if (page.tag) { %>
                 <a href="<%- url_for('/tags/') %>">
                     <%= __('tag') %>
                 </a>
-                <i class="ti ti-angle-right"></i>
+                <i class="fa fa-angle-right"></i>
                 <a href="<%- url_for('/tags/' + page.tag) %>">
                     <%= page.tag %>
                 </a>
@@ -36,14 +36,14 @@
                 const categoryLength = categroyInfo.length;
                 %>
                 <% for (let i = 0; i < categoryLength; i++) { %>
-                    <i class="ti ti-angle-right"></i>
+                    <i class="fa fa-angle-right"></i>
                     <a href="<%- url_for(categroyInfo[i].path) %>">
                         <%= categroyInfo[i].name %>
                     </a>
                 <% } %>
             <% } %>
             <% if (page.current > 1) { %>
-                <i class="ti ti-angle-right"></i>
+                <i class="fa fa-angle-right"></i>
                 <span>
                     <%= __('page', page.current) %>
                 </a>
@@ -67,14 +67,14 @@
         <article class="kratos-hentry kratos-entry-border-new clearfix" itemscope itemtype="https://schema.org/Article">
             <div class="kratos-status">
                 <% if (post.link) { %>
-                    <i class="ti ti-link"></i>
+                    <i class="fa fa-link"></i>
                 <% } else { %>
-                    <i class="ti ti-refresh"></i>
+                    <i class="fa fa-refresh"></i>
                 <% } %>
                 <div class="kratos-status-inner">
                     <div class="kratos-status-content" itemprop="articleBody">
                         <% if (post.link) { %>
-                            <a href="<%- url_for(post.link) %>"><%- post.title %> <i class="ti ti-external-link"></i></a>
+                            <a href="<%- url_for(post.link) %>"><%- post.title %> <i class="fa fa-external-link"></i></a>
                         <% } else { %>
                             <%- post.excerpt || post.content %>
                         <% } %>
@@ -85,10 +85,10 @@
                 <footer class="kratos-post-meta-new">
                     <span class="pull-left">
                         <time datetime="<%= date_xml(post.date) %>" itemprop="datePublished">
-                            <a><i class="ti ti-calendar"></i> <%- date(post.date, null) %></a>
+                            <a><i class="fa fa-calendar"></i> <%- date(post.date, null) %></a>
                         </time>
                         <% if (post.tags.length) { %>
-                            <a><i class="ti ti-tags"></i></a>
+                            <a><i class="fa fa-tags"></i></a>
                             <%- list_tags(post.tags, {
                                 show_count: false,
                                 style: 'none',
@@ -99,12 +99,12 @@
                             <!-- 当前仅支持valine/waline自带的统计功能 -->
                             <% if (commentProvider === 'valine' && theme.valine?.visitor) { %>
                                 <a id="<%- url_for(post.path) %>" class="leancloud_visitors" data-flag-title="<%- post.title %>">
-                                    <i class="ti ti-eye"></i>
+                                    <i class="fa fa-eye"></i>
                                     <%- __('read_count', '<span class="leancloud-visitors-count"> </span>') %>
                                 </a>
                             <% } else if (commentProvider === 'waline' && theme.waline?.pageview) { %>
                                 <a>
-                                    <i class="ti ti-eye"></i>
+                                    <i class="fa fa-eye"></i>
                                     <%- __('read_count', '<span data-path="' + url_for(post.path) + '" class="waline-pageview-count"> </span>') %>
                                 </a>
                             <% } %>
@@ -113,7 +113,7 @@
                             <!-- 当前仅支持waline自带的统计功能 -->
                             <% if (commentProvider === 'waline') { %>
                                 <a>
-                                    <i class="ti ti-commenting-o"></i>
+                                    <i class="fa fa-commenting-o"></i>
                                     <%- __('comments_count', '<span data-path="' + url_for(post.path) + '" class="waline-comment-count"> </span>') %>
                                 </a>
                             <% } %>
@@ -122,7 +122,7 @@
                     
                     <% if (post.comments) { %>
                         <span class="pull-right">
-                            <a class="read-more" href="<%- url_for(post.path) %>" title="<%- __('comment') %>"><%- __('comment') %><i class="ti ti-circle-chevron-right"></i></a>
+                            <a class="read-more" href="<%- url_for(post.path) %>" title="<%- __('comment') %>"><%- __('comment') %><i class="fa fa-chevron-circle-right"></i></a>
                         </span>
                     <% } %>
 
@@ -157,12 +157,12 @@
                     <ul class="kratos-post-meta text-center">
                         <li>
                         <time datetime="<%= date_xml(post.date) %>" itemprop="datePublished">
-                            <i class="ti ti-calendar"></i> <%- date(post.date, null) %>
+                            <i class="fa fa-calendar"></i> <%- date(post.date, null) %>
                         </time>
                         </li>
                         <% if (post.categories.length) { %>
                             <li>
-                                <i class="ti ti-folder"></i>
+                                <i class="fa fa-folder"></i>
                                 <%- __('category_in') %>
                                 <%- list_categories(
                                     post.categories, {
@@ -174,7 +174,7 @@
                         <% } %>
                         <% if (post.tags.length) { %>
                             <li>
-                                <i class="ti ti-tags"></i>
+                                <i class="fa fa-tags"></i>
                                 <%- list_tags(post.tags, {
                                     show_count: false,
                                     style: 'none',
@@ -186,12 +186,12 @@
                             <!-- 当前仅支持valine/waline自带的统计功能 -->
                             <% if (commentProvider === 'valine' && theme.valine.visitor) { %>
                                 <li id="<%- url_for(post.path) %>" class="leancloud_visitors" data-flag-title="<%- post.title %>">
-                                    <i class="ti ti-eye"></i>
+                                    <i class="fa fa-eye"></i>
                                     <%- __('read_count', '<span class="leancloud-visitors-count"> </span>') %>
                                 </li>
                             <% } else if (commentProvider === 'waline' && theme.waline.pageview) { %>
                                 <li>
-                                    <i class="ti ti-eye"></i>
+                                    <i class="fa fa-eye"></i>
                                     <%- __('read_count', '<span data-path="' + url_for(post.path) + '" class="waline-pageview-count"> </span>') %>
                                 </li>
                             <% } %>
@@ -200,7 +200,7 @@
                             <!-- 当前仅支持waline自带的统计功能 -->
                             <% if (commentProvider === 'waline') { %>
                                 <li>
-                                    <i class="ti ti-commenting-o"></i>
+                                    <i class="fa fa-commenting-o"></i>
                                     <%- __('comments_count', '<span data-path="' + url_for(post.path) + '" class="waline-comment-count"> </span>') %>
                                 </li>
                             <% } %>
@@ -208,12 +208,12 @@
                     </ul>
                 </header>
                 <hr />
-                <div class="kratos-post-content" itemprop="articleBody">
+                <div class="kratos-post-content kr-index" itemprop="articleBody">
                     <%- post.excerpt || post.content %>
                 </div>
                 <footer class="kratos-entry-footer clearfix">
                     <div class="post-like-donate text-center clearfix">
-                        <a class="read-more" href="<%- url_for(post.path) %>#more" title="<%- post.title %>"><%- __('read_more') %> <i class="ti ti-circle-chevron-right"></i></a>
+                        <a class="read-more" href="<%- url_for(post.path) %>#more" title="<%- post.title %>"><%- __('read_more') %> <i class="fa fa-chevron-circle-right"></i></a>
                     </div>
                 </footer>
             </div>
@@ -264,11 +264,11 @@
                 <footer class="kratos-post-meta-new">
                     <span class="pull-left">
                         <time datetime="<%= date_xml(post.date) %>" itemprop="datePublished">
-                            <a><i class="ti ti-calendar"></i> <%- date(post.date, null) %></a>
+                            <a><i class="fa fa-calendar"></i> <%- date(post.date, null) %></a>
                         </time>
                         <a>
                             <% if (post.tags.length) { %>
-                                <i class="ti ti-tags"></i>
+                                <i class="fa fa-tags"></i>
                                 <%- list_tags(post.tags, {
                                     show_count: false,
                                     style: 'none',
@@ -280,12 +280,12 @@
                             <!-- 当前仅支持valine/waline自带的统计功能 -->
                             <% if (commentProvider === 'valine' && theme.valine.visitor) { %>
                                 <a id="<%- url_for(post.path) %>" class="leancloud_visitors" data-flag-title="<%- post.title %>">
-                                    <i class="ti ti-eye"></i>
+                                    <i class="fa fa-eye"></i>
                                     <%- __('read_count', '<span class="leancloud-visitors-count"> </span>') %>
                                 </a>
                             <% } else if (commentProvider === 'waline' && theme.waline.pageview) { %>
                                 <a>
-                                    <i class="ti ti-eye"></i>
+                                    <i class="fa fa-eye"></i>
                                     <%- __('read_count', '<span data-path="' + url_for(post.path) + '" class="waline-pageview-count"> </span>') %>
                                 </a>
                             <% } %>
@@ -294,14 +294,14 @@
                             <!-- 当前仅支持waline自带的统计功能 -->
                             <% if (commentProvider === 'waline' && theme.waline.comment) { %>
                                 <a>
-                                    <i class="ti ti-commenting-o"></i>
+                                    <i class="fa fa-commenting-o"></i>
                                     <%- __('comments_count', '<span data-path="' + url_for(post.path) + '" class="waline-comment-count"> </span>') %>
                                 </a>
                             <% } %>
                         <% } %>
                     </span>
                     <span class="pull-right">
-                        <a class="read-more" href="<%- url_for(post.path) %>" title="<%- __('read_full') %>"><%- __('read_full') %><i class="ti ti-circle-chevron-right"></i></a>
+                        <a class="read-more" href="<%- url_for(post.path) %>" title="<%- __('read_full') %>"><%- __('read_full') %><i class="fa fa-chevron-circle-right"></i></a>
                     </span>
                 </footer>
             </div>
@@ -311,7 +311,7 @@
 
 <% if (page.total > 1) { %>
     <div class='text-center pagination'>
-    <%- paginator({prev_text: '<i class="ti ti-angle-left"></i>', next_text: '<i class="ti ti-angle-right"></i>', escape: false}) %>
+    <%- paginator({prev_text: '<i class="fa fa-angle-left"></i>', next_text: '<i class="fa fa-angle-right"></i>', escape: false}) %>
     </div>
 <% } %>
 

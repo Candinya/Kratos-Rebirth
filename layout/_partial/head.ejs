@@ -53,7 +53,7 @@
   <% } %>
   <%- css_theme_cdn('css/kr-color-dark.min.css', {id: "darkmode-css", media:"(prefers-color-scheme: dark)"}) %>
   <%- js_theme_cdn('js/kr-dark.min.js') %>
-  <%- css_npm_cdn('@tabler/icons-webfont', 'dist/tabler-icons.min.css', {id:"tabler-icons-css", media:"all"}) %>
+  <%- css_npm_cdn('font-awesome', 'css/font-awesome.min.css', {id:"fontawe-css", media:"all"}) %>
   <%- css_npm_cdn('nprogress', 'nprogress.css', {id:"nprogress-css", media:"all"}) %>
   <% if (page.type !== '404'){ %>
     <%- css_npm_cdn('viewerjs', 'dist/viewer.min.css', {defer: true}) %>

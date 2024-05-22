@@ -86,8 +86,6 @@ figure.highlight {
         background-color: $highlight_background;
 
         pre {
-            padding-left: 10px;
-            padding-right: 15px;
             text-align: left;
             display: inline-block;
 
@@ -106,6 +104,13 @@ figure.highlight {
             
             ::selection {
                 @include selection;
+            }
+
+            .line {
+                padding-left: 10px;
+                padding-right: 15px;
+                display: inline-block;
+                width: 100%;
             }
         }
     }
@@ -217,5 +222,9 @@ pre {
     .keyword,
     .javascript .function {
         color: $highlight_purple;
+    }
+
+    .line.marked {
+        background-color: $highlight_selection;
     }
 }

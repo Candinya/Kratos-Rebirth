@@ -1,5 +1,5 @@
 <div class="kratos-hentry kratos-post-inner clearfix">
-    <div class="kratos-post-content">
+    <div class="kratos-post-content kr-search-input">
         <h2 class="title-h2 text-center"><%- __('search') %></h2>
         <form class="input-group" onsubmit="return inpSearch();">
             <input class="form-input input-lg" id="search-input" maxlength="80" name="s" placeholder="<%- __('search_notice') %>" required type="search">
@@ -14,7 +14,7 @@
 
 <div id="result-posts">
     <div class="kratos-hentry kratos-post-inner clearfix">
-        <div class="kratos-post-content">
+        <div class="kratos-post-content kr-search-result">
             <p><%- __('search_notice_keys', strip_html(list_tags({
                 orderby: 'date',
                 show_count: false,

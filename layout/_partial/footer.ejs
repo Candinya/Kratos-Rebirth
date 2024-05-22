@@ -14,7 +14,7 @@
                             <li>
                                 <a <% if (!link.currentPage) { %>target="_blank" rel="nofollow" <% } %>href="<%- link.link %>">
                                     <% if (link.icon) { %>
-                                        <i class="ti ti-<%- link.icon %>"></i>
+                                        <i class="fa fa-<%- link.icon %>"></i>
                                     <% } else if (link.html) { %>
                                         <%- link.html %>
                                     <% } %>
@@ -29,7 +29,7 @@
                         </div>
                         <div>
                             <li>Theme <a href="https://github.com/Candinya/Kratos-Rebirth" target="_blank">Kratos:Rebirth</a></li>
-                            <li>Site built with&nbsp;<i class="ti ti-heart-filled" style="color:#d43f57"></i>&nbsp;by <%- config.author %>.</li>
+                            <li>Site built with&nbsp;<i class="fa fa-heart" style="color:#d43f57"></i>&nbsp;by <%- config.author %>.</li>
                         </div>
                         <!-- 额外的追加注入项 -->
                         <% if (theme.additional_injections.footer) { %>
@@ -44,19 +44,27 @@
                 <% if (theme.search?.enable) { %>
                     <div class="box search-box">
                         <a href="<%- config.root %>search/">
-                            <span class="ti ti-search"></span>
+                            <span class="fa fa-search"></span>
                         </a>
                     </div>
                 <% } %>
                 <div class="box theme-box" id="darkmode-switch">
-                    <span class="ti ti-brightness"></span>
+                    <span class="fa fa-adjust"></span>
                 </div>
             </div>
             <div id="gotop-box" class="box gotop-box">
-                <span class="ti ti-chevron-up"></span>
+                <span class="fa fa-chevron-up"></span>
             </div>
         </div>
     </div>
 </footer>
 </div>
 </div>
+
+<% if (theme.donate.enabled) { %>
+    <%- partial('_utils/donate', { page: page, theme: theme }) %>
+<% } %>
+
+<% if (theme.share.enabled) { %>
+    <%- partial('_utils/share', { page: page, theme: theme }) %>
+<% } %>

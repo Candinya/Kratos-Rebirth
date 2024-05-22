@@ -255,7 +255,7 @@ a:hover,
     background: $navbar_mobile;
 }
 
-.toc-item.active>a {
+#kratos-widget-area #krw-toc .toc-item.active > a {
   color: $tag_background;
 
   &::before {
@@ -282,57 +282,9 @@ span.blur {
 
 }
 
-/******************* Plugins ********************/
-
-#dsqjs {
-    a {
-        color: $link;
-    }
-
-    .dsqjs-tab-active {
+.kr-modal .kr-modal-content {
+    .kr-modal-header, .kr-modal-body {
         color: $text;
+        background: $card_background;
     }
-
-    &-msg {
-        color: $text;
-        background-color: $tag_background;
-    }
-}
-
-.post-comments {
-    .v[data-class=v] {
-        p, 
-        .vheader label, 
-        .veditor, .veditor::placeholder {
-            color: $text;
-        }
-
-        .vbtn,
-        .vcount,
-        .vcard .vhead span.vnick,
-        .vcard .vhead .vtime {
-            color: $text_alt;
-        }
-
-        .vicon,
-        .vcard .vhead .vreply svg {
-            fill: $text_alt;
-        }
-
-        .vpanel {
-            background-color: $tag_background;
-        }
-
-        .veditor:focus, .vinput:focus {
-            background-color: $info_background;
-        }
-    }
-}
-
-.aplayer * {
-    color: unset;
-}
-
-span.mjx-chtml.MJXc-display {
-    color: $text;
 }

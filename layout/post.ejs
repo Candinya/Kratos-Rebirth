@@ -10,13 +10,13 @@
                 <h2 class="text-center"><%- page.subtitle %></h2>
             <% } %>
             <ul class="kratos-post-meta text-center">
-                <li><time datetime="<%= date_xml(page.date) %>" itemprop="datePublished"><i class="ti ti-calendar"></i> <%- date(page.date, null) %></time></li>
+                <li><time datetime="<%= date_xml(page.date) %>" itemprop="datePublished"><i class="fa fa-calendar"></i> <%- date(page.date, null) %></time></li>
                 <li itemprop="author" itemscope itemtype="https://schema.org/Person">
-                    <i class="ti ti-user"></i> <%- __('author') %> <span itemprop="name"><%- page.author || config.author %></span>
+                    <i class="fa fa-user"></i> <%- __('author') %> <span itemprop="name"><%- page.author || config.author %></span>
                 </li>
                 <% if (theme.posts.word_count.enable) { %>
                     <li>
-                        <i class="ti ti-edit"></i> 
+                        <i class="fa fa-edit"></i> 
                         <% const total_words = strip_html(page.content).length; %>
                         <% if (total_words < (theme.posts.word_count.threshold)) { %>
                             <%= total_words %>
@@ -28,34 +28,34 @@
                 <% } %>
                 <% if (commentProvider === 'valine' && theme.valine?.visitor) { %>
                     <li id="<%- url_for(page.path) %>" class="leancloud_visitors" data-flag-title="<%- page.title %>">
-                        <i class="ti ti-eye"></i>
+                        <i class="fa fa-eye"></i>
                         <%- __('read_count', '<span class="leancloud-visitors-count"> </span>') %>
                     </li>
                 <% } else if (commentProvider === 'waline') { %>
                     <% if (theme.waline?.pageview) { %>
                         <li>
-                            <i class="ti ti-eye"></i>
+                            <i class="fa fa-eye"></i>
                             <%- __('read_count', '<span data-path="' + url_for(page.path) + '" class="waline-pageview-count"> </span>') %>
                         </li>
                     <% } %>
                     <% if (theme.waline?.comment) { %>
                         <li>
-                            <i class="ti ti-commenting-o"></i>
+                            <i class="fa fa-commenting-o"></i>
                             <%- __('comments_count', '<span data-path="' + url_for(page.path) + '" class="waline-comment-count"> </span>') %>
                         </li>
                     <% } %>
                 <% } else if (commentProvider === 'twikoo') { %>
                     <li>
-                        <i class="ti ti-eye"></i>
+                        <i class="fa fa-eye"></i>
                         <%- __('read_count', '<span id="twikoo_visitors"> </span>') %>
                     </li>
                 <% } %>
             </ul>
         </header>
-        <div class="kratos-post-content">
+        <div class="kratos-post-content kr-post">
             <% if (page.expire === true || page.expire !== false && !!page.title) { %>
             <div id="expire-alert" class="alert alert-warning hidden" role="alert">
-                <div class="icon"><i class="ti ti-warning"></i></div>
+                <div class="icon"><i class="fa fa-history"></i></div>
                 <div class="text"><p><%- __('last_modify_alert', '<time datetime="' + page.updated + '"></time>') %></p></div>
             </div>
             <% } %>
@@ -68,26 +68,26 @@
             <hr />
             <div itemprop="articleBody"><%- page.content %></div>
         </div>
-        <% if (typeof page.show_cc !== 'undefined' ? page.show_cc : theme.posts?.show_cc) { %>
+        <% if (typeof page.show_copyright !== 'undefined' ? page.show_copyright : theme.copyright_notice.in_page.enabled_at.includes("post")) { %>
             <div class="kratos-copyright text-center clearfix">
-                <h5 itemprop="copyrightNotice"><%- __('use_cc4_license') %></h5>
+                <h5 itemprop="copyright-notice"><%- theme.copyright_notice.in_page.template %></h5>
             </div>
         <% } %>
         <footer class="kratos-entry-footer clearfix">
             <% if (theme.posts.donate || theme.posts.share) { %>
                 <div class="post-like-donate text-center clearfix" id="post-like-donate">
                 <% if (theme.posts.donate) { %>
-                    <a class="donate" href="javascript:;"><i class="ti ti-coins"></i> <%- __('reward') %></a>
+                    <a class="donate" href="javascript:;" onclick="krOpenDonateModal()"><i class="fa fa-bitcoin"></i> <%- __('donate') %></a>
                 <% } %>
                 <% if (theme.posts.share) { %>
-                    <a class="share" href="javascript:;"><i class="ti ti-share"></i> <%- __('share') %></a>
-                    <%- partial('_tools/share', {page: page}) %>
+                    <a class="share" href="javascript:;" onclick="krOpenShareModal()"><i class="fa fa-share-alt"></i> <%- __('share') %></a>
+                    <%- partial('_utils/share-func', { page: page, theme: theme, config: config }) %>
                 <% } %>
                 </div>
             <% } %>
             <div class="footer-tag clearfix">
                 <div class="pull-left">
-                <i class="ti ti-tags"></i>
+                <i class="fa fa-tags"></i>
                     <%- list_tags(page.tags, {
                         show_count: false,
                         style: 'none'

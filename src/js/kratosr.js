@@ -12,7 +12,7 @@ window.copyCode = window.copyCode || function(triggerBtn, targetCodeID) {
 
         // 复制成功，庆祝一下
         const origInner = triggerBtn.innerHTML;
-        triggerBtn.innerHTML = `<i class="ti ti-circle-check"></i>&nbsp;成功~`;
+        triggerBtn.innerHTML = `<i class="fa fa-check-circle"></i>&nbsp;成功~`;
         setTimeout(() => {
             triggerBtn.innerHTML = origInner;
         }, 3000);
@@ -59,7 +59,7 @@ window.copyCode = window.copyCode || function(triggerBtn, targetCodeID) {
         const menuWrapClone = document.getElementById('kratos-menu-wrap').cloneNode(true);
         menuWrapClone.setAttribute("id", "offcanvas-menu");
         menuWrapClone.querySelectorAll("ul").forEach(el => {
-            el.setAttribute("id", "");
+            el.removeAttribute("id");
             el.classList.add("ul-me");
         });
         menuWrapClone.style.height = 'calc(100% - 60px)';
@@ -90,89 +90,31 @@ window.copyCode = window.copyCode || function(triggerBtn, targetCodeID) {
                 }
             }
         });
-
-        // TODO: 追加点击表项自动关闭的逻辑（就是下面这个注释掉的 mobiClick ）
     };
-    // const mobiClick = ()=>{
-    //     $(document).click((e)=>{
-    //         const container = $("#offcanvas-menu,.js-kratos-nav-toggle");
-    //         if (!container.is(e.target) && container.has(e.target).length === 0) {
-    //             if ($('.nav-toggle').hasClass('toon')) {
-    //                 $('.nav-toggle').removeClass('toon');
-    //                 document.getElementById("offcanvas-menu").style.right = '-240px';
-    //             }
-    //         }
-    //     });
-    // };
     const collapseBoxControl = ()=>{
         const collapseBoxes = 
-        document.querySelectorAll(".xControl")?.forEach(node => {
-            const hotZone = node.getElementsByClassName(".xHeading");
-            hotZone?.[0].addEventListener("click", e => {
+        document.querySelectorAll(".xControl").forEach(node => {
+            node.querySelector(".xHeading")?.addEventListener("click", e => {
                 node.classList.toggle('active');
             });
         });
     };
 
-    const donateConfig = (kr)=>{
-        // $(document).on("click",".donate",()=>{
-        //     layer.open({
-        //         type:1,
-        //         area:['300px', '370px'],
-        //         title:kr.donateBtn,
-        //         resize:false,
-        //         scrollbar:false,
-        //         content:'<div class="donate-box"><div class="meta-pay text-center"><strong>'+kr.scanNotice+'</strong></div><div class="qr-pay text-center"><img class="pay-img" id="alipay_qr" src="'+kr.qr_alipay+'"><img class="pay-img d-none" id="wechat_qr" src="'+kr.qr_wechat+'"></div><div class="choose-pay text-center mt-2"><input id="alipay" type="radio" name="pay-method" checked><label for="alipay" class="pay-button"><img src="/images/alipay.webp"></label><input id="wechatpay" type="radio" name="pay-method"><label for="wechatpay" class="pay-button"><img src="/images/wechat.webp"></label></div></div>'
-        //     });
-        //     $(".choose-pay input[type='radio']").click(function(){
-        //         const id = $(this).attr("id");
-        //         if (id == 'alipay') {
-        //             $(".qr-pay #alipay_qr").removeClass('d-none');
-        //             $(".qr-pay #wechat_qr").addClass('d-none');
-        //         }
-        //         if (id == 'wechatpay') {
-        //             $(".qr-pay #alipay_qr").addClass('d-none');
-        //             $(".qr-pay #wechat_qr").removeClass('d-none');
-        //         }
-        //     });
-        // });
-        // TODO: 重写这部分的逻辑
-    };
-
-    const shareMenu = ()=>{
-        document.querySelectorAll(".share").forEach(el => {
-            el.addEventListener("click", () => {
-                document.getElementsByClassName("share-wrap")?.[0].classList.toggle('show');
-            });
-        })
-    };
-
-    // const fancyboxInit = ()=>{
-    //       if (typeof $.fancybox !== 'undefined'){
-    //         $.fancybox.defaults.hash = false;
-    //         $('.kratos-hentry').each(function(i){
-    //             $(this).find('img').each(function(){
-    //               if ($(this).parent().hasClass('fancybox') || $(this).parent().hasClass('qrcode') || $(this).parent().is('a')) return;
-    //               const alt = this.alt;
-    //               if (alt) $(this).after('<span class="caption">' + alt + '</span>');
-    //               $(this).wrap('<a rel="gallery" href="' + this.src + '" data-fancybox=\"gallery\" data-caption="' + alt + '"></a>')
-    //             });
-    //         });
-    //         $('.fancybox').fancybox();
-    //       }
-    // };
-
     const viewerJsInit = () => {
-        // TODO: 完成这部分替代上面的 fancyboxInit
+        const postEntry = document.getElementsByClassName("kratos-post-content");
+        if (postEntry.length > 0) {
+            const gallery = new Viewer(postEntry[0]);
+        }
     };
 
     const tocNavInit = ()=>{
-        document.querySelectorAll("a[class=toc-link]").forEach(el => {
+        document.querySelectorAll("a[href^='#']").forEach(el => {
             el.addEventListener("click", e => {
+                e.preventDefault();
                 window.scrollTo({ 
                     top: document.getElementById(
-                        decodeURI(el.getAttribute(href)).replace("#", "")
-                    ).offsetTop,
+                        decodeURI(el.getAttribute("href")).replace("#", "")
+                    ).offsetTop + document.getElementById("kratos-blog-post").offsetTop,
                     behavior: 'smooth',
                 });
             });
@@ -299,7 +241,7 @@ window.copyCode = window.copyCode || function(triggerBtn, targetCodeID) {
 
             figure.innerHTML += 
             `<button class="copy" onclick="copyCode(this, 'code-${count}')">
-                <i class="ti ti-copy"></i>&nbsp;复制
+                <i class="fa fa-copy"></i>&nbsp;复制
             </button>`;
         });
     };
@@ -606,8 +548,8 @@ window.copyCode = window.copyCode || function(triggerBtn, targetCodeID) {
             });
         };
 
-        // 仅处理鼠标滚动
-        window.addEventListener('wheel', handleTopNavScrollToggle);
+        // 监听页面滚动事件
+        window.addEventListener('scroll', handleTopNavScrollToggle);
 
     };
 
@@ -615,7 +557,8 @@ window.copyCode = window.copyCode || function(triggerBtn, targetCodeID) {
         tocWidgetAnimInit();
         saveTitle();
         codeCopyInit();
-        // fancyboxInit();
+        viewerJsInit();
+        collapseBoxControl();
         tocNavInit();
         commentsLazyLoad();
     };
@@ -625,13 +568,6 @@ window.copyCode = window.copyCode || function(triggerBtn, targetCodeID) {
         expireNotify(kr);
     };
 
-    window.addEventListener('pjax:complete', () => {
-        initPerPage();
-        if (typeof MathJax !== 'undefined') {
-            MathJax.Hub.Typeset();
-        }
-    });
-
     function themeInit() {
         document.removeEventListener("DOMContentLoaded", themeInit, false);
         window.removeEventListener("load", themeInit, false);
@@ -640,7 +576,6 @@ window.copyCode = window.copyCode || function(triggerBtn, targetCodeID) {
             copyEventInit(kr);
             leaveEventInit(kr);
             initTime(kr);
-            donateConfig(kr);
             topNavScrollToggleInit(kr);
             initPerPageWithConfig(kr);
             window.addEventListener('pjax:complete', () => {
@@ -650,11 +585,10 @@ window.copyCode = window.copyCode || function(triggerBtn, targetCodeID) {
         
         pageScrollDownInit();
         offcanvas();
-        // mobiClick();
-        collapseBoxControl();
-        shareMenu();
-        tocNavInit();
         initPerPage();
+        window.addEventListener('pjax:complete', () => {
+            initPerPage();
+        });
     }
 
     if (document.readyState === "complete") {

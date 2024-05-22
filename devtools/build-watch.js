@@ -14,6 +14,3 @@ const startWatch = async () => {
 }
 
 startWatch();
-
-// 卡住进程避免结束
-// setInterval(() => {}, 1 << 30);

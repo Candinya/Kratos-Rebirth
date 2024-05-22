@@ -1,0 +1,39 @@
+<script defer>
+    // 和页面相关所以放到这里来
+    function krShareModalOpenPlatform(link) {
+        const url = "<%- page.permalink %>";
+        const title   = "「<%- page.title %>」";
+        const summary = `<% if (page.excerpt){ %><%- trim(strip_html(page.excerpt)).replace(/\`/g, '\\\`') %><% } else { %><%- trim(truncate(strip_html(page.content), {length: 120}).replace(/\`/g, '\\\`')) %><% } %>`;
+        const site = "<%- config.title %>"
+
+        const targetURL = link.
+            replaceAll("$URL", url).
+            replaceAll("$TITLE", title).
+            replaceAll("$SUMMARY", summary).
+            replaceAll("$SITE", site)
+        ;
+
+        window.open(targetURL, "_blank");
+    }
+
+    function initQRCode() {
+        const container = document.getElementById("kr-share-qr");
+        if (container) {
+
+            // 清空上一个二维码避免冲突
+            container.innerHTML = "";
+            
+            // 建立新的二维码
+            new QRCode(container, {
+                text: "<%- page.permalink %>",
+                width: 150,
+                height: 150,
+                correctLevel : QRCode.CorrectLevel.H
+            });
+        } else {
+            requestAnimationFrame(initQRCode)
+        }
+    }
+
+    initQRCode();
+</script>

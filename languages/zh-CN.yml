@@ -35,9 +35,8 @@ read_count: '%s 次阅读'
 comments_count: '%s 条评论'
 last_modify: 最后编辑：
 last_modify_alert: 本文最后编辑于 %s 前，其中的内容可能需要更新。
-reward: 打赏
+donate: 打赏
 no_title: 无标题
-use_cc4_license: 本作品采用 <a rel="license nofollow" target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/">知识共享署名-相同方式共享 4.0 国际许可协议</a> 进行许可
 toc: 文章目录
 words: 字
 post: 文章

@@ -1,0 +1,51 @@
+<div id="kr-share-modal" class="kr-modal">
+    <div class="kr-modal-bg" onclick="krCloseShareModal()"></div>
+    <div class="kr-modal-content">
+        <div class="kr-modal-header">
+            <div class="kr-modal-icon">
+                <i class="fa fa-share-alt"></i>
+            </div>
+            <div class="kr-modal-title"><%- theme.share.title %></div>
+            <button class="kr-modal-close" onclick="krCloseShareModal()">
+                <i class="fa fa-times-circle"></i>
+            </button>
+        </div>
+        <div class="kr-modal-body">
+            <div class="kr-share-message"><%- theme.share.message %></div>
+            <div class="kr-share-qr" id="kr-share-qr"></div>
+            <div class="kr-share-platforms">
+                <% for (const platform of theme.share.platforms) { %>
+                    <button class="kr-share-platform-button" style="color: <%- platform.color %>;" title="<%- platform.name %>" onclick="krShareModalOpenPlatform('<%- platform.link %>')">
+                        <% if (platform.icon) { %>
+                            <i class="fa fa-<%- platform.icon %>"></i>
+                        <% } else if (platform.html) { %>
+                            <%- platform.html %>
+                        <% } %>
+                    </button>
+                <% } %>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+
+    // 二维码生成和 krShareModalOpenPlatform 因为和各个具体的页面的参数相关，所以放到页面上去了
+
+    function krOpenShareModal() {
+        document.getElementById("kr-share-modal").classList.add("show");
+
+        // 需要延迟一下，避免动画被优化掉
+        setTimeout(() => {
+            document.getElementById("kr-share-modal").classList.add("active");
+        }, 0);
+    }
+
+    function krCloseShareModal() {
+        document.getElementById("kr-share-modal").classList.remove("active");
+
+        // 给动画留时间
+        setTimeout(() => {
+            document.getElementById("kr-share-modal").classList.remove("show");
+        }, 300);
+    }
+</script>

@@ -59,6 +59,7 @@ body {
 a {
   text-decoration: none;
   font-weight: 400;
+  transition: all .3s ease-in-out;
 
   &:hover {
     outline: 0;
@@ -245,28 +246,16 @@ fieldset {
   border: 0
 }
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-a {
-  transition: .5s;
-}
 
-h1, h2, h3,
-h4, h5, h6 {
+
+h1, h2, h3, h4, h5, h6 {
   font-weight: 400;
-  margin: 0 0 15px 0;
+  margin: 0 0 10px 0;
   font-family: inherit;
   line-height: 1.1;
 }
 
 h1, h2, h3 {
-  margin-top: 20px;
-  margin-bottom: 10px;
-
   small {
     font-size: 65%;
   }
@@ -281,34 +270,29 @@ h4, h5, h6 {
   }
 }
 
-h {
-  &1 {
-    font-size: 1.5em;
+h1 {
+  font-size: 2em;
+  margin-top: 72px;
+}
+h2 {
+  font-size: 1.5em;
+  margin-top: 48px;
+
+  &.title-h2 {
+    margin: 15px -20px;
+    padding: 0 20px;
+    border-left: 5px solid #51aded;
+    font-size: 20px;
+    line-height: 40px;
+    font-size: 18pt;
   }
-  &2 {
-    font-size: 1.3em;
-  
-    &.title-h2 {
-      margin: 15px -20px;
-      padding: 0 20px;
-      border-left: 5px solid #51aded;
-      font-size: 20px;
-      line-height: 40px;
-      font-size: 18pt;
-    }
-  }
-  &3 {
-    font-size: 1.17em;
-  }
-  &4 {
-    font-size: 1em;
-  }
-  &5 {
-    font-size: .83em;
-  }
-  &6 {
-    font-size: .67em;
-  }
+}
+h3 {
+  font-size: 1.2em;
+  margin-top: 36px;
+}
+h4, h5, h6 {
+  font-size: 1em;
 }
 
 hr {
@@ -385,11 +369,6 @@ mark {
   padding: .4px 4px;
   // background-color: #9e9e9e;
   // color: #000;
-}
-
-p, ol, ul {
-  margin: 0 0 1em 0;
-  font-size: 16px;
 }
 
 ol, ul {
@@ -839,17 +818,18 @@ table {
     transform: rotate(-45deg)
   }
 
-  .xContent:not(.pre-open) {
-    display: none;
-  }
-
   .xContent {
     border-top: 1px solid #e6e6e6;
+    display: none;
 
     .inner {
       padding: 5px 15px;
       color: #333;
     }
+  }
+
+  &.active .xContent {
+    display: block;
   }
 }
 
@@ -873,26 +853,6 @@ table {
   .info {
     font-size: 12px;
     color: #54ff4e;
-  }
-}
-
-#snow {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 99999;
-  pointer-events: none;
-  transition: opacity .5s;
-
-  &:not(.disabled) {
-    background: rgba(225, 225, 225, .05);
-    opacity: 1;
-  }
-
-  &.disabled {
-    opacity: 0;
   }
 }
 
@@ -972,7 +932,6 @@ table {
       i {
         position: relative;
         display: inline-block;
-        zoom: 1;
         width: 28px;
         height: 2.5px;
         color: #fff;
@@ -1258,7 +1217,6 @@ body.scroll-down.nav-up #kratos-desktop-topnav {
   a, span {
     margin: 0 3px;
     position: relative;
-    padding: 6px 12px;
     line-height: 1.5;
     text-decoration: none;
     background-color: #fff;
@@ -1273,7 +1231,9 @@ body.scroll-down.nav-up #kratos-desktop-topnav {
   .page-number, .extend {
     min-width: 36px;
     height: 36px;
-    display: inline-block;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center
   }
 }
 
@@ -1365,11 +1325,35 @@ ul.kratos-post-meta {
   background-color: #fff;
   box-shadow: 0 1px 2px rgba(0, 0, 0, .1);
   border-radius: 0;
-  -webkit-transition: all .6s ease;
-  transition: all .6s ease;
+  transition: all .3s ease-in-out;
 
   &.kratos-post-inner {
     margin-bottom: 0;
+
+    .kratos-post-content {
+      &.kr-post, &.kr-page {
+        h1, h2, h3, h4, h5, h6 {
+          padding-left: 1rem;
+          position: relative;
+      
+          a::before {
+            transition: all .3s ease-in-out;
+            opacity: 0;
+            font-family: fontawesome;
+            content: "\f1dd";
+            width: 100%;
+            display: block;
+            position: absolute;
+            top: 0;
+            left: -0.5em;
+          }
+      
+          a:hover::before {
+            opacity: 1;
+          }
+        }
+      }
+    }
   }
 }
 
@@ -1437,7 +1421,7 @@ ul.kratos-post-meta {
   header .label-link {
     position: relative;
     display: inline-block;
-    padding: 4px 6px 3px;
+    padding: 4px 6px;
     font-size: 12px;
     font-weight: 700;
     line-height: 14px;
@@ -1717,76 +1701,6 @@ ul.kratos-post-meta {
         background-color: #78ce79;
         color: #fff !important;
       }
-
-      &-plain {
-        width: 30px;
-        height: 30px;
-        font-size: 14px;
-
-        :hover {
-          color: #fff;
-        }
-
-        .icon-wrap {
-          width: 30px;
-          height: 30px;
-          line-height: 30px;
-        }
-
-        &.qq {
-          border-color: #00bfff;
-          color: #00bfff;
-
-          &:hover {
-            background-color: #00bfff;
-          }
-        }
-
-        &.qzone {
-          border-color: #fece00;
-          color: #fece00;
-
-          &:hover {
-            background-color: #fece00;
-          }
-        }
-
-        &.weixin {
-          border-color: #38ad5a;
-          color: #38ad5a;
-
-          &:hover {
-            background-color: #38ad5a;
-          }
-        }
-
-        &.weibo {
-          border-color: #e6162d;
-          color: #e6162d;
-
-          &:hover {
-            background-color: #e6162d;
-          }
-        }
-
-        &.twitter {
-          border-color: #55acee;
-          color: #55acee;
-
-          &:hover {
-            background-color: #55acee;
-          }
-        }
-
-        &.facebook {
-          border-color: #3e569b;
-          color: #3e569b;
-
-          &:hover {
-            background-color: #3e569b;
-          }
-        }
-      }
     }
   }
 }
@@ -1855,111 +1769,6 @@ ul.kratos-post-meta {
   }
 }
 
-.share {
-  &-wrap {
-    // display: none;
-    height: 0;
-    opacity: 0;
-    margin: 10px 0 -20px;
-    transition: all .3s ease-in-out;
-    pointer-events: none;
-
-    &.show {
-      // display: block;
-      pointer-events: all;
-      height: auto;
-      opacity: 100;
-    }
-  }
-  &-plain, &-wrap {
-    position: relative;
-    text-align: center;
-  }
-  &-plain {
-    display: inline-block !important;
-    box-sizing: border-box;
-    margin: 4px 3px !important;
-    padding: 0;
-    width: 2pc !important;
-    height: 2pc !important;
-    border: 1px solid #bdc4d6;
-    border-radius: 30px !important;
-    color: #bdc4d6;
-    white-space: nowrap;
-    line-height: 30px !important;
-    cursor: pointer;
-    -webkit-transition: all .2s ease;
-    transition: all .2s ease;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-    border-width: 1px;
-    background-color: transparent;
-
-    .icon-wrap {
-      vertical-align: middle;
-      text-align: center;
-      line-height: 30px
-    }
-
-    .share-int {
-      position: absolute;
-      bottom: 50px;
-      left: 50%;
-      z-index: 8;
-      display: none;
-      margin-left: -110px;
-      padding: 10px;
-      width: 220px;
-      border: 1px solid #d8d8d8;
-      border-radius: 2px;
-      background-color: #fff;
-      box-shadow: 0 2px 5px rgba(0, 0, 0, .1);
-      color: #555;
-      text-align: center;
-      opacity: .2;
-      -webkit-transition: all .1s ease;
-      transition: all .1s ease;
-
-      &:after {
-        position: absolute;
-        margin-left: -11px;
-        bottom: -10px;
-        content: '';
-        box-shadow: 2px 2px 3px 0px rgba(0, 0, 0, .1);
-        background-color: white;
-        width: 20px;
-        height: 20px;
-        transform: rotate(45deg);
-      }
-
-      canvas, img {
-        margin: 15px;
-        height: auto;
-        max-width: 100%;
-      }
-
-      p {
-        color: #676767;
-        white-space: normal;
-        word-wrap: break-word;
-        font-size: 14px;
-        line-height: 1.5;
-      }
-
-      img {
-        display: inline-block !important;
-      }
-    }
-
-    &.pop:hover .share-int {
-      display: block;
-      opacity: 1;
-    }
-  }
-}
-
 @keyframes widget-title-icon-animation {
     0%, 25%, 50%, 75%, 100% {transform: rotate(0);}
     12%, 63% {transform: rotate(10deg);}
@@ -1991,6 +1800,11 @@ ul.kratos-post-meta {
   
     &:last-child {
       margin: 0;
+    }
+
+    p, ol, ul {
+      margin: 0 0 1em 0;
+      font-size: 16px;
     }
   
     > .widget-title {
@@ -2194,6 +2008,7 @@ ul.kratos-post-meta {
         }
         li {
           &::before {
+            font-family: fontawesome;
             font-size: 15px;
             margin-right: 8px;
           }
@@ -2201,7 +2016,7 @@ ul.kratos-post-meta {
       }
       
       &-archive li::before {
-        content: '\f749';
+        content: '\f133';
       }
       
       &-categories {
@@ -2209,7 +2024,7 @@ ul.kratos-post-meta {
           margin-left: 10px;
       
           &::before {
-            content: '\eaad';
+            content: '\f114';
           }
         }
       
@@ -2240,32 +2055,43 @@ ul.kratos-post-meta {
         position: relative;
       }
 
-      &:not(.show)>.toc-child {
-        display: none;
+      > .toc-child {
+        max-height: 0;
+        overflow: clip;
+        margin: 0;
+        transition: all .3s ease-in-out; // 没有生效，因为 height 的 100% 变换不会有动画，需要绝对值
       }
 
-      &.active {
-        > a {
-          color: #fff;
-          background: linear-gradient(120deg, #e0c3fc 0%, #8ec5fc 100%);
+      &.show > .toc-child {
+        max-height: 100%;
+      }
+
+      > a {
+        transition: all .3s ease-in-out;
+        background-color: transparent;
     
-          &::before {
-            position: absolute;
-            width: 0;
-            height: 0;
-            content: "";
-            top: 10px;
-            margin: auto;
-            left: 0;
-            border-left: 6px solid;
-            border-top: 4px solid transparent;
-            border-bottom: 4px solid transparent;
-          }
+        &::before {
+          position: absolute;
+          width: 0;
+          height: 0;
+          content: "";
+          top: 10px;
+          margin: auto;
+          left: 0;
+          border-left: 6px solid transparent;
+          border-top: 4px solid transparent;
+          border-bottom: 4px solid transparent;
+          transition: all .3s ease-in-out;
         }
       }
 
-      &.active > a::before {
-        border-left-color: #fff;
+      &.active > a {
+        color: #fff;
+        background-color: #8ec5fc;
+
+        &::before {
+          border-left-color: #fff;
+        }
       }
     }
   }
@@ -2357,7 +2183,8 @@ body.scroll-down .kr-tool {
   }
 
   .kratos-social-icons {
-    padding-left: 0;
+    padding: 0;
+    margin-top: 0;
   
     li {
       padding: 4px 14px;
@@ -2435,7 +2262,6 @@ body.scroll-down .kr-tool {
 
       &:hover {
         background: rgba(230, 244, 250, .5);
-        cursor: pointer;
         
         a h4 {
           color: #51aded;
@@ -2444,6 +2270,10 @@ body.scroll-down .kr-tool {
 
       a {
         padding: 0 10px 0 90px;
+        display: flex;
+        flex-direction: row;
+        width: 100%;
+        height: 100%;
 
         img {
           width: 60px;
@@ -2453,32 +2283,39 @@ body.scroll-down .kr-tool {
           position: absolute;
           top: 15px;
           left: 15px;
-          cursor: pointer;
           margin: auto;
           border: none;
         }
 
-        h4 {
-          color: #333;
-          font-size: 18px;
-          margin: 0 0 7px 0;
-          padding-left: 90px;
+        div {
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          margin: 0;
+          gap: .5rem;
+          width: 100%;
 
-          
-        }
+          > * {
+            display: flex;
+            width: 100%;
+          }
 
-        p {
-          font-size: 12px;
-          color: #999;
-          padding-left: 75px
-        }
-
-        h4, p {
-          cursor: pointer;
-          white-space: nowrap;
-          text-overflow: ellipsis;
-          overflow: hidden;
-          line-height: 1.4;
+          span {
+            font-size: 18px;
+          }
+  
+          p {
+            font-size: 12px;
+            color: #999;
+            margin: 0;
+          }
+  
+          span, p {
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            overflow: hidden;
+            line-height: 1.4;
+          }
         }
       }
     }
@@ -2492,6 +2329,10 @@ body.scroll-down .kr-tool {
     font-size: 25px;
     line-height: 40px;
   }
+}
+
+.kratos-entry-content-new p {
+  margin: 0;
 }
 
 @media(max-width:1200px) {
@@ -2508,30 +2349,46 @@ body.scroll-down .kr-tool {
     }
   }
 
-  .kratos-entry-content-new {
-    height: 100px;
-  }
-
   .title-h2 {
     padding: 0 15px;
     font-size: 18px
   }
 }
 
+@media (max-width:768px) {
+
+  .kratos-entry-content-new {
+    height: 100%;
+  }
+
+}
+
+@media (min-width:768px) {
+  
+  .kratos-entry-content-new p {
+    
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+    height: 100%;
+  }
+  
+}
+
 @media(max-width:768px) {
-  h {
-    &1 {
-      font-size: 25px !important;
-    }
-    &2 {
-      font-size: 21px;
-    }
-    &3 {
-      font-size: 18px;
-    }
-    &4 {
-      font-size: 15px;
-    }
+  h1 {
+    font-size: 25px !important;
+  }
+  h2 {
+    font-size: 21px;
+  }
+  h3 {
+    font-size: 18px;
+  }
+  h4 {
+    font-size: 15px;
   }
 
   .kratos-nav-toggle {
@@ -2624,8 +2481,9 @@ body.scroll-down .kr-tool {
     margin-right: 8px;
   }
 
-  .kratos-entry-content-new {
+  .kratos-entry-content-new p {
     height: auto;
+    margin-bottom: 20px;
   }
 
   .hide_notice, .info {
@@ -2926,6 +2784,178 @@ span.blur {
 }
 
 
+/*********************** Modal ***********************/
+.kr-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  z-index: 1001;
+  display: none;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .3s ease-in-out;
+
+  button {
+    border: none;
+    background-color: unset;
+    margin: 0;
+    padding: 0;
+  }
+
+  &.active {
+    opacity: 1;
+    pointer-events: all;
+  }
+
+  &.show {
+    display: block;
+  }
+
+  .kr-modal-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-color: #3336;
+  }
+
+  .kr-modal-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100%;
+    height: 100%;
+    max-width: 600px;
+    max-height: 400px;
+    padding: 15px;
+    translate: -50% -40%;
+    display: flex;
+    flex-direction: column;
+    transition: translate .3s ease-in-out;
+
+    .kr-modal-header, .kr-modal-body {
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .kr-modal-header {
+      flex-direction: row;
+      border-bottom: 2px solid;
+      background: #fffc;
+      padding: .2rem;
+
+      .kr-modal-icon, .kr-modal-title, .kr-modal-close {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .kr-modal-title {
+        font-size: 1.5rem;
+        font-weight: 600;
+      }
+
+      .kr-modal-icon, .kr-modal-close {
+        font-size: 1.6rem;
+        width: 2.5rem;
+      }
+
+      .kr-modal-close {
+        transition: color .3s ease-in-out;
+      }
+    }
+
+    .kr-modal-body {
+      flex: 1;
+      flex-direction: column;
+      background: #fffc;
+      padding: 1rem 2rem 2rem 2rem;
+      align-items: center;
+    }
+  }
+
+  &.active .kr-modal-content {
+    translate: -50% -50%;
+  }
+}
+
+#kr-donate-modal .kr-donate-qr,
+#kr-share-modal .kr-share-qr {
+  width: 160px;
+  height: 160px;
+  background-image: #fff;
+  border: 2px solid;
+  border-radius: 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#kr-donate-modal .kr-donate-qr .kr-donate-placeholder {
+  width: 100%;
+  height: 100%;
+}
+
+#kr-donate-modal .kr-donate-platforms,
+#kr-share-modal .kr-share-platforms {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+}
+
+#kr-donate-modal .kr-donate-platforms .kr-donate-platform-button,
+#kr-share-modal .kr-share-platforms .kr-share-platform-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.5rem;
+  width: 2.5rem;
+  height: 2.5rem;
+  border: 2px solid currentColor;
+  border-radius: 100%;
+  background-color: transparent;
+  transition: background-color .3s ease-in-out;
+
+  > * {
+    transition: color .3s ease-in-out;
+  }
+
+  &:hover {
+    background-color: currentColor;
+
+    > * {
+      color: white;
+    }
+  }
+}
+
+#kr-donate-modal .kr-modal-header {
+  color: #3496e6;
+}
+
+#kr-donate-modal .kr-modal-header, #kr-donate-modal .kr-donate-qr {
+  border-color: #3496e6;
+}
+
+#kr-donate-modal .kr-modal-close:hover {
+  color: #62b6e7;
+}
+
+#kr-share-modal .kr-modal-header {
+  color: #78ce79;
+}
+
+#kr-share-modal .kr-modal-header, #kr-share-modal .kr-share-qr {
+  border-color: #78ce79;
+}
+
+#kr-share-modal .kr-modal-close:hover {
+  color: #a9e4aa;
+}
+
 /**************** Search Page related ****************/
 #kr-search-notice.alert {
   transition:.3s
@@ -2952,6 +2982,7 @@ span.blur {
 }
 
 #search-input {
+  appearance: none;
   -webkit-appearance: none;
   border-color: #dbdbdb;
   // background-color: #fff;
@@ -2990,30 +3021,6 @@ span.blur {
 
 .search-demo-tags a {
   margin: 5px 10px;
-}
-
-/**************** Plugins *****************/
-span.mjx-chtml.MJXc-display {
-  color: #000000;
-}
-
-#hexo-blog-encrypt {
-  label {
-    padding-left: 10px;
-    pointer-events: none;
-  }
-
-  #hbePass {
-    padding: 0;
-    border-radius: 4px;
-  }
-}
-
-mjx-container {
-  display: inline-block;
-  vertical-align: bottom;
-  overflow-x: auto;
-  max-width: 100%;
 }
 
 /******************* Images ********************/

@@ -15,7 +15,7 @@ hexo.extend.tag.register('alertbox', function(args){
         'warning': 'warning',
     };
     return `<div class="alert alert-${args[0]}">` +
-    `<div class="icon"><i class="ti ti-${icon[args[0]]}"></i></div>` +
+    `<div class="icon"><i class="fa fa-${icon[args[0]]}"></i></div>` +
     `<div class="text">${hexo.render.renderSync({text: args[1], engine: 'markdown'})}</div>` +
     `</div>`;
 });
@@ -25,8 +25,8 @@ hexo.extend.tag.register('collapse', function(args, content){
     content = hexo.render.renderSync({text: content, engine: 'markdown'});
 
     return `<div class="xControl${args[1] === 'open' ? ' active' : ''}">
-    <div class="xHeading"><div class="xIcon"><i class="ti ti-plus"></i></div><span>${args[0]}</span></div>
-    <div class="xContent${args[1] === 'open' ? ' pre-open' : ''}"><div class="inner">
+    <div class="xHeading"><div class="xIcon"><i class="fa fa-plus"></i></div><span>${args[0]}</span></div>
+    <div class="xContent"><div class="inner">
         ${content} 
     </div></div>
     </div>`;

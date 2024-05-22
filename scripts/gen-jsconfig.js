@@ -12,9 +12,9 @@ hexo.once('generateBefore', () => {
             leaveLogo: themeConfig.inactive_notice.favicon.leave,
             leaveTitle: themeConfig.inactive_notice.message.leave,
             returnTitle: themeConfig.inactive_notice.message.return,
-            copyrightNoticeEnabled: themeConfig.copyright_notice.enabled,
-            copyrightNotice: themeConfig.copyright_notice.template,
-            copyrightNoticeThreshold: themeConfig.copyright_notice.threshold,
+            copyrightNoticeEnabled: themeConfig.copyright_notice.append_copy.enabled,
+            copyrightNotice: themeConfig.copyright_notice.append_copy.template,
+            copyrightNoticeThreshold: themeConfig.copyright_notice.append_copy.threshold,
             expire_day: themeConfig.posts.expire_after,
             topNavScrollToggle: themeConfig.top_nav.auto_hide,
         };
