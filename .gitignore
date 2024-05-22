@@ -1,18 +1,10 @@
 # NodeJS
 node_modules/
 
-# 站点图像
-source/images/
-
-# 锁文件
-package-lock.json
-yarn.lock
-.yarn/
-.pnp.js
-
-# (自定义)备份文件夹
-_backup/
-
 # IDE相关配置目录
 .vscode/
 .idea/
+
+# 构建结果
+source/js/
+source/css/

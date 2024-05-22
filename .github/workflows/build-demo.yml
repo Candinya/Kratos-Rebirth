@@ -25,7 +25,13 @@ jobs:
     - uses: actions/setup-node@v4
       with:
         node-version: 'lts'
-    
+
+    - name: Install pnpm
+      uses: pnpm/action-setup@v4
+      with:
+        version: 9
+        run_install: false
+
     # Get Hexo test utils
     - uses: actions/checkout@v4
       with:
@@ -36,8 +42,16 @@ jobs:
       run: mkdir themes
     
     # Clone Kratos-Rebirth into themes dir
-    - name: Clone Kratos-Rebirth into themes dir
-      run: git clone --single-branch --branch master https://github.com/${GITHUB_REPOSITORY} ./themes/kratos-rebirth
+    - uses: actions/checkout@v4
+      with:
+        path: 'themes/kratos-rebirth'
+
+    # Build fresh theme files
+    - name: Build theme files
+      run: |
+        cd ./themes/kratos-rebirth
+        pnpm install --frozen-lockfile
+        pnpm build
     
     # Edit hexo site settings
     - name: Edit Hexo site settings
