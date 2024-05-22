@@ -5,36 +5,44 @@
 */
 
 // 提示横幅
-hexo.extend.tag.register('alertbox', function(args){
-    // const content = hexo.render.renderSync({text: args[1], engine: 'markdown'});
-    const icon = {
-        'primary': 'refresh',
-        'success': 'check',
-        'danger': 'exclamation',
-        'info': 'info',
-        'warning': 'warning',
-    };
-    return `<div class="alert alert-${args[0]}">` +
+hexo.extend.tag.register("alertbox", function (args) {
+  // const content = hexo.render.renderSync({text: args[1], engine: 'markdown'});
+  const icon = {
+    primary: "refresh",
+    success: "check",
+    danger: "exclamation",
+    info: "info",
+    warning: "warning",
+  };
+  return (
+    `<div class="alert alert-${args[0]}">` +
     `<div class="icon"><i class="fa fa-${icon[args[0]]}"></i></div>` +
-    `<div class="text">${hexo.render.renderSync({text: args[1], engine: 'markdown'})}</div>` +
-    `</div>`;
+    `<div class="text">${hexo.render.renderSync({ text: args[1], engine: "markdown" })}</div>` +
+    `</div>`
+  );
 });
 
 // 折叠内容
-hexo.extend.tag.register('collapse', function(args, content){
-    content = hexo.render.renderSync({text: content, engine: 'markdown'});
+hexo.extend.tag.register(
+  "collapse",
+  function (args, content) {
+    content = hexo.render.renderSync({ text: content, engine: "markdown" });
 
-    return `<div class="xControl${args[1] === 'open' ? ' active' : ''}">
+    return `<div class="xControl${args[1] === "open" ? " active" : ""}">
     <div class="xHeading"><div class="xIcon"><i class="fa fa-plus"></i></div><span>${args[0]}</span></div>
     <div class="xContent"><div class="inner">
         ${content} 
     </div></div>
     </div>`;
-}, {ends: true});
+  },
+  { ends: true },
+);
 
 // 提示面板
-hexo.extend.tag.register('colorpanel', function(args, content){
-    content = hexo.render.renderSync({text: content, engine: 'markdown'});
+hexo.extend.tag.register(
+  "colorpanel",
+  function (args, content) {
+    content = hexo.render.renderSync({ text: content, engine: "markdown" });
 
     return `<div class="panel panel-${args[0]}">
     <div class="panel-title">${args[1]}</div>
@@ -42,9 +50,11 @@ hexo.extend.tag.register('colorpanel', function(args, content){
         ${content}
     </div>
     </div>`;
-}, {ends: true});
+  },
+  { ends: true },
+);
 
 // 模糊隐藏
-hexo.extend.tag.register('blur', function(args) {
-    return `<span class="blur">${args[0]}</span>`;
-})
+hexo.extend.tag.register("blur", function (args) {
+  return `<span class="blur">${args[0]}</span>`;
+});

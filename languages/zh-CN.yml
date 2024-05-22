@@ -31,8 +31,8 @@ category: 分类
 category_in: 分类于
 copyright: 版权所有
 author: 作者
-read_count: '%s 次阅读'
-comments_count: '%s 条评论'
+read_count: "%s 次阅读"
+comments_count: "%s 条评论"
 last_modify: 最后编辑：
 last_modify_alert: 本文最后编辑于 %s 前，其中的内容可能需要更新。
 donate: 打赏

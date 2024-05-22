@@ -2,22 +2,22 @@
 
 /******************* Color ********************/
 @mixin selection {
-    color: $select_text;
-    background: $select_text_bg;
+  color: $select_text;
+  background: $select_text_bg;
 }
 
 * {
-    &::-webkit-selection {
-        @include selection;
-    }
-    
-    &::-moz-selection {
-        @include selection;
-    }
-    
-    &::selection {
-        @include selection;
-    }
+  &::-webkit-selection {
+    @include selection;
+  }
+
+  &::-moz-selection {
+    @include selection;
+  }
+
+  &::selection {
+    @include selection;
+  }
 }
 
 h1,
@@ -29,213 +29,219 @@ h6,
 ol,
 ul,
 p {
-    color: $text;
+  color: $text;
 }
 
 body {
-    background-color: $page_background;
+  background-color: $page_background;
 }
 
 h2.title-h2 {
-    background-color: $info_background;
+  background-color: $info_background;
 }
 
 a {
-    color: $link;
+  color: $link;
 }
 
 blockquote {
-    background-color: $info_background;
-    border-color: $border;
-    
-    p {
-        color: $text;
-    }
+  background-color: $info_background;
+  border-color: $border;
+
+  p {
+    color: $text;
+  }
 }
 
 table {
-    th {
-        color: $text;
-        background-color: $info_background;
-    }
+  th {
+    color: $text;
+    background-color: $info_background;
+  }
 }
 
 .kratos-hentry {
-    background-color: $tag_background;
+  background-color: $tag_background;
 }
 
 .kratos-entry-border-new {
-    a, i {
-        color: $text;
-    }
-    
-    .kratos-post-meta-new {
-        border-top: 1px solid $border;
-        background: $tag_background;
+  a,
+  i {
+    color: $text;
+  }
+
+  .kratos-post-meta-new {
+    border-top: 1px solid $border;
+    background: $tag_background;
+  }
+
+  .kratos-status {
+    i {
+      color: $text_alt;
     }
 
-    .kratos-status {
-        i {
-            color: $text_alt;
-        }
+    p a {
+      color: $link;
 
-        p a {
-            color: $link;
-    
-            &:hover {
-                color: $link_hover;
-            }
-        }
+      &:hover {
+        color: $link_hover;
+      }
     }
+  }
 }
 
 .kratos-entry-header {
-    span, a {
-        color: $text;
-    }
+  span,
+  a {
+    color: $text;
+  }
 }
 
 ul.kratos-post-meta {
+  color: $text_alt;
+  span,
+  a {
     color: $text_alt;
-    span, a {
-        color: $text_alt;
-    }
+  }
 }
 
 .kratos-post-content {
-    p, table td {
+  p,
+  table td {
     color: $text;
-    }
+  }
 }
 
 .kratos-post-inner {
-    .kratos-copyright {
-        background-color: $info_background;
+  .kratos-copyright {
+    background-color: $info_background;
 
-        h5 {
-            color: $text;
-        }
-
-        a {
-            color: $text;
-        }
+    h5 {
+      color: $text;
     }
+
+    a {
+      color: $text;
+    }
+  }
 }
 
 .kratos-entry-footer {
-    .footer-tag a {
-        color: $text;
-        background-color: $tag_background;
-    }
+  .footer-tag a {
+    color: $text;
+    background-color: $tag_background;
+  }
 
-    .pull-date span {
-        color: $text;
-    }
+  .pull-date span {
+    color: $text;
+  }
 }
 
 .post-navigation a {
-    color: $text;
+  color: $text;
 }
 
 #kratos-widget-area {
-
-    .widget {
-        a, &-title i {
-            color: $text_alt;
-        }
-
-        &.widget-kratos {
-            &-about .site-meta > .meta-item:hover {
-                background-color: $info_background;
-            }
-
-            &-tags {
-                .tag-clouds a {
-                    background-color: $tag_background;
-            
-                    &:hover {
-                        color: $tag_background;
-                        background-color: $text_alt;
-                    }
-                }
-            }
-        
-            &-categories .category-list-item {
-                &::before {
-                    color: $text_alt;
-                }
-                .category-list-count {
-                    color: $text;
-                    background-color: $info_background;
-                }
-            }
-        }
+  .widget {
+    a,
+    &-title i {
+      color: $text_alt;
     }
 
+    &.widget-kratos {
+      &-about .site-meta > .meta-item:hover {
+        background-color: $info_background;
+      }
+
+      &-tags {
+        .tag-clouds a {
+          background-color: $tag_background;
+
+          &:hover {
+            color: $tag_background;
+            background-color: $text_alt;
+          }
+        }
+      }
+
+      &-categories .category-list-item {
+        &::before {
+          color: $text_alt;
+        }
+        .category-list-count {
+          color: $text;
+          background-color: $info_background;
+        }
+      }
+    }
+  }
 }
 
 .pagination {
-    a, span {
-        background-color: $tag_background;
-        color: $text;
-    }
+  a,
+  span {
+    background-color: $tag_background;
+    color: $text;
+  }
 
-    > li > a {
-        background-color: $card_background;
-    }
+  > li > a {
+    background-color: $card_background;
+  }
 }
 
-.kratos-hentry, .navigation div, #kratos-widget-area .widget {
-    background-color: $card_background;
+.kratos-hentry,
+.navigation div,
+#kratos-widget-area .widget {
+  background-color: $card_background;
 }
 
 .arc-tags a {
-    color: $text_alt !important;
-    background-color: $tag_background !important;
-    border-color: $border !important;
+  color: $text_alt !important;
+  background-color: $tag_background !important;
+  border-color: $border !important;
 
-    &:hover {
-        color: $link_hover !important;
-    }
+  &:hover {
+    color: $link_hover !important;
+  }
 }
 
 .linkpage ul li {
-    a h4 {
-        color: $text;
-    }
+  a h4 {
+    color: $text;
+  }
 
-    &:hover {
-        background-color: $info_background;
-    }
+  &:hover {
+    background-color: $info_background;
+  }
 }
 
 .kratos-post-header-title {
-    color: $text;
+  color: $text;
 }
 
 .xControl {
-    background-color: $info_background;
+  background-color: $info_background;
 
-    .xHeading span {
-        color: $text;
-    }
+  .xHeading span {
+    color: $text;
+  }
 }
 
 .index-post .kratos-entry-header .kratos-entry-title {
-    color: $text;
+  color: $text;
 
-    &::after {
-        background-color: $text;
-    }
+  &::after {
+    background-color: $text;
+  }
 }
 
 #archives .posts-collapse .post-title a,
 .categories > ul.category-list > li.category-list-item a {
-    color: $text_alt;
+  color: $text_alt;
 }
 
 .post-comments {
-    background-color: $tag_background;
+  background-color: $tag_background;
 }
 
 a:hover,
@@ -244,15 +250,15 @@ a:hover,
 .kratos-post-inner .kratos-copyright a:hover,
 #footer li a:hover,
 #archives .posts-collapse .post-title a:hover {
-    color: $link_hover;
+  color: $link_hover;
 }
 
 #kratos-desktop-topnav {
-    background: $navbar_desktop;
+  background: $navbar_desktop;
 }
 
 #kratos-mobile-topnav {
-    background: $navbar_mobile;
+  background: $navbar_mobile;
 }
 
 #kratos-widget-area #krw-toc .toc-item.active > a {
@@ -264,27 +270,28 @@ a:hover,
 }
 
 span.blur {
-  text-shadow: 0 0 .5em $text;
+  text-shadow: 0 0 0.5em $text;
 
   &:hover {
-    color: $text!important;
+    color: $text !important;
   }
 }
 
 #search-input {
-    background-color: $search_background;
-    color: $search_text;
+  background-color: $search_background;
+  color: $search_text;
 
-    &:active, &:focus {
-      border-color: $search_border;
-      box-shadow: $search_shadow;
-    }
-
+  &:active,
+  &:focus {
+    border-color: $search_border;
+    box-shadow: $search_shadow;
+  }
 }
 
 .kr-modal .kr-modal-content {
-    .kr-modal-header, .kr-modal-body {
-        color: $text;
-        background: $card_background;
-    }
+  .kr-modal-header,
+  .kr-modal-body {
+    color: $text;
+    background: $card_background;
+  }
 }

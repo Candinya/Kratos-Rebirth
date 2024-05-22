@@ -2,11 +2,11 @@
 # 依赖文件
 vendors:
   packages:
-    nprogress: 
+    nprogress:
       version: "0.2.0"
-    qrcode_js: 
+    qrcode_js:
       version: "1.0.0"
-    font-awesome: 
+    font-awesome:
       version: 4.7.0
     viewerjs:
       version: "1.11.6"
@@ -30,15 +30,15 @@ search:
 image:
   favicon: "" # 站点图标
   avatar: "/images/user.svg" # 个人信息挂件上的头像
-  banner:     # 站点横幅
+  banner: # 站点横幅
     light: "" # 亮色模式
-    dark: ""  # 暗色模式
+    dark: "" # 暗色模式
   background: # 站点背景
     light: "" # 亮色模式
-    dark: ""  # 暗色模式
-  about:      # 介绍卡片
+    dark: "" # 暗色模式
+  about: # 介绍卡片
     light: "/images/about.webp" # 亮色模式
-    dark: "/images/about.webp"  # 暗色模式
+    dark: "/images/about.webp" # 暗色模式
 
 # 顶部导航栏配置
 top_nav:
@@ -48,7 +48,7 @@ top_nav:
   #   icon: 这个菜单前的图标（在 tabler icons 图标库中选择，可以不设置）
   #   url: 这个菜单指向的链接（站内或是站外均可）
   #   submenu: 这个菜单是否为一个二级菜单，有了这个选项就会忽略上面的 url
-  #     - label: 二级菜单项的标签文字 
+  #     - label: 二级菜单项的标签文字
   #       icon: 二级菜单前的图标（在 tabler icons 图标库中选择，可以不设置）
   #       url: 二级菜单项指向的链接
 
@@ -76,7 +76,7 @@ posts:
   default_cover: "/images/about.webp" # 没有头图的文章使用的默认图片
   donate: true
   share: true
-  word_count: 
+  word_count:
     enable: true
     threshold: 1500
     estimate_wavy: true # 在文章字数处显示表示大约字数的波浪号
@@ -101,7 +101,7 @@ sidebar:
   # - category
   # - tagcloud
   # - posts
-  mobile_toc: 
+  mobile_toc:
     hide: false
     hide_id: false
 

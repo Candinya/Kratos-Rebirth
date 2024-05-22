@@ -17,22 +17,24 @@ image:
 # 顶部导航栏配置
 top_nav:
   items:
-  - label: 首页
-    icon: home
-    url: /
-  - label: 档案馆
-    icon: file
-    url: /archives/
-  - label: 好伙伴
-    icon: paw
-    url: /friends/
-  - label: 链接
-    icon: link
-    submenu:
-      - label: 作者博客
-        url: https://candinya.com
-      - label: 项目链接
-        url: https://github.com/Candinya/Kratos-Rebirth
+    - label: 首页
+      icon: home
+      url: /
+    - label: 档案馆
+      icon: file
+      url: /archives/
+    - label: 好伙伴
+      icon: paw
+      url: /friends/
+    - label: 链接
+      icon: link
+      submenu:
+        - label: 作者博客
+          icon: star
+          url: https://candinya.com
+        - label: 项目链接
+          icon: code
+          url: https://github.com/Candinya/Kratos-Rebirth
 
 # 文章的列表配置（首页/分页/标签页）
 post_index:
@@ -42,9 +44,9 @@ post_index:
 
 # Footer 页脚配置
 footer_links:
-  - icon: users-group
+  - icon: users
     link: https://matrix.to/#/#CandyUnion:nya.one
-  - icon: brand-github
+  - icon: github
     link: https://github.com/Candinya
   - html: <svg fill="currentColor" viewBox="0 0 1024 1024"><path d="M512,0C794.58,0 1024,229.42 1024,512C1024,794.58 794.58,1024 512,1024C229.42,1024 0,794.58 0,512C0,229.42 229.42,0 512,0ZM292.789,304.042L292.789,723.567C292.789,750.225 314.432,771.868 341.091,771.868C367.749,771.868 389.393,750.225 389.393,723.567L389.393,440.596L641.699,748.461C650.156,762.483 665.536,771.868 683.091,771.868C709.749,771.868 731.393,750.225 731.393,723.567L731.393,304.042C731.393,277.384 709.749,255.74 683.091,255.74C664.98,255.74 649.184,265.729 640.916,280.494L565.431,372.601L565.452,372.618C558.836,380.884 554.877,391.367 554.877,402.768C554.877,429.426 576.521,451.07 603.179,451.07C615.262,451.07 626.315,446.624 634.789,439.28L634.789,587.625L383.634,281.165C375.473,266.033 359.474,255.74 341.091,255.74C314.432,255.74 292.789,277.384 292.789,304.042Z" /></svg>
     link: https://nya.one/@Candinya
@@ -54,41 +56,114 @@ footer_links:
 # 一些有特色的组件 （其他的请在 additional_injections 自行追加）
 footer_components:
   uptime:
+    since: "2018/05/06 17:03:12"
     text: 本站已在风雨中飘摇
 
 # Widgets 侧边栏小挂件
 sidebar:
   widgets:
-  - about
-  - splitter
-  - toc
-  - category
-  - tagcloud
-  - posts
+    - about
+    - splitter
+    - toc
+    - category
+    - tagcloud
+    - posts
+
+# 分享组件设置
+share:
+  enabled: true
+  title: "分享这一刻"
+  message: "让朋友们也来瞅瞅！"
+  platforms:
+    - name: "QQ"
+      icon: "qq"
+      color: "#00bfff"
+      link: "https://connect.qq.com/widget/shareqq/index.html?url=$URL&title=$TITLE&desc=&summary=$SUMMARY&site=$SITE"
+    - name: "QQ空间"
+      icon: "star"
+      color: "#fece00"
+      link: "https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=$URL&title=$TITLE&desc=&summary=$SUMMARY&site=$SITE"
+    - name: "微博"
+      icon: "weibo"
+      color: "#e6162d"
+      link: "https://service.weibo.com/share/share.php?url=$URL&title=$TITLE"
+    - name: "X"
+      html: |
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-brand-x">
+          <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+          <path d="M4 4l11.733 16h4.267l-11.733 -16z" />
+          <path d="M4 20l6.768 -6.768m2.46 -2.46l6.772 -6.772" />
+        </svg>
+      color: "#55acee"
+      link: "https://x.com/intent/tweet?text=$TITLE&url=$URL"
+    - name: "Facebook"
+      icon: "facebook"
+      color: "#3e569b"
+      link: "https://www.facebook.com/sharer/sharer.php?u=$URL"
+
+# 打赏组件设置
+donate:
+  enabled: true
+  title: "赞助喵"
+  message: 非常感谢您的喜欢！ <i class="fa fa-heart" style="color:#d43f57"></i>
+  qrcode_placeholder: "/assets/donate.png"
+  platforms:
+    - name: "Ethereum"
+      html: |
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-currency-ethereum">
+          <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+          <path d="M6 12l6 -9l6 9l-6 9z" />
+          <path d="M6 12l6 -3l6 3l-6 2z" />
+        </svg>
+      color: "#454a73"
+      qrcode: "0xexample_address"
+    - name: "BitCoin"
+      icon: "bitcoin"
+      color: "#ee7c2f"
+      qrcode: "example_address"
+    - name: "支付宝"
+      html: |
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-brand-alipay">
+          <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+          <path d="M19 3h-14a2 2 0 0 0 -2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2 -2v-14a2 2 0 0 0 -2 -2z" />
+          <path d="M7 7h10" />
+          <path d="M12 3v7" />
+          <path d="M21 17.314c-2.971 -1.923 -15 -8.779 -15 -1.864c0 1.716 1.52 2.55 2.985 2.55c3.512 0 6.814 -5.425 6.814 -8h-6.604" />
+        </svg>
+      color: "#1677ff"
+      qrcode: "example_alipay"
+    - name: "微信支付"
+      icon: "wechat"
+      color: "#38ad5a"
+      qrcode: "example_wechatpay"
+    - name: "Credit Card"
+      icon: "credit-card"
+      color: "green"
+      link: "https://candinya.com"
+
+# 版权说明
+copyright_notice:
+  in_page:
+    enabled_at:
+      - post
+      - page
 
 # Friends 友链相关内容
 friends:
-  href: "friends"
-  page:
-    title: "好伙伴们"
-    comments: false
-    description: "好伙伴们在这里~"
-    updated: "2024-05-21"
   list:
-  - name: "猫猫①号"
-    bio: "喵~"
-    avatar: "../images/user.svg"
-    link: "https://candinya.com"
-  - name: "猫猫②号"
-    bio: "喵喵~"
-    avatar: "../images/user.svg"
-    link: "https://candinya.com"
-  - name: "猫猫⑨号"
-    bio: "咪啪~"
-    avatar: "../images/user.svg"
-    link: "https://candinya.com"
+    - name: "猫猫①号"
+      bio: "喵~"
+      avatar: "../images/user.svg"
+      link: "https://candinya.com"
+    - name: "猫猫②号"
+      bio: "喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵喵~"
+      avatar: "../images/user.svg"
+      link: "https://candinya.com"
+    - name: "猫猫⑨号"
+      bio: "咪啪~"
+      avatar: "../images/user.svg"
+      link: "https://candinya.com"
   verify: true # 验证每个友链的可访问性，炸了会有提示
-
 
 ################## 额外的注入代码 ##################
 additional_injections:

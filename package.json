@@ -4,7 +4,8 @@
   "description": "A transplanted theme for Hexo, with many new features built with love.",
   "scripts": {
     "build": "node ./devtools/build-once.js",
-    "watch": "node ./devtools/build-watch.js"
+    "watch": "node ./devtools/build-watch.js",
+    "prepare": "husky"
   },
   "repository": {
     "type": "git",
@@ -22,11 +23,17 @@
     "url": "https://github.com/Candinya/Kratos-Rebirth/issues"
   },
   "homepage": "https://github.com/Candinya/Kratos-Rebirth#readme",
-  "dependencies": {
+  "devDependencies": {
     "autoprefixer": "^10.4.19",
     "esbuild": "^0.21.3",
     "esbuild-plugin-sass": "^1.0.1",
+    "husky": "^9.0.11",
+    "lint-staged": "^15.2.4",
     "postcss": "^8.4.38",
-    "postcss-preset-env": "^9.5.13"
+    "postcss-preset-env": "^9.5.13",
+    "prettier": "3.2.5"
+  },
+  "lint-staged": {
+    "**/*": "prettier --write --ignore-unknown"
   }
 }
