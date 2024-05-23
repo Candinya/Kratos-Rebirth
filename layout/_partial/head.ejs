@@ -48,8 +48,8 @@
   <% } %>
   <!-- 样式表文件 -->
   <%- css_theme_cdn('css/kratosr.min.css', {id: "kratos-css", media:"all"}) %>
-  <% if (((config.highlight && config.highlight.enable) || config.syntax_highlighter === "highlight.js") && theme.code_highlight.theme) { %>
-    <%- css_theme_cdn(`css/highlight/${theme.code_highlight.theme || 'night-eighties'}.min.css`, {id: "highlight-css", media:"all"}) %>
+  <% if (config.syntax_highlighter && theme.syntax_highlighter.theme) { %>
+    <%- css_theme_cdn(`css/highlight/${config.syntax_highlighter}/${theme.syntax_highlighter.theme}.min.css`, {id: "highlight-css", media:"all"}) %>
   <% } %>
   <%- css_theme_cdn('css/kr-theme/light.min.css', {id: "theme-light-css", media:"all"}) %>
   <%- css_theme_cdn('css/kr-theme/dark.min.css', {id: "theme-dark-css", media:"(prefers-color-scheme: dark)"}) %>

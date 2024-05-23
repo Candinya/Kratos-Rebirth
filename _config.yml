@@ -88,8 +88,8 @@ pages:
   share: true
 
 # 代码高亮
-code_highlight:
-  theme: night-eighties # 代码高亮主题（light | night | night-eighties | night-blue | night-bright）
+syntax_highlighter:
+  theme: night-eighties # 代码高亮主题（请参照具体的高亮插件对应的主题样式）
 
 # 侧边栏小挂件
 sidebar:

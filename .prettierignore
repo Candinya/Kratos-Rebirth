@@ -8,4 +8,4 @@ source/
 pnpm-lock.yaml
 
 # 配色盘（别去毁了我们的空格，好吗）
-src/scss/highlight/theme/
+src/scss/highlight/*/theme/

@@ -26,16 +26,39 @@ const buildCSSOpts = {
   ],
 };
 
-const buildHighlightCSSOpts = {
+const buildHighlightJSCSSOpts = {
   entryPoints: [
-    "src/scss/highlight/theme/light.scss",
-    "src/scss/highlight/theme/night.scss",
-    "src/scss/highlight/theme/night-blue.scss",
-    "src/scss/highlight/theme/night-bright.scss",
-    "src/scss/highlight/theme/night-eighties.scss",
+    // highlight.js
+    "src/scss/highlight/highlight.js/theme/light.scss",
+    "src/scss/highlight/highlight.js/theme/night.scss",
+    "src/scss/highlight/highlight.js/theme/night-blue.scss",
+    "src/scss/highlight/highlight.js/theme/night-bright.scss",
+    "src/scss/highlight/highlight.js/theme/night-eighties.scss",
   ],
   outExtension: { ".css": ".min.css" },
-  outdir: "source/css/highlight",
+  outdir: "source/css/highlight/highlight.js",
+  bundle: false,
+  minify: true,
+  plugins: [
+    sassPlugin({
+      async transform(source, resolveDir) {
+        const { css } = await postcss([
+          autoprefixer,
+          postcssPresetEnv({ stage: 0 }),
+        ]).process(source, { from: undefined });
+        return css;
+      },
+    }),
+  ],
+};
+
+const buildPrismJSCSSOpts = {
+  entryPoints: [
+    // prismjs
+    "src/scss/highlight/prismjs/theme/atom-dark.scss",
+  ],
+  outExtension: { ".css": ".min.css" },
+  outdir: "source/css/highlight/prismjs",
   bundle: false,
   minify: true,
   plugins: [
@@ -68,6 +91,7 @@ const buildJSOpts = {
 
 module.exports = {
   buildCSSOpts,
-  buildHighlightCSSOpts,
+  buildHighlightJSCSSOpts,
+  buildPrismJSCSSOpts,
   buildJSOpts,
 };
