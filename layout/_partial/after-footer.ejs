@@ -10,3 +10,8 @@
 <%- js_npm_cdn('viewerjs', 'dist/viewer.min.js', {defer: true}) %>
 <%- js_theme_cdn('js/kratosr.min.js', {defer: true}) %>
 <%- js_theme_cdn('js/pjax.min.js', {defer: true}) %>
+
+<!-- 额外的追加注入项 -->
+<% if (theme.additional_injections.after_footer) { %>
+  <%- theme.additional_injections.after_footer %>
+<% } %>
