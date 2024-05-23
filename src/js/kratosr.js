@@ -273,13 +273,18 @@ window.copyCode =
         // 取消上一个加载事件
         window.cancelIdleCallback(window.loadCommentsEventHandler);
       }
-      if (typeof load_comm === "undefined" || load_comm === null) {
+
+      // 尝试调用 loadComments 函数来懒加载评论
+      if (typeof window.loadComments !== "function") {
+        // 不是函数，跳过
         return;
       }
       // 加载新评论模块
-      window.loadCommentsEventHandler = window.requestIdleCallback(load_comm);
+      window.loadCommentsEventHandler = window.requestIdleCallback(
+        window.loadComments,
+      );
       // 防止二次加载，清理掉函数
-      load_comm = null;
+      window.loadComments = null;
     };
     if (
       runningOnBrowser &&
@@ -287,6 +292,7 @@ window.copyCode =
       supportsIntersectionObserver &&
       commsArea !== null
     ) {
+      // 支持懒加载
       const observer = new IntersectionObserver(
         (entries) => {
           if (entries[0].isIntersecting) {
@@ -298,6 +304,7 @@ window.copyCode =
       );
       observer.observe(commsArea);
     } else {
+      // 不支持懒加载，就直接加载了
       loadwork();
     }
   };
