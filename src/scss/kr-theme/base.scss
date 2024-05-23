@@ -293,3 +293,24 @@ span.blur {
     background: $card_background;
   }
 }
+
+/******************* Variables ********************/
+:root {
+  --kr-theme-select-text: #{$select_text};
+  --kr-theme-select-text-bg: #{$select_text_bg};
+  --kr-theme-text: #{$text};
+  --kr-theme-text-alt: #{$text_alt};
+  --kr-theme-link: #{$link};
+  --kr-theme-link-hover: #{$link_hover};
+  --kr-theme-border: #{$border};
+  --kr-theme-tag-bg: #{$tag_background};
+  --kr-theme-card-bg: #{$card_background};
+  --kr-theme-page-bg: #{$page_background};
+  --kr-theme-info-bg: #{$info_background};
+  --kr-theme-navbar-desktop: #{$navbar_desktop};
+  --kr-theme-navbar-mobile: #{$navbar_mobile};
+  --kr-theme-search-bg: #{$search_background};
+  --kr-theme-search-text: #{$search_text};
+  --kr-theme-search-border: #{$search_border};
+  --kr-theme-search-shadow: #{$search_shadow};
+}
