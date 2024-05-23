@@ -12,7 +12,7 @@
                     <ul class="kratos-social-icons">
                         <% for (const link of theme.footer_links) { %>
                             <li>
-                                <a <% if (!link.currentPage) { %>target="_blank" rel="nofollow" <% } %>href="<%- link.link %>">
+                                <a href="<%- link.link %>" <%- link.addition || 'target="_blank" rel="nofollow"' %>>
                                     <% if (link.icon) { %>
                                         <i class="fa fa-<%- link.icon %>"></i>
                                     <% } else if (link.html) { %>
@@ -48,7 +48,7 @@
                         </a>
                     </div>
                 <% } %>
-                <div class="box theme-box" id="darkmode-switch">
+                <div class="box theme-box" id="theme-toggle">
                     <span class="fa fa-adjust"></span>
                 </div>
             </div>

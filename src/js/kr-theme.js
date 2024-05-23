@@ -5,7 +5,7 @@
  */
 // 作为直接影响渲染的脚本，应该在最开始就加载，不应该defer
 (() => {
-  const darkmodeCss = document.getElementById("darkmode-css");
+  const darkmodeCss = document.getElementById("theme-dark-css");
   const darkModeStorageKey = "user-color-scheme";
 
   /**
@@ -114,7 +114,7 @@
     document.removeEventListener("DOMContentLoaded", krDarkInit, false);
     window.removeEventListener("load", krDarkInit, false);
 
-    const darkModeSwitchElement = document.getElementById("darkmode-switch");
+    const darkModeSwitchElement = document.getElementById("theme-toggle");
     darkModeSwitchElement.addEventListener("click", () => {
       emitColorMode(toggleColorMode());
     });

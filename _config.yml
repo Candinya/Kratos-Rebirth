@@ -4,10 +4,10 @@ vendors:
   packages:
     nprogress:
       version: "0.2.0"
-    qrcode_js:
-      version: "1.0.0"
+    qr-code-styling:
+      version: "1.5.0"
     font-awesome:
-      version: 4.7.0
+      version: "4.7.0"
     viewerjs:
       version: "1.11.6"
 
@@ -37,8 +37,8 @@ image:
     light: "" # 亮色模式
     dark: "" # 暗色模式
   about: # 介绍卡片
-    light: "/images/about.webp" # 亮色模式
-    dark: "/images/about.webp" # 暗色模式
+    light: "/images/default.png" # 亮色模式
+    dark: "/images/default.png" # 暗色模式
 
 # 顶部导航栏配置
 top_nav:
@@ -63,7 +63,7 @@ footer_links: []
 # - icon: # 和 html 二选一，该选项表示使用来自 tabler icons 图标库，内容为图标库中的唯一标识
 #   html: # 和 icon 二选一，该选项表示插入自定义的 HTML 作为标识，例如您可在此放置一串 svg
 #   link: # 按钮导向的目标链接
-#   currentPage: # 可选，默认为否，启用该选项表示在当前页内打开目标链接
+#   addition: target="_blank" rel="nofollow"
 
 # 一些有特色的组件 （其他的请在 additional_injections 自行追加）
 footer_components:
@@ -73,7 +73,7 @@ footer_components:
 
 # Post 文章页配置
 posts:
-  default_cover: "/images/about.webp" # 没有头图的文章使用的默认图片
+  default_cover: "/images/default.png" # 没有头图的文章使用的默认图片
   donate: true
   share: true
   word_count:
@@ -135,7 +135,7 @@ donate:
 inactive_notice:
   enabled: true
   favicon:
-    leave: "/images/failure.ico"
+    leave: "/images/failure.png"
   message:
     leave: "{{{(>_<)}}}哦哟，崩溃啦~"
     return: "(*´∇｀*)欸，又好啦~"
@@ -143,7 +143,7 @@ inactive_notice:
 # 版权说明
 copyright_notice:
   in_page:
-    enabled_at: []
+    enable_at: []
     # - post
     # - page
     template: 本作品采用 <a rel="license nofollow" target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/">知识共享署名-相同方式共享 4.0 国际许可协议</a> 进行许可
@@ -167,12 +167,36 @@ friends:
   #   link: "链接的地址"
   verify: true # 验证每个友链的可访问性，炸了会有提示
 
+# 评论系统
 comments:
-  template: ""
-  enabled_at: []
+  core:
+    enable_at: []
+    # - index
+    # - post
+    # - page
+    template:
+      _shared: ""
+      index: ""
+      post: ""
+      page: ""
+  count:
+    enable_at: []
+    # - index
+    # - post
+    template:
+      _shared: ""
+      index: ""
+      post: ""
+
+# 访问数量统计
+visit_count:
+  enable_at: []
   # - index
   # - post
-  # - page
+  template:
+    _shared: ""
+    index: ""
+    post: ""
 
 ################## 额外的注入代码 ##################
 additional_injections:

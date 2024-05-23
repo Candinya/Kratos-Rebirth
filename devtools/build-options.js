@@ -4,7 +4,11 @@ const autoprefixer = require("autoprefixer");
 const postcssPresetEnv = require("postcss-preset-env");
 
 const buildCSSOpts = {
-  entryPoints: ["src/scss/kratosr.scss", "src/scss/kr-color-dark.scss"],
+  entryPoints: [
+    "src/scss/kratosr.scss",
+    "src/scss/kr-theme/light.scss",
+    "src/scss/kr-theme/dark.scss",
+  ],
   outExtension: { ".css": ".min.css" },
   outdir: "source/css",
   bundle: false,
@@ -50,7 +54,7 @@ const buildHighlightCSSOpts = {
 const buildJSOpts = {
   entryPoints: [
     "src/js/kratosr.js",
-    "src/js/kr-dark.js",
+    "src/js/kr-theme.js",
     "src/js/local-search.js",
     "src/js/pjax.js",
   ],

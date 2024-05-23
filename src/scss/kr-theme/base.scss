@@ -36,10 +36,6 @@ body {
   background-color: $page_background;
 }
 
-h2.title-h2 {
-  background-color: $info_background;
-}
-
 a {
   color: $link;
 }
@@ -107,7 +103,8 @@ ul.kratos-post-meta {
 
 .kratos-post-content {
   p,
-  table td {
+  table td,
+  dl {
     color: $text;
   }
 }
@@ -219,16 +216,17 @@ ul.kratos-post-meta {
   color: $text;
 }
 
-.xControl {
+.collapse-box-control {
   background-color: $info_background;
 
-  .xHeading span {
+  .collapse-box-header {
     color: $text;
   }
 }
 
-.index-post .kratos-entry-header .kratos-entry-title {
+.kratos-entry-header .kratos-entry-title {
   color: $text;
+  background-color: $info_background;
 
   &::after {
     background-color: $text;

@@ -26,28 +26,16 @@
                         <%- __('words') %>
                     </li>
                 <% } %>
-                <% if (commentProvider === 'valine' && theme.valine?.visitor) { %>
-                    <li id="<%- url_for(page.path) %>" class="leancloud_visitors" data-flag-title="<%- page.title %>">
-                        <i class="fa fa-eye"></i>
-                        <%- __('read_count', '<span class="leancloud-visitors-count"> </span>') %>
-                    </li>
-                <% } else if (commentProvider === 'waline') { %>
-                    <% if (theme.waline?.pageview) { %>
-                        <li>
-                            <i class="fa fa-eye"></i>
-                            <%- __('read_count', '<span data-path="' + url_for(page.path) + '" class="waline-pageview-count"> </span>') %>
-                        </li>
-                    <% } %>
-                    <% if (theme.waline?.comment) { %>
-                        <li>
-                            <i class="fa fa-commenting-o"></i>
-                            <%- __('comments_count', '<span data-path="' + url_for(page.path) + '" class="waline-comment-count"> </span>') %>
-                        </li>
-                    <% } %>
-                <% } else if (commentProvider === 'twikoo') { %>
+                <% if (theme.visit_count.enable_at.includes("post")) { %>
                     <li>
                         <i class="fa fa-eye"></i>
-                        <%- __('read_count', '<span id="twikoo_visitors"> </span>') %>
+                        <%- __('read_count', (theme.visit_count.template._shared + theme.visit_count.template.post).replaceAll("$PATH", url_for(page.path))) %>
+                    </li>
+                <% } %>
+                <% if (page.comments && theme.comments.count.enable_at.includes("post")) { %>
+                    <li>
+                        <i class="fa fa-commenting-o"></i>
+                        <%- __('comments_count', (theme.comments.count.template._shared + theme.comments.count.template.post).replaceAll("$PATH", url_for(page.path))) %>
                     </li>
                 <% } %>
             </ul>
@@ -68,7 +56,7 @@
             <hr />
             <div itemprop="articleBody"><%- page.content %></div>
         </div>
-        <% if (typeof page.show_copyright !== 'undefined' ? page.show_copyright : theme.copyright_notice.in_page.enabled_at.includes("post")) { %>
+        <% if (typeof page.show_copyright !== 'undefined' ? page.show_copyright : theme.copyright_notice.in_page.enable_at.includes("post")) { %>
             <div class="kratos-copyright text-center clearfix">
                 <h5 itemprop="copyright-notice"><%- theme.copyright_notice.in_page.template %></h5>
             </div>
@@ -113,9 +101,9 @@
             <% } %>
         </nav>
     <% } %>
-    <% if (page.comment && theme.comments.template && theme.comments.enabled_at.includes('post')) { %>
+    <% if (page.comments && theme.comments.core.enable_at.includes('post')) { %>
         <div class="comment-post">
-            <%- theme.comments.template %>
+            <%- (theme.comments.core.template._shared + theme.comments.core.template.post).replaceAll("$PATH", url_for(page.path)) %>
         </div>
     <% } %>
 </article>

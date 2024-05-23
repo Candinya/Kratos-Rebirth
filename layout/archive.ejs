@@ -25,8 +25,10 @@
 <% if (page.posts) { %>
   <article>
       <div class="kratos-hentry kratos-post-inner clearfix">
+          <header class="kratos-entry-header">
+            <h1 class="kratos-entry-title text-center" itemprop="name headline"><%- __('archive') %></h1>
+          </header>
           <div class="kratos-post-content kr-archive">
-            <h2 class="title-h2 text-center"><%- __('archive') %></h2>
             <div id="archives">
               <div class="post-block archive post" style="margin-left: 2em;">
                 <h3 class="archive-page-counter"><%- __('archive_count', () => {

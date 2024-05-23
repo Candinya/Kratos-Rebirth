@@ -11,6 +11,9 @@ importers:
       autoprefixer:
         specifier: ^10.4.19
         version: 10.4.19(postcss@8.4.38)
+      chokidar:
+        specifier: ^3.6.0
+        version: 3.6.0
       esbuild:
         specifier: ^0.21.3
         version: 0.21.3

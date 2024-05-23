@@ -28,8 +28,8 @@ hexo.extend.tag.register(
   function (args, content) {
     content = hexo.render.renderSync({ text: content, engine: "markdown" });
 
-    return `<div class="xControl${args[1] === "open" ? " active" : ""}">
-    <div class="xHeading"><div class="xIcon"><i class="fa fa-plus"></i></div><span>${args[0]}</span></div>
+    return `<div class="collapse-box-control${args[1] === "open" ? " active" : ""}">
+    <div class="collapse-box-header"><div class="xIcon"><i class="fa fa-plus"></i></div><span>${args[0]}</span></div>
     <div class="xContent"><div class="inner">
         ${content} 
     </div></div>

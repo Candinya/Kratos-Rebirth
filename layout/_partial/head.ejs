@@ -51,16 +51,17 @@
   <% if (((config.highlight && config.highlight.enable) || config.syntax_highlighter === "highlight.js") && theme.code_highlight.theme) { %>
     <%- css_theme_cdn(`css/highlight/${theme.code_highlight.theme || 'night-eighties'}.min.css`, {id: "highlight-css", media:"all"}) %>
   <% } %>
-  <%- css_theme_cdn('css/kr-color-dark.min.css', {id: "darkmode-css", media:"(prefers-color-scheme: dark)"}) %>
-  <%- js_theme_cdn('js/kr-dark.min.js') %>
+  <%- css_theme_cdn('css/kr-theme/light.min.css', {id: "theme-light-css", media:"all"}) %>
+  <%- css_theme_cdn('css/kr-theme/dark.min.css', {id: "theme-dark-css", media:"(prefers-color-scheme: dark)"}) %>
+  <%- js_theme_cdn('js/kr-theme.min.js') %>
   <%- css_npm_cdn('font-awesome', 'css/font-awesome.min.css', {id:"fontawe-css", media:"all"}) %>
   <%- css_npm_cdn('nprogress', 'nprogress.css', {id:"nprogress-css", media:"all"}) %>
   <% if (page.type !== '404'){ %>
     <%- css_npm_cdn('viewerjs', 'dist/viewer.min.css', {defer: true}) %>
   <% } %>
   <!-- 不得不预先加载的一些JS文件 -->
-  <% if (theme.posts?.share) { %>
-    <%- js_npm_cdn('qrcode_js', 'qrcode.min.js') %>
+  <% if (theme.share.enabled || theme.donate.enabled) { %>
+    <%- js_npm_cdn('qr-code-styling', 'lib/qr-code-styling.js') %>
   <% } %>
   <!-- 自定义站点横幅和背景 -->
   <style>

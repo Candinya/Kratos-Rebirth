@@ -19,17 +19,29 @@
     function initQRCode() {
         const container = document.getElementById("kr-share-qr");
         if (container) {
-
             // 清空上一个二维码避免冲突
             container.innerHTML = "";
             
             // 建立新的二维码
-            new QRCode(container, {
-                text: "<%- page.permalink %>",
+            const qrCode = new QRCodeStyling({
                 width: 150,
                 height: 150,
-                correctLevel : QRCode.CorrectLevel.H
+                data: "<%- page.permalink %>",
+                image: "<%- theme.image.favicon %>",
+                dotsOptions: {
+                    color: "#78ce79",
+                    type: "extra-rounded",
+                },
+                backgroundOptions: {
+                    color: "transparent",
+                },
+                imageOptions: {
+                    crossOrigin: "anonymous",
+                    margin: 1,
+                },
             });
+
+            qrCode.append(container);
         } else {
             requestAnimationFrame(initQRCode)
         }

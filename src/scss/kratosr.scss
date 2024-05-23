@@ -47,6 +47,10 @@ html {
   background: #fff3;
 }
 
+:root {
+  scroll-behavior: smooth;
+}
+
 body {
   line-height: 1.8;
   font-size: 18px;
@@ -56,6 +60,7 @@ body {
   overflow-x: hidden;
   margin: 0;
   -webkit-text-size-adjust: none;
+  transition: background-color 0.3s ease-in-out;
 }
 
 a {
@@ -256,7 +261,7 @@ h4,
 h5,
 h6 {
   font-weight: 400;
-  margin: 0 0 10px 0;
+  padding-bottom: 10px;
   font-family: inherit;
   line-height: 1.1;
 }
@@ -272,34 +277,74 @@ h3 {
 h4,
 h5,
 h6 {
-  margin-top: 25px;
-  margin-bottom: 10px;
-
   small {
     font-size: 75%;
   }
 }
 
+.kratos-post-content {
+  &.kr-post,
+  &.kr-page {
+    h1 {
+      padding-top: 48px;
+      margin-left: 16px;
+    }
+    h1 > a::before {
+      margin-top: 48px;
+    }
+
+    h2 {
+      padding-top: 36px;
+      margin-left: 14px;
+    }
+    h2 > a::before {
+      margin-top: 36px;
+    }
+
+    h3 {
+      padding-top: 24px;
+      margin-left: 12px;
+    }
+    h3 > a::before {
+      margin-top: 24px;
+    }
+
+    h4,
+    h5,
+    h6 {
+      padding-top: 20px;
+      margin-left: 12px;
+
+      > a::before {
+        margin-top: 20px;
+      }
+    }
+
+    h1,
+    h2,
+    h3 {
+      border-bottom: 1px dashed #b4afaf;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+      transition: color 0.3s ease-in-out;
+    }
+  }
+}
+
 h1 {
   font-size: 2em;
-  margin-top: 72px;
 }
 h2 {
   font-size: 1.5em;
-  margin-top: 48px;
-
-  &.title-h2 {
-    margin: 15px -20px;
-    padding: 0 20px;
-    border-left: 5px solid #51aded;
-    font-size: 20px;
-    line-height: 40px;
-    font-size: 18pt;
-  }
 }
 h3 {
   font-size: 1.2em;
-  margin-top: 36px;
 }
 h4,
 h5,
@@ -826,20 +871,22 @@ table {
   }
 }
 
-.kratos-post-content div.xControl {
+.kratos-post-content div.collapse-box-control {
   margin-top: 20px;
 }
 
-.xControl {
+.collapse-box-control {
   position: relative;
   margin-bottom: 15px;
   background: #f6f6f6;
   border-radius: 5px;
+  transition: background-color 0.3s ease-in-out;
 
-  > .xHeading {
+  > .collapse-box-header {
     position: relative;
     cursor: pointer;
     padding-left: 15px;
+    transition: color 0.3s ease-in-out;
 
     a {
       margin: 0;
@@ -847,7 +894,7 @@ table {
     }
 
     .xIcon {
-      transition: 0.3s;
+      transition: transform 0.3s ease-in-out;
       position: absolute;
       right: 15px;
     }
@@ -1392,8 +1439,8 @@ ul.kratos-post-meta {
           position: relative;
 
           a::before {
-            transition: all 0.3s ease-in-out;
-            opacity: 0;
+            transition: opacity 0.3s ease-in-out;
+            opacity: 0.3;
             font-family: fontawesome;
             content: "\f1dd";
             width: 100%;
@@ -1572,8 +1619,10 @@ ul.kratos-post-meta {
 }
 
 .kratos-entry-title {
-  margin: 0 0 15px;
   font-size: 30px;
+  margin: 15px -10px;
+  padding: 12px 20px;
+  border-left: 5px solid #51aded;
 
   a {
     color: #1c1c1c;
@@ -1632,10 +1681,12 @@ ul.kratos-post-meta {
     clear: both;
     font-size: 12px;
     background: rgba(253, 253, 253, 0.7);
+    transition: background-color 0.3s ease-in-out;
 
     a i {
       margin-left: 0.3em;
       margin-right: 2px;
+      transition: color 0.3s ease-in-out;
     }
 
     .read-more {
@@ -1871,7 +1922,7 @@ ul.kratos-post-meta {
     padding: 20px 25px;
     background-color: #fff;
     box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
-    border-radius: 0;
+    transition: background-color 0.3s ease-in-out;
 
     &:last-child {
       margin: 0;
@@ -1890,6 +1941,7 @@ ul.kratos-post-meta {
       padding-bottom: 12px;
       border-bottom: 1px solid #e7e7e7;
       font-size: 16px;
+      transition: color 0.3s ease-in-out;
 
       &:not(.no-after)::after,
       > .toc-progress-bar {
@@ -1974,6 +2026,7 @@ ul.kratos-post-meta {
           margin-bottom: 1em;
           font-size: 16px;
           margin: 20px;
+          transition: color 0.3s ease-in-out;
         }
 
         .site-meta {
@@ -2112,6 +2165,7 @@ ul.kratos-post-meta {
           border-radius: 6px;
           width: 2em;
           text-align: center;
+          transition: all 0.3s ease-in-out;
         }
       }
     }
@@ -2141,7 +2195,8 @@ ul.kratos-post-meta {
       }
 
       &.show > .toc-child {
-        max-height: 100%;
+        max-height: 50vh;
+        overflow-y: hidden;
       }
 
       > a {
@@ -2414,6 +2469,7 @@ body.scroll-down .kr-tool {
 
 .kratos-entry-content-new p {
   margin: 0;
+  transition: color 0.3s ease-in-out;
 }
 
 @media (max-width: 1200px) {
@@ -2428,11 +2484,6 @@ body.scroll-down .kr-tool {
     i:not(:first-child) {
       margin-left: 10px;
     }
-  }
-
-  .title-h2 {
-    padding: 0 15px;
-    font-size: 18px;
   }
 }
 
@@ -2719,14 +2770,6 @@ body.scroll-down .kr-tool {
       width: 100%;
     }
   }
-
-  .page404 .errtxt {
-    margin-top: 15%;
-    h5,
-    p {
-      margin-top: 30px;
-    }
-  }
 }
 
 @media (min-width: 992px) and (max-width: 1199px) {
@@ -2873,6 +2916,7 @@ span.blur {
   opacity: 0;
   pointer-events: none;
   transition: opacity 0.3s ease-in-out;
+  backdrop-filter: blur(4px);
 
   button {
     border: none;
@@ -3051,7 +3095,6 @@ span.blur {
     margin: auto;
     height: auto;
     width: 90%;
-    padding-top: 22px;
 
     .kratos-entry-content-new {
       height: auto;
@@ -3111,5 +3154,3 @@ body.custom-background {
   background-size: cover;
   background-attachment: fixed;
 }
-
-@import "./kr-color/default.scss";

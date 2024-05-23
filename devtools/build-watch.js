@@ -1,16 +1,11 @@
 const esbuild = require("esbuild");
-const buildOpts = require("./build-options");
+const buildOnce = require("./build-once");
+const chokidar = require("chokidar");
 
-const startWatch = async () => {
-  const cssCtx = await esbuild.context(buildOpts.buildCSSOpts);
-  const hlCtx = await esbuild.context(buildOpts.buildHighlightCSSOpts);
-  const jsCtx = await esbuild.context(buildOpts.buildJSOpts);
-
-  await cssCtx.watch();
-  await hlCtx.watch();
-  await jsCtx.watch();
-
-  console.log("esbuild watch start");
-};
-
-startWatch();
+chokidar.watch("src").on("change", (path) => {
+  console.log(
+    `[${new Date().toLocaleTimeString()}]`,
+    `${path} 变化，正在重新构建...`,
+  );
+  buildOnce();
+});

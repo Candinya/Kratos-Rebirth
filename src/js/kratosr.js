@@ -103,11 +103,13 @@ window.copyCode =
   };
   const collapseBoxControl = () => {
     const collapseBoxes = document
-      .querySelectorAll(".xControl")
+      .querySelectorAll(".collapse-box-control")
       .forEach((node) => {
-        node.querySelector(".xHeading")?.addEventListener("click", (e) => {
-          node.classList.toggle("active");
-        });
+        node
+          .querySelector(".collapse-box-header")
+          ?.addEventListener("click", (e) => {
+            node.classList.toggle("active");
+          });
       });
   };
 
@@ -116,21 +118,6 @@ window.copyCode =
     if (postEntry.length > 0) {
       const gallery = new Viewer(postEntry[0]);
     }
-  };
-
-  const tocNavInit = () => {
-    document.querySelectorAll("a[href^='#']").forEach((el) => {
-      el.addEventListener("click", (e) => {
-        e.preventDefault();
-        window.scrollTo({
-          top:
-            document.getElementById(
-              decodeURI(el.getAttribute("href")).replace("#", ""),
-            ).offsetTop + document.getElementById("kratos-blog-post").offsetTop,
-          behavior: "smooth",
-        });
-      });
-    });
   };
 
   let copyrightString;
@@ -412,6 +399,13 @@ window.copyCode =
             }
             nCur = nCur.parentNode;
           }
+
+          // 滚动出现
+          tocItems[newId].el.scrollIntoView({
+            behavior: "smooth",
+            block: "nearest",
+            inline: "nearest",
+          });
         }
         curTocId = newId;
       };
@@ -612,7 +606,7 @@ window.copyCode =
     };
 
     // 监听页面滚动事件
-    window.addEventListener("scroll", handleTopNavScrollToggle);
+    window.addEventListener("wheel", handleTopNavScrollToggle);
   };
 
   const initPerPage = () => {
@@ -621,7 +615,6 @@ window.copyCode =
     codeCopyInit();
     viewerJsInit();
     collapseBoxControl();
-    tocNavInit();
     commentsLazyLoad();
   };
 

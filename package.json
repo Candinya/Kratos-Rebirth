@@ -25,6 +25,7 @@
   "homepage": "https://github.com/Candinya/Kratos-Rebirth#readme",
   "devDependencies": {
     "autoprefixer": "^10.4.19",
+    "chokidar": "^3.6.0",
     "esbuild": "^0.21.3",
     "esbuild-plugin-sass": "^1.0.1",
     "husky": "^9.0.11",

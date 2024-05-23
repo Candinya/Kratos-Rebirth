@@ -1,11 +1,15 @@
 <article itemscope itemtype="https://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="<%= page.permalink %>">
     <div class="kratos-hentry kratos-post-inner clearfix">
+        <header class="kratos-entry-header">
+            <% if (page.title) { %>
+                <h1 class="kratos-entry-title text-center" itemprop="name headline"><%- page.title %></h1>
+            <% } %>
+        </header>
         <div class="kratos-post-content kr-page">
-            <h2 class="title-h2 text-center" itemprop="name headline"><%- page.title %></h2>
             <div itemprop="articleBody"><%- page.content %></div>
         </div>
-        <% if (typeof page.show_copyright !== 'undefined' ? page.show_copyright : theme.copyright_notice.in_page.enabled_at.includes("page")) { %>
+        <% if (typeof page.show_copyright !== 'undefined' ? page.show_copyright : theme.copyright_notice.in_page.enable_at.includes("page")) { %>
             <div class="kratos-copyright text-center clearfix">
                 <h5 itemprop="copyright-notice"><%- theme.copyright_notice.in_page.template %></h5>
             </div>
@@ -29,9 +33,9 @@
             </div>
         </footer>
     </div>
-    <% if (page.comment && theme.comments.template && theme.comments.enabled_at.includes('page')) { %>
+    <% if (page.comments && theme.comments.core.enable_at.includes('page')) { %>
         <div class="comment-page">
-            <%- theme.comments.template %>
+            <%- (theme.comments.core.template._shared + theme.comments.core.template.page).replaceAll("$PATH", url_for(page.path)) %>
         </div>
     <% } %>
 </article>

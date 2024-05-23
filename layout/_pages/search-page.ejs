@@ -1,6 +1,8 @@
 <div class="kratos-hentry kratos-post-inner clearfix">
+    <header class="kratos-entry-header">
+        <h1 class="kratos-entry-title text-center" itemprop="name headline"><%- __('search') %></h1>
+    </header>
     <div class="kratos-post-content kr-search-input">
-        <h2 class="title-h2 text-center"><%- __('search') %></h2>
         <form class="input-group" onsubmit="return inpSearch();">
             <input class="form-input input-lg" id="search-input" maxlength="80" name="s" placeholder="<%- __('search_notice') %>" required type="search">
             <button class="btn btn-primary" type="submit"><%- __('search_submit') %></button>
