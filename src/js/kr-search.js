@@ -236,7 +236,7 @@ function keySearch(skeys) {
   }
 
   // 加载数据并搜索
-  loadDataSearch(searchDataFile, searchEscape(skeys));
+  loadDataSearch(window.searchDataFile, searchEscape(skeys));
 }
 
 function inpSearch() {

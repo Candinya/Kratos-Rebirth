@@ -4,13 +4,14 @@
         </div>
     </div>
 </div>
+
 <footer>
     <div id="footer">
         <div class="container">
             <div class="row">
                 <div class="col-md-6 col-md-offset-3 footer-list text-center">
                     <ul class="kratos-social-icons">
-                        <% for (const link of theme.footer_links) { %>
+                        <% for (const link of theme.footer.links) { %>
                             <li>
                                 <a href="<%- link.link %>" <%- link.addition || 'target="_blank" rel="nofollow"' %>>
                                     <% if (link.icon) { %>
@@ -25,15 +26,24 @@
                     <ul class="kratos-copyright">
                         <div>
                             <li>&copy; <%- date(new Date(), 'YYYY') %> <%- config.title || config.author %> <%- __('copyright') %>.</li>
-                            <li><%- theme.footer_components.uptime.text %><span id="span_dt">Loading...</span></li>
+                            <li><%- theme.footer.components.uptime.text %><span id="span_dt">Loading...</span></li>
                         </div>
                         <div>
-                            <li>Theme <a href="https://github.com/Candinya/Kratos-Rebirth" target="_blank">Kratos:Rebirth</a></li>
-                            <li>Site built with&nbsp;<i class="fa fa-heart" style="color:#d43f57"></i>&nbsp;by <%- config.author %>.</li>
+                            <li><%- __('theme_name', '<a href="https://github.com/Candinya/Kratos-Rebirth" target="_blank">Kratos:Rebirth</a>') %></li>
+                            <li><%- __(
+                                'site_built_with_love', 
+                                theme.footer.components.author.homepage ? 
+                                    `<a href="${theme.footer.components.author.homepage}" target="_blank">${config.author}</a>` :
+                                    config.author
+                            ) %></li>
                         </div>
                         <!-- 额外的追加注入项 -->
-                        <% if (theme.additional_injections.footer) { %>
-                            <%- theme.additional_injections.footer %>
+                        <% for (const list of theme.footer.components.additional) { %>
+                            <div>
+                                <% for (const member of list) { %>
+                                    <li><%- member %></li>
+                                <% } %>
+                            </div>
                         <% } %>
                     </ul>
                 </div>
@@ -61,10 +71,15 @@
 </div>
 </div>
 
-<% if (theme.donate.enabled) { %>
+<% if (theme.donate.enable) { %>
     <%- partial('_utils/donate', { page: page, theme: theme }) %>
 <% } %>
 
-<% if (theme.share.enabled) { %>
+<% if (theme.share.enable) { %>
     <%- partial('_utils/share', { page: page, theme: theme }) %>
+<% } %>
+
+<!-- 额外的追加注入项 -->
+<% if (theme.additional_injections.footer) { %>
+    <%- theme.additional_injections.footer %>
 <% } %>

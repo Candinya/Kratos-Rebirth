@@ -893,29 +893,34 @@ table {
       font-size: 16px;
     }
 
-    .xIcon {
+    .collapse-box-icon {
       transition: transform 0.3s ease-in-out;
       position: absolute;
       right: 15px;
     }
   }
 
-  &.active .xIcon {
+  &.active .collapse-box-icon {
     transform: rotate(-45deg);
   }
 
-  .xContent {
+  .collapse-box-content {
     border-top: 1px solid #e6e6e6;
-    display: none;
+    display: grid;
+    grid-template-rows: 0fr;
+    transition: grid-template-rows 0.3s ease-in-out;
 
     .inner {
       padding: 5px 15px;
       color: #333;
+      overflow: hidden;
+      width: 100%;
+      height: 100%;
     }
   }
 
-  &.active .xContent {
-    display: block;
+  &.active .collapse-box-content {
+    grid-template-rows: 1fr;
   }
 }
 
@@ -1328,7 +1333,7 @@ body.scroll-down.nav-up #kratos-desktop-topnav {
   }
 }
 
-.post-navigation {
+.navigation {
   margin-top: 15px;
 
   a {
@@ -1338,6 +1343,7 @@ body.scroll-down.nav-up #kratos-desktop-topnav {
   .nav-previous,
   .nav-next {
     display: inline-block;
+    transition: background-color 0.3s ease-in-out;
   }
 
   .nav-previous a,
@@ -1497,12 +1503,15 @@ ul.kratos-post-meta {
     background-color: rgba(220, 220, 220, 0.7);
     margin: 25px 0 0;
     border-radius: 5px;
+    transition: background-color 0.3s ease-in-out;
 
-    h5 {
+    span {
+      display: block;
       margin: 15px;
       color: #666;
       font-size: 13px;
       font-weight: 300;
+      transition: color 0.3s ease-in-out;
     }
 
     a {
@@ -1759,7 +1768,7 @@ ul.kratos-post-meta {
   color: #9d9d9d;
   margin: 10px;
 
-  .post-like-donate {
+  .post-actions {
     margin-top: 15px;
     margin-bottom: 20px;
 
@@ -2178,7 +2187,8 @@ ul.kratos-post-meta {
 
     .toc {
       padding: 0;
-      overflow: auto;
+      overflow: hidden;
+      max-height: calc(80vh - 150px);
     }
     .toc-item {
       > a {
@@ -2191,7 +2201,7 @@ ul.kratos-post-meta {
         max-height: 0;
         overflow: clip;
         margin: 0;
-        transition: all 0.3s ease-in-out; // 没有生效，因为 height 的 100% 变换不会有动画，需要绝对值
+        transition: all 0.3s ease-in-out;
       }
 
       &.show > .toc-child {
@@ -2640,7 +2650,7 @@ body.scroll-down .kr-tool {
     margin-bottom: 0;
   }
 
-  .kratos-entry-footer .post-like-donate a {
+  .kratos-entry-footer .post-actions a {
     width: 100px;
   }
 
@@ -2834,7 +2844,7 @@ td.code {
   }
 }
 
-.post-comments {
+.kr-comments {
   margin-top: 16px;
   padding: 10px;
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
@@ -2843,12 +2853,14 @@ td.code {
 
 .index-post {
   h1 {
-    margin: 0 0 15px;
+    margin: 0;
+    padding: 0;
   }
 
   .kratos-entry-title {
     font-size: 36px;
     position: relative;
+    display: block;
   }
 
   .kratos-entry-header .kratos-entry-title::after {
@@ -3081,72 +3093,6 @@ span.blur {
 
 #kr-share-modal .kr-modal-close:hover {
   color: #a9e4aa;
-}
-
-/**************** Search Page related ****************/
-#kr-search-notice.alert {
-  transition: 0.3s;
-}
-
-#result-posts {
-  margin-top: 20px;
-
-  .kr-search-result {
-    margin: auto;
-    height: auto;
-    width: 90%;
-
-    .kratos-entry-content-new {
-      height: auto;
-    }
-  }
-
-  m {
-    color: #333;
-    background-color: yellow;
-  }
-}
-
-#search-input {
-  appearance: none;
-  -webkit-appearance: none;
-  border-color: #dbdbdb;
-  // background-color: #fff;
-  border-radius: 4px 0 0 4px;
-
-  &:hover {
-    border-color: #b5b5b5;
-  }
-
-  &:focus {
-    outline: 0;
-  }
-
-  // &:active, &:focus {
-  //   border-color: #3273dc;
-  //   box-shadow: 0 0 0 .125em rgba(50,115,220,.25)
-  // }
-}
-
-.input-group {
-  .form-input.input-lg {
-    display: inline-flex;
-    box-shadow: none;
-    flex: auto;
-    justify-content: flex-start;
-    padding: 0 8px;
-    font-size: 15px;
-    max-width: 100%;
-    border: 1px solid transparent;
-  }
-  .btn.btn-primary {
-    border: transparent;
-    border-radius: 0 4px 4px 0;
-  }
-}
-
-.search-demo-tags a {
-  margin: 5px 10px;
 }
 
 /******************* Images ********************/

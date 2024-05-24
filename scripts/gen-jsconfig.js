@@ -5,17 +5,17 @@ hexo.once("generateBefore", () => {
     const themeConfig = hexo.theme.config;
 
     const jsCfg = {
-      createTime: themeConfig.footer_components.uptime.since,
-      siteLeaveEvent: themeConfig.inactive_notice.enabled,
+      createTime: themeConfig.footer.components.uptime.since,
+      siteLeaveEvent: themeConfig.inactive_notice.enable,
       leaveLogo: themeConfig.inactive_notice.favicon.leave,
       leaveTitle: themeConfig.inactive_notice.message.leave,
       returnTitle: themeConfig.inactive_notice.message.return,
-      copyrightNoticeEnabled: themeConfig.copyright_notice.append_copy.enabled,
+      copyrightNoticeEnable: themeConfig.copyright_notice.append_copy.enable,
       copyrightNotice: themeConfig.copyright_notice.append_copy.template,
       copyrightNoticeThreshold:
         themeConfig.copyright_notice.append_copy.threshold,
       expire_day: themeConfig.posts.expire_after,
-      topNavScrollToggle: themeConfig.top_nav.auto_hide,
+      topNavScrollToggle: themeConfig.nav.auto_hide,
     };
 
     return {

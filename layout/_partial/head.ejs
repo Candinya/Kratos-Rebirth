@@ -47,7 +47,7 @@
     <%- feed_tag() %>
   <% } %>
   <!-- 样式表文件 -->
-  <%- css_theme_cdn('css/kratosr.min.css', {id: "kratos-css", media:"all"}) %>
+  <%- css_theme_cdn('css/kr-core.min.css', {id: "kratos-css", media:"all"}) %>
   <% if (config.syntax_highlighter && theme.syntax_highlighter.theme) { %>
     <%- css_theme_cdn(`css/highlight/${config.syntax_highlighter}/${theme.syntax_highlighter.theme}.min.css`, {id: "highlight-css", media:"all"}) %>
   <% } %>
@@ -60,7 +60,7 @@
     <%- css_npm_cdn('viewerjs', 'dist/viewer.min.css', {defer: true}) %>
   <% } %>
   <!-- 不得不预先加载的一些JS文件 -->
-  <% if (theme.share.enabled || theme.donate.enabled) { %>
+  <% if (theme.share.enable || theme.donate.enable) { %>
     <%- js_npm_cdn('qr-code-styling', 'lib/qr-code-styling.js') %>
   <% } %>
   <!-- 自定义站点横幅和背景 -->

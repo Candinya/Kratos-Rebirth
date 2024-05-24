@@ -113,7 +113,7 @@ ul.kratos-post-meta {
   .kratos-copyright {
     background-color: $info_background;
 
-    h5 {
+    span {
       color: $text;
     }
 
@@ -227,10 +227,10 @@ ul.kratos-post-meta {
 .kratos-entry-header .kratos-entry-title {
   color: $text;
   background-color: $info_background;
+}
 
-  &::after {
-    background-color: $text;
-  }
+.index-post .kratos-entry-header .kratos-entry-title::after {
+  background-color: $text;
 }
 
 #archives .posts-collapse .post-title a,
@@ -238,7 +238,7 @@ ul.kratos-post-meta {
   color: $text_alt;
 }
 
-.post-comments {
+.kr-comments {
   background-color: $tag_background;
 }
 
@@ -275,17 +275,6 @@ span.blur {
   }
 }
 
-#search-input {
-  background-color: $search_background;
-  color: $search_text;
-
-  &:active,
-  &:focus {
-    border-color: $search_border;
-    box-shadow: $search_shadow;
-  }
-}
-
 .kr-modal .kr-modal-content {
   .kr-modal-header,
   .kr-modal-body {
@@ -293,7 +282,6 @@ span.blur {
     background: $card_background;
   }
 }
-
 /******************* Variables ********************/
 :root {
   --kr-theme-select-text: #{$select_text};
@@ -309,8 +297,4 @@ span.blur {
   --kr-theme-info-bg: #{$info_background};
   --kr-theme-navbar-desktop: #{$navbar_desktop};
   --kr-theme-navbar-mobile: #{$navbar_mobile};
-  --kr-theme-search-bg: #{$search_background};
-  --kr-theme-search-text: #{$search_text};
-  --kr-theme-search-border: #{$search_border};
-  --kr-theme-search-shadow: #{$search_shadow};
 }

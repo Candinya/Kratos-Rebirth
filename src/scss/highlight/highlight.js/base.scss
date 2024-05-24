@@ -98,6 +98,7 @@ figure.highlight {
     pre {
       text-align: left;
       display: inline-block;
+      min-width: 100%;
 
       @mixin selection {
         color: $highlight_selection;

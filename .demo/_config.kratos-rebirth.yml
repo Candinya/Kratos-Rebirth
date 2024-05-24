@@ -12,7 +12,7 @@ image:
     dark: "/assets/bg_dark.webp"
 
 # 顶部导航栏配置
-top_nav:
+nav:
   items:
     - label: 首页
       icon: home
@@ -33,29 +33,31 @@ top_nav:
           icon: code
           url: https://github.com/Candinya/Kratos-Rebirth
 
-# 文章的列表配置（首页/分页/标签页）
-post_index:
-  post_type: true
-  read_count: true
-  comment_count: true
-
 # Footer 页脚配置
-footer_links:
-  - icon: users
-    link: https://matrix.to/#/#CandyUnion:nya.one
-  - icon: github
-    link: https://github.com/Candinya
-  - html: <svg fill="currentColor" viewBox="0 0 1024 1024"><path d="M512,0C794.58,0 1024,229.42 1024,512C1024,794.58 794.58,1024 512,1024C229.42,1024 0,794.58 0,512C0,229.42 229.42,0 512,0ZM292.789,304.042L292.789,723.567C292.789,750.225 314.432,771.868 341.091,771.868C367.749,771.868 389.393,750.225 389.393,723.567L389.393,440.596L641.699,748.461C650.156,762.483 665.536,771.868 683.091,771.868C709.749,771.868 731.393,750.225 731.393,723.567L731.393,304.042C731.393,277.384 709.749,255.74 683.091,255.74C664.98,255.74 649.184,265.729 640.916,280.494L565.431,372.601L565.452,372.618C558.836,380.884 554.877,391.367 554.877,402.768C554.877,429.426 576.521,451.07 603.179,451.07C615.262,451.07 626.315,446.624 634.789,439.28L634.789,587.625L383.634,281.165C375.473,266.033 359.474,255.74 341.091,255.74C314.432,255.74 292.789,277.384 292.789,304.042Z" /></svg>
-    link: https://nya.one/@Candinya
-    addition: rel="me" target="_blank"
-  - icon: rss
-    link: /atom.xml
+footer:
+  links:
+    - icon: users
+      link: https://matrix.to/#/#CandyUnion:nya.one
+    - icon: github
+      link: https://github.com/Candinya
+    - html: <svg fill="currentColor" viewBox="0 0 1024 1024"><path d="M512,0C794.58,0 1024,229.42 1024,512C1024,794.58 794.58,1024 512,1024C229.42,1024 0,794.58 0,512C0,229.42 229.42,0 512,0ZM292.789,304.042L292.789,723.567C292.789,750.225 314.432,771.868 341.091,771.868C367.749,771.868 389.393,750.225 389.393,723.567L389.393,440.596L641.699,748.461C650.156,762.483 665.536,771.868 683.091,771.868C709.749,771.868 731.393,750.225 731.393,723.567L731.393,304.042C731.393,277.384 709.749,255.74 683.091,255.74C664.98,255.74 649.184,265.729 640.916,280.494L565.431,372.601L565.452,372.618C558.836,380.884 554.877,391.367 554.877,402.768C554.877,429.426 576.521,451.07 603.179,451.07C615.262,451.07 626.315,446.624 634.789,439.28L634.789,587.625L383.634,281.165C375.473,266.033 359.474,255.74 341.091,255.74C314.432,255.74 292.789,277.384 292.789,304.042Z" /></svg>
+      link: https://nya.one/@Candinya
+      addition: rel="me" target="_blank"
+    - icon: rss
+      link: /atom.xml
+  components:
+    uptime:
+      since: "2018/05/06 17:03:12"
+      text: "本站已在风雨中飘摇"
+    author:
+      homepage: "https://ncd.moe"
+    additional: # 托管信息等
+      - - 由 <a href="https://hexo.io" target="_blank" rel="nofollow">Hexo</a> 强力驱动
+        - 在 <a href="https://github.io" target="_blank">Github Pages</a> 暖心托管
 
-# 一些有特色的组件 （其他的请在 additional_injections 自行追加）
-footer_components:
-  uptime:
-    since: "2018/05/06 17:03:12"
-    text: 本站已在风雨中飘摇
+# 代码高亮
+# syntax_highlighter:
+#   theme: atom-dark # 代码高亮主题（请参照具体的高亮插件对应的主题样式）
 
 # Widgets 侧边栏小挂件
 sidebar:
@@ -69,7 +71,7 @@ sidebar:
 
 # 分享组件设置
 share:
-  enabled: true
+  enable: true
   title: "分享这一刻"
   message: "让朋友们也来瞅瞅！"
   platforms:
@@ -92,16 +94,20 @@ share:
           <path d="M4 4l11.733 16h4.267l-11.733 -16z" />
           <path d="M4 20l6.768 -6.768m2.46 -2.46l6.772 -6.772" />
         </svg>
-      color: "#55acee"
+      color: "#000"
       link: "https://x.com/intent/tweet?text=$TITLE&url=$URL"
     - name: "Facebook"
       icon: "facebook"
       color: "#3e569b"
       link: "https://www.facebook.com/sharer/sharer.php?u=$URL"
+    - name: "喵窝"
+      html: <svg fill="currentColor" width="18" height="18" viewBox="0 0 329 388"><path d="M0,36.226c0,-19.993 16.233,-36.226 36.226,-36.226c13.788,0 25.787,7.719 31.908,19.068l188.366,229.845l0,-111.259c-6.356,5.508 -14.645,8.843 -23.707,8.843c-19.994,0 -36.226,-16.232 -36.226,-36.226c-0,-8.551 2.968,-16.413 7.93,-22.613l-0.015,-0.013l56.614,-69.08c6.2,-11.073 18.047,-18.565 31.63,-18.565c19.994,0 36.227,16.233 36.227,36.226l-0,314.644c-0,19.994 -16.233,36.226 -36.227,36.226c-13.166,0 -24.701,-7.039 -31.044,-17.555l-189.229,-230.899l-0,212.228c-0,19.994 -16.233,36.226 -36.227,36.226c-19.993,0 -36.226,-16.232 -36.226,-36.226l0,-314.644Z" /></svg>
+      color: "#62b6e7"
+      link: "https://nya.one/share?text=$TITLE%0A%0A$URL"
 
 # 打赏组件设置
 donate:
-  enabled: true
+  enable: true
   title: "赞助喵"
   message: 非常感谢您的喜欢！ <i class="fa fa-heart" style="color:#d43f57"></i>
   qrcode_placeholder: "/assets/donate.png"
@@ -197,9 +203,5 @@ visit_count:
 ################## 额外的注入代码 ##################
 additional_injections:
   head: "" # 搜索引擎的站点验证
-  footer: |
-    <div>
-        <li>由 <a href="https://hexo.io" target="_blank" rel="nofollow">Hexo</a> 强力驱动</li>
-        <li>在 <a href="https://github.io" target="_blank">Github Pages</a> 暖心托管</li>
-    </div>
+  footer: ""
   after_footer: "" # 站点分析

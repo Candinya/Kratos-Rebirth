@@ -1,3 +1,75 @@
+<style>
+  #kr-search-notice.alert {
+    transition: 0.3s;
+  }
+
+  #result-posts {
+    margin-top: 20px;
+
+    .kr-search-result {
+      margin: auto;
+      height: auto;
+      width: 90%;
+
+      .kratos-entry-content-new {
+        height: auto;
+      }
+    }
+
+    m {
+      color: #333;
+      background-color: yellow;
+    }
+  }
+
+  #search-input {
+    appearance: none;
+    -webkit-appearance: none;
+    border-color: #dbdbdb;
+    border-radius: 4px 0 0 4px;
+
+    &:hover {
+      border-color: #b5b5b5;
+    }
+
+    &:focus {
+      outline: 0;
+    }
+  }
+
+  .input-group {
+    .form-input.input-lg {
+      display: inline-flex;
+      box-shadow: none;
+      flex: auto;
+      justify-content: flex-start;
+      padding: 0 8px;
+      font-size: 15px;
+      max-width: 100%;
+      border: 1px solid transparent;
+    }
+    .btn.btn-primary {
+      border: transparent;
+      border-radius: 0 4px 4px 0;
+    }
+  }
+
+  .search-demo-tags a {
+    margin: 5px 10px;
+  }
+
+  #search-input {
+    color: var(--kr-theme-text);
+    background-color: var(--kr-theme-card-bg);
+
+    &:active,
+    &:focus {
+      border-color: var(--kr-theme-link-hover);
+      box-shadow: 0 0 0 0.125em rga(var(--kr-theme-link-hover), 0.25);
+    }
+  }
+</style>
+
 <div class="kratos-hentry kratos-post-inner clearfix">
     <header class="kratos-entry-header">
         <h1 class="kratos-entry-title text-center" itemprop="name headline"><%- __('search') %></h1>
@@ -40,5 +112,5 @@
     </div>
 </div>
 
-<script>var searchDataFile = "<%- config.root + (theme.search.path || 'search.json') %>";</script>
-<%- js_theme_cdn('js/local-search.min.js', {defer: true}) %>
+<script>var searchDataFile = "<%- config.root + (theme.search.index_path || 'search.json') %>";</script>
+<%- js_theme_cdn('js/kr-search.min.js', {defer: true}) %>

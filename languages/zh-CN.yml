@@ -42,3 +42,5 @@ words: 字
 post: 文章
 tags_count: 当前共有 %d 个标签 (゜-゜)つロ 干杯~
 categories_count: 当前共有 %d 种分类 (゜-゜)つロ 干杯~
+theme_name: 自豪地使用 %s 主题
+site_built_with_love: 站点由 %s 用 <i class="fa fa-heart" style="color:#d43f57"></i> 搭建

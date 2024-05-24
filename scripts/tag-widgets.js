@@ -29,8 +29,8 @@ hexo.extend.tag.register(
     content = hexo.render.renderSync({ text: content, engine: "markdown" });
 
     return `<div class="collapse-box-control${args[1] === "open" ? " active" : ""}">
-    <div class="collapse-box-header"><div class="xIcon"><i class="fa fa-plus"></i></div><span>${args[0]}</span></div>
-    <div class="xContent"><div class="inner">
+    <div class="collapse-box-header"><div class="collapse-box-icon"><i class="fa fa-plus"></i></div><span>${args[0]}</span></div>
+    <div class="collapse-box-content"><div class="inner">
         ${content} 
     </div></div>
     </div>`;

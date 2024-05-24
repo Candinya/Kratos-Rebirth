@@ -1,6 +1,6 @@
 <article itemscope itemtype="https://schema.org/Article">
     <% const commentProvider = theme.posts?.comments?.provider ?? theme.posts?.comments; %>
-    <link itemprop="mainEntityOfPage" href="<%= page.permalink %>">
+    <link itemprop="main-entity-of-page" href="<%= page.permalink %>">
     <div class="kratos-hentry kratos-post-inner clearfix">
         <header class="kratos-entry-header">
             <% if (page.title) { %>
@@ -58,12 +58,12 @@
         </div>
         <% if (typeof page.show_copyright !== 'undefined' ? page.show_copyright : theme.copyright_notice.in_page.enable_at.includes("post")) { %>
             <div class="kratos-copyright text-center clearfix">
-                <h5 itemprop="copyright-notice"><%- theme.copyright_notice.in_page.template %></h5>
+                <span itemprop="copyright-notice"><%- theme.copyright_notice.in_page.template %></span>
             </div>
         <% } %>
         <footer class="kratos-entry-footer clearfix">
             <% if (theme.posts.donate || theme.posts.share) { %>
-                <div class="post-like-donate text-center clearfix" id="post-like-donate">
+                <div class="post-actions text-center clearfix" id="post-actions">
                 <% if (theme.posts.donate) { %>
                     <a class="donate" href="javascript:;" onclick="krOpenDonateModal()"><i class="fa fa-bitcoin"></i> <%- __('donate') %></a>
                 <% } %>

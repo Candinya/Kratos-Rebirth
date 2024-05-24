@@ -17,7 +17,7 @@
   .posts-collapse .post-header:hover{border-bottom-color:#666}
   .posts-collapse .post-header:hover::before{background:#222}
   .posts-collapse .post-meta{position:absolute;font-size:12px;left:20px;top:5px}
-  .posts-collapse .post-comments-count{display:none}
+  .posts-collapse .kr-comments-count{display:none}
   .posts-collapse .post-title{margin-left:70px;font-size:16px;font-weight:400;line-height:inherit}
   .posts-collapse .post-title::after{margin-left:3px;opacity:.6}
   .posts-collapse .post-title a{color:#666;border-bottom:none}
@@ -50,12 +50,12 @@
                         <header class="post-header">
                           <h3 class="post-title">
                             <% if (post.link) { %>
-                              <a class="post-title-link post-title-link-external" target="_blank" href="<%- url_for(post.link) %>" itemprop="mainEntityOfPage">
+                              <a class="post-title-link post-title-link-external" target="_blank" href="<%- url_for(post.link) %>" itemprop="main-entity-of-page">
                                 <span itemprop="name headline"><%- post.title %></span>
                                 <i class="fa fa-external-link"></i>
                               </a>
                             <% } else { %>
-                                <a class="post-title-link" href="<%- url_for(post.path) %>" itemprop="mainEntityOfPage">
+                                <a class="post-title-link" href="<%- url_for(post.path) %>" itemprop="main-entity-of-page">
                                   <span itemprop="name headline"><%- post.title %></span>
                                 </a>
                             <% } %>

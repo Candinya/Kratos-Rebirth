@@ -11,12 +11,12 @@ hexo.once("generateBefore", () => {
   // 生成搜索数据库
 
   // 设置默认搜索路径
-  if (!config.path) {
-    config.path = "search.json";
+  if (!config.index_path) {
+    config.index_path = "search-index.json";
   }
 
-  if (pathFn.extname(config.path) === ".json") {
-    hexo.extend.generator.register("searchdb", function (locals) {
+  if (pathFn.extname(config.index_path) === ".json") {
+    hexo.extend.generator.register("searchIndex", function (locals) {
       const url_for = hexo.extend.helper.get("url_for").bind(this);
 
       const parse = (item) => {
@@ -86,7 +86,7 @@ hexo.once("generateBefore", () => {
       }
 
       return {
-        path: config.path,
+        path: config.index_path,
         data: JSON.stringify(res),
       };
     });
@@ -99,7 +99,7 @@ hexo.once("generateBefore", () => {
       data: {
         title_i18n: "title.search",
       },
-      layout: "_pages/search-page",
+      layout: "_pages/search",
     };
   });
 });

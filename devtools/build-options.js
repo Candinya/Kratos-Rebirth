@@ -5,7 +5,10 @@ const postcssPresetEnv = require("postcss-preset-env");
 
 const buildCSSOpts = {
   entryPoints: [
-    "src/scss/kratosr.scss",
+    // 核心样式
+    "src/scss/kr-core.scss",
+
+    // 配色主题
     "src/scss/kr-theme/light.scss",
     "src/scss/kr-theme/dark.scss",
   ],
@@ -76,10 +79,10 @@ const buildPrismJSCSSOpts = {
 
 const buildJSOpts = {
   entryPoints: [
-    "src/js/kratosr.js",
+    "src/js/kr-core.js",
     "src/js/kr-theme.js",
-    "src/js/local-search.js",
-    "src/js/pjax.js",
+    "src/js/kr-search.js",
+    "src/js/kr-pjax.js",
   ],
   outExtension: { ".js": ".min.js" },
   outdir: "source/js",

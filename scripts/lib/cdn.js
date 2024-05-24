@@ -3,10 +3,18 @@ const path = require("path");
 const theme = require(path.normalize("../../package.json"));
 
 const js_helper = (url, options) => {
-  return `<script ${options?.id ? 'id="' + options?.id + '" ' : ""}${options?.defer ? "defer " : ""}${options?.async ? "async " : ""}src="${url}"${options?.integrity ? ' integrity="' + options.integrity + '"' : ""}></script>`;
+  return `<script ${options?.id ? 'id="' + options?.id + '" ' : ""}${
+    options?.defer ? "defer " : ""
+  }${options?.async ? "async " : ""}src="${url}"${
+    options?.integrity ? ' integrity="' + options.integrity + '"' : ""
+  }></script>`;
 };
 const css_helper = (url, options) => {
-  return `<link rel="stylesheet" ${options?.id ? 'id="' + options.id + '" ' : ""}href="${url}"${options?.integrity ? ' integrity="' + options.integrity + '"' : ""}${options?.media ? ' media="' + options.media + '"' : ""}></script>`;
+  return `<link rel="stylesheet" ${
+    options?.id ? 'id="' + options.id + '" ' : ""
+  }href="${url}"${
+    options?.integrity ? ' integrity="' + options.integrity + '"' : ""
+  }${options?.media ? ' media="' + options.media + '"' : ""}></link>`;
 };
 
 const url_join = (p1, p2) => {

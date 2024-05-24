@@ -133,7 +133,7 @@ window.copyCode =
   };
 
   const copyEventInit = (kr) => {
-    if (kr.copyrightNoticeEnabled) {
+    if (kr.copyrightNoticeEnable) {
       document.body.oncopy = (e) => {
         if (copyrightString) {
           const copiedContent = window.getSelection().toString();
@@ -266,7 +266,11 @@ window.copyCode =
     const supportsIntersectionObserver =
       runningOnBrowser && "IntersectionObserver" in window;
     // 需要懒加载的评论区块
-    const commsArea = document.querySelector(".post-comments.lazy-load");
+    const commsArea = document.querySelector(".kr-comments");
+    if (!commsArea) {
+      // 没有评论区，跳过加载
+      return;
+    }
     // 加载评论的函数
     const loadwork = () => {
       if (window.loadCommentsEventHandler) {
@@ -290,7 +294,7 @@ window.copyCode =
       runningOnBrowser &&
       !isBot &&
       supportsIntersectionObserver &&
-      commsArea !== null
+      commsArea.classList.contains("lazy-load")
     ) {
       // 支持懒加载
       const observer = new IntersectionObserver(
@@ -407,12 +411,14 @@ window.copyCode =
             nCur = nCur.parentNode;
           }
 
-          // 滚动出现
-          tocItems[newId].el.scrollIntoView({
-            behavior: "smooth",
-            block: "nearest",
-            inline: "nearest",
-          });
+          // 滚动出现（延迟到展开动画之后，避免 jitter ）
+          setTimeout(() => {
+            tocItems[newId].el.scrollIntoView({
+              behavior: "smooth",
+              block: "nearest",
+              inline: "nearest",
+            });
+          }, 300);
         }
         curTocId = newId;
       };
