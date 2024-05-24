@@ -26,7 +26,14 @@ jobs:
       - name: Build
         run: pnpm build
       
-      - name: Publish to NPM
+      - name: Publish stable release version to NPM (with default latest tag)
+        if: ${{ ! contains(github.ref_name, '-') }}
+        run: npm publish
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN_CANDINYA }}
+      
+      - name: Publish pre-release version to NPM (with next tag)
+        if: ${{ contains(github.ref_name, '-') }} # Refer to Semantic Versioning , use a hyphen to split version code and pre-release identifier
         run: npm publish --tag next
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN_CANDINYA }}
@@ -34,6 +41,6 @@ jobs:
       - name: Create release (draft)
         uses: softprops/action-gh-release@v2
         with:
-          name: [${{ github.ref_name }}]
+          name: "[${{ github.ref_name }}] (新的发布)"
           generate_release_notes: true
           draft: true
