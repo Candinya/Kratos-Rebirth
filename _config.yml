@@ -1,6 +1,7 @@
 ################## 系统配置 ##################
 # 依赖文件
 vendors:
+  npm_cdn: "" # 默认使用站点直接提供
   packages:
     nprogress:
       version: "0.2.0"

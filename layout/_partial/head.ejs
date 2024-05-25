@@ -5,7 +5,7 @@
     <link rel="icon" href="<%- theme.image.favicon %>">
   <% } %>
   <%
-  var title = page.title || __(page.title_i18n);
+  let title = page.title || __(page.title_i18n);
   if (is_archive()){
     title = __('title.archive');
     if (is_month()){

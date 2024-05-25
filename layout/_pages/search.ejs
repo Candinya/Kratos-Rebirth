@@ -112,5 +112,5 @@
     </div>
 </div>
 
-<script>var searchDataFile = "<%- config.root + (theme.search.index_path || 'search.json') %>";</script>
+<script>window.searchDataFile = "<%- config.root + (theme.search.index_path || 'search.json') %>";</script>
 <%- js_theme_cdn('js/kr-search.min.js', {defer: true}) %>

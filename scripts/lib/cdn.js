@@ -2,20 +2,18 @@ const path = require("path");
 
 const theme = require(path.normalize("../../package.json"));
 
-const js_helper = (url, options) => {
-  return `<script ${options?.id ? 'id="' + options?.id + '" ' : ""}${
+const js_helper = (url, options) =>
+  `<script ${options?.id ? 'id="' + options?.id + '" ' : ""}${
     options?.defer ? "defer " : ""
   }${options?.async ? "async " : ""}src="${url}"${
     options?.integrity ? ' integrity="' + options.integrity + '"' : ""
   }></script>`;
-};
-const css_helper = (url, options) => {
-  return `<link rel="stylesheet" ${
+const css_helper = (url, options) =>
+  `<link rel="stylesheet" ${
     options?.id ? 'id="' + options.id + '" ' : ""
   }href="${url}"${
     options?.integrity ? ' integrity="' + options.integrity + '"' : ""
   }${options?.media ? ' media="' + options.media + '"' : ""}></link>`;
-};
 
 const url_join = (p1, p2) => {
   if (!p1 || p2.includes("//")) {
@@ -33,11 +31,11 @@ const url_join = (p1, p2) => {
 
 const file_info_npm_cdn = (locals, packageName, path) => {
   const packages = locals.theme.config.vendors?.packages;
-  const thisPackage = packages && packages[packageName];
+  const thisPackage = packages?.[packageName];
   const version =
     thisPackage?.version ||
     (packageName != theme.name ? "latest" : theme.version);
-  var cdn_url = thisPackage?.cdn_url;
+  let cdn_url = thisPackage?.cdn_url;
   if (cdn_url === undefined || cdn_url === true) {
     const npm_cdn = locals.theme.config.vendors?.npm_cdn;
     if (npm_cdn) {
@@ -55,7 +53,7 @@ const file_info_npm_cdn = (locals, packageName, path) => {
     }
   }
   const files = thisPackage?.files;
-  const thisFile = files && files[path];
+  const thisFile = files?.[path];
   const actualPath =
     thisFile?.relocate === undefined ||
     thisFile?.relocate === null ||
@@ -63,7 +61,7 @@ const file_info_npm_cdn = (locals, packageName, path) => {
       ? path
       : thisFile.relocate;
   const actualUrl = url_join(cdn_url, actualPath);
-  var fileInfo = {
+  const fileInfo = {
     url: actualUrl,
   };
   if (thisFile?.integrity) {
@@ -75,16 +73,16 @@ const url_npm_cdn = (locals, packageName, path) => {
   return file_info_npm_cdn(locals, packageName, path).url;
 };
 const js_npm_cdn = (locals, packageName, path, options) => {
-  var file_info = file_info_npm_cdn(locals, packageName, path);
-  return js_helper(file_info.url, {
-    integrity: file_info.integrity,
+  const { url, integrity } = file_info_npm_cdn(locals, packageName, path);
+  return js_helper(url, {
+    integrity,
     ...options,
   });
 };
 const css_npm_cdn = (locals, packageName, path, options) => {
-  var file_info = file_info_npm_cdn(locals, packageName, path);
-  return css_helper(file_info.url, {
-    integrity: file_info.integrity,
+  const { url, integrity } = file_info_npm_cdn(locals, packageName, path);
+  return css_helper(url, {
+    integrity,
     ...options,
   });
 };
