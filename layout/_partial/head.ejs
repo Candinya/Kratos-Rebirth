@@ -23,7 +23,7 @@
   %>
   <title><% if (title) { %><%= title %> | <% } %><%= config.title %></title>
   <%- kratos_canonical() %>
-  <meta name="author" content="<%- config.author  %>" />
+  <meta name="author" content="<%- page.author || config.author  %>" />
   <meta http-equiv="Cache-Control" content="no-transform" />
   <meta http-equiv="Cache-Control" content="no-siteapp" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />

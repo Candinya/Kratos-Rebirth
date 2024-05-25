@@ -31,7 +31,7 @@ window.copyCode =
     const url = (window.kr?.siteRoot || "/") + "config.json";
     return await fetch(url).then((res) => res.json());
   };
-  const pageScrollDownInit = () => {
+  const initPpageScrollDown = () => {
     let isScrolledDown = false;
     const pageScrollDownClass = () => {
       window.requestAnimationFrame(() => {
@@ -57,7 +57,7 @@ window.copyCode =
   };
 
   // 构建移动端的侧边展开导航
-  const offcanvas = () => {
+  const initOffcanvas = () => {
     const menuWrapClone = document
       .getElementById("kratos-menu-wrap")
       .cloneNode(true);
@@ -121,8 +121,8 @@ window.copyCode =
   };
 
   let copyrightString;
-  const setCopyright = (kr) => {
-    copyrightString = kr.copyrightNotice
+  const initCopyrightNotice = (kr) => {
+    copyrightString = kr.template
       .replaceAll("$NEWLINE", "\n")
       .replaceAll(
         "$AUTHOR",
@@ -132,12 +132,12 @@ window.copyCode =
       .replaceAll("$LINK", window.location.href);
   };
 
-  const copyEventInit = (kr) => {
-    if (kr.copyrightNoticeEnable) {
+  const initCopyEventListener = (kr) => {
+    if (kr.enable) {
       document.body.oncopy = (e) => {
         if (copyrightString) {
           const copiedContent = window.getSelection().toString();
-          if (copiedContent.length > kr.copyrightNoticeThreshold) {
+          if (copiedContent.length > kr.threshold) {
             e.preventDefault();
             if (e.clipboardData) {
               e.clipboardData.setData(
@@ -156,8 +156,8 @@ window.copyCode =
     docTitle = document.title;
   };
 
-  const leaveEventInit = (kr) => {
-    if (kr.siteLeaveEvent) {
+  const initInactiveNotice = (kr) => {
+    if (kr.enable) {
       let titleTime;
       const siteFavicon = document.querySelector('[rel="icon"]');
       const originIcon = siteFavicon.getAttribute("href");
@@ -228,9 +228,9 @@ window.copyCode =
     return tString;
   };
 
-  const initTime = (kr) => {
-    const createTime = new Date(kr.createTime);
-    const upTimeNode = document.getElementById("span_dt");
+  const initUpTime = (kr) => {
+    const createTime = new Date(kr.since);
+    const upTimeNode = document.getElementById("kr-since");
     setInterval(() => {
       upTimeNode.innerText = getTimeString(Date.now() - createTime);
     }, 1000);
@@ -255,6 +255,7 @@ window.copyCode =
   const commentsLazyLoad = () => {
     // 检查当前是否在浏览器中运行
     const runningOnBrowser = typeof window !== "undefined";
+
     // 通过检查 scroll 事件 API 和 User-Agent 来匹配爬虫
     const isBot =
       (runningOnBrowser && !("onscroll" in window)) ||
@@ -262,15 +263,16 @@ window.copyCode =
         /(gle|ing|ro|msn)bot|crawl|spider|yand|duckgo/i.test(
           navigator.userAgent,
         ));
+
     // 检查当前浏览器是否支持 IntersectionObserver API
     const supportsIntersectionObserver =
       runningOnBrowser && "IntersectionObserver" in window;
+
     // 需要懒加载的评论区块
-    const commsArea = document.querySelector(".kr-comments");
-    if (!commsArea) {
-      // 没有评论区，跳过加载
-      return;
-    }
+    const lazyloadCommentsArea = document.querySelector(
+      ".kr-comments.lazy-load",
+    );
+
     // 加载评论的函数
     const loadwork = () => {
       if (window.loadCommentsEventHandler) {
@@ -290,11 +292,13 @@ window.copyCode =
       // 防止二次加载，清理掉函数
       window.loadComments = null;
     };
+
+    // 检查是否可以懒加载
     if (
       runningOnBrowser &&
       !isBot &&
       supportsIntersectionObserver &&
-      commsArea.classList.contains("lazy-load")
+      lazyloadCommentsArea
     ) {
       // 支持懒加载
       const observer = new IntersectionObserver(
@@ -306,15 +310,26 @@ window.copyCode =
         },
         { threshold: 0 },
       );
-      observer.observe(commsArea);
+      observer.observe(lazyloadCommentsArea);
     } else {
       // 不支持懒加载，就直接加载了
       loadwork();
     }
+
+    // 在 pjax 前清理掉遗留的加载函数，避免被错误调用
+    window.addEventListener(
+      "pjax:before",
+      () => {
+        if (window.loadComments) {
+          window.loadComments = null;
+        }
+      },
+      { once: true },
+    );
   };
 
-  const expireNotify = (kr) => {
-    if (kr.expire_day) {
+  const checkExpireNotify = (kr) => {
+    if (kr.expireAfter) {
       const expireAlert = document.getElementById("expire-alert");
       if (expireAlert) {
         const dateTimeTag = expireAlert.querySelector("time");
@@ -323,7 +338,7 @@ window.copyCode =
         );
         const nowDateTime = Date.now();
         const gap = nowDateTime - updateDateTime;
-        if (gap > kr.expire_day * 24 * 3600 * 1000) {
+        if (gap > kr.expireAfter * 24 * 3600 * 1000) {
           // 内容可能过期，需要提示
           dateTimeTag.innerText = getTimeString(gap, false);
           expireAlert.classList.remove("hidden");
@@ -587,9 +602,9 @@ window.copyCode =
     }
   };
 
-  const topNavScrollToggleInit = (kr) => {
+  const initTopNavScrollToggle = (kr) => {
     // 判断设置参数
-    if (!kr.topNavScrollToggle) {
+    if (!kr.enable) {
       return; // 没有启用
     }
     // 记录上一次滚动高度，用于判断滚动方向
@@ -632,32 +647,32 @@ window.copyCode =
   };
 
   const initPerPageWithConfig = (kr) => {
-    setCopyright(kr);
-    expireNotify(kr);
+    initCopyrightNotice(kr.copyrightNoticeForCopy);
+    checkExpireNotify(kr.expireNotify);
   };
 
-  function themeInit() {
+  const themeInit = () => {
     document.removeEventListener("DOMContentLoaded", themeInit, false);
     window.removeEventListener("load", themeInit, false);
 
     loadConfig().then((kr) => {
-      copyEventInit(kr);
-      leaveEventInit(kr);
-      initTime(kr);
-      topNavScrollToggleInit(kr);
+      initCopyEventListener(kr.copyrightNoticeForCopy);
+      initInactiveNotice(kr.inactiveNotice);
+      initUpTime(kr.uptime);
+      initTopNavScrollToggle(kr.topNavScrollToggle);
       initPerPageWithConfig(kr);
       window.addEventListener("pjax:complete", () => {
         initPerPageWithConfig(kr);
       });
     });
 
-    pageScrollDownInit();
-    offcanvas();
+    initPpageScrollDown();
+    initOffcanvas();
     initPerPage();
     window.addEventListener("pjax:complete", () => {
       initPerPage();
     });
-  }
+  };
 
   if (document.readyState === "complete") {
     setTimeout(themeInit);

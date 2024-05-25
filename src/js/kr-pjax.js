@@ -1,4 +1,5 @@
 (() => {
+  // 检查是否支持 pjax
   if (
     !window.history ||
     !window.history.pushState ||
@@ -7,61 +8,87 @@
     return;
   }
 
-  function scrollToMainTop() {
+  /**
+   * 滚动到页面顶端
+   */
+  const scrollToMainTop = () => {
     const postTop = document.getElementById("kratos-blog-post").offsetTop;
     const navHeight = document.getElementById(
       "kratos-desktop-topnav",
     ).offsetHeight;
     const theTop = navHeight ? postTop - navHeight : 0;
     window.scrollTo({ top: theTop, behavior: "smooth" });
-  }
+  };
 
-  function setMetaProperty(doc, property, content) {
-    let meta = doc.querySelector('meta[property="' + property + '"]');
-    if (meta) {
+  /**
+   * 设置 meta 标签的参数
+   * @param {Document} dom 指定页面的 DOM 对象
+   * @param {string} property 需要设置的属性名
+   * @param {string} content 需要设置的属性值
+   * @param {string} key 键名 （默认是 property ）
+   */
+  const setMetaProperty = (dom, property, content, key = "property") => {
+    let metaEl = dom.querySelector(`meta[${key}="${property}"]`);
+    if (metaEl) {
       if (content) {
-        meta.setAttribute("content", content);
+        metaEl.setAttribute("content", content);
       } else {
         // 兼容性考虑，不直接使用 remove
-        if (meta.parentNode) {
-          meta.parentNode.removeChild(meta);
+        if (metaEl.parentNode) {
+          metaEl.parentNode.removeChild(metaEl);
         }
       }
-    } else {
-      if (!content) {
-        return;
-      }
-      meta = doc.createElement("meta");
-      meta.setAttribute("property", property);
-      meta.setAttribute("content", content);
-      doc.head.appendChild(meta);
+    } else if (content) {
+      metaEl = dom.createElement("meta");
+      metaEl.setAttribute("property", property);
+      metaEl.setAttribute("content", content);
+      dom.head.appendChild(metaEl);
     }
-  }
+  };
 
-  function getMetaProperty(doc, property) {
-    const els = doc.querySelector('meta[property="' + property + '"]');
-    return els ? els.getAttribute("content") : null;
-  }
+  /**
+   * 从 meta 标签提取参数
+   * @param {Document} dom 指定页面的 DOM 对象
+   * @param {string} property 属性名
+   * @param {string} key 键名 （默认是 property ）
+   * @returns {string} 提取结果
+   */
+  const getMetaProperty = (dom, property, key = "property") =>
+    dom.querySelector(`meta[${key}="${property}"]`)?.getAttribute("content");
 
-  function replacePageContent(data, doc) {
+  /**
+   * 替换页面内容
+   * @param {object} data 页面数据
+   * @param {Document} dom 指定页面的 DOM 对象
+   */
+  const replacePageContent = (data, dom) => {
+    // 更新标题
     document.title = data.title || "无标题";
-    if (doc) {
+
+    // 更新部分元数据
+    // 使用部分组件时可能会自动读取这些数据（如LiveRe评论系统）
+    setMetaProperty(document, "og:title", data.ogTitle);
+    setMetaProperty(document, "og:url", data.ogUrl);
+    setMetaProperty(document, "author", data.author, "name");
+
+    // 更新页面主体
+    if (dom) {
       const oldMain = document.getElementById("main");
       if (typeof oldMain.replaceWith === "function") {
         // 避免多次解析DOM树带来的性能损失
-        oldMain.replaceWith(doc.getElementById("main"));
+        oldMain.replaceWith(dom.getElementById("main"));
       } else {
         document.getElementById("main").innerHTML = data.content;
       }
     } else {
       document.getElementById("main").innerHTML = data.content;
     }
-    // JS必须手动执行
+
+    // 手动执行 JavaScript 脚本
     const scripts = document
       .getElementById("main")
       .getElementsByTagName("script");
-    for (let i = 0; i < scripts.length; i++) {
-      const script = scripts[i];
+    for (const script of scripts) {
       if (!script.type || script.type.toLowerCase() === "text/javascript") {
         const newScript = document.createElement("script");
         newScript.setAttribute("type", "text/javascript");
@@ -79,21 +106,26 @@
         }
       }
     }
-    // 更新部分元数据
-    // 使用部分组件时可能会自动读取这些数据（如LiveRe评论系统）
-    setMetaProperty(document, "og:title", data.ogTitle);
-    setMetaProperty(document, "og:url", data.ogUrl);
-  }
-  function getPageData(doc) {
-    return {
-      title: doc.title,
-      ogTitle: getMetaProperty(doc, "og:title"),
-      ogUrl: getMetaProperty(doc, "og:url"),
-      content: doc.getElementById("main").innerHTML,
-    };
-  }
+  };
 
-  function popStateHandler(e) {
+  /**
+   * 从给定的 DOM 中提取需要的数据
+   * @param {*} dom 指定页面的 DOM 对象
+   * @returns {object} 需要的数据
+   */
+  const getPageData = (dom) => ({
+    title: dom.title,
+    ogTitle: getMetaProperty(dom, "og:title"),
+    ogUrl: getMetaProperty(dom, "og:url"),
+    content: dom.getElementById("main").innerHTML,
+    author: getMetaProperty(dom, "author", "name"),
+  });
+
+  /**
+   * 处理浏览器后退状态
+   * @param {PopStateEvent} e 后退事件
+   */
+  const popStateHandler = (e) => {
     if (e.state) {
       scrollToMainTop();
       if (typeof e.state.content === "undefined") {
@@ -103,9 +135,12 @@
       }
       window.dispatchEvent(pjaxEvents.complete);
     }
-  }
+  };
+
+  // 监听后退事件
   window.addEventListener("popstate", popStateHandler);
 
+  // 全局事件整理，方便在需要的时候调用
   const pjaxEvents = {
     before: new Event("pjax:before"),
     success: new Event("pjax:success"),
@@ -113,41 +148,58 @@
     error: new Event("pjax:error"),
   };
 
-  function pjax(reqUrl, needPushState) {
-    const beforeSend = () => {
-      // 防止评论区再被加载，重置加载函数
-      if (typeof load_comm !== "undefined" && load_comm !== null) {
-        load_comm = null;
-      }
-
-      scrollToMainTop();
-      NProgress.start();
-
-      window.dispatchEvent(pjaxEvents.before);
-    };
+  /**
+   * PJAX 核心处理函数
+   * @param {string} reqUrl 请求的目标 URL
+   * @param {boolean} needPushState 是否需要更新状态
+   */
+  const pjax = async (reqUrl, needPushState) => {
+    /**
+     * 错误处理函数
+     */
     const onError = () => {
+      // 发出错误提示信息
       window.dispatchEvent(pjaxEvents.error);
       // 请求失败，强制跳转
       location.href = reqUrl;
     };
-    const onComplete = (responseText) => {
+
+    /**
+     * PJAX 加载完成后事件
+     * @param {string} responseText 请求得到的文档内容
+     * @param {boolean} isPushStateRequired 是否需要更新浏览器状态
+     */
+    const onComplete = (responseText, isPushStateRequired) => {
+      // 发出请求成功的好消息
       window.dispatchEvent(pjaxEvents.success);
 
+      // 使用得到的文档内容创建一个 DOM 对象
       const newDoc = document.implementation.createHTMLDocument("pjax");
       newDoc.documentElement.innerHTML = responseText;
+
+      // 检查是否有需要的元素（即可被替换的主元素）
       const isSuccessRequest = !!newDoc.getElementById("main");
       if (isSuccessRequest) {
-        if (needPushState) {
+        // 有元素，这个页面就是该动态加载
+
+        // 检查是否需要更新历史记录
+        if (isPushStateRequired) {
           history.replaceState(
             getPageData(document),
             document.title,
             location.href,
           );
         }
+
+        // 从文档中提取信息
         const data = getPageData(newDoc);
-        if (needPushState) {
+
+        // 追加新的历史记录
+        if (isPushStateRequired) {
           window.history.pushState(data, data.title, reqUrl);
         }
+
+        // 替换页面内容
         replacePageContent(data, newDoc);
 
         // 如果URL里有指定节点ID，则滚动到相应的节点位置
@@ -159,34 +211,49 @@
           });
         }
       } else {
-        // 不是可以 pjax 的页面
+        // 没有元素，不是可以 pjax 的页面
         onError();
         return;
       }
       NProgress.done();
       window.dispatchEvent(pjaxEvents.complete);
     };
-    const request = new XMLHttpRequest();
-    request.onerror = function (e) {
+
+    // 让页面滚动到最顶端，避免长页面更新为短页面时的抖动
+    scrollToMainTop();
+
+    // NProgress 开始
+    NProgress.start();
+
+    // 发出启动事件
+    window.dispatchEvent(pjaxEvents.before);
+
+    // 设置一个超时终止控制器
+    const abc = new AbortController();
+
+    const timeoutAbortID = setTimeout(() => abc.abort(), 6_000);
+
+    // 尝试请求数据
+    try {
+      const responseText = await fetch(reqUrl, {
+        signal: abc.signal,
+      }).then((res) => res.text());
+
+      // 清理超时控制器
+      clearTimeout(timeoutAbortID);
+
+      // 加载完成
+      onComplete(responseText, needPushState);
+    } catch (e) {
+      // 请求出错
       console.error(e);
       onError();
-    };
-    request.ontimeout = function () {
-      onError();
-    };
-    request.onreadystatechange = function () {
-      if (request.readyState === 4) {
-        onComplete(request.responseText);
-      }
-    };
-    request.open("GET", reqUrl, true);
-    request.timeout = 6000;
-    beforeSend();
-    request.send();
-  }
+    }
+  };
 
-  const maxBubbleDepth = 3; // 最大冒泡层数
+  const maxBubbleDepth = 3; // 最大向上冒泡层数
 
+  // 监听页面点击事件
   document.addEventListener("click", (e) => {
     let el = e.target;
     let bub = 0;
@@ -198,7 +265,7 @@
     }
 
     if (!el || el.tagName.toLowerCase() !== "a") {
-      // 不是跳转
+      // 不是点击 a 标签
       return;
     }
 
@@ -250,25 +317,4 @@
     // PJAX 执行
     pjax(targetUrl.toString(), true);
   });
-
-  // 基于 navigate event 的实现
-  // 警告：这是一个实验特性，目前只有 Chromium 系的浏览器支持（参考 https://developer.mozilla.org/en-US/docs/Web/API/Navigation/navigate_event#browser_compatibility ）
-  // navigation.addEventListener("navigate", (event) => {
-  //     const url = new URL(event.destination.url);
-
-  //     if (
-  //         url.origin !== location.origin || // 不是同源的请求
-  //         url.toString() === location.toString() // 是强制重新加载 // 这个处理还有点问题（同页面刷新会和上面的 PJAX 失败后直接跳转冲突），如果要使用的话要再优化一下
-  //     ) {
-  //         // 忽略
-  //         return;
-  //     }
-
-  //     // 使用自定义处理函数执行 PJAX
-  //     event.intercept({
-  //         async handler() {
-  //             pjax(event.destination.url, false);
-  //         },
-  //     });
-  // });
 })();
