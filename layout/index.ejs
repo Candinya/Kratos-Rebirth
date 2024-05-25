@@ -44,7 +44,7 @@
             <% } %>
             <% if (page.current > 1) { %>
                 <i class="fa fa-angle-right"></i>
-                <span>
+                <span class="page-no">
                     <%= __('page_no', page.current) %>
                 </a>
             <% } %>
@@ -64,9 +64,9 @@
         }
     } %>
     <% if (!post.title || post.link) { %>
-        <%- partial('_index_posts/status', { post: post }) %>
+        <%- partial('_index_style/status', { post: post }) %>
     <% } else { %>
-        <%- partial(`_index_posts/${theme.index.style}`, { post: post }) %>
+        <%- partial(`_index_style/${theme.index.style}`, { post: post }) %>
     <% } %>
 <% }) %>
 
