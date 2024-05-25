@@ -1,46 +1,45 @@
 title:
-  archive: 档案馆
+  archive: 文章归档
   category: 分类
   tag: 标签
+  tagcloud: 标签聚合
   search: 搜索
   not_found: 这个页面走丢了呢…
   status: 查看动态
-categories_list: 分类目录
-read_more: 继续阅读
+  categories_list: 分类列表
+  post: 文章
+  recent_posts: 最新文章
+  toc: 文章目录
 read_full: 阅读全文
-search: 搜索
-search_notice: 有什么想找找看的呢o(*￣▽￣*)ブ
-search_submit: 找一找~
-search_notice_page: 这里是 %s 的搜索引擎~
-search_notice_keys: 搜索多个关键词时请用空格分割，例如「%s」这样；
-search_notice_tags: 您也可以使用这些标签碰碰运气哦~
-tag: 标签
-tagcloud: 标签聚合
-prev: 上一页
-next: 下一页
-comment: 留言
-archive: 文章归档
-archive_count: 当前共有 %d 篇文章 (゜-゜)つロ 干杯~
-page: 第 %d 页
-recent_posts: 最新文章
-newer: 上一篇
-older: 下一篇
-share: 分享
-rss_feed: RSS 订阅
-category: 分类
-category_in: 分类于
-copyright: 版权所有
-author: 作者
-read_count: "%s 次阅读"
-comments_count: "%s 条评论"
-last_modify: 最后编辑：
-last_modify_alert: 本文最后编辑于 %s 前，其中的内容可能需要更新。
-donate: 打赏
+comment: 评论
+list_page_count_message:
+  archive: 当前共有 %d 篇文章 (゜-゜)つロ 干杯~
+  tags: 当前共有 %d 个标签 (゜-゜)つロ 干杯~
+  categories: 当前共有 %d 种分类 (゜-゜)つロ 干杯~
+page_no: 第 %d 页
+post_next: 上一篇
+post_prev: 下一篇
+post_action:
+  share: 分享
+  donate: 打赏
+  read_more: 继续阅读
+post_meta:
+  author: 作者
+  read_count: "%s 次阅读"
+  comments_count: "%s 条评论"
+  category_in: 分类于
+  words: 字
+last_update: 最后编辑：
+last_update_alert: 本文最后编辑于 %s 前，其中的内容可能需要更新。
 no_title: 无标题
-toc: 文章目录
-words: 字
-post: 文章
-tags_count: 当前共有 %d 个标签 (゜-゜)つロ 干杯~
-categories_count: 当前共有 %d 种分类 (゜-゜)つロ 干杯~
-theme_name: 自豪地使用 %s 主题
-site_built_with_love: 站点由 %s 用 <i class="fa fa-heart" style="color:#d43f57"></i> 搭建
+footer_components:
+  copyright: 版权所有
+  theme_name: 自豪地使用 %s 主题
+  site_built_with_love: 站点由 %s 用 <i class="fa fa-heart" style="color:#d43f57"></i> 搭建
+search:
+  submit: 找一找~
+  notice:
+    welcome: 有什么想找找看的呢o(*￣▽￣*)ブ
+    page: 这里是 %s 的搜索引擎~
+    keywords: 搜索多个关键词时请用空格分割，例如「%s」这样；
+    tags: 您也可以使用这些标签碰碰运气哦~

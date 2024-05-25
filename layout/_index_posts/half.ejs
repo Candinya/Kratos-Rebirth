@@ -31,7 +31,7 @@
                 <% if (post.categories.length) { %>
                     <li>
                         <i class="fa fa-folder"></i>
-                        <%- __('category_in') %>
+                        <%- __('post_meta.category_in') %>
                         <%- list_categories(
                             post.categories, {
                                 show_count: false, 
@@ -53,13 +53,13 @@
                 <% if (theme.visit_count.enable_at.includes("index")) { %>
                     <li>
                         <i class="fa fa-eye"></i>
-                        <%- __('read_count', (theme.visit_count.template._shared + theme.visit_count.template.index).replaceAll("$PATH", url_for(post.path))) %>
+                        <%- __('post_meta.read_count', (theme.visit_count.template._shared + theme.visit_count.template.index).replaceAll("$PATH", url_for(post.path))) %>
                     </li>
                 <% } %>
                 <% if (theme.comments.count.enable_at.includes("index") && post.comments) { %>
                     <li>
                         <i class="fa fa-commenting-o"></i>
-                        <%- __('comments_count', (theme.comments.count.template._shared + theme.comments.count.template.index).replaceAll("$PATH", url_for(post.path))) %>
+                        <%- __('post_meta.comments_count', (theme.comments.count.template._shared + theme.comments.count.template.index).replaceAll("$PATH", url_for(post.path))) %>
                     </li>
                 <% } %>
             </ul>
@@ -71,7 +71,7 @@
         <% if (post.excerpt) { %>
             <footer class="kratos-entry-footer clearfix">
                 <div class="post-actions text-center clearfix">
-                    <a class="read-more" href="<%- url_for(post.path) %>#more" title="<%- post.title %>"><%- __('read_more') %> <i class="fa fa-chevron-circle-right"></i></a>
+                    <a class="read-more" href="<%- url_for(post.path) %>#more" title="<%- post.title %>"><%- __('post_action.read_more') %> <i class="fa fa-chevron-circle-right"></i></a>
                 </div>
             </footer>
         <% } %>

@@ -18,17 +18,17 @@
             <% if (theme.pages.donate || theme.pages.share) { %>
                 <div class="post-actions text-center clearfix" id="post-actions">
                 <% if (theme.pages.donate) { %>
-                    <a class="donate" href="javascript:;" onclick="krOpenDonateModal()"><i class="fa fa-bitcoin"></i> <%- __('donate') %></a>
+                    <a class="donate" href="javascript:;" onclick="krOpenDonateModal()"><i class="fa fa-bitcoin"></i> <%- __('post_action.donate') %></a>
                 <% } %>
                 <% if (theme.pages.share) { %>
-                    <a class="share" href="javascript:;" onclick="krOpenShareModal()"><i class="fa fa-share-alt"></i> <%- __('share') %></a>
+                    <a class="share" href="javascript:;" onclick="krOpenShareModal()"><i class="fa fa-share-alt"></i> <%- __('post_action.share') %></a>
                     <%- partial('_utils/share-func', { page: page, theme: theme, config: config }) %>
                 <% } %>
                 </div>
             <% } %>
             <div class="footer-tag clearfix">
                 <div class="pull-date">
-                    <time datetime="<%= date_xml(page.updated) %>" itemprop="dateModified"><%- __('last_modify') %><%- date(page.updated) %></time>
+                    <time datetime="<%= date_xml(page.updated) %>" itemprop="dateModified"><%- __('last_update') %><%- date(page.updated) %></time>
                 </div>
             </div>
         </footer>

@@ -26,12 +26,12 @@
   <article>
       <div class="kratos-hentry kratos-post-inner clearfix">
           <header class="kratos-entry-header">
-            <h1 class="kratos-entry-title text-center" itemprop="name headline"><%- __('archive') %></h1>
+            <h1 class="kratos-entry-title text-center" itemprop="name headline"><%- __('title.archive') %></h1>
           </header>
           <div class="kratos-post-content kr-archive">
             <div id="archives">
               <div class="post-block archive post" style="margin-left: 2em;">
-                <h3 class="archive-page-counter"><%- __('archive_count', () => {
+                <h3 class="archive-page-counter"><%- __('list_page_count_message.archive', () => {
                   return site.posts.filter((post) => { return !!post.title }).length;
                 }) %></h3>
                 <div class="posts-collapse">

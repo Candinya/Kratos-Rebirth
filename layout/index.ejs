@@ -8,7 +8,7 @@
             <i class="fa fa-angle-right"></i>
             <% if (page.tag) { %>
                 <a href="<%- url_for('/tags/') %>">
-                    <%= __('tag') %>
+                    <%= __('title.tag') %>
                 </a>
                 <i class="fa fa-angle-right"></i>
                 <a href="<%- url_for('/tags/' + page.tag) %>">
@@ -17,7 +17,7 @@
             <% } else if (page.category) { %>
 
                 <a href="<%- url_for('/categories/') %>">
-                    <%= __('category') %>
+                    <%= __('title.category') %>
                 </a>
 
                 <%
@@ -45,7 +45,7 @@
             <% if (page.current > 1) { %>
                 <i class="fa fa-angle-right"></i>
                 <span>
-                    <%= __('page', page.current) %>
+                    <%= __('page_no', page.current) %>
                 </a>
             <% } %>
         </div>

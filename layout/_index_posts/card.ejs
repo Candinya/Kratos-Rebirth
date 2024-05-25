@@ -58,13 +58,13 @@
                 <% if (theme.visit_count.enable_at.includes("index")) { %>
                     <a>
                         <i class="fa fa-eye"></i>
-                        <%- __('read_count', (theme.visit_count.template._shared + theme.visit_count.template.index).replaceAll("$PATH", url_for(post.path))) %>
+                        <%- __('post_meta.read_count', (theme.visit_count.template._shared + theme.visit_count.template.index).replaceAll("$PATH", url_for(post.path))) %>
                     </a>
                 <% } %>
                 <% if (theme.comments.count.enable_at.includes("index") && post.comments) { %>
                     <a>
                         <i class="fa fa-commenting-o"></i>
-                        <%- __('comments_count', (theme.comments.count.template._shared + theme.comments.count.template.index).replaceAll("$PATH", url_for(post.path))) %>
+                        <%- __('post_meta.comments_count', (theme.comments.count.template._shared + theme.comments.count.template.index).replaceAll("$PATH", url_for(post.path))) %>
                     </a>
                 <% } %>
             </span>

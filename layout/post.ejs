@@ -12,7 +12,7 @@
             <ul class="kratos-post-meta text-center">
                 <li><time datetime="<%= date_xml(page.date) %>" itemprop="datePublished"><i class="fa fa-calendar"></i> <%- date(page.date, null) %></time></li>
                 <li itemprop="author" itemscope itemtype="https://schema.org/Person">
-                    <i class="fa fa-user"></i> <%- __('author') %> <span itemprop="name"><%- page.author || config.author %></span>
+                    <i class="fa fa-user"></i> <%- __('post_meta.author') %> <span itemprop="name"><%- page.author || config.author %></span>
                 </li>
                 <% if (theme.posts.word_count.enable) { %>
                     <li>
@@ -23,19 +23,19 @@
                         <% } else { %>
                             <% if (theme.posts.word_count.estimate_wavy) { %>~<% } %><%= (total_words / 1000).toFixed(2) %>K
                         <% } %>
-                        <%- __('words') %>
+                        <%- __('post_meta.words') %>
                     </li>
                 <% } %>
                 <% if (theme.visit_count.enable_at.includes("post")) { %>
                     <li>
                         <i class="fa fa-eye"></i>
-                        <%- __('read_count', (theme.visit_count.template._shared + theme.visit_count.template.post).replaceAll("$PATH", url_for(page.path))) %>
+                        <%- __('post_meta.read_count', (theme.visit_count.template._shared + theme.visit_count.template.post).replaceAll("$PATH", url_for(page.path))) %>
                     </li>
                 <% } %>
                 <% if (page.comments && theme.comments.count.enable_at.includes("post")) { %>
                     <li>
                         <i class="fa fa-commenting-o"></i>
-                        <%- __('comments_count', (theme.comments.count.template._shared + theme.comments.count.template.post).replaceAll("$PATH", url_for(page.path))) %>
+                        <%- __('post_meta.comments_count', (theme.comments.count.template._shared + theme.comments.count.template.post).replaceAll("$PATH", url_for(page.path))) %>
                     </li>
                 <% } %>
             </ul>
@@ -44,7 +44,7 @@
             <% if (page.expire === true || page.expire !== false && !!page.title) { %>
             <div id="expire-alert" class="alert alert-warning hidden" role="alert">
                 <div class="icon"><i class="fa fa-history"></i></div>
-                <div class="text"><p><%- __('last_modify_alert', '<time datetime="' + page.updated + '"></time>') %></p></div>
+                <div class="text"><p><%- __('last_update_alert', '<time datetime="' + page.updated + '"></time>') %></p></div>
             </div>
             <% } %>
             <% const tocContent = toc(page.encrypt ? page.origin : page.content, { list_number: !theme.sidebar.mobile_toc?.hide_id }); %>
@@ -65,10 +65,10 @@
             <% if (theme.posts.donate || theme.posts.share) { %>
                 <div class="post-actions text-center clearfix" id="post-actions">
                 <% if (theme.posts.donate) { %>
-                    <a class="donate" href="javascript:;" onclick="krOpenDonateModal()"><i class="fa fa-bitcoin"></i> <%- __('donate') %></a>
+                    <a class="donate" href="javascript:;" onclick="krOpenDonateModal()"><i class="fa fa-bitcoin"></i> <%- __('post_action.donate') %></a>
                 <% } %>
                 <% if (theme.posts.share) { %>
-                    <a class="share" href="javascript:;" onclick="krOpenShareModal()"><i class="fa fa-share-alt"></i> <%- __('share') %></a>
+                    <a class="share" href="javascript:;" onclick="krOpenShareModal()"><i class="fa fa-share-alt"></i> <%- __('post_action.share') %></a>
                     <%- partial('_utils/share-func', { page: page, theme: theme, config: config }) %>
                 <% } %>
                 </div>
@@ -82,7 +82,7 @@
                     }) %>
                 </div>
                 <div class="pull-date">
-                    <time datetime="<%= date_xml(page.updated) %>" itemprop="dateModified"><%- __('last_modify') %><%- date(page.updated) %></time>
+                    <time datetime="<%= date_xml(page.updated) %>" itemprop="dateModified"><%- __('last_update') %><%- date(page.updated) %></time>
                 </div>
             </div>
         </footer>
@@ -91,12 +91,12 @@
         <nav class="navigation post-navigation clearfix" role="navigation">
             <% if (page.next) { %>
             <div class="nav-previous clearfix">
-                <a title=" <% if (page.next.title){ %><%= page.next.title %><% } else { %>(<%- __('no_title') %>)<% } %>" href="<%- config.root + page.next.path %>"><i class="fa fa-angle-left"></i> <%- __('newer') %></a>
+                <a title=" <% if (page.next.title){ %><%= page.next.title %><% } else { %>(<%- __('no_title') %>)<% } %>" href="<%- config.root + page.next.path %>"><i class="fa fa-angle-left"></i> <%- __('post_next') %></a>
             </div>
             <% } %>
             <% if (page.prev) { %>
             <div class="nav-next clearfix">
-                <a title=" <% if (page.prev.title){ %><%= page.prev.title %><% } else { %>(<%- __('no_title') %>)<% } %>" href="<%- config.root + page.prev.path %>"><%- __('older') %> <i class="fa fa-angle-right"></i></a>
+                <a title=" <% if (page.prev.title){ %><%= page.prev.title %><% } else { %>(<%- __('no_title') %>)<% } %>" href="<%- config.root + page.prev.path %>"><%- __('post_prev') %> <i class="fa fa-angle-right"></i></a>
             </div>
             <% } %>
         </nav>
