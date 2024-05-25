@@ -3,7 +3,6 @@
     <%- partial('_partial/breadcrumb') %>
 <% } %>
 
-<% const commentProvider = theme.posts?.comments?.provider ?? theme.posts?.comments; %>
 <% page.posts.each(function(post) { %>
     <% if (post.only) {
         const postShow = 
