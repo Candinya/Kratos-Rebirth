@@ -1,4 +1,4 @@
-name: Release events
+name: Auto Release
 
 on:
   push:
