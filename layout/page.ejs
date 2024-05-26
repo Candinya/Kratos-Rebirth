@@ -15,12 +15,12 @@
             </div>
         <% } %>
         <footer class="kratos-entry-footer clearfix">
-            <% if (theme.pages.donate || theme.pages.share) { %>
+            <% if ((page.donate !== false && theme.pages.donate) || (page.share !== false && theme.pages.share)) { %>
                 <div class="post-actions text-center clearfix" id="post-actions">
-                <% if (theme.pages.donate) { %>
+                <% if (page.donate !== false && theme.pages.donate) { %>
                     <a class="donate" href="javascript:;" onclick="krOpenDonateModal()"><i class="fa fa-bitcoin"></i> <%- __('post_action.donate') %></a>
                 <% } %>
-                <% if (theme.pages.share) { %>
+                <% if (page.share !== false && theme.pages.share) { %>
                     <a class="share" href="javascript:;" onclick="krOpenShareModal()"><i class="fa fa-share-alt"></i> <%- __('post_action.share') %></a>
                     <%- partial('_utils/share-func', { page: page, theme: theme, config: config }) %>
                 <% } %>
