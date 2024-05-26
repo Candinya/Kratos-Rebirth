@@ -5,7 +5,7 @@
     <% if (!needSplit) { %>
         <div class="sticky-area">
     <% } %>
-    <% theme.sidebar.widgets.forEach(function(widget){
+    <% for (const widget of theme.sidebar.widgets) {
         switch (widget) {
             case 'toc':
                 if (page.toc && strip_html(tocContent)) { %>
@@ -21,6 +21,6 @@
                 <%- partial('_widget/' + widget) %>
             <% break;
         }
-    }) %>
+    } %>
     </div>
 </section>
