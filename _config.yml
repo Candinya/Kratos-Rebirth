@@ -159,15 +159,6 @@ copyright_notice:
       来源：$TITLE
       链接：$LINK
 
-# Friends 友链相关内容
-friends:
-  list: []
-  # - name: "链接的名称"
-  #   bio: "链接的描述文本"
-  #   avatar: "链接使用的图标"
-  #   link: "链接的地址"
-  verify: true # 验证每个友链的可访问性，炸了会有提示
-
 # 评论系统
 comments:
   core:

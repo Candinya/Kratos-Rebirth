@@ -809,6 +809,10 @@ table {
 
   > .panel-title {
     color: #fff;
+
+    > i {
+      margin-right: 0.6rem;
+    }
   }
 
   &-danger {
@@ -2380,7 +2384,7 @@ body.scroll-down .kr-tool {
   }
 }
 
-.linkpage {
+.linklist {
   ul {
     color: rgba(255, 255, 255, 0.15);
     padding: 0;
@@ -2396,18 +2400,9 @@ body.scroll-down .kr-tool {
       width: 48%;
       position: relative;
       transition: all 0.3s ease-out;
-      border-radius: 5px;
       line-height: 1.3;
       height: 90px;
       display: block;
-
-      &:hover {
-        background: rgba(230, 244, 250, 0.5);
-
-        a h4 {
-          color: #51aded;
-        }
-      }
 
       a {
         padding: 0 10px 0 90px;
@@ -2415,6 +2410,14 @@ body.scroll-down .kr-tool {
         flex-direction: row;
         width: 100%;
         height: 100%;
+
+        &:hover {
+          background: rgba(230, 244, 250, 0.5);
+
+          h4 {
+            color: #51aded;
+          }
+        }
 
         img {
           width: 60px;
@@ -2457,6 +2460,7 @@ body.scroll-down .kr-tool {
             text-overflow: ellipsis;
             overflow: hidden;
             line-height: 1.4;
+            display: block;
           }
         }
       }
@@ -2673,11 +2677,11 @@ body.scroll-down .kr-tool {
 }
 
 @media (max-width: 460px) {
-  .linkpage ul li {
+  .linklist ul li {
     width: 97%;
   }
 
-  .linkpage ul {
+  .linklist ul {
     padding-left: 5px;
   }
 }
