@@ -64,3 +64,10 @@ jobs:
     # Hexo build demo site
     - name: Hexo build test
       run: npx hexo generate
+
+    - name: Upload built as artifacts
+      uses: actions/upload-artifact@v4
+      with:
+        name: test-node${{ matrix.node-version }}
+        path: public
+        retention-days: 1
