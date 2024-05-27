@@ -4,7 +4,6 @@
 [![构建版本](https://img.shields.io/github/v/release/Candinya/Kratos-Rebirth)](https://github.com/Candinya/Kratos-Rebirth/releases/latest)
 [![npm版本](https://img.shields.io/npm/v/hexo-theme-kratos-rebirth?color=red&logo=npm)](https://www.npmjs.com/package/hexo-theme-kratos-rebirth)
 [![样例站点部署状态](https://github.com/Candinya/Kratos-Rebirth/workflows/Build%20Demo%20Site/badge.svg)](https://kr-demo.candinya.com/)
-[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2FCandinya%2FKratos-Rebirth.svg?type=shield)](https://app.fossa.com/projects/git%2Bgithub.com%2FCandinya%2FKratos-Rebirth?ref=badge_shield)
 
 ## 🍭 关于主题
 
@@ -76,6 +75,5 @@
 
 ## 🎵 开源授权
 
-- GNU General Public License v3
-
-[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2FCandinya%2FKratos-Rebirth.svg?type=large)](https://app.fossa.com/projects/git%2Bgithub.com%2FCandinya%2FKratos-Rebirth?ref=badge_large)
+- 代码： GNU General Public License v3
+- 文档： CC BY-SA 4.0 DEED
