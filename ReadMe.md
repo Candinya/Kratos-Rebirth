@@ -50,10 +50,12 @@
 
 #### 参考
 
-- 主体样式 [Kratos-pjax]
-- 部分样式 [hexo-theme-sagiri]
-- 深色模式 [hexo-theme-suka]
-- 主题结构 [hexo-theme-landscape]
+| 参考的部分 | 项目                   |
+| ---------- | ---------------------- |
+| 主体样式   | [Kratos-pjax]          |
+| 部分样式   | [hexo-theme-sagiri]    |
+| 深色模式   | [hexo-theme-suka]      |
+| 主题结构   | [hexo-theme-landscape] |
 
 [kratos-pjax]: https://github.com/xb2016/kratos-pjax
 [hexo-theme-sagiri]: https://github.com/DIYgod/hexo-theme-sagiri
@@ -62,10 +64,12 @@
 
 #### 依赖组件
 
-- 进度条 [NProgress]
-- 二维码生成 [QR Code Styling]
-- 图标库 [Font Awesome]
-- 图片浏览器 [Viewer.js]
+| 功能       | 项目              |
+| ---------- | ----------------- |
+| 进度条     | [NProgress]       |
+| 二维码生成 | [QR Code Styling] |
+| 图标库     | [Font Awesome]    |
+| 图片浏览器 | [Viewer.js]       |
 
 [NProgress]: https://github.com/rstacruz/nprogress
 [QR Code Styling]: https://github.com/kozakdenys/qr-code-styling
@@ -74,9 +78,11 @@
 
 ### 其他
 
-- CDN 服务 [CloudFlare]
-- 静态页面托管服务 [GitHub Pages]
-- 构建包托管 [npmjs]
+| 服务             | 提供商         |
+| ---------------- | -------------- |
+| CDN 服务         | [CloudFlare]   |
+| 静态页面托管服务 | [GitHub Pages] |
+| 构建包托管       | [npmjs]        |
 
 [CloudFlare]: https://www.cloudflare.com
 [GitHub Pages]: https://github.io
@@ -84,9 +90,10 @@
 
 ## 🎵 开源授权
 
-- 代码： [GNU General Public License v3]
-- 文档： [CC BY-SA 4.0 DEED]
+| 组件 | 授权                            |
+| ---- | ------------------------------- |
+| 代码 | [GNU General Public License v3] |
+| 文档 | [CC BY-SA 4.0 DEED]             |
 
 [GNU General Public License v3]: https://www.gnu.org/licenses/gpl-3.0.zh-cn.html
 [CC BY-SA 4.0 DEED]: https://creativecommons.org/licenses/by-sa/4.0/deed.zh-hans
-
