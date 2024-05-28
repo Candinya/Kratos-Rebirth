@@ -12,13 +12,13 @@ vendors:
     viewerjs:
       version: "1.11.6"
 
-# 检查更新
+# 启用更新检查
 check_update: true
 
 # 规范重复内容 URL ( https://developer.mozilla.org/zh-CN/docs/Web/HTML/Attributes/rel#canonical )
 canonical: true
 
-# 启用页面局部更新
+# 启用页面局部更新功能
 pjax: true
 
 # 搜索
@@ -30,7 +30,7 @@ search:
   includes: []
   # - post
   # - page
-  content: true # Include post | page content
+  content: true # 包含文章和页面的内容
 
 ################## 样式配置 ##################
 
@@ -62,7 +62,7 @@ nav:
 
 # 文章的列表配置（首页/分页/标签页）
 index:
-  style: "card" # "half"
+  style: "card" # card / half
 
 # Footer 页脚配置
 footer:
