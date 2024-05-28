@@ -20,9 +20,13 @@ canonical: true
 
 # 搜索
 search:
-  enable: true
-  index_path: search-index.json
-  field: post # page | post | all. Default post
+  provider: "local" # local / external / none
+  path:
+    page: search
+    index_file: search-index.json
+  includes: []
+  # - post
+  # - page
   content: true # Include post | page content
 
 ################## 样式配置 ##################
@@ -72,7 +76,7 @@ footer:
       homepage: ""
     additional: [] # 托管信息等
 
-# Post 文章页配置
+# Post 文章配置
 posts:
   default_cover: "/images/default.png" # 没有头图的文章使用的默认图片
   donate: true

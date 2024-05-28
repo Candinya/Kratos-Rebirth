@@ -51,9 +51,9 @@
         </div>
         <div class="kr-tool text-center">
             <div class="tool">
-                <% if (theme.search?.enable) { %>
+                <% if (theme.search.provider !== "none") { %>
                     <div class="box search-box">
-                        <a href="<%- config.root %>search/">
+                        <a href="<%- url_for(theme.search.path.page) %>">
                             <span class="fa fa-search"></span>
                         </a>
                     </div>

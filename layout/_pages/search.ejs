@@ -3,7 +3,7 @@
     transition: 0.3s;
   }
 
-  #result-posts {
+  #kr-search-results {
     margin-top: 20px;
 
     .kr-search-result {
@@ -86,7 +86,7 @@
     <%- __('search.notice.page', config.title) %>
 </div>
 
-<div id="result-posts">
+<div id="kr-search-results">
     <div class="kratos-hentry kratos-post-inner clearfix">
         <div class="kratos-post-content kr-search-result">
             <p><%- __('search.notice.keywords', strip_html(list_tags({
@@ -112,5 +112,38 @@
     </div>
 </div>
 
-<script>window.searchDataFile = "<%- config.root + (theme.search.index_path || 'search.json') %>";</script>
-<%- js_theme_cdn('js/kr-search.min.js', {defer: true}) %>
+<template id="kr-search-result-template">
+  <article class="kratos-hentry clearfix">
+    <div class="kratos-entry-border-new clearfix">
+        <div class="kratos-post-inner-new kr-search-result">
+            <header class="kratos-entry-header-new">
+                $CATEGORY
+                <h2 class="kratos-entry-title-new"><a href="$LINK">$TITLE</a></h2>
+            </header>
+            <div class="kratos-entry-content-new">
+                <p>...$CONTENT...</p>
+            </div>
+        </div>
+        <div class="kratos-post-meta-new">
+            <span class="pull-left">
+                <a><i class="fa fa-calendar"></i></a><a>$DATE</a>
+                <a><i class="fa fa-tags"></i></a>
+                $TAGS
+            </span>
+        </div>
+    </div>
+</article>
+</template>
+
+<template id="kr-search-tag-template">
+  <a class="tag-link" href="$LINK" rel="tag">$TAG</a>
+</template>
+
+<template id="kr-search-category-template">
+  <a class="label-link" href="$LINK">$CATEGORY</a>
+</template>
+
+<% if (theme.search.provider === "local") { %>
+  <script>window.searchDataFile = "<%- config.root + (theme.search.path.index_file || 'search-index.json') %>";</script>
+  <%- js_theme_cdn('js/kr-search.min.js', {defer: true}) %>
+<% } %>
