@@ -48,45 +48,7 @@
 
 ### 项目
 
-#### 参考
-
-| 参考的部分 | 项目                   |
-| ---------- | ---------------------- |
-| 主体样式   | [Kratos-pjax]          |
-| 部分样式   | [hexo-theme-sagiri]    |
-| 深色模式   | [hexo-theme-suka]      |
-| 主题结构   | [hexo-theme-landscape] |
-
-[kratos-pjax]: https://github.com/xb2016/kratos-pjax
-[hexo-theme-sagiri]: https://github.com/DIYgod/hexo-theme-sagiri
-[hexo-theme-suka]: https://github.com/SukkaW/hexo-theme-suka
-[hexo-theme-landscape]: https://github.com/hexojs/hexo-theme-landscape
-
-#### 依赖组件
-
-| 功能       | 项目              |
-| ---------- | ----------------- |
-| 进度条     | [NProgress]       |
-| 二维码生成 | [QR Code Styling] |
-| 图标库     | [Font Awesome]    |
-| 图片浏览器 | [Viewer.js]       |
-
-[NProgress]: https://github.com/rstacruz/nprogress
-[QR Code Styling]: https://github.com/kozakdenys/qr-code-styling
-[Font Awesome]: https://github.com/FortAwesome/Font-Awesome/tree/4.x
-[Viewer.js]: https://github.com/fengyuanchen/viewerjs
-
-### 其他
-
-| 服务             | 提供商         |
-| ---------------- | -------------- |
-| CDN 服务         | [CloudFlare]   |
-| 静态页面托管服务 | [GitHub Pages] |
-| 构建包托管       | [npmjs]        |
-
-[CloudFlare]: https://www.cloudflare.com
-[GitHub Pages]: https://github.io
-[npmjs]: https://www.npmjs.com
+（TODO：写到 Wiki 里（从编辑历史里找这块对应的内容）
 
 ## 🎵 开源授权
 
