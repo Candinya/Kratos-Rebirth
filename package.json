@@ -1,7 +1,7 @@
 {
   "name": "hexo-theme-kratos-rebirth",
   "version": "2.2.0",
-  "description": "A transplanted theme for Hexo, with many new features built with love.",
+  "description": "A lovely yet modern theme for Hexo.",
   "scripts": {
     "build": "node ./devtools/build-once.js",
     "watch": "node ./devtools/build-watch.js",
