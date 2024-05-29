@@ -72,11 +72,11 @@
 </div>
 
 <% if (theme.donate.enable) { %>
-    <%- partial('_utils/donate', { page: page, theme: theme }) %>
+    <%- partial('_modals/donate', { page: page, theme: theme }) %>
 <% } %>
 
 <% if (theme.share.enable) { %>
-    <%- partial('_utils/share', { page: page, theme: theme }) %>
+    <%- partial('_modals/share', { page: page, theme: theme }) %>
 <% } %>
 
 <!-- 额外的追加注入项 -->
