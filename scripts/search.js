@@ -53,7 +53,7 @@ hexo.once("generateBefore", () => {
       config.path.index_file = "search-index.json";
     }
 
-    hexo.extend.generator.register("searchIndex", function (locals) {
+    hexo.extend.generator.register("file-search-index", function (locals) {
       const url_for = hexo.extend.helper.get("url_for").bind(this);
 
       const searchIncludes = config.includes;
@@ -84,7 +84,7 @@ hexo.once("generateBefore", () => {
 
   if (hexo.theme.config.search.provider !== "none") {
     // 生成搜索页面
-    hexo.extend.generator.register("searchPage", (locals) => ({
+    hexo.extend.generator.register("page-search", (locals) => ({
       path: `${hexo.theme.config.search.path.page}/index.html`,
       data: {
         title_i18n: "title.search",

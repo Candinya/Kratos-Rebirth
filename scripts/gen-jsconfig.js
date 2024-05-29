@@ -1,10 +1,11 @@
 // 生成运行时调用的配置专用JS文件
 
 hexo.once("generateBefore", () => {
-  hexo.extend.generator.register("jsconfig", () => {
-    const themeConfig = hexo.theme.config;
+  const themeConfig = hexo.theme.config;
 
-    const jsCfg = {
+  hexo.extend.generator.register("file-jsconfig", () => ({
+    path: "config.json",
+    data: JSON.stringify({
       uptime: {
         since: themeConfig.footer.components.uptime.since,
       },
@@ -28,11 +29,6 @@ hexo.once("generateBefore", () => {
       viewerjs: {
         enable: themeConfig.viewerjs,
       },
-    };
-
-    return {
-      path: "config.json",
-      data: JSON.stringify(jsCfg),
-    };
-  });
+    }),
+  }));
 });
