@@ -22,7 +22,7 @@
   }
   %>
   <title><% if (title) { %><%= title %> | <% } %><%= config.title %></title>
-  <%- kratos_canonical() %>
+  <link rel="canonical" href="<%- full_url_for(page.path) %>">
   <meta name="author" content="<%- page.author || config.author  %>" />
   <meta http-equiv="Cache-Control" content="no-transform" />
   <meta http-equiv="Cache-Control" content="no-siteapp" />

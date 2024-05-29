@@ -15,9 +15,6 @@ vendors:
 # 启用更新检查
 check_update: true
 
-# 规范重复内容 URL ( https://developer.mozilla.org/zh-CN/docs/Web/HTML/Attributes/rel#canonical )
-canonical: true
-
 # 启用页面局部更新功能
 pjax: true
 
