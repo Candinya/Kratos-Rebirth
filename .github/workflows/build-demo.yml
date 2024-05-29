@@ -38,7 +38,7 @@ jobs:
     # Clone Demo site configurations & assets into tmp
     - uses: actions/checkout@v4
       with:
-        repository: 'kratos-rebirth/demo-site'
+        repository: 'kratos-rebirth/demo-site-v3'
         path: '/tmp/demo-site'
 
     # Build fresh theme files
