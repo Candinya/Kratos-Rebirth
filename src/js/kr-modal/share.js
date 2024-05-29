@@ -1,3 +1,21 @@
+function krOpenShareModal() {
+  document.getElementById("kr-share-modal").classList.add("show");
+
+  // 需要延迟一下，避免动画被优化掉
+  setTimeout(() => {
+    document.getElementById("kr-share-modal").classList.add("active");
+  }, 1);
+}
+
+function krCloseShareModal() {
+  document.getElementById("kr-share-modal").classList.remove("active");
+
+  // 给动画留时间
+  setTimeout(() => {
+    document.getElementById("kr-share-modal").classList.remove("show");
+  }, 300);
+}
+
 function krShareModalOpenPlatform(link) {
   const url = document
     .querySelector(`meta[property="og:url"]`)
@@ -57,21 +75,3 @@ function initQRCode() {
 initQRCode();
 
 window.addEventListener("pjax:complete", initQRCode);
-
-function krOpenShareModal() {
-  document.getElementById("kr-share-modal").classList.add("show");
-
-  // 需要延迟一下，避免动画被优化掉
-  setTimeout(() => {
-    document.getElementById("kr-share-modal").classList.add("active");
-  }, 1);
-}
-
-function krCloseShareModal() {
-  document.getElementById("kr-share-modal").classList.remove("active");
-
-  // 给动画留时间
-  setTimeout(() => {
-    document.getElementById("kr-share-modal").classList.remove("show");
-  }, 300);
-}
