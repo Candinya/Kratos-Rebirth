@@ -21,6 +21,9 @@ canonical: true
 # 启用页面局部更新功能
 pjax: true
 
+# 启用文章内图片点击放大功能
+viewerjs: true
+
 # 搜索
 search:
   provider: "local" # local / external / none

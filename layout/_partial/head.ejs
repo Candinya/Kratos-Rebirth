@@ -56,7 +56,7 @@
   <%- js_theme_cdn('js/kr-theme.min.js') %>
   <%- css_npm_cdn('font-awesome', 'css/font-awesome.min.css', {id:"fontawe-css", media:"all"}) %>
   <%- css_npm_cdn('nprogress', 'nprogress.css', {id:"nprogress-css", media:"all"}) %>
-  <% if (page.type !== '404'){ %>
+  <% if (page.type !== '404' && theme.viewerjs) { %>
     <%- css_npm_cdn('viewerjs', 'dist/viewer.min.css', {defer: true}) %>
   <% } %>
   <!-- 不得不预先加载的一些JS文件 -->

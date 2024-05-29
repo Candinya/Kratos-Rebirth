@@ -113,10 +113,12 @@ window.copyCode =
       });
   };
 
-  const viewerJsInit = () => {
-    const postEntry = document.getElementsByClassName("kratos-post-content");
-    if (postEntry.length > 0) {
-      const gallery = new Viewer(postEntry[0]);
+  const viewerJsInit = (kr) => {
+    if (kr.enable) {
+      const postEntry = document.getElementsByClassName("kratos-post-content");
+      if (postEntry.length > 0) {
+        new Viewer(postEntry[0]);
+      }
     }
   };
 
@@ -641,7 +643,6 @@ window.copyCode =
     tocWidgetAnimInit();
     saveTitle();
     codeCopyInit();
-    viewerJsInit();
     collapseBoxControl();
     commentsLazyLoad();
   };
@@ -649,6 +650,7 @@ window.copyCode =
   const initPerPageWithConfig = (kr) => {
     initCopyrightNotice(kr.copyrightNoticeForCopy);
     checkExpireNotify(kr.expireNotify);
+    viewerJsInit(kr.viewerjs);
   };
 
   const themeInit = () => {

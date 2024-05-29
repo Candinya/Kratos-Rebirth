@@ -7,7 +7,11 @@
 </script>
 
 <%- js_npm_cdn('nprogress', 'nprogress.js', {defer: true}) %>
-<%- js_npm_cdn('viewerjs', 'dist/viewer.min.js', {defer: true}) %>
+
+<% if (page.type !== '404' && theme.viewerjs) { %>
+  <%- js_npm_cdn('viewerjs', 'dist/viewer.min.js', {defer: true}) %>
+<% } %>
+
 <%- js_theme_cdn('js/kr-core.min.js', {defer: true}) %>
 
 <% if (theme.pjax) { %>

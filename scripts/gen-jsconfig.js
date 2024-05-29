@@ -25,6 +25,9 @@ hexo.once("generateBefore", () => {
       expireNotify: {
         expireAfter: themeConfig.posts.expire_after,
       },
+      viewerjs: {
+        enable: themeConfig.viewerjs,
+      },
     };
 
     return {
