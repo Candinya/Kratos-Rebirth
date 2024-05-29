@@ -1,9 +1,9 @@
 <article itemscope itemtype="https://schema.org/Article">
-    <div class="kratos-hentry kratos-post-inner clearfix index-post">
+    <div class="kratos-hentry kratos-page-inner clearfix index-post">
         <% if (post.cover) { %>
-        <div class="kratos-entry-thumb-new">
+        <div class="kratos-entry-thumb">
             <a href="<%- url_for(post.path) %>">
-                <img class="kratos-entry-thumb-new-img" src="<%- 
+                <img class="kratos-entry-thumb-img" src="<%- 
                     post.cover ? (
                         /^(#|\/\/|http(s)?:)/.test(post.cover) ? 
                         post.cover : 
@@ -17,12 +17,12 @@
             </a>
         </div>
         <% } %>
-        <header class="kratos-entry-header">
-            <h1 class="text-center"><a class="kratos-entry-title" href="<%- url_for(post.path) %>" itemprop="mainEntityOfPage"><span itemprop="name headline"><%- post.title %></span></a></h1>
+        <header class="kratos-page-header">
+            <h1 class="text-center"><a class="kratos-page-title" href="<%- url_for(post.path) %>" itemprop="mainEntityOfPage"><span itemprop="name headline"><%- post.title %></span></a></h1>
             <% if (post.subtitle) { %>
                 <h2 class="text-center"><%- post.subtitle %></h2>
             <% } %>
-            <ul class="kratos-post-meta text-center">
+            <ul class="kratos-page-meta text-center">
                 <li>
                 <time datetime="<%= date_xml(post.date) %>" itemprop="datePublished">
                     <i class="fa fa-calendar"></i> <%- date(post.date, null) %>
@@ -65,7 +65,7 @@
             </ul>
         </header>
         <hr />
-        <div class="kratos-post-content kr-index" itemprop="articleBody">
+        <div class="kratos-page-content kr-index" itemprop="articleBody">
             <%- post.excerpt || post.content %>
         </div>
         <% if (post.excerpt) { %>

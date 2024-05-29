@@ -1,4 +1,4 @@
-<article class="kratos-hentry kratos-entry-border-new clearfix" itemscope itemtype="https://schema.org/Article">
+<article class="kratos-hentry kratos-entry-border clearfix" itemscope itemtype="https://schema.org/Article">
     <div class="kratos-status">
         <% if (post.link) { %>
             <i class="fa fa-link"></i>
@@ -16,7 +16,7 @@
         </div>
     </div>
     <% if (!post.link || post.comments) { %>
-        <footer class="kratos-post-meta-new">
+        <footer class="kratos-entry-post-meta">
             <span class="pull-left">
                 <time datetime="<%= date_xml(post.date) %>" itemprop="datePublished">
                     <a><i class="fa fa-calendar"></i> <%- date(post.date, null) %></a>

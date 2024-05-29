@@ -11,7 +11,7 @@
       height: auto;
       width: 90%;
 
-      .kratos-entry-content-new {
+      .kratos-entry-content {
         height: auto;
       }
     }
@@ -70,11 +70,11 @@
   }
 </style>
 
-<div class="kratos-hentry kratos-post-inner clearfix">
-    <header class="kratos-entry-header">
-        <h1 class="kratos-entry-title text-center" itemprop="name headline"><%- __('title.search') %></h1>
+<div class="kratos-hentry kratos-page-inner clearfix">
+    <header class="kratos-page-header">
+        <h1 class="kratos-page-title text-center" itemprop="name headline"><%- __('title.search') %></h1>
     </header>
-    <div class="kratos-post-content kr-search-input">
+    <div class="kratos-page-content kr-search-input">
         <form class="input-group" onsubmit="return inpSearch();">
             <input class="form-input input-lg" id="search-input" maxlength="80" name="s" placeholder="<%- __('search.notice.welcome') %>" required type="search">
             <button class="btn btn-primary" type="submit"><%- __('search.submit') %></button>
@@ -87,8 +87,8 @@
 </div>
 
 <div id="kr-search-results">
-    <div class="kratos-hentry kratos-post-inner clearfix">
-        <div class="kratos-post-content kr-search-result">
+    <div class="kratos-hentry kratos-page-inner clearfix">
+        <div class="kratos-page-content kr-search-result">
             <p><%- __('search.notice.keywords', strip_html(list_tags({
                 orderby: 'date',
                 show_count: false,
@@ -114,17 +114,17 @@
 
 <template id="kr-search-result-template">
   <article class="kratos-hentry clearfix">
-    <div class="kratos-entry-border-new clearfix">
-        <div class="kratos-post-inner-new kr-search-result">
-            <header class="kratos-entry-header-new">
+    <div class="kratos-entry-border clearfix">
+        <div class="kratos-entry-post-inner kr-search-result">
+            <header class="kratos-entry-header">
                 $CATEGORY
-                <h2 class="kratos-entry-title-new"><a href="$LINK">$TITLE</a></h2>
+                <h2 class="kratos-entry-title"><a href="$LINK">$TITLE</a></h2>
             </header>
-            <div class="kratos-entry-content-new">
+            <div class="kratos-entry-content">
                 <p>...$CONTENT...</p>
             </div>
         </div>
-        <div class="kratos-post-meta-new">
+        <div class="kratos-entry-post-meta">
             <span class="pull-left">
                 <a><i class="fa fa-calendar"></i></a><a>$DATE</a>
                 <a><i class="fa fa-tags"></i></a>

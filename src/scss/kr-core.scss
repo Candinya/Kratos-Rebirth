@@ -282,7 +282,7 @@ h6 {
   }
 }
 
-.kratos-post-content {
+.kratos-page-content {
   &.kr-post,
   &.kr-page {
     h1 {
@@ -875,7 +875,7 @@ table {
   }
 }
 
-.kratos-post-content div.collapse-box-control {
+.kratos-page-content div.collapse-box-control {
   margin-top: 20px;
 }
 
@@ -1363,7 +1363,7 @@ body.scroll-down.nav-up #kratos-desktop-topnav {
   }
 }
 
-ul.kratos-post-meta {
+ul.kratos-page-meta {
   padding: 0;
 
   > li {
@@ -1429,10 +1429,10 @@ ul.kratos-post-meta {
   border-radius: 0;
   transition: all 0.3s ease-in-out;
 
-  &.kratos-post-inner {
+  &.kratos-page-inner {
     margin-bottom: 0;
 
-    .kratos-post-content {
+    .kratos-page-content {
       &.kr-post,
       &.kr-page {
         h1,
@@ -1474,7 +1474,7 @@ ul.kratos-post-meta {
   }
 }
 
-.container article .kratos-post-nav {
+.container article .kratos-page-nav {
   padding: 10px 20px 10px 20px;
   color: #5a5a5a;
   a {
@@ -1482,7 +1482,7 @@ ul.kratos-post-meta {
   }
 }
 
-.kratos-post-header-title {
+.kratos-page-header-title {
   color: #1c1c1c;
   -webkit-transition: 0.3s;
   transition: 0.3s;
@@ -1492,7 +1492,7 @@ ul.kratos-post-meta {
   margin: 20px;
 }
 
-.kratos-post-inner {
+.kratos-page-inner {
   padding: 25px 10px 18px 10px;
 
   div:last-child.kratos-copyright {
@@ -1520,7 +1520,7 @@ ul.kratos-post-meta {
   }
 }
 
-.kratos-post-inner-new {
+.kratos-entry-post-inner {
   margin-left: 255px;
   height: 160px;
   padding: 21px 20px 0 3px;
@@ -1567,7 +1567,7 @@ ul.kratos-post-meta {
   width: 100%;
 }
 
-.kratos-post-content {
+.kratos-page-content {
   word-break: break-word;
   word-wrap: break-word;
   margin: 10px;
@@ -1623,11 +1623,11 @@ ul.kratos-post-meta {
   }
 }
 
-.kratos-entry-header {
+.kratos-page-header {
   margin-bottom: 15px;
 }
 
-.kratos-entry-title {
+.kratos-page-title {
   font-size: 30px;
   margin: 15px -10px;
   padding: 12px 20px;
@@ -1644,23 +1644,23 @@ ul.kratos-post-meta {
       color: #618eba;
     }
   }
+}
 
-  &-new {
-    display: inline;
-    margin: 0;
-    font-size: 21px;
+.kratos-entry-title {
+  display: inline;
+  margin: 0;
+  font-size: 21px;
 
-    strong {
-      margin-left: 0.5em;
-    }
+  strong {
+    margin-left: 0.5em;
+  }
 
-    sub {
-      display: inline-block;
-    }
+  sub {
+    display: inline-block;
   }
 }
 
-.kratos-entry-thumb-new {
+.kratos-entry-thumb {
   position: relative;
   float: left;
   width: 240px;
@@ -1678,10 +1678,10 @@ ul.kratos-post-meta {
   }
 }
 
-.kratos-entry-border-new {
+.kratos-entry-border {
   position: relative;
 
-  .kratos-post-meta-new {
+  .kratos-entry-post-meta {
     padding: 3px 20px;
     border-top: 1px solid #f3f3f3;
     line-height: 27px;
@@ -1738,29 +1738,23 @@ ul.kratos-post-meta {
   }
 }
 
-.kratos-entry-header {
+.kratos-page-header {
   margin-bottom: 0;
 
-  .kratos-post-meta a {
+  .kratos-page-meta a {
     color: #777676;
-  }
-
-  &-new {
-    margin: 3px 0 6px;
   }
 }
 
+.kratos-entry-header {
+  margin: 3px 0 6px;
+}
+
 .kratos-entry-content {
+  text-overflow: ellipsis;
+
   p {
-    font-size: 16px;
-  }
-
-  &-new {
-    text-overflow: ellipsis;
-
-    p {
-      font-size: 15px;
-    }
+    font-size: 15px;
   }
 }
 
@@ -2477,19 +2471,19 @@ body.scroll-down .kr-tool {
   }
 }
 
-.kratos-entry-content-new p {
+.kratos-entry-content p {
   margin: 0;
   transition: color 0.3s ease-in-out;
 }
 
 @media (max-width: 1200px) {
-  .kratos-entry-content-new {
+  .kratos-entry-content {
     height: 80px;
   }
 }
 
 @media (max-width: 992px) {
-  .kratos-post-meta span {
+  .kratos-page-meta span {
     font-size: 12px;
     i:not(:first-child) {
       margin-left: 10px;
@@ -2498,13 +2492,13 @@ body.scroll-down .kr-tool {
 }
 
 @media (max-width: 768px) {
-  .kratos-entry-content-new {
+  .kratos-entry-content {
     height: 100%;
   }
 }
 
 @media (min-width: 768px) {
-  .kratos-entry-content-new p {
+  .kratos-entry-content p {
     overflow: hidden;
     text-overflow: ellipsis;
     display: -webkit-box;
@@ -2576,7 +2570,7 @@ body.scroll-down .kr-tool {
     padding: 2em 0 1em;
   }
 
-  .kratos-post-meta span {
+  .kratos-page-meta span {
     font-size: 9pt;
 
     i:not(:first-child) {
@@ -2585,19 +2579,19 @@ body.scroll-down .kr-tool {
   }
 
   #kratos-menu-wrap,
-  .kratos-post-inner-new header .label {
+  .kratos-entry-post-inner header .label {
     display: none;
   }
 
-  .kratos-post-content embed {
+  .kratos-page-content embed {
     height: auto;
   }
 
-  h1.kratos-entry-title.text-center {
+  h1.kratos-page-title.text-center {
     font-size: 36px !important;
   }
 
-  .kratos-entry-thumb-new {
+  .kratos-entry-thumb {
     position: relative;
     float: none;
     width: auto;
@@ -2610,17 +2604,17 @@ body.scroll-down .kr-tool {
     }
   }
 
-  .kratos-post-inner-new {
+  .kratos-entry-post-inner {
     margin-left: 0;
     height: auto;
     padding: 0 20px;
   }
 
-  .kratos-post-meta-new .read-more {
+  .kratos-entry-post-meta .read-more {
     margin-right: 8px;
   }
 
-  .kratos-entry-content-new p {
+  .kratos-entry-content p {
     height: auto;
     margin-bottom: 20px;
   }
@@ -2658,7 +2652,7 @@ body.scroll-down .kr-tool {
     padding: 2px 4px;
   }
 
-  .kratos-post-meta .hd,
+  .kratos-page-meta .hd,
   .pull-date,
   .spig,
   .useragent .bversion {
@@ -2813,7 +2807,7 @@ body.scroll-down .kr-tool {
 
   .col-md-8,
   #main,
-  .kratos-post-inner {
+  .kratos-page-inner {
     padding: 0;
   }
 
@@ -2857,13 +2851,13 @@ td.code {
     padding: 0;
   }
 
-  .kratos-entry-title {
+  .kratos-page-title {
     font-size: 36px;
     position: relative;
     display: block;
   }
 
-  .kratos-entry-header .kratos-entry-title::after {
+  .kratos-page-header .kratos-page-title::after {
     content: "";
     position: absolute;
     width: 100%;
@@ -2882,7 +2876,7 @@ td.code {
     transition-delay: 0s;
   }
 
-  .kratos-entry-header .kratos-entry-title:hover::after {
+  .kratos-page-header .kratos-page-title:hover::after {
     visibility: visible;
     -webkit-transform: scaleX(1);
     -moz-transform: scaleX(1);
@@ -2891,7 +2885,7 @@ td.code {
     transform: scaleX(1);
   }
 
-  .kratos-entry-thumb-new {
+  .kratos-entry-thumb {
     position: relative;
     float: none;
     width: auto;

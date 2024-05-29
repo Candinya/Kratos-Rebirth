@@ -1,13 +1,13 @@
 <article class="kratos-hentry clearfix" itemscope itemtype="https://schema.org/Article">
-    <div class="kratos-entry-border-new clearfix">
+    <div class="kratos-entry-border clearfix">
         <% if (post.sticky || post.top) { %>
             <div class="pin-top wrapper">
                 <div class="pin-top inner"></div>
             </div>
         <% } %>
-        <div class="kratos-entry-thumb-new">
+        <div class="kratos-entry-thumb">
             <a href="<%- url_for(post.path) %>">
-                <img class="kratos-entry-thumb-new-img" src="<%- 
+                <img class="kratos-entry-thumb-img" src="<%- 
                     post.cover ? (
                         /^(#|\/\/|http(s)?:)/.test(post.cover) ? 
                         post.cover : 
@@ -20,17 +20,17 @@
                 %>" alt="<%- url_for(post.title) %>">
             </a>
         </div>
-        <div class="kratos-post-inner-new">
-            <header class="kratos-entry-header-new">
+        <div class="kratos-entry-post-inner">
+            <header class="kratos-entry-header">
                     <%- list_categories(post.categories, {
                         show_count: false,
                         class: 'label',
                         style: 'none',
                         separator: ' '
                     }) %>
-                <h2 class="kratos-entry-title-new"><a href="<%- url_for(post.path) %>" itemprop="mainEntityOfPage"><span itemprop="name headline"><%- post.title %><% if (post.subtitle) { %><sub><%- post.subtitle %></sub><% } %></span></a>
+                <h2 class="kratos-entry-title"><a href="<%- url_for(post.path) %>" itemprop="mainEntityOfPage"><span itemprop="name headline"><%- post.title %><% if (post.subtitle) { %><sub><%- post.subtitle %></sub><% } %></span></a>
             </header>
-            <div class="kratos-entry-content-new">
+            <div class="kratos-entry-content">
                 <p itemProp="description">
                     <% if (post.excerpt) { %>
                         <%- strip_html(post.excerpt) %>
@@ -40,7 +40,7 @@
                 </p>
             </div>
         </div>
-        <footer class="kratos-post-meta-new">
+        <footer class="kratos-entry-post-meta">
             <span class="pull-left">
                 <time datetime="<%= date_xml(post.date) %>" itemprop="datePublished">
                     <a><i class="fa fa-calendar"></i> <%- date(post.date, null) %></a>

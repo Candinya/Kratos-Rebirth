@@ -115,7 +115,7 @@ window.copyCode =
 
   const viewerJsInit = (kr) => {
     if (kr.enable) {
-      const postEntry = document.getElementsByClassName("kratos-post-content");
+      const postEntry = document.getElementsByClassName("kratos-page-content");
       if (postEntry.length > 0) {
         new Viewer(postEntry[0]);
       }
@@ -563,7 +563,7 @@ window.copyCode =
       // 阅读进度
       const readProgBar =
         document.getElementsByClassName("toc-progress-bar")[0];
-      const articleElem = document.querySelector(".kratos-post-content");
+      const articleElem = document.querySelector(".kratos-page-content");
       const setPercent = () => {
         // 参考 Butterfly 主题相关实现
         // https://github.com/jerryc127/hexo-theme-butterfly/blob/c1ac4a5e167f7bb26287fc9ca32a182cfc293231/source/js/main.js#L337-L346

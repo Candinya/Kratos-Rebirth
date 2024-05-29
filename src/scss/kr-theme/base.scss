@@ -60,14 +60,14 @@ table {
   background-color: $tag_background;
 }
 
-.kratos-entry-border-new {
+.kratos-entry-border {
   a,
   i,
   span.page-no {
     color: $text;
   }
 
-  .kratos-post-meta-new {
+  .kratos-entry-post-meta {
     border-top: 1px solid $border;
     background: $tag_background;
   }
@@ -87,14 +87,14 @@ table {
   }
 }
 
-.kratos-entry-header {
+.kratos-page-header {
   span,
   a {
     color: $text;
   }
 }
 
-ul.kratos-post-meta {
+ul.kratos-page-meta {
   color: $text_alt;
   span,
   a {
@@ -102,7 +102,7 @@ ul.kratos-post-meta {
   }
 }
 
-.kratos-post-content {
+.kratos-page-content {
   p,
   table td,
   dl {
@@ -110,7 +110,7 @@ ul.kratos-post-meta {
   }
 }
 
-.kratos-post-inner {
+.kratos-page-inner {
   .kratos-copyright {
     background-color: $info_background;
 
@@ -213,7 +213,7 @@ ul.kratos-post-meta {
   }
 }
 
-.kratos-post-header-title {
+.kratos-page-header-title {
   color: $text;
 }
 
@@ -225,12 +225,12 @@ ul.kratos-post-meta {
   }
 }
 
-.kratos-entry-header .kratos-entry-title {
+.kratos-page-header .kratos-page-title {
   color: $text;
   background-color: $info_background;
 }
 
-.index-post .kratos-entry-header .kratos-entry-title::after {
+.index-post .kratos-page-header .kratos-page-title::after {
   background-color: $text;
 }
 
@@ -244,9 +244,9 @@ ul.kratos-post-meta {
 }
 
 a:hover,
-.kratos-entry-border-new a:hover,
-.kratos-entry-header .kratos-post-meta a:hover,
-.kratos-post-inner .kratos-copyright a:hover,
+.kratos-entry-border a:hover,
+.kratos-page-header .kratos-page-meta a:hover,
+.kratos-page-inner .kratos-copyright a:hover,
 #footer li a:hover,
 #archives .posts-collapse .post-title a:hover {
   color: $link_hover;
