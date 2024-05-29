@@ -6,7 +6,9 @@
     window.kr.siteRoot = "<%- url_for('/') %>";
 </script>
 
-<%- js_npm_cdn('nprogress', 'nprogress.js', {defer: true}) %>
+<% if (theme.pjax || theme.search.provider === "local") { %>
+  <%- js_npm_cdn('nprogress', 'nprogress.js', {defer: true}) %>
+<% } %>
 
 <% if (page.type !== '404' && theme.viewerjs) { %>
   <%- js_npm_cdn('viewerjs', 'dist/viewer.min.js', {defer: true}) %>
