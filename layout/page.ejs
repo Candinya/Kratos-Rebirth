@@ -22,7 +22,6 @@
                 <% } %>
                 <% if (page.share !== false && theme.pages.share) { %>
                     <a class="share" href="javascript:;" onclick="krOpenShareModal()"><i class="fa fa-share-alt"></i> <%- __('post_action.share') %></a>
-                    <%- partial('_utils/share-func', { page: page, theme: theme, config: config }) %>
                 <% } %>
                 </div>
             <% } %>

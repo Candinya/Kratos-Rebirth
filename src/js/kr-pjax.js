@@ -69,7 +69,9 @@
     // 使用部分组件时可能会自动读取这些数据（如LiveRe评论系统）
     setMetaProperty(document, "og:title", data.ogTitle);
     setMetaProperty(document, "og:url", data.ogUrl);
-    setMetaProperty(document, "author", data.author, "name");
+    setMetaProperty(document, "og:description", data.ogDescription);
+    setMetaProperty(document, "author", data.metaAuthor, "name");
+    setMetaProperty(document, "description", data.metaDescription, "name");
 
     // 更新页面主体
     if (dom) {
@@ -117,8 +119,10 @@
     title: dom.title,
     ogTitle: getMetaProperty(dom, "og:title"),
     ogUrl: getMetaProperty(dom, "og:url"),
+    ogDescription: getMetaProperty(dom, "og:description"),
+    metaAuthor: getMetaProperty(dom, "author", "name"),
+    metaDescription: getMetaProperty(dom, "description", "name"),
     content: dom.getElementById("main").innerHTML,
-    author: getMetaProperty(dom, "author", "name"),
   });
 
   /**
