@@ -163,18 +163,49 @@ copyright_notice:
 comments:
   core:
     enable_at:
-      - index
+      # - index
       - post
       - page
     template:
-      _shared: ""
+      _shared: |
+        <script>
+          (() => {
+            const loadComments = async () => {
+              if (typeof Gitalk === "undefined") {
+                // 还未就绪，等一会再试试吧
+                setTimeout(loadComments, 100);
+              } else {
+                // 准备好了，开始加载
+                const path = "$PATH";
+                // const hashID = await window.crypto.subtle.digest("SHA-1", new TextEncoder().encode(path));
+                const hashID = path;
+                const gitalk = new Gitalk(Object.assign({
+                    id: hashID,
+                    path: path,
+                }, {
+                  clientID: 'GitHub Application Client ID',
+                  clientSecret: 'GitHub Application Client Secret',
+                  repo: "demo-comments",
+                  owner: "kratos-rebirth",
+                  admin: ["Candinya"],
+                  distractionFreeMode: false,
+                }));
+
+                gitalk.render('gitalk-container');
+              }
+            };
+
+            window.loadComments = loadComments;
+          })();
+        </script>
       index: ""
-      post: ""
-      page: ""
+      post: <div id="gitalk-container" class="kr-comments lazy-load"></div>
+      page: <div id="gitalk-container" class="kr-comments lazy-load"></div>
   count:
     enable_at:
-      - index
-      - post
+      []
+      # - index
+      # - post
     template:
       _shared: ""
       index: ""
@@ -183,8 +214,9 @@ comments:
 # 访问数量统计
 visit_count:
   enable_at:
-    - index
-    - post
+    []
+    # - index
+    # - post
   template:
     _shared: ""
     index: ""
@@ -192,6 +224,31 @@ visit_count:
 
 ################## 额外的注入代码 ##################
 additional_injections:
-  head: "" # 搜索引擎的站点验证
+  head: | # 搜索引擎验证，或是追加的样式表
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.min.css" integrity="sha512-0hsIlRjJbiUWaKMhXXNDmjWI2qPvUlhNBLHMhqeF5jIma+bedec27N5FoT2JEeHz5TUmOGCsm1Y89EsX/P0wOg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+      .gt-counts,
+      .gt-header-textarea,
+      .gt-user-name {
+        color: var(--kr-theme-text) !important;
+      }
+
+      .gt-header-textarea,
+      .gt-header-preview,
+      .gt-btn-preview,
+      .gt-comment-content,
+      .gt-popup {
+        background-color: var(--kr-theme-page-bg) !important;
+      }
+
+      .gt-popup {
+        border-color: #6190e8 !important;
+      }
+
+      .gt-header-textarea {
+        background: url("/assets/comment.webp") right bottom no-repeat;
+      }
+    </style>
   footer: ""
-  after_footer: "" # 站点分析
+  after_footer: | # 站点分析，或是追加的脚本
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gitalk/1.8.0/gitalk.min.js" integrity="sha512-Z6q/CxNjbGeWbPamDjp/I737f5LnynAOjJl85FlT75YW3eWmldnn2wj3nhMVEaqMeatyUmvKyfCaM5TND0yRhQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>

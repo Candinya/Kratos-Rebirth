@@ -1,24 +1,17 @@
-# Build the demo site when new changes are commited.
-
 name: Build Demo Site
 
-# This will run when push events occur on master branch.
 on:
   push:
     branches: [ master ]
 
-# A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-  # This workflow contains a single job called "build"
   build:
-    # The type of container that the job will run in
     runs-on: ubuntu-latest
     
     # Environment virables
     env:
-      SITE_URL: kr-demo.candinya.com
+      SITE_URL: demo.krt.moe
 
-    # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
     
     # Setup Node.js env
@@ -56,9 +49,9 @@ jobs:
     # Edit hexo site settings
     - name: Edit Hexo site settings
       run: |
-        sed -i "s/title: Hexo/title: Kratos-Rebirth/"                                "_config.yml"
-        sed -i "s/subtitle: ''/subtitle: A demo site of theme Kratos Rebirth/"       "_config.yml"
-        sed -i "s/description: ''/description: A demo site of theme Kratos Rebirth/" "_config.yml"
+        sed -i "s/title: Hexo/title: 'Kratos : Rebirth'/"                            "_config.yml"
+        sed -i "s/subtitle: ''/subtitle: 一个可爱而现代的 Hexo 主题/"                    "_config.yml"
+        sed -i "s/description: ''/description: 欢迎使用这个主题，希望能给您带来美好的体验。/" "_config.yml"
         sed -i "s/author: John Doe/author: Candinya/"                                "_config.yml"
         sed -i "s/language:/language: zh-CN/"                                        "_config.yml"
         sed -i "s|url: http://yoursite.com|url: https://${SITE_URL}|"                "_config.yml"
@@ -88,28 +81,29 @@ jobs:
     # Install post-time-fix plugin
     - name: Install post-time-fix plugin
       run: npm install hexo-filter-date-from-git --save
-        
-    # Setup git configs
-    - name: Setup git configs
-      run: |
-        git config --global user.name   "Github Actions"
-        git config --global user.email  "dev@candinya.com"
-        # Set private key for deployment
-        mkdir -p ~/.ssh/
-        echo "${{ secrets.DEPLOY_KEY }}" | tr -d '\r' > ~/.ssh/id_rsa
-        chmod 600 ~/.ssh/id_rsa
-        ssh-keyscan github.com >> ~/.ssh/known_hosts
     
     # Hexo build demo site
     - name: Hexo build demo site
       run: npx hexo generate --force
-        
-    # Deploy demo site
-    - name: Deploy demo site
-      run: |
-        cd ./public
-        git init -b gh-pages
-        git remote add origin git@github.com:Candinya/Kratos-Rebirth-Demo.git
-        git add -A
-        git commit -m "Update Demo Site at `date +'%Y-%m-%d %H:%M:%S'`"
-        git push --set-upstream origin gh-pages -f
+
+    - name: Upload artifacts for pages
+      uses: actions/upload-pages-artifact@v3
+      with:
+        path: public
+
+  deploy:
+    needs: build
+
+    permissions:
+      pages: write
+      id-token: write
+
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
