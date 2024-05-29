@@ -7,10 +7,6 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    
-    # Environment virables
-    env:
-      SITE_URL: demo.krt.moe
 
     steps:
     
@@ -38,6 +34,12 @@ jobs:
     - uses: actions/checkout@v4
       with:
         path: 'themes/kratos-rebirth'
+    
+    # Clone Demo site configurations & assets into tmp
+    - uses: actions/checkout@v4
+      with:
+        repository: 'kratos-rebirth/demo-site'
+        path: '/tmp/demo-site'
 
     # Build fresh theme files
     - name: Build theme files
@@ -60,19 +62,17 @@ jobs:
 
     # Copy extended theme settings
     - name: Copy extended theme settings
-      run: cp "themes/kratos-rebirth/.demo/_config.kratos-rebirth.yml" "_config.kratos-rebirth.yml"
-    
+      run: mv "/tmp/demo-site/_config.kratos-rebirth.yml" "_config.kratos-rebirth.yml"
+
+    # Prepare assets
+    - name: Prepare assets
+      run: mv /tmp/demo-site/assets source/demo-assets
+
     # Edit theme settings
     - name: Edit theme settings
       run: |
         sed -i "s|clientID: 'GitHub Application Client ID'|clientID: ${{ secrets.GH_OAUTH_ID }}|"                  "_config.kratos-rebirth.yml"
         sed -i "s|clientSecret: 'GitHub Application Client Secret'|clientSecret: ${{ secrets.GH_OAUTH_SECRET }}|"  "_config.kratos-rebirth.yml"
-    
-    # Set Pages CNAME file
-    - name: Set github pages CNAME file
-      run: |
-        touch "source/CNAME"
-        echo "${SITE_URL}" > source/CNAME
     
     # Install Hexo env
     - name: Install Hexo environment
