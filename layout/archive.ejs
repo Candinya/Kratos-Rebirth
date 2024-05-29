@@ -48,12 +48,12 @@
                         <header class="post-header">
                           <h3 class="post-title">
                             <% if (post.link) { %>
-                              <a class="post-title-link post-title-link-external" target="_blank" href="<%- url_for(post.link) %>" itemprop="main-entity-of-page">
+                              <a class="post-title-link post-title-link-external" target="_blank" href="<%- url_for(post.link) %>" itemprop="mainEntityOfPage">
                                 <span itemprop="name headline"><%- post.title %></span>
                                 <i class="fa fa-external-link"></i>
                               </a>
                             <% } else { %>
-                                <a class="post-title-link" href="<%- url_for(post.path) %>" itemprop="main-entity-of-page">
+                                <a class="post-title-link" href="<%- url_for(post.path) %>" itemprop="mainEntityOfPage">
                                   <span itemprop="name headline"><%- post.title %></span>
                                 </a>
                             <% } %>

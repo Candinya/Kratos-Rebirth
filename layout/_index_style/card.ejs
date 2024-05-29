@@ -28,7 +28,7 @@
                         style: 'none',
                         separator: ' '
                     }) %>
-                <h2 class="kratos-entry-title-new"><a href="<%- url_for(post.path) %>" itemprop="main-entity-of-page"><span itemprop="name headline"><%- post.title %><% if (post.subtitle) { %><sub><%- post.subtitle %></sub><% } %></span></a>
+                <h2 class="kratos-entry-title-new"><a href="<%- url_for(post.path) %>" itemprop="mainEntityOfPage"><span itemprop="name headline"><%- post.title %><% if (post.subtitle) { %><sub><%- post.subtitle %></sub><% } %></span></a>
             </header>
             <div class="kratos-entry-content-new">
                 <p itemProp="description">

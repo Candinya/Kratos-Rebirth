@@ -18,7 +18,7 @@
         </div>
         <% } %>
         <header class="kratos-entry-header">
-            <h1 class="text-center"><a class="kratos-entry-title" href="<%- url_for(post.path) %>" itemprop="main-entity-of-page"><span itemprop="name headline"><%- post.title %></span></a></h1>
+            <h1 class="text-center"><a class="kratos-entry-title" href="<%- url_for(post.path) %>" itemprop="mainEntityOfPage"><span itemprop="name headline"><%- post.title %></span></a></h1>
             <% if (post.subtitle) { %>
                 <h2 class="text-center"><%- post.subtitle %></h2>
             <% } %>
