@@ -121,7 +121,7 @@ hexo.once("generateBefore", () => {
           break;
       }
 
-      return `<div class="linklist">
+      return `<div class="kr-linklist">
     <ul class="kr-linklist-container">${inner}</ul>
     ${appendix}
   </div>`;

@@ -2378,7 +2378,7 @@ body.scroll-down .kr-tool {
   }
 }
 
-.linklist {
+.kr-linklist {
   ul {
     color: rgba(255, 255, 255, 0.15);
     padding: 0;
@@ -2671,12 +2671,14 @@ body.scroll-down .kr-tool {
 }
 
 @media (max-width: 460px) {
-  .linklist ul li {
-    width: 97%;
-  }
+  .kr-linklist {
+    ul li {
+      width: 97%;
+    }
 
-  .linklist ul {
-    padding-left: 5px;
+    ul {
+      padding-left: 5px;
+    }
   }
 }
 
