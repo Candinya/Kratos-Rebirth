@@ -402,7 +402,7 @@ window.copyCode =
           // Do nothing...
           return;
         }
-        if (curTocId !== -1) {
+        if (curTocId !== -1 && tocItems[curTocId]) {
           // 清除旧标题激活状态
           tocItems[curTocId].el.classList.remove("active");
           tocItems[curTocId].el.classList.remove("show");
@@ -415,7 +415,7 @@ window.copyCode =
             nCur = nCur.parentNode;
           }
         }
-        if (newId !== -1) {
+        if (newId !== -1 && tocItems[newId]) {
           // 构建新标题激活状态
           tocItems[newId].el.classList.add("active");
           tocItems[newId].el.classList.add("show");
@@ -430,7 +430,7 @@ window.copyCode =
 
           // 滚动出现（延迟到展开动画之后，避免 jitter ）
           setTimeout(() => {
-            tocItems[newId].el.scrollIntoView({
+            tocItems[newId]?.el.scrollIntoView({
               behavior: "smooth",
               block: "nearest",
               inline: "nearest",
