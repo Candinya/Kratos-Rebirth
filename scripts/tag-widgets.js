@@ -56,50 +56,76 @@ hexo.extend.tag.register(
   (args) => `<span class="blur">${args[0]}</span>`,
 );
 
-// 链接列表 // 参数： 0.排序依据 (order / random) 1.列表ID（仅当为 random 模式时需要）
-hexo.extend.tag.register(
-  "linklist",
-  (args, content) =>
-    args[0] === "order"
-      ? `<div class="linklist">
-  <ul>${JSON.parse(content)
-    .map(
-      (link) =>
-        `<li>
-      <a target="_blank" href="${link.link}">
-        <img src="${link.image}" alt=${link.title} />
-        <div>
-          <span>${link.title}</span>
-          <p>${link.summary}</p>
-        </div>
-      </a>
-    </li>`,
-    )
-    .join("")}</ul>
-</div>`
-      : `<div class="linklist">
-  <ul id="kr-linklist-${args[1]}"></ul>
+// 链接列表 // 参数： 0.排序依据 (order / random) 1.列表的数据ID（使用来自 data files 的数据时必要）
+hexo.once("generateBefore", () => {
+  const datafiles = hexo.locals.get("data");
 
-  <script type="text/javascript">
-  (() => {
-      const flist = ${content};
-      let friendNodes = '';
-      while (flist.length > 0) {
-          const randID = Math.floor(Math.random()*flist.length);
-          friendNodes += \`<li>
-            <a target="_blank" href="\${flist[randID].link}">
-              <img src="\${flist[randID].image}" alt=\${flist[randID].title} />
-              <div>
-                <span>\${flist[randID].title}</span>
-                <p>\${flist[randID].summary}</p>
-              </div>
-            </a>
-          </li>\`;
-          flist.splice(randID, 1);
+  hexo.extend.tag.register(
+    "linklist",
+    (args, content) => {
+      let linklist;
+
+      if (content?.trim()) {
+        linklist = JSON.parse(content);
+      } else if (args[1] && datafiles.linklist) {
+        linklist = datafiles.linklist[args[1]];
       }
-      document.getElementById("kr-linklist-${args[1]}").innerHTML = friendNodes;
-  })();
-  </script>
-</div>`,
-  { ends: true },
-);
+
+      if (!linklist) {
+        // 什么都没有
+        return "无效的列表";
+      }
+
+      let inner = "",
+        appendix = "";
+
+      switch (args[0]) {
+        case "order":
+          inner = linklist
+            .map(
+              (link) =>
+                `<li>
+          <a target="_blank" href="${link.link}">
+            <img src="${link.image}" alt=${link.title} />
+            <div>
+              <span>${link.title}</span>
+              <p>${link.summary}</p>
+            </div>
+          </a>
+        </li>`,
+            )
+            .join("");
+          break;
+        case "random":
+          appendix = `<script type="text/javascript">
+          (() => {
+              const flist = ${JSON.stringify(linklist)};
+              let friendNodes = '';
+              while (flist.length > 0) {
+                  const randID = Math.floor(Math.random()*flist.length);
+                  friendNodes += \`<li>
+                    <a target="_blank" href="\${flist[randID].link}">
+                      <img src="\${flist[randID].image}" alt=\${flist[randID].title} />
+                      <div>
+                        <span>\${flist[randID].title}</span>
+                        <p>\${flist[randID].summary}</p>
+                      </div>
+                    </a>
+                  </li>\`;
+                  flist.splice(randID, 1);
+              }
+      
+              document.currentScript.parentNode.querySelector(".kr-linklist-container").innerHTML = friendNodes;
+          })();
+          </script>`;
+          break;
+      }
+
+      return `<div class="linklist">
+    <ul class="kr-linklist-container">${inner}</ul>
+    ${appendix}
+  </div>`;
+    },
+    { ends: true },
+  );
+});
