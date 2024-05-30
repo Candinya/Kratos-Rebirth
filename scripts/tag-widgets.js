@@ -89,7 +89,7 @@ hexo.once("generateBefore", () => {
             <img src="${link.image}" alt=${link.title} />
             <div>
               <span>${link.title}</span>
-              <p>${link.summary}</p>
+              <p>${link.description}</p>
             </div>
           </a>
         </li>`,
@@ -108,7 +108,7 @@ hexo.once("generateBefore", () => {
                       <img src="\${flist[randID].image}" alt=\${flist[randID].title} />
                       <div>
                         <span>\${flist[randID].title}</span>
-                        <p>\${flist[randID].summary}</p>
+                        <p>\${flist[randID].description}</p>
                       </div>
                     </a>
                   </li>\`;
