@@ -89,6 +89,12 @@ posts:
     threshold: 1500
     estimate_wavy: true # 在文章字数处显示表示大约字数的波浪号
   expire_after: 30 # 天
+  toc:
+    desktop:
+      list_number: false
+    mobile:
+      enable: true
+      list_number: true
 
 # Page 一般页面配置
 pages:
@@ -109,9 +115,6 @@ sidebar:
   # - category
   # - tagcloud
   # - posts
-  mobile_toc:
-    hide: false
-    hide_id: false
 
 # 分享组件设置
 share:

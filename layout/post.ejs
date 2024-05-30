@@ -46,8 +46,8 @@
                 <div class="text"><p><%- __('last_update_alert', '<time datetime="' + page.updated + '"></time>') %></p></div>
             </div>
             <% } %>
-            <% const tocContent = toc(page.encrypt ? page.origin : page.content, { list_number: !theme.sidebar.mobile_toc?.hide_id }); %>
-            <% if (!theme.sidebar.mobile_toc?.hide && page.toc && strip_html(tocContent)) { %>
+            <% const tocContent = toc(page.encrypt ? page.origin : page.content, { list_number: theme.posts.toc.mobile.list_number }); %>
+            <% if (theme.posts.toc.mobile.enable && page.toc && strip_html(tocContent)) { %>
                 <div class="kratos-post-inner-toc toc-div-class" <% if (page.encrypt) { %>style="display:none!important" <% } %>>
                     <%- tocContent %>
                 </div>
