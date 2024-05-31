@@ -31,7 +31,7 @@ window.copyCode =
     const url = (window.kr?.siteRoot || "/") + "config.json";
     return await fetch(url).then((res) => res.json());
   };
-  const initPpageScrollDown = () => {
+  const initPageScrollDown = () => {
     let isScrolledDown = false;
     const pageScrollDownClass = () => {
       window.requestAnimationFrame(() => {
@@ -64,56 +64,59 @@ window.copyCode =
     menuWrapClone.setAttribute("id", "offcanvas-menu");
     menuWrapClone.querySelectorAll("ul").forEach((el) => {
       el.removeAttribute("id");
-      el.classList.add("ul-me");
     });
-    menuWrapClone.style.height = "calc(100% - 60px)";
-    menuWrapClone.style.right = "-240px";
+
+    const navToggleWrapper = document.getElementById(
+      "kratos-nav-toggle-wrapper",
+    );
 
     document
       .getElementById("kratos-nav-toggle")
       .addEventListener("click", () => {
-        const navToggleWrapper = document.getElementById(
-          "kratos-nav-toggle-wrapper",
-        );
         if (navToggleWrapper.classList.contains("toon")) {
           navToggleWrapper.classList.remove("toon");
-          menuWrapClone.style.right = "-240px";
+          menuWrapClone.classList.remove("show");
         } else {
           navToggleWrapper.classList.add("toon");
-          menuWrapClone.style.right = "0px";
+          menuWrapClone.classList.add("show");
         }
       });
+
+    // 在链接被点击时自动关闭
+    menuWrapClone.addEventListener("click", (e) => {
+      if (
+        e.target.tagName.toLowerCase() === "a" &&
+        e.target.getAttribute("href")
+      ) {
+        navToggleWrapper.classList.remove("toon");
+        menuWrapClone.classList.remove("show");
+      }
+    });
 
     document.getElementById("kratos-page").prepend(menuWrapClone);
 
     // 在页面放大到超过断点时自动关闭
     window.addEventListener("resize", (e) => {
-      const navToggleWrapper = document.getElementById(
-        "kratos-nav-toggle-wrapper",
-      );
-
       if (window.innerWidth > 768) {
         // 关闭
         if (navToggleWrapper.classList.contains("toon")) {
           navToggleWrapper.classList.remove("toon");
-          menuWrapClone.style.right = "-240px";
+          menuWrapClone.classList.remove("show");
         }
       }
     });
   };
-  const collapseBoxControl = () => {
-    const collapseBoxes = document
-      .querySelectorAll(".collapse-box-control")
-      .forEach((node) => {
-        node
-          .querySelector(".collapse-box-header")
-          ?.addEventListener("click", (e) => {
-            node.classList.toggle("active");
-          });
-      });
+  const initCollapseBoxControl = () => {
+    document.querySelectorAll(".collapse-box-control").forEach((node) => {
+      node
+        .querySelector(".collapse-box-header")
+        ?.addEventListener("click", (e) => {
+          node.classList.toggle("active");
+        });
+    });
   };
 
-  const viewerJsInit = (kr) => {
+  const initViewerJs = (kr) => {
     if (kr.enable) {
       const postEntry = document.getElementsByClassName("kratos-page-content");
       if (postEntry.length > 0) {
@@ -238,7 +241,7 @@ window.copyCode =
     }, 1000);
   };
 
-  const codeCopyInit = () => {
+  const initCodeCopy = () => {
     const codeFigures = document.querySelectorAll("figure.highlight");
     codeFigures.forEach((figure, count) => {
       figure
@@ -361,7 +364,7 @@ window.copyCode =
     };
   };
 
-  const tocWidgetAnimInit = () => {
+  const initTocWidgetAnim = () => {
     const sidebarTocWidget = document.getElementById("krw-toc");
     const initFunc = () => {
       // 有toc的页面
@@ -640,17 +643,17 @@ window.copyCode =
   };
 
   const initPerPage = () => {
-    tocWidgetAnimInit();
+    initTocWidgetAnim();
     saveTitle();
-    codeCopyInit();
-    collapseBoxControl();
+    initCodeCopy();
+    initCollapseBoxControl();
     commentsLazyLoad();
   };
 
   const initPerPageWithConfig = (kr) => {
     initCopyrightNotice(kr.copyrightNoticeForCopy);
     checkExpireNotify(kr.expireNotify);
-    viewerJsInit(kr.viewerjs);
+    initViewerJs(kr.viewerjs);
   };
 
   const themeInit = () => {
@@ -668,7 +671,7 @@ window.copyCode =
       });
     });
 
-    initPpageScrollDown();
+    initPageScrollDown();
     initOffcanvas();
     initPerPage();
     window.addEventListener("pjax:complete", () => {

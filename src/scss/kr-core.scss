@@ -962,14 +962,16 @@ table {
   top: 60px;
   z-index: 1000;
   width: 240px;
+  height: calc(100% - 60px);
   padding: 20px;
   overflow-y: auto;
   transition: right 0.3s;
   -webkit-transition: right 0.3s;
   background: rgba(42, 42, 42, 0.9);
+  right: -240px;
 
-  .ul-me {
-    padding-bottom: 60px;
+  &.show {
+    right: 0;
   }
 
   ul {
