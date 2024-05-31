@@ -1,4 +1,3 @@
-const esbuild = require("esbuild");
 const buildOnce = require("./build-once");
 const chokidar = require("chokidar");
 
