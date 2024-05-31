@@ -1,0 +1,54 @@
+<article class="kratos-hentry kratos-entry-border clearfix" itemscope itemtype="https://schema.org/Article">
+    <div class="kratos-status">
+        <% if (post.link) { %>
+            <i class="fa fa-link"></i>
+        <% } else { %>
+            <i class="fa fa-refresh"></i>
+        <% } %>
+        <div class="kratos-status-inner">
+            <div class="kratos-status-content" itemprop="articleBody">
+                <% if (post.link) { %>
+                    <a href="<%- url_for(post.link) %>"><%- post.title %> <i class="fa fa-external-link"></i></a>
+                <% } else { %>
+                    <%- post.excerpt || post.content %>
+                <% } %>
+            </div>
+        </div>
+    </div>
+    <% if (!post.link || post.comments) { %>
+        <footer class="kratos-entry-post-meta">
+            <span class="pull-left">
+                <time datetime="<%= date_xml(post.date) %>" itemprop="datePublished">
+                    <a><i class="fa fa-calendar"></i> <%- date(post.date, null) %></a>
+                </time>
+                <% if (post.tags.length) { %>
+                    <a><i class="fa fa-tags"></i></a>
+                    <%- list_tags(post.tags, {
+                        show_count: false,
+                        style: 'none',
+                        amount: 3
+                    }) %>
+                <% } %>
+                <% if (theme.visit_count.enable_at.includes("index")) { %>
+                    <a>
+                        <i class="fa fa-eye"></i>
+                        <%- __('post_meta.read_count', (theme.visit_count.template._shared + theme.visit_count.template.index).replaceAll("$PATH", url_for(post.path))) %>
+                    </a>
+                <% } %>
+                <% if (theme.comments.count.enable_at.includes("index") && post.comments) { %>
+                    <a>
+                        <i class="fa fa-commenting-o"></i>
+                        <%- __('post_meta.comments_count', (theme.comments.count.template._shared + theme.comments.count.template.index).replaceAll("$PATH", url_for(post.path))) %>
+                    </a>
+                <% } %>
+            </span>
+            
+            <% if (post.comments) { %>
+                <span class="pull-right">
+                    <a class="read-more" href="<%- url_for(post.path) %>" title="<%- __('comment') %>"><%- __('comment') %><i class="fa fa-chevron-circle-right"></i></a>
+                </span>
+            <% } %>
+
+        </footer>
+    <% } %>
+</article>

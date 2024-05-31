@@ -1,66 +1,53 @@
 <article itemscope itemtype="https://schema.org/Article">
-    <% const commentProvider = theme.posts?.comments?.provider ?? theme.posts?.comments; %>
     <link itemprop="mainEntityOfPage" href="<%= page.permalink %>">
-    <div class="kratos-hentry kratos-post-inner clearfix">
-        <header class="kratos-entry-header">
+    <div class="kratos-hentry kratos-page-inner clearfix">
+        <header class="kratos-page-header">
             <% if (page.title) { %>
-                <h1 class="kratos-entry-title text-center" itemprop="name headline"><%- page.title %></h1>
+                <h1 class="kratos-page-title text-center" itemprop="name headline"><%- page.title %></h1>
             <% } %>
             <% if (page.subtitle) { %>
                 <h2 class="text-center"><%- page.subtitle %></h2>
             <% } %>
-            <ul class="kratos-post-meta text-center">
+            <ul class="kratos-page-meta text-center">
                 <li><time datetime="<%= date_xml(page.date) %>" itemprop="datePublished"><i class="fa fa-calendar"></i> <%- date(page.date, null) %></time></li>
                 <li itemprop="author" itemscope itemtype="https://schema.org/Person">
-                    <i class="fa fa-user"></i> <%- __('author') %> <span itemprop="name"><%- page.author || config.author %></span>
+                    <i class="fa fa-user"></i> <%- __('post_meta.author') %> <span itemprop="name"><%- page.author || config.author %></span>
                 </li>
-                <% if (theme.posts?.wordCount?.enable) { %>
+                <% if (theme.posts.word_count.enable) { %>
                     <li>
                         <i class="fa fa-edit"></i> 
-                        <% const wordsCount = strip_html(page.content).length; %>
-                        <% if (wordsCount < (theme.posts.wordCount?.threshold || 1500)) { %>
-                            <%= wordsCount %>
+                        <% const total_words = strip_html(page.content).length; %>
+                        <% if (total_words < (theme.posts.word_count.threshold)) { %>
+                            <%= total_words %>
                         <% } else { %>
-                            <% if (theme.misc?.showWordCountEstimateWavy) { %>~<% } %><%= (wordsCount / 1000).toFixed(2) %>K
+                            <% if (theme.posts.word_count.estimate_wavy) { %>~<% } %><%= (total_words / 1000).toFixed(2) %>K
                         <% } %>
-                        <%- __('words') %>
+                        <%- __('post_meta.words') %>
                     </li>
                 <% } %>
-                <% if (commentProvider === 'valine' && theme.valine?.visitor) { %>
-                    <li id="<%- url_for(page.path) %>" class="leancloud_visitors" data-flag-title="<%- page.title %>">
-                        <i class="fa fa-eye"></i>
-                        <%- __('read_count', '<span class="leancloud-visitors-count"> </span>') %>
-                    </li>
-                <% } else if (commentProvider === 'waline') { %>
-                    <% if (theme.waline?.pageview) { %>
-                        <li>
-                            <i class="fa fa-eye"></i>
-                            <%- __('read_count', '<span data-path="' + url_for(page.path) + '" class="waline-pageview-count"> </span>') %>
-                        </li>
-                    <% } %>
-                    <% if (theme.waline?.comment) { %>
-                        <li>
-                            <i class="fa fa-commenting-o"></i>
-                            <%- __('comments_count', '<span data-path="' + url_for(page.path) + '" class="waline-comment-count"> </span>') %>
-                        </li>
-                    <% } %>
-                <% } else if (commentProvider === 'twikoo') { %>
+                <% if (theme.visit_count.enable_at.includes("post")) { %>
                     <li>
                         <i class="fa fa-eye"></i>
-                        <%- __('read_count', '<span id="twikoo_visitors"> </span>') %>
+                        <%- __('post_meta.read_count', (theme.visit_count.template._shared + theme.visit_count.template.post).replaceAll("$PATH", url_for(page.path))) %>
+                    </li>
+                <% } %>
+                <% if (page.comments && theme.comments.count.enable_at.includes("post")) { %>
+                    <li>
+                        <i class="fa fa-commenting-o"></i>
+                        <%- __('post_meta.comments_count', (theme.comments.count.template._shared + theme.comments.count.template.post).replaceAll("$PATH", url_for(page.path))) %>
                     </li>
                 <% } %>
             </ul>
         </header>
-        <div class="kratos-post-content">
+        <div class="kratos-page-content kr-post">
             <% if (page.expire === true || page.expire !== false && !!page.title) { %>
             <div id="expire-alert" class="alert alert-warning hidden" role="alert">
-                <div class="icon"><i class="fa fa-warning"></i></div>
-                <div class="text"><p><%- __('last_modify_alert', '<time datetime="' + page.updated + '"></time>') %></p></div>
+                <div class="icon"><i class="fa fa-history"></i></div>
+                <div class="text"><p><%- __('last_update_alert', '<time datetime="' + page.updated + '"></time>') %></p></div>
             </div>
             <% } %>
-            <% const tocContent = toc(page.encrypt ? page.origin : page.content, { list_number: !theme.mobile_toc?.hide_id }); %>
-            <% if (!theme.mobile_toc?.hide && page.toc && strip_html(tocContent)) { %>
+            <% const tocContent = toc(page.encrypt ? page.origin : page.content, { list_number: theme.posts.toc.mobile.list_number }); %>
+            <% if (theme.posts.toc.mobile.enable && page.toc && strip_html(tocContent)) { %>
                 <div class="kratos-post-inner-toc toc-div-class" <% if (page.encrypt) { %>style="display:none!important" <% } %>>
                     <%- tocContent %>
                 </div>
@@ -68,20 +55,19 @@
             <hr />
             <div itemprop="articleBody"><%- page.content %></div>
         </div>
-        <% if (typeof page.show_cc !== 'undefined' ? page.show_cc : theme.posts?.show_cc) { %>
+        <% if (typeof page.show_copyright !== 'undefined' ? page.show_copyright : theme.copyright_notice.in_page.enable_at.includes("post")) { %>
             <div class="kratos-copyright text-center clearfix">
-                <h5 itemprop="copyrightNotice"><%- __('use_cc4_license') %></h5>
+                <span itemprop="copyrightNotice"><%- theme.copyright_notice.in_page.template %></span>
             </div>
         <% } %>
         <footer class="kratos-entry-footer clearfix">
-            <% if (theme.posts && (theme.posts.donate || theme.posts.share)) { %>
-                <div class="post-like-donate text-center clearfix" id="post-like-donate">
-                <% if (theme.posts.donate) { %>
-                    <a class="donate" href="javascript:;"><i class="fa fa-bitcoin"></i> <%- __('reward') %></a>
+            <% if ((page.donate !== false && theme.posts.donate) || (page.share !== false && theme.posts.share)) { %>
+                <div class="post-actions text-center clearfix" id="post-actions">
+                <% if (page.donate !== false && theme.posts.donate) { %>
+                    <a class="donate" href="javascript:;" onclick="krOpenDonateModal()"><i class="fa fa-bitcoin"></i> <%- __('post_action.donate') %></a>
                 <% } %>
-                <% if (theme.posts.share) { %>
-                    <a class="share" href="javascript:;"><i class="fa fa-share-alt"></i> <%- __('share') %></a>
-                    <%- partial('_tools/share', {page: page}) %>
+                <% if (page.share !== false && theme.posts.share) { %>
+                    <a class="share" href="javascript:;" onclick="krOpenShareModal()"><i class="fa fa-share-alt"></i> <%- __('post_action.share') %></a>
                 <% } %>
                 </div>
             <% } %>
@@ -94,7 +80,7 @@
                     }) %>
                 </div>
                 <div class="pull-date">
-                    <time datetime="<%= date_xml(page.updated) %>" itemprop="dateModified"><%- __('last_modify') %><%- date(page.updated) %></time>
+                    <time datetime="<%= date_xml(page.updated) %>" itemprop="dateModified"><%- __('last_update') %><%- date(page.updated) %></time>
                 </div>
             </div>
         </footer>
@@ -103,17 +89,19 @@
         <nav class="navigation post-navigation clearfix" role="navigation">
             <% if (page.next) { %>
             <div class="nav-previous clearfix">
-                <a title=" <% if (page.next.title){ %><%= page.next.title %><% } else { %>(<%- __('no_title') %>)<% } %>" href="<%- config.root + page.next.path %>">&lt; <%- __('newer') %></a>
+                <a title=" <% if (page.next.title){ %><%= page.next.title %><% } else { %>(<%- __('no_title') %>)<% } %>" href="<%- config.root + page.next.path %>"><i class="fa fa-angle-left"></i> <%- __('post_next') %></a>
             </div>
             <% } %>
             <% if (page.prev) { %>
             <div class="nav-next clearfix">
-                <a title=" <% if (page.prev.title){ %><%= page.prev.title %><% } else { %>(<%- __('no_title') %>)<% } %>" href="<%- config.root + page.prev.path %>"><%- __('older') %> &gt;</a>
+                <a title=" <% if (page.prev.title){ %><%= page.prev.title %><% } else { %>(<%- __('no_title') %>)<% } %>" href="<%- config.root + page.prev.path %>"><%- __('post_prev') %> <i class="fa fa-angle-right"></i></a>
             </div>
             <% } %>
         </nav>
     <% } %>
-    <% if (commentProvider && page.comments) { %>
-        <%- partial('_comments/' + commentProvider) %>
+    <% if (page.comments && theme.comments.core.enable_at.includes('post')) { %>
+        <div class="comment-post">
+            <%- (theme.comments.core.template._shared + theme.comments.core.template.post).replaceAll("$PATH", url_for(page.path)) %>
+        </div>
     <% } %>
 </article>

@@ -2,21 +2,32 @@
 
 name: Build Test
 
-on: pull_request
+on:
+  pull_request:
 
 jobs:
   build:
+    strategy:
+      matrix:
+        node-version: [18, 20, 22]
+
     runs-on: ubuntu-latest
 
     steps:
     
     # Setup Node.js env
-    - uses: actions/setup-node@v2.1.2
+    - uses: actions/setup-node@v4
       with:
-        node-version: '14.x'
+        node-version: ${{ matrix.node-version }}
+
+    - name: Install pnpm
+      uses: pnpm/action-setup@v4
+      with:
+        version: 9
+        run_install: false
     
     # Get Hexo test utils
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v4
       with:
         repository: 'hexojs/hexo-theme-unit-test'
     
@@ -25,19 +36,22 @@ jobs:
       run: mkdir themes
     
     # Clone Kratos-Rebirth into themes dir
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v4
       with:
         path: 'themes/kratos-rebirth'
+
+    # Build fresh theme files
+    - name: Build theme files
+      run: |
+        cd ./themes/kratos-rebirth
+        pnpm install --frozen-lockfile
+        pnpm build
 
     # Edit hexo site settings
     - name: Edit Hexo Theme settings
       run: |
         sed -i "s/language:/language: zh-CN/" "_config.yml"
         sed -i "s/theme: landscape/theme: kratos-rebirth/" "_config.yml"
-    
-    # Copy theme settings
-    - name: Copy theme settings
-      run: cp "themes/kratos-rebirth/.demo/_config.kratos-rebirth.yml" "_config.kratos-rebirth.yml"
 
     # Install Hexo env
     - name: Install Hexo environment
@@ -46,3 +60,10 @@ jobs:
     # Hexo build demo site
     - name: Hexo build test
       run: npx hexo generate
+
+    - name: Upload built as artifacts
+      uses: actions/upload-artifact@v4
+      with:
+        name: test-node${{ matrix.node-version }}
+        path: public
+        retention-days: 1

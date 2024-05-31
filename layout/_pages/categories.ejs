@@ -19,7 +19,7 @@
     height: 8px;
     background: #bbb;
     border-radius: 50%;
-    transition: all .3s ease-in-out;
+    transition: all 0.3s ease-in-out;
   }
 
   .categories .category-list-item .category-list-link:hover::before {
@@ -27,7 +27,7 @@
   }
 
   a {
-    color:#666;
+    color: #666;
   }
 
   .categories .category-list-item .category-list-link {
@@ -39,27 +39,28 @@
   }
 
   .categories .category-list-item .category-list-link::after {
-    font-family: fontawesome;
     opacity: 0;
+    font-family: fontawesome;
     content: "\f138";
     margin-left: 12px;
     color: #00a7e0;
-    transition: opacity .3s ease-in-out;
+    transition: opacity 0.3s ease-in-out;
   }
 
   .categories .category-list-item .category-list-link:hover::after {
     opacity: 100%;
   }
 </style>
+
 <article>
-  <div class="kratos-hentry kratos-post-inner clearfix">
-    <div class="kratos-post-content">
-      <h2 class="title-h2 text-center">
-        <%- __('categories_list') %>
-      </h2>
+  <div class="kratos-hentry kratos-page-inner clearfix">
+    <header class="kratos-page-header">
+      <h1 class="kratos-page-title text-center" itemprop="name headline"><%- __('title.categories_list') %></h1>
+    </header>
+    <div class="kratos-page-content kr-categories">
       <div style="margin-left: 2em;">
         <h3 class="archive-page-counter">
-          <%- __('categories_count', site.categories.length ) %>
+          <%- __('list_page_count_message.categories', site.categories.length ) %>
         </h3>
         <div class="categories">
           <% if (site.categories.length){ %>

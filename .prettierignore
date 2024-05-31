@@ -1,0 +1,11 @@
+# 构建之后的脚本、图片资源、依赖项
+source/
+
+# GitHub 相关
+.github/
+
+# 包管理工具
+pnpm-lock.yaml
+
+# 配色盘（别去毁了我们的空格，好吗）
+src/scss/highlight/*/theme/

@@ -1,0 +1,149 @@
+<style>
+  #kr-search-notice.alert {
+    transition: 0.3s;
+  }
+
+  #kr-search-results {
+    margin-top: 20px;
+
+    .kr-search-result {
+      margin: auto;
+      height: auto;
+      width: 90%;
+
+      .kratos-entry-content {
+        height: auto;
+      }
+    }
+
+    m {
+      color: #333;
+      background-color: yellow;
+    }
+  }
+
+  #search-input {
+    appearance: none;
+    -webkit-appearance: none;
+    border-color: #dbdbdb;
+    border-radius: 4px 0 0 4px;
+
+    &:hover {
+      border-color: #b5b5b5;
+    }
+
+    &:focus {
+      outline: 0;
+    }
+  }
+
+  .input-group {
+    .form-input.input-lg {
+      display: inline-flex;
+      box-shadow: none;
+      flex: auto;
+      justify-content: flex-start;
+      padding: 0 8px;
+      font-size: 15px;
+      max-width: 100%;
+      border: 1px solid transparent;
+    }
+    .btn.btn-primary {
+      border: transparent;
+      border-radius: 0 4px 4px 0;
+    }
+  }
+
+  .search-demo-tags a {
+    margin: 5px 10px;
+  }
+
+  #search-input {
+    color: var(--kr-theme-text);
+    background-color: var(--kr-theme-card-bg);
+
+    &:active,
+    &:focus {
+      border-color: var(--kr-theme-link-hover);
+      box-shadow: 0 0 0 0.125em rga(var(--kr-theme-link-hover), 0.25);
+    }
+  }
+</style>
+
+<div class="kratos-hentry kratos-page-inner clearfix">
+    <header class="kratos-page-header">
+        <h1 class="kratos-page-title text-center" itemprop="name headline"><%- __('title.search') %></h1>
+    </header>
+    <div class="kratos-page-content kr-search-input">
+        <form class="input-group" onsubmit="return inpSearch();">
+            <input class="form-input input-lg" id="search-input" maxlength="80" name="s" placeholder="<%- __('search.notice.welcome') %>" required type="search">
+            <button class="btn btn-primary" type="submit"><%- __('search.submit') %></button>
+        </form>
+    </div>
+</div>
+
+<div class="alert alert-info" id="kr-search-notice">
+    <%- __('search.notice.page', config.title) %>
+</div>
+
+<div id="kr-search-results">
+    <div class="kratos-hentry kratos-page-inner clearfix">
+        <div class="kratos-page-content kr-search-result">
+            <p><%- __('search.notice.keywords', strip_html(list_tags({
+                orderby: 'date',
+                show_count: false,
+                style: 'none',
+                separator: ' ',
+                amount: 3
+            }))) %></p>
+            <p><%- __('search.notice.tags') %></p>
+            <p class="search-demo-tags">
+                <%- tagcloud({
+                    orderby: 'date',
+                    min_font: 18, 
+                    max_font: 24,
+                    unit: 'px',
+                    color: true,
+                    start_color: '#b2b7be',
+                    end_color: '#6c7588'
+                }) %>
+            </p>
+        </div>
+    </div>
+</div>
+
+<template id="kr-search-result-template">
+  <article class="kratos-hentry clearfix">
+    <div class="kratos-entry-border clearfix">
+        <div class="kratos-entry-post-inner kr-search-result">
+            <header class="kratos-entry-header">
+                $CATEGORY
+                <h2 class="kratos-entry-title"><a href="$LINK">$TITLE</a></h2>
+            </header>
+            <div class="kratos-entry-content">
+                <p>...$CONTENT...</p>
+            </div>
+        </div>
+        <div class="kratos-entry-post-meta">
+            <span class="pull-left">
+                <a><i class="fa fa-calendar"></i></a><a>$DATE</a>
+                <a><i class="fa fa-tags"></i></a>
+                $TAGS
+            </span>
+        </div>
+    </div>
+</article>
+</template>
+
+<template id="kr-search-tag-template">
+  <a class="tag-link" href="$LINK" rel="tag">$TAG</a>
+</template>
+
+<template id="kr-search-category-template">
+  <a class="label-link" href="$LINK">$CATEGORY</a>
+</template>
+
+<% if (theme.search.provider === "local") { %>
+  <script>window.searchDataFile = "<%- config.root + (theme.search.path.index_file || 'search-index.json') %>";</script>
+  <%- js_theme_cdn('js/kr-search.min.js', {defer: true}) %>
+<% } %>

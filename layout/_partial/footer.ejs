@@ -1,29 +1,19 @@
-        <% if (page.type !== '404' && theme.sidebar === 'right') { %>
+        <% if (page.type !== '404' && theme.sidebar.location === 'right') { %>
             <%- partial('_partial/sidebar') %>
         <% } %>
         </div>
     </div>
 </div>
+
 <footer>
-    <div id="footer" <% if (theme.aplayer?.enabled) { %> class="ap-lrc" <% } %> >
+    <div id="footer">
         <div class="container">
             <div class="row">
                 <div class="col-md-6 col-md-offset-3 footer-list text-center">
                     <ul class="kratos-social-icons">
-                        <!-- Keep for compatibility -->
-                        <% if (theme.contact.weibo) {%><li><a target="_blank" rel="nofollow" href="https://weibo.com/u/<%- theme.contact.weibo %>"><i class="fa fa-weibo"></i></a></li><% } %>
-                        <% if (theme.contact.mail) {%><li><a href="mailto:<%- theme.contact.mail %>"><i class="fa fa-envelope"></i></a></li><% } %>
-                        <% if (theme.contact.telegram) {%><li><a target="_blank" rel="nofollow" href="https://t.me/<%- theme.contact.telegram %>"><i class="fa fa-telegram"></i></a></li><% } %>
-                        <% if (theme.contact.twitter) {%><li><a target="_blank" rel="nofollow" href="https://twitter.com/<%- theme.contact.twitter %>"><i class="fa fa-twitter"></i></a></li><% } %>
-                        <% if (theme.contact.facebook) {%><li><a target="_blank" rel="nofollow" href="https://www.facebook.com/<%- theme.contact.facebook %>"><i class="fa fa-facebook-official"></i></a></li><% } %>
-                        <% if (theme.contact.linkedin) {%><li><a target="_blank" rel="nofollow" href="https://cn.linkedin.com/in/<%- theme.contact.linkedin %>"><i class="fa fa-linkedin-square"></i></a></li><% } %>
-                        <% if (theme.contact.fediverse.username) {%><li><a target="_blank" rel="me" href="https://<%- theme.contact.fediverse.instance %>/@<%- theme.contact.fediverse.username %>"><i class="fa fa fa-share-alt-square"></i></a></li><% } %>
-                        <% if (theme.contact.github) {%><li><a target="_blank" rel="nofollow" href="https://github.com/<%- theme.contact.github %>"><i class="fa fa-github"></i></a></li><% } %>
-                        <% if (theme.contact.rss) {%><li><a target="_blank" rel="nofollow" href="<%- config.root + theme.contact.rss %>"><i class="fa fa-rss"></i></a></li><% } %>
-                        <!-- New links -->
-                        <% for (const link of theme.footerLinks) { %>
+                        <% for (const link of theme.footer.links) { %>
                             <li>
-                                <a <% if (!link.currentPage) { %>target="_blank" rel="nofollow" <% } %>href="<%- link.link %>">
+                                <a href="<%- link.link %>" <%- link.addition || 'target="_blank" rel="nofollow"' %>>
                                     <% if (link.icon) { %>
                                         <i class="fa fa-<%- link.icon %>"></i>
                                     <% } else if (link.html) { %>
@@ -35,53 +25,44 @@
                     </ul>
                     <ul class="kratos-copyright">
                         <div>
-                            <li>&copy; <%- date(new Date(), 'YYYY') %> <%- config.title || config.author %> <%- __('copyright') %>.</li>
-                            <li><%- theme.timenotice %><span id="span_dt">Loading...</span></li>
+                            <li>&copy; <%- date(new Date(), 'YYYY') %> <%- config.title || config.author %> <%- __('footer_components.copyright') %>.</li>
+                            <li><%- theme.footer.components.uptime.text %><span id="kr-since">Loading...</span></li>
                         </div>
                         <div>
-                            <li>Theme <a href="https://github.com/Candinya/Kratos-Rebirth" target="_blank">Kratos:Rebirth</a></li>
-                            <li>Site built with&nbsp;<i class="fa fa-heart throb" style="color:#d43f57"></i>&nbsp;by <%- config.author %>.</li>
+                            <li><%- __('footer_components.theme_name', '<a href="https://github.com/Candinya/Kratos-Rebirth" target="_blank">Kratos:Rebirth</a>') %></li>
+                            <li><%- __(
+                                'footer_components.site_built_with_love', 
+                                theme.footer.components.author.homepage ? 
+                                    `<a href="${theme.footer.components.author.homepage}" target="_blank">${config.author}</a>` :
+                                    config.author
+                            ) %></li>
                         </div>
-                        <div>
-                            <li>Powered by <a href="https://hexo.io" target="_blank" rel="nofollow">Hexo</a></li>
-                            <% if (theme.hoster) {%><li>Hosted on <%- theme.hoster %></li><% } %>
-                        </div>
-                        <div>
-                            <% if (theme.icp) {%><li><a href="https://beian.miit.gov.cn" rel="external nofollow" target="_blank"><%- theme.icp %></a></li><% } %>
-                            <% if (theme.psr) {%><li><a href="http://www.beian.gov.cn" rel="external nofollow" target="_blank"><img src="/images/psr.webp" width="12" height="12" loading="lazy" decoding="auto" /><%- theme.psr %></a></li><% } %>
-                        </div>
+                        <!-- 额外的追加注入项 -->
+                        <% for (const list of theme.footer.components.additional) { %>
+                            <div>
+                                <% for (const member of list) { %>
+                                    <li><%- member %></li>
+                                <% } %>
+                            </div>
+                        <% } %>
                     </ul>
                 </div>
             </div>
         </div>
         <div class="kr-tool text-center">
             <div class="tool">
-                <% if (theme.search?.enable) { %>
+                <% if (theme.search.provider !== "none") { %>
                     <div class="box search-box">
-                        <a href="<%- config.root %>search/">
+                        <a href="<%- url_for(theme.search.path.page) %>">
                             <span class="fa fa-search"></span>
                         </a>
                     </div>
                 <% } %>
-                <% if (theme.enable_dark) { %>
-                    <div class="box theme-box" id="darkmode-switch">
-                        <span class="fa fa-adjust"></span>
-                    </div>
-                <% } %>
-                <% if (theme.snow) { %>
-                    <div class="box theme-box" id="snow-switch">
-                        <span class="fa fa-snowflake-o"></span>
-                    </div>
-                <% } %>
-                <% if (theme.group_link) { %>
-                    <div class="box group-box">
-                        <a href="<%- theme.group_link %>" target="_blank" rel="nofollow">
-                            <span class="fa fa-users"></span>
-                        </a>
-                    </div>
-                <% } %>
+                <div class="box theme-box" id="theme-toggle">
+                    <span class="fa fa-adjust"></span>
+                </div>
             </div>
-            <div class="box gotop-box">
+            <div id="gotop-box" class="box gotop-box">
                 <span class="fa fa-chevron-up"></span>
             </div>
         </div>
@@ -89,3 +70,16 @@
 </footer>
 </div>
 </div>
+
+<% if (theme.donate.enable) { %>
+    <%- partial('_modals/donate', { page: page, theme: theme }) %>
+<% } %>
+
+<% if (theme.share.enable) { %>
+    <%- partial('_modals/share', { page: page, theme: theme }) %>
+<% } %>
+
+<!-- 额外的追加注入项 -->
+<% if (theme.additional_injections.footer) { %>
+    <%- theme.additional_injections.footer %>
+<% } %>

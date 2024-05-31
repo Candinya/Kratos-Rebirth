@@ -1,71 +1,75 @@
-![Kratos-Rebirth](https://repository-images.githubusercontent.com/132322562/46429300-7da7-11ea-8c82-d03503cb17b8)
+![Kratos : Rebirth](https://candymade.net/assets/screenshots/kratos-rebirth/all-platforms.png)
+
+> (截图模板来自 [Vectonauta on Freepik](https://www.freepik.com/free-psd/isolated-tablet-laptop-smartphone-composition_40505824.htm) )
+
+<div align="center">
+
+[![构建版本](https://img.shields.io/github/v/release/Candinya/Kratos-Rebirth?style=for-the-badge)](https://github.com/Candinya/Kratos-Rebirth/releases/latest)
+[![npm版本](https://img.shields.io/npm/v/hexo-theme-kratos-rebirth?color=red&logo=npm&style=for-the-badge)](https://www.npmjs.com/package/hexo-theme-kratos-rebirth)
+[![样例站点部署状态](https://img.shields.io/github/actions/workflow/status/Candinya/Kratos-Rebirth/build-demo.yml?style=for-the-badge&logo=github&label=Build%20Demo%20Site)](https://demo.krt.moe/)
+
+</div>
 
 ## 🍭 关于主题
 
-一只移植的主题，兼具亮暗双主题，身负多种小挂件，短能卡片列首页，长能文章读更多，退可罗列全归档，进可搜索全文章，相关介绍可以参见[主题说明](https://candinya.com/posts/Kratos-Rebirth/)页面哦~
+最初是一个从 Wordpress 移植过来的主题，抱着别浪费原开发者辛勤劳动的血汗成果的心态接手继续开发，竟逐渐迭代出了一套属于自己的生态。
 
-[![构建版本](https://img.shields.io/github/v/release/Candinya/Kratos-Rebirth)](https://github.com/Candinya/Kratos-Rebirth/releases/latest)
-[![npm版本](https://img.shields.io/npm/v/hexo-theme-kratos-rebirth?color=red&logo=npm)](https://www.npmjs.com/package/hexo-theme-kratos-rebirth)
-[![样例站点部署状态](https://github.com/Candinya/Kratos-Rebirth/workflows/Build%20Demo%20Site/badge.svg)](https://kr-demo.candinya.com/)
-[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2FCandinya%2FKratos-Rebirth.svg?type=shield)](https://app.fossa.com/projects/git%2Bgithub.com%2FCandinya%2FKratos-Rebirth?ref=badge_shield)
-
-[样例站点](https://kr-demo.candinya.com)自动部署已经上线，具体可以参照这篇日志：[使用Github Actions部署主题样例站](https://candinya.com/posts/theme-demo-deployment-with-github-actions/)
-
-全新的配置文档增加了！戳[这里](https://github.com/Candinya/Kratos-Rebirth/blob/master/Kratos-Rebirth-Manual.md)就能查看~
-
-或者也可以去[我的博客](https://candinya.com/posts/Kratos-Rebirth/)踩踩哦~
-
-核心结构&样式来源：[@MoeDog](https://github.com/xb2016) 狗狗大佬的[Kratos](https://github.com/xb2016/kratos)的某个上古版本
+<!-- TODO：在 Wiki 里继续扩展 -->
 
 ## 💞 安装使用
 
-1. `hexo init your-awesome-blog` 初始化您的 Hexo 站点目录（已经完成则可以忽略）
-2. 进入您的站点目录，使用 `npm install --save hexo-theme-kratos-rebirth` 或 `yarn add hexo-theme-kratos-rebirth` 安装主题。如果您有调整代码的需求，您也可以进入站点的主题目录，使用 git clone 本仓库来使用。
-3. 修改站点目录下的 `_config.yml` 站点配置文件，将默认的 `theme: landscape` 修改成 `theme: kratos-rebirth`
-4. 如有自定义配置的需要，为更有效地管理您的主题配置文件，您可以从该主题代码仓库中，手动复制一份 `_config.yml` ，并改名为 `_config.kratos-rebirth.yml` ，移动至您的站点目录下；或者您也可以参考 `.demo` 目录下的 `_config.kratos-rebirth.yml` 这个用于构建样例站点的配置文件扩展，将其移动至站点目录下。
+当前主题正在开发全新的 V3 版本，相关的流程还未完全准备就绪；如果您需要参考 V2 的部署文档，您可以前往 [branch/v2] 来查看相关的内容。
 
-**每一项配置项的具体解释可以参照[配置文档](https://kr-demo.candinya.com/posts/Kratos-Rebirth-Manual/)**。
+需要注意的是， V3 版本的使用方法和 V2 会有非常大的改变，届时我们将会整理出一份详细的迁移文档供您参考。
 
-## 🎁 使用环境小贴士
+[branch/v2]: https://github.com/Candinya/Kratos-Rebirth/tree/v2
 
-1. hexo的官方渲染器现在也已经支持文章置顶啦，配置`Front-Matter`段中的`sticky`参数即可实现置顶降序排序，可以参见生成器的[官方文档](https://github.com/hexojs/hexo-generator-index#usage)哦
-2. 由于使用了 `?.` 运算符，在旧版本的 NodeJS 上可能出现工作不正常的情况，因而我们推荐您使用 Node v14 或更新的版本。详情请参见 [可选链操作符](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/Optional_chaining) 。
-3. （如果您使用的是主题目录内的配置的方案，现在已经不推荐这种方案了）为了防止主题配置文件被上传导致版本管理冲突，主题的 `_config.yml` 文件是默认被忽略的（ .gitignore ），如果您使用远程构建部署的方式（例如 Pages 或是 Vercel 等），您需要手动添加对主题配置文件的追踪，可以使用 `git add -f ./themes/kratos-rebirth/_config.yml` 来恢复追踪。
-4. 如果发现代码块渲染样式出错（例如块代码被渲染成了行代码样式），可以试着检查一下是不是同时开启了 highlight 和 prismjs 的选项哦，主题对 highlight 的支持更佳呢
+<!-- TODO：基于 https://github.com/kratos-rebirth/quickstart 模板初始化，把详细流程和配置说明放到 Wiki 里 -->
 
-## 💬 支持的评论系统
+## 💬 周边生态支持
 
-- [Disqus](https://disqus.com)
-- [DisqusJS](https://disqusjs.skk.moe/)
-- [Valine](https://valine.js.org)
-- [Twikoo](https://twikoo.js.org)
-- [Waline](https://waline.js.org)
-- [Gitalk](https://gitalk.github.io/)
-- [LiveRe](https://livere.com/)
+出于扩展性考虑， V3 版本开始的主题将不再内置具体的生态插件（如评论或是站点音乐播放器等），您可以根据自己的需要自行引入对应的资源文件。我们将会提供一个详细的文档说明，以及一些 V2 版本时可用的平台的相关样例。
 
-## 🍩 二次开发相关
+<!-- TODO：模板写到 Wiki 里，具体的评论实现和配置写到 ecosystem 里 -->
 
-为了保证最终上线产品的有效空间利用，我们引入了gulp对静态资源文件（js、css）进行压缩；因而您在src文件夹下直接修改的静态文件会无法实时生效，请安装gulp及相应的插件（在主题文件夹下 `npm install` 或是 `yarn` ）。
+## 🍩 二次开发
 
-您可以使用 `npm run build` 或是 `yarn build` 来构建一次静态文件。
+V3 版本的二次开发工作流与 V2 版本相差不大，主要的变化为提交时不再需要构建资源文件，转而使用 CI 在打包上传时自动构建。如果您有二次开发或是传统使用方式（放置在站点的 themes 目录下）的需求，您需要注意手动构建最新的资源文件。
 
-同时，为方便变化内容实时更新和多浏览器测试开发，您可以使用 `npm run dev` 或是 `yarn dev` 来运行。我们也有引入 Browser Sync 功能方便地在多个浏览器上查看变化，**推荐**您在 Hexo 启动后运行该指令。
+我们使用 pnpm 作为包管理工具，它比起 yarn 和 npm 这种传统解决方案来说更注重节约硬盘空间，可以在一定程度上避免银河系中心黑洞级的 node_modules 目录出现。
+
+<!-- TODO：写到 Wiki 里 -->
 
 ## 💮 非常感谢
 
-- [Kratos-pjax](https://github.com/xb2016/kratos-pjax)
-- [hexo-theme-sagiri](https://github.com/DIYgod/diygod.me/tree/master/themes/sagiri)
-- [hexo-theme-suka](https://github.com/SukkaW/hexo-theme-suka)
-- [hexo-theme-landscape](https://github.com/hexojs/hexo-theme-landscape)
-- [APlayer](https://github.com/MoePlayer/APlayer)
-- [NProgress](https://github.com/rstacruz/nprogress)
-- [CloudFlare](https://www.cloudflare.com/)
-- [jsDelivr](https://www.jsdelivr.com/)
-- [unpkg](https://www.unpkg.com/)
-- [npm](https://www.npmjs.com/)
+### 开发者
 
-## 🎵 证书
+[![贡献者](https://kratos-rebirth.github.io/contributors-graph/contributors.svg)](https://github.com/Candinya/Kratos-Rebirth/graphs/contributors)
 
-- GNU General Public License v3
+以及几位特别开发者：
 
-[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2FCandinya%2FKratos-Rebirth.svg?type=large)](https://app.fossa.com/projects/git%2Bgithub.com%2FCandinya%2FKratos-Rebirth?ref=badge_large)
+| 完成的工作                | 开发者       |
+| ------------------------- | ------------ |
+| 基础项目 Kratos 开发      | Seaton Jiang |
+| 基础项目 Kratos-M2 开发   | MoeDog       |
+| 基础项目 Kratos-Hexo 开发 | 蓝冰记忆     |
+
+### 用户们
+
+- 各位一直以来都坚持陪伴着我们的用户们 <!-- TODO：链接到 awesome 页面 -->
+
+### 项目
+
+请参见 Wiki （等待补充）
+
+<!-- （从编辑历史里找这块对应的内容） -->
+
+## 🎵 开源授权
+
+| 组件 | 授权                            |
+| ---- | ------------------------------- |
+| 代码 | [GNU General Public License v3] |
+| 文档 | [CC BY-SA 4.0 DEED]             |
+
+[GNU General Public License v3]: https://www.gnu.org/licenses/gpl-3.0.zh-cn.html
+[CC BY-SA 4.0 DEED]: https://creativecommons.org/licenses/by-sa/4.0/deed.zh-hans

@@ -1,0 +1,48 @@
+<article class="kratos-hentry kratos-entry-border clearfix">
+    <div class="kratos-breadcrumb">
+        <a href="<%- url_for('/') %>">
+            <i class="fa fa-home"></i>
+        </a>
+        <i class="fa fa-angle-right"></i>
+        <% if (page.tag) { %>
+            <a href="<%- url_for('/tags/') %>">
+                <%= __('title.tag') %>
+            </a>
+            <i class="fa fa-angle-right"></i>
+            <a href="<%- url_for('/tags/' + page.tag) %>">
+                <%= page.tag %>
+            </a>
+        <% } else if (page.category) { %>
+
+            <a href="<%- url_for('/categories/') %>">
+                <%= __('title.category') %>
+            </a>
+
+            <%
+            /* Find full category */
+            let pCategory = site.categories.filter(category => is_current(category.path, true)).first();
+            if (!pCategory) {
+                // fallback
+                pCategory = site.categories.findOne({"name": page.category});
+            }
+            const categroyInfo = [pCategory];
+            while (pCategory.parent) {
+                pCategory = site.categories.findOne({"_id": pCategory.parent});
+                categroyInfo.unshift(pCategory);
+            }
+            %>
+            <% for (const category of categroyInfo) { %>
+                <i class="fa fa-angle-right"></i>
+                <a href="<%- url_for(category.path) %>">
+                    <%= category.name %>
+                </a>
+            <% } %>
+        <% } %>
+        <% if (page.current > 1) { %>
+            <i class="fa fa-angle-right"></i>
+            <span class="page-no">
+                <%= __('page_no', page.current) %>
+            </a>
+        <% } %>
+    </div>
+</article>

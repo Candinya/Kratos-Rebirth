@@ -1,0 +1,44 @@
+<div id="kr-donate-modal" class="kr-modal">
+    <div class="kr-modal-bg" onclick="krCloseDonateModal()"></div>
+    <div class="kr-modal-content">
+        <div class="kr-modal-header">
+            <div class="kr-modal-icon">
+                <i class="fa fa-bitcoin"></i>
+            </div>
+            <div class="kr-modal-title"><%- theme.donate.title %></div>
+            <button class="kr-modal-close" onclick="krCloseDonateModal()">
+                <i class="fa fa-times-circle"></i>
+            </button>
+        </div>
+        <div class="kr-modal-body">
+            <div class="kr-donate-message"><%- theme.donate.message %></div>
+            <div class="kr-donate-qr" id="kr-donate-qr">
+                <% if (theme.donate.qrcode_placeholder) { %>
+                    <img class="kr-donate-placeholder" src="<%- theme.donate.qrcode_placeholder %>" alt="<%- theme.donate.title %>" />
+                <% } %>
+            </div>
+            <div class="kr-donate-platforms">
+                <% for (const platform of theme.donate.platforms) { %>
+                    <% if (platform.qrcode) { %>
+                        <button class="kr-donate-platform-button" style="color: <%- platform.color %>;" title="<%- platform.name %>" onclick="krDonateModalShowPlatformQR('<%- platform.qrcode %>', '<%- platform.color %>')">
+                            <% if (platform.icon) { %>
+                                <i class="fa fa-<%- platform.icon %>"></i>
+                            <% } else if (platform.html) { %>
+                                <%- platform.html %>
+                            <% } %>
+                        </button>
+                    <% } else { %>
+                        <a class="kr-donate-platform-button" href="<%- platform.link %>" style="color: <%- platform.color %>;" title="<%- platform.name %>" target="_blank">
+                            <% if (platform.icon) { %>
+                                <i class="fa fa-<%- platform.icon %>"></i>
+                            <% } else if (platform.html) { %>
+                                <%- platform.html %>
+                            <% } %>
+                        </a>
+                    <% } %>
+                <% } %>
+            </div>
+        </div>
+    </div>
+</div>
+<%- js_theme_cdn('js/kr-modal/donate.min.js', { defer: true }) %>

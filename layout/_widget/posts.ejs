@@ -1,6 +1,6 @@
 <% if (site.posts.length){ %>
   <aside id="krw-posts" class="widget widget-kratos-posts">
-  <h4 class="widget-title"><i class="fa fa-file"></i><%- __('recent_posts') %></h4>
+  <h4 class="widget-title"><i class="fa fa-file"></i><%- __('title.recent_posts') %></h4>
   <div class="tab-content">
       <ul class="list-group">
         <% let limit = 5; %>
@@ -9,7 +9,7 @@
             <% return false; %>
           <% } %>
           <% if (post.title) { %>
-            <a class="list-group-item" href="<%- url_for(post.path) %>"><i class="fa  fa-book"></i> <%- post.title %></a>
+            <a class="list-group-item" href="<%- url_for(post.path) %>"><i class="fa fa-book"></i> <%- post.title %></a>
             <% limit--; %>
           <% } %>
         <% }) %>

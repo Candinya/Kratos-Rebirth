@@ -1,0 +1,79 @@
+<article itemscope itemtype="https://schema.org/Article">
+    <div class="kratos-hentry kratos-page-inner clearfix index-post">
+        <% if (post.cover) { %>
+        <div class="kratos-entry-thumb">
+            <a href="<%- url_for(post.path) %>">
+                <img class="kratos-entry-thumb-img" src="<%- 
+                    post.cover ? (
+                        /^(#|\/\/|http(s)?:)/.test(post.cover) ? 
+                        post.cover : 
+                        url_for(
+                            post.cover.startsWith('/') ? 
+                            post.cover : 
+                            post.path.replace(/(\/index)?\.html?$/, '') + '/' + post.cover
+                        )
+                    ) : theme.posts.default_cover
+                %>" alt="<%- url_for(post.title) %>">
+            </a>
+        </div>
+        <% } %>
+        <header class="kratos-page-header">
+            <h1 class="text-center"><a class="kratos-page-title" href="<%- url_for(post.path) %>" itemprop="mainEntityOfPage"><span itemprop="name headline"><%- post.title %></span></a></h1>
+            <% if (post.subtitle) { %>
+                <h2 class="text-center"><%- post.subtitle %></h2>
+            <% } %>
+            <ul class="kratos-page-meta text-center">
+                <li>
+                <time datetime="<%= date_xml(post.date) %>" itemprop="datePublished">
+                    <i class="fa fa-calendar"></i> <%- date(post.date, null) %>
+                </time>
+                </li>
+                <% if (post.categories.length) { %>
+                    <li>
+                        <i class="fa fa-folder"></i>
+                        <%- __('post_meta.category_in') %>
+                        <%- list_categories(
+                            post.categories, {
+                                show_count: false, 
+                                class: 'label', 
+                                style: 'none'
+                            }) %>
+                    </li>
+                <% } %>
+                <% if (post.tags.length) { %>
+                    <li>
+                        <i class="fa fa-tags"></i>
+                        <%- list_tags(post.tags, {
+                            show_count: false,
+                            style: 'none',
+                            amount: 3
+                        }) %>
+                    </li>
+                <% } %>
+                <% if (theme.visit_count.enable_at.includes("index")) { %>
+                    <li>
+                        <i class="fa fa-eye"></i>
+                        <%- __('post_meta.read_count', (theme.visit_count.template._shared + theme.visit_count.template.index).replaceAll("$PATH", url_for(post.path))) %>
+                    </li>
+                <% } %>
+                <% if (theme.comments.count.enable_at.includes("index") && post.comments) { %>
+                    <li>
+                        <i class="fa fa-commenting-o"></i>
+                        <%- __('post_meta.comments_count', (theme.comments.count.template._shared + theme.comments.count.template.index).replaceAll("$PATH", url_for(post.path))) %>
+                    </li>
+                <% } %>
+            </ul>
+        </header>
+        <hr />
+        <div class="kratos-page-content kr-index" itemprop="articleBody">
+            <%- post.excerpt || post.content %>
+        </div>
+        <% if (post.excerpt) { %>
+            <footer class="kratos-entry-footer clearfix">
+                <div class="post-actions text-center clearfix">
+                    <a class="read-more" href="<%- url_for(post.path) %>#more" title="<%- post.title %>"><%- __('post_action.read_more') %> <i class="fa fa-chevron-circle-right"></i></a>
+                </div>
+            </footer>
+        <% } %>
+    </div>
+</article>

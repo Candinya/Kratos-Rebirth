@@ -17,21 +17,21 @@
   .posts-collapse .post-header:hover{border-bottom-color:#666}
   .posts-collapse .post-header:hover::before{background:#222}
   .posts-collapse .post-meta{position:absolute;font-size:12px;left:20px;top:5px}
-  .posts-collapse .post-comments-count{display:none}
+  .posts-collapse .kr-comments-count{display:none}
   .posts-collapse .post-title{margin-left:70px;font-size:16px;font-weight:400;line-height:inherit}
   .posts-collapse .post-title::after{margin-left:3px;opacity:.6}
   .posts-collapse .post-title a{color:#666;border-bottom:none}
 </style>
 <% if (page.posts) { %>
   <article>
-      <div class="kratos-hentry kratos-post-inner clearfix">
-          <div class="kratos-post-content">
-            <h2 class="title-h2 text-center"><%- __('archive') %></h2>
+      <div class="kratos-hentry kratos-page-inner clearfix">
+          <header class="kratos-page-header">
+            <h1 class="kratos-page-title text-center" itemprop="name headline"><%- __('title.archive') %></h1>
+          </header>
+          <div class="kratos-page-content kr-archive">
             <div id="archives">
               <div class="post-block archive post" style="margin-left: 2em;">
-                <h3 class="archive-page-counter"><%- __('archive_count', () => {
-                  return site.posts.filter((post) => { return !!post.title }).length;
-                }) %></h3>
+                <h3 class="archive-page-counter"><%- __('list_page_count_message.archive', site.posts.filter(post => !!post.title).length) %></h3>
                 <div class="posts-collapse">
                   <% let year; %>
                   <% page.posts.sort('date', -1).each((post) => { %>

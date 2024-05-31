@@ -1,0 +1,28 @@
+/**
+ * atom-dark theme for `prism.js`
+ * Based on Atom's `atom-dark` theme: https://github.com/atom/atom-dark-syntax
+ * @author Joe Gibson (@gibsjose)
+ */
+
+$prismjs_base_color      : #c5c8c6;
+$prismjs_text_shadow     : 0 1px rgba(0, 0, 0, 0.3);
+$prismjs_base_background : #1d1f21;
+$prismjs_comment         : #7c7c7c;
+$prismjs_punctuation     : #c5c8c6;
+$prismjs_keyword         : #96cbfe;
+$prismjs_yellow          : #ffffb6;
+$prismjs_constant        : #99cc99;
+$prismjs_deleted         : #f92672;
+$prismjs_number          : #ff73fd;
+$prismjs_select          : #a8ff60;
+$prismjs_variable        : #c6c5fe;
+$prismjs_operator        : #ededed;
+$prismjs_entity          : #ffffb6;
+$prismjs_url             : #96cbfe;
+$prismjs_string          : #87c38a;
+$prismjs_attribute       : #f9ee98;
+$prismjs_function        : #dad085;
+$prismjs_regex           : #e9c062;
+$prismjs_important       : #fd971f;
+
+@import "../base.scss";

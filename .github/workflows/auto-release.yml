@@ -1,4 +1,4 @@
-name: Release events
+name: Auto Release
 
 on:
   push:
@@ -6,14 +6,44 @@ on:
       - 'v*'
 
 jobs:
-  gpr_publish:
+  publish:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v1
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
         with:
           registry-url: 'https://registry.npmjs.org'
-      - name: Publish to NPM
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 9
+
+      - name: Install deps
+        run: pnpm install --frozen-lockfile
+
+      - name: Build
+        run: pnpm build
+      
+      - name: Publish stable release version (with default latest tag)
+        if: ${{ ! contains(github.ref_name, '-') }}
         run: npm publish
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN_CANDINYA }}
+      
+      - name: Publish unstable pre-release version (with next tag)
+        if: ${{ contains(github.ref_name, '-') }} # Refer to Semantic Versioning , use a hyphen to split version code and pre-release identifier
+        run: npm publish --tag next
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN_CANDINYA }}
+
+      - name: Create release (draft)
+        uses: softprops/action-gh-release@v2
+        with:
+          name: "[${{ github.ref_name }}] (新的发布)"
+          generate_release_notes: true
+          draft: true
+          prerelease: ${{ contains(github.ref_name, '-') }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.RELEASE_TOKEN }}
