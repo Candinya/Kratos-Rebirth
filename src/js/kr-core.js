@@ -93,8 +93,6 @@ window.copyCode =
       }
     });
 
-    document.getElementById("kratos-page").prepend(menuWrapClone);
-
     // 在页面放大到超过断点时自动关闭
     window.addEventListener("resize", (e) => {
       if (window.innerWidth > 768) {
@@ -105,6 +103,9 @@ window.copyCode =
         }
       }
     });
+
+    // 挂载到 DOM
+    document.getElementById("kratos-page").prepend(menuWrapClone);
   };
   const initCollapseBoxControl = () => {
     document.querySelectorAll(".collapse-box-control").forEach((node) => {
