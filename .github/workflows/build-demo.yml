@@ -39,7 +39,7 @@ jobs:
     - uses: actions/checkout@v4
       with:
         repository: 'kratos-rebirth/demo-site-v3'
-        path: '/tmp/demo-site'
+        path: 'demo-site'
 
     # Build fresh theme files
     - name: Build theme files
@@ -62,11 +62,11 @@ jobs:
 
     # Copy extended theme settings
     - name: Copy extended theme settings
-      run: mv "/tmp/demo-site/_config.kratos-rebirth.yml" "_config.kratos-rebirth.yml"
+      run: mv "demo-site/_config.kratos-rebirth.yml" "_config.kratos-rebirth.yml"
 
     # Prepare assets
     - name: Prepare assets
-      run: mv /tmp/demo-site/assets source/demo-assets
+      run: mv demo-site/assets source/demo-assets
 
     # Edit theme settings
     - name: Edit theme settings
