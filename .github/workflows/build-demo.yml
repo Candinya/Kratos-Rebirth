@@ -13,7 +13,7 @@ jobs:
     # Setup Node.js env
     - uses: actions/setup-node@v4
       with:
-        node-version: 'lts'
+        node-version: 'latest'
 
     - name: Install pnpm
       uses: pnpm/action-setup@v4
