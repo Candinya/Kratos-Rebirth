@@ -1319,14 +1319,15 @@ body.scroll-down.nav-up #kratos-desktop-topnav {
     color: #626262;
   }
 
-  > span.page-number,
-  > a:hover {
+  .current,
+  a:hover {
     background-color: #51aded;
     color: #fff !important;
   }
 
   .page-number,
-  .extend {
+  .extend,
+  .space {
     min-width: 36px;
     height: 36px;
     display: inline-flex;
