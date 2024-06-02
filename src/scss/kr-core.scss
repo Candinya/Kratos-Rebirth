@@ -284,26 +284,31 @@ h6 {
   &.kr-post,
   &.kr-page {
     h1 {
-      margin: 48px 0 48px 16px;
+      margin-top: 48px;
+      margin-left: 16px;
     }
 
     h2 {
-      margin: 36px 0 36px 14px;
+      margin-top: 36px;
+      margin-left: 14px;
     }
 
     h3 {
-      margin: 24px 0 24px 12px;
+      margin-top: 30px;
+      margin-left: 12px;
     }
 
     h4,
     h5,
     h6 {
-      margin: 20px 0 20px 12px;
+      margin-top: 20px;
+      margin-left: 12px;
     }
 
     h1,
     h2,
     h3 {
+      padding-bottom: 10px;
       padding-bottom: 10px;
       border-bottom: 1px dashed #b4afaf;
     }
