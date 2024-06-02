@@ -1,4 +1,4 @@
-﻿@charset "UTF-8";
+@charset "UTF-8";
 
 @-ms-viewport {
   width: device-width;
@@ -174,7 +174,6 @@ input::-moz-focus-inner {
 }
 
 blockquote {
-  font-size: 17.5px;
   margin: 12px 0;
   border-left: 5px solid;
   padding: 4px 0 5px 10px;
@@ -346,10 +345,14 @@ h2 {
 h3 {
   font-size: 1.2em;
 }
-h4,
-h5,
-h6 {
+h4 {
   font-size: 1em;
+}
+h5 {
+  font-size: 0.87em;
+}
+h6 {
+  font-size: 0.8em;
 }
 
 hr {
@@ -1574,10 +1577,10 @@ ul.kratos-page-meta {
   word-break: break-word;
   word-wrap: break-word;
   margin: 10px;
+  font-size: 16px;
 
   p {
     margin-bottom: 1em;
-    font-size: 16px;
     color: #333;
     margin: 1em;
   }
@@ -2512,19 +2515,6 @@ body.scroll-down .kr-tool {
 }
 
 @media (max-width: 768px) {
-  h1 {
-    font-size: 25px !important;
-  }
-  h2 {
-    font-size: 21px;
-  }
-  h3 {
-    font-size: 18px;
-  }
-  h4 {
-    font-size: 15px;
-  }
-
   .kratos-nav-toggle {
     display: block;
   }
