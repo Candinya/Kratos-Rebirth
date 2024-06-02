@@ -2882,13 +2882,11 @@ td.code {
 }
 
 span.blur {
-  text-shadow: 0 0 0.5em rgb(0, 0, 0);
-  color: rgba(1, 1, 1, 0.1) !important;
+  filter: blur(5px);
   transition: 0.2s;
 
   &:hover {
-    text-shadow: 0 0 0;
-    color: #000000 !important;
+    filter: none;
   }
 }
 

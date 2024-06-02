@@ -268,14 +268,6 @@ a:hover,
   }
 }
 
-span.blur {
-  text-shadow: 0 0 0.5em $text;
-
-  &:hover {
-    color: $text !important;
-  }
-}
-
 .kr-modal .kr-modal-content {
   .kr-modal-header,
   .kr-modal-body {
