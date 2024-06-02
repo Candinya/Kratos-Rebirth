@@ -260,7 +260,6 @@ h4,
 h5,
 h6 {
   font-weight: 400;
-  padding-bottom: 10px;
   font-family: inherit;
   line-height: 1.1;
 }
@@ -285,43 +284,27 @@ h6 {
   &.kr-post,
   &.kr-page {
     h1 {
-      margin-top: 48px;
-      margin-left: 16px;
-    }
-    h1 > a::before {
-      margin-top: 48px;
+      margin: 48px 0 48px 16px;
     }
 
     h2 {
-      margin-top: 36px;
-      margin-left: 14px;
-    }
-    h2 > a::before {
-      margin-top: 36px;
+      margin: 36px 0 36px 14px;
     }
 
     h3 {
-      margin-top: 24px;
-      margin-left: 12px;
-    }
-    h3 > a::before {
-      margin-top: 24px;
+      margin: 24px 0 24px 12px;
     }
 
     h4,
     h5,
     h6 {
-      margin-top: 20px;
-      margin-left: 12px;
-
-      > a::before {
-        margin-top: 20px;
-      }
+      margin: 20px 0 20px 12px;
     }
 
     h1,
     h2,
     h3 {
+      padding-bottom: 10px;
       border-bottom: 1px dashed #b4afaf;
     }
 
@@ -1448,7 +1431,6 @@ ul.kratos-page-meta {
         h5,
         h6 {
           padding-left: 1rem;
-          position: relative;
 
           a::before {
             transition: opacity 0.3s ease-in-out;
