@@ -1,4 +1,4 @@
-@charset "UTF-8";
+﻿@charset "UTF-8";
 
 @-ms-viewport {
   width: device-width;
@@ -285,7 +285,7 @@ h6 {
   &.kr-post,
   &.kr-page {
     h1 {
-      padding-top: 48px;
+      margin-top: 48px;
       margin-left: 16px;
     }
     h1 > a::before {
@@ -293,7 +293,7 @@ h6 {
     }
 
     h2 {
-      padding-top: 36px;
+      margin-top: 36px;
       margin-left: 14px;
     }
     h2 > a::before {
@@ -301,7 +301,7 @@ h6 {
     }
 
     h3 {
-      padding-top: 24px;
+      margin-top: 24px;
       margin-left: 12px;
     }
     h3 > a::before {
@@ -311,7 +311,7 @@ h6 {
     h4,
     h5,
     h6 {
-      padding-top: 20px;
+      margin-top: 20px;
       margin-left: 12px;
 
       > a::before {
@@ -1456,8 +1456,8 @@ ul.kratos-page-meta {
             font-family: fontawesome;
             content: "\f1dd";
             width: 100%;
-            display: block;
-            position: absolute;
+            display: inline;
+            position: relative;
             top: 0;
             left: -0.5em;
           }
