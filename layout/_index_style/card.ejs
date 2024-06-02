@@ -5,39 +5,41 @@
                 <div class="pin-top inner"></div>
             </div>
         <% } %>
-        <div class="kratos-entry-thumb">
-            <a href="<%- url_for(post.path) %>">
-                <img class="kratos-entry-thumb-img" src="<%- 
-                    post.cover ? (
-                        /^(#|\/\/|http(s)?:)/.test(post.cover) ? 
-                        post.cover : 
-                        url_for(
-                            post.cover.startsWith('/') ? 
+        <div class="kratos-entry-post-main">
+            <div class="kratos-entry-thumb">
+                <a href="<%- url_for(post.path) %>">
+                    <img class="kratos-entry-thumb-img" src="<%- 
+                        post.cover ? (
+                            /^(#|\/\/|http(s)?:)/.test(post.cover) ? 
                             post.cover : 
-                            post.path.replace(/(\/index)?\.html?$/, '') + '/' + post.cover
-                        )
-                    ) : theme.posts.default_cover
-                %>" alt="<%- url_for(post.title) %>">
-            </a>
-        </div>
-        <div class="kratos-entry-post-inner">
-            <header class="kratos-entry-header">
-                    <%- list_categories(post.categories, {
-                        show_count: false,
-                        class: 'label',
-                        style: 'none',
-                        separator: ' '
-                    }) %>
-                <h2 class="kratos-entry-title"><a href="<%- url_for(post.path) %>" itemprop="mainEntityOfPage"><span itemprop="name headline"><%- post.title %><% if (post.subtitle) { %><sub><%- post.subtitle %></sub><% } %></span></a>
-            </header>
-            <div class="kratos-entry-content">
-                <p itemProp="description">
-                    <% if (post.excerpt) { %>
-                        <%- strip_html(post.excerpt) %>
-                    <% } else { %>
-                        <%- truncate(strip_html(post.content), {length: 120}) %>
-                    <% } %>
-                </p>
+                            url_for(
+                                post.cover.startsWith('/') ? 
+                                post.cover : 
+                                post.path.replace(/(\/index)?\.html?$/, '') + '/' + post.cover
+                            )
+                        ) : theme.posts.default_cover
+                    %>" alt="<%- url_for(post.title) %>">
+                </a>
+            </div>
+            <div class="kratos-entry-post-inner">
+                <header class="kratos-entry-header">
+                        <%- list_categories(post.categories, {
+                            show_count: false,
+                            class: 'label',
+                            style: 'none',
+                            separator: ' '
+                        }) %>
+                    <h2 class="kratos-entry-title"><a href="<%- url_for(post.path) %>" itemprop="mainEntityOfPage"><span itemprop="name headline"><%- post.title %><% if (post.subtitle) { %><sub><%- post.subtitle %></sub><% } %></span></a>
+                </header>
+                <div class="kratos-entry-content">
+                    <p itemProp="description">
+                        <% if (post.excerpt) { %>
+                            <%- strip_html(post.excerpt) %>
+                        <% } else { %>
+                            <%- truncate(strip_html(post.content), {length: 120}) %>
+                        <% } %>
+                    </p>
+                </div>
             </div>
         </div>
         <footer class="kratos-entry-post-meta">

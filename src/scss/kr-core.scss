@@ -1512,50 +1512,6 @@ ul.kratos-page-meta {
     }
   }
 }
-
-.kratos-entry-post-inner {
-  margin-left: 255px;
-  height: 160px;
-  padding: 21px 20px 0 3px;
-  overflow: hidden;
-  text-overflow: ellipsis;
-
-  header .label-link {
-    position: relative;
-    display: inline-block;
-    padding: 4px 6px;
-    font-size: 12px;
-    font-weight: 700;
-    line-height: 14px;
-    color: #fff;
-    vertical-align: baseline;
-    white-space: nowrap;
-    background-color: #51aded;
-    margin-right: 5px;
-    position: relative;
-    top: -2px;
-    border-radius: 0;
-    cursor: pointer;
-
-    &::after {
-      position: absolute;
-      width: 0;
-      height: 0;
-      vertical-align: top;
-      content: "";
-      top: 6px;
-      right: -4px;
-      border-left: 4px solid #51aded;
-      border-top: 4px solid transparent;
-      border-bottom: 4px solid transparent;
-    }
-
-    &:hover {
-      color: #fff !important;
-    }
-  }
-}
-
 .col-md-8 {
   width: 100%;
 }
@@ -1653,13 +1609,59 @@ ul.kratos-page-meta {
   }
 }
 
+.kratos-entry-post-main {
+  display: flex;
+  padding: 20px;
+  gap: 20px;
+  height: 185px;
+}
+
+.kratos-entry-post-inner {
+  overflow: hidden;
+  text-overflow: ellipsis;
+
+  header .label-link {
+    position: relative;
+    display: inline-block;
+    padding: 4px 6px;
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 14px;
+    color: #fff;
+    vertical-align: baseline;
+    white-space: nowrap;
+    background-color: #51aded;
+    margin-right: 5px;
+    position: relative;
+    top: -2px;
+    border-radius: 0;
+    cursor: pointer;
+
+    &::after {
+      position: absolute;
+      width: 0;
+      height: 0;
+      vertical-align: top;
+      content: "";
+      top: 6px;
+      right: -4px;
+      border-left: 4px solid #51aded;
+      border-top: 4px solid transparent;
+      border-bottom: 4px solid transparent;
+    }
+
+    &:hover {
+      color: #fff !important;
+    }
+  }
+}
+
 .kratos-entry-thumb {
+  flex-shrink: 0;
   position: relative;
-  float: left;
   width: 240px;
   height: 145px;
   overflow: hidden;
-  margin: 20px;
   padding: 0;
   img {
     position: absolute;
@@ -2469,24 +2471,12 @@ body.scroll-down .kr-tool {
   transition: color 0.3s ease-in-out;
 }
 
-@media (max-width: 1200px) {
-  .kratos-entry-content {
-    height: 80px;
-  }
-}
-
 @media (max-width: 992px) {
   .kratos-page-meta span {
     font-size: 12px;
     i:not(:first-child) {
       margin-left: 10px;
     }
-  }
-}
-
-@media (max-width: 768px) {
-  .kratos-entry-content {
-    height: 100%;
   }
 }
 
@@ -2571,12 +2561,15 @@ body.scroll-down .kr-tool {
     font-size: 36px !important;
   }
 
+  .kratos-entry-post-main {
+    flex-direction: column;
+    height: auto;
+  }
+
   .kratos-entry-thumb {
     position: relative;
-    float: none;
     width: auto;
     height: auto;
-    margin: 0 0 20px 0;
     padding: 0 0 60% 0;
     img {
       padding: 0;
@@ -2584,19 +2577,8 @@ body.scroll-down .kr-tool {
     }
   }
 
-  .kratos-entry-post-inner {
-    margin-left: 0;
-    height: auto;
-    padding: 0 20px;
-  }
-
   .kratos-entry-post-meta .read-more {
     margin-right: 8px;
-  }
-
-  .kratos-entry-content p {
-    height: auto;
-    margin-bottom: 20px;
   }
 
   .hide_notice,
