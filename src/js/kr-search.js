@@ -55,6 +55,9 @@
     const resultTemplate = document.getElementById(
       "kr-search-result-template",
     ).innerHTML;
+    const resultTagBeginTemplate = document.getElementById(
+      "kr-search-tag-begin-template",
+    ).innerHTML;
     const resultTagTemplate = document.getElementById(
       "kr-search-tag-template",
     ).innerHTML;
@@ -86,7 +89,12 @@
         .replaceAll("$TITLE", resultInfo.title)
         .replaceAll("$CONTENT", resultInfo.content)
         .replaceAll("$DATE", resultInfo.date)
-        .replaceAll("$TAGS", resultTags.join(", "));
+        .replaceAll(
+          "$TAGS",
+          resultTags.length !== 0
+            ? resultTagBeginTemplate + resultTags.join(", ")
+            : "",
+        );
     }
     document.getElementById("kr-search-results").innerHTML = resultString;
   };
