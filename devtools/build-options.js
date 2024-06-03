@@ -88,10 +88,10 @@ const buildJSOpts = {
   ],
   outExtension: { ".js": ".min.js" },
   outdir: "source/js",
-  bundle: false,
+  bundle: true,
   minify: true,
   plugins: [],
-  target: ["es2020", "chrome58", "edge16", "firefox57", "node12", "safari11"],
+  target: ["es2020", "chrome58", "edge18", "firefox57", "node12", "safari11"],
 };
 
 module.exports = {

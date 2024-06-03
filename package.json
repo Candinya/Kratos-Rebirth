@@ -32,7 +32,8 @@
     "lint-staged": "^15.2.4",
     "postcss": "^8.4.38",
     "postcss-preset-env": "^9.5.13",
-    "prettier": "3.2.5"
+    "prettier": "3.2.5",
+    "scroll-into-view-if-needed": "^3.1.0"
   },
   "lint-staged": {
     "**/*": "prettier --write --ignore-unknown"

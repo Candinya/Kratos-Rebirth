@@ -1,6 +1,7 @@
 /**
  * 一些暴露给 DOM 交互使用的全局函数
  */
+import scrollIntoView from "scroll-into-view-if-needed";
 
 window.copyCode =
   window.copyCode ||
@@ -434,10 +435,15 @@ window.copyCode =
 
           // 滚动出现（延迟到展开动画之后，避免 jitter ）
           setTimeout(() => {
-            tocItems[newId]?.el.scrollIntoView({
+            const el = tocItems[newId]?.el;
+            if (!el) {
+              return;
+            }
+            scrollIntoView(el, {
               behavior: "smooth",
               block: "nearest",
               inline: "nearest",
+              boundary: sidebarTocWidget,
             });
           }, 300);
         }
