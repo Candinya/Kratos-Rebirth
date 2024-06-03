@@ -7,10 +7,6 @@ settings:
 importers:
 
   .:
-    dependencies:
-      scroll-into-view-if-needed:
-        specifier: ^3.1.0
-        version: 3.1.0
     devDependencies:
       autoprefixer:
         specifier: ^10.4.19
@@ -39,6 +35,9 @@ importers:
       prettier:
         specifier: 3.2.5
         version: 3.2.5
+      scroll-into-view-if-needed:
+        specifier: ^3.1.0
+        version: 3.1.0
 
 packages:
 
