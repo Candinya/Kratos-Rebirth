@@ -1,4 +1,4 @@
-const { stripHTML } = require("hexo-util");
+const strip_html = hexo.extend.helper.get("strip_html").bind(hexo);
 
 const parseSearchItem = (item, includeContent, url_for) => {
   let _item = {};
@@ -26,7 +26,7 @@ const parseSearchItem = (item, includeContent, url_for) => {
     _item.categories.push(["undefined", ""]);
   }
   if (includeContent && item.content) {
-    _item.content = stripHTML(
+    _item.content = strip_html(
       item.content.trim().replace(/<pre(.*?)\<\/pre\>/gs, ""),
     )
       .replace(/\n/g, " ")
