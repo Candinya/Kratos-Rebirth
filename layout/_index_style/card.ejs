@@ -37,9 +37,9 @@
                 <div class="kratos-entry-content">
                     <p itemProp="description">
                         <% if (post.excerpt) { %>
-                            <%- strip_html(post.excerpt) %>
+                            <%- escape_html(strip_html(post.excerpt.replace(/\<br\s*\/?\>/g, '\n'))).replace(/\r\n?|\n/g, '<br>') %>
                         <% } else { %>
-                            <%- truncate(strip_html(post.content), {length: 120}) %>
+                            <%- escape_html(truncate(strip_html(post.content), {length: 120})) %>
                         <% } %>
                     </p>
                 </div>
