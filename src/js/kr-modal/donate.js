@@ -42,3 +42,8 @@ function krDonateModalShowPlatformQR(text, color) {
 
   qrCode.append(container);
 }
+
+// Append to window object
+window.krOpenDonateModal = krOpenDonateModal;
+window.krCloseDonateModal = krCloseDonateModal;
+window.krDonateModalShowPlatformQR = krDonateModalShowPlatformQR;

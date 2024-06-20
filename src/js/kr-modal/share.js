@@ -75,3 +75,9 @@ function initQRCode() {
 initQRCode();
 
 window.addEventListener("pjax:complete", initQRCode);
+
+// Append to window object
+window.krOpenShareModal = krOpenShareModal;
+window.krCloseShareModal = krCloseShareModal;
+window.krShareModalOpenPlatform = krShareModalOpenPlatform;
+window.initQRCode = initQRCode;
