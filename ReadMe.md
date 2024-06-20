@@ -6,7 +6,7 @@
 
 [![构建版本](https://img.shields.io/github/v/release/Candinya/Kratos-Rebirth?style=for-the-badge)](https://github.com/Candinya/Kratos-Rebirth/releases/latest)
 [![npm版本](https://img.shields.io/npm/v/hexo-theme-kratos-rebirth?color=red&logo=npm&style=for-the-badge)](https://www.npmjs.com/package/hexo-theme-kratos-rebirth)
-[![样例站点部署状态](https://img.shields.io/github/actions/workflow/status/Candinya/Kratos-Rebirth/build-demo.yml?style=for-the-badge&logo=github&label=Build%20Demo%20Site)](https://demo.krt.moe/)
+[![样例站点部署状态](https://img.shields.io/github/actions/workflow/status/Candinya/Kratos-Rebirth/build-demo.yml?style=for-the-badge&logo=github&label=Build%20Demo%20Site)](https://dev.krt.moe/)
 
 </div>
 

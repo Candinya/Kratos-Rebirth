@@ -56,7 +56,7 @@ jobs:
         sed -i "s/description: ''/description: 欢迎使用这个主题，希望能给您带来美好的体验。/" "_config.yml"
         sed -i "s/author: John Doe/author: Candinya/"                                "_config.yml"
         sed -i "s/language:/language: zh-CN/"                                        "_config.yml"
-        sed -i "s|url: http://example.com|url: https://demo.krt.moe|"                "_config.yml"
+        sed -i "s|url: http://example.com|url: https://dev.krt.moe|"                 "_config.yml"
         sed -i "s|permalink: :year/:month/:day/:title/|permalink: posts/:title/|"    "_config.yml"
         sed -i "s/theme: landscape/theme: kratos-rebirth/"                           "_config.yml"
 
