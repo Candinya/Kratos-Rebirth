@@ -6,7 +6,11 @@
 
         <% if (page.type !== "404") { %>
 
-            <section class="col-md-<%- (theme.sidebar.location === 'left' || theme.sidebar.location === 'right') ? '8' : '12' %>">
+            <% if (theme.sidebar.location === 'left') { %>
+                <%- partial('_partial/sidebar') %>
+            <% } %>
+
+            <section class="kr-main-col col-md-<%- (theme.sidebar.location === 'left' || theme.sidebar.location === 'right') ? '8' : '12' %>">
 
         <% } %>
 
@@ -15,6 +19,10 @@
         <% if (page.type !== "404") { %>
 
             </section>
+
+            <% if (theme.sidebar.location === 'right') { %>
+                <%- partial('_partial/sidebar') %>
+            <% } %>
 
         <% } %>
 
