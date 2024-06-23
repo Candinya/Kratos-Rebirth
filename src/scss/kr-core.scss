@@ -1084,6 +1084,7 @@ table {
 
 #kratos-menu-wrap {
   float: left;
+  width: 100%;
   .sf-menu {
     a {
       color: #fff;
@@ -1128,6 +1129,10 @@ table {
 
     > li {
       float: left;
+
+      &.right {
+        float: right;
+      }
 
       > ul.sub-menu {
         transition: 0.3s all ease-in-out;

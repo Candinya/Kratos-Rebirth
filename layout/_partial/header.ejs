@@ -7,7 +7,7 @@
                         <nav id="kratos-menu-wrap">
                             <ul id="kratos-primary-menu" class="sf-menu">
                                 <% for (const item of theme.nav.items) { %>
-                                    <li>
+                                    <li<% if (item.float_right) { %> class="right"<% } %>>
                                         <% if (item.submenu) { %>
                                             <a>
                                         <% } else { %>
