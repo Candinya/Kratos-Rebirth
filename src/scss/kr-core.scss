@@ -735,8 +735,8 @@ table {
     border-color: #b6d4fe;
 
     .icon,
-    .text p {
-      color: #084298 !important;
+    .text :not(code) {
+      color: #084298;
     }
   }
 
@@ -745,8 +745,8 @@ table {
     border-color: #badbcc;
 
     .icon,
-    .text p {
-      color: #0f5132 !important;
+    .text :not(code) {
+      color: #0f5132;
     }
   }
 
@@ -755,8 +755,8 @@ table {
     border-color: #f5c2c7;
 
     .icon,
-    .text p {
-      color: #842029 !important;
+    .text :not(code) {
+      color: #842029;
     }
   }
 
@@ -765,8 +765,8 @@ table {
     border-color: #b6effb;
 
     .icon,
-    .text p {
-      color: #055160 !important;
+    .text :not(code) {
+      color: #055160;
     }
   }
 
@@ -775,8 +775,8 @@ table {
     border-color: #ffecb5;
 
     .icon,
-    .text p {
-      color: #664d03 !important;
+    .text :not(code) {
+      color: #664d03;
     }
   }
 }
