@@ -68,12 +68,6 @@ jobs:
     - name: Prepare assets
       run: mv demo-site/assets source/demo-assets
 
-    # Edit theme settings
-    - name: Edit theme settings
-      run: |
-        sed -i "s|clientID: 'GitHub Application Client ID'|clientID: '${{ secrets.GH_OAUTH_ID }}'|"                  "_config.kratos-rebirth.yml"
-        sed -i "s|clientSecret: 'GitHub Application Client Secret'|clientSecret: '${{ secrets.GH_OAUTH_SECRET }}'|"  "_config.kratos-rebirth.yml"
-    
     # Install Hexo env
     - name: Install Hexo environment
       run: npm install
