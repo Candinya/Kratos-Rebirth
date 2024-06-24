@@ -806,36 +806,41 @@ table {
     }
   }
 
+  $danger: #dc2626cc;
+  $success: #65a30dcc;
+  $info: #0284c7cc;
+  $warning: #d97706cc;
+
   &-danger {
-    border-color: #e15554;
+    border-color: $danger;
 
     > .panel-title {
-      border-color: #e15554;
-      background-color: #e15554;
+      border-color: $danger;
+      background-color: $danger;
     }
   }
   &-success {
-    border-color: #3bb273;
+    border-color: $success;
 
     > .panel-title {
-      border-color: #3bb273;
-      background-color: #3bb273;
+      border-color: $success;
+      background-color: $success;
     }
   }
   &-info {
-    border-color: #4d9de0;
+    border-color: $info;
 
     > .panel-title {
-      border-color: #4d9de0;
-      background-color: #4d9de0;
+      border-color: $info;
+      background-color: $info;
     }
   }
   &-warning {
-    border-color: #ffc320;
+    border-color: $warning;
 
     > .panel-title {
-      border-color: #ffc320;
-      background-color: #ffc320;
+      border-color: $warning;
+      background-color: $warning;
     }
   }
 
