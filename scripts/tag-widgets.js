@@ -60,31 +60,27 @@ hexo.extend.tag.register(
 hexo.once("generateBefore", () => {
   const datafiles = hexo.locals.get("data");
 
-  hexo.extend.tag.register(
-    "linklist",
-    (args, content) => {
-      let linklist;
+  hexo.extend.tag.register("linklist", (args) => {
+    const linklist = datafiles.linklist[args[0]];
 
-      if (content?.trim()) {
-        linklist = JSON.parse(content);
-      } else if (args[1] && datafiles.linklist) {
-        linklist = datafiles.linklist[args[1]];
-      }
+    if (!linklist) {
+      // 什么都没有
+      return "无效的列表";
+    }
 
-      if (!linklist) {
-        // 什么都没有
-        return "无效的列表";
-      }
+    let inner = "",
+      appendix = "";
 
-      let inner = "",
-        appendix = "";
+    if (args.length === 1) {
+      args[1] = "order"; // 默认为顺序
+    }
 
-      switch (args[0]) {
-        case "order":
-          inner = linklist
-            .map(
-              (link) =>
-                `<li>
+    switch (args[1]) {
+      case "order":
+        inner = linklist
+          .map(
+            (link) =>
+              `<li>
           <a target="_blank" href="${link.link}">
             <img src="${link.image}" alt=${link.title} />
             <div>
@@ -93,11 +89,11 @@ hexo.once("generateBefore", () => {
             </div>
           </a>
         </li>`,
-            )
-            .join("");
-          break;
-        case "random":
-          appendix = `<script type="text/javascript">
+          )
+          .join("");
+        break;
+      case "random":
+        appendix = `<script type="text/javascript">
           (() => {
               const flist = ${JSON.stringify(linklist)};
               let friendNodes = '';
@@ -118,14 +114,12 @@ hexo.once("generateBefore", () => {
               document.currentScript.parentNode.querySelector(".kr-linklist-container").innerHTML = friendNodes;
           })();
           </script>`;
-          break;
-      }
+        break;
+    }
 
-      return `<div class="kr-linklist">
+    return `<div class="kr-linklist">
     <ul class="kr-linklist-container">${inner}</ul>
     ${appendix}
   </div>`;
-    },
-    { ends: true },
-  );
+  });
 });
