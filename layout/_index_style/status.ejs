@@ -15,7 +15,7 @@
             </div>
         </div>
     </div>
-    <% if (!post.link || post.comments) { %>
+    <% if (post.comments) { %>
         <footer class="kratos-entry-post-meta">
             <span class="pull-left">
                 <time datetime="<%= date_xml(post.date) %>" itemprop="datePublished">
