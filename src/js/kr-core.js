@@ -3,14 +3,16 @@
  */
 import scrollIntoView from "scroll-into-view-if-needed";
 
-window.copyCode =
-  window.copyCode ||
-  function (triggerBtn, targetCodeID) {
+/**
+ * 核心的配置体，包一层防止全局变量命名导致的冲突
+ */
+
+(() => {
+  const copyCode = (triggerBtn, codeElem) => {
     // 用了 navigator.clipboard API ，不要再用老依赖和写法了
     // https://developer.mozilla.org/en-US/docs/Web/API/Navigator/clipboard
-    const targetCodeElement = document.getElementById(targetCodeID);
-    if (targetCodeElement) {
-      const code = targetCodeElement.innerText;
+    if (codeElem) {
+      const code = codeElem.innerText;
       navigator.clipboard.writeText(code);
 
       // 复制成功，庆祝一下
@@ -22,12 +24,6 @@ window.copyCode =
     }
     // 并且这样复制不会触发 CC 提示，就不用担心代码被提示弄出一堆错了
   };
-
-/**
- * 核心的配置体，包一层防止全局变量命名导致的冲突
- */
-
-(() => {
   const loadConfig = async () => {
     const url = (window.kr?.siteRoot || "/") + "config.json";
     return await fetch(url).then((res) => res.json());
@@ -246,16 +242,26 @@ window.copyCode =
   const initCodeCopy = () => {
     const codeFigures = document.querySelectorAll("figure.highlight");
     codeFigures.forEach((figure, count) => {
-      figure
+      const codeElem = figure
         .getElementsByTagName("table")[0]
         .getElementsByTagName("tbody")[0]
         .getElementsByTagName("tr")[0]
-        .getElementsByClassName("code")[0]
-        .setAttribute("id", `code-${count}`);
+        .getElementsByClassName("code")[0];
+      const copyButton = document.createElement("button");
+      copyButton.className = "copy-code";
+      copyButton.innerHTML = `<i class="fa fa-copy"></i>&nbsp;复制`;
+      copyButton.onclick = copyCode.bind(null, copyButton, codeElem);
+      figure.appendChild(copyButton);
+    });
 
-      figure.innerHTML += `<button class="copy" onclick="copyCode(this, 'code-${count}')">
-                <i class="fa fa-copy"></i>&nbsp;复制
-            </button>`;
+    const codeBlocks = document.querySelectorAll("pre:has(code)");
+    codeBlocks.forEach((codeBlock, count) => {
+      const codeElem = codeBlock.querySelector("code");
+      const copyButton = document.createElement("button");
+      copyButton.className = "copy-code";
+      copyButton.innerHTML = `<i class="fa fa-copy"></i>&nbsp;复制`;
+      copyButton.onclick = copyCode.bind(null, copyButton, codeElem);
+      codeBlock.appendChild(copyButton);
     });
   };
 

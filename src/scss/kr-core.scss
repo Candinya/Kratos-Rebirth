@@ -365,11 +365,10 @@ kbd {
 }
 
 // prismjs 或 无高亮模式 或 highlightjs的nowarp模式
-pre:has(code) {
+pre:has(code:only-of-type) {
   border-radius: 8px;
   padding-top: 30px !important;
   position: relative;
-  overflow: auto;
   background-color: #1d1f21;
   font-size: 14px;
   font-weight: unset;
@@ -391,12 +390,47 @@ pre:has(code) {
       20px 0 #fdbc40,
       40px 0 #35cd4b;
   }
+
+  .caption {
+    position: absolute;
+    top: 0;
+    left: 75px;
+    margin: 0;
+    padding: 0;
+    color: #fff;
+    font-size: 18px;
+  }
 }
 
-pre code {
+pre > code:only-of-type {
   white-space: pre;
   background-color: inherit;
   font-size: inherit;
+  display: block;
+  overflow: auto;
+}
+
+*:has(.copy-code):hover > .copy-code {
+  opacity: 1;
+}
+
+.copy-code {
+  transition: all 0.3s;
+  opacity: 0;
+  position: absolute;
+  background: none;
+  right: 5px;
+  top: 5px;
+  font-size: 12px;
+  line-height: 12px;
+  padding: 3px 5px;
+  border: 1px solid;
+  border-radius: 4px;
+  color: #fff;
+
+  &:hover {
+    color: #6cc;
+  }
 }
 
 legend {
