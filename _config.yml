@@ -145,6 +145,7 @@ donate:
 # 站点离开提示
 inactive_notice:
   enable: true
+  delay: 30 # 秒
   favicon:
     leave: "/images/failure.png"
   message:

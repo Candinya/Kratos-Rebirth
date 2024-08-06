@@ -11,6 +11,7 @@ hexo.once("generateBefore", () => {
       },
       inactiveNotice: {
         enable: themeConfig.inactive_notice.enable,
+        delay: themeConfig.inactive_notice.delay,
         leaveLogo: themeConfig.inactive_notice.favicon.leave,
         leaveTitle: themeConfig.inactive_notice.message.leave,
         returnTitle: themeConfig.inactive_notice.message.return,

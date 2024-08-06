@@ -161,25 +161,37 @@ import scrollIntoView from "scroll-into-view-if-needed";
 
   const initInactiveNotice = (kr) => {
     if (kr.enable) {
-      let titleTime;
+      let inactiveTimeout = null; // 不活跃的持续时间计时（而不是一不活跃就直接变）
       const siteFavicon = document.querySelector('[rel="icon"]');
       const originIcon = siteFavicon.getAttribute("href");
       document.addEventListener("visibilitychange", () => {
         if (document.hidden) {
-          document.title = kr.leaveTitle;
-          if (kr.leaveLogo) {
-            siteFavicon.setAttribute("href", kr.leaveLogo);
-          }
-          clearTimeout(titleTime);
+          // 触发离开事件，开始计时
+          inactiveTimeout = setTimeout(() => {
+            document.title = kr.leaveTitle;
+            if (kr.leaveLogo) {
+              siteFavicon.setAttribute("href", kr.leaveLogo);
+            }
+            inactiveTimeout = null;
+          }, kr.delay * 1000);
         } else {
-          document.title = kr.returnTitle + " " + docTitle;
-          if (kr.leaveLogo) {
-            siteFavicon.setAttribute("href", originIcon);
+          // 触发回归事件
+          if (inactiveTimeout !== null) {
+            // 还在计时，（假装）无事发生
+            clearTimeout(inactiveTimeout);
+            inactiveTimeout = null;
+          } else {
+            // 回归了，庆祝一下
+            document.title = kr.returnTitle + " " + docTitle;
+            if (kr.leaveLogo) {
+              siteFavicon.setAttribute("href", originIcon);
+            }
+
+            // 稍等一等再把标题改回来
+            setTimeout(() => {
+              document.title = docTitle;
+            }, 2000);
           }
-          titleTime = setTimeout(() => {
-            document.title = docTitle;
-            titleTime = 0;
-          }, 2000);
         }
       });
     }
