@@ -24,9 +24,6 @@ hexo.once("generateBefore", () => {
       topNavScrollToggle: {
         enable: themeConfig.nav.auto_hide,
       },
-      expireNotify: {
-        expireAfter: themeConfig.posts.expire_after,
-      },
       viewerjs: {
         enable: themeConfig.viewerjs,
       },

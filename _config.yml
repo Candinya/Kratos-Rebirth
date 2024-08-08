@@ -88,7 +88,6 @@ posts:
     enable: true
     threshold: 1500
     estimate_wavy: true # 在文章字数处显示表示大约字数的波浪号
-  expire_after: 30 # 天
   toc:
     desktop:
       list_number: false

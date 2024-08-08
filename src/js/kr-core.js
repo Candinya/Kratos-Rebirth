@@ -353,21 +353,20 @@ import scrollIntoView from "scroll-into-view-if-needed";
     );
   };
 
-  const checkExpireNotify = (kr) => {
-    if (kr.expireAfter) {
-      const expireAlert = document.getElementById("expire-alert");
-      if (expireAlert) {
-        const dateTimeTag = expireAlert.querySelector("time");
-        const updateDateTime = new Date(
-          parseInt(dateTimeTag.getAttribute("datetime")),
-        );
-        const nowDateTime = Date.now();
-        const gap = nowDateTime - updateDateTime;
-        if (gap > kr.expireAfter * 24 * 3600 * 1000) {
-          // 内容可能过期，需要提示
-          dateTimeTag.innerText = getTimeString(gap, false);
-          expireAlert.classList.remove("hidden");
-        }
+  const checkExpireNotify = () => {
+    const expireAlert = document.getElementById("expire-alert");
+    if (expireAlert) {
+      const dateTimeTag = expireAlert.querySelector("time");
+      const updateDateTime = new Date(
+        parseInt(dateTimeTag.getAttribute("datetime")),
+      );
+      const nowDateTime = Date.now();
+      const gap = nowDateTime - updateDateTime;
+      const expireAfterDays = expireAlert.getAttribute("data-after-days");
+      if (gap > parseInt(expireAfterDays) * 24 * 3600 * 1000) {
+        // 内容可能过期，需要提示
+        dateTimeTag.innerText = getTimeString(gap, false);
+        expireAlert.classList.remove("hidden");
       }
     }
   };
@@ -673,11 +672,11 @@ import scrollIntoView from "scroll-into-view-if-needed";
     initCodeCopy();
     initCollapseBoxControl();
     commentsLazyLoad();
+    checkExpireNotify();
   };
 
   const initPerPageWithConfig = (kr) => {
     initCopyrightNotice(kr.copyrightNoticeForCopy);
-    checkExpireNotify(kr.expireNotify);
     initViewerJs(kr.viewerjs);
   };
 

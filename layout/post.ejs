@@ -37,8 +37,8 @@
             </ul>
         </header>
         <div class="kratos-page-content kr-post">
-            <% if (page.expire === true || page.expire !== false && !!page.title) { %>
-            <div id="expire-alert" class="alert alert-warning hidden" role="alert">
+            <% if (!!page.expire && !!page.title) { %>
+            <div id="expire-alert" class="alert alert-warning hidden" role="alert" data-after-days="<%- page.expire %>">
                 <div class="icon"><i class="fa fa-history"></i></div>
                 <div class="text"><p><%- __('last_update_alert', '<time datetime="' + page.updated + '"></time>') %></p></div>
             </div>
