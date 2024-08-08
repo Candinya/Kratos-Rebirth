@@ -4,11 +4,11 @@
 <% } %>
 
 <% page.posts.each(function(post) { %>
-    <% if (post.only) {
+    <% if (post.show_in) {
         const postShow = 
-            post.only.includes('home') && is_home()
-            || post.only.includes('category') && is_category()
-            || post.only.includes('tag') && is_tag();
+            post.show_in.includes('home') && is_home()
+            || post.show_in.includes('category') && is_category()
+            || post.show_in.includes('tag') && is_tag();
         if (!postShow) {
             return false;
         }
