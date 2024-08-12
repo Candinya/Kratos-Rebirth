@@ -12,6 +12,8 @@ vendors:
     viewerjs:
       version: "1.11.6"
 
+################## 重要功能配置 ##################
+
 # 启用更新检查
 check_update: true
 
@@ -141,6 +143,8 @@ donate:
   #   link: ""
   #   qrcode: ""
 
+################## 娱乐功能配置 ##################
+
 # 站点离开提示
 inactive_notice:
   enable: true
@@ -168,6 +172,8 @@ copyright_notice:
       作者：$AUTHOR
       来源：$TITLE
       链接：$LINK
+
+################## 评论与访问量统计 ##################
 
 # 评论系统
 comments:
