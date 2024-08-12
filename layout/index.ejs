@@ -29,6 +29,6 @@
 
 <% if (theme.comments.core.enable_at.includes('index')) { %>
     <div class="comment-index">
-        <%- (theme.comments.core.template._shared + theme.comments.core.template.index).replaceAll("$PATH", url_for(page.path)) %>
+        <%- process_template_path(theme.comments.core.template._shared + theme.comments.core.template.index, url_for(page.path), "comments") %>
     </div>
 <% } %>

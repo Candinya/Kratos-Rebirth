@@ -25,13 +25,13 @@
                 <% if (theme.visit_count.enable_at.includes("post")) { %>
                     <li>
                         <i class="fa fa-eye"></i>
-                        <%- __('post_meta.read_count', (theme.visit_count.template._shared + theme.visit_count.template.post).replaceAll("$PATH", url_for(page.path))) %>
+                        <%- __('post_meta.read_count', process_template_path(theme.visit_count.template._shared + theme.visit_count.template.post, url_for(page.path), "visit_count")) %>
                     </li>
                 <% } %>
                 <% if (page.comments && theme.comments.count.enable_at.includes("post")) { %>
                     <li>
                         <i class="fa fa-commenting-o"></i>
-                        <%- __('post_meta.comments_count', (theme.comments.count.template._shared + theme.comments.count.template.post).replaceAll("$PATH", url_for(page.path))) %>
+                        <%- __('post_meta.comments_count', process_template_path(theme.comments.count.template._shared + theme.comments.count.template.post, url_for(page.path), "comments")) %>
                     </li>
                 <% } %>
             </ul>
@@ -100,7 +100,7 @@
     <% } %>
     <% if (page.comments && theme.comments.core.enable_at.includes('post')) { %>
         <div class="comment-post">
-            <%- (theme.comments.core.template._shared + theme.comments.core.template.post).replaceAll("$PATH", url_for(page.path)) %>
+            <%- process_template_path(theme.comments.core.template._shared + theme.comments.core.template.post, url_for(page.path), "comments") %>
         </div>
     <% } %>
 </article>

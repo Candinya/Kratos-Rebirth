@@ -189,6 +189,7 @@ comments:
       _shared: ""
       index: ""
       post: ""
+  path_hasher: "md5"
 
 # 访问数量统计
 visit_count:
@@ -199,6 +200,7 @@ visit_count:
     _shared: ""
     index: ""
     post: ""
+  path_hasher: "md5"
 
 ################## 额外的注入代码 ##################
 additional_injections:

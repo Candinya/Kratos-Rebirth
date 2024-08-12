@@ -36,7 +36,7 @@
     </div>
     <% if (page.comments && theme.comments.core.enable_at.includes('page')) { %>
         <div class="comment-page">
-            <%- (theme.comments.core.template._shared + theme.comments.core.template.page).replaceAll("$PATH", url_for(page.path)) %>
+            <%- process_template_path(theme.comments.core.template._shared + theme.comments.core.template.page, url_for(page.path), "comments") %>
         </div>
     <% } %>
 </article>
