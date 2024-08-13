@@ -11,11 +11,7 @@
                         <% for (const link of theme.footer.links) { %>
                             <li>
                                 <a href="<%- link.link %>" <%- link.addition || 'target="_blank" rel="nofollow"' %>>
-                                    <% if (link.icon.name) { %>
-                                        <i class="fa fa-<%- link.icon.name %>"></i>
-                                    <% } else if (link.icon.html) { %>
-                                        <%- link.icon.html %>
-                                    <% } %>
+                                    <%- icon_to_html(link.icon) %>
                                 </a>
                             </li>
                         <% } %>

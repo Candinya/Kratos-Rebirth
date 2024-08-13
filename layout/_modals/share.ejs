@@ -16,11 +16,7 @@
             <div class="kr-share-platforms">
                 <% for (const platform of theme.share.platforms) { %>
                     <button class="kr-share-platform-button" style="color: <%- platform.color %>;" title="<%- platform.name %>" onclick="krShareModalOpenPlatform('<%- platform.link %>')">
-                        <% if (platform.icon.name) { %>
-                            <i class="fa fa-<%- platform.icon.name %>"></i>
-                        <% } else if (platform.icon.html) { %>
-                            <%- platform.icon.html %>
-                        <% } %>
+                        <%- icon_to_html(platform.icon) %>
                     </button>
                 <% } %>
             </div>

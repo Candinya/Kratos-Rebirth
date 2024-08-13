@@ -55,15 +55,11 @@ nav:
   auto_hide: true # 桌面端向上滚动时自动收缩
   items: []
   # - label: # 这个菜单的标签文字
-  #   icon: # 这个菜单前的图标，可以不设置
-  #     name: # 和 html 二选一，该选项表示使用来自 fontawesome icons 4.7.0 图标库，内容为图标库中的唯一标识
-  #     html: # 和 name 二选一，该选项表示插入自定义的 HTML 作为标识，例如您可在此放置一串 svg
+  #   icon: # 这个菜单前的图标，可以不设置。使用来自 fontawesome icons 4.7.0 图标库中的唯一标识；或者插入自定义的 HTML ，例如您可在此放置一串 svg 。
   #   url: # 这个菜单指向的链接（站内或是站外均可）
   #   submenu: # 这个菜单是否为一个二级菜单，有了这个选项就会忽略上面的 url
   #     - label: # 二级菜单项的标签文字
-  #       icon: # 这个菜单前的图标，可以不设置
-  #         name: # 和 html 二选一，该选项表示使用来自 fontawesome icons 4.7.0 图标库，内容为图标库中的唯一标识
-  #         html: # 和 name 二选一，该选项表示插入自定义的 HTML 作为标识，例如您可在此放置一串 svg
+  #       icon: # 这个菜单前的图标，可以不设置。使用来自 fontawesome icons 4.7.0 图标库中的唯一标识；或者插入自定义的 HTML ，例如您可在此放置一串 svg 。
   #       url: # 二级菜单项指向的链接
 
 # 文章的列表配置（首页/分页/标签页）
@@ -73,9 +69,7 @@ index:
 # Footer 页脚配置
 footer:
   links: []
-  # - icon:
-  #     name: # 和 html 二选一，该选项表示使用来自 fontawesome icons 4.7.0 图标库，内容为图标库中的唯一标识
-  #     html: # 和 name 二选一，该选项表示插入自定义的 HTML 作为标识，例如您可在此放置一串 svg
+  # - icon: # 使用来自 fontawesome icons 4.7.0 图标库中的唯一标识；或者插入自定义的 HTML ，例如您可在此放置一串 svg 。
   #   link: # 按钮导向的目标链接
   #   addition: target="_blank" rel="nofollow"
   components: # 一些有特色的组件 （其他的请在 additional 自行追加）
@@ -129,9 +123,7 @@ share:
   message: "分享提示信息" # 弹出窗口显示的文字
   platforms: [] # 可以分享去的平台
   # - name: "" # 平台名字
-  #   icon: # 平台图标
-  #     name: # 和 html 二选一，该选项表示使用来自 fontawesome icons 4.7.0 图标库，内容为图标库中的唯一标识
-  #     html: # 和 name 二选一，该选项表示插入自定义的 HTML 作为标识，例如您可在此放置一串 svg
+  #   icon: # 平台图标。使用来自 fontawesome icons 4.7.0 图标库中的唯一标识；或者插入自定义的 HTML ，例如您可在此放置一串 svg 。
   #   color: ""
   #   link: ""
 
@@ -143,9 +135,7 @@ donate:
   qrcode_placeholder: "" # 对应平台的二维码出现前的占位图片
   platforms: [] # 可以用于打赏的平台
   # - name: ""
-  #   icon:
-  #     name: # 和 html 二选一，该选项表示使用来自 fontawesome icons 4.7.0 图标库，内容为图标库中的唯一标识
-  #     html: # 和 name 二选一，该选项表示插入自定义的 HTML 作为标识，例如您可在此放置一串 svg
+  #   icon: # 使用来自 fontawesome icons 4.7.0 图标库中的唯一标识；或者插入自定义的 HTML ，例如您可在此放置一串 svg 。
   #   color: ""
   #   link: ""
   #   qrcode: ""

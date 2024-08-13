@@ -14,11 +14,7 @@
                                             <a href="<%- url_for(item.url) %>">
                                         <% } %>
                                             <% if (item.icon) { %>
-                                                <% if (item.icon.name) { %>
-                                                    <i class="fa fa-<%- item.icon.name %>"></i>
-                                                <% } else if (item.icon.html) { %>
-                                                    <%- item.icon.html %>
-                                                <% } %>
+                                                <%- icon_to_html(item.icon) %>
                                             <% } %>
                                             <%- item.label %>
                                         </a>
@@ -28,11 +24,7 @@
                                                     <li>
                                                         <a href="<%- url_for(submenu.url) %>">
                                                             <% if (submenu.icon) { %>
-                                                                <% if (submenu.icon.name) { %>
-                                                                    <i class="fa fa-<%- submenu.icon.name %>"></i>
-                                                                <% } else if (submenu.icon.html) { %>
-                                                                    <%- submenu.icon.html %>
-                                                                <% } %>
+                                                                <%- icon_to_html(submenu.icon) %>
                                                             <% } %>
                                                             <%- submenu.label %>
                                                         </a>
