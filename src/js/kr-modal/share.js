@@ -32,7 +32,7 @@ function krShareModalOpenPlatform(link) {
 
   const targetURL = link
     .replaceAll("$URL", url)
-    .replaceAll("$TITLE", `「${title}」`)
+    .replaceAll("$TITLE", title)
     .replaceAll("$SUMMARY", summary)
     .replaceAll("$SITE", site);
 
