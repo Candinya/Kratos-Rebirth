@@ -9,13 +9,6 @@ hexo.once("generateBefore", () => {
       uptime: {
         since: themeConfig.footer.components.uptime.since,
       },
-      inactiveNotice: {
-        enable: themeConfig.inactive_notice.enable,
-        delay: themeConfig.inactive_notice.delay,
-        leaveLogo: themeConfig.inactive_notice.favicon.leave,
-        leaveTitle: themeConfig.inactive_notice.message.leave,
-        returnTitle: themeConfig.inactive_notice.message.return,
-      },
       copyrightNoticeForCopy: {
         enable: themeConfig.copyright_notice.append_copy.enable,
         template: themeConfig.copyright_notice.append_copy.template,

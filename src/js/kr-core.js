@@ -154,49 +154,6 @@ import scrollIntoView from "scroll-into-view-if-needed";
     }
   };
 
-  let docTitle = "";
-  const saveTitle = () => {
-    docTitle = document.title;
-  };
-
-  const initInactiveNotice = (kr) => {
-    if (kr.enable) {
-      let inactiveTimeout = null; // 不活跃的持续时间计时（而不是一不活跃就直接变）
-      const siteFavicon = document.querySelector('[rel="icon"]');
-      const originIcon = siteFavicon.getAttribute("href");
-      document.addEventListener("visibilitychange", () => {
-        if (document.hidden) {
-          // 触发离开事件，开始计时
-          inactiveTimeout = setTimeout(() => {
-            document.title = kr.leaveTitle;
-            if (kr.leaveLogo) {
-              siteFavicon.setAttribute("href", kr.leaveLogo);
-            }
-            inactiveTimeout = null;
-          }, kr.delay * 1000);
-        } else {
-          // 触发回归事件
-          if (inactiveTimeout !== null) {
-            // 还在计时，（假装）无事发生
-            clearTimeout(inactiveTimeout);
-            inactiveTimeout = null;
-          } else {
-            // 回归了，庆祝一下
-            document.title = kr.returnTitle + " " + docTitle;
-            if (kr.leaveLogo) {
-              siteFavicon.setAttribute("href", originIcon);
-            }
-
-            // 稍等一等再把标题改回来
-            setTimeout(() => {
-              document.title = docTitle;
-            }, 2000);
-          }
-        }
-      });
-    }
-  };
-
   const getTimeString = (msec, exact = true) => {
     let tString;
     const sec = msec / 1000;
@@ -668,7 +625,6 @@ import scrollIntoView from "scroll-into-view-if-needed";
 
   const initPerPage = () => {
     initTocWidgetAnim();
-    saveTitle();
     initCodeCopy();
     initCollapseBoxControl();
     commentsLazyLoad();
@@ -686,7 +642,6 @@ import scrollIntoView from "scroll-into-view-if-needed";
 
     loadConfig().then((kr) => {
       initCopyEventListener(kr.copyrightNoticeForCopy);
-      initInactiveNotice(kr.inactiveNotice);
       initUpTime(kr.uptime);
       initTopNavScrollToggle(kr.topNavScrollToggle);
       initPerPageWithConfig(kr);

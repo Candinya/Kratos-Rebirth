@@ -141,18 +141,6 @@ donate:
   #   link: "" # 和 qrcode 二选一，使用这项则点击图标时会打开前往指定链接的新窗口。
   #   qrcode: "" # 和 link 二选一，使用这项则点击图标时会在窗口的二维码展示区展示使用指定内容生成的二维码。
 
-################## 娱乐功能配置 ##################
-
-# 站点离开提示
-inactive_notice:
-  enable: true # 是否启用
-  delay: 30 # 延迟时间（秒）
-  favicon: # 图标
-    leave: "/images/failure.png"
-  message: # 消息
-    leave: "{{{(>_<)}}}哦哟，崩溃啦~"
-    return: "(*´∇｀*)欸，又好啦~"
-
 # 版权提示
 copyright_notice:
   in_page: # 在页面内显示
