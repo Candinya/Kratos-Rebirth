@@ -118,7 +118,17 @@ import scrollIntoView from "scroll-into-view-if-needed";
     if (kr.enable) {
       const postEntry = document.getElementsByClassName("kratos-page-content");
       if (postEntry.length > 0) {
-        new Viewer(postEntry[0]);
+        new Viewer(postEntry[0], {
+          filter: (image) => {
+            // ignore <img> inside `.kr-linklist`
+            if (typeof image.closest === "function") {
+              if (image.closest(".kr-linklist") !== null) {
+                return false;
+              }
+            }
+            return true;
+          },
+        });
       }
     }
   };
