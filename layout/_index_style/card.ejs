@@ -63,13 +63,13 @@
                 <% if (theme.visit_count.enable_at.includes("index")) { %>
                     <a>
                         <i class="fa fa-eye"></i>
-                        <%- __('post_meta.read_count', process_template_path(theme.visit_count.template._shared + theme.visit_count.template.index, url_for(post.path), "visit_count")) %>
+                        <%- __('post_meta.read_count', process_template_path(theme.visit_count.template._shared + theme.visit_count.template.index, post.path, "visit_count")) %>
                     </a>
                 <% } %>
                 <% if (theme.comments.count.enable_at.includes("index") && post.comments) { %>
                     <a>
                         <i class="fa fa-commenting-o"></i>
-                        <%- __('post_meta.comments_count', process_template_path(theme.comments.count.template._shared + theme.comments.count.template.index, url_for(post.path), "comments")) %>
+                        <%- __('post_meta.comments_count', process_template_path(theme.comments.count.template._shared + theme.comments.count.template.index, post.path, "comments")) %>
                     </a>
                 <% } %>
             </span>

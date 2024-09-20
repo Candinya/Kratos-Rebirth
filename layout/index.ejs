@@ -29,6 +29,6 @@
 
 <% if (theme.comments.core.enable_at.includes('index')) { %>
     <div class="comment-index">
-        <%- process_template_path(theme.comments.core.template._shared + theme.comments.core.template.index, url_for(page.path), "comments") %>
+        <%- process_template_path(theme.comments.core.template._shared + theme.comments.core.template.index, page.path, "comments") %>
     </div>
 <% } %>
