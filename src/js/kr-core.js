@@ -1,7 +1,6 @@
-/**
- * 一些暴露给 DOM 交互使用的全局函数
- */
 import scrollIntoView from "scroll-into-view-if-needed";
+
+import "./kr-polyfill";
 
 /**
  * 核心的配置体，包一层防止全局变量命名导致的冲突
