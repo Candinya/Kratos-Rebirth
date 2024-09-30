@@ -1,6 +1,6 @@
 {
   "name": "hexo-theme-kratos-rebirth",
-  "version": "3.0.0-dev.8",
+  "version": "3.0.0-dev.9",
   "description": "A lovely yet modern theme for Hexo.",
   "scripts": {
     "build": "node ./devtools/build-once.js",
