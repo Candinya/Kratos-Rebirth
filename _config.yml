@@ -1,3 +1,7 @@
+# 请注意这是主题的底层配置，不推荐直接作为主题配置文件使用。
+# 如果您需要一个基础的配置模板，请使用
+# https://github.com/kratos-rebirth/quickstart/blob/main/_config.kratos-rebirth.yml 。
+
 ################## 系统配置 ##################
 
 # 依赖文件
