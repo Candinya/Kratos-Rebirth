@@ -920,7 +920,7 @@ table {
   > .collapse-box-header {
     position: relative;
     cursor: pointer;
-    padding-left: 15px;
+    padding: 3px 15px 3px 40px;
     transition: color 0.3s ease-in-out;
 
     a {
@@ -931,7 +931,7 @@ table {
     .collapse-box-icon {
       transition: transform 0.3s ease-in-out;
       position: absolute;
-      right: 15px;
+      left: 15px;
     }
   }
 
@@ -940,13 +940,12 @@ table {
   }
 
   .collapse-box-content {
-    border-top: 1px solid #e6e6e6;
     display: grid;
     grid-template-rows: 0fr;
     transition: grid-template-rows 0.3s ease-in-out;
 
     .inner {
-      padding: 5px 15px;
+      padding: 0 15px;
       color: #333;
       overflow: hidden;
       width: 100%;
