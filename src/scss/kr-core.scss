@@ -724,7 +724,6 @@ table {
 .alert {
   padding: 1rem;
   margin: 2rem 0;
-  border: 1px solid transparent;
   display: flex;
   flex-direction: row;
 
@@ -766,7 +765,6 @@ table {
 
   &-primary {
     background-color: #cfe2ff;
-    border-color: #b6d4fe;
 
     .icon,
     .text :not(code) {
@@ -776,7 +774,6 @@ table {
 
   &-success {
     background-color: #d1e7dd;
-    border-color: #badbcc;
 
     .icon,
     .text :not(code) {
@@ -786,7 +783,6 @@ table {
 
   &-danger {
     background-color: #f8d7da;
-    border-color: #f5c2c7;
 
     .icon,
     .text :not(code) {
@@ -796,7 +792,6 @@ table {
 
   &-info {
     background-color: #cff4fc;
-    border-color: #b6effb;
 
     .icon,
     .text :not(code) {
@@ -806,7 +801,6 @@ table {
 
   &-warning {
     background-color: #fff3cd;
-    border-color: #ffecb5;
 
     .icon,
     .text :not(code) {

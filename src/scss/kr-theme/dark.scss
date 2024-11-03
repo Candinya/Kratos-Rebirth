@@ -11,5 +11,15 @@ $page_background: #181c27;
 $info_background: #3c495bbb;
 $navbar_desktop: #181c27cc;
 $navbar_mobile: #16171ae6;
+$alert_primary_bg: #2563ebcd;
+$alert_primary_text: #cfe2ff;
+$alert_success_bg: #16a34acd;
+$alert_success_text: #d1e7dd;
+$alert_danger_bg: #dc2626cd;
+$alert_danger_text: #f8d7da;
+$alert_info_bg: #0891b2cd;
+$alert_info_text: #cff4fc;
+$alert_warning_bg: #ca8a04cd;
+$alert_warning_text: #fff3cd;
 
 @import "./base.scss";

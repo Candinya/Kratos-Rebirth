@@ -272,6 +272,73 @@ a:hover,
     background: $card_background;
   }
 }
+
+.alert {
+  .icon {
+    background-color: $card_background;
+  }
+
+  &-primary {
+    background-color: $alert_primary_bg;
+
+    .icon,
+    .text :not(code) {
+      color: $alert_primary_text;
+    }
+    .text {
+      border-color: $alert_primary_text;
+    }
+  }
+
+  &-success {
+    background-color: $alert_success_bg;
+
+    .icon,
+    .text :not(code) {
+      color: $alert_success_text;
+    }
+    .text {
+      border-color: $alert_success_text;
+    }
+  }
+
+  &-danger {
+    background-color: $alert_danger_bg;
+
+    .icon,
+    .text :not(code) {
+      color: $alert_danger_text;
+    }
+    .text {
+      border-color: $alert_danger_text;
+    }
+  }
+
+  &-info {
+    background-color: $alert_info_bg;
+
+    .icon,
+    .text :not(code) {
+      color: $alert_info_text;
+    }
+    .text {
+      border-color: $alert_info_text;
+    }
+  }
+
+  &-warning {
+    background-color: $alert_warning_bg;
+
+    .icon,
+    .text :not(code) {
+      color: $alert_warning_text;
+    }
+    .text {
+      border-color: $alert_warning_text;
+    }
+  }
+}
+
 /******************* Variables ********************/
 :root {
   --kr-theme-select-text: #{$select_text};
