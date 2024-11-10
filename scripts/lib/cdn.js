@@ -30,42 +30,63 @@ const url_join = (p1, p2) => {
 };
 
 const file_info_npm_cdn = (locals, packageName, path) => {
-  const packages = locals.theme.config.vendors?.packages;
-  const thisPackage = packages?.[packageName];
-  const version =
-    thisPackage?.version ||
-    (packageName != theme.name ? "latest" : theme.version);
-  let cdn_url = thisPackage?.cdn_url;
-  if (cdn_url === undefined || cdn_url === true) {
-    const npm_cdn = locals.theme.config.vendors?.npm_cdn;
+  // 获取基础信息
+  const isThemePackage = packageName === theme.name;
+  const allVendorPackages = locals.theme.config.vendors.packages;
+  const vendorPackageInfo = isThemePackage
+    ? undefined
+    : allVendorPackages?.[packageName];
+  const version = isThemePackage
+    ? theme.version
+    : vendorPackageInfo?.version || "latest";
+  // 检查是否有预定义的资源前缀
+  let cdnPrefix = vendorPackageInfo?.cdn_url;
+  // 如果没有定义链接，或是使用生成模式处理链接
+  if (cdnPrefix === undefined || cdnPrefix === true) {
+    // 检查是否定义了 CDN 的前缀
+    const npm_cdn = locals.theme.config.vendors.npm_cdn;
     if (npm_cdn) {
-      cdn_url = url_join(npm_cdn, `${packageName}@${version}/`);
+      // 拼接得到带有 CDN 前缀的资源链接
+      cdnPrefix = url_join(
+        npm_cdn,
+        `${packageName}@${version}/${
+          // 主题资源在 npm 包中放置于 source 目录，所以需要补充资源前缀
+          isThemePackage ? "source/" : ""
+        }`,
+      );
     }
   }
-  if (!cdn_url) {
-    if (packageName != theme.name) {
-      cdn_url = url_join(
+  // 如果没有在上面的步骤中得到资源前缀
+  if (!cdnPrefix) {
+    if (isThemePackage) {
+      // 是主题资源，但因为构建的时候 source 目录里的东西会自动被放置到站点根目录下，
+      // 所以不用加上 source 目录，直接使用站点根路径作为前缀
+      cdnPrefix = locals.config.root;
+    } else {
+      // 是第三方资源，需要设置 vendors 前缀，并参照对应的包组织方式
+      cdnPrefix = url_join(
         locals.config.root,
         `vendors/${packageName}@${version}/`,
       );
-    } else {
-      cdn_url = locals.config.root;
     }
   }
-  const files = thisPackage?.files;
-  const thisFile = files?.[path];
+  // 检查文件是否需要变更位置
+  const allPackageFiles = vendorPackageInfo?.files;
+  const packageFileInfo = allPackageFiles?.[path];
   const actualPath =
-    thisFile?.relocate === undefined ||
-    thisFile?.relocate === null ||
-    thisFile?.relocate === false
+    packageFileInfo?.relocate === undefined ||
+    packageFileInfo?.relocate === null ||
+    packageFileInfo?.relocate === false
       ? path
-      : thisFile.relocate;
-  const actualUrl = url_join(cdn_url, actualPath);
+      : packageFileInfo.relocate;
+  // 拼接完整资源路径
+  const actualUrl = url_join(cdnPrefix, actualPath);
   const fileInfo = {
     url: actualUrl,
   };
-  if (thisFile?.integrity) {
-    fileInfo.integrity = thisFile.integrity;
+  // 追加摘要参数，避免供应链投毒攻击
+  if (packageFileInfo?.integrity) {
+    fileInfo.integrity = packageFileInfo.integrity;
   }
   return fileInfo;
 };
