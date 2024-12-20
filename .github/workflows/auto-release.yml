@@ -8,6 +8,9 @@ on:
 jobs:
   publish:
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      id-token: write
     steps:
       - uses: actions/checkout@v4
 
@@ -28,13 +31,13 @@ jobs:
       
       - name: Publish stable release version (with default latest tag)
         if: ${{ ! contains(github.ref_name, '-') }}
-        run: npm publish
+        run: npm publish --provenance
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN_CANDINYA }}
       
       - name: Publish unstable pre-release version (with next tag)
         if: ${{ contains(github.ref_name, '-') }} # Refer to Semantic Versioning , use a hyphen to split version code and pre-release identifier
-        run: npm publish --tag next
+        run: npm publish --provenance --tag next
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN_CANDINYA }}
 
