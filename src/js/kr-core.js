@@ -633,35 +633,91 @@ import "./kr-polyfill";
   };
 
   const initPerPage = () => {
-    initTocWidgetAnim();
-    initCodeCopy();
-    initCollapseBoxControl();
-    commentsLazyLoad();
-    checkExpireNotify();
+    const items = [
+      initTocWidgetAnim,
+      initCodeCopy,
+      initCollapseBoxControl,
+      commentsLazyLoad,
+      checkExpireNotify,
+    ];
+
+    // Execute each item with try block to prevent errors from breaking the entire loop
+    for (const item of items) {
+      try {
+        item();
+      } catch (e) {
+        console.error(`Error: ${e}`);
+        // Log the stack trace if available
+        // Be careful with this, as it is non-standard and not supported in all browsers
+        e.stack && console.error(e.stack);
+      }
+    }
   };
 
   const initPerPageWithConfig = (kr) => {
-    initCopyrightNotice(kr.copyrightNoticeForCopy);
-    initViewerJs(kr.viewerjs);
+    const items = [
+      () => initCopyrightNotice(kr.copyrightNoticeForCopy),
+      () => initViewerJs(kr.viewerjs),
+    ];
+
+    // Execute each item with try block to prevent errors from breaking the entire loop
+    for (const item of items) {
+      try {
+        item();
+      } catch (e) {
+        console.error(`Error: ${e}`);
+        // Log the stack trace if available
+        // Be careful with this, as it is non-standard and not supported in all browsers
+        e.stack && console.error(e.stack);
+      }
+    }
   };
 
   const themeInit = () => {
     document.removeEventListener("DOMContentLoaded", themeInit, false);
     window.removeEventListener("load", themeInit, false);
 
-    loadConfig().then((kr) => {
-      initCopyEventListener(kr.copyrightNoticeForCopy);
-      initUpTime(kr.uptime);
-      initTopNavScrollToggle(kr.topNavScrollToggle);
-      initPerPageWithConfig(kr);
-      window.addEventListener("pjax:complete", () => {
-        initPerPageWithConfig(kr);
-      });
-    });
+    loadConfig()
+      .then((kr) => {
+        const items = [
+          () => initCopyEventListener(kr.copyrightNoticeForCopy),
+          () => initUpTime(kr.uptime),
+          () => initTopNavScrollToggle(kr.topNavScrollToggle),
+          () => initPerPageWithConfig(kr),
+        ];
 
-    initPageScrollDown();
-    initOffcanvas();
-    initPerPage();
+        // Execute each item with try block to prevent errors from breaking the entire loop
+        for (const item of items) {
+          try {
+            item();
+          } catch (e) {
+            console.error(`Error: ${e}`);
+            // Log the stack trace if available
+            // Be careful with this, as it is non-standard and not supported in all browsers
+            e.stack && console.error(e.stack);
+          }
+        }
+        window.addEventListener("pjax:complete", () => {
+          initPerPageWithConfig(kr);
+        });
+      })
+      .catch((e) => {
+        console.error(`Load config failed: ${e}`);
+      });
+
+    const items = [initPageScrollDown, initOffcanvas, initPerPage];
+
+    // Execute each item with try block to prevent errors from breaking the entire loop
+    for (const item of items) {
+      try {
+        item();
+      } catch (e) {
+        console.error(`Error: ${e}`);
+        // Log the stack trace if available
+        // Be careful with this, as it is non-standard and not supported in all browsers
+        e.stack && console.error(e.stack);
+      }
+    }
     window.addEventListener("pjax:complete", () => {
       initPerPage();
     });
