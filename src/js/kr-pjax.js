@@ -209,10 +209,15 @@
         // 如果URL里有指定节点ID，则滚动到相应的节点位置
         const reqId = reqUrl.match(/\#(.+)$/);
         if (reqId) {
-          window.scrollTo({
-            top: document.getElementById(reqId[1]).offsetTop - 40,
-            behavior: "smooth",
-          });
+          const el =
+            document.getElementById(reqId[1]) ||
+            document.getElementById(decodeURIComponent(reqId[1])); // 这里主要是针对非 ascii 字符的加载做的适配（浏览器读取出来的会是编码后的字符串），可以直接把上面的合并简化成 decodeURIComponent 吗？
+          if (el) {
+            window.scrollTo({
+              top: el.getBoundingClientRect().top + window.pageYOffset - 40,
+              behavior: "smooth",
+            });
+          }
         }
       } else {
         // 没有元素，不是可以 pjax 的页面
