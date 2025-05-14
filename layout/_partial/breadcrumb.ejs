@@ -9,7 +9,7 @@
                 <%= __('title.tag') %>
             </a>
             <i class="fa fa-angle-right"></i>
-            <a href="<%- url_for('/tags/' + page.tag) %>">
+            <a href="<%- url_for(page.path) %>">
                 <%= page.tag %>
             </a>
         <% } else if (page.category) { %>
