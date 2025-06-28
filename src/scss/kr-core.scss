@@ -1571,8 +1571,19 @@ ul.kratos-page-meta {
     max-width: 100%;
     display: block;
     margin: 1em auto;
-    border: 2px solid #bbb;
+    // border: 2px solid #bbb;
     border-radius: 2px;
+
+    &.with-caption {
+      margin-bottom: 0;
+    }
+  }
+
+  span.img-caption {
+    display: block;
+    font-size: 12px;
+    opacity: 0.8;
+    text-align: center;
   }
 
   embed {

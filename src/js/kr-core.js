@@ -337,6 +337,27 @@ import "./kr-polyfill";
     }
   };
 
+  const generateImageCaption = () => {
+    // 为页面上所有包含替代文本 (alt) 的图片生成标题行（其实早该加这个功能了，只是一直忘记了）
+    // 思路参考 landscape 的实现方案（ https://github.com/hexojs/hexo-theme-landscape/blob/master/source/js/script.js#L89 ）
+    // 可能的优化方向：如果能和 initViewerJs 的初始化结合在一起，或许能避免一些重复计算？或者直接在构建时生成，而不是在运行时由浏览器来处理。
+    const postEntry = document.getElementsByClassName("kratos-page-content");
+    if (postEntry.length > 0) {
+      const images = postEntry[0].querySelectorAll("img[alt]");
+      for (const img of images) {
+        // 排除掉 linklist 里面的图片
+        if (!img.closest?.(".kr-linklist")) {
+          // 添加标题行
+          img.classList.add("with-caption");
+          img.insertAdjacentHTML(
+            "afterend",
+            `<span class="img-caption">${img.getAttribute("alt")}</span>`,
+          );
+        }
+      }
+    }
+  };
+
   const makeDelay = (callback, ms) => {
     let timer = 0;
     return function () {
@@ -643,6 +664,7 @@ import "./kr-polyfill";
       initCollapseBoxControl,
       commentsLazyLoad,
       checkExpireNotify,
+      generateImageCaption,
     ];
 
     // Execute each item with try block to prevent errors from breaking the entire loop
