@@ -1614,7 +1614,7 @@ ul.kratos-page-meta {
     }
   }
 
-  @media (max-width: 768px) {
+  @media (width < 768px) {
     .kratos-post-inner-toc .toc {
       padding-left: 20px;
     }
@@ -2524,7 +2524,7 @@ body.scroll-down .kr-tool {
   }
 }
 
-@media (min-width: 768px) {
+@media (width >= 768px) {
   .kratos-entry-content p {
     overflow: hidden;
     text-overflow: ellipsis;
@@ -2535,7 +2535,7 @@ body.scroll-down .kr-tool {
   }
 }
 
-@media (max-width: 768px) {
+@media (width < 768px) {
   .kratos-nav-toggle {
     display: block;
   }
@@ -2635,7 +2635,7 @@ body.scroll-down .kr-tool {
   }
 }
 
-@media (max-width: 768px) {
+@media (width < 768px) {
   .visible-xs {
     display: block !important;
   }
@@ -2688,7 +2688,7 @@ body.scroll-down .kr-tool {
   }
 }
 
-@media (min-width: 768px) {
+@media (width >= 768px) {
   .container {
     width: 750px;
   }
@@ -2725,7 +2725,7 @@ body.scroll-down .kr-tool {
   }
 }
 
-@media (min-width: 768px) and (max-width: 991px) {
+@media (width >= 768px) and (max-width: 991px) {
   .visible-sm {
     display: block !important;
   }
