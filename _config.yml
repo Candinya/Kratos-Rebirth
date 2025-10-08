@@ -94,12 +94,20 @@ posts:
     enable: true # 是否启用
     threshold: 1500 # 超过多少字开始显示为千字
     estimate_wavy: true # 在千字的约数前显示波浪号
-  toc: # 文章目录
-    desktop: # 桌面端
-      list_number: false # 显示数字标号
-    mobile: # 移动端
+  toc: # 文章目录（此处各 options 下的内容可以参考 https://hexo.io/docs/helpers#toc 部分）
+    desktop: # 桌面端（侧边栏小组件）
+      options:
+        list_number: false # 是否显示数字标号
+        # max_depth: 6 # 最大标题等级
+        # min_depth: 1 # 最小标题等级
+        # ... 其他选项
+    mobile: # 移动端（文章顶部）
       enable: true # 是否启用
-      list_number: true # 显示数字标号
+      options:
+        list_number: true # 是否显示数字标号
+        # max_depth: 6 # 最大标题等级
+        # min_depth: 1 # 最小标题等级
+        # ... 其他选项
 
 # Page 一般页面配置
 pages:
