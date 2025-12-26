@@ -44,6 +44,10 @@
         </div>
         <div class="kr-tool text-center">
             <div class="tool">
+                <!-- 额外的追加注入项 -->
+                <% if (theme.additional_injections.tools) { %>
+                    <%- theme.additional_injections.tools %>
+                <% } %>
                 <% if (theme.search.provider !== "none") { %>
                     <div class="box search-box">
                         <a href="<%- url_for(theme.search.path.page) %>">
