@@ -20,7 +20,7 @@
             <% if (cover) { %>
                 <div class="kratos-entry-thumb">
                     <a href="<%- url_for(post.path) %>">
-                        <img class="kratos-entry-thumb-img" src="<%- cover %>" alt="<%- url_for(post.title) %>">
+                        <img class="kratos-entry-thumb-img" src="<%- cover %>" alt="<%- post.title %>">
                     </a>
                 </div>
             <% } %>
