@@ -15,21 +15,21 @@ const css_helper = (url, options) =>
     options?.integrity ? ' integrity="' + options.integrity + '"' : ""
   }${options?.media ? ' media="' + options.media + '"' : ""}></link>`;
 
-// Preload helper for critical CSS resources
+// 关键 CSS 资源的预加载辅助函数
 const css_preload_helper = (url, options) =>
   `<link rel="preload" href="${url}" as="style"${
     options?.integrity ? ' integrity="' + options.integrity + '"' : ""
   } crossorigin>`;
 
-// Async CSS loading helper using media="print" + onload technique
-// This prevents the CSS from blocking the initial render
+// 异步 CSS 加载辅助函数，使用 media="print" + onload 技术
+// 这可以防止 CSS 阻塞初始渲染
 const css_async_helper = (url, options) =>
   `<link rel="stylesheet" ${
     options?.id ? 'id="' + options.id + '" ' : ""
   }href="${url}"${
     options?.integrity ? ' integrity="' + options.integrity + '"' : ""
   } media="print" onload="this.media='${options?.media || "all"}'">` +
-  // Fallback for browsers with JS disabled
+  // 为禁用 JS 的浏览器提供回退方案
   `<noscript><link rel="stylesheet" href="${url}"${
     options?.media ? ' media="' + options.media + '"' : ""
   }></noscript>`;
@@ -126,7 +126,7 @@ const css_npm_cdn = (locals, packageName, path, options) => {
     ...options,
   });
 };
-// Async version of css_npm_cdn for non-critical CSS
+// css_npm_cdn 的异步版本，用于非关键 CSS
 const css_npm_cdn_async = (locals, packageName, path, options) => {
   const { url, integrity } = file_info_npm_cdn(locals, packageName, path);
   return css_async_helper(url, {
@@ -147,11 +147,11 @@ const js_theme_cdn = (locals, path, options) => {
 const css_theme_cdn = (locals, path, options) => {
   return css_helper(url_theme_cdn(locals, path), options);
 };
-// Async version of css_theme_cdn for non-critical CSS
+// css_theme_cdn 的异步版本，用于非关键 CSS
 const css_theme_cdn_async = (locals, path, options) => {
   return css_async_helper(url_theme_cdn(locals, path), options);
 };
-// Preload version of css_theme_cdn for critical CSS
+// css_theme_cdn 的预加载版本，用于关键 CSS
 const css_theme_cdn_preload = (locals, path, options) => {
   return css_preload_helper(url_theme_cdn(locals, path), options);
 };
