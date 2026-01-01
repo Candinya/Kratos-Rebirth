@@ -17,6 +17,14 @@ hexo.once("generateBefore", () => {
     "css_theme_cdn",
     cdn.css_theme_cdn.bind(null, hexo),
   );
+  hexo.extend.helper.register(
+    "css_theme_cdn_async",
+    cdn.css_theme_cdn_async.bind(null, hexo),
+  );
+  hexo.extend.helper.register(
+    "css_theme_cdn_preload",
+    cdn.css_theme_cdn_preload.bind(null, hexo),
+  );
 
   hexo.extend.helper.register(
     "file_info_npm_cdn",
@@ -25,4 +33,8 @@ hexo.once("generateBefore", () => {
   hexo.extend.helper.register("url_npm_cdn", cdn.url_npm_cdn.bind(null, hexo));
   hexo.extend.helper.register("js_npm_cdn", cdn.js_npm_cdn.bind(null, hexo));
   hexo.extend.helper.register("css_npm_cdn", cdn.css_npm_cdn.bind(null, hexo));
+  hexo.extend.helper.register(
+    "css_npm_cdn_async",
+    cdn.css_npm_cdn_async.bind(null, hexo),
+  );
 });
