@@ -47,53 +47,53 @@
     <%- feed_tag() %>
   <% } %>
   <!-- JSON-LD 结构化数据 -->
-  <% if (is_post()) {
-       const jsonLdDescription = page.description || strip_html(truncate(page.content, { length: 150 }));
-       const jsonLdData = {
-         "@context": "https://schema.org",
-         "@type": "BlogPosting",
-         "headline": page.title,
-         "description": jsonLdDescription,
-         "image": page.cover ? full_url_for(page.path + page.cover) : (theme.image.avatar ? full_url_for(theme.image.avatar) : ""),
-         "author": {
-           "@type": "Person",
-           "name": page.author || config.author
-         },
-         "publisher": {
-           "@type": "Organization",
-           "name": config.title,
-           "logo": {
-             "@type": "ImageObject",
-             "url": theme.image.avatar ? full_url_for(theme.image.avatar) : ""
-           }
-         },
-         "datePublished": page.date.toISOString(),
-         "dateModified": (page.updated ? page.updated.toISOString() : page.date.toISOString()),
-         "mainEntityOfPage": {
-           "@type": "WebPage",
-           "@id": full_url_for(page.path)
-         }
-       };
-  %>
-  <script type="application/ld+json">
-  <%- JSON.stringify(jsonLdData) %>
-  </script>
-  <% } %>
-  </script>
-  <% } else if (is_home()) { %>
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Blog",
-    "name": "<%- config.title %>",
-    "description": "<%- config.description %>",
-    "url": "<%- config.url %>",
-    "author": {
-      "@type": "Person",
-      "name": "<%- config.author %>"
+  <%
+    let json_ld_data = null;
+    if (is_post()) {
+      const jsonLdDescription = page.description || strip_html(truncate(page.content, { length: 150 }));
+      json_ld_data = {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        "headline": page.title,
+        "description": jsonLdDescription,
+        "image": page.cover ? full_url_for(page.path + page.cover) : (theme.image.avatar ? full_url_for(theme.image.avatar) : ""),
+        "author": {
+          "@type": "Person",
+          "name": page.author || config.author
+        },
+        "publisher": {
+          "@type": "Organization",
+          "name": config.title,
+          "logo": {
+            "@type": "ImageObject",
+            "url": theme.image.avatar ? full_url_for(theme.image.avatar) : ""
+          }
+        },
+        "datePublished": page.date.toISOString(),
+        "dateModified": (page.updated ? page.updated.toISOString() : page.date.toISOString()),
+        "mainEntityOfPage": {
+          "@type": "WebPage",
+          "@id": full_url_for(page.path)
+        }
+      };
+    } else if (is_home()) {
+      json_ld_data = {
+        "@context": "https://schema.org",
+        "@type": "Blog",
+        "name": config.title,
+        "description": config.description,
+        "url": config.url,
+        "author": {
+          "@type": "Person",
+          "name": config.author
+        }
+      };
     }
-  }
-  </script>
+  %>
+  <% if (json_ld_data) { %>
+    <script type="application/ld+json">
+    <%- JSON.stringify(json_ld_data) %>
+    </script>
   <% } %>
   <!-- 样式表文件 -->
   <%- css_theme_cdn('css/kr-core.min.css', {id: "kratos-css", media:"all"}) %>
