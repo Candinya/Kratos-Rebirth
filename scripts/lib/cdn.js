@@ -9,11 +9,11 @@ const js_helper = (url, options) =>
     options?.integrity ? ' integrity="' + options.integrity + '"' : ""
   }></script>`;
 const css_helper = (url, options) =>
-  `<link rel="stylesheet" ${
-    options?.id ? 'id="' + options.id + '" ' : ""
-  }href="${url}"${
+  `<link rel="stylesheet"${
+    options?.id ? ' id="' + options.id + '"' : ""
+  } href="${url}"${
     options?.integrity ? ' integrity="' + options.integrity + '"' : ""
-  }${options?.media ? ' media="' + options.media + '"' : ""}></link>`;
+  }${options?.media ? ' media="' + options.media + '"' : ""}>`;
 
 // 关键 CSS 资源的预加载辅助函数
 const css_preload_helper = (url, options) =>
@@ -25,18 +25,18 @@ const css_preload_helper = (url, options) =>
       : " crossorigin" // 默认 crossorigin="anonymous" ，此处使用省略写法
   }>`;
 
-// 异步 CSS 加载辅助函数，使用 media="print" + onload 技术
-// 这可以防止 CSS 阻塞初始渲染
+// 异步 CSS 加载辅助函数，使用 media="print" + onload 技术，防止 CSS 阻塞初始渲染
 const css_async_helper = (url, options) =>
   `<link rel="stylesheet" ${
-    options?.id ? 'id="' + options.id + '" ' : ""
-  }href="${url}"${
+    options?.id ? ' id="' + options.id + '"' : ""
+  } href="${url}"${
     options?.integrity ? ' integrity="' + options.integrity + '"' : ""
   } media="print" onload="this.media='${options?.media || "all"}'" onerror="this.media='${options?.media || "all"}'">` +
   // 为禁用 JS 的浏览器提供回退方案
-  `<noscript><link rel="stylesheet" href="${url}"${
-    options?.integrity ? ' integrity="' + options.integrity + '"' : ""
-  }${options?.media ? ' media="' + options.media + '"' : ""}></noscript>`;
+  `<noscript>${css_helper(url, {
+    ...options,
+    id: undefined,
+  })}</noscript>`;
 
 const url_join = (p1, p2) => {
   if (!p1 || p2.includes("//")) {
