@@ -47,7 +47,7 @@
           page.path.replace(/(\/index)?\.html?$/, '') + '/' + cover;
         return full_url_for(coverPath);
       }
-      return null;
+      return theme.image.favicon ? full_url_for(theme.image.favicon) : null;
     })(),
     // twitter_site: theme.contact.twitter ? "@" + theme.contact.twitter : null,
     title
