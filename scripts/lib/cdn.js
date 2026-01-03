@@ -19,7 +19,13 @@ const css_helper = (url, options) =>
 const css_preload_helper = (url, options) =>
   `<link rel="preload" href="${url}" as="style"${
     options?.integrity ? ' integrity="' + options.integrity + '"' : ""
-  } crossorigin>`;
+  }${
+    options?.crossorigin
+      ? ' crossorigin="' + options.crossorigin + '"'
+      : options?.integrity
+      ? ' crossorigin="anonymous"'
+      : ""
+  }>`;
 
 // 异步 CSS 加载辅助函数，使用 media="print" + onload 技术
 // 这可以防止 CSS 阻塞初始渲染
@@ -28,11 +34,11 @@ const css_async_helper = (url, options) =>
     options?.id ? 'id="' + options.id + '" ' : ""
   }href="${url}"${
     options?.integrity ? ' integrity="' + options.integrity + '"' : ""
-  } media="print" onload="this.media='${options?.media || "all"}'">` +
+  } media="print" onload="this.media='${options?.media || "all"}'" onerror="this.media='${options?.media || "all"}'">` +
   // 为禁用 JS 的浏览器提供回退方案
   `<noscript><link rel="stylesheet" href="${url}"${
-    options?.media ? ' media="' + options.media + '"' : ""
-  }></noscript>`;
+    options?.integrity ? ' integrity="' + options.integrity + '"' : ""
+  }${options?.media ? ' media="' + options.media + '"' : ""}></noscript>`;
 
 const url_join = (p1, p2) => {
   if (!p1 || p2.includes("//")) {
