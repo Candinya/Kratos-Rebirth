@@ -22,9 +22,7 @@ const css_preload_helper = (url, options) =>
   }${
     options?.crossorigin
       ? ' crossorigin="' + options.crossorigin + '"'
-      : options?.integrity
-      ? ' crossorigin="anonymous"'
-      : ""
+      : " crossorigin" // 默认 crossorigin="anonymous" ，此处使用省略写法
   }>`;
 
 // 异步 CSS 加载辅助函数，使用 media="print" + onload 技术

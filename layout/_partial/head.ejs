@@ -104,13 +104,17 @@
     <%- JSON.stringify(json_ld_data) %>
     </script>
   <% } %>
+  <!-- 关键 CSS 预加载 -->
+  <%- css_theme_cdn_preload('css/kr-core.min.css') %>
+  <%- css_theme_cdn_preload('css/kr-theme/light.min.css') %>
+  <%- css_theme_cdn_preload('css/kr-theme/dark.min.css') %>
   <!-- 样式表文件 -->
   <%- css_theme_cdn('css/kr-core.min.css', {id: "kratos-css", media:"all"}) %>
+  <%- css_theme_cdn('css/kr-theme/light.min.css', {id: "theme-light-css", media:"all"}) %>
+  <%- css_theme_cdn('css/kr-theme/dark.min.css', {id: "theme-dark-css", media:"(prefers-color-scheme: dark)"}) %>
   <% if (config.syntax_highlighter && theme.syntax_highlighter.theme) { %>
     <%- css_theme_cdn_async(`css/highlight/${config.syntax_highlighter}/${theme.syntax_highlighter.theme}.min.css`, {id: "highlight-css"}) %>
   <% } %>
-  <%- css_theme_cdn('css/kr-theme/light.min.css', {id: "theme-light-css", media:"all"}) %>
-  <%- css_theme_cdn('css/kr-theme/dark.min.css', {id: "theme-dark-css", media:"(prefers-color-scheme: dark)"}) %>
   <%- js_theme_cdn('js/kr-theme.min.js') %>
   <%- css_npm_cdn_async('font-awesome', 'css/font-awesome.min.css', {id:"fontawe-css"}) %>
   <% if (theme.pjax || theme.search.provider === "local") { %>
@@ -119,7 +123,7 @@
   <% if (page.type !== '404' && theme.viewerjs) { %>
     <%- css_npm_cdn_async('viewerjs', 'dist/viewer.min.css') %>
   <% } %>
-  <!-- 不得不预先加载的一些JS文件 -->
+  <!-- 预先加载的JS文件 -->
   <% if (theme.share.enable || theme.donate.enable) { %>
     <%- js_npm_cdn('qr-code-styling', 'lib/qr-code-styling.js') %>
   <% } %>
