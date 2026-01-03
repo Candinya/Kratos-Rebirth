@@ -15,6 +15,31 @@ const css_helper = (url, options) =>
     options?.integrity ? ' integrity="' + options.integrity + '"' : ""
   }${options?.media ? ' media="' + options.media + '"' : ""}></link>`;
 
+// 关键 CSS 资源的预加载辅助函数
+const css_preload_helper = (url, options) =>
+  `<link rel="preload" href="${url}" as="style"${
+    options?.integrity ? ' integrity="' + options.integrity + '"' : ""
+  }${
+    options?.crossorigin
+      ? ' crossorigin="' + options.crossorigin + '"'
+      : options?.integrity
+      ? ' crossorigin="anonymous"'
+      : ""
+  }>`;
+
+// 异步 CSS 加载辅助函数，使用 media="print" + onload 技术
+// 这可以防止 CSS 阻塞初始渲染
+const css_async_helper = (url, options) =>
+  `<link rel="stylesheet" ${
+    options?.id ? 'id="' + options.id + '" ' : ""
+  }href="${url}"${
+    options?.integrity ? ' integrity="' + options.integrity + '"' : ""
+  } media="print" onload="this.media='${options?.media || "all"}'" onerror="this.media='${options?.media || "all"}'">` +
+  // 为禁用 JS 的浏览器提供回退方案
+  `<noscript><link rel="stylesheet" href="${url}"${
+    options?.integrity ? ' integrity="' + options.integrity + '"' : ""
+  }${options?.media ? ' media="' + options.media + '"' : ""}></noscript>`;
+
 const url_join = (p1, p2) => {
   if (!p1 || p2.includes("//")) {
     return p2;
@@ -107,6 +132,14 @@ const css_npm_cdn = (locals, packageName, path, options) => {
     ...options,
   });
 };
+// css_npm_cdn 的异步版本，用于非关键 CSS
+const css_npm_cdn_async = (locals, packageName, path, options) => {
+  const { url, integrity } = file_info_npm_cdn(locals, packageName, path);
+  return css_async_helper(url, {
+    integrity,
+    ...options,
+  });
+};
 
 const file_info_theme_cdn = (locals, path) => {
   return file_info_npm_cdn(locals, theme.name, path);
@@ -120,15 +153,26 @@ const js_theme_cdn = (locals, path, options) => {
 const css_theme_cdn = (locals, path, options) => {
   return css_helper(url_theme_cdn(locals, path), options);
 };
+// css_theme_cdn 的异步版本，用于非关键 CSS
+const css_theme_cdn_async = (locals, path, options) => {
+  return css_async_helper(url_theme_cdn(locals, path), options);
+};
+// css_theme_cdn 的预加载版本，用于关键 CSS
+const css_theme_cdn_preload = (locals, path, options) => {
+  return css_preload_helper(url_theme_cdn(locals, path), options);
+};
 
 module.exports = {
   file_info_npm_cdn: file_info_npm_cdn,
   url_npm_cdn: url_npm_cdn,
   js_npm_cdn: js_npm_cdn,
   css_npm_cdn: css_npm_cdn,
+  css_npm_cdn_async: css_npm_cdn_async,
 
   file_info_theme_cdn: file_info_theme_cdn,
   url_theme_cdn: url_theme_cdn,
   js_theme_cdn: js_theme_cdn,
   css_theme_cdn: css_theme_cdn,
+  css_theme_cdn_async: css_theme_cdn_async,
+  css_theme_cdn_preload: css_theme_cdn_preload,
 };
