@@ -37,8 +37,17 @@
   <% } %>
   <%- open_graph({
     image: (function(){
-      const image_path = page.cover ? page.path + page.cover : theme.site_logo;
-      return image_path ? full_url_for(image_path) : null;
+      const cover = page.cover;
+      if (cover) {
+        if (/^(#|\/\/|http(s)?:)/.test(cover)) {
+          return cover;
+        }
+        const coverPath = cover.startsWith('/') ? 
+          cover : 
+          page.path.replace(/(\/index)?\.html?$/, '') + '/' + cover;
+        return full_url_for(coverPath);
+      }
+      return null;
     })(),
     // twitter_site: theme.contact.twitter ? "@" + theme.contact.twitter : null,
     title
