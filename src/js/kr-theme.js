@@ -5,7 +5,6 @@
  */
 // 作为直接影响渲染的脚本，应该在最开始就加载，不应该defer
 (() => {
-  const darkmodeCss = document.getElementById("theme-dark-css");
   const darkModeStorageKey = "user-color-scheme";
 
   /**
@@ -61,6 +60,7 @@
    * 提交指定的深色/浅色显示模式的设置
    */
   const emitColorMode = (mode) => {
+    const darkmodeCss = document.getElementById("theme-dark-css");
     let currentSetting = mode || getLS(darkModeStorageKey);
     const systemTheme = getModeFromCSSMediaQuery();
     // 在 html tag 上设置主题颜色，方便第三方插件读取使用
