@@ -37,8 +37,17 @@
   <% } %>
   <%- open_graph({
     image: (function(){
-      const image_path = page.cover ? page.path + page.cover : theme.site_logo;
-      return image_path ? full_url_for(image_path) : null;
+      const cover = page.cover;
+      if (cover) {
+        if (/^(#|\/\/|http(s)?:)/.test(cover)) {
+          return cover;
+        }
+        const coverPath = cover.startsWith('/') ? 
+          cover : 
+          page.path.replace(/(\/index)?\.html?$/, '') + '/' + cover;
+        return full_url_for(coverPath);
+      }
+      return theme.image.favicon ? full_url_for(theme.image.favicon) : null;
     })(),
     // twitter_site: theme.contact.twitter ? "@" + theme.contact.twitter : null,
     title
@@ -46,22 +55,75 @@
   <% if (config.feed) { %>
     <%- feed_tag() %>
   <% } %>
+  <!-- JSON-LD 结构化数据 -->
+  <%
+    let json_ld_data = null;
+    if (is_post()) {
+      const jsonLdDescription = page.description || strip_html(truncate(page.content, { length: 150 }));
+      json_ld_data = {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        "headline": page.title,
+        "description": jsonLdDescription,
+        "image": page.cover ? full_url_for(page.path + page.cover) : (theme.image.avatar ? full_url_for(theme.image.avatar) : ""),
+        "author": {
+          "@type": "Person",
+          "name": page.author || config.author
+        },
+        "publisher": {
+          "@type": "Organization",
+          "name": config.title,
+          "logo": {
+            "@type": "ImageObject",
+            "url": theme.image.avatar ? full_url_for(theme.image.avatar) : ""
+          }
+        },
+        "datePublished": page.date.toISOString(),
+        "dateModified": (page.updated ? page.updated.toISOString() : page.date.toISOString()),
+        "mainEntityOfPage": {
+          "@type": "WebPage",
+          "@id": full_url_for(page.path)
+        }
+      };
+    } else if (is_home()) {
+      json_ld_data = {
+        "@context": "https://schema.org",
+        "@type": "Blog",
+        "name": config.title,
+        "description": config.description,
+        "url": config.url,
+        "author": {
+          "@type": "Person",
+          "name": config.author
+        }
+      };
+    }
+  %>
+  <% if (json_ld_data) { %>
+    <script type="application/ld+json">
+    <%- JSON.stringify(json_ld_data) %>
+    </script>
+  <% } %>
+  <!-- 关键 CSS 预加载 -->
+  <%- css_theme_cdn_preload('css/kr-core.min.css') %>
+  <%- css_theme_cdn_preload('css/kr-theme/light.min.css') %>
+  <%- css_theme_cdn_preload('css/kr-theme/dark.min.css') %>
   <!-- 样式表文件 -->
   <%- css_theme_cdn('css/kr-core.min.css', {id: "kratos-css", media:"all"}) %>
-  <% if (config.syntax_highlighter && theme.syntax_highlighter.theme) { %>
-    <%- css_theme_cdn(`css/highlight/${config.syntax_highlighter}/${theme.syntax_highlighter.theme}.min.css`, {id: "highlight-css", media:"all"}) %>
-  <% } %>
   <%- css_theme_cdn('css/kr-theme/light.min.css', {id: "theme-light-css", media:"all"}) %>
   <%- css_theme_cdn('css/kr-theme/dark.min.css', {id: "theme-dark-css", media:"(prefers-color-scheme: dark)"}) %>
+  <% if (config.syntax_highlighter && theme.syntax_highlighter.theme) { %>
+    <%- css_theme_cdn_async(`css/highlight/${config.syntax_highlighter}/${theme.syntax_highlighter.theme}.min.css`, {id: "highlight-css"}) %>
+  <% } %>
   <%- js_theme_cdn('js/kr-theme.min.js') %>
-  <%- css_npm_cdn('font-awesome', 'css/font-awesome.min.css', {id:"fontawe-css", media:"all"}) %>
+  <%- css_npm_cdn_async('font-awesome', 'css/font-awesome.min.css', {id:"fontawe-css"}) %>
   <% if (theme.pjax || theme.search.provider === "local") { %>
-    <%- css_npm_cdn('nprogress', 'nprogress.css', {id:"nprogress-css", media:"all"}) %>
+    <%- css_npm_cdn_async('nprogress', 'nprogress.css', {id:"nprogress-css"}) %>
   <% } %>
   <% if (page.type !== '404' && theme.viewerjs) { %>
-    <%- css_npm_cdn('viewerjs', 'dist/viewer.min.css', {defer: true}) %>
+    <%- css_npm_cdn_async('viewerjs', 'dist/viewer.min.css') %>
   <% } %>
-  <!-- 不得不预先加载的一些JS文件 -->
+  <!-- 预先加载的JS文件 -->
   <% if (theme.share.enable || theme.donate.enable) { %>
     <%- js_npm_cdn('qr-code-styling', 'lib/qr-code-styling.js') %>
   <% } %>
