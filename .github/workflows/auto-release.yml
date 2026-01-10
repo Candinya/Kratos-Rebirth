@@ -31,15 +31,11 @@ jobs:
       
       - name: Publish stable release version (with default latest tag)
         if: ${{ ! contains(github.ref_name, '-') }}
-        run: npm publish --provenance
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN_CANDINYA }}
+        run: npm publish
       
       - name: Publish unstable pre-release version (with next tag)
         if: ${{ contains(github.ref_name, '-') }} # Refer to Semantic Versioning , use a hyphen to split version code and pre-release identifier
-        run: npm publish --provenance --tag next
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN_CANDINYA }}
+        run: npm publish --tag next
 
       - name: Create release (draft)
         uses: softprops/action-gh-release@v2
