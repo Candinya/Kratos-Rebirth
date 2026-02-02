@@ -15,12 +15,13 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@v6
         with:
           registry-url: 'https://registry.npmjs.org'
+          node-version: lts/*
 
-      - name: Update npm to latest version for OIDC support
-        run: npm install -g npm@latest
+      # - name: Update npm to latest version for OIDC support
+      #   run: npm install -g npm@latest
 
       - name: Install pnpm
         uses: pnpm/action-setup@v4
@@ -35,11 +36,11 @@ jobs:
       
       - name: Publish stable release version (with default latest tag)
         if: ${{ ! contains(github.ref_name, '-') }}
-        run: npm publish
+        run: NODE_AUTH_TOKEN="" npm publish
       
       - name: Publish unstable pre-release version (with next tag)
         if: ${{ contains(github.ref_name, '-') }} # Refer to Semantic Versioning , use a hyphen to split version code and pre-release identifier
-        run: npm publish --tag next
+        run: NODE_AUTH_TOKEN="" npm publish --tag next
 
       - name: Create release (draft)
         uses: softprops/action-gh-release@v2
