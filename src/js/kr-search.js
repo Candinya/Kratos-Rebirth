@@ -112,7 +112,7 @@
         const startTime = performance.now();
         let resultArray = [];
         let resultCount = 0;
-        let keywords = skeys.trim().toLowerCase().split(/\s/);
+        let keywords = skeys.trim().toLowerCase().split(/\s+/);
 
         datas.forEach((data) => {
           if (
