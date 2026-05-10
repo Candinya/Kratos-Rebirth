@@ -62,6 +62,24 @@ body {
   transition: background-color 0.3s ease-in-out;
 }
 
+// Sticky footer: 让页脚在内容较短时保持在底部
+#kratos-wrapper {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+#kratos-page {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+// 让页脚自动推到底部
+#kratos-page > footer {
+  margin-top: auto;
+}
+
 a {
   text-decoration: none;
   font-weight: 400;
